@@ -13,7 +13,7 @@ export interface RateProps {
 export interface RateEmits {
   (e: 'update:modelValue', value: number): void;
   (e: 'change', value: number): void;
-  (e: 'hoverChange', value: number): void;
+  (e: 'hover-change', value: number): void;
 }
 
 export interface RateSlots {

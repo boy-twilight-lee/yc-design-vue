@@ -133,7 +133,7 @@ const computedVisibility = useControlValue<boolean>(
   defaultVisibility.value,
   (val) => {
     emits('update:visibility', val);
-    emits('visibilityChange', val);
+    emits('visibility-change', val);
   }
 );
 // 输入框类型

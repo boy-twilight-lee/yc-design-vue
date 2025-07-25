@@ -10,7 +10,7 @@
     position="bl"
     v-bind="triggerProps"
     @popupVisibleChange="
-      (v: boolean) => $emit('popupVisibleChange', v, computedColor)
+      (v: boolean) => $emit('popup-visible-change', v, computedColor)
     "
   >
     <slot>

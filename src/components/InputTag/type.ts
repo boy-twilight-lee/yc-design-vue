@@ -25,10 +25,10 @@ export interface InputTagEmits {
   (e: 'update:modelValue', value: InputTagValue): void;
   (e: 'update:inputValue', value: string): void;
   (e: 'input', value: string): void;
-  (e: 'inputValueChange', value: string, ev: Event): void;
+  (e: 'input-value-change', value: string, ev: Event): void;
   (e: 'focus', ev: FocusEvent): void;
   (e: 'blur', ev: FocusEvent): void;
-  (e: 'pressEnter', ev: KeyboardEvent): void;
+  (e: 'press-enter', ev: KeyboardEvent): void;
   (e: 'remove', value: number | string, ev: MouseEvent | KeyboardEvent): void;
   (e: 'clear', ev: MouseEvent): void;
 }

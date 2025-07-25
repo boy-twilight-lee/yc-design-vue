@@ -20,7 +20,7 @@ export interface ColorPickerProps {
 export interface ColorPickerEmits {
   (e: 'update:modelValue', value: string): void;
   (e: 'change', value: boolean): void;
-  (e: 'popupVisibleChange', value: boolean, color: string): void;
+  (e: 'popup-visible-change', value: boolean, color: string): void;
 }
 
 export type ColorFormat = 'hex' | 'rgb';

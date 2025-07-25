@@ -74,7 +74,7 @@ const isSelected = computed(() => {
 const handleSelect = (value: DoptionValue) => {
   if (computedSelectedKeys.value == value) return;
   computedSelectedKeys.value = value as string;
-  emits('menuItemClick', value as string);
+  emits('menu-item-click', value as string);
 };
 </script>
 

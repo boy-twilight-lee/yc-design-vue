@@ -28,7 +28,7 @@ export interface InputEmits {
   (e: 'update:visibility', value: boolean): void;
   (e: 'input', value: string, ev: Event): void;
   (e: 'change', value: string, ev: Event): void;
-  (e: 'visibilityChange', value: boolean): void;
+  (e: 'visibility-change', value: boolean): void;
   (e: 'pressEnter', ev: KeyboardEvent): void;
   (e: 'keydown', ev: KeyboardEvent): void;
   (e: 'clear', ev: MouseEvent): void;

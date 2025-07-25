@@ -35,8 +35,8 @@ export interface MenuEmits {
     collapsed: boolean,
     type: 'clickTrigger' | 'responsive'
   ): void;
-  (e: 'menuItemClick', key: string): void;
-  (e: 'subMenuClick', key: string, openKeys: string[]): void;
+  (e: 'menu-item-click', key: string): void;
+  (e: 'sub-menu-click', key: string, openKeys: string[]): void;
 }
 
 export interface MenuSlots {

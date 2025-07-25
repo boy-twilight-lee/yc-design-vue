@@ -26,8 +26,8 @@
       <!-- drawer -->
       <transition
         :name="`slide-drawer-${placement}`"
-        @before-enter="$emit('beforeOpen')"
-        @before-leave="$emit('beforeClose')"
+        @before-enter="$emit('before-open')"
+        @before-leave="$emit('before-close')"
         @after-enter="$emit('open')"
         @after-leave="handleAfterLeave"
       >

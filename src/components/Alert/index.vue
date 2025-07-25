@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide-dynamic-origin" @after-leave="$emit('afterClose')">
+  <transition name="slide-dynamic-origin" @after-leave="$emit('after-close')">
     <div
       v-if="visible"
       :class="[

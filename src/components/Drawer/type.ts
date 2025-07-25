@@ -40,9 +40,9 @@ export interface DrawerEmits {
   (e: 'update:visible', value: boolean): void;
   (e: 'ok'): void;
   (e: 'cancel', event: MouseEvent | KeyboardEvent): void;
-  (e: 'beforeOpen'): void;
+  (e: 'before-open'): void;
   (e: 'open'): void;
-  (e: 'beforeClose'): void;
+  (e: 'before-close'): void;
   (e: 'close'): void;
 }
 

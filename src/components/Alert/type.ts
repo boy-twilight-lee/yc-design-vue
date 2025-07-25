@@ -9,7 +9,7 @@ export interface AlertProps {
 
 export interface AlertEmits {
   (e: 'close', ev: MouseEvent): void;
-  (e: 'afterClose'): void;
+  (e: 'after-close'): void;
 }
 
 export interface AlertSlots {

@@ -133,7 +133,7 @@ const handleMouseenter = (i: number) => {
   if (readonly.value || disabled.value) return;
   if (timer) clearTimeout(timer);
   curHover.value = i;
-  emits('hoverChange', i);
+  emits('hover-change', i);
 };
 const handleMouseleave = () => {
   if (readonly.value || disabled.value) return;

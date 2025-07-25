@@ -200,7 +200,7 @@ const menuItemRef = ref<HTMLDivElement>();
 const handleSelect = (value: DoptionValue) => {
   if (computedSelectedKeys.value == value) return;
   computedSelectedKeys.value = value as string;
-  emits('menuItemClick', value as string);
+  emits('menu-item-click', value as string);
 };
 // 处理点击
 const handleClick = () => {
@@ -217,7 +217,7 @@ const handleClick = () => {
     computedSelectedKeys.value != path.value
   ) {
     computedSelectedKeys.value = path.value;
-    return emits('menuItemClick', path.value);
+    return emits('menu-item-click', path.value);
   }
   // 展开元素
   if (computedOpenKeys.value.includes(path.value)) {
@@ -229,7 +229,7 @@ const handleClick = () => {
       ? [path.value]
       : [...computedOpenKeys.value, path.value];
   }
-  emits('subMenuClick', path.value, computedOpenKeys.value);
+  emits('sub-menu-click', path.value, computedOpenKeys.value);
 };
 // 收集
 onMounted(() => {

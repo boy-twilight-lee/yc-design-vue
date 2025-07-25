@@ -62,7 +62,7 @@
         class="yc-input-tag-input"
         ref="inputRef"
         @input="handleEvent('input', $event)"
-        @change="handleEvent('inputValueChange', $event)"
+        @change="handleEvent('input-value-change', $event)"
         @focus="handleEvent('focus', $event)"
         @blur="handleEvent('blur', $event)"
         @keydown.enter="handleEvent('pressEnter', $event)"
@@ -207,7 +207,9 @@ const computedValue = useControlValue<InputTagValue>(
 const computedInputValue = useControlValue<string>(
   inputValue,
   defaultInputValue.value,
-  (val) => emits('update:inputValue', val)
+  (val) => {
+    emits('update:inputValue', val);
+  }
 );
 // 当前展示的list
 const curList = computed(() => {
@@ -244,7 +246,7 @@ const handleEvent = (type: string, e: Event, id?: string) => {
   const inputVal = computedInputValue.value?.trim();
   switch (type) {
     case 'input':
-    case 'inputValueChange':
+    case 'input-value-change':
       {
         const { value } = e.target as HTMLInputElement;
         emits(type as keyof InputTagEmits, value, e as Event);
@@ -277,7 +279,7 @@ const handleEvent = (type: string, e: Event, id?: string) => {
         tagData[label] = computedInputValue.value;
         tagData[value] = computedInputValue.value;
         computedValue.value = [...computedValue.value, tagData];
-        emits('pressEnter', e as KeyboardEvent);
+        emits('press-enter', e as KeyboardEvent);
         clearInputValue();
       }
       break;

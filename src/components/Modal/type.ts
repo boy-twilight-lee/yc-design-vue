@@ -45,9 +45,9 @@ export interface ModalEmits {
   (e: 'ok'): void;
   (e: 'cancel', ev: MouseEvent | KeyboardEvent): void;
   (e: 'open'): void;
-  (e: 'beforeOpen'): void;
+  (e: 'before-open'): void;
   (e: 'close'): void;
-  (e: 'beforeClose'): void;
+  (e: 'before-close'): void;
 }
 
 export interface ModalSlots {
