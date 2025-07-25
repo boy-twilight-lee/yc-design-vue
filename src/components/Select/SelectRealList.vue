@@ -1,9 +1,5 @@
 <template>
-  <yc-scrollbar
-    :scrollbar="scrollbar"
-    class="yc-select-dropdown-list-wrapper"
-    @scroll="(_, _1, e) => emits('dropdown-scroll', e)"
-  >
+  <yc-scrollbar :scrollbar="scrollbar" class="yc-select-dropdown-list-wrapper">
     <div class="yc-select-dropdown-list">
       <!-- default -->
       <component :is="slots.default" />

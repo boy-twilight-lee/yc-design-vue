@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="yc-select-dropdown-virtual-list"
-    v-bind="containerProps"
-    @scroll="(e) => emits('dropdown-scroll', e)"
-  >
+  <div class="yc-select-dropdown-virtual-list" v-bind="containerProps">
     <!-- 渲染虚拟列表 -->
     <div class="yc-select-dropdown-list" v-bind="wrapperProps">
       <yc-option

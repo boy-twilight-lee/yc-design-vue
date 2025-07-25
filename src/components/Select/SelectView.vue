@@ -42,9 +42,9 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { VirtualListProps } from './type';
-import { useScroll } from '@vueuse/core';
-import { getGlobalConfig, unrefElement, debounce } from '@shared/utils';
+import { getGlobalConfig, unrefElement } from '@shared/utils';
 import useContext from './hooks/useContext';
+import useScrollReach from '@/components/List/hooks/useScrollReach';
 import SelectVirtualList from './SelectVirtualList.vue';
 import SelectRealList from './SelectRealList.vue';
 import YcSpin from '@/components/Spin';
@@ -71,12 +71,13 @@ const scrollRef = computed(() => {
     : realListRef.value?.getScrollRef();
 });
 // 处理滚动
-useScroll(scrollRef, {
-  onScroll: debounce((e) => {
+useScrollReach({
+  scrollRef,
+  onScroll: (e) => {
+    emits('dropdown-scroll', e);
+  },
+  onReachBottom: (e) => {
     emits('dropdown-reach-bottom', e);
-  }, 50),
-  offset: {
-    bottom: 0,
   },
 });
 // 是否是虚拟列表

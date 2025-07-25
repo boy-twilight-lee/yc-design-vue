@@ -90,14 +90,14 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { ListProps, ListEmits, ListSlots } from './type';
-import { useInfiniteScroll, useScroll } from '@vueuse/core';
+
 import {
   getGlobalConfig,
   useControlValue,
   valueToPx,
   unrefElement,
-  debounce,
 } from '@shared/utils';
+import useScrollReach from './hooks/useScrollReach';
 import YcSpin from '@/components/Spin';
 import {
   default as YcScrollbar,
@@ -154,13 +154,16 @@ const scrollRef = computed(() =>
     : realListRef.value?.getScrollRef()
 );
 // 处理滚动
-const { arrivedState } = useScroll(scrollRef, {
-  onScroll: debounce((e) => {
-    isBottomReached.value = arrivedState.bottom;
-    emits('reach-bottom', e);
-  }, 50),
+useScrollReach({
+  scrollRef,
   offset: {
     bottom: bottomOffset.value,
+  },
+  onScroll: (_e, arriveStauts) => {
+    isBottomReached.value = arriveStauts.bottom;
+  },
+  onReachBottom: (e) => {
+    emits('reach-bottom', e);
   },
 });
 // current
