@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="yc-virtual-list"
-    @scroll="(e) => $emit('scroll', e)"
-    v-bind="containerProps"
-  >
+  <div class="yc-virtual-list" v-bind="containerProps">
     <div class="yc-list-content" v-bind="wrapperProps">
       <!-- 虚拟列表 -->
       <template v-for="{ data, index: i } in list" :key="i">
@@ -14,18 +10,13 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, ref, watch, nextTick } from 'vue';
+import { toRefs } from 'vue';
 import { useVirtualList } from '@vueuse/core';
 import { VirtualListProps } from '@/components/Select';
 import { ObjectData } from '@shared/type';
-
 const props = defineProps<{
   data: ObjectData[];
   virtualListProps: VirtualListProps;
-}>();
-const emits = defineEmits<{
-  (e: 'scroll', ev: Event): void;
-  (e: 'reachBottom'): void;
 }>();
 const { data, virtualListProps } = toRefs(props);
 // 虚拟列表

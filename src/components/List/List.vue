@@ -19,7 +19,6 @@
         }"
         class="yc-list"
         ref="realListRef"
-        @scroll="(_, _1, e) => emits('scroll', e)"
       >
         <div class="yc-list-content-wrapper">
           <div v-if="$slots.header" class="yc-list-header">
@@ -30,12 +29,10 @@
             v-if="isVirtualList"
             :data="data"
             :virtual-list-props="virtualListProps"
-            :offset-bottom="bottomOffset"
             :style="{
               maxHeight: valueToPx(maxHeight),
             }"
             ref="virtualListRef"
-            @scroll="(e) => emits('scroll', e)"
           >
             <template v-if="$slots.item" #item="scope">
               <slot name="item" v-bind="scope" />
@@ -159,8 +156,9 @@ useScrollReach({
   offset: {
     bottom: bottomOffset.value,
   },
-  onScroll: (_e, arriveStauts) => {
+  onScroll: (e, arriveStauts) => {
     isBottomReached.value = arriveStauts.bottom;
+    emits('scroll', e);
   },
   onReachBottom: (e) => {
     emits('reach-bottom', e);
