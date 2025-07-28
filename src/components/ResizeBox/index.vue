@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, reactive, nextTick } from 'vue';
+import { ref, toRefs, reactive } from 'vue';
 import { useResizeObserver, useEventListener } from '@vueuse/core';
 import {
   ResizeBoxProps,
@@ -34,7 +34,7 @@ import {
   ResizeBoxDirection,
 } from './type';
 import { IconDragDot } from '@shared/icons';
-import { useControlValue, valueToPx } from '@shared/utils';
+import { useControlValue, valueToPx, sleep } from '@shared/utils';
 defineOptions({
   name: 'ResizeBox',
 });
@@ -73,6 +73,7 @@ const x = ref<number>(0);
 const y = ref<number>(0);
 // 记录拖拽之前body的光标
 let cursor: string;
+let tempW = 0;
 // 处理拖拽开始
 const handleMovingStart = (dir: ResizeBoxDirection, e: MouseEvent) => {
   // 防止文本选中等副作用
@@ -82,6 +83,7 @@ const handleMovingStart = (dir: ResizeBoxDirection, e: MouseEvent) => {
   const { clientX, clientY } = e;
   computedWidth.value = width;
   computedHeight.value = height;
+  tempW = width;
   x.value = clientX;
   y.value = clientY;
   cursor = getComputedStyle(document.body).cursor;
@@ -110,21 +112,20 @@ const handleMoving = async (e: MouseEvent) => {
   // 计算宽高
   if (['left', 'right'].includes(dragDirection.value)) {
     computedWidth.value += movementX;
-    computedWidth.value =
-      computedWidth.value <= minWidth ? minWidth : computedWidth.value;
+    computedWidth.value <= minWidth && (computedWidth.value = minWidth);
     boxRef.value.style.width = valueToPx(computedWidth.value);
   } else {
     computedHeight.value += movementY;
-    computedHeight.value =
-      computedHeight.value <= minHeight ? minHeight : computedHeight.value;
+    computedHeight.value <= minHeight && (computedHeight.value = minHeight);
     boxRef.value.style.height = valueToPx(computedHeight.value);
   }
-  await nextTick();
-  const { width, height } = boxRef.value.getBoundingClientRect();
-  computedWidth.value =
-    width != computedWidth.value ? width : computedWidth.value;
-  computedHeight.value =
-    height != computedHeight.value ? height : computedHeight.value;
+  const { width, height } = boxRef.value!.getBoundingClientRect();
+  if (computedWidth.value != width) {
+    computedWidth.value = width;
+  }
+  if (height != computedHeight.value) {
+    computedHeight.value = height;
+  }
   emits(
     'moving',
     {

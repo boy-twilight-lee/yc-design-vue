@@ -2,7 +2,7 @@
   <!-- 伸缩杆 -->
   <yc-resize-box
     v-if="resizeDirections.length"
-    v-model:width="width"
+    v-model:width="asideWidth"
     :directions="resizeDirections"
     :class="[
       'yc-layout-sider',
@@ -80,9 +80,9 @@ const {
   collapsedWidth: _collapsedWidth,
 } = toRefs(props);
 // 宽度
-const width = ref<number>(_width.value);
+const asideWidth = ref<number>(_width.value);
 // 计算的宽度
-const computedWidth = computed(() => valueToPx(width.value));
+const computedWidth = computed(() => valueToPx(asideWidth.value));
 // 计算width
 const collapsedWidth = computed(() => valueToPx(_collapsedWidth.value));
 // 受控的收缩
@@ -102,7 +102,7 @@ const handleCollapse = () => {
   if (!collapsible.value) return;
   const value = !computedCollapsed.value;
   computedCollapsed.value = value;
-  width.value = value ? _collapsedWidth.value : _width.value;
+  asideWidth.value = value ? _collapsedWidth.value : _width.value;
   emits('collapse', value, 'clickTrigger');
 };
 // 处理媒体查询搜索
@@ -110,7 +110,7 @@ mediaQueryHandler((_, order, i) => {
   if (!collapsible.value || !breakpoint.value) return;
   const value = i <= order[breakpoint.value];
   computedCollapsed.value = value;
-  width.value = value ? _collapsedWidth.value : _width.value;
+  asideWidth.value = value ? _collapsedWidth.value : _width.value;
   emits('collapse', value, 'responsive');
   emits('breakpoint', value);
 });
