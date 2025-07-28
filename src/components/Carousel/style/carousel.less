@@ -37,28 +37,6 @@
     }
   }
 }
-.yc-carousel-animation-card {
-  .yc-carousel-item {
-    visibility: hidden;
-  }
-  .yc-carousel-item-prev {
-    visibility: visible;
-    transform: translateX(-100%) translateZ(-200px);
-    opacity: 0.4;
-    animation: carousel-card-top-to-middle;
-  }
-  .yc-carousel-item-current {
-    visibility: visible;
-    z-index: 1;
-    animation: carousel-card-middle-to-top;
-  }
-  .yc-carousel-item-next {
-    visibility: visible;
-    transform: translateX(0%) translateZ(-200px);
-    opacity: 0.4;
-    animation: carousel-card-bottom-to-middle;
-  }
-}
 // direction
 .yc-carousel-direction-vertical {
   flex-direction: column;

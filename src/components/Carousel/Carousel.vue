@@ -10,8 +10,12 @@
   >
     <div
       :class="['yc-carousel-slide', `yc-carousel-direction-${direction}`]"
-      @mouseenter="autoPlay?.hoverToPause && stopAutoPlay()"
-      @mouseleave="autoPlay?.hoverToPause && setAutoPlay()"
+      @mouseenter="
+        isObject(autoPlay) && autoPlay?.hoverToPause && stopAutoPlay()
+      "
+      @mouseleave="
+        isObject(autoPlay) && autoPlay?.hoverToPause && setAutoPlay()
+      "
     >
       <component v-for="(node, i) in carouselItems" :is="node" :index="i + 1" />
     </div>
@@ -33,6 +37,7 @@
 
 <script lang="ts" setup>
 import { watch, onBeforeUnmount } from 'vue';
+import { isObject } from '@shared/utils';
 import { CarouselProps, CarouselEmits, CarouselSlots } from './type';
 import useContext from './hooks/useContext';
 import CarouselArrow from './CarouselArrow.vue';
@@ -65,9 +70,12 @@ let autoPlayTimer: any = null;
 // 设置自动播放
 const setAutoPlay = () => {
   if (!autoPlay.value) return;
-  autoPlayTimer = setInterval(() => {
-    slideTo(computedCurrent.value + 1);
-  }, autoPlay.value?.interval ?? 3000);
+  autoPlayTimer = setInterval(
+    () => {
+      slideTo(computedCurrent.value + 1);
+    },
+    (autoPlay.value as Record<string, any>)?.interval ?? 3000
+  );
 };
 // 停止自动播放
 const stopAutoPlay = () => {
