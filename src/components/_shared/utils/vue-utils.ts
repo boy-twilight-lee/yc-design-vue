@@ -31,6 +31,11 @@ function wrapTextContent(s: string | VNode) {
   );
 }
 
+// 判断一个 VNode 是否是由 v-if="false" 生成的占位符注释节点。
+export function isVifNode(vnode: VNode | undefined | null): boolean {
+  return !vnode ? false : vnode.type === Comment && vnode.children === 'v-if';
+}
+
 // 在vnode数组中查找第一个合法的子元素
 export function findFirstLegitChild(node: VNode[] | undefined): VNode | null {
   if (!node) return null;

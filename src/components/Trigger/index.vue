@@ -64,7 +64,7 @@ import {
   TriggerSlots,
   TriggerExpose,
 } from './type';
-import { findFirstLegitChild, getGlobalConfig } from '@shared/utils';
+import { findFirstLegitChild, getGlobalConfig, isVifNode } from '@shared/utils';
 import useTriggerVisible from './hooks/useTriggerVisible';
 import useTriggerPosition from './hooks/useTriggerPosition';
 import { PreventFocus } from '@shared/components';
@@ -125,7 +125,9 @@ const arrowRef = ref<HTMLElement>();
 const slots = useSlots();
 // slots
 const vNode = computed(() => {
-  return findFirstLegitChild(slots.default?.() || []);
+  const node = findFirstLegitChild(slots.default?.() || []);
+  // console.log(isVifNode(node), 'v-if');
+  return node;
 });
 // 处理trigger关闭与开启
 const {
