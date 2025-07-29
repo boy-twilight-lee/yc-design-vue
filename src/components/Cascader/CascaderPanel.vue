@@ -1,5 +1,4 @@
 <template>
-  <!-- 渲染group -->
   <transition-group tag="div" name="cascader-slide" class="yc-cascader-panel">
     <!-- loading -->
     <yc-spin v-if="loading" :loading="loading" />

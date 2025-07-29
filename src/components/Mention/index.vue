@@ -1,5 +1,4 @@
 <template>
-  <!-- input模式 -->
   <yc-auto-complete
     v-model="computedValue"
     :popupVisible="popupVisible"

@@ -1,22 +1,18 @@
 <template>
-  <!-- loading -->
   <yc-spin v-if="loading" :size="12" class="yc-cascader-loading-icon">
     <template v-if="$slots['loading-icon']" #icon>
       <component :is="renderIcon('loading-icon')" />
     </template>
   </yc-spin>
   <template v-else>
-    <!-- default -->
     <div class="yc-cascader-suffix-icon">
       <component v-if="slots['arrow-icon']" :is="renderIcon('arrow-icon')" />
       <icon-arrow-down v-else :rotate="popupVisible ? 180 : 0" />
     </div>
-    <!-- search -->
     <div v-if="allowSearch" class="yc-cascader-search-icon">
       <component v-if="slots['search-icon']" :is="renderIcon('search-icon')" />
       <icon-search v-else />
     </div>
-    <!-- clear -->
     <icon-button
       v-if="showClearBtn"
       class="yc-cascader-clear-icon"

@@ -57,14 +57,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, useSlots } from 'vue';
+import { ref, computed, useSlots, onMounted } from 'vue';
 import {
   TriggerProps,
   TriggerEmits,
   TriggerSlots,
   TriggerExpose,
 } from './type';
-import { findFirstLegitChild, getGlobalConfig, isVifNode } from '@shared/utils';
+import { findFirstLegitChild, getGlobalConfig } from '@shared/utils';
 import useTriggerVisible from './hooks/useTriggerVisible';
 import useTriggerPosition from './hooks/useTriggerPosition';
 import { PreventFocus } from '@shared/components';
@@ -125,9 +125,7 @@ const arrowRef = ref<HTMLElement>();
 const slots = useSlots();
 // slots
 const vNode = computed(() => {
-  const node = findFirstLegitChild(slots.default?.() || []);
-  // console.log(isVifNode(node), 'v-if');
-  return node;
+  return findFirstLegitChild(slots.default?.() || []);
 });
 // 处理trigger关闭与开启
 const {

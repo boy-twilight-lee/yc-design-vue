@@ -1,5 +1,4 @@
 <template>
-  <!-- start -->
   <yc-tooltip
     v-model:popup-visible="computedVisible"
     :disabled="!showTooltip"

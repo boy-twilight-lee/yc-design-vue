@@ -1,5 +1,4 @@
 <template>
-  <!-- 伸缩杆 -->
   <yc-resize-box
     v-if="resizeDirections.length"
     v-model:width="asideWidth"
@@ -21,7 +20,6 @@
       </slot>
     </div>
   </yc-resize-box>
-  <!-- 默认元素 -->
   <aside
     v-else
     :class="[

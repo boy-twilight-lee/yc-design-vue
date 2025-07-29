@@ -1,5 +1,4 @@
 <template>
-  <!-- outer -->
   <div
     :class="[
       'yc-input-outer',

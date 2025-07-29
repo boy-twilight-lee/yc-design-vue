@@ -1,7 +1,7 @@
 <template>
   <prevent-focus class="yc-input-suffix">
     <!-- word-limit -->
-    <div v-if="showWordLimit" tag="span" class="yc-input-word-limit">
+    <div v-if="showWordLimit" class="yc-input-word-limit">
       {{ curLength }}/{{ maxLength }}
     </div>
     <!-- password -->

@@ -12,11 +12,15 @@ import {
 // 获取renderFunction
 export const getSlotFunction = (param: RenderContent | undefined) => {
   if (param) {
-    if (isFunction(param)) return param;
-    return () => param;
+    return isFunction(param) ? param : () => param;
   }
   return undefined;
 };
+
+// 判断一个 VNode 是否是由 v-if="false" 生成的占位符注释节点。
+export function isVifNode(vnode: VNode | undefined | null): boolean {
+  return !vnode ? false : vnode.type === Comment && vnode.children === 'v-if';
+}
 
 // 包裹文本节点
 function wrapTextContent(s: string | VNode) {
@@ -29,11 +33,6 @@ function wrapTextContent(s: string | VNode) {
     },
     s
   );
-}
-
-// 判断一个 VNode 是否是由 v-if="false" 生成的占位符注释节点。
-export function isVifNode(vnode: VNode | undefined | null): boolean {
-  return !vnode ? false : vnode.type === Comment && vnode.children === 'v-if';
 }
 
 // 在vnode数组中查找第一个合法的子元素
