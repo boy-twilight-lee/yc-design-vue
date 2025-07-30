@@ -1,5 +1,3 @@
-好的，这是为您生成的 Carousel 和 CarouselItem 组件字段说明文档，以表格形式呈现。
-
 ### Carousel Props
 
 | 参数名 | 描述 | 类型 | 默认值 |

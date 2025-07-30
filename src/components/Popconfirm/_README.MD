@@ -1,5 +1,3 @@
-好的，这是为您根据提供的 `Popconfirm` 组件 TypeScript 接口生成的 README 文档。
-
 ### Popconfirm Props
 
 | 参数名 | 描述 | 类型 | 默认值 |
