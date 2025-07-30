@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, StyleValue } from 'vue';
+import { toRefs } from 'vue';
 import {
   PopoverProps,
   PopoverEmits,

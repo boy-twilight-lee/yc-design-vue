@@ -1,7 +1,6 @@
 import { ObjectData, RenderContent, Size, PopupContainer } from '@shared/type';
 import { TriggerInstance, TriggerProps } from '../Trigger';
 import { TagProps } from '../Tag';
-import { TabData } from '@arco-design/web-vue/es/tabs/interface';
 
 export interface SelectProps {
   multiple?: boolean;
