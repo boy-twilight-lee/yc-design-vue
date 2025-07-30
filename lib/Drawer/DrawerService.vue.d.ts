@@ -1,0 +1,26 @@
+import { DrawerServiceProps } from './type';
+declare const _default: import('vue').DefineComponent<DrawerServiceProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<DrawerServiceProps> & Readonly<{}>, {
+    unmountOnClose: boolean;
+    popupContainer: import('..').PopupContainer;
+    renderToBody: boolean;
+    width: number | string;
+    height: number | string;
+    footer: boolean;
+    header: boolean;
+    title: string & import('../_shared/type').RenderContent;
+    mask: boolean;
+    closable: boolean;
+    maskClosable: boolean;
+    hideCancel: boolean;
+    okText: string;
+    cancelText: string;
+    okLoading: boolean;
+    okButtonProps: import('..').ButtonProps;
+    cancelButtonProps: import('..').ButtonProps;
+    escToClose: boolean;
+    onBeforeCancel: import('..').OnBeforeCancel;
+    onBeforeOk: import('..').OnBeforeOk;
+    placement: import('./type').DrawerPlacement;
+    drawerStyle: import('vue').CSSProperties;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+export default _default;

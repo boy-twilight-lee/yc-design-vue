@@ -1,0 +1,50 @@
+import { PopupContainer, Size } from '../_shared/type';
+import { TriggerProps } from '../Trigger';
+export interface TimePickerProps {
+    type?: TimePickerType;
+    modelValue?: TimePickerValue;
+    defaultValue?: TimePickerValue;
+    disabled?: boolean;
+    allowClear?: boolean;
+    readonly?: boolean;
+    error?: boolean;
+    format?: string;
+    placeholder?: string | string[];
+    size?: Size;
+    popupContainer?: PopupContainer;
+    step?: {
+        hour?: number;
+        minute?: number;
+        second?: number;
+    };
+    disabledHours?: DisabledHours;
+    disabledMinutes?: DisabledMinutes;
+    disabledSeconds?: DisabledSeconds;
+    hideDisabledOptions?: boolean;
+    disableConfirm?: boolean;
+    position?: TimePickerPosition;
+    popupVisible?: boolean;
+    defaultPopupVisible?: boolean;
+    triggerProps?: TriggerProps;
+    unmountOnClose?: boolean;
+}
+export interface TimePickerEmits {
+    (e: 'update:modelValue', value: TimePickerValue): void;
+    (e: 'update:popupVisible', value: boolean): void;
+    (e: 'change', timeString: string | Array<string | undefined> | undefined, time: Date | Array<Date | undefined> | undefined): void;
+    (e: 'select', timeString: string | Array<string | undefined> | undefined, time: Date | Array<Date | undefined> | undefined): void;
+    (e: 'clear'): void;
+    (e: 'popup-visible-change', value: boolean): void;
+}
+export interface TimePickerSlots {
+    prefix(): void;
+    ['suffix-icon'](): void;
+    extra(): void;
+}
+export type TimeUnit = 'hour' | 'minute' | 'second';
+export type TimePickerValue = string | number | Date | (string | number | Date)[];
+export type TimePickerType = 'time' | 'time-range';
+export type TimePickerPosition = 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
+export type DisabledHours = () => number[];
+export type DisabledMinutes = (selectedHour?: number) => number[];
+export type DisabledSeconds = (selectedHour?: number, selectedMinute?: number) => number[];

@@ -1,27 +1,9 @@
 <template>
-  <div class="test" id="test">
-    <yc-split
-      default-size="400px"
-      :style="{
-        height: '200px',
-        width: '100%',
-        minWidth: '500px',
-        border: '1px solid var(--color-border)',
-      }"
-    >
-      <template #first>
-        <yc-typography-paragraph>Left</yc-typography-paragraph>
-      </template>
-      <template #second>
-        <yc-typography-paragraph>RIGHT</yc-typography-paragraph>
-      </template>
-    </yc-split>
-  </div>
+  <div class="test" id="test"></div>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
-const size = ref(0.5);
 </script>
 
 <style lang="less" scoped>
