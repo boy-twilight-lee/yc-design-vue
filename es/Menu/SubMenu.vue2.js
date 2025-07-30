@@ -7,7 +7,7 @@ import "../_shared/utils/time.js";
 import "../Empty/index.js";
 import "../_shared/icons/_Icon.vue.js";
 import "../_shared/components/IconButton.vue2.js";
-import ExpandTransition from "../_shared/components/ExpandTransition.vue.js";
+import ExpandTransition from "../_shared/components/ExpandTransition.vue2.js";
 import "./index.js";
 import MenuItem from "./MenuItem.vue.js";
 const _hoisted_1 = { class: "yc-menu-inline" };

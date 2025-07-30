@@ -9,7 +9,7 @@ import _sfc_main$1 from "../_shared/icons/IconCheckboxChecked.vue.js";
 import useControlValue from "../_shared/utils/control.js";
 import useContext from "./hooks/useContext.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = ["value", "disabled", "checked"];
 const _hoisted_2 = { class: "yc-checkbox-icon" };
 const _hoisted_3 = {

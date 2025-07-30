@@ -6,11 +6,14 @@ import ArcoIcon from '@arco-design/web-vue/es/icon';
 import Arco from '@arco-design/web-vue';
 import '@arco-design/web-vue/dist/arco.css';
 // ycui
-import YcUi from '@/components';
+// import YcUi from '@/components';
+import YcUi from 'yc-ui-pro';
+import 'yc-ui-pro/es/style.css';
 import '@/components/index.less';
 const app = createApp(App);
 app.use(router);
 app.use(ArcoIcon);
-// app.use(Arco);
 app.use(YcUi);
+app.use(Arco);
+// app.use(YcUi);
 app.mount('#app');

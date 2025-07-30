@@ -7,7 +7,7 @@ import "../_shared/icons/_Icon.vue.js";
 import useControlValue from "../_shared/utils/control.js";
 import useContext from "./hooks/useContext.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = ["value", "checked", "disabled"];
 const _hoisted_2 = {
   key: 0,

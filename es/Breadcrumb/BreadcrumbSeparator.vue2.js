@@ -5,7 +5,7 @@ import { isUndefined } from "../_shared/utils/is.js";
 import "../_shared/utils/time.js";
 import "../Empty/index.js";
 import "../_shared/icons/_Icon.vue.js";
-import _sfc_main$1 from "../_shared/icons/IconSeparator.vue.js";
+import _sfc_main$1 from "../_shared/icons/IconSeparator.vue2.js";
 const _hoisted_1 = { class: "yc-breadcrumb-item-separator" };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "BreadcrumbSeparator",

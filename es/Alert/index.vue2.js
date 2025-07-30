@@ -6,7 +6,7 @@ import "../_shared/utils/dom.js";
 import "../_shared/utils/time.js";
 import "../Empty/index.js";
 import "../_shared/icons/_Icon.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = {
   key: 0,
   class: "yc-alert-icon"

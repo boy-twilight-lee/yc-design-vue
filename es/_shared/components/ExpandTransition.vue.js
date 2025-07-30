@@ -1,7 +1,4 @@
-import _sfc_main from "./ExpandTransition.vue3.js";
-import "./ExpandTransition.vue2.js";
-import _export_sfc from "../../_virtual/_plugin-vue_export-helper.js";
-const ExpandTransition = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6e588238"]]);
+const ExpandTransition_vue_vue_type_style_index_0_scoped_6e588238_lang = "";
 export {
-  ExpandTransition as default
+  ExpandTransition_vue_vue_type_style_index_0_scoped_6e588238_lang as default
 };

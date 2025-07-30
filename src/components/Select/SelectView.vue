@@ -64,6 +64,17 @@ const { renderEmpty } = getGlobalConfig();
 const realListRef = ref<InstanceType<typeof SelectRealList>>();
 // virtualList
 const virtualListRef = ref<HTMLDivElement>();
+// 是否是虚拟列表
+const isVirtualList = computed(() => {
+  if (!virtualListProps.value) {
+    return false;
+  }
+  return (
+    virtualListProps.value.itemHeight &&
+    (!virtualListProps.value.threshold ||
+      (virtualListProps.value.threshold as number) > options.value.length)
+  );
+});
 // 滚动ref
 const scrollRef = computed(() => {
   return isVirtualList.value
@@ -79,17 +90,6 @@ useScrollReach({
   onReachBottom: (e) => {
     emits('dropdown-reach-bottom', e);
   },
-});
-// 是否是虚拟列表
-const isVirtualList = computed(() => {
-  if (!virtualListProps.value) {
-    return false;
-  }
-  return (
-    virtualListProps.value.itemHeight &&
-    (!virtualListProps.value.threshold ||
-      (virtualListProps.value.threshold as number) > options.value.length)
-  );
 });
 // 渲染插槽
 const renderSlots = (name: string) => {

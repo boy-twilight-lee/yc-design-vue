@@ -7,7 +7,7 @@ import { getGlobalConfig } from "../_shared/utils/global-config.js";
 import useControlValue from "../_shared/utils/control.js";
 import Spin from "../Spin/index.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = {
   key: 0,
   class: "yc-tag-icon"

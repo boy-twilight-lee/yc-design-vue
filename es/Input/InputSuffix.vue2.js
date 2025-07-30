@@ -8,7 +8,7 @@ import _sfc_main$3 from "../_shared/icons/IconEyeClose.vue2.js";
 import _sfc_main$2 from "../_shared/icons/IconEyeOpen.vue2.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
 import _sfc_main$1 from "../_shared/components/PreventFocus.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = {
   key: 0,
   class: "yc-input-word-limit"

@@ -1,3 +1,4 @@
+import "./index.less.js";
 import { default as default2 } from "./yc-ui.js";
 import { default as default3 } from "./Affix/index.js";
 import { default as default4 } from "./Alert/index.js";

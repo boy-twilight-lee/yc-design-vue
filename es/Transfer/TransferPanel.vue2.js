@@ -12,7 +12,7 @@ import Checkbox from "../Checkbox/index.js";
 import Scrollbar from "../Scrollbar/index.js";
 import Input from "../Input/index.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = { class: "yc-transfer-view" };
 const _hoisted_2 = { class: "yc-transfer-view-header" };
 const _hoisted_3 = { class: "yc-transfer-view-header-title" };

@@ -7,7 +7,7 @@ import "../_shared/icons/_Icon.vue.js";
 import _sfc_main$1 from "../_shared/icons/IconArrowRight.vue.js";
 import Divider from "../Divider/index.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = { class: "yc-page-header" };
 const _hoisted_2 = { class: "yc-page-header-wrapper" };
 const _hoisted_3 = {

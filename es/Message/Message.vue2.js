@@ -7,7 +7,7 @@ import "../Empty/index.js";
 import "../_shared/icons/_Icon.vue.js";
 import { TYPE_ICON_MAP } from "../_shared/constants/index.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 import { useTimeoutFn } from "../node_modules/@vueuse/shared/index.js";
 const _hoisted_1 = {
   key: 0,

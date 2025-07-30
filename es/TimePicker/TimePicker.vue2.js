@@ -6,7 +6,7 @@ import { isValidTimeRange } from "../_shared/utils/time.js";
 import { getGlobalConfig } from "../_shared/utils/global-config.js";
 import useContext from "./hooks/useContext.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 import "../_shared/icons/_Icon.vue.js";
 import _sfc_main$1 from "../_shared/icons/IconTime.vue.js";
 import Trigger from "../Trigger/index.js";

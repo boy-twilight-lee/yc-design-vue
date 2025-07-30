@@ -8,7 +8,7 @@ import { getSlotFunction } from "../_shared/utils/vue-utils.js";
 import "../Empty/index.js";
 import "../_shared/icons/_Icon.vue.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 import { useTimeoutFn } from "../node_modules/@vueuse/shared/index.js";
 const _hoisted_1 = { class: "yc-notification-left" };
 const _hoisted_2 = {

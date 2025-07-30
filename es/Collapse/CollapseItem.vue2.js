@@ -7,7 +7,7 @@ import "../Empty/index.js";
 import "../_shared/icons/_Icon.vue.js";
 import _sfc_main$1 from "../_shared/icons/IconRight.vue.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import ExpandTransition from "../_shared/components/ExpandTransition.vue.js";
+import ExpandTransition from "../_shared/components/ExpandTransition.vue2.js";
 const _hoisted_1 = { class: "yc-collapse-item-header-title text-ellipsis" };
 const _hoisted_2 = {
   key: 1,

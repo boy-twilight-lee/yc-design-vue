@@ -34,6 +34,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const { renderEmpty } = getGlobalConfig();
     const realListRef = ref();
     const virtualListRef = ref();
+    const isVirtualList = computed(() => {
+      if (!virtualListProps.value) {
+        return false;
+      }
+      return virtualListProps.value.itemHeight && (!virtualListProps.value.threshold || virtualListProps.value.threshold > options.value.length);
+    });
     const scrollRef = computed(() => {
       var _a;
       return isVirtualList.value ? unrefElement(virtualListRef) : (_a = realListRef.value) == null ? void 0 : _a.getScrollRef();
@@ -46,12 +52,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       onReachBottom: (e) => {
         emits("dropdown-reach-bottom", e);
       }
-    });
-    const isVirtualList = computed(() => {
-      if (!virtualListProps.value) {
-        return false;
-      }
-      return virtualListProps.value.itemHeight && (!virtualListProps.value.threshold || virtualListProps.value.threshold > options.value.length);
     });
     const renderSlots = (name) => {
       return slots[name];

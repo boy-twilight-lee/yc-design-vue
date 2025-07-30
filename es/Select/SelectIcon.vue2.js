@@ -7,7 +7,7 @@ import "../_shared/utils/time.js";
 import "../Empty/index.js";
 import "../_shared/icons/_Icon.vue.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 import Spin from "../Spin/index.js";
 const _hoisted_1 = { class: "yc-select-suffix-icon" };
 const _hoisted_2 = {

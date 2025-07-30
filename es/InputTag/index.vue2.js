@@ -11,7 +11,7 @@ import useControlValue from "../_shared/utils/control.js";
 import Tag from "../Tag/index.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
 import _sfc_main$1 from "../_shared/components/PreventFocus.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = ["disabled", "readonly", "placeholder"];
 const _sfc_main = /* @__PURE__ */ defineComponent({
   ...{

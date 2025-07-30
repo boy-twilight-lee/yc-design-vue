@@ -8,7 +8,7 @@ import "../_shared/utils/dom.js";
 import "../_shared/utils/time.js";
 import "../Empty/index.js";
 import "../_shared/icons/_Icon.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = ["value", "disabled", "readonly", "placeholder"];
 const _sfc_main = /* @__PURE__ */ defineComponent({
   ...{

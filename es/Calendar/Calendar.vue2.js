@@ -8,7 +8,7 @@ import "../_shared/icons/_Icon.vue.js";
 import _sfc_main$1 from "../_shared/icons/IconArrowRight.vue.js";
 import useControlValue from "../_shared/utils/control.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 import Button from "../Button/index.js";
 import "../Radio/index.js";
 import MonthCalendar from "./CalendarMonth.vue.js";

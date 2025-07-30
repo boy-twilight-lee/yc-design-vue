@@ -1,3 +1,4 @@
+import './index.less';
 export { default } from './yc-ui';
 
 export type {

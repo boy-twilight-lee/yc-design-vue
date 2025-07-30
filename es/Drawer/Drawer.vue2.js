@@ -7,7 +7,7 @@ import { getGlobalConfig } from "../_shared/utils/global-config.js";
 import useModalClose from "../Modal/hooks/useModalClose.js";
 import Button from "../Button/index.js";
 import IconButton from "../_shared/components/IconButton.vue.js";
-import "../_shared/components/ExpandTransition.vue2.js";
+import "../_shared/components/ExpandTransition.vue.js";
 const _hoisted_1 = {
   key: 0,
   class: "yc-drawer-header"
