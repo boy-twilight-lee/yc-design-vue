@@ -1,6 +1,3 @@
-好的，没问题。根据您提供的 `import` 方式，我为您生成一份 `yc-ui-pro` 的中文使用文档。
-
-这份文档基于您给出的 **全局引入** 方式编写，并推断了其他标准实践（如按需引入），旨在提供一个完整且专业的说明。
 
 ---
 
@@ -15,6 +12,9 @@
 *   **TypeScript 支持**：提供完整的类型定义，带来更好的开发体验和代码健壮性。
 *   **开箱即用**：引入方式简单，学习成本低，可以快速上手。
 *   **主题定制**：支持灵活的样式覆盖和主题定制，轻松匹配您的品牌视觉。
+
+## 说明
+`yc-ui` 的是对 [Arco Design Vue](https://arco.design/vue/docs/start) 的升级，组件api可以参考 [Arco Design Vue](https://arco.design/vue/docs/start) 的文档。
 
 ## 📦 安装
 
@@ -77,36 +77,6 @@ import { ref } from 'vue'
 const text = ref('')
 </script>
 ```
-
-### 按需引入 (推荐用于生产环境)
-
-如果您对最终打包的体积有严格要求，可以采用按需引入的方式，只加载您使用到的组件，从而减小项目体积。
-
-> **注意**：以下路径为标准推测，具体路径可能因库的打包结构而异。
-
-假设您只需要使用 `YcButton` 和 `YcInput` 组件：
-
-```javascript
-// main.js 或 main.ts
-
-import { createApp } from 'vue'
-import App from './App.vue'
-
-// 按需引入需要的组件
-import { YcButton, YcInput } from 'yc-ui-pro'
-// 分别引入组件对应的样式
-import 'yc-ui-pro/es/components/button/style.css' // 假设的按钮样式路径
-import 'yc-ui-pro/es/components/input/style.css'  // 假设的输入框样式路径
-
-const app = createApp(App)
-
-// 分别注册组件
-app.component(YcButton.name, YcButton)
-app.component(YcInput.name, YcInput)
-
-app.mount('#app')
-```
-为了简化按需引入的过程，库的作者通常会提供一个 Babel 或 Vite 插件（如 `babel-plugin-import`），请查阅相关文档看是否支持。
 
 ## 🤝 贡献
 
