@@ -1,7 +1,7 @@
 {
   "name": "yc-ui-pro",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [

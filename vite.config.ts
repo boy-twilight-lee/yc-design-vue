@@ -61,15 +61,10 @@ export default defineConfig({
           dir: 'dist',
           entryFileNames: 'index.umd.js',
           name: 'YcUI',
+          exports: 'named',
           globals: {
             vue: 'Vue',
-          },
-          exports: 'named',
-          assetFileNames: (assetInfo) => {
-            if (assetInfo.name.endsWith('.css')) {
-              return 'style.css';
-            }
-            return assetInfo.name;
+            '@vueuse/core': 'VueUse',
           },
         },
       ],
