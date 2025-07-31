@@ -2,9 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import VueJsx from '@vitejs/plugin-vue-jsx';
-import { visualizer } from 'rollup-plugin-visualizer';
 import dts from 'vite-plugin-dts';
 
 // https://vitejs.dev/config/
@@ -12,15 +10,6 @@ export default defineConfig({
   plugins: [
     vue(),
     VueJsx(),
-    visualizer({
-      open: true, // 在构建完成后自动打开分析报告
-    }),
-    createSvgIconsPlugin({
-      // 指定需要缓存的图标文件夹
-      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-      // 指定symbolId格式
-      symbolId: 'icon-[name]',
-    }),
     dts({
       entryRoot: path.resolve(__dirname, 'src/components'),
       outDir: ['es', 'lib'],
@@ -49,7 +38,6 @@ export default defineConfig({
       external: ['vue'],
       output: [
         {
-          // ES Module 格式
           format: 'es',
           dir: 'es',
           entryFileNames: '[name].js',
@@ -60,7 +48,6 @@ export default defineConfig({
           },
         },
         {
-          // CommonJS 格式
           format: 'cjs',
           dir: 'lib',
           entryFileNames: '[name].js',
@@ -71,7 +58,6 @@ export default defineConfig({
           },
         },
         {
-          // UMD 格式
           format: 'umd',
           dir: 'dist',
           entryFileNames: 'index.umd.js',
@@ -79,8 +65,7 @@ export default defineConfig({
           globals: {
             vue: 'Vue',
           },
-          // *** 新增的关键配置 ***
-          // 将所有 CSS 资产打包到一个名为 style.css 的文件中
+          exports: 'named',
           assetFileNames: (assetInfo) => {
             if (assetInfo.name.endsWith('.css')) {
               return 'style.css';
