@@ -1,6 +1,5 @@
 import {
   RenderFunction,
-  Reactive,
   ComponentPublicInstance,
   MaybeRef,
   MaybeRefOrGetter,
@@ -23,7 +22,7 @@ export type ClassName =
 
 export type RenderContent = string | ObjectData[] | RenderFunction;
 
-export type Props = Reactive<ObjectData>;
+export type Props = ObjectData;
 
 export type ObjectData = Record<string, any>;
 

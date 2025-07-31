@@ -6,7 +6,7 @@ import ArcoIcon from '@arco-design/web-vue/es/icon';
 import Arco from '@arco-design/web-vue';
 import '@arco-design/web-vue/dist/arco.css';
 // ycui
-// import YcUi from '@/components';
+import '@/components';
 // import '@/components/index.less';
 import YcUi from 'yc-ui-pro';
 import 'yc-ui-pro/es/style.css';
