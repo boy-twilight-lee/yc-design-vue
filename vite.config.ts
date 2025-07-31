@@ -31,7 +31,6 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/components/index.ts'),
       name: 'YcUI',
       fileName: 'index',
-      formats: ['es', 'cjs', 'umd'],
     },
     rollupOptions: {
       external: ['vue'],
@@ -45,6 +44,15 @@ export default defineConfig({
           globals: {
             vue: 'Vue',
           },
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name.endsWith('.css')) {
+              const pathParts = assetInfo.name.split('/');
+              if (pathParts[1] === 'style') {
+                return `${pathParts[0]}/style.css`;
+              }
+            }
+            return assetInfo.name;
+          },
         },
         {
           format: 'cjs',
@@ -56,17 +64,16 @@ export default defineConfig({
             vue: 'Vue',
           },
         },
-        {
-          format: 'umd',
-          dir: 'dist',
-          entryFileNames: 'index.umd.js',
-          name: 'YcUI',
-          exports: 'named',
-          globals: {
-            vue: 'Vue',
-            '@vueuse/core': 'VueUse',
-          },
-        },
+        // {
+        //   format: 'umd',
+        //   dir: 'dist',
+        //   entryFileNames: 'index.umd.js',
+        //   name: 'YcUI',
+        //   exports: 'named',
+        //   globals: {
+        //     vue: 'Vue',
+        //   },
+        // },
       ],
     },
     minify: 'terser',
