@@ -1,12 +1,10 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-// arco
 import ArcoIcon from '@arco-design/web-vue/es/icon';
 import Arco from '@arco-design/web-vue';
 import '@arco-design/web-vue/dist/arco.css';
-// ycui
-import '@/components';
+// import '@/components';
 // import '@/components/index.less';
 import YcUi from 'yc-ui-pro';
 import 'yc-ui-pro/es/style.css';

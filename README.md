@@ -1,7 +1,7 @@
 
 ---
 
-# yc-ui-pro 使用文档
+# yc-ui-pro 
 
 `yc-ui-pro` 是一个基于 Vue 3 和 TypeScript 构建的现代化企业级 UI 组件库。它旨在提供一套开箱即用、功能丰富且高度可定制的界面解决方案，帮助开发者快速构建高质量、一致性强的 Web 应用。
 
@@ -13,7 +13,7 @@
 *   **开箱即用**：引入方式简单，学习成本低，可以快速上手。
 *   **主题定制**：支持灵活的样式覆盖和主题定制，轻松匹配您的品牌视觉。
 
-## 说明
+## 💡 说明
 `yc-ui` 的是对 [Arco Design Vue](https://arco.design/vue/docs/start) 的升级，组件api可以参考 [Arco Design Vue](https://arco.design/vue/docs/start) 的文档。
 
 ## 📦 安装
