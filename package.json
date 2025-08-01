@@ -1,7 +1,7 @@
 {
   "name": "yc-ui-pro",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.0.8",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -89,7 +89,7 @@
     "vue": "^3.3.4",
     "vue-router": "^4.5.1",
     "vue-tsc": "^2.0.29",
-    "yc-ui-pro": "^1.0.6"
+    "yc-ui-pro": "^1.0.8"
   },
   "peerDependencies": {
     "vue": "^3.3.4"

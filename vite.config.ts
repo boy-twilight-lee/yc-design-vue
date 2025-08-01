@@ -44,15 +44,6 @@ export default defineConfig({
           globals: {
             vue: 'Vue',
           },
-          assetFileNames: (assetInfo) => {
-            if (assetInfo.name.endsWith('.css')) {
-              const pathParts = assetInfo.name.split('/');
-              if (pathParts[1] === 'style') {
-                return `${pathParts[0]}/style.css`;
-              }
-            }
-            return assetInfo.name;
-          },
         },
         {
           format: 'cjs',
