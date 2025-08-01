@@ -14,7 +14,7 @@
 *   **主题定制**：支持灵活的样式覆盖和主题定制，轻松匹配您的品牌视觉。
 
 ## 💡 说明
-`yc-ui` 的是对 [Arco Design Vue](https://arco.design/vue/docs/start) 的升级，组件api可以参考 [Arco Design Vue](https://arco.design/vue/docs/start) 的文档。
+`yc-ui-pro` 的是对 [Arco Design Vue](https://arco.design/vue/docs/start) 的升级，组件api可以参考 [Arco Design Vue](https://arco.design/vue/docs/start) 的文档。
 
 ## 📦 安装
 
