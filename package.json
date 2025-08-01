@@ -89,7 +89,7 @@
     "vue": "^3.3.4",
     "vue-router": "^4.5.1",
     "vue-tsc": "^2.0.29",
-    "yc-ui-pro": "^1.1.0"
+    "yc-design-vue": "^1.0.1"
   },
   "peerDependencies": {
     "vue": "^3.3.4"
