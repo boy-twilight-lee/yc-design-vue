@@ -42,7 +42,8 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { VirtualListProps } from './type';
-import { getGlobalConfig, unrefElement } from '@shared/utils';
+import { unrefElement } from '@vueuse/core';
+import { getGlobalConfig } from '@shared/utils';
 import useContext from './hooks/useContext';
 import useScrollReach from '@/components/List/hooks/useScrollReach';
 import SelectVirtualList from './SelectVirtualList.vue';

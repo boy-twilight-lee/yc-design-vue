@@ -1,13 +1,7 @@
 import { RenderContent } from '../type';
-import { Comment, Fragment, Text, h, VNode, isVNode, toValue } from 'vue';
+import { Comment, Fragment, Text, h, VNode, isVNode } from 'vue';
 import { isFunction, isObject } from './is';
-import {
-  ObjectData,
-  MaybeElement,
-  MaybeComputedElementRef,
-  UnRefElementReturn,
-  VueInstance,
-} from '../type';
+import { ObjectData } from '../type';
 
 // 获取renderFunction
 export const getSlotFunction = (param: RenderContent | undefined) => {
@@ -93,12 +87,4 @@ export function findComponentsFromVnodes(vnodes: VNode[], name: string) {
   };
   traverse(vnodes);
   return result;
-}
-
-// unrefe
-export function unrefElement<T extends MaybeElement>(
-  elRef: MaybeComputedElementRef<T>
-): UnRefElementReturn<T> {
-  const plain = toValue(elRef);
-  return (plain as VueInstance)?.$el ?? plain;
 }

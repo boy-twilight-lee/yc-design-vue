@@ -48,15 +48,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, toRefs, nextTick, StyleValue } from 'vue';
-import { IconArrowRight } from '@shared/icons';
+import { ref, computed, toRefs, nextTick } from 'vue';
+import { unrefElement } from '@vueuse/core';
 import {
-  unrefElement,
   isUndefined,
   isBoolean,
   valueToPx,
   useControlValue,
 } from '@shared/utils';
+import { IconArrowRight } from '@shared/icons';
 import useContext from './hooks/useContext';
 import {
   DsubmenuProps,

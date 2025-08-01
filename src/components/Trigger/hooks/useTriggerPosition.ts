@@ -3,7 +3,8 @@ import { useElementBounding, useElementSize } from '@vueuse/core';
 import { TriggerPostion } from '../type';
 import { TriggerProps } from './useContext';
 import { Props } from '@shared/type';
-import { getGlobalConfig, unrefElement, sleep, valueToPx } from '@shared/utils';
+import { unrefElement } from '@vueuse/core';
+import { getGlobalConfig, sleep, valueToPx } from '@shared/utils';
 
 export default (params: {
   props: Props;

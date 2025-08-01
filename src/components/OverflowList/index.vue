@@ -34,11 +34,10 @@ import {
 import {
   throttle,
   sleep,
-  unrefElement,
   findComponentsFromVnodes,
   valueToPx,
 } from '@shared/utils';
-import { useResizeObserver } from '@vueuse/core';
+import { useResizeObserver, unrefElement } from '@vueuse/core';
 import { default as YcTag } from '@/components/Tag';
 defineOptions({
   name: 'OverflowList',

@@ -1,9 +1,9 @@
+import { watch, Ref } from 'vue';
+import { useMediaQuery, unrefElement } from '@vueuse/core';
 import { isObject, isString, isUndefined } from './is';
 import { EllipsisConfig } from '@/components/Typography/type';
 import { BreakpointName, ResponsiveValue } from '@/components/Grid';
-import { useMediaQuery } from '@vueuse/core';
-import { watch, Ref } from 'vue';
-import { unrefElement } from './vue-utils';
+
 // 是否是服务端渲染
 export const isServerRendering = (() => {
   try {
