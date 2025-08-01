@@ -29,7 +29,7 @@ export default defineConfig({
     emptyOutDir: true,
     lib: {
       entry: path.resolve(__dirname, 'src/components/index.ts'),
-      name: 'YcUI',
+      name: 'YcDesign',
       fileName: 'index',
     },
     rollupOptions: {
@@ -59,7 +59,7 @@ export default defineConfig({
         //   format: 'umd',
         //   dir: 'dist',
         //   entryFileNames: 'index.umd.js',
-        //   name: 'YcUI',
+        //   name: 'YcDesign',
         //   exports: 'named',
         //   globals: {
         //     vue: 'Vue',
