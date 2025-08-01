@@ -1,5 +1,5 @@
 {
-  "name": "@yc-design",
+  "name": "yc-design-vue",
   "private": false,
   "version": "1.0.1",
   "type": "module",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/boy-twilight-lee/yc-ui"
+    "url": "https://github.com/boy-twilight-lee/yc-design-vue"
   },
   "scripts": {
     "dev": "vite --host",
