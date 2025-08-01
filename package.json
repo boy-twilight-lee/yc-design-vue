@@ -1,7 +1,7 @@
 {
   "name": "yc-ui-pro",
   "private": false,
-  "version": "1.0.8",
+  "version": "1.0.6",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -20,31 +20,39 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "release": "npm run build && npm publish",
+    "release": "vite build && npm publish",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "format": "npx prettier --write --loglevel warn 'src/**/*.{js,ts,json,tsx,css,less,vue,html,md}'"
   },
-  "main": "./lib/index.js",
-  "module": "./es/index.js",
-  "types": "./es/index.d.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
   "files": [
     "es",
     "lib",
     "dist"
   ],
-  "sideEffects": [
-    "**/*.css"
-  ],
   "exports": {
     ".": {
-      "import": {
-        "types": "./es/index.d.ts",
-        "default": "./es/index.js"
-      },
-      "require": {
-        "types": "./lib/index.d.ts",
-        "default": "./lib/index.js"
-      }
+      "types": "./es/index.d.ts",
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
+    },
+    "./es": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.js"
+    },
+    "./lib": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js"
+    },
+    "./es/*": {
+      "types": "./es/*.d.ts",
+      "import": "./es/*"
+    },
+    "./lib/*": {
+      "types": "./lib/*.d.ts",
+      "require": "./lib/*"
     },
     "./dist/style.css": "./dist/style.css"
   },
@@ -81,7 +89,7 @@
     "vue": "^3.3.4",
     "vue-router": "^4.5.1",
     "vue-tsc": "^2.0.29",
-    "yc-ui-pro": "^1.0.8"
+    "yc-ui-pro": "^1.1.0"
   },
   "peerDependencies": {
     "vue": "^3.3.4"

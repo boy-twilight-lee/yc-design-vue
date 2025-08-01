@@ -55,16 +55,16 @@ export default defineConfig({
             vue: 'Vue',
           },
         },
-        {
-          format: 'umd',
-          dir: 'dist',
-          entryFileNames: 'index.umd.js',
-          name: 'YcUI',
-          exports: 'named',
-          globals: {
-            vue: 'Vue',
-          },
-        },
+        // {
+        //   format: 'umd',
+        //   dir: 'dist',
+        //   entryFileNames: 'index.umd.js',
+        //   name: 'YcUI',
+        //   exports: 'named',
+        //   globals: {
+        //     vue: 'Vue',
+        //   },
+        // },
       ],
     },
     minify: 'terser',
