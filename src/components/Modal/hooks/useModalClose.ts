@@ -5,6 +5,13 @@ import { onKeyStroke } from '@vueuse/core';
 import { useControlValue } from '@shared/utils';
 import useOnBeforeClose from './useOnBeforeClose';
 
+export type CloseEventType =
+  | 'confirmBtn'
+  | 'cancelBtn'
+  | 'closeBtn'
+  | 'mask'
+  | 'esc';
+
 export default (params: {
   visible: Ref<boolean | undefined>;
   defaultVisible: Ref<boolean>;
@@ -41,14 +48,14 @@ export default (params: {
     outerVisible.value = false;
   };
   // 处理关闭
-  const handleClose = async (type: string, ev: MouseEvent | KeyboardEvent) => {
+  const handleClose = async (
+    type: CloseEventType,
+    ev: MouseEvent | KeyboardEvent
+  ) => {
     // 执行关闭之前的函数
-    const isClose = await useOnBeforeClose(
-      type,
-      asyncLoading,
-      onBeforeOk,
-      onBeforeCancel
-    );
+    const isClose = ['confirmBtn', 'cancelBtn'].includes(type)
+      ? await useOnBeforeClose(type, asyncLoading, onBeforeOk, onBeforeCancel)
+      : true;
     if (!isClose) {
       return;
     }
