@@ -5,6 +5,7 @@
       v-show="outerVisible"
       :class="[
         'yc-modal-container',
+        $attrs.class,
         {
           'yc-modal-simple': simple,
           'yc-modal-position-absolute': popupContainer || !renderToBody,
@@ -12,6 +13,7 @@
       ]"
       :style="{
         zIndex,
+        ...($attrs.style ?? {}),
       }"
     >
       <!-- mask -->
@@ -38,7 +40,6 @@
             :class="[
               'yc-modal',
               modalClass,
-              $attrs.class,
               {
                 // 拖拽
                 'yc-modal-draggable': isDraggable,
@@ -46,10 +47,7 @@
                 'yc-modal-fullscreen': fullscreen,
               },
             ]"
-            :style="{
-              ...modalStyle,
-              ...($attrs.style ?? {}),
-            }"
+            :style="modalStyle"
             ref="modalRef"
           >
             <!-- header -->

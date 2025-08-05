@@ -6,12 +6,14 @@
       :class="[
         'yc-drawer-wrapper',
         `yc-drawer-placement-${placement}`,
+        $attrs.class,
         {
           'yc-drawer-position-absolute': popupContainer || !renderToBody,
         },
       ]"
       :style="{
         zIndex,
+        ...($attrs.style ?? {}),
       }"
     >
       <!-- mask -->
@@ -33,11 +35,8 @@
       >
         <div
           v-show="innerVisible"
-          :class="['yc-drawer-container', $attrs.class]"
-          :style="{
-            ...drawerStyle,
-            ...($attrs.style ?? {}),
-          }"
+          class="yc-drawer-container"
+          :style="drawerStyle"
         >
           <!-- header -->
           <slot name="header">

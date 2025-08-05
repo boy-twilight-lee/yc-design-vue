@@ -11,7 +11,7 @@
           },
         ]"
         :style="{
-          fontSize: !isSizeInherit ? valueToPx(size) : '',
+          fontSize: !isSizeInherit ? valueToPx(size) : 'inherit',
         }"
       >
         <slot name="icon">
