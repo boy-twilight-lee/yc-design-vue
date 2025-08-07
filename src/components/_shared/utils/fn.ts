@@ -10,7 +10,7 @@ export const sleep = (ms: number) => {
 };
 
 // 节流
-export function throttleByRaf(cb: (...args: any[]) => void) {
+export const throttleByRaf = (cb: (...args: any[]) => void) => {
   let timer = 0;
 
   const throttle = (...args: any[]): void => {
@@ -29,18 +29,18 @@ export function throttleByRaf(cb: (...args: any[]) => void) {
   };
 
   return throttle;
-}
+};
 
 // 防抖函数
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
+export const debounce = (
+  func: (...args: any) => void,
   delay: number,
   immediate: boolean = false
-): (...args: Parameters<T>) => void {
+) => {
   let timer: ReturnType<typeof setTimeout> | null = null;
   let isInvoked = false;
 
-  return function (this: any, ...args: Parameters<T>) {
+  return function (this: any, ...args: any) {
     const context = this;
 
     if (timer) clearTimeout(timer);
@@ -57,17 +57,14 @@ export function debounce<T extends (...args: any[]) => any>(
       isInvoked = false;
     }, delay);
   };
-}
+};
 
 // 节流函数
-export function throttle<T extends (...args: any[]) => any>(
-  fn: T,
-  delay: number
-): (...args: Parameters<T>) => void {
+export const throttle = (fn: (...args: any) => void, delay: number) => {
   let lastTime = 0;
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-  return function (this: any, ...args: Parameters<T>) {
+  return function (this: any, ...args: any) {
     const now = Date.now();
     const remaining = delay - (now - lastTime);
 
@@ -87,7 +84,7 @@ export function throttle<T extends (...args: any[]) => any>(
       }, remaining);
     }
   };
-}
+};
 
 // 将value转换px
 export const valueToPx = (value: string | number | undefined) => {

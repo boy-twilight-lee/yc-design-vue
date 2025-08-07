@@ -1,9 +1,9 @@
 import { ref, Ref } from 'vue';
 
 // Refer to Element Plus
-export default function useCursor(
+export default (
   input: Ref<HTMLInputElement | HTMLTextAreaElement | undefined>
-) {
+) => {
   const selectionRef = ref<{
     selectionStart?: number;
     selectionEnd?: number;
@@ -61,4 +61,4 @@ export default function useCursor(
     getCursor,
     selectionRef,
   };
-}
+};

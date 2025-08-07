@@ -39,9 +39,9 @@ export const getElement = (
 };
 
 // 提取 DOM 元素内所有文本内容
-export function getDomText(dom: Ref<HTMLElement | undefined>): string {
+export const getDomText = (dom: Ref<HTMLElement | undefined>): string => {
   return unrefElement(dom)?.innerText || '';
-}
+};
 
 // 获取媒体查询队列
 const getMedicaQueryQuerues = () => {
@@ -56,11 +56,11 @@ const getMedicaQueryQuerues = () => {
 };
 
 // 获取断点下的值
-export function getBreakpointValue(
+export const getBreakpointValue = (
   breakpoint: BreakpointName,
   value: string | number | ResponsiveValue,
   defaultValue?: number | string
-): number | string | undefined {
+): number | string | undefined => {
   // 如果直接是值而非响应式对象，直接返回
   if (!isObject(value)) {
     return value;
@@ -81,7 +81,7 @@ export function getBreakpointValue(
   }
   // 如果都没找到，返回defaultValue
   return defaultValue;
-}
+};
 
 // 媒体查询
 export const mediaQueryHandler = (
@@ -113,7 +113,7 @@ export const mediaQueryHandler = (
 };
 
 // 查找元素的第一个可滚动父元素
-export function findFirstScrollableParent(element?: HTMLElement) {
+export const findFirstScrollableParent = (element?: HTMLElement) => {
   if (!element || element === document.body) {
     return;
   }
@@ -128,7 +128,7 @@ export function findFirstScrollableParent(element?: HTMLElement) {
     }
     currentElement = currentElement.parentElement;
   }
-}
+};
 
 /**
  * 计算文本是否需要省略并返回处理后的文本
@@ -138,12 +138,12 @@ export function findFirstScrollableParent(element?: HTMLElement) {
  * @param fullText 完整文本
  * @returns 返回处理后的文本和是否省略的标志
  */
-export function calculateEllipsis(
+export const calculateEllipsis = (
   originElement: HTMLElement,
   ellipsisConfig: EllipsisConfig = {},
   operations: HTMLElement | HTMLElement[] | null = null,
   fullText: string
-) {
+) => {
   const win = window as any;
   // 创建全局容器用于测量
   if (!win._ellipsisContainer) {
@@ -271,4 +271,4 @@ export function calculateEllipsis(
       },
     }),
   };
-}
+};

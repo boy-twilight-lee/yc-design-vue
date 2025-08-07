@@ -52,7 +52,13 @@ export default (params: {
     }
   );
   // 获取arrow的size
-  const { arrowWidth, arrowHeight } = getArrowSize();
+  const { width: arrowWidth, height: arrowHeight } = useElementSize(
+    arrowRef,
+    undefined,
+    {
+      box: 'border-box',
+    }
+  );
   // 获取trigger元素bounding
   const {
     left,
@@ -162,7 +168,7 @@ export default (params: {
     } as CSSProperties;
   });
   // 计算offset
-  function calcPopupOffset() {
+  const calcPopupOffset = () => {
     const [translateX, translateY] = popupTranslate.value;
     // 计算偏移量
     let offsetX = translateX;
@@ -177,7 +183,7 @@ export default (params: {
       offsetX = popupOffset.value;
     }
     return [offsetX, offsetY];
-  }
+  };
   // 计算最初的pop位置
   const calcPopupPosition = (params: {
     position: TriggerPostion;
@@ -285,23 +291,6 @@ export default (params: {
     }
     return [newLeft, newTop];
   };
-  // 获取arrow的size
-  function getArrowSize() {
-    if (!showArrow.value) {
-      return {
-        arrowWidth: ref(0),
-        arrowHeight: ref(0),
-      };
-    }
-    // 获取arrow的size
-    const { width, height } = useElementSize(arrowRef, undefined, {
-      box: 'border-box',
-    });
-    return {
-      arrowWidth: width,
-      arrowHeight: height,
-    };
-  }
   // 计算arrow的positon
   const calcArrowPosition = (params: {
     position: TriggerPostion;
@@ -358,7 +347,7 @@ export default (params: {
     return inset;
   };
   // 根据offsettop与offsetleft反向计算当前的位置
-  function calcPositionRef(params: {
+  const calcPositionRef = (params: {
     offsetLeft: number;
     offsetTop: number;
     top: number;
@@ -369,7 +358,7 @@ export default (params: {
     triggerHeight: number;
     popupHeight: number;
     popupWidth: number;
-  }) {
+  }) => {
     const {
       offsetLeft,
       offsetTop,
@@ -404,7 +393,7 @@ export default (params: {
       );
     });
     return target?.[2] ?? position.value;
-  }
+  };
   // 强制重新获取位置
   watch(
     () => computedVisible.value,
