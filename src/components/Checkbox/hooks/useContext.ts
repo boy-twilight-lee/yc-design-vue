@@ -11,7 +11,7 @@ import {
   CheckboxValue,
   CheckboxGroupEmits,
 } from '../type';
-import { Props, RequiredDeep } from '@shared/type';
+import { ObjectData, Props, RequiredDeep } from '@shared/type';
 import { isObject, useControlValue } from '@shared/utils';
 
 const CHECKBOX_GROUP_CONTEXT_KEY = 'checkbox-group-context';
@@ -45,7 +45,7 @@ export default () => {
     const options = computed(() => {
       return _options.value.map((item) => {
         return isObject(item) ? item : { label: item, value: item };
-      });
+      }) as ObjectData[];
     });
     _provide<CheckboxContext>(CHECKBOX_GROUP_CONTEXT_KEY, {
       computedValue,
