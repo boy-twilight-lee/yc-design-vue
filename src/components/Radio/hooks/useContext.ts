@@ -13,7 +13,7 @@ import {
   RadioValue,
   RadioOption,
 } from '../type';
-import { Size, Props, RequiredDeep } from '@shared/type';
+import { Size, Props, RequiredDeep, ObjectData } from '@shared/type';
 import { useControlValue, getGlobalConfig, isObject } from '@shared/utils';
 
 const RADIO_GROUP_CONTEXT_KEY = 'radio-group-context';
@@ -56,7 +56,7 @@ export default () => {
               label: item,
               value: item,
             };
-      });
+      }) as ObjectData[];
     });
     // 提供给子组件
     _provide<RadioContext>(RADIO_GROUP_CONTEXT_KEY, {
