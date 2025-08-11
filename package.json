@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -89,7 +89,7 @@
     "vue": "^3.3.4",
     "vue-router": "^4.5.1",
     "vue-tsc": "^2.0.29",
-    "yc-design-vue": "^1.0.1"
+    "yc-design-vue": "^1.0.3"
   },
   "peerDependencies": {
     "vue": "^3.3.4"
