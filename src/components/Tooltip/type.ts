@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { ClassName, PopupContainer } from '@shared/type';
 import { TriggerPostion, TriggerProps } from '@/components/Trigger/type';
 
@@ -24,8 +24,8 @@ export interface TooltipEmits {
 }
 
 export interface TooltipSlots {
-  default(): void;
-  content(): void;
+  default?: () => VNode[];
+  content?: () => VNode[];
 }
 
 export interface TooltipExpose {

@@ -1,4 +1,5 @@
 import { ClassName, PopupContainer } from '@shared/type';
+import { VNode } from 'vue';
 export interface ImageProps {
   src?: string;
   width?: number | string;
@@ -23,11 +24,11 @@ export interface ImageEmits {
 }
 
 export interface ImageSlots {
-  error(): void;
-  ['error-icon'](): void;
-  loader(): void;
-  extra(): void;
-  ['preview-actions'](): void;
+  error?: () => VNode[];
+  'error-icon'?: () => VNode[];
+  loader?: () => VNode[];
+  extra?: () => VNode[];
+  'preview-actions'?: () => VNode[];
 }
 
 export interface ImagePreviewProps {
@@ -51,8 +52,8 @@ export interface ImagePreviewEmits {
 }
 
 export interface ImagePreviewSlots {
-  actions(): void;
-  arrow(): void;
+  actions?: () => VNode[];
+  arrow?: () => VNode[];
 }
 
 export interface ImagePreviewGroupProps extends Omit<ImagePreviewProps, 'src'> {
@@ -70,8 +71,8 @@ export interface ImagePreviewGroupEmits {
 }
 
 export interface ImagePreviewGroupSlots {
-  actions(): void;
-  default(): void;
+  actions?: () => VNode[];
+  default?: () => VNode[];
 }
 
 export interface ImagePreviewActionProps {
@@ -86,7 +87,7 @@ export interface ImagePreviewActionEmits {
 }
 
 export interface ImagePreviewActionSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export type ImageObjectFit =

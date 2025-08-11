@@ -1,4 +1,5 @@
 import { Direction, ObjectData } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface CheckboxProps {
   modelValue?: boolean;
@@ -14,8 +15,8 @@ export interface CheckboxEmits {
 }
 
 export interface CheckboxSlots {
-  default(): void;
-  checkbox(scope: { checked: boolean; disabled: boolean }): void;
+  default?: () => VNode[];
+  checkbox?: (scope: { checked: boolean; disabled: boolean }) => VNode[];
 }
 
 export interface CheckboxGroupProps {
@@ -33,9 +34,9 @@ export interface CheckboxGroupEmits {
 }
 
 export interface CheckboxGroupSlots {
-  default(): void;
-  checkbox(scope: { checked: boolean; disabled: boolean }): void;
-  label(scope: { data: ObjectData }): void;
+  default?: () => void;
+  checkbox?: (scope: { checked: boolean; disabled: boolean }) => void;
+  label?: (scope: { data: ObjectData }) => void;
 }
 
 export type CheckboxOption = (

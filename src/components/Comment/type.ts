@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface CommentProps {
   author?: string;
   avatar?: string;
@@ -7,12 +9,12 @@ export interface CommentProps {
 }
 
 export interface CommentSlots {
-  avatar(): void;
-  author(): void;
-  datetime(): void;
-  content(): void;
-  actions(): void;
-  default(): void;
+  avatar?: () => VNode[];
+  author?: () => VNode[];
+  datetime?: () => VNode[];
+  content?: () => VNode[];
+  actions?: () => VNode[];
+  default?: () => VNode[][];
 }
 
 export type CommentAlign =

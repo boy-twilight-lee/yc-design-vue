@@ -1,6 +1,6 @@
 import { RenderContent, Size } from '@shared/type';
 import { ResponsiveValue } from '../Grid';
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 
 export interface DescriptionsProps {
   data?: DescData[];
@@ -16,10 +16,10 @@ export interface DescriptionsProps {
 }
 
 export interface DescriptionsSlots {
-  default(): void;
-  value(scope: { value: string; index: number; data: DescData }): void;
-  label(scope: { label: string; index: number; data: DescData }): void;
-  title(): void;
+  default?: () => VNode[];
+  value?: (scope: { value: string; index: number; data: DescData }) => VNode[];
+  label?: (scope: { label: string; index: number; data: DescData }) => VNode[];
+  title?: () => VNode[];
 }
 
 export interface DescriptionsItemProps {
@@ -28,8 +28,8 @@ export interface DescriptionsItemProps {
 }
 
 export interface DescriptionsItemSlots {
-  default(): void;
-  label(): void;
+  default?: () => VNode[];
+  label?: () => VNode[];
 }
 
 export interface DescData {

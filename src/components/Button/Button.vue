@@ -44,7 +44,7 @@ import YcSpin from '@/components/Spin';
 defineOptions({
   name: 'Button',
 });
-defineSlots<ButtonSlots>();
+const slots = defineSlots<ButtonSlots>();
 const props = withDefaults(defineProps<ButtonProps>(), {
   type: undefined,
   status: undefined,
@@ -67,8 +67,6 @@ const {
 } = toRefs(props);
 // 呼求注入
 const { size, disabled, type, status, shape } = useContext().inject(props);
-// slots
-const slots = useSlots();
 // class-name
 const className = computed(() => {
   return [

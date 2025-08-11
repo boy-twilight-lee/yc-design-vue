@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface CalendarProps {
   modelValue?: Date;
   defaultValue?: Date;
@@ -14,8 +16,8 @@ export interface CalendarEmits {
 }
 
 export interface CalendarSlots {
-  header(scope: { year: number; month: number }): void;
-  default(scope: { year: number; month: number; day: number }): void;
+  header: (scope: { year: number; month: number }) => VNode[];
+  default: (scope: { year: number; month: number; day: number }) => VNode[];
 }
 
 export type CalendarMode = 'month' | 'year';

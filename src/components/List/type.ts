@@ -2,6 +2,7 @@ import { Direction, ObjectData } from '@shared/type';
 import { GridProps } from '../Grid';
 import { PaginationProps } from '../Pagination';
 import { VirtualListProps } from '../Select';
+import { VNode } from 'vue';
 
 export interface ListProps {
   data?: ObjectData[];
@@ -26,12 +27,12 @@ export interface ListEmits {
 }
 
 export interface ListSlots {
-  empty(): void;
-  header(): void;
-  footer(): void;
-  default(): void;
-  ['scroll-loading'](): void;
-  item(scope: { index: number; item: ObjectData }): void;
+  empty?: () => VNode[];
+  header?: () => VNode[];
+  footer?: () => VNode[];
+  default?: () => VNode[];
+  'scroll-loading'?: () => VNode[];
+  item?: (scope: { index: number; item: ObjectData }) => VNode[];
 }
 
 export interface ListItemProps {
@@ -39,10 +40,10 @@ export interface ListItemProps {
 }
 
 export interface ListItemSlots {
-  default(): void;
-  meta(): void;
-  extra(): void;
-  actions(): void;
+  default?: () => VNode[];
+  meta?: () => VNode[];
+  extra?: () => VNode[];
+  actions?: () => VNode[];
 }
 
 export interface ListItemMetaProps {
@@ -51,9 +52,9 @@ export interface ListItemMetaProps {
 }
 
 export interface ListItemMetaSlots {
-  avatar(): void;
-  title(): void;
-  description(): void;
+  avatar?: () => VNode[];
+  title?: () => VNode[];
+  description?: () => VNode[];
 }
 
 export type ListSize = 'small' | 'medium' | 'large';

@@ -20,12 +20,11 @@ import LayoutSider from './LayoutSider.vue';
 defineOptions({
   name: 'Layout',
 });
-defineSlots<LayoutSlots>();
+const slots = defineSlots<LayoutSlots>();
 const props = withDefaults(defineProps<LayoutProps>(), {
   hasSider: undefined,
 });
 const { hasSider: _hasSider } = toRefs(props);
-const slots = useSlots();
 // 是否有sider
 const hasSider = computed(() => {
   if (!isUndefined(_hasSider.value)) return _hasSider.value;

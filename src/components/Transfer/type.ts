@@ -1,4 +1,5 @@
 import { InputProps } from '@/components/Input';
+import { VNode } from 'vue';
 
 export interface TransferProps {
   data?: TransferItem[];
@@ -25,19 +26,19 @@ export interface TransferEmits {
 }
 
 export interface TransferSlots {
-  source(scope: DefaultSlots): void;
-  target(scope: DefaultSlots): void;
-  ['source-title'](scope: TitleSlots): void;
-  ['target-title'](scope: TitleSlots): void;
-  ['to-source-icon'](): void;
-  ['to-target-icon'](): void;
-  item(scope: { value: string; label: string }): void;
+  source?: (scope: DefaultSlots) => VNode[];
+  target?: (scope: DefaultSlots) => VNode[];
+  'source-title'?: (scope: TitleSlots) => VNode[];
+  'target-title'?: (scope: TitleSlots) => VNode[];
+  'to-source-icon'?: () => VNode[];
+  'to-target-icon'?: () => VNode[];
+  item?: (scope: { value: string; label: string }) => VNode[];
 }
 
 export interface TransferPanelSlots {
-  default(scope: DefaultSlots): void;
-  ['title'](scope: TitleSlots): void;
-  item(scope: { value: string; label: string }): void;
+  default: (scope: DefaultSlots) => VNode[];
+  title: (scope: TitleSlots) => VNode[];
+  item: (scope: { value: string; label: string }) => VNode[];
 }
 
 export interface TransferItem {

@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { ButtonProps } from '@/components/Button';
 import { RenderContent, PopupContainer, ClassName } from '@shared/type';
 import { ModuleStatus } from 'vm';
@@ -51,10 +51,10 @@ export interface ModalEmits {
 }
 
 export interface ModalSlots {
-  default(): void;
-  header(): void;
-  footer(): void;
-  title(): void;
+  default?: () => VNode[];
+  header?: () => VNode[];
+  footer?: () => VNode[];
+  title?: () => VNode[];
 }
 
 export type ModalConfig = Omit<ModalProps, 'visible' | 'defaultVisible'> & {

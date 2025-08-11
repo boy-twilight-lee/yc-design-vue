@@ -2,6 +2,7 @@ import { BreakpointName } from '@/components/Grid';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
 import { Theme } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface MenuProps {
   theme?: Theme;
@@ -40,7 +41,7 @@ export interface MenuEmits {
 }
 
 export interface MenuSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface SubMenuProps {
@@ -52,10 +53,10 @@ export interface SubMenuProps {
 }
 
 export interface SubMenuSlots {
-  default(): void;
-  title(): void;
-  icon(): void;
-  ['expand-icon-down'](): void;
+  default?: () => VNode[];
+  title?: () => VNode[];
+  icon?: () => VNode[];
+  'expand-icon-down'?: () => VNode[];
 }
 
 export interface MenuItemProps {
@@ -64,9 +65,9 @@ export interface MenuItemProps {
 }
 
 export interface MenuItemSlots {
-  default(): void;
-  icon(): void;
-  suffix(): void;
+  default?: () => VNode[];
+  icon?: () => VNode[];
+  suffix?: () => VNode[];
 }
 
 export interface MenuItemGroupProps {
@@ -74,8 +75,8 @@ export interface MenuItemGroupProps {
 }
 
 export interface MenuItemGroupSlots {
-  default(): void;
-  title(): void;
+  default?: () => VNode[];
+  title?: () => VNode[];
 }
 
 export type MenuMode = 'vertical' | 'horizontal';

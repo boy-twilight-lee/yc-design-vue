@@ -1,24 +1,25 @@
 import { BreakpointName } from '@/components/Grid';
 import { Theme } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface LayoutProps {
   hasSider?: boolean;
 }
 
 export interface LayoutSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface LayoutHeaderSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface LayoutContentSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface LayoutFooterSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface LayoutSiderProps {
@@ -45,8 +46,8 @@ export interface LayoutSiderEmits {
 }
 
 export interface LayoutSiderSlots {
-  default(): void;
-  trigger(scope: { collapsed: boolean }): void;
+  default?: () => VNode[];
+  trigger?: (scope: { collapsed: boolean }) => VNode[];
 }
 
 export type ResizeDirections = Array<'left' | 'right' | 'top' | 'bottom'>;

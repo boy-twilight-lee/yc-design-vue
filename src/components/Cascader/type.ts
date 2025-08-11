@@ -1,4 +1,4 @@
-import { RenderFunction } from 'vue';
+import { RenderFunction, VNode } from 'vue';
 import { PopupContainer, Size } from '@shared/type';
 import { TagProps } from '../Tag';
 import { TriggerProps } from '../Trigger';
@@ -52,13 +52,13 @@ export interface CascaderEmits {
 }
 
 export interface CascaderSlots {
-  label(scope: { data: CascaderOption }): void;
-  prefix(): void;
-  ['arrow-icon'](): void;
-  ['loading-icon'](): void;
-  ['search-icon'](): void;
-  empty(): void;
-  option(scope: { data: CascaderOption }): void;
+  label?: (scope: { data: CascaderOption }) => VNode[];
+  prefix?: () => VNode[];
+  'arrow-icon'?: () => VNode[];
+  'loading-icon'?: () => VNode[];
+  'search-icon'?: () => VNode[];
+  empty?: () => VNode[];
+  option?: (scope: { data: CascaderOption }) => VNode[];
 }
 
 export type CascaderValue =

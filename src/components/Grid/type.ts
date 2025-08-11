@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface GridProps {
   cols?: number | ResponsiveValue;
   rowGap?: number | ResponsiveValue;
@@ -7,7 +9,7 @@ export interface GridProps {
 }
 
 export interface GridSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface GridItemProps {
@@ -17,7 +19,7 @@ export interface GridItemProps {
 }
 
 export interface GridItemSlots {
-  default(scope: { overflow: boolean }): void;
+  default?: (scope: { overflow: boolean }) => void;
 }
 
 export interface GridRowProps {
@@ -29,7 +31,7 @@ export interface GridRowProps {
 }
 
 export interface GridRowSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface GridColProps {
@@ -40,7 +42,7 @@ export interface GridColProps {
 }
 
 export interface GridColSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export type ResponsiveValue<T = number | string> = {

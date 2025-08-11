@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { ButtonProps } from '@/components/Button';
 import { OnBeforeCancel, OnBeforeOk } from '@/components/Modal';
 import { RenderContent, PopupContainer } from '@shared/type';
@@ -30,10 +30,10 @@ export interface DrawerProps {
 }
 
 export interface DrawerSlots {
-  default(): void;
-  header(): void;
-  footer(): void;
-  title(): void;
+  default?: () => VNode[];
+  header?: () => VNode[];
+  footer?: () => VNode[];
+  title?: () => VNode[];
 }
 
 export interface DrawerEmits {

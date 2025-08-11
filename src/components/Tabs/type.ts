@@ -1,4 +1,5 @@
 import { Direction, Size } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface TabsProps {
   activeKey?: TabKey;
@@ -27,8 +28,8 @@ export interface TabsEmits {
 }
 
 export interface TabsSlots {
-  extra(): void;
-  default(): void;
+  extra?: () => VNode[];
+  default?: () => VNode[];
 }
 
 export interface TabPaneProps {
@@ -40,8 +41,8 @@ export interface TabPaneProps {
 }
 
 export interface TabPaneSlots {
-  default(): void;
-  title(): void;
+  default?: () => VNode[];
+  title?: () => VNode[];
 }
 
 export type TabKey = string | number;

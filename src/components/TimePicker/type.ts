@@ -1,5 +1,6 @@
 import { PopupContainer, Size } from '@shared/type';
 import { TriggerProps } from '../Trigger';
+import { VNode } from 'vue';
 
 export interface TimePickerProps {
   type?: TimePickerType;
@@ -45,9 +46,9 @@ export interface TimePickerEmits {
 }
 
 export interface TimePickerSlots {
-  prefix(): void;
-  ['suffix-icon'](): void;
-  extra(): void;
+  prefix?: () => VNode[];
+  'suffix-icon'?: () => VNode[];
+  extra?: () => VNode[];
 }
 
 export type TimeUnit = 'hour' | 'minute' | 'second';

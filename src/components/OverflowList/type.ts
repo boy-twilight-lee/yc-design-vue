@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface OverflowListProps {
   min?: number;
   margin?: number;
@@ -9,8 +11,8 @@ export interface OverflowListEmits {
 }
 
 export interface OverflowListSlots {
-  default(): void;
-  overflow(): void;
+  default?: () => VNode[];
+  overflow?: () => VNode[];
 }
 
 export type OverflowListFrom = 'start' | 'end';

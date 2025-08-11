@@ -24,7 +24,7 @@ export type MessageConfig = Omit<MessageProps, 'type' | 'onDestory'> &
   MessageContainerProps;
 
 export type MessageReturn = {
-  close(): void;
+  close?: () => void;
 };
 
 export type MessageMethod = {

@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, useSlots, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import {
   TriggerProps,
   TriggerEmits,
@@ -72,7 +72,7 @@ defineOptions({
   name: 'Trigger',
   inheritAttrs: false,
 });
-defineSlots<TriggerSlots>();
+const slots = defineSlots<TriggerSlots>();
 const props = withDefaults(defineProps<TriggerProps>(), {
   popupVisible: undefined,
   defaultPopupVisible: false,
@@ -121,8 +121,6 @@ const popupRef = ref<HTMLDivElement>();
 const triggerRef = ref<HTMLElement>();
 // arrowRef
 const arrowRef = ref<HTMLElement>();
-// 获取插槽
-const slots = useSlots();
 // slots
 const vNode = computed(() => {
   return findFirstLegitChild(slots.default?.() || []);

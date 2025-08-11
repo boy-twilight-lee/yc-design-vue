@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { ClassName, PopupContainer } from '@shared/type';
 import {
   TriggerPostion,
@@ -28,9 +28,9 @@ export interface PopoverEmits {
 }
 
 export interface PopoverSlots {
-  default(): void;
-  content(): void;
-  title(): void;
+  default?: () => VNode[];
+  content?: () => VNode[];
+  title?: () => VNode[];
 }
 
 export interface PopoverExpose {

@@ -1,4 +1,5 @@
 import { TargetContainer } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface AnchorProps {
   boundary?: AnchorBoundary;
@@ -9,7 +10,7 @@ export interface AnchorProps {
 }
 
 export interface AnchorSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface AnchorLinkProps {
@@ -18,8 +19,8 @@ export interface AnchorLinkProps {
 }
 
 export interface AnchorLinkSlots {
-  default(): void;
-  sublist(): void;
+  default?: () => VNode[];
+  sublist?: () => VNode[];
 }
 
 export type AnchorBoundary = 'start' | 'end' | 'center' | 'nearest' | number;

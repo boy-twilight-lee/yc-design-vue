@@ -1,6 +1,7 @@
 import { ObjectData, RenderContent, Size, PopupContainer } from '@shared/type';
 import { TriggerInstance, TriggerProps } from '../Trigger';
 import { TagProps } from '../Tag';
+import { VNode } from 'vue';
 
 export interface SelectProps {
   multiple?: boolean;
@@ -61,17 +62,17 @@ export interface SelectEmits {
 }
 
 export interface SelectSlots {
-  default(): void;
-  trigger(): void;
-  prefix(): void;
-  ['search-icon'](): void;
-  ['loading-icon'](): void;
-  ['arrow-icon'](): void;
-  footer(): void;
-  header(): void;
-  label(scope: { data: ObjectData }): void;
-  option(scope: { data: ObjectData }): void;
-  empty(): void;
+  default?: () => VNode[];
+  trigger?: () => VNode[];
+  prefix?: () => VNode[];
+  'search-icon'?: () => VNode[];
+  'loading-icon'?: () => VNode[];
+  'arrow-icon'?: () => VNode[];
+  footer?: () => VNode[];
+  header?: () => VNode[];
+  label?: (scope: { data: ObjectData }) => VNode[];
+  option?: (scope: { data: ObjectData }) => VNode[];
+  empty?: () => VNode[];
 }
 
 export interface SelectExpose {
@@ -92,9 +93,9 @@ export interface OptionProps {
 }
 
 export interface OptionSlots {
-  default(): void;
-  icon(): void;
-  suffix(): void;
+  default?: () => VNode[];
+  icon?: () => VNode[];
+  suffix?: () => VNode[];
 }
 
 export interface OptgroupProps {
@@ -102,8 +103,8 @@ export interface OptgroupProps {
 }
 
 export interface OptgroupSlots {
-  default(): void;
-  label(): void;
+  default?: () => VNode[];
+  label?: () => VNode[];
 }
 
 export type SelectValue =

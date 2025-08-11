@@ -1,4 +1,5 @@
 import { Direction } from '@shared/type';
+import { VNode } from 'vue';
 export interface DividerProps {
   direction?: Direction;
   orientation?: Orientation;
@@ -8,7 +9,7 @@ export interface DividerProps {
 }
 
 export interface DividerSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export type Orientation = 'left' | 'center' | 'right';

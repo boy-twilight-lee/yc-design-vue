@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 
 export interface StatisticProps {
   title?: string;
@@ -24,11 +24,11 @@ export interface StatisticEmits {
 }
 
 export interface StatisticSlots {
-  title(): void;
-  prefix(): void;
-  suffix(): void;
-  extra(): void;
-  value(): void;
+  title?: () => VNode[];
+  prefix?: () => VNode[];
+  suffix?: () => VNode[];
+  extra?: () => VNode[];
+  value?: () => VNode[];
 }
 
 export interface CountdownProps {
@@ -46,7 +46,7 @@ export interface CountDownEmits {
 }
 
 export interface CountdownSlots {
-  title(): void;
+  title?: () => VNode[];
 }
 
 export type StatisticValue = number | Date;

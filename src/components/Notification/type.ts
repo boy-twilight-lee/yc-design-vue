@@ -29,7 +29,7 @@ export type NotificationConfig = Omit<NotificationProps, 'type' | 'onDestory'> &
   NotificationContainerProps;
 
 export type NotificationReturn = {
-  close(): void;
+  close?: () => void;
 };
 
 export type NotificationMethods = {

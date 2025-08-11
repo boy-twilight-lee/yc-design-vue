@@ -1,4 +1,5 @@
 import { ObjectData } from '@shared/type';
+import { VNode } from 'vue';
 export interface IconProps {
   type?: string;
   size?: number | string | number[];
@@ -7,7 +8,7 @@ export interface IconProps {
 }
 
 export interface IconSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface IconFontOptions {

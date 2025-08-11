@@ -1,4 +1,5 @@
 import { Size } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface ButtonProps {
   type?: ButtonType;
@@ -21,8 +22,8 @@ export interface ButtonEmits {
 }
 
 export interface ButtonSlots {
-  default(): void;
-  icon(): void;
+  default?: () => VNode[];
+  icon?: () => VNode[];
 }
 
 export interface ButtonGroupProps {
@@ -34,7 +35,7 @@ export interface ButtonGroupProps {
 }
 
 export interface ButtonGroupSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export type ButtonStatus = 'normal' | 'warning' | 'success' | 'danger';

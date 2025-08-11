@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { Size } from '../_shared/type';
 import { SelectProps } from '../Select';
 
@@ -33,8 +33,8 @@ export interface PaginationEmits {
 }
 
 export interface PaginationSlots {
-  total(scope: { total: number }): void;
-  ['page-item-ellipsis'](): void;
-  ['page-item-step'](scope: { type: 'previous' | 'next' }): void;
-  ['page-item'](scope: { page: number }): void;
+  total?: (scope: { total: number }) => VNode[];
+  ['page-item-ellipsis']?: () => VNode[];
+  ['page-item-step']?: (scope: { type: 'previous' | 'next' }) => VNode[];
+  ['page-item']?: (scope: { page: number }) => VNode[];
 }

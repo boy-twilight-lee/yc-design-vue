@@ -101,7 +101,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, nextTick, useSlots } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { TabsProps, TabsEmits, TabsSlots } from './type';
 import { findComponentsFromVnodes, valueToPx } from '@shared/utils';
 import useContext from './hooks/useContext';
@@ -114,7 +114,7 @@ import TabButton from './TabButton.vue';
 defineOptions({
   name: 'Tabs',
 });
-defineSlots<TabsSlots>();
+const slots = defineSlots<TabsSlots>();
 const props = withDefaults(defineProps<TabsProps>(), {
   activeKey: undefined,
   defaultActiveKey: '',
@@ -139,8 +139,6 @@ const listRef = ref<HTMLDivElement>();
 // 注入
 const { computedActiveKey, size, direction, autoSwitch, position } =
   useContext().provide(props, emits, listRef);
-// 获取tabPane的数据
-const slots = useSlots();
 // tabPanes
 const tabPanes = computed(() =>
   findComponentsFromVnodes(slots.default?.() || [], TabPane.name as string)

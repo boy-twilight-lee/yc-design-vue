@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { TriggerProps } from '../Trigger';
 
 export interface AvatarProps {
@@ -18,8 +18,8 @@ export interface AvatarEmits {
 }
 
 export interface AvatarSlots {
-  default(): void;
-  ['trigger-icon'](): void;
+  default?: () => VNode[];
+  'trigger-icon'?: () => VNode[];
 }
 
 export interface AvatarGroupProps {
@@ -33,7 +33,7 @@ export interface AvatarGroupProps {
 }
 
 export interface AvatarGroupSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export type AvatarShape = 'square' | 'round';

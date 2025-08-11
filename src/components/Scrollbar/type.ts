@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { ClassName } from '@shared/type';
 
 export interface ScrollbarProps {
@@ -14,7 +14,7 @@ export interface ScrollbarEmits {
 }
 
 export interface ScrollbarSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface ScrollbarExpose {

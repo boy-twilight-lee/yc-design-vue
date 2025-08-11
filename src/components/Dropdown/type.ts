@@ -2,6 +2,7 @@ import { ObjectData, PopupContainer, Theme } from '@shared/type';
 import { TriggerProps, TriggerType } from '@/components/Trigger';
 import { ButtonProps, ButtonType } from '@/components/Button';
 import { Size } from '@shared/type';
+import { VNode } from 'vue';
 export interface DropdownProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
@@ -23,9 +24,9 @@ export interface DropdownEmits {
 }
 
 export interface DropdownSlots {
-  default(): void;
-  content(): void;
-  footer(): void;
+  default?: () => VNode[];
+  content?: () => VNode[];
+  footer?: () => VNode[];
 }
 
 export interface DropdownExpose {
@@ -42,9 +43,9 @@ export interface DoptionProps {
 }
 
 export interface DoptionSlots {
-  default(): void;
-  icon(): void;
-  suffix(): void;
+  default?: () => VNode[];
+  icon?: () => VNode[];
+  suffix?: () => VNode[];
 }
 
 export interface DsubmenuProps {
@@ -64,9 +65,9 @@ export interface DsubmenuEmits {
 }
 
 export interface DsubmenuSlots {
-  content(): void;
-  default(): void;
-  footer(): void;
+  content?: () => VNode[];
+  default?: () => VNode[];
+  footer?: () => VNode[];
 }
 
 export interface DgroupProps {
@@ -74,8 +75,8 @@ export interface DgroupProps {
 }
 
 export interface DgroupSlots {
-  title(): void;
-  default(): void;
+  title?: () => VNode[];
+  default?: () => VNode[];
 }
 
 export interface DropdownButtonProps {
@@ -92,9 +93,9 @@ export interface DropdownButtonProps {
 }
 
 export interface DropdownButtonSlots {
-  content(): void;
-  default(): void;
-  icon(): void;
+  content?: () => VNode[];
+  default?: () => VNode[];
+  icon?: () => VNode[];
 }
 
 export type DoptionValue = string | number | boolean | ObjectData;

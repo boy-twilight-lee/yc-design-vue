@@ -1,4 +1,5 @@
 import { ClassName, Direction } from '@shared/type';
+import { VNode } from 'vue';
 export interface CarouselProps {
   current?: number;
   defaultCurrent?: number;
@@ -21,11 +22,11 @@ export interface CarouselEmits {
 }
 
 export interface CarouselSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface CarouselItemSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export type CarouselAnimationName = 'slide' | 'fade';

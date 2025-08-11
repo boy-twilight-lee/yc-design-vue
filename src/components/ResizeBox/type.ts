@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface ResizeBoxProps {
   width?: number;
   height?: number;
@@ -14,9 +16,9 @@ export interface ResizeBoxEmits {
 }
 
 export interface ResizeBoxSlots {
-  default(): void;
-  ['resize-trigger'](scope: { direction: ResizeBoxDirection }): void;
-  ['resize-trigger-icon'](scope: { direction: ResizeBoxDirection }): void;
+  default?: () => VNode[];
+  'resize-trigger'?: (scope: { direction: ResizeBoxDirection }) => VNode[];
+  'resize-trigger-icon'?: (scope: { direction: ResizeBoxDirection }) => VNode[];
 }
 
 export type ResizeBoxDirection = 'left' | 'right' | 'top' | 'bottom';

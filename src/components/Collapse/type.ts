@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface CollapseProps {
   activeKey?: CollapseValue[];
   defaultActiveKey?: CollapseValue[];
@@ -14,12 +16,12 @@ export interface CollapseEmits {
 }
 
 export interface CollapseSlots {
-  default(): void;
-  ['expand-icon'](scope: {
+  default?: () => VNode[];
+  'expand-icon': (scope: {
     active: boolean;
     disabled: boolean;
     position: 'left' | 'right';
-  }): void;
+  }) => VNode[];
 }
 
 export interface CollapseItemProps {
@@ -31,14 +33,14 @@ export interface CollapseItemProps {
 }
 
 export interface CollapseItemSlots {
-  default(): void;
-  header(): void;
-  extra(): void;
-  ['expand-icon'](scope: {
+  default?: () => VNode[];
+  header?: () => VNode[];
+  extra?: () => VNode[];
+  ['expand-icon']?: (scope: {
     active: boolean;
     disabled: boolean;
     position: 'left' | 'right';
-  }): void;
+  }) => VNode[];
 }
 
 export type CollapseValue = string | number;

@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface SpinProps {
   size?: number;
   loading?: boolean;
@@ -9,7 +11,7 @@ export interface SpinProps {
 }
 
 export interface SpinSlots {
-  default(): void;
-  icon(): void;
-  tip(): void;
+  default?: () => VNode[];
+  icon?: () => VNode[];
+  tip?: () => VNode[];
 }

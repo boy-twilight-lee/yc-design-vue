@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface TagProps {
   color?: string;
   size?: TagSize;
@@ -20,9 +22,9 @@ export interface TagEmits {
 }
 
 export interface TagSlots {
-  default(): void;
-  icon(): void;
-  ['close-icon'](): void;
+  default?: () => VNode[];
+  icon?: () => VNode[];
+  'close-icon'?: () => VNode[];
 }
 
 export type TagSize = 'small' | 'medium' | 'large';

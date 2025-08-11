@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 
 export interface BadgeProps {
   text?: string;
@@ -12,8 +12,8 @@ export interface BadgeProps {
 }
 
 export interface BadgeSlots {
-  default(): void;
-  content(): void;
+  default?: () => VNode[];
+  content?: () => VNode[];
 }
 
 export type BadgeStatus =

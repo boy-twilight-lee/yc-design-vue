@@ -1,4 +1,5 @@
 import { Size, PopupContainer } from '@shared/type';
+import { VNode } from 'vue';
 export interface ConfigProviderProps {
   zIndex?: number;
   size?: Size;
@@ -9,9 +10,9 @@ export interface ConfigProviderProps {
 }
 
 export interface ConfigconfigSlots {
-  default(): void;
-  loading(): void;
-  empty(scope: { component: EmptyComponent }): void;
+  default?: () => VNode[];
+  loading?: () => VNode[];
+  empty?: (scope: { component: EmptyComponent }) => VNode[];
 }
 
 export type EmptyComponent = 'Select' | 'List' | 'Transfer';

@@ -1,4 +1,5 @@
 import { TargetContainer } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface AffixProps {
   offsetTop?: number;
@@ -12,9 +13,9 @@ export interface AffixEmits {
 }
 
 export interface AffixSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface AffixExpose {
-  'updatePosition'(): void;
+  updatePosition(): void;
 }

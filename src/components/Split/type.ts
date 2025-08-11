@@ -1,4 +1,5 @@
 import { Direction } from '@shared/type';
+import { VNode } from 'vue';
 export interface SplitProps {
   component?: string;
   direction?: Direction;
@@ -17,8 +18,8 @@ export interface SplitEmits {
 }
 
 export interface SplitSlots {
-  ['resize-trigger-icon'](): void;
-  ['resize-trigger'](): void;
-  first(): void;
-  second(): void;
+  'resize-trigger-icon'?: () => VNode[];
+  'resize-trigger'?: () => VNode[];
+  first?: () => VNode[];
+  second?: () => VNode[];
 }

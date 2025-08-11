@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface SwitchProps {
   modelValue?: SwitchValue;
   defaultChecked?: SwitchValue;
@@ -22,10 +24,10 @@ export interface SwitchEmits {
 }
 
 export interface SwitchSlots {
-  ['checked-icon'](): void;
-  ['unchecked-icon'](): void;
-  ['checked'](): void;
-  ['unchecked'](): void;
+  'checked-icon'?: () => VNode[];
+  'unchecked-icon'?: () => VNode[];
+  checked?: () => VNode[];
+  unchecked?: () => VNode[];
 }
 
 export type SwitchValue = string | number | boolean;

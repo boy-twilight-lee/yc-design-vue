@@ -1,4 +1,5 @@
 import { DropdownProps } from '@/components/Dropdown';
+import { VNode } from 'vue';
 export interface BreadcrumbProps {
   maxCount?: number;
   routes?: BreadcrumbRoute[];
@@ -7,14 +8,14 @@ export interface BreadcrumbProps {
 }
 
 export interface BreadcrumbSlots {
-  default(): void;
-  ['item-render'](scope: {
+  default?: () => VNode[];
+  'item-render': (scope: {
     route: BreadcrumbRoute;
     routes: BreadcrumbRoute[];
     paths: string[];
-  }): void;
-  ['more-icon'](): void;
-  separator(): void;
+  }) => VNode[];
+  'more-icon'?: () => VNode[];
+  separator?: () => VNode[];
 }
 
 export interface BreadcrumbItemProps {
@@ -26,9 +27,9 @@ export interface BreadcrumbItemProps {
 }
 
 export interface BreadcrumbItemSlots {
-  default(): void;
-  droplist(): void;
-  separator(): void;
+  default?: () => VNode[];
+  droplist?: () => VNode[];
+  separator?: () => VNode[];
 }
 
 export interface BreadcrumbRoute {

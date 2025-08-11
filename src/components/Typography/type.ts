@@ -1,4 +1,5 @@
 import { TooltipProps } from '@/components/Tooltip';
+import { VNode } from 'vue';
 
 // base
 export interface TypographyBaseProps {
@@ -34,10 +35,10 @@ export interface TypographyBaseEmits {
 }
 
 export interface TypographyBaseSlots {
-  default(): void;
-  ['expand-node'](scope: { expanded: boolean }): void;
-  ['copy-icon'](scope: { copied: boolean }): void;
-  ['copy-tooltip'](scope: { copied: boolean }): void;
+  default?: () => VNode[];
+  'expand-node': (scope: { expanded: boolean }) => VNode[];
+  'copy-icon': (scope: { copied: boolean }) => VNode[];
+  'copy-tooltip': (scope: { copied: boolean }) => VNode[];
 }
 
 export interface TypographyParagraphProps {

@@ -1,4 +1,5 @@
 import { Direction } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface TimelineProps {
   reverse?: boolean;
@@ -9,8 +10,8 @@ export interface TimelineProps {
 }
 
 export interface TimelineSlots {
-  dot(): void;
-  default(): void;
+  dot?: () => VNode[];
+  default?: () => VNode[];
 }
 
 export interface TimelineItemProps {
@@ -24,9 +25,9 @@ export interface TimelineItemProps {
 }
 
 export interface TimelineItemSlots {
-  dot(): void;
-  label(): void;
-  default(): void;
+  dot?: () => VNode[];
+  label?: () => VNode[];
+  default?: () => VNode[];
 }
 
 export type TimelineMode = 'left' | 'right' | 'top' | 'bottom' | 'alternate';

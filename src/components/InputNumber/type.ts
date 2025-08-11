@@ -1,4 +1,5 @@
 import { Size, ObjectData } from '@shared/type';
+import { VNode } from 'vue';
 export interface InputNumberProps {
   modelValue?: InputNumberValue;
   defaultValue?: InputNumberValue;
@@ -32,14 +33,13 @@ export interface InputNumberEmits {
 }
 
 export interface InputNumberSlots {
-  plus(): void;
-  minus(): void;
-  suffix(): void;
-  prefix(): void;
-  suffix(): void;
-  prepend(): void;
-  append(): void;
-  label(): void;
+  plus?: () => VNode[];
+  minus?: () => VNode[];
+  prefix?: () => VNode[];
+  suffix?: () => VNode[];
+  prepend?: () => VNode[];
+  append?: () => VNode[];
+  label?: () => VNode[];
 }
 
 export interface InputNumberExpose {

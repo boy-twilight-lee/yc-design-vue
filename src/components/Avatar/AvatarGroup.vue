@@ -48,7 +48,7 @@ import YcPopover from '@/components/Popover';
 defineOptions({
   name: 'AvatarGroup',
 });
-defineSlots<AvatarGroupSlots>();
+const slots = defineSlots<AvatarGroupSlots>();
 const props = withDefaults(defineProps<AvatarGroupProps>(), {
   size: 40,
   shape: 'round',
@@ -65,8 +65,6 @@ const props = withDefaults(defineProps<AvatarGroupProps>(), {
 const { maxCount } = toRefs(props);
 // 注入
 useContext().provide(props);
-// 获取插槽内元素
-const slots = useSlots();
 const nodes = computed(() => {
   const avatars = findComponentsFromVnodes(
     slots.default?.() || [],

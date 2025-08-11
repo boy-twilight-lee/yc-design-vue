@@ -1,4 +1,5 @@
 import { Direction } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface StepsProps {
   type?: StepType;
@@ -18,7 +19,7 @@ export interface StepsEmits {
 }
 
 export interface StepsSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export interface StepProps {
@@ -29,10 +30,10 @@ export interface StepProps {
 }
 
 export interface StepSlots {
-  node(scope: { step: number; status: StepStatus }): void;
-  icon(scope: { step: number; status: StepStatus }): void;
-  description(): void;
-  default(): void;
+  node?: (scope: { step: number; status: StepStatus }) => VNode[];
+  icon?: (scope: { step: number; status: StepStatus }) => VNode[];
+  description?: () => VNode[];
+  default?: () => VNode[];
 }
 
 export type StepStatus = 'wait' | 'process' | 'finish' | 'error';

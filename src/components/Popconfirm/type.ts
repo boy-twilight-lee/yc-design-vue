@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { ClassName, PopupContainer } from '@shared/type';
 import { OnBeforeCancel, OnBeforeOk } from '@/components/Modal';
 import { TriggerPostion, TriggerProps } from '@/components/Trigger';
@@ -34,9 +34,9 @@ export interface PopconfirmEmits {
 }
 
 export interface PopconfirmSlots {
-  default(): void;
-  content(): void;
-  icon(): void;
+  default?: () => VNode[];
+  content?: () => VNode[];
+  icon?: () => VNode[];
 }
 
 export type PopconfirmType = 'info' | 'success' | 'warning' | 'error';

@@ -5,6 +5,7 @@ import {
 } from '@/components/Select';
 import { PopupContainer, ObjectData } from '@shared/type';
 import { TriggerProps } from '@/components/Trigger';
+import { VNode } from 'vue';
 
 export type AutoCompleteProps = {
   modelValue?: string;
@@ -38,9 +39,9 @@ export interface AutoCompleteEmits {
 }
 
 export interface AutoCompleteSlots {
-  option(scope: { data: ObjectData }): void;
-  footer(): void;
-  trigger(): void;
+  option?: (scope: { data: ObjectData }) => VNode[];
+  footer?: () => VNode[];
+  trigger?: () => VNode[];
 }
 
 export interface AutoCompleteExpose {

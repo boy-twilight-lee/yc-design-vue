@@ -41,7 +41,7 @@ import { TAG_PRESET_COLORS } from '@shared/constants';
 defineOptions({
   name: 'Badge',
 });
-defineSlots<BadgeSlots>();
+const slots = defineSlots<BadgeSlots>();
 const props = withDefaults(defineProps<BadgeProps>(), {
   text: '',
   dot: false,
@@ -58,8 +58,6 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 });
 const { text, dot, count, maxCount, offset, dotStyle, status, color } =
   toRefs(props);
-// 获取插槽
-const slots = useSlots();
 // style
 const style = computed(() => {
   return {

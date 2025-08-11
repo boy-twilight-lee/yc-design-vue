@@ -42,7 +42,7 @@ import { default as YcTag } from '@/components/Tag';
 defineOptions({
   name: 'OverflowList',
 });
-defineSlots<OverflowListSlots>();
+const slots = defineSlots<OverflowListSlots>();
 const props = withDefaults(defineProps<OverflowListProps>(), {
   min: 0,
   margin: 8,
@@ -55,7 +55,6 @@ const max = ref<number>(10000);
 // 获取所有的widths
 const widths = ref<number[]>([]);
 // 获取插槽的tags
-const slots = useSlots();
 const tags = computed(() => {
   return findComponentsFromVnodes(
     slots.default?.() || [],

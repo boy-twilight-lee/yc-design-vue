@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface WatermarkProps {
   content?: string | string[];
   image?: string;
@@ -25,5 +27,5 @@ export interface WatermarkFont {
 }
 
 export interface WatermarkSlots {
-  default(): void;
+  default?: () => VNode[];
 }

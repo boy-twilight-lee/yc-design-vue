@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 // icon
 export interface LinkProps {
   href?: string;
@@ -15,8 +17,8 @@ export interface LinkEmits {
 }
 
 export interface LinkSlots {
-  default(): void;
-  icon(): void;
+  default?: () => VNode[];
+  icon?: () => VNode[];
 }
 
 export type LinkStatus = 'normal' | 'warning' | 'success' | 'danger';

@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface ResultProps {
   status?: ResultStatus;
   title?: string;
@@ -5,11 +7,11 @@ export interface ResultProps {
 }
 
 export interface ResultSlots {
-  icon(): void;
-  title(): void;
-  subtitle(): void;
-  default(): void;
-  extra(): void;
+  icon?: () => VNode[];
+  title?: () => VNode[];
+  subtitle?: () => VNode[];
+  default?: () => VNode[];
+  extra?: () => VNode[];
 }
 
 export type ResultStatus =

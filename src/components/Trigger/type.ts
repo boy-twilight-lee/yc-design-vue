@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { ClassName, PopupContainer } from '@shared/type';
 export interface TriggerProps {
   popupVisible?: boolean;
@@ -54,8 +54,8 @@ export interface TriggerEmits {
 }
 
 export interface TriggerSlots {
-  default(): void;
-  content(): void;
+  default?: () => VNode[];
+  content?: () => VNode[];
 }
 
 export interface TriggerExpose {

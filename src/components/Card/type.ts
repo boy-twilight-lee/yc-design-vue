@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 
 export interface CardProps {
   bordered?: boolean;
@@ -12,11 +12,11 @@ export interface CardProps {
 }
 
 export interface CardSlots {
-  actions(): void;
-  cover(): void;
-  extra(): void;
-  title(): void;
-  default(): void;
+  actions?: () => VNode[];
+  cover?: () => VNode[];
+  extra?: () => VNode[];
+  title?: () => VNode[];
+  default?: () => VNode[];
 }
 
 export interface CardMetaProps {
@@ -25,9 +25,9 @@ export interface CardMetaProps {
 }
 
 export interface CardMetaSlots {
-  description(): void;
-  title(): void;
-  avatar(): void;
+  description?: () => VNode[];
+  title?: () => VNode[];
+  avatar?: () => VNode[];
 }
 
 export interface CardGridProps {
@@ -35,7 +35,7 @@ export interface CardGridProps {
 }
 
 export interface CardGridSlots {
-  default(): void;
+  default?: () => VNode[];
 }
 
 export type CardSize = 'medium' | 'small';

@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface RateProps {
   count?: number;
   modelValue?: number;
@@ -17,5 +19,5 @@ export interface RateEmits {
 }
 
 export interface RateSlots {
-  character(scope: { index: number }): void;
+  character?: (scope: { index: number }) => VNode[];
 }

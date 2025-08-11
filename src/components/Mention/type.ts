@@ -1,5 +1,6 @@
 import { SelectOptions, SelectValue } from '@/components/Select';
 import { ObjectData } from '@shared/type';
+import { VNode } from 'vue';
 
 export interface MentionProps {
   modelValue?: string;
@@ -29,5 +30,5 @@ export interface MentionExpose {
 }
 
 export interface MentionSlots {
-  option(scope: { data: ObjectData }): void;
+  option?: (scope: { data: ObjectData }) => VNode[];
 }

@@ -48,7 +48,7 @@ import YcSpin from '@/components/Spin';
 defineOptions({
   name: 'Switch',
 });
-defineSlots<SwitchSlots>();
+const slots = defineSlots<SwitchSlots>();
 const props = withDefaults(defineProps<SwitchProps>(), {
   modelValue: undefined,
   defaultChecked: false,
@@ -81,7 +81,6 @@ const {
   loading: _loading,
 } = toRefs(props);
 const { beforeChange } = props;
-const slots = useSlots();
 // 获取全局配置
 const { size } = getGlobalConfig(props);
 // 计算值

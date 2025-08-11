@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, computed, useSlots, VNode, Fragment, Comment } from 'vue';
+import { toRefs, computed, VNode, Fragment, Comment } from 'vue';
 import { SpaceProps, SpaceSlots } from './type';
 import {
   isNumber,
@@ -39,7 +39,7 @@ import {
 defineOptions({
   name: 'Space',
 });
-defineSlots<SpaceSlots>();
+const slots = defineSlots<SpaceSlots>();
 const props = withDefaults(defineProps<SpaceProps>(), {
   direction: 'horizontal',
   align: undefined,
@@ -48,8 +48,6 @@ const props = withDefaults(defineProps<SpaceProps>(), {
   fill: false,
 });
 const { size, direction, align: _align } = toRefs(props);
-// slots
-const slots = useSlots();
 // 计算gap
 const gap = computed(() => {
   const map = {

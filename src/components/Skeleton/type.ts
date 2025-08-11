@@ -1,11 +1,13 @@
+import { VNode } from 'vue';
+
 export interface SkeletonProps {
   animation?: boolean;
   loading?: boolean;
 }
 
 export interface SkeletonSlots {
-  default(): void;
-  content(): void;
+  default?: () => VNode[];
+  content?: () => VNode[];
 }
 
 export interface SkeletonLineProps {

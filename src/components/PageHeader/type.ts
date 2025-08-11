@@ -1,3 +1,5 @@
+import { VNode } from 'vue';
+
 export interface PageHeaderProp {
   title?: string;
   subtitle?: string;
@@ -9,10 +11,10 @@ export interface PageHeaderEmits {
 }
 
 export interface PageHeaderSlots {
-  default(): void;
-  breadcrumb(): void;
-  ['back-icon']: void;
-  title(): void;
-  subtitle(): void;
-  extra(): void;
+  default?: () => VNode[];
+  breadcrumb?: () => VNode[];
+  'back-icon': VNode[];
+  title?: () => VNode[];
+  subtitle?: () => VNode[];
+  extra?: () => VNode[];
 }
