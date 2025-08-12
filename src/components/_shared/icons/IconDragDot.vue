@@ -12,5 +12,5 @@
 </template>
 
 <script lang="ts" setup>
-import YcIcon from './_Icon.vue';
+import YcIcon from '../components/Icon.vue';
 </script>
