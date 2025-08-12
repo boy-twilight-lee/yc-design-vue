@@ -22,11 +22,7 @@
     "build": "vite build",
     "release": "vite build && npm publish",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
-    "format": "npx prettier --write --loglevel warn 'src/**/*.{js,ts,json,tsx,css,less,vue,html,md}'",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "docs:generate": "node scripts/generate-docs.js"
+    "format": "npx prettier --write --loglevel warn 'src/**/*.{js,ts,json,tsx,css,less,vue,html,md}'"
   },
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -90,7 +86,6 @@
     "unplugin-vue-components": "^0.27.5",
     "vite": "^5.4.1",
     "vite-plugin-dts": "^4.5.4",
-    "vitepress": "^1.2.11",
     "vue": "^3.3.4",
     "vue-router": "^4.5.1",
     "vue-tsc": "^2.0.29",
