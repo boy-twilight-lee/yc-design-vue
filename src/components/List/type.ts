@@ -12,7 +12,6 @@ export interface ListProps {
   loading?: boolean;
   hoverable?: boolean;
   paginationProps?: PaginationProps;
-  gridProps?: GridProps;
   maxHeight?: number | string;
   bottomOffset?: number;
   virtualListProps?: VirtualListProps;

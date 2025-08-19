@@ -42,17 +42,9 @@
           <div v-else role="list" class="yc-list-content">
             <!-- slot -->
             <slot />
-            <!-- grid -->
-            <yc-grid v-if="gridProps" v-bind="gridProps">
-              <yc-grid-item v-for="(item, i) in curList" :key="i">
-                <slot name="item" :index="i" :item="item" />
-              </yc-grid-item>
-            </yc-grid>
             <!-- list -->
-            <template v-else>
-              <template v-for="(item, i) in curList" :key="i">
-                <slot name="item" :index="i" :item="item" />
-              </template>
+            <template v-for="(item, i) in curList" :key="i">
+              <slot name="item" :index="i" :item="item" />
             </template>
           </div>
           <!-- empty -->
@@ -88,7 +80,12 @@
 import { ref, toRefs, computed } from 'vue';
 import { ListProps, ListEmits, ListSlots } from './type';
 import { unrefElement } from '@vueuse/core';
-import { getGlobalConfig, useControlValue, valueToPx } from '@shared/utils';
+import {
+  getGlobalConfig,
+  useControlValue,
+  valueToPx,
+  findComponentsFromVnodes,
+} from '@shared/utils';
 import useScrollReach from './hooks/useScrollReach';
 import YcSpin from '@/components/Spin';
 import {
@@ -96,13 +93,12 @@ import {
   ScrollbarInstance,
 } from '@/components/Scrollbar';
 import YcPagination from '@/components/Pagination';
-import { default as YcGrid, GridItem as YcGridItem } from '@/components/Grid';
 import VirtualList from './ListVirtual.vue';
 import YcListItem from './ListItem.vue';
 defineOptions({
   name: 'List',
 });
-defineSlots<ListSlots>();
+const slots = defineSlots<ListSlots>();
 const props = withDefaults(defineProps<ListProps>(), {
   data: () => [],
   size: undefined,
@@ -111,15 +107,13 @@ const props = withDefaults(defineProps<ListProps>(), {
   loading: false,
   hoverable: false,
   paginationProps: undefined,
-  gridProps: undefined,
   maxHeight: undefined,
   virtualListProps: undefined,
   bottomOffset: 0,
   scrollbar: true,
 });
 const emits = defineEmits<ListEmits>();
-const { data, paginationProps, virtualListProps, gridProps, bottomOffset } =
-  toRefs(props);
+const { data, paginationProps, virtualListProps, bottomOffset } = toRefs(props);
 // 注入全局属性
 const { size, renderEmpty } = getGlobalConfig(props);
 // 是否触底
@@ -130,7 +124,7 @@ const realListRef = ref<ScrollbarInstance>();
 const virtualListRef = ref<HTMLDivElement>();
 // 是否是虚拟列表
 const isVirtualList = computed(() => {
-  if (!virtualListProps.value || paginationProps.value || gridProps.value) {
+  if (!virtualListProps.value || paginationProps.value) {
     return false;
   }
   return (
