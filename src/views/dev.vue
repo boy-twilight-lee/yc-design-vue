@@ -1,56 +1,158 @@
 <template>
   <div class="test">
-    <div
-      :style="{
-        width: '100%',
-        height: '400px',
-        backgroundColor: 'var(--color-fill-2)',
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }"
-      ref="containerRef"
-    >
-      <yc-image
-        width="200"
-        src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"
-        :preview-props="{
-          popupContainer: containerRef,
-          closable: false,
-        }"
-      />
+    <div :style="{ position: 'relative', width: '440px', height: '280px' }">
+      <yc-popover position="tl" trigger="click">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '0', left: '70px' }"
+          >TL</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="top">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '0', left: '180px' }"
+          >TOP</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="tr">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '0', left: '290px' }"
+          >TR</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="bl">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '240px', left: '70px' }"
+          >BL</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="bottom">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '240px', left: '180px' }"
+          >BOTTOM</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="br">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '240px', left: '290px' }"
+          >BR</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="lt">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '60px', left: '10px' }"
+          >LT</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="left">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '120px', left: '10px' }"
+          >LEFT</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="lb">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '180px', left: '10px' }"
+          >LB</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="rt">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '60px', left: '350px' }"
+          >RT</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="right">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '120px', left: '350px' }"
+          >RIGHT</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
+      <yc-popover position="rb">
+        <yc-button
+          class="button"
+          :style="{ position: 'absolute', top: '180px', left: '350px' }"
+          >RB</yc-button
+        >
+        <template #content>
+          <p>Here is the text content</p>
+          <p>Here is the text content</p>
+        </template>
+      </yc-popover>
     </div>
-    <yc-avatar-group :size="24" :max-count="3">
-      <yc-avatar :style="{ backgroundColor: '#7BC616' }">A</yc-avatar>
-      <yc-avatar :style="{ backgroundColor: '#14C9C9' }">B</yc-avatar>
-      <yc-avatar :style="{ backgroundColor: '#168CFF' }">C</yc-avatar>
-      <yc-avatar :style="{ backgroundColor: '#FF7D00' }">Arco</yc-avatar>
-      <yc-avatar :style="{ backgroundColor: '#FFC72E' }">Design</yc-avatar>
-    </yc-avatar-group>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
-const containerRef = ref();
 </script>
 
 <style lang="less" scoped>
 .test {
-  height: 100%;
+  overflow: auto;
+  height: 500vh;
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
-}
-
-.trigger-demo-translate {
-  padding: 10px;
-  width: 200px;
-  background-color: var(--color-bg-popup);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+  .button {
+    width: 100px;
+  }
 }
 </style>

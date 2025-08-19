@@ -26,6 +26,7 @@
           `yc-trigger-position-${position}`,
           {
             'yc-trigger-transform-origin': needTransformOrigin,
+            'yc-trigger-absolute': !isUndefined(_popupContainer),
           },
           $attrs.class,
         ]"
@@ -57,14 +58,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, toRefs } from 'vue';
 import {
   TriggerProps,
   TriggerEmits,
   TriggerSlots,
   TriggerExpose,
 } from './type';
-import { findFirstLegitChild, getGlobalConfig } from '@shared/utils';
+import {
+  findFirstLegitChild,
+  getGlobalConfig,
+  isUndefined,
+} from '@shared/utils';
 import useTriggerVisible from './hooks/useTriggerVisible';
 import useTriggerPosition from './hooks/useTriggerPosition';
 import { PreventFocus } from '@shared/components';
@@ -113,6 +118,7 @@ const props = withDefaults(defineProps<TriggerProps>(), {
   autoSetPosition: false,
 });
 const emits = defineEmits<TriggerEmits>();
+const { popupContainer: _popupContainer } = toRefs(props);
 // 接收属性
 const { popupContainer } = getGlobalConfig(props);
 // 弹出层的ref
