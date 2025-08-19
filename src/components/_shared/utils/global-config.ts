@@ -26,7 +26,7 @@ export interface ConfigProviderProvide {
   slots: Partial<ConfigconfigSlots>;
 }
 
-type ValueType = string | undefined | number;
+type ValueType = string | number | boolean | HTMLElement | undefined;
 
 const getVar = (value: Ref<ValueType>, _value: Ref<ValueType>) => {
   return computed(() => {
