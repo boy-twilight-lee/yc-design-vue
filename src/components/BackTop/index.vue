@@ -49,7 +49,6 @@ const buttonRef = ref<HTMLDivElement>();
 const curScroll = ref<number>(0);
 // 目标
 const targetContainer = computed(() => {
-  console.log(findFirstScrollableParent(buttonRef.value));
   return isUndefined(_targetContainer.value)
     ? findFirstScrollableParent(buttonRef.value)
     : getElement(_targetContainer.value);

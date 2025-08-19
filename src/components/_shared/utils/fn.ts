@@ -93,6 +93,5 @@ export const valueToPx = (value: string | number | undefined) => {
   if (isNumber(value) || (isString(value) && numberReg.test(value))) {
     return value + 'px';
   }
-  console.log('value', value);
   return value as string;
 };

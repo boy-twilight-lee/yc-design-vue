@@ -275,7 +275,6 @@ export default () => {
             maxCount++;
           }
           max.value = maxCount;
-          console.log(max.value, 'max');
         }, 200)
       );
     }

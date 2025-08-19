@@ -20,9 +20,7 @@ const open = (props: DrawerConfig) => {
     render(null, container as HTMLDivElement);
   };
   // 更新函数
-  const update = (updateProps: DrawerUpdateConfig) => {
-    console.log('函数执行了', updateProps);
-  };
+  const update = (updateProps: DrawerUpdateConfig) => {};
   // 挂在vnode
   const vnode = h(_DrawerService, {
     ...props,

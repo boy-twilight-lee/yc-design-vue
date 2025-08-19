@@ -260,11 +260,9 @@ const handleEvent = async (
       break;
     case 'updateValue':
       {
-        console.log('updateValue', value);
         computedValue.value = (value as InputTagValue).map(
           (item) => (item as TagData).value
         );
-        console.log(computedValue.value, 'value');
       }
       break;
   }

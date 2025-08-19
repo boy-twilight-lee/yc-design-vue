@@ -21,9 +21,7 @@ const open = (props: ModalConfig) => {
     render(null, container as HTMLDivElement);
   };
   // 更新函数
-  const update = (updateProps: ModalUpdateConfig) => {
-    console.log('函数执行了', updateProps);
-  };
+  const update = (updateProps: ModalUpdateConfig) => {};
   // 挂在vnode
   const vnode = h(_ModalService, {
     ...props,
