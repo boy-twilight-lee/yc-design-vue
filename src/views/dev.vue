@@ -1,5 +1,5 @@
 <template>
-  <div class="test" id="test">
+  <div class="test">
     <div
       :style="{
         width: '100%',
@@ -22,6 +22,13 @@
         }"
       />
     </div>
+    <yc-avatar-group :size="24" :max-count="3">
+      <yc-avatar :style="{ backgroundColor: '#7BC616' }">A</yc-avatar>
+      <yc-avatar :style="{ backgroundColor: '#14C9C9' }">B</yc-avatar>
+      <yc-avatar :style="{ backgroundColor: '#168CFF' }">C</yc-avatar>
+      <yc-avatar :style="{ backgroundColor: '#FF7D00' }">Arco</yc-avatar>
+      <yc-avatar :style="{ backgroundColor: '#FFC72E' }">Design</yc-avatar>
+    </yc-avatar-group>
   </div>
 </template>
 

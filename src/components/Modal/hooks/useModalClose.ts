@@ -50,7 +50,8 @@ export default (params: {
   // 处理关闭
   const handleClose = async (
     type: CloseEventType,
-    ev: MouseEvent | KeyboardEvent
+    ev: MouseEvent | KeyboardEvent,
+    cancelEmits: boolean = true
   ) => {
     // 执行关闭之前的函数
     const isClose = ['confirmBtn', 'cancelBtn'].includes(type)
@@ -65,7 +66,7 @@ export default (params: {
     if (type == 'confirmBtn') {
       emits('ok');
     }
-    emits('cancel', ev);
+    cancelEmits && emits('cancel', ev);
     innerVisible.value = false;
   };
 
