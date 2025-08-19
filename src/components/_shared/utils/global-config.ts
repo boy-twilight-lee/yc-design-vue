@@ -19,7 +19,7 @@ export interface ConfigProviderProvide {
 
 const getVar = (value: Ref<any>, _value: Ref<any>) => {
   return isUndefined(value?.value) ||
-    (isString(_value?.value) && !value?.value?.length)
+    (isString(value?.value) && !value?.value?.length)
     ? _value
     : value;
 };

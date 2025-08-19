@@ -23,34 +23,6 @@ const menus = [
     title: '开发',
     path: 'dev',
   },
-  {
-    title: '通用(4/4)',
-    path: 'common',
-  },
-  {
-    title: '布局(4/4)',
-    path: 'layout',
-  },
-  {
-    title: '数据展示(17/19)',
-    path: 'dataShow',
-  },
-  {
-    title: '数据输入(17/21)',
-    path: 'form',
-  },
-  {
-    title: '反馈(10/10)',
-    path: 'feedback',
-  },
-  {
-    title: '导航(6/6)',
-    path: 'navigation',
-  },
-  {
-    title: '其它(10/10)',
-    path: 'other',
-  },
 ];
 
 watch(
