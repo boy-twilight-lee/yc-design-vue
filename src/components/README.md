@@ -7,3 +7,6 @@ DatePicker Form Upload TreeSelect Table Tree
 1. trigger边界检测过后不能重新计算恢复的问题
 2. Menu在递归组件下无法获取vnode层级的问题（后期尝试解决）
 3. layout-side和menu的收缩联动问题
+
+## 待修复的bug
+1. grid flex属性的问题

@@ -7,4 +7,5 @@ export interface EmptyProps {
 
 export interface EmptySlots {
   image?: () => VNode[];
+  default?: () => VNode;
 }

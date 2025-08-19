@@ -6,7 +6,11 @@
         <icon-empty />
       </slot>
     </div>
-    <div v-if="description" class="yc-empty-description">{{ description }}</div>
+    <div v-if="description" class="yc-empty-description">
+      <slot>
+        {{ description }}
+      </slot>
+    </div>
   </div>
 </template>
 
