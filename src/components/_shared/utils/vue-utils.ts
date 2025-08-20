@@ -1,7 +1,6 @@
-import { RenderContent } from '../type';
 import { Comment, Fragment, Text, h, VNode, isVNode } from 'vue';
 import { isFunction, isObject } from './is';
-import { ObjectData } from '../type';
+import { ObjectData, RenderContent } from '../type';
 
 // 获取renderFunction
 export const getSlotFunction = (param: RenderContent | undefined) => {
@@ -12,12 +11,12 @@ export const getSlotFunction = (param: RenderContent | undefined) => {
 };
 
 // 判断一个 VNode 是否是由 v-if="false" 生成的占位符注释节点。
-export function isVifNode(vnode: VNode | undefined | null): boolean {
+export const isVifNode = (vnode: VNode | undefined | null): boolean => {
   return !vnode ? false : vnode.type === Comment && vnode.children === 'v-if';
-}
+};
 
 // 包裹文本节点
-function wrapTextContent(s: string | VNode) {
+const wrapTextContent = (s: string | VNode) => {
   return h(
     'span',
     {
@@ -27,10 +26,12 @@ function wrapTextContent(s: string | VNode) {
     },
     s
   );
-}
+};
 
 // 在vnode数组中查找第一个合法的子元素
-export function findFirstLegitChild(node: VNode[] | undefined): VNode | null {
+export const findFirstLegitChild = (
+  node: VNode[] | undefined
+): VNode | null => {
   if (!node) return null;
   const children = node as VNode[];
   for (const child of children) {
@@ -50,10 +51,10 @@ export function findFirstLegitChild(node: VNode[] | undefined): VNode | null {
     return wrapTextContent(child);
   }
   return null;
-}
+};
 
 // 扁平化插槽components
-export function findComponentsFromVnodes(vnodes: VNode[], name: string) {
+export const findComponentsFromVnodes = (vnodes: VNode[], name: string) => {
   const result: ObjectData[] = [];
   // 是否是option
   const traverse = (nodes: ObjectData | ObjectData[]) => {
@@ -87,4 +88,4 @@ export function findComponentsFromVnodes(vnodes: VNode[], name: string) {
   };
   traverse(vnodes);
   return result;
-}
+};
