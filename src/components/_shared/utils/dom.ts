@@ -1,8 +1,7 @@
 import { watch, Ref } from 'vue';
 import { MEDICA_QUERY_QUERUES } from '../constants';
-import { useMediaQuery } from '@vueuse/core';
+import { useMediaQuery, unrefElement } from '@vueuse/core';
 import { isObject, isString, isUndefined, isNumber } from './is';
-import { unrefElement } from './vue-utils';
 import { BreakpointName, ResponsiveValue } from '@/components/Grid';
 
 // 是否是服务端渲染

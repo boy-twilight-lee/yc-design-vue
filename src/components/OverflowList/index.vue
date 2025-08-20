@@ -25,20 +25,19 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toRefs, computed, useSlots } from 'vue';
+import { ref, watch, toRefs, computed } from 'vue';
 import {
   OverflowListProps,
   OverflowListEmits,
   OverflowListSlots,
 } from './type';
+import { useResizeObserver, unrefElement } from '@vueuse/core';
 import {
   throttle,
   sleep,
   findComponentsFromVnodes,
   valueToPx,
-  unrefElement,
 } from '@shared/utils';
-import { useResizeObserver } from '@vueuse/core';
 import { default as YcTag } from '@/components/Tag';
 defineOptions({
   name: 'OverflowList',

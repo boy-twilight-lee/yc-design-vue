@@ -49,12 +49,12 @@
 
 <script lang="ts" setup>
 import { ref, computed, toRefs, nextTick } from 'vue';
+import { unrefElement } from '@vueuse/core';
 import {
   isUndefined,
   isBoolean,
   valueToPx,
   useControlValue,
-  unrefElement,
 } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import useContext from './hooks/useContext';

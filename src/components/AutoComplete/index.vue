@@ -89,7 +89,7 @@ const props = withDefaults(defineProps<AutoCompleteProps>(), {
   triggerProps: () => {
     return {};
   },
-  allowClear: true,
+  allowClear: false,
   isSelectSetValue: true,
   isSearch: true,
   type: 'input',
