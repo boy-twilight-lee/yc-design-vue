@@ -1,9 +1,8 @@
 import { watch, computed, CSSProperties, Ref, ref, toRefs } from 'vue';
-import { useElementBounding, useElementSize } from '@vueuse/core';
+import { useElementBounding, useElementSize, unrefElement } from '@vueuse/core';
 import { TriggerPostion } from '../type';
 import { TriggerProps } from './useContext';
 import { Props } from '@shared/type';
-import { unrefElement } from '@vueuse/core';
 import { getGlobalConfig, sleep, valueToPx } from '@shared/utils';
 
 export default (params: {
@@ -68,7 +67,7 @@ export default (params: {
     width: triggerWidth,
     height: triggerHeight,
   } = useElementBounding(triggerRef, {
-    windowScroll: updateAtScroll.value,
+    windowScroll: updateAtScroll.value as boolean,
     updateTiming: 'next-frame',
   });
   // 计算trigger的位置

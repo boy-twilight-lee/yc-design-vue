@@ -60,28 +60,14 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  ref,
-  toRefs,
-  defineComponent,
-  h,
-  computed,
-  VNode,
-  onMounted,
-} from 'vue';
+import { ref, toRefs, defineComponent, h, computed, VNode } from 'vue';
 import {
   TypographyBaseProps,
   TypographyBaseEmits,
   TypographyBaseSlots,
 } from './type';
 import { useClipboard } from '@vueuse/core';
-import {
-  useControlValue,
-  sleep,
-  getDomText,
-  calculateEllipsis,
-  isBoolean,
-} from '@shared/utils';
+import { useControlValue, sleep, getDomText } from '@shared/utils';
 import { IconEdit, IconCopy, IconInfo } from '@shared/icons';
 import { default as YcInput, InputInstance } from '@/components/Input';
 import { default as YcTooltip } from '@/components/Tooltip';
@@ -124,7 +110,6 @@ const {
   mark,
   delete: deletable,
   underline,
-  ellipsis,
   bold,
 } = toRefs(props);
 // 复制hook
@@ -204,17 +189,6 @@ const handleCopy = async () => {
   await sleep(copyDelay.value);
   isCopied.value = false;
 };
-
-onMounted(() => {
-  // const config = isBoolean(ellipsis.value) ? {} : ellipsis.value;
-  // ellipsisInfo.value = calculateEllipsis(
-  //   contentRef.value!,
-  //   config,
-  //   [],
-  //   getDomText(contentRef)
-  // );
-  // console.log(ellipsisInfo.value);
-});
 </script>
 
 <style lang="less" scoped>
