@@ -16,3 +16,5 @@ DatePicker Form Upload TreeSelect Table Tree
 2. config-provider计算属性的问题
 3. empty支持slot
 4. statistic支持千分位显示
+5. auto-complete的默认值问题
+6. cascader popup遮挡问题和很横向滚动条问题

@@ -49,6 +49,10 @@ import {
   ScrollbarExpose,
 } from './type';
 import { useElementSize, useResizeObserver } from '@vueuse/core';
+import {
+  isHorizontallyScrollable,
+  isVerticallyScrollable,
+} from '@shared/utils';
 import ScrollbarTrack from './ScrollbarTrack.vue';
 import useContext from './hooks/useContext';
 defineOptions({
@@ -174,28 +178,18 @@ function initScrollbar() {
   const curLeft = ref<number>(0);
   // 是否有纵向滚动条
   const hasVerticalBar = computed(() => {
-    const style = scrollRef.value
-      ? getComputedStyle(scrollRef.value as HTMLDivElement)
-      : { overflowY: '', overflow: '' };
-    const overflowY = style.overflowY;
-    const overflow = style.overflow;
-    const allowScroll = ['auto', 'scroll'];
+    if (!scrollRef.value) return false;
     return (
       contentHeight.value > scrollHeight.value &&
-      (allowScroll.includes(overflowY) || allowScroll.includes(overflow))
+      isVerticallyScrollable(scrollRef.value)
     );
   });
   // 是否有很想滚动条
   const hashorizontalBar = computed(() => {
-    const style = scrollRef.value
-      ? getComputedStyle(scrollRef.value as HTMLDivElement)
-      : { overflowX: '', overflow: '' };
-    const overflowX = style.overflowX;
-    const overflow = style.overflow;
-    const allowScroll = ['auto', 'scroll'];
+    if (!scrollRef.value) return false;
     return (
       contentWidth.value > scrollWidth.value &&
-      (allowScroll.includes(overflowX) || allowScroll.includes(overflow))
+      isHorizontallyScrollable(scrollRef.value)
     );
   });
   // 计算滚动条高度

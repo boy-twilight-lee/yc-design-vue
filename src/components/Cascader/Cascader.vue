@@ -4,6 +4,9 @@
     :popup-offset="4"
     :popup-container="popupContainer"
     :disabled="disabled"
+    :content-style="{
+      background: 'transparent',
+    }"
     position="bl"
     trigger="focus"
     animation-name="slide-dynamic-origin"

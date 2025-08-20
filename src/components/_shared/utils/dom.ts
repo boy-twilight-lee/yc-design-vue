@@ -213,3 +213,29 @@ export const valueToPx = (value: string | number | undefined) => {
   }
   return value as string;
 };
+
+// 判断一个元素是否可以横向滚动
+export function isHorizontallyScrollable(element: HTMLElement): boolean {
+  const style = window.getComputedStyle(element);
+  const isScrollableOverflow =
+    style.overflowX === 'scroll' || style.overflowX === 'auto';
+  const isVisible = style.display !== 'none' && style.visibility !== 'hidden';
+  if (!isVisible) {
+    return false;
+  }
+  const isContentLarger = element.scrollWidth > element.clientWidth;
+  return isScrollableOverflow && isContentLarger;
+}
+
+//判断一个元素是否可以纵向滚动
+export function isVerticallyScrollable(element: HTMLElement): boolean {
+  const style = window.getComputedStyle(element);
+  const isScrollableOverflow =
+    style.overflowY === 'scroll' || style.overflowY === 'auto';
+  const isVisible = style.display !== 'none' && style.visibility !== 'hidden';
+  if (!isVisible) {
+    return false;
+  }
+  const isContentLarger = element.scrollHeight > element.clientHeight;
+  return isScrollableOverflow && isContentLarger;
+}
