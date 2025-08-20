@@ -107,7 +107,7 @@ export const findFirstScrollableParent = (element?: HTMLElement) => {
   }
   let currentElement: HTMLElement | null = element.parentElement;
   while (currentElement && currentElement !== document.body) {
-    const style = window.getComputedStyle(currentElement);
+    const style = getComputedStyle(currentElement);
     const overflow = style.overflowY || style.overflow;
     const isScrollable = ['auto', 'scroll'].includes(overflow);
     const canScroll = currentElement.scrollHeight > currentElement.clientHeight;
@@ -133,16 +133,16 @@ export const throttleByRaf = (cb: (...args: any[]) => void) => {
 
   const throttle = (...args: any[]): void => {
     if (timer) {
-      window.cancelAnimationFrame(timer);
+      cancelAnimationFrame(timer);
     }
-    timer = window.requestAnimationFrame(() => {
+    timer = requestAnimationFrame(() => {
       cb(...args);
       timer = 0;
     });
   };
 
   throttle.cancel = () => {
-    window.cancelAnimationFrame(timer);
+    cancelAnimationFrame(timer);
     timer = 0;
   };
 
@@ -216,7 +216,7 @@ export const valueToPx = (value: string | number | undefined) => {
 
 // 判断一个元素是否可以横向滚动
 export function isHorizontallyScrollable(element: HTMLElement): boolean {
-  const style = window.getComputedStyle(element);
+  const style = getComputedStyle(element);
   const isScrollableOverflow =
     style.overflowX === 'scroll' || style.overflowX === 'auto';
   const isVisible = style.display !== 'none' && style.visibility !== 'hidden';
@@ -229,7 +229,7 @@ export function isHorizontallyScrollable(element: HTMLElement): boolean {
 
 //判断一个元素是否可以纵向滚动
 export function isVerticallyScrollable(element: HTMLElement): boolean {
-  const style = window.getComputedStyle(element);
+  const style = getComputedStyle(element);
   const isScrollableOverflow =
     style.overflowY === 'scroll' || style.overflowY === 'auto';
   const isVisible = style.display !== 'none' && style.visibility !== 'hidden';
