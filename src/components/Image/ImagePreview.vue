@@ -30,6 +30,7 @@
               transform: `scale(${scale}, ${scale})`,
             }"
             class="yc-image-preview-img-container"
+            @click.self="handleClose('mask', $event, false)"
           >
             <img
               :src="src"

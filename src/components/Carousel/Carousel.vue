@@ -68,6 +68,10 @@ const { slideTo, computedCurrent, autoPlay, carouselItems } =
   useContext().provide(props, emits);
 // 自动播放的timer
 let autoPlayTimer = ref<number>(0);
+// 处理停止自动播放
+const stopAutoPlay = () => {
+  clearInterval(autoPlayTimer.value);
+};
 // 设置自动播放
 const setAutoPlay = () => {
   if (!autoPlay.value) return;
@@ -83,14 +87,14 @@ const setAutoPlay = () => {
 };
 // 处理click切换
 const handleChange = async (index: number) => {
-  clearInterval(autoPlayTimer.value);
+  stopAutoPlay();
   await slideTo(index);
   setAutoPlay();
 };
 watch(
   () => autoPlay.value,
   () => {
-    clearInterval(autoPlayTimer.value);
+    stopAutoPlay();
     setAutoPlay();
   },
   {
