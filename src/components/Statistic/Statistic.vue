@@ -74,6 +74,7 @@ const {
   animationDuration,
   easeing,
   isCountdown,
+  showGroupSeparator,
 } = toRefs(props);
 // valueRef
 const valueRef = ref<HTMLDivElement>();
@@ -117,10 +118,17 @@ watch(
     immediate: true,
   }
 );
+// 取千分位
+const formatNumber = (num: string) => {
+  let parts = num.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
+};
 // 获取格式化的value
 function getFormatValue(value: number | Date) {
   if (isNumber(value) && !isCountdown.value) {
-    return value.toFixed(precision.value);
+    const fixedValue = value.toFixed(precision.value);
+    return showGroupSeparator.value ? formatNumber(fixedValue) : fixedValue;
   }
   if (isCountdown.value) {
     return formatSeconds(value as number, format.value);

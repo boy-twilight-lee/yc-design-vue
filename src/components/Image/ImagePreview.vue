@@ -114,7 +114,6 @@ const {
 } = toRefs(props);
 // 接收全局属性
 const { zIndex, popupContainer } = getGlobalConfig(props);
-console.log(popupContainer.value, 'popupContainer');
 // imageRef
 const imageRef = ref<HTMLImageElement>();
 // scale

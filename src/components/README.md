@@ -15,4 +15,4 @@ DatePicker Form Upload TreeSelect Table Tree
 1. trigger的position属性动态计算问题
 2. config-provider计算属性的问题
 3. empty支持slot
-4.
+4. statistic支持千分位显示

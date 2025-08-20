@@ -1,39 +1,23 @@
 <template>
   <div class="test">
-    <yc-list :gridProps="{ cols: 4 }" :bordered="false">
-      <yc-list-item>
-        <yc-list>
-          <template #header>Platform</template>
-          <yc-list-item>iOS</yc-list-item>
-          <yc-list-item>Android</yc-list-item>
-          <yc-list-item>Web</yc-list-item>
-        </yc-list>
-      </yc-list-item>
-      <yc-list-item>
-        <yc-list>
-          <template #header>Framework</template>
-          <yc-list-item>Angular</yc-list-item>
-          <yc-list-item>Vue</yc-list-item>
-          <yc-list-item>React</yc-list-item>
-        </yc-list>
-      </yc-list-item>
-      <yc-list-item>
-        <yc-list>
-          <template #header>Language</template>
-          <yc-list-item>C++</yc-list-item>
-          <yc-list-item>JavaScript</yc-list-item>
-          <yc-list-item>Python</yc-list-item>
-        </yc-list>
-      </yc-list-item>
-      <yc-list-item>
-        <yc-list>
-          <template #header>Component</template>
-          <yc-list-item>Button</yc-list-item>
-          <yc-list-item>Breadcrumb</yc-list-item>
-          <yc-list-item>Transfer</yc-list-item>
-        </yc-list>
-      </yc-list-item>
-    </yc-list>
+    <yc-space size="large">
+      <yc-statistic title="New Users" :value="125670" show-group-separator>
+        <template #suffix>
+          <icon-arrow-rise />
+        </template>
+      </yc-statistic>
+      <yc-statistic
+        title="User Growth Rate"
+        :value="50.52"
+        :precision="2"
+        :value-style="{ color: '#0fbf60' }"
+      >
+        <template #prefix>
+          <icon-arrow-rise />
+        </template>
+        <template #suffix>%</template>
+      </yc-statistic>
+    </yc-space>
   </div>
 </template>
 
