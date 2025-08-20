@@ -1,74 +1,34 @@
 <template>
   <div class="test">
-    <yc-space direction="vertical" size="large">
-      <yc-cascader
-        :options="options"
-        :style="{ width: '320px' }"
-        placeholder="Please select ..."
-      />
-      <yc-cascader
-        :options="options"
-        default-value="datunli"
-        expand-trigger="hover"
-        :style="{ width: '320px' }"
-        placeholder="Please select ..."
-      />
-    </yc-space>
+    <yc-carousel
+      :style="{
+        width: '600px',
+        height: '240px',
+      }"
+      :auto-play="true"
+      indicator-type="dot"
+      show-arrow="hover"
+    >
+      <yc-carousel-item v-for="image in images">
+        <img
+          :src="image"
+          :style="{
+            width: '100%',
+          }"
+        />
+      </yc-carousel-item>
+    </yc-carousel>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
-const options = [
-  {
-    value: 'beijing',
-    label: 'Beijing',
-    children: [
-      {
-        value: 'chaoyang',
-        label: 'ChaoYang',
-        children: [
-          {
-            value: 'datunli',
-            label: 'Datunli',
-          },
-        ],
-      },
-      {
-        value: 'haidian',
-        label: 'Haidian',
-      },
-      {
-        value: 'dongcheng',
-        label: 'Dongcheng',
-      },
-      {
-        value: 'xicheng',
-        label: 'Xicheng',
-        children: [
-          {
-            value: 'jinrongjie',
-            label: 'Jinrongjie',
-          },
-          {
-            value: 'tianqiao',
-            label: 'Tianqiao',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: 'shanghai',
-    label: 'Shanghai',
-    children: [
-      {
-        value: 'huangpu',
-        label: 'Huangpu',
-      },
-    ],
-  },
+import { ref } from 'vue';
+const images = [
+  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp',
+  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp',
+  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp',
 ];
+const value = ref('#165DFF');
 </script>
 
 <style lang="less" scoped>
@@ -80,8 +40,5 @@ const options = [
   justify-content: center;
   align-items: center;
   gap: 10px;
-  .button {
-    width: 100px;
-  }
 }
 </style>

@@ -36,7 +36,8 @@
 </template>
 
 <script lang="ts" setup>
-import { watch, onBeforeUnmount } from 'vue';
+import { watch, onBeforeUnmount, ref } from 'vue';
+import { useInterval } from '@vueuse/core';
 import { isObject } from '@shared/utils';
 import { CarouselProps, CarouselEmits, CarouselSlots } from './type';
 import useContext from './hooks/useContext';
@@ -66,34 +67,30 @@ const emits = defineEmits<CarouselEmits>();
 const { slideTo, computedCurrent, autoPlay, carouselItems } =
   useContext().provide(props, emits);
 // 自动播放的timer
-let autoPlayTimer: any = null;
+let autoPlayTimer = ref<number>(0);
 // 设置自动播放
 const setAutoPlay = () => {
   if (!autoPlay.value) return;
-  autoPlayTimer = setInterval(
-    () => {
-      slideTo(computedCurrent.value + 1);
-    },
-    (autoPlay.value as Record<string, any>)?.interval ?? 3000
+  autoPlayTimer = useInterval(
+    (autoPlay.value as Record<string, any>)?.interval ?? 3000,
+    {
+      callback: () => {
+        console.log('定时器触发了');
+        slideTo(computedCurrent.value + 1);
+      },
+    }
   );
-};
-// 停止自动播放
-const stopAutoPlay = () => {
-  clearInterval(autoPlayTimer);
-  autoPlayTimer = null;
 };
 // 处理click切换
 const handleChange = async (index: number) => {
-  stopAutoPlay();
+  clearInterval(autoPlayTimer.value);
   await slideTo(index);
   setAutoPlay();
 };
 watch(
   () => autoPlay.value,
   () => {
-    if (!autoPlay.value) {
-      return stopAutoPlay();
-    }
+    clearInterval(autoPlayTimer.value);
     setAutoPlay();
   },
   {

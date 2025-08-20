@@ -77,7 +77,7 @@ export default () => {
     // preIndex
     const preIndex = ref<number>(computedCurrent.value);
     // 动画计时器
-    let timer: NodeJS.Timeout | null = null;
+    let flag: boolean = false;
     // 获取合法的index
     const getValidIndex = (val: number) => {
       if (val < 0) {
@@ -87,7 +87,7 @@ export default () => {
     };
     // 滚动
     const slideTo = async (targetIndex: number) => {
-      if (timer || targetIndex == computedCurrent.value) {
+      if (flag || targetIndex == computedCurrent.value) {
         return;
       }
       moveType.value =
@@ -95,8 +95,9 @@ export default () => {
       preIndex.value = computedCurrent.value;
       computedCurrent.value = getValidIndex(targetIndex);
       emits('change', computedCurrent.value, preIndex.value, true);
+      flag = true;
       await sleep(moveSpeed.value);
-      timer = null;
+      flag = false;
     };
     // 提供给子组件
     _provide<CarouselContext>(CAROUSEL_CONTEXT_KEY, {

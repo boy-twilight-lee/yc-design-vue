@@ -19,14 +19,17 @@
       </transition>
       <!-- body -->
       <transition name="fade" @after-leave="handleAfterLeave">
-        <div v-show="innerVisible" class="yc-image-preview-wrapper">
+        <div
+          v-show="innerVisible"
+          class="yc-image-preview-wrapper"
+          @click.self="handleClose('mask', $event, false)"
+        >
           <!-- img -->
           <div
             :style="{
               transform: `scale(${scale}, ${scale})`,
             }"
             class="yc-image-preview-img-container"
-            @click.self="handleClose('mask', $event, false)"
           >
             <img
               :src="src"
@@ -178,6 +181,7 @@ const intLisenter = () => {
     // 处理滚轮缩放
     useEventListener('wheel', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       // 判断是放大还是缩小
       const delta = e.deltaY < 0 ? 1 : -1;
       // 计算新的缩放比例

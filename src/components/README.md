@@ -10,11 +10,7 @@ DatePicker Form Upload TreeSelect Table Tree
 
 ## 待修复的bug
 1. grid flex属性的问题
+2. timeline幽灵节点的问题。
+3. carousel的autoPlay切换问题
 
-## 在编写文档的时候修复的问题
-1. trigger的position css 属性动态计算问题
-2. config-provider计算属性的问题
-3. empty支持slot
-4. statistic支持千分位显示
-5. auto-complete的默认值问题
-6. cascader popup遮挡问题和很横向滚动条问题
+
