@@ -79,8 +79,12 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { ListProps, ListEmits, ListSlots } from './type';
-import { unrefElement } from '@vueuse/core';
-import { getGlobalConfig, useControlValue, valueToPx } from '@shared/utils';
+import {
+  getGlobalConfig,
+  useControlValue,
+  valueToPx,
+  unrefElement,
+} from '@shared/utils';
 import useScrollReach from './hooks/useScrollReach';
 import YcSpin from '@/components/Spin';
 import {

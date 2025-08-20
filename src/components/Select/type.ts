@@ -20,7 +20,6 @@ export interface SelectProps {
   maxTagCount?: number;
   popupContainer?: PopupContainer;
   bordered?: boolean;
-  defaultActivefirstOption?: boolean;
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   unmountonClose?: boolean;
