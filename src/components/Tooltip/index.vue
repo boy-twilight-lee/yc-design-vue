@@ -48,7 +48,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   popupVisible: undefined,
   defaultPopupVisible: false,
   content: '',
-  position: 'bottom',
+  position: 'top',
   mini: false,
   backgroundColor: 'rgb(29,33,41)',
   contentClass: '',

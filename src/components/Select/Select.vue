@@ -155,7 +155,6 @@ const props = withDefaults(defineProps<SelectProps>(), {
   maxTagCount: 0,
   popupContainer: undefined,
   bordered: true,
-  defaultActivefirstOption: false,
   popupVisible: undefined,
   defaultPopupVisible: false,
   unmountOnClose: false,
