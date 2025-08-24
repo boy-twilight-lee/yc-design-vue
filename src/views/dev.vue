@@ -1,44 +1,53 @@
 <template>
   <div class="test">
-    <yc-carousel
-      :style="{
-        width: '600px',
-        height: '240px',
-      }"
-      :auto-play="true"
-      indicator-type="dot"
-      show-arrow="hover"
+    <div
+      ref="contaienrRef"
+      style="
+        width: 100%;
+        height: 300px;
+        background-color: var(--color-fill-2);
+        position: relative;
+        overflow: hidden;
+        line-height: 300px;
+        text-align: center;
+      "
     >
-      <yc-carousel-item v-for="image in images">
-        <img
-          :src="image"
-          :style="{
-            width: '100%',
-          }"
-        />
-      </yc-carousel-item>
-    </yc-carousel>
-    <yc-image
-      width="200"
-      src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"
-    />
+      <yc-button type="primary" @click="handleClick">Open Drawer</yc-button>
+    </div>
+    <yc-drawer
+      :popup-container="contaienrRef"
+      :visible="visible"
+      @ok="handleOk"
+      @cancel="handleCancel"
+    >
+      <template #title> Title </template>
+      <div>
+        You can customize modal body text by the current situation. This modal
+        will be closed immediately once you press the OK button.
+      </div>
+    </yc-drawer>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-const images = [
-  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp',
-  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp',
-  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp',
-];
-const value = ref('#165DFF');
+const visible = ref(false);
+const contaienrRef = ref();
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
 </script>
 
 <style lang="less" scoped>
 .test {
   overflow: auto;
-  height: 500vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;

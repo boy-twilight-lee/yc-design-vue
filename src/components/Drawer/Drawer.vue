@@ -12,9 +12,6 @@
         },
       ]"
       :style="{
-        position: 'fixed',
-      }"
-      :style="{
         zIndex,
         ...($attrs.style ?? {}),
       }"

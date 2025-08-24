@@ -2,6 +2,9 @@
   <yc-drawer
     v-bind="props"
     v-model:visible="visible"
+    :style="{
+      position: 'fixed',
+    }"
     @ok="onOk?.()"
     @cancel="onCancel?.()"
     @before-open="onBeforeOpen?.()"

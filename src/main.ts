@@ -6,8 +6,6 @@ import Arco from '@arco-design/web-vue';
 import '@arco-design/web-vue/dist/arco.css';
 import YcDesign from '@/components';
 import '@/components/index.less';
-// import YcDesign from 'yc-design-vue';
-// import 'yc-design-vue/es/style.css';
 
 const app = createApp(App);
 app.use(router);
