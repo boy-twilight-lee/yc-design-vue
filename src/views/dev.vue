@@ -21,10 +21,8 @@
       @cancel="handleCancel"
     >
       <template #title> Title </template>
-      <div>
-        You can customize modal body text by the current situation. This modal
-        will be closed immediately once you press the OK button.
-      </div>
+      You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.
     </yc-drawer>
   </div>
 </template>

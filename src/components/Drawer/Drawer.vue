@@ -155,12 +155,12 @@ const drawerStyle = computed(() => {
   return {
     height:
       placement.value == 'left' || placement.value == 'right'
-        ? '100%'
+        ? ''
         : valueToPx(height.value),
     width:
       placement.value == 'left' || placement.value == 'right'
         ? valueToPx(width.value)
-        : `100%`,
+        : '',
     // 传入样式
     ..._drawerStyle.value,
   } as CSSProperties;
