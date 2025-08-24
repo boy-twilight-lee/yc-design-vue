@@ -8,6 +8,9 @@
         [`yc-service-modal-${type}`]: !!type,
       },
     ]"
+    :style="{
+      position: 'fixed',
+    }"
     @ok="onOk?.()"
     @cancel="onCancel?.()"
     @before-open="onBeforeOpen?.()"

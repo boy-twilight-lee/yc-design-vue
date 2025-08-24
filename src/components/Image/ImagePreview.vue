@@ -6,7 +6,7 @@
         'yc-image-preview',
         $attrs.class,
         {
-          'yc-image-preview-absolute': !isUndefined(_popupContainer),
+          'yc-image-preview-absolute': _popupContainer,
         },
       ]"
       :style="{

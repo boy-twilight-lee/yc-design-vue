@@ -8,9 +8,12 @@
         `yc-drawer-placement-${placement}`,
         $attrs.class,
         {
-          'yc-drawer-position-absolute': popupContainer || !renderToBody,
+          'yc-drawer-position-absolute': _popupContainer || !renderToBody,
         },
       ]"
+      :style="{
+        position: 'fixed',
+      }"
       :style="{
         zIndex,
         ...($attrs.style ?? {}),
@@ -145,6 +148,7 @@ const {
   escToClose,
   drawerStyle: _drawerStyle,
   renderToBody,
+  popupContainer: _popupContainer,
 } = toRefs(props);
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收configProvider

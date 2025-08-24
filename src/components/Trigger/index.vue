@@ -26,7 +26,7 @@
           `yc-trigger-position-${position}`,
           {
             'yc-trigger-transform-origin': needTransformOrigin,
-            'yc-trigger-absolute': !isUndefined(_popupContainer),
+            'yc-trigger-absolute': _popupContainer,
           },
           $attrs.class,
         ]"

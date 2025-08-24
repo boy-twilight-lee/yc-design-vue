@@ -8,7 +8,7 @@
         $attrs.class,
         {
           'yc-modal-simple': simple,
-          'yc-modal-position-absolute': popupContainer || !renderToBody,
+          'yc-modal-position-absolute': _popupContainer || !renderToBody,
         },
       ]"
       :style="{
@@ -183,6 +183,7 @@ const {
   fullscreen,
   draggable,
   renderToBody,
+  popupContainer: _popupContainer,
 } = toRefs(props);
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收属性
