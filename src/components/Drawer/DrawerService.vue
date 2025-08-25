@@ -5,6 +5,7 @@
     :style="{
       position: 'fixed',
     }"
+    popup-container=".yc-overlay-drawer"
     @ok="onOk?.()"
     @cancel="onCancel?.()"
     @before-open="onBeforeOpen?.()"
@@ -44,7 +45,6 @@ const props = withDefaults(defineProps<DrawerServiceProps>(), {
   unmountOnClose: false,
   width: 250,
   height: 250,
-  popupContainer: 'yc-overlay-drawer',
   drawerStyle: () => {
     return {};
   },

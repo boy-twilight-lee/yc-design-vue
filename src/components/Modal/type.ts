@@ -57,7 +57,10 @@ export interface ModalSlots {
   title?: () => VNode[];
 }
 
-export type ModalConfig = Omit<ModalProps, 'visible' | 'defaultVisible'> & {
+export type ModalConfig = Omit<
+  ModalProps,
+  'visible' | 'defaultVisible' | 'popupContainer'
+> & {
   title?: RenderContent;
   content?: RenderContent;
   type?: ModalType;

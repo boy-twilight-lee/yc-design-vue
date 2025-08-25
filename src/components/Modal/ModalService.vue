@@ -2,6 +2,7 @@
   <yc-modal
     v-bind="props"
     v-model:visible="visible"
+    popup-container=".yc-overlay-modal"
     :modal-class="[
       'yc-service-modal',
       {
@@ -60,7 +61,6 @@ const props = withDefaults(defineProps<ModalServiceProps>(), {
   },
   footer: true,
   renderToBody: true,
-  popupContainer: '.yc-overlay-modal',
   maskStyle: () => {
     return {};
   },

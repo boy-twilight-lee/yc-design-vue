@@ -46,7 +46,10 @@ export interface DrawerEmits {
   (e: 'close'): void;
 }
 
-export type DrawerConfig = Omit<DrawerProps, 'visible' | 'defaultVisible'> & {
+export type DrawerConfig = Omit<
+  DrawerProps,
+  'visible' | 'defaultVisible' | 'popupContainer'
+> & {
   content?: RenderContent;
   title?: RenderContent;
   onOk?: () => void | Promise<void>;
