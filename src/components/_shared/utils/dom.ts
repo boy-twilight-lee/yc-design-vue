@@ -101,21 +101,32 @@ export const mediaQueryHandler = (
 };
 
 // 查找元素的第一个可滚动父元素
-export const findFirstScrollableParent = (element?: HTMLElement) => {
-  if (!element || element === document.body) {
-    return;
+export const findFirstScrollableParent = (
+  element?: HTMLElement | null
+): HTMLElement | undefined => {
+  // 如果没有提供起始元素，则直接返回
+  if (!element) {
+    return undefined;
   }
+  // 从起始元素的直接父元素开始查找
   let currentElement: HTMLElement | null = element.parentElement;
-  while (currentElement && currentElement !== document.body) {
+  // 循环向上查找，直到没有父元素为止 (currentElement变为null)
+  while (currentElement) {
     const style = getComputedStyle(currentElement);
+    // 检查 overflowY 或 overflow 属性
     const overflow = style.overflowY || style.overflow;
     const isScrollable = ['auto', 'scroll'].includes(overflow);
+    // 判断元素是否在垂直方向上实际存在可滚动的内容
     const canScroll = currentElement.scrollHeight > currentElement.clientHeight;
+    // 如果该元素既被设置为可滚动，又有可滚动的内容，则返回它
     if (isScrollable && canScroll) {
       return currentElement;
     }
+    // 继续向上查找下一个父元素
     currentElement = currentElement.parentElement;
   }
+  // 如果循环结束仍未找到，则返回 undefined
+  return undefined;
 };
 
 //睡眠函数

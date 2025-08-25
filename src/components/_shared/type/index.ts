@@ -1,9 +1,4 @@
-import {
-  RenderFunction,
-  ComponentPublicInstance,
-  MaybeRef,
-  MaybeRefOrGetter,
-} from 'vue';
+import { RenderFunction } from 'vue';
 
 export type Size = 'mini' | 'small' | 'medium' | 'large';
 

@@ -12,8 +12,12 @@
         {
           'yc-affix': isFixed,
         },
+        $attrs.class,
       ]"
-      :style="style"
+      :style="{
+        ...style,
+        ...($attrs.style || {}),
+      }"
       ref="affixRef"
     >
       <slot />
@@ -34,6 +38,7 @@ import {
 } from '@shared/utils';
 defineOptions({
   name: 'Affix',
+  inheritAttrs: false,
 });
 defineSlots<AffixSlots>();
 const props = withDefaults(defineProps<AffixProps>(), {
