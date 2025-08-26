@@ -32,6 +32,7 @@ import { toRefs, computed, VNode, Fragment, Comment } from 'vue';
 import { SpaceProps, SpaceSlots } from './type';
 import {
   isNumber,
+  isArray,
   valueToPx,
   isUndefined,
   getSlotFunction,
@@ -56,7 +57,13 @@ const gap = computed(() => {
     medium: 16,
     large: 24,
   };
-  return valueToPx(isNumber(size.value) ? size.value : map[size.value]);
+  if (isNumber(size.value)) {
+    return valueToPx(size.value);
+  } else if (isArray(size.value)) {
+    return size.value.map((v) => valueToPx(v)).join(' ');
+  } else {
+    return valueToPx(map[size.value]);
+  }
 });
 // align
 const align = computed(() => {

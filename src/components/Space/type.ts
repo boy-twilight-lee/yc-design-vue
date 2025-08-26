@@ -5,7 +5,7 @@ export interface SpaceProps {
   direction?: Direction;
   wrap?: boolean;
   fill?: boolean;
-  size?: Size | number;
+  size?: SpaceSize | [SpaceSize, SpaceSize];
 }
 
 export interface SpaceSlots {
@@ -14,3 +14,4 @@ export interface SpaceSlots {
 }
 
 export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
+export type SpaceSize = Size | number;
