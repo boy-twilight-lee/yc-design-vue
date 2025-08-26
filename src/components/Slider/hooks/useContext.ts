@@ -124,19 +124,21 @@ export default () => {
       return decimalIndex === -1 ? 0 : str.length - decimalIndex - 1;
     }
     // 标准化结果
-    function normalizeValue(value: number) {
-      const totalSteps = (max.value - min.value) / step.value;
-      const currentStep = (value - min.value) / step.value;
-      const normalized = (currentStep / totalSteps) * 100;
-      return Math.round(normalized);
+    function normalizeValue(value: number): number {
+      if (max.value - min.value === 0) return 0;
+      const normalized = ((value - min.value) / (max.value - min.value)) * 100;
+      return normalized;
     }
     // 转化原始结果
-    function denormalizeValue(value: number): number {
-      const totalSteps = (max.value - min.value) / step.value;
-      const stepPosition = (value / 100) * totalSteps;
-      const exactValue = min.value + stepPosition * step.value;
+    function denormalizeValue(percent: number): number {
+      const estimatedValue =
+        min.value + (percent / 100) * (max.value - min.value);
+      const steps = (estimatedValue - min.value) / step.value;
+      const closestStep = Math.round(steps);
+      const finalValue = min.value + closestStep * step.value;
       const digit = getDecimalPlaces(step.value);
-      return +(Math.round(exactValue / step.value) * step.value).toFixed(digit);
+      const clampedValue = Math.max(min.value, Math.min(finalValue, max.value));
+      return +clampedValue.toFixed(digit);
     }
     _provide<SliderContext>(SLIDER_CONTEXT_KEY, {
       startValue,

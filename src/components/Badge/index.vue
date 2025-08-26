@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, toRefs, useSlots } from 'vue';
+import { computed, toRefs } from 'vue';
 import { BadgeProps, BadgeSlots } from './type';
 import { valueToPx } from '@shared/utils';
 import { TAG_PRESET_COLORS } from '@shared/constants';
