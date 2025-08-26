@@ -2,7 +2,7 @@
   <div
     class="yc-grid"
     :style="{
-      gap: `${valueToPx(rowGap)} ${valueToPx(rowGap)}`,
+      gap: `${valueToPx(rowGap)} ${valueToPx(colGap)}`,
       gridTemplateColumns: `repeat(${cols}, minmax(0px, 1fr))`,
     }"
   >

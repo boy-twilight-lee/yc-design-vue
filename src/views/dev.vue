@@ -1,92 +1,61 @@
 <template>
   <div class="test">
-    <div style="width: 800px">
-      <div>span</div>
-      <yc-row class="grid-demo">
-        <yc-col :span="12">
-          <div>12 - 50%</div>
-        </yc-col>
-        <yc-col :span="12">
-          <div>12 - 50%</div>
-        </yc-col>
-      </yc-row>
-      <yc-row class="grid-demo">
-        <yc-col :span="8">
-          <div>8 - 33.33%</div>
-        </yc-col>
-        <yc-col :span="8">
-          <div>8 - 33.33%</div>
-        </yc-col>
-        <yc-col :span="8">
-          <div>8 - 33.33%</div>
-        </yc-col>
-      </yc-row>
-      <div>flex</div>
-      <a-row class="grid-demo" style="margin-bottom: 16px">
-        <a-col flex="100px">
-          <div>100px</div>
-        </a-col>
-        <a-col flex="auto">
-          <div>auto</div>
-        </a-col>
-      </a-row>
-      <a-row class="grid-demo" style="margin-bottom: 16px">
-        <a-col flex="100px">
-          <div>100px</div>
-        </a-col>
-        <a-col flex="auto">
-          <div>auto</div>
-        </a-col>
-        <a-col flex="100px">
-          <div>100px</div>
-        </a-col>
-      </a-row>
-      <a-row class="grid-demo" style="margin-bottom: 16px">
-        <a-col :flex="3">
-          <div>3 / 12</div>
-        </a-col>
-        <a-col :flex="4">
-          <div>4 / 12</div>
-        </a-col>
-        <a-col :flex="5">
-          <div>5 / 12</div>
-        </a-col>
-      </a-row>
-      <yc-row class="grid-demo" style="margin-bottom: 16px">
-        <yc-col flex="100px">
-          <div>100px</div>
-        </yc-col>
-        <yc-col flex="auto">
-          <div>auto</div>
-        </yc-col>
-      </yc-row>
-      <yc-row class="grid-demo" style="margin-bottom: 16px">
-        <yc-col flex="100px">
-          <div>100px</div>
-        </yc-col>
-        <yc-col flex="auto">
-          <div>auto</div>
-        </yc-col>
-        <yc-col flex="100px">
-          <div>100px</div>
-        </yc-col>
-      </yc-row>
-      <yc-row class="grid-demo" style="margin-bottom: 16px">
-        <yc-col :flex="3">
-          <div>3 / 12</div>
-        </yc-col>
-        <yc-col :flex="4">
-          <div>4 / 12</div>
-        </yc-col>
-        <yc-col :flex="5">
-          <div>5 / 12</div>
-        </yc-col>
-      </yc-row>
-    </div>
+    <yc-row align="center" :style="{ marginBottom: '24px' }">
+      <yc-checkbox
+        :checked="!!pendingProps.direction"
+        @change="(v) => onChange({ direction: v ? 'horizontal' : 'vertical' })"
+      >
+        horizontal &nbsp; &nbsp;
+      </yc-checkbox>
+      <yc-checkbox
+        :checked="!!pendingProps.reverse"
+        @change="(v) => onChange({ reverse: v })"
+      >
+        reverse &nbsp; &nbsp;
+      </yc-checkbox>
+      <yc-checkbox
+        :checked="!!pendingProps.pending"
+        @change="
+          (v) => onChange({ pending: v ? 'This is a pending dot' : false })
+        "
+      >
+        pending &nbsp; &nbsp;
+      </yc-checkbox>
+
+      <yc-checkbox
+        :checked="!!pendingProps.hasPendingDot"
+        @change="(v) => onChange({ hasPendingDot: v })"
+      >
+        custom pendingDot
+      </yc-checkbox>
+    </yc-row>
+    <yc-timeline v-bind="pendingProps">
+      <template v-if="pendingProps.hasPendingDot" #dot>
+        <IconFire :style="{ color: '#e70a0a' }" />
+      </template>
+      <yc-timeline-item label="2017-03-10" dotColor="#52C419">
+        The first milestone
+      </yc-timeline-item>
+      <yc-timeline-item label="2018-05-12" dotColor="#F5222D">
+        The second milestone
+      </yc-timeline-item>
+      <yc-timeline-item label="2020-09-30"
+        >The third milestone</yc-timeline-item
+      >
+    </yc-timeline>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const pendingProps = ref({});
+const onChange = (newProps) => {
+  pendingProps.value = {
+    ...pendingProps.value,
+    ...newProps,
+  };
+};
+</script>
 
 <style lang="less" scoped>
 .test {

@@ -16,23 +16,14 @@
       :is="node"
       :mode="getPoistion(i)"
     />
-    <yc-timeline-item v-if="pending" is-ghost>
-      <template #dot>
-        <slot name="dot">
-          <yc-spin :size="12" />
-        </slot>
-      </template>
-      <span v-if="isString(pending)">{{ pending }}</span>
-    </yc-timeline-item>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { TimelineProps, TimelineSlots } from './type';
-import { isString } from '@shared/utils';
+
 import useContext from './hooks/useContext';
-import YcTimelineItem from './TimelineItem.vue';
-import YcSpin from '@/components/Spin';
+
 defineOptions({
   name: 'Timeline',
 });

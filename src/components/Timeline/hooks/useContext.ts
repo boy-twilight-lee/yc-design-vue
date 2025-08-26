@@ -6,6 +6,7 @@ import {
   useSlots,
   provide as _provide,
   inject as _inject,
+  h,
 } from 'vue';
 import {
   TimelineProps as _TimelineProps,
@@ -15,6 +16,7 @@ import {
 import { Props, Direction, RequiredDeep } from '@shared/type';
 import { findComponentsFromVnodes } from '@shared/utils';
 import TimelineItem from '../TimelineItem.vue';
+import TimelineItemPending from '../TimelineItemPending.vue';
 
 const TIMELINE_CONTEXT_KEY = 'timeline-context';
 type TimelineContext = {
@@ -31,6 +33,7 @@ export default () => {
       direction,
       labelPosition,
       reverse,
+      pending,
       mode: _mode,
     } = toRefs(props as TimelineProps);
     const slots = useSlots();
@@ -49,10 +52,13 @@ export default () => {
     });
     // timelineitem
     const timelineItems = computed(() => {
-      return findComponentsFromVnodes(
+      const nodes = findComponentsFromVnodes(
         slots.default?.() || [],
         TimelineItem.name
       );
+      return pending.value
+        ? [...nodes, h(TimelineItemPending, { pending: pending.value }, slots)]
+        : nodes;
     });
     _provide<TimelineContext>(TIMELINE_CONTEXT_KEY, {
       direction,
