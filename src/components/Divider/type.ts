@@ -5,7 +5,7 @@ export interface DividerProps {
   orientation?: Orientation;
   type?: DividerType;
   size?: number;
-  margin?: number;
+  margin?: number | string;
 }
 
 export interface DividerSlots {

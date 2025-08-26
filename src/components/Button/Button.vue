@@ -3,6 +3,7 @@
     v-if="href"
     :href="href"
     :class="className"
+    :autofocus="autofocus"
     v-bind="$attrs"
     @mousedown="handleEvent('mousedown', $event)"
     @mouseup="handleEvent('mouseup', $event)"
@@ -21,6 +22,7 @@
     :type="htmlType"
     :disabled="disabled"
     :class="className"
+    :autofocus="autofocus"
     v-bind="$attrs"
     @mousedown="handleEvent('mousedown', $event)"
     @mouseup="handleEvent('mouseup', $event)"
@@ -54,6 +56,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   loading: false,
   long: false,
   htmlType: 'button',
+  autofocus: false,
   href: '',
 });
 const emits = defineEmits<ButtonEmits>();

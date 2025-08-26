@@ -33,6 +33,7 @@ const props = withDefaults(defineProps<DividerProps>(), {
   margin: undefined,
 });
 const { size, margin: _margin, direction, type } = toRefs(props);
+// margin
 const margin = computed(() => {
   if (isUndefined(_margin.value)) {
     return direction.value == 'horizontal' ? '20px 0' : '0 12px';

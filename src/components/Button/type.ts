@@ -10,6 +10,7 @@ export interface ButtonProps {
   loading?: boolean;
   disabled?: boolean;
   htmlType?: ButtonHtmlType;
+  autofocus?: boolean;
   href?: string;
 }
 
