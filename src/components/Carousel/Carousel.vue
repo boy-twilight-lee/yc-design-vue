@@ -67,25 +67,25 @@ const emits = defineEmits<CarouselEmits>();
 const { slideTo, computedCurrent, autoPlay, carouselItems } =
   useContext().provide(props, emits);
 // 自动播放的timer
-let autoPlayTimer = ref<number>(0);
+const autoPlayTimer = ref<number>(0);
 // 处理停止自动播放
 const stopAutoPlay = () => {
+  if (!autoPlayTimer.value) return;
   clearInterval(autoPlayTimer.value);
+  autoPlayTimer.value = 0;
 };
-// 设置自动播放
 const setAutoPlay = () => {
   if (!autoPlay.value) return;
-  autoPlayTimer = useInterval(
-    (autoPlay.value as Record<string, any>)?.interval ?? 3000,
-    {
-      callback: () => {
-        console.log('定时器触发了');
-        slideTo(computedCurrent.value + 1);
-      },
-    }
+  stopAutoPlay();
+  autoPlayTimer.value = window.setInterval(
+    () => {
+      slideTo(computedCurrent.value + 1);
+    },
+    (autoPlay.value as Record<string, any>)?.interval ?? 3000
   );
 };
-// 处理click切换
+
+// [修改] handleChange 的逻辑现在是正确的
 const handleChange = async (index: number) => {
   stopAutoPlay();
   await slideTo(index);

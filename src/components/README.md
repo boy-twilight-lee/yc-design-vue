@@ -5,6 +5,5 @@ DatePicker Form Upload TreeSelect Table Tree
 2. Menu在递归组件下无法获取vnode层级的问题（后期尝试解决）
 3. layout-side和menu的收缩联动问题
 ## 待修复的bug
-1. grid flex属性的问题
-2. timeline幽灵节点的问题。
-3. carousel的autoPlay切换问题
+1. timeline幽灵节点的问题。
+
