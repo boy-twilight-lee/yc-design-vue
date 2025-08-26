@@ -1,4 +1,4 @@
-import { ref, Ref, watch } from 'vue';
+import { nextTick, ref, Ref, watch } from 'vue';
 import { ModalEmits } from '@/components/Modal/type';
 import { OnBeforeOk, OnBeforeCancel } from '../type';
 import { onKeyStroke } from '@vueuse/core';
@@ -30,18 +30,20 @@ export default (params: {
     onBeforeOk,
     emits,
   } = params;
-  // 外层visible，用于播放动画
-  const outerVisible = ref<boolean>(false);
-  // loading
-  const asyncLoading = ref<boolean>(false);
   // 内存visible，用于显示组件
-  const innerVisible = useControlValue<boolean>(
+  const computedVisible = useControlValue<boolean>(
     visible,
     defaultVisible.value,
     (val) => {
       emits('update:visible', val);
     }
   );
+  // 外层visible，用于播放动画
+  const outerVisible = ref<boolean>(false);
+  // false
+  const innerVisible = ref<boolean>(false);
+  // loading
+  const asyncLoading = ref<boolean>(false);
   // 处理动画离开
   const handleAfterLeave = () => {
     emits('close');
@@ -67,22 +69,25 @@ export default (params: {
       emits('ok');
     }
     cancelEmits && emits('cancel', ev);
-    innerVisible.value = false;
+    computedVisible.value = false;
   };
-
   if (escToClose.value) {
     onKeyStroke(['Escape'], (ev) => {
-      if (!innerVisible.value) return;
+      if (!computedVisible.value) return;
       handleClose('esc', ev);
     });
   }
-
   // 检测
   watch(
-    () => innerVisible.value,
-    (val) => {
-      if (!val) return;
-      outerVisible.value = val;
+    () => computedVisible.value,
+    async (val) => {
+      if (!val) {
+        innerVisible.value = val;
+      } else {
+        outerVisible.value = val;
+        await nextTick();
+        innerVisible.value = val;
+      }
     },
     {
       immediate: true,

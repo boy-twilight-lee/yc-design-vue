@@ -1,18 +1,13 @@
 <template>
   <div class="test">
-    <div style="width: 300px">
-      <yc-slider :min="0" :max="10000" />
-    </div>
+    <yc-modal v-model:visible="visible" title="aa"> 测试 </yc-modal>
+    <yc-button @click="visible = true">点击测试</yc-button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-const width = ref(500);
-const number = ref(10);
-const tags = computed(() =>
-  Array.from({ length: number.value }, (_, idx) => idx + 1)
-);
+const visible = ref(false);
 </script>
 
 <style lang="less" scoped>

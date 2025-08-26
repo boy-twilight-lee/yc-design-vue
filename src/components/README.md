@@ -8,4 +8,3 @@ DatePicker Form Upload TreeSelect Table Tree
 1. grid flex属性的问题
 2. timeline幽灵节点的问题。
 3. carousel的autoPlay切换问题
-4. drawer modal unmountOnClose丢失动画的问题
