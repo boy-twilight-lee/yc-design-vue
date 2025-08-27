@@ -230,16 +230,15 @@ html[yc-design-dark] {
       opacity: 0.4;
     }
   }
-
   // button-group
-  @border-colors: {
+  @dark-border-colors: {
     primary: rgb(22, 93, 255);
     secondary: rgb(60, 60, 62);
     warning: rgb(250, 140, 42);
     success: rgb(19, 173, 58);
     danger: rgb(245, 63, 63);
   };
-  each(@border-colors, {
+  each(@dark-border-colors, {
     &.yc-button-group-@{key} {
       .yc-button:not(:last-child) {
         border-right: 1px solid @value;

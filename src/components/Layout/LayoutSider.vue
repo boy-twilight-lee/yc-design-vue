@@ -116,6 +116,7 @@ mediaQueryHandler((_, order, i) => {
 
 <style lang="less" scoped>
 @import './style/layout.less';
+@import './style/dark.less';
 .yc-layout-sider {
   width: v-bind(computedWidth);
 }
