@@ -30,4 +30,5 @@ useContext().provide(props);
 
 <style lang="less">
 @import './style/button-group.less';
+@import './style/dark.less';
 </style>

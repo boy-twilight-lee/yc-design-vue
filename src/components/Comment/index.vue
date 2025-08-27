@@ -85,4 +85,5 @@ const { hasChildren } = useContext();
 
 <style lang="less" scoped>
 @import './style/comment.less';
+@import './style/dark.less';
 </style>

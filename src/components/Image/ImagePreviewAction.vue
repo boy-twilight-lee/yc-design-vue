@@ -43,4 +43,5 @@ const handleEvent = (type: string, ev: MouseEvent) => {
 
 <style lang="less" scoped>
 @import './style/image-preview.less';
+@import './style/dark.less';
 </style>

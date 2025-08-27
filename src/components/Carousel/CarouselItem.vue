@@ -59,4 +59,5 @@ const slideClass = computed(() => {
 
 <style lang="less" scoped>
 @import './style/carousel.less';
+@import './style/dark.less';
 </style>

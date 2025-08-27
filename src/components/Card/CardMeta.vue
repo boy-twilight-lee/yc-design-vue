@@ -49,4 +49,5 @@ const { slots } = useContext().inject();
 
 <style lang="less" scoped>
 @import './style/card-meta.less';
+@import './style/dark.less';
 </style>

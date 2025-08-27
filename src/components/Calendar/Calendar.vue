@@ -179,4 +179,5 @@ const handleDateChange = (type: string) => {
 
 <style lang="less" scoped>
 @import './style/calendar.less';
+@import './style/dark.less';
 </style>

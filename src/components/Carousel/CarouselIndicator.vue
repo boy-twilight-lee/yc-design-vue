@@ -59,4 +59,5 @@ const { length, computedCurrent } = useContext().inject();
 
 <style lang="less" scoped>
 @import './style/carousel.less';
+@import './style/dark.less';
 </style>

@@ -50,15 +50,17 @@ export default () => {
           : 'bottom';
       }
     });
+    // pendingNodes
+    const pendingNodes = computed(() => {
+      return h(TimelineItemPending, { pending: pending.value }, slots);
+    });
     // timelineitem
     const timelineItems = computed(() => {
       const nodes = findComponentsFromVnodes(
         slots.default?.() || [],
         TimelineItem.name
       );
-      return pending.value
-        ? [...nodes, h(TimelineItemPending, { pending: pending.value }, slots)]
-        : nodes;
+      return pending.value ? [...nodes, pendingNodes.value] : nodes;
     });
     _provide<TimelineContext>(TIMELINE_CONTEXT_KEY, {
       direction,

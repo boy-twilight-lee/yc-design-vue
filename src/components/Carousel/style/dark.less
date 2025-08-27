@@ -1,0 +1,27 @@
+html[yc-design-dark] {
+  .yc-carousel-arrow {
+    background-color: rgba(0, 0, 0, 0.3);
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .yc-carousel-indicator {
+    &.yc-carousel-indicator-position-outer {
+      .yc-carousel-indicator-item {
+        background-color: rgba(81, 84, 86, 0.5);
+        &:hover,
+        &.yc-carousel-indicator-item-active {
+          background-color: rgb(81, 84, 86);
+        }
+      }
+
+      &.yc-carousel-indicator-shape-slider {
+        background-color: rgba(81, 84, 86, 0.5);
+        .yc-carousel-indicator-item-slider {
+          background-color: rgb(81, 84, 86);
+        }
+      }
+    }
+  }
+}

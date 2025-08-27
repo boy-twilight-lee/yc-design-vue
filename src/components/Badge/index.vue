@@ -83,4 +83,5 @@ const badgeText = computed(() => {
 
 <style lang="less" scoped>
 @import './style/badge.less';
+@import './style/dark.less';
 </style>

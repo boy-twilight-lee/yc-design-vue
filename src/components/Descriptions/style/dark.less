@@ -1,0 +1,42 @@
+html[yc-design-dark] {
+  // descriptions
+  .yc-descriptions {
+    .yc-descriptions-title {
+      color: rgb(229, 230, 235);
+    }
+  }
+
+  .yc-descriptions-bordered {
+    .yc-descriptions-body {
+      border: 1px solid rgb(60, 60, 62);
+
+      .yc-descriptions-row {
+        &:not(:last-child) {
+          border-bottom: 1px solid rgb(60, 60, 62);
+        }
+      }
+    }
+
+    .yc-descriptions-item {
+      border-right: 1px solid rgb(60, 60, 62);
+    }
+
+    &.yc-descriptions-layout-horizontal,
+    &.yc-descriptions-layout-vertical {
+      .yc-descriptions-item-label,
+      .yc-descriptions-item-value {
+        border-right: 1px solid rgb(60, 60, 62);
+      }
+      .yc-descriptions-item-label {
+        background-color: rgb(38, 38, 40);
+      }
+    }
+  }
+  // descriptions-item
+  .yc-descriptions-item-label {
+    color: rgb(134, 137, 140);
+  }
+  .yc-descriptions-item-value {
+    color: rgb(229, 230, 235);
+  }
+}

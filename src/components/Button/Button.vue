@@ -95,4 +95,5 @@ const handleEvent = (type: string, e: MouseEvent) => {
 
 <style lang="less" scoped>
 @import './style/button.less';
+@import './style/dark.less';
 </style>

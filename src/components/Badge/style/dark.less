@@ -1,0 +1,34 @@
+html[yc-design-dark] {
+  .yc-badge {
+    .yc-badge-dot,
+    .yc-badge-text,
+    .yc-badge-number,
+    .yc-badge-custom-dot {
+      box-shadow: 0 0 0 2px rgb(29, 29, 30);
+    }
+
+    .yc-badge-custom-dot {
+      background-color: rgb(29, 29, 30);
+    }
+
+    .yc-badge-stauts-wrapper {
+      .yc-badge-status-text {
+        color: rgb(229, 230, 235);
+      }
+    }
+  }
+
+  @dark-status: {
+    normal: rgb(81, 84, 86);
+    success: rgb(19, 173, 58);
+    danger: rgb(245, 63, 63);
+    processing: rgb(46, 126, 255);
+    warning: rgb(250, 140, 42);
+  };
+
+  each(@dark-status, {
+      .yc-badge-status-@{key} {
+        background-color: @value;
+      }
+    });
+}

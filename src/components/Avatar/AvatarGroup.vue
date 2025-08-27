@@ -78,14 +78,6 @@ const nodes = computed(() => {
 </script>
 
 <style lang="less" scoped>
-.yc-avatar-group {
-  height: fit-content;
-  width: fit-content;
-  display: inline-flex;
-  align-items: center;
-  &:deep(.yc-avatar) {
-    flex-shrink: 0;
-    border: 2px solid #fff;
-  }
-}
+@import './style/avatar-group.less';
+@import './style/dark.less';
 </style>
