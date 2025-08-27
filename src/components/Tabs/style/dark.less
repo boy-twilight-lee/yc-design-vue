@@ -1,20 +1,10 @@
+// tabs
 html[yc-design-dark] {
-  // tabs
   .yc-tabs {
-    .yc-tabs-nav {
-      .yc-tabs-nav-tab {
-        .yc-tabs-nav-tab-list {
-          .yc-tabs-nav-ink {
-            background-color: rgb(48, 121, 255);
-          }
-        }
+    .yc-tabs-nav-tab-list {
+      .yc-tabs-nav-ink {
+        background-color: #3c7eff;
       }
-      &::before {
-        background-color: rgb(48, 53, 69);
-      }
-    }
-    .yc-tabs-content {
-      border-color: rgb(48, 53, 69);
     }
   }
   .yc-tabs-type-card,
@@ -23,110 +13,101 @@ html[yc-design-dark] {
     &.yc-tabs-horizontal {
       .yc-tabs-nav {
         &::before {
-          background-color: rgb(48, 53, 69);
+          background-color: #303540;
         }
-      }
-      .yc-tabs-content {
-        border-color: rgb(48, 53, 69);
       }
     }
     &.yc-tabs-vertical {
       .yc-tabs-nav {
         &::before {
-          background-color: rgb(48, 53, 69);
+          background-color: #303540;
         }
-      }
-      .yc-tabs-content {
-        border-color: rgb(48, 53, 69);
       }
     }
     &:not(.yc-tabs-type-line) {
       &.yc-tabs-horizontal {
         .yc-tabs-content {
-          border-color: rgb(48, 53, 69);
+          border-color: #303540;
         }
         &.yc-tabs-bottom {
           .yc-tabs-content {
-            border-color: rgb(48, 53, 69);
+            border-color: #303540;
           }
         }
       }
       &.yc-tabs-vertical {
         .yc-tabs-content {
-          border-color: rgb(48, 53, 69);
+          border-color: #303540;
         }
       }
     }
   }
-  .yc-tabs-type-capsule {
-    .yc-tabs-nav {
-      .yc-tabs-nav-tab {
-        .yc-tabs-nav-tab-list {
-          background-color: rgb(48, 53, 69);
-        }
-      }
+  .yc-tabs-type-card-gutter {
+    .yc-tabs-nav-tab-list {
+      background-color: #232529;
     }
   }
-  // tabs-tab
+}
+
+// tabs-tab
+html[yc-design-dark] {
   .yc-tabs-tab {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgb(173, 179, 191);
+    .yc-tabs-tab-title {
+      &::after {
+        background-color: transparent;
+      }
+    }
     &.yc-tabs-tab-active {
-      color: #598bff;
+      color: rgb(72, 138, 255);
     }
   }
 
   // line text
   .yc-tabs-tab-type-line,
   .yc-tabs-tab-type-text {
-    .yc-tabs-tab-title::after {
-      transition:
-        background-color 0.2s cubic-bezier(0, 0, 1, 1),
-        opacity 0.2s cubic-bezier(0, 0, 1, 1);
-    }
     &:not(.yc-tabs-tab-active):not(.yc-tabs-tab-disabled):hover
-      .yc-tabs-tab-title::after {
-      background-color: rgba(255, 255, 255, 0.08);
+      .yc-tabs-tab-title {
+      &::after {
+        background-color: rgb(44, 46, 51);
+      }
     }
     &.yc-tabs-tab-type-text {
       &:not(:first-child)::before {
-        background-color: rgba(255, 255, 255, 0.12);
+        background-color: rgb(63, 66, 73);
       }
     }
   }
-
   // card card-gutter
   .yc-tabs-tab-type-card,
   .yc-tabs-tab-type-card-gutter {
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: rgb(63, 66, 73);
     &.yc-tabs-tab {
       &:not(.yc-tabs-tab-disabled):not(.yc-tabs-tab-active):hover {
-        background-color: rgba(255, 255, 255, 0.08);
+        background-color: rgb(63, 66, 73);
       }
     }
     &.yc-tabs-tab-type-card-gutter {
-      background-color: rgba(255, 255, 255, 0.04);
+      background-color: rgb(35, 37, 42);
     }
     &.yc-tabs-tab-horizontal {
       &.yc-tabs-tab-active {
-        background-color: transparent;
-        border-bottom-color: rgba(255, 255, 255, 0);
+        border-bottom-color: #23272f;
         &.yc-tabs-tab-bottom {
-          border-top-color: rgba(255, 255, 255, 0);
-          border-bottom-color: rgba(255, 255, 255, 0.12);
+          border-top-color: #23272f;
+          border-bottom-color: rgb(63, 66, 73);
         }
       }
     }
     &.yc-tabs-tab-vertical {
-      border-bottom-color: rgba(255, 255, 255, 0.12);
       &:not(:last-child) {
-        border-bottom-color: rgba(255, 255, 255, 0.12);
+        border-bottom: 1px solid rgb(63, 66, 73);
       }
       &.yc-tabs-tab-active {
-        background-color: transparent;
-        border-right-color: rgba(255, 255, 255, 0);
+        border-right-color: #23272f;
         &.yc-tabs-tab-right {
-          border-right-color: rgba(255, 255, 255, 0.12);
-          border-left-color: rgba(255, 255, 255, 0);
+          border-right-color: rgb(63, 66, 73);
+          border-left-color: #23272f;
         }
       }
     }
@@ -135,27 +116,27 @@ html[yc-design-dark] {
   // rounded
   .yc-tabs-tab-type-rounded {
     &:not(.yc-tabs-tab-disabled):hover {
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: rgb(44, 46, 51);
     }
     &.yc-tabs-tab-active {
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: rgb(44, 46, 51);
     }
   }
 
   // capsule
   .yc-tabs-tab-type-capsule {
     &:not(.yc-tabs-tab-disabled):hover {
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: #2a2d35;
     }
     &.yc-tabs-tab-active {
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: #2a2d35;
     }
   }
 
   .yc-tabs-tab-disabled {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgb(84, 89, 102);
     &.yc-tabs-tab-active {
-      color: rgba(89, 139, 255, 0.6);
+      color: rgb(100, 144, 255);
     }
   }
 }

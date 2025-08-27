@@ -1,20 +1,23 @@
 html[yc-design-dark] {
   .yc-checkbox {
     .yc-checkbox-icon {
-      border-color: #424242;
+      border: 2px solid rgb(70, 70, 72);
+      &::after {
+        background: #fff;
+      }
     }
     .yc-checkbox-label {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgb(229, 230, 235);
     }
   }
 
   .yc-checkbox-unchecked {
     &:not(.yc-checkbox-disabled):hover .yc-icon-button {
       &::before {
-        background-color: rgba(255, 255, 255, 0.08);
+        background-color: rgba(70, 70, 72);
       }
       .yc-checkbox-icon {
-        border-color: #666666;
+        border-color: rgb(105, 109, 118);
       }
     }
   }
@@ -22,12 +25,12 @@ html[yc-design-dark] {
   .yc-checkbox-checked,
   .yc-checkbox-indeterminate {
     .yc-checkbox-icon {
-      background-color: #306fff;
+      background-color: rgb(78, 134, 255);
     }
 
     &.yc-checkbox-disabled {
       .yc-checkbox-icon {
-        background-color: rgba(48, 111, 255, 0.4);
+        background-color: rgb(55, 99, 170);
       }
     }
   }
@@ -35,13 +38,13 @@ html[yc-design-dark] {
   .yc-checkbox-disabled {
     .yc-icon-button {
       .yc-checkbox-icon {
-        border-color: #303030;
-        background-color: #262626;
+        border-color: rgb(70, 70, 72);
+        background-color: rgb(44, 44, 48);
       }
     }
 
     .yc-checkbox-label {
-      color: rgba(255, 255, 255, 0.3);
+      color: rgb(105, 109, 118);
     }
   }
 }

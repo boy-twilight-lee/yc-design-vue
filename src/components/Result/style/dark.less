@@ -2,37 +2,40 @@ html[yc-design-dark] {
   .yc-result {
     .yc-result-title,
     .yc-result-subtitle {
-      color: #e5e5e5;
+      color: rgb(191, 191, 191);
       &.yc-result-title {
-        color: #fff;
+        color: rgb(229, 229, 229);
       }
     }
+  }
+
+  .yc-result {
     @type: {
       @info: {
-        bg: #1a2d4a;
-        icon-color: #4d88ff;
+        bg: rgb(34, 66, 115);
+        icon-color: rgb(74, 139, 255);
       };
       @success: {
-        bg: #1a3323;
-        icon-color: #00b336;
+        bg: rgb(34, 115, 45);
+        icon-color: rgb(73, 204, 102);
       };
       @warning: {
-        bg: #4a331a;
-        icon-color: #ff9933;
+        bg: rgb(115, 71, 34);
+        icon-color: rgb(255, 162, 77);
       };
       @error: {
-        bg: #4a1a1a;
-        icon-color: #ff4d4d;
+        bg: rgb(112, 44, 44);
+        icon-color: rgb(248, 114, 114);
       };
     };
-    each(@type, .(@value, @name) {
-        @key: replace(~"@{name}", "@", "");
-        .yc-result-icon-@{key} {
-          color: @value[icon-color];
-          .yc-result-icon-tip {
-            background-color: @value[bg];
-          }
+    each(@type, .(@value,@name){
+      @key:replace(~"@{name}", "@", "");
+      .yc-result-icon-@{key} {
+        color: @value[icon-color];
+        .yc-result-icon-tip {
+          background-color: @value[bg];
         }
-      });
+      }
+    });
   }
 }

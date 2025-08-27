@@ -2,48 +2,49 @@ html[yc-design-dark] {
   .yc-alert {
     .yc-alert-body {
       .yc-alert-title {
-        color: #e5e5e5;
+        color: rgb(229, 230, 235);
       }
       .yc-alert-content {
-        color: #e5e5e5;
+        color: rgb(229, 230, 235);
       }
     }
     .yc-alert-close-btn {
-      color: #999;
+      color: rgb(177, 183, 193);
       &:hover {
-        color: #e5e5e5;
+        color: rgb(229, 230, 235);
       }
     }
   }
+
   @type: {
     @info: {
-      bg: #12243b;
-      icon-color: #669eff;
+      bg: rgb(11, 35, 75);
+      icon-color: rgb(72, 143, 255);
     };
     @success: {
-      bg: #0e2d10;
-      icon-color: #36b37e;
+      bg: rgb(12, 50, 21);
+      icon-color: rgb(72, 204, 115);
     };
     @warning: {
-      bg: #382a0e;
-      icon-color: #ffab00;
+      bg: rgb(61, 45, 5);
+      icon-color: rgb(255, 174, 66);
     };
     @error: {
-      bg: #3d1313;
-      icon-color: #ff7875;
+      bg: rgb(65, 23, 25);
+      icon-color: rgb(255, 104, 104);
     };
     @normal: {
-      bg: #2b2b2b;
-      icon-color: #666;
+      bg: rgb(33, 36, 41);
+      icon-color: rgb(134, 144, 156);
     };
   };
-  each(@type,.(@value,@name){
-      @key:replace(~"@{name}", "@", "");
-      .yc-alert-@{key}{
-        background-color: @value[bg];
-        .yc-alert-icon {
-          color: @value[icon-color]
-        }
+  each(@type, .(@value, @name) {
+    @key: replace(~"@{name}", "@", "");
+    .yc-alert-@{key} {
+      background-color: @value[bg];
+      .yc-alert-icon {
+        color: @value[icon-color]
       }
-    });
+    }
+  });
 }

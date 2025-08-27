@@ -1,32 +1,25 @@
 html[yc-design-dark] {
-  // select
   .yc-select {
     &:deep(.yc-input-outer) {
       .yc-input-wrapper {
         .yc-input {
           &::placeholder {
-            color: rgb(134, 144, 156);
+            color: rgb(221, 221, 221);
           }
         }
       }
     }
     .yc-input-placeholder {
-      color: rgb(134, 144, 156);
-    }
-    .yc-select-suffix-icon,
-    .yc-select-search-icon,
-    .yc-select-clear-icon,
-    .yc-spin {
-      color: rgb(162, 169, 180);
+      color: rgb(153, 153, 153);
     }
   }
   .yc-select-no-border {
     .yc-input-tag {
-      background-color: rgb(47, 49, 55);
+      background-color: rgb(30, 30, 30);
     }
     &:deep(.yc-input-outer) {
       .yc-input-wrapper {
-        background-color: rgb(47, 49, 55);
+        background-color: rgb(30, 30, 30);
       }
     }
   }
@@ -35,45 +28,44 @@ html[yc-design-dark] {
       .yc-input-wrapper {
         .yc-input {
           &::placeholder {
-            color: rgb(134, 144, 156);
+            color: rgb(153, 153, 153);
           }
         }
       }
     }
   }
   .yc-select-dropdown {
-    background-color: rgb(47, 49, 55);
-    border: 1px solid rgb(63, 65, 72);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgb(30, 30, 30);
+    border: 1px solid rgb(70, 70, 70);
+    box-shadow: 0 4px 10px #0000004d;
     .yc-select-dropdown-header {
-      border-bottom: 1px solid rgb(63, 65, 72);
+      border-bottom: 1px solid rgb(70, 70, 70);
     }
     .yc-select-dropdown-footer {
-      border-top: 1px solid rgb(63, 65, 72);
+      border-top: 1px solid rgb(70, 70, 70);
     }
   }
-  // option
+}
+
+html[yc-design-dark] {
   .yc-select-option {
-    color: rgb(217, 221, 228);
+    color: rgb(221, 221, 221);
     &:not(.yc-select-option-disabled):hover {
-      color: rgb(217, 221, 228);
-      background-color: rgb(63, 65, 72);
-    }
-    .yc-select-option-icon,
-    .yc-select-option-content,
-    .yc-select-option-suffix {
-      color: inherit;
+      color: rgb(221, 221, 221);
+      background-color: rgb(50, 50, 50);
     }
   }
   .yc-select-option-disabled {
-    color: rgb(84, 89, 100);
+    color: rgb(102, 102, 102);
   }
   .yc-select-option-active {
-    color: rgb(217, 221, 228);
-    background-color: rgb(63, 65, 72);
+    color: rgb(221, 221, 221);
+    background-color: rgb(50, 50, 50);
   }
-  // option-group
+}
+
+html[yc-design-dark] {
   .yc-option-group-label {
-    color: rgb(100, 108, 122);
+    color: rgb(153, 153, 153);
   }
 }

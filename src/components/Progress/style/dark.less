@@ -1,57 +1,58 @@
 html[yc-design-dark] {
   .yc-progress {
     .yc-progress-steps-item {
-      background-color: #303030;
+      background-color: rgb(54, 54, 54);
     }
     .yc-progress-line {
-      background-color: #303030;
+      background-color: rgb(54, 54, 54);
     }
     .yc-progress-circle-bg {
-      stroke: #303030;
+      stroke: rgb(54, 54, 54);
     }
     .yc-progress-steps-text,
     .yc-progress-line-text,
     .yc-progress-circle-text {
-      color: #bfbfbf;
+      color: rgb(191, 191, 191);
     }
     .yc-progress-circle-text {
-      color: #858585;
+      color: rgb(191, 191, 191);
     }
   }
-  .yc-progress-status-normal {
-    .yc-progress-steps-item-active,
-    .yc-progress-line-bar {
-      background-color: #165dff;
+  @status: {
+    @normal: {
+      color: rgb(74, 139, 255);
+      mini-bg-color: rgb(34, 66, 115);
+    };
+    @success: {
+      color: rgb(73, 204, 102);
+      mini-bg-color: null;
+    };
+    @warning: {
+      color: rgb(255, 162, 77);
+      mini-bg-color: rgb(115, 71, 34);
+    };
+    @danger: {
+      color: rgb(248, 114, 114);
+      mini-bg-color: rgb(112, 44, 44);
+    };
+  };
+  each(@status, .(@value,@name){
+    @key: replace(~"@{name}", "@", "");
+    .yc-progress-status-@{key} {
+      .yc-progress-steps-item-active,
+      .yc-progress-line-bar {
+        background-color: @value[color];
+      }
+      .yc-progress-circle-bar {
+        stroke: @value[color];
+      }
+      & when not (@key = success) and not (@value[mini-bg-color] = null) {
+        &.yc-progress-size-mini {
+          .yc-progress-circle-bg {
+            stroke: @value[mini-bg-color];
+          }
+        }
+      }
     }
-    .yc-progress-circle-bar {
-      stroke: #165dff;
-    }
-  }
-  .yc-progress-status-success {
-    .yc-progress-steps-item-active,
-    .yc-progress-line-bar {
-      background-color: #00b42a;
-    }
-    .yc-progress-circle-bar {
-      stroke: #00b42a;
-    }
-  }
-  .yc-progress-status-warning {
-    .yc-progress-steps-item-active,
-    .yc-progress-line-bar {
-      background-color: #ff7d00;
-    }
-    .yc-progress-circle-bar {
-      stroke: #ff7d00;
-    }
-  }
-  .yc-progress-status-danger {
-    .yc-progress-steps-item-active,
-    .yc-progress-line-bar {
-      background-color: #f53f3f;
-    }
-    .yc-progress-circle-bar {
-      stroke: #f53f3f;
-    }
-  }
+  });
 }

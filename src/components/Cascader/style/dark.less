@@ -1,23 +1,16 @@
 html[yc-design-dark] {
-  // cascader
   .yc-cascader {
     &:deep(.yc-input-outer) {
       .yc-input-wrapper {
         .yc-input {
           &::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgb(151, 155, 165);
           }
         }
       }
     }
     .yc-input-placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-    .yc-cascader-suffix-icon,
-    .yc-cascader-search-icon,
-    .yc-cascader-clear-icon,
-    .yc-spin {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgb(151, 155, 165);
     }
   }
   .yc-cascader-allow-search {
@@ -25,45 +18,41 @@ html[yc-design-dark] {
       .yc-input-wrapper {
         .yc-input {
           &::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgb(151, 155, 165);
           }
         }
       }
     }
   }
-  // option
+}
+
+html[yc-design-dark] {
   .yc-cascader-option {
-    color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+    color: rgb(229, 230, 235);
     &:not(.yc-cascader-option-disabled):hover {
-      background-color: rgba(255, 255, 255, 0.08);
-    }
-    .yc-cascader-option-label {
-      .yc-icon {
-        color: rgba(255, 255, 255, 0.6);
-      }
+      background-color: rgb(44, 44, 48);
     }
   }
   .yc-cascader-option-selected {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgb(44, 44, 48);
   }
   .yc-cascader-option-disabled {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgb(105, 109, 118);
+    background-color: transparent;
   }
-  //   panel
+}
+
+html[yc-design-dark] {
   .yc-cascader-panel {
-    background-color: #141414;
-    border-color: #2e2e2e;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: rgb(37, 37, 41);
+    border: 1px solid rgb(70, 70, 72);
+    box-shadow: 0 4px 10px #0000004d;
     .yc-cascader-panel-column {
-      background-color: #141414;
+      background-color: rgb(37, 37, 41);
       &:not(:last-child) {
-        border-right-color: #2e2e2e;
+        border-right-color: rgb(70, 70, 72);
       }
-    }
-  }
-  .yc-cascader-search-panel {
-    .yc-cascader-empty {
-      color: rgba(255, 255, 255, 0.4);
     }
   }
 }

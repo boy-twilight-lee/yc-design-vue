@@ -1,62 +1,115 @@
 html[yc-design-dark] {
-  // steps
   .yc-steps-mode-dot {
     @steps-item-status: {
-      wait: #666b76;
-      process: #4d80ff;
-      finish: #4d80ff;
-      error: #ff5252;
+      wait: rgb(110, 110, 110);
+      process: rgb(74, 139, 255);
+      finish: rgb(74, 139, 255);
+      error: rgb(245, 63, 63);
     };
     each(@steps-item-status, {
-        .yc-steps-item-@{key} {
-          .yc-steps-item-node {
-            background-color: @value;
-            border-color: @value;
-            & when (@key = process) {
-              width: 10px;
-              height: 10px;
-            }
+      .yc-steps-item-@{key} {
+        .yc-steps-item-node {
+          background-color: @value;
+          border-color: @value;
+          
+          & when (@key = process) {
+            width: 10px;
+            height: 10px;
           }
         }
-      });
+      }
+    });
   }
   .yc-steps-mode-arrow {
-    .set-steps-item-status(@bg-color, @text-color: null) {
-      background-color: @bg-color;
-      &::after {
-        border-left: 36px solid @bg-color;
+    .yc-steps-item {
+      &:not(:first-child)::before {
+        border-left: 36px solid rgb(30, 30, 30);
       }
-      & when not (@text-color = null) {
+      &:not(:last-child)::after {
+        border-top: 36px solid transparent;
+        border-bottom: 36px solid transparent;
+      }
+      &.yc-steps-item-wait {
+        &::after {
+          border-left: 36px solid rgb(44, 44, 44);
+        }
+      }
+      &.yc-steps-item-process {
+        &::after {
+          border-left: 36px solid rgb(30, 40, 50);
+        }
         .yc-steps-item-content {
           .yc-steps-item-title,
           .yc-steps-item-description {
-            color: @text-color;
+            color: #fff;
+          }
+        }
+      }
+      &.yc-steps-item-finish {
+        &::after {
+          border-left: 36px solid rgb(23, 33, 43);
+        }
+      }
+      &.yc-steps-item-error {
+        &::after {
+          border-left: 36px solid rgb(50, 20, 20);
+        }
+        .yc-steps-item-content {
+          .yc-steps-item-title,
+          .yc-steps-item-description {
+            color: #fff;
           }
         }
       }
     }
-    @steps-item-status: {
-      wait: .set-steps-item-status(#282c34);
-      process: .set-steps-item-status(#4d80ff, #fff);
-      finish: .set-steps-item-status(#2a3e5c);
-      error: .set-steps-item-status(#ff5252, #fff);
-    };
-    each(@steps-item-status, {
-        .yc-steps-item-@{key} {
-          @value();
+    &.yc-steps-item-size-small {
+      &:not(:first-child)::before {
+        border-left: 20px solid rgb(30, 30, 30);
+      }
+      &.yc-steps-item-wait {
+        &::after {
+          border-left: 20px solid rgb(44, 44, 44);
         }
-      });
+      }
+      &.yc-steps-item-process {
+        &::after {
+          border-left: 20px solid rgb(30, 40, 50);
+        }
+      }
+      &.yc-steps-item-finish {
+        &::after {
+          border-left: 20px solid rgb(23, 33, 43);
+        }
+      }
+      &.yc-steps-item-error {
+        &::after {
+          border-left: 20px solid rgb(50, 20, 20);
+        }
+      }
+    }
   }
   .yc-steps-mode-navigation {
     .yc-steps-item {
       &:not(:last-child)::before {
-        border-color: #666b76;
-        background-color: #1a1d24;
+        border: 2px solid rgb(110, 110, 110);
+        border-bottom: none;
+        border-left: none;
+        background-color: rgb(30, 30, 30);
       }
-      .yc-steps-item-content {
-        .yc-steps-item-title,
-        .yc-steps-item-description {
-          color: #aeb4bf;
+      &.yc-steps-item-process {
+        .yc-steps-item-content {
+          .yc-steps-item-title,
+          .yc-steps-item-description {
+            color: #fff;
+          }
+        }
+      }
+      &.yc-steps-item-error {
+        .yc-steps-item-content {
+          .yc-steps-item-title,
+          .yc-steps-item-description {
+            color: #fff;
+          }
         }
       }
     }
@@ -68,53 +121,55 @@ html[yc-design-dark] {
           .yc-steps-item-content {
             .yc-steps-item-title,
             .yc-steps-item-description {
-              color: #4d80ff;
+              color: rgb(74, 139, 255);
             }
           }
         }
       }
     }
   }
-  //   step-item
+}
+
+html[yc-design-dark] {
   .yc-steps-item {
     .yc-steps-item-content {
       .yc-steps-item-title {
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(255, 255, 255, 0.85);
       }
       .yc-steps-item-description {
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, 0.65);
       }
     }
   }
   .yc-steps-item-active {
     &.yc-steps-item-finish {
       &::after {
-        background-color: rgba(232, 243, 255, 0.1);
+        background-color: rgba(32, 88, 179, 0.3);
       }
     }
     &.yc-steps-item-wait {
       &::after {
-        background-color: rgba(247, 248, 250, 0.1);
+        background-color: rgba(255, 255, 255, 0.08);
       }
     }
     &.yc-steps-item-error {
       &::after {
-        background-color: rgba(245, 63, 63, 0.8);
+        background-color: rgb(245, 63, 63);
       }
     }
     &.yc-steps-item-process {
       &::after {
-        background-color: rgba(22, 93, 255, 0.8);
+        background-color: rgb(74, 139, 255);
       }
     }
   }
-  @next-status-dark: {
-    wait: rgba(229, 230, 235, 0.2);
-    process: rgba(22, 93, 255, 0.8);
-    finish: rgba(22, 93, 255, 0.8);
-    error: rgba(245, 63, 63, 0.8);
+  @next-status: {
+    wait: rgba(255, 255, 255, 0.2);
+    process: rgb(74, 139, 255);
+    finish: rgb(74, 139, 255);
+    error: rgb(245, 63, 63);
   };
-  each(@next-status-dark, {
+  each(@next-status, {
     .yc-steps-item-next-@{key} {
       &,
       .yc-steps-item-title,

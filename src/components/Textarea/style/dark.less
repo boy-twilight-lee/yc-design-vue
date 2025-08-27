@@ -1,52 +1,42 @@
 html[yc-design-dark] {
   .yc-textarea-wrapper {
-    background-color: #2b2b2b;
-    border-color: #343434;
-    color: #e5e5e5;
-
+    background-color: rgb(36, 36, 36);
+    color: rgb(229, 229, 229);
     &:not(.yc-textarea-disabled) {
       &:hover {
-        background-color: #343434;
-        border-color: #343434;
+        background-color: rgb(54, 54, 54);
       }
-
       &:focus-within {
-        background-color: #343434;
-        border-color: #165dff;
-        box-shadow: 0 0 0 1px rgba(22, 93, 255, 0.2);
+        background-color: rgb(36, 36, 36);
+        border-color: rgb(22, 93, 255);
+        box-shadow: 0 0 0 0 rgb(190, 218, 255);
       }
     }
-
     .yc-textarea-word-limit {
-      color: #7c8692;
+      color: rgb(153, 153, 153);
     }
-
-    .yc-textarea::placeholder {
-      color: #7c8692;
+    .yc-textarea {
+      &::placeholder {
+        color: rgb(153, 153, 153);
+      }
     }
   }
-
   .yc-textarea-error {
-    background-color: #402222;
-    border-color: #9d3636;
-
+    background-color: rgb(54, 34, 34);
     &:not(.yc-textarea-disabled) {
       &:hover {
-        background-color: #522b2b;
-        border-color: #9d3636;
+        background-color: rgb(72, 43, 43);
       }
-
       &:focus-within {
-        background-color: #343434;
-        border-color: #f53f3f;
-        box-shadow: 0 0 0 1px rgba(245, 63, 63, 0.2);
+        background-color: rgb(36, 36, 36);
+        border-color: rgb(245, 63, 63);
+        box-shadow: 0 0 0 0 rgb(253, 205, 197);
       }
     }
   }
-
   .yc-textarea-disabled {
-    background-color: #2b2b2b;
-    color: #555;
-    -webkit-text-fill-color: #555;
+    background-color: rgb(36, 36, 36);
+    color: rgb(102, 102, 102);
+    -webkit-text-fill-color: rgb(102, 102, 102);
   }
 }

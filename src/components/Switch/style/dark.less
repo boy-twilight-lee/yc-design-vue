@@ -1,59 +1,61 @@
 html[yc-design-dark] {
-  .yc-switch-unchecked {
-    .yc-switch-handle {
-      background-color: #262626;
-      color: #424242;
-    }
-    .yc-switch-text {
-      color: #bfbfbf;
-    }
-  }
-  .yc-switch-checked {
-    .yc-switch-handle {
-      background-color: #262626;
-      color: #306fff;
-    }
-    .yc-switch-text {
-      color: #bfbfbf;
-    }
-  }
-  .yc-switch-loading,
-  .yc-switch-disabled {
+  .yc-switch {
     &.yc-switch-unchecked {
-      &:not(.yc-switch-shape-line) {
-        background-color: #262626;
-      }
-      &::after {
-        background-color: #262626;
-      }
       .yc-switch-handle {
-        color: #424242;
+        background-color: rgb(36, 36, 36);
+        color: rgb(153, 153, 153);
       }
       .yc-switch-text {
-        color: #424242;
+        color: rgb(153, 153, 153);
       }
     }
     &.yc-switch-checked {
-      &:not(.yc-switch-shape-line) {
-        background-color: #1a1a1a;
-      }
-      &::after {
-        background-color: #1a1a1a;
-      }
       .yc-switch-handle {
-        color: #306fff;
+        background-color: rgb(36, 36, 36);
+        color: rgb(22, 93, 255);
       }
       .yc-switch-text {
-        color: #306fff;
+        color: #fff;
       }
     }
-  }
-  .yc-switch-shape-line {
-    &::after {
-      background-color: #424242;
+    &.yc-switch-loading,
+    &.yc-switch-disabled {
+      &.yc-switch-unchecked {
+        &:not(.yc-switch-shape-line) {
+          background-color: rgb(54, 54, 54);
+        }
+        &::after {
+          background-color: rgb(54, 54, 54);
+        }
+        .yc-switch-handle {
+          color: rgb(72, 72, 72);
+        }
+        .yc-switch-text {
+          color: rgb(72, 72, 72);
+        }
+      }
+      &.yc-switch-checked {
+        &:not(.yc-switch-shape-line) {
+          background-color: rgb(22, 93, 255);
+        }
+        &::after {
+          background-color: rgb(22, 93, 255);
+        }
+        .yc-switch-handle {
+          color: rgb(148, 191, 255);
+        }
+        .yc-switch-text {
+          color: rgb(232, 243, 255);
+        }
+      }
     }
-    .yc-switch-handle {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    &.yc-switch-shape-line {
+      &::after {
+        background-color: rgb(72, 72, 72);
+      }
+      .yc-switch-handle {
+        box-shadow: 0 1px 3px rgb(134, 144, 156);
+      }
     }
   }
 }

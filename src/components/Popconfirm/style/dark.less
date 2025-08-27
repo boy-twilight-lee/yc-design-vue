@@ -2,14 +2,28 @@ html[yc-design-dark] {
   .yc-trigger {
     &.yc-popconfirm {
       .yc-popconfirm-popup-content {
-        color: #e5e5e5;
-        background-color: #242424;
-        border-color: #343434;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        color: rgb(229, 229, 229);
+        background-color: rgb(36, 36, 36);
+        border: 1px solid rgb(54, 54, 54);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
       }
       .yc-popconfirm-popup-arrow {
-        border-color: #242424;
+        border: 1px solid rgb(54, 54, 54);
+        background-color: rgb(36, 36, 36);
       }
     }
+    @type: {
+      info: rgb(74, 139, 255);
+      success: rgb(73, 204, 102);
+      warning: rgb(255, 162, 77);
+      error: rgb(248, 114, 114);
+    };
+    each(@type, {
+      &.yc-popconfirm-@{key} {
+        .yc-popconfirm-icon{
+          color: @value;
+        }
+      }
+    });
   }
 }

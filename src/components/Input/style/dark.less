@@ -1,67 +1,71 @@
 html[yc-design-dark] {
+  // yc-input-outer
   .yc-input-outer {
     .yc-input-prepend,
     .yc-input-append {
-      color: rgba(255, 255, 255, 0.9);
-      background-color: #262626;
+      color: rgb(224, 224, 224);
+      background-color: rgb(44, 44, 44);
       &.yc-input-prepend {
-        border-right: 1px solid #424242;
+        border-right: 1px solid rgb(64, 64, 64);
       }
       &.yc-input-append {
-        border-left: 1px solid #424242;
+        border-left: 1px solid rgb(64, 64, 64);
       }
     }
   }
 
+  // error
   .yc-input-error {
     .yc-input-wrapper {
-      background-color: #262626;
+      background-color: rgb(60, 46, 42);
       &:not(.yc-input-wrapper-disabled) {
         &:hover {
-          background-color: #262626;
+          background-color: rgb(82, 55, 48);
         }
         &:focus-within {
-          background: #262626;
-          border-color: #ff4d4f;
+          background: rgb(30, 30, 30);
+          border-color: rgb(208, 48, 48);
         }
       }
     }
   }
 
+  // disabled
   .yc-input-disabled {
     .yc-input-wrapper {
-      background-color: #262626;
-      color: rgba(255, 255, 255, 0.3);
+      background-color: rgb(44, 44, 44);
+      color: rgb(134, 144, 156);
       .yc-input {
         &::placeholder {
-          color: rgba(255, 255, 255, 0.3);
+          color: rgb(134, 144, 156);
         }
       }
     }
   }
 
+  // yc-input-wrapper
   .yc-input-wrapper {
-    background-color: #262626;
-    color: rgba(255, 255, 255, 0.9);
+    background-color: rgb(44, 44, 44);
+    color: rgb(224, 224, 224);
     &:not(.yc-input-wrapper-disabled) {
       &:hover {
-        background-color: #303030;
+        background-color: rgb(64, 64, 64);
       }
       &:focus-within {
-        background-color: #262626;
-        border-color: #306fff;
+        background-color: rgb(30, 30, 30);
+        border-color: rgb(30, 98, 219);
       }
     }
     .yc-input-prefix,
     .yc-input-suffix {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgb(166, 166, 166);
       .yc-input-word-limit {
-        color: rgba(255, 255, 255, 0.5);
+        color: rgb(134, 144, 156);
       }
     }
     .yc-input {
       &::placeholder {
-        color: rgba(255, 255, 255, 0.5);
+        color: rgb(134, 144, 156);
       }
     }
   }

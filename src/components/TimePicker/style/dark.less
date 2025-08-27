@@ -1,95 +1,99 @@
 html[yc-design-dark] {
   .yc-picker {
-    background-color: #262626;
-    color: #bfbfbf;
+    background-color: rgb(36, 36, 36);
+    color: rgb(229, 229, 229);
     &:not(.yc-picker-disabled):hover {
-      background-color: #303030;
+      background-color: rgb(54, 54, 54);
+      border-color: transparent;
     }
     .yc-picker-prefix {
-      color: #bfbfbf;
+      color: rgb(229, 229, 229);
     }
     .yc-picker-input {
       input {
         background-color: transparent;
         &::placeholder {
-          color: #666666;
+          color: rgb(153, 153, 153);
         }
       }
       &.yc-picker-input-active {
         input {
-          background-color: #262626;
+          background-color: rgb(36, 36, 36);
         }
       }
     }
     .yc-picker-separator {
-      color: #666666;
+      color: rgb(153, 153, 153);
     }
   }
   .yc-picker-focus {
-    background-color: #1a1a1a;
-    border-color: #306fff;
-    box-shadow: 0 0 0 0 rgba(48, 111, 255, 0.2);
+    background-color: rgb(36, 36, 36);
+    border-color: rgb(22, 93, 255);
+    box-shadow: 0 0 0 0 rgb(190, 218, 255);
     &:not(.yc-picker-disabled):hover {
-      background-color: #1a1a1a;
-      border-color: #306fff;
+      background-color: rgb(36, 36, 36);
+      border-color: rgb(22, 93, 255);
     }
   }
   .yc-picker-error {
-    background-color: #261d1d;
+    background-color: rgb(54, 34, 34);
     &:not(.yc-picker-disabled):hover {
-      background-color: #332121;
+      background-color: rgb(72, 43, 43);
     }
     &.yc-picker-focus {
-      background-color: #1a1a1a;
-      border-color: #ff4d4f;
-      box-shadow: 0 0 0 0 rgba(245, 63, 63, 0.2);
+      background-color: rgb(36, 36, 36);
+      border-color: rgb(245, 63, 63);
+      box-shadow: 0 0 0 0 rgb(253, 205, 197);
       &:not(.yc-picker-disabled):hover {
-        background-color: #1a1a1a;
+        background-color: rgb(36, 36, 36);
       }
     }
   }
   .yc-picker-disabled {
-    background-color: #262626;
-    color: #424242;
+    background-color: rgb(36, 36, 36);
+    color: rgb(102, 102, 102);
     .yc-picker-input {
       input {
         &::placeholder {
-          color: #424242;
+          color: rgb(102, 102, 102);
         }
       }
     }
   }
+}
+
+html[yc-design-dark] {
   .yc-timepicker-container {
-    background-color: #1a1a1a;
-    border: 1px solid #303030;
+    background-color: rgb(36, 36, 36);
+    border: 1px solid rgb(54, 54, 54);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     .yc-timepicker-column {
       &:not(:last-child) {
-        border-right: 1px solid #303030;
+        border-right: 1px solid rgb(54, 54, 54);
       }
       ul {
         .yc-timepicker-cell {
-          color: #bfbfbf;
+          color: rgb(229, 229, 229);
           .yc-timepicker-cell-inner {
             font-size: 14px;
           }
         }
         .yc-timepicker-cell-selected {
           .yc-timepicker-cell-inner {
-            background-color: #262626;
+            background-color: rgb(54, 54, 54);
           }
         }
         .yc-timepicker-cell-disabled {
-          color: #424242;
+          color: rgb(102, 102, 102);
         }
       }
     }
-  }
-  .yc-timepicker-footer-extra-wrapper {
-    border-top: 1px solid #303030;
-    color: #bfbfbf;
-  }
-  .yc-timepicker-footer-btn-wrapper {
-    border-top: 1px solid #303030;
+    .yc-timepicker-footer-extra-wrapper {
+      border-top: 1px solid rgb(54, 54, 54);
+      color: rgb(229, 229, 229);
+    }
+    .yc-timepicker-footer-btn-wrapper {
+      border-top: 1px solid rgb(54, 54, 54);
+    }
   }
 }

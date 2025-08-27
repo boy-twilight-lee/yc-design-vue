@@ -1,72 +1,67 @@
 html[yc-design-dark] {
   .yc-input-tag {
-    background-color: #303030;
-    border-color: #434343;
-    color: rgba(255, 255, 255, 0.85);
+    background-color: rgb(40, 40, 40);
+    color: rgb(221, 221, 221);
     &:not(.yc-input-tag-disabled) {
       &:hover {
-        border-color: #434343;
-        background-color: #434343;
+        border-color: transparent;
+        background-color: rgb(50, 50, 50);
       }
       &:focus-within {
-        background-color: #222;
-        border-color: #1890ff;
-        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+        background-color: rgb(30, 30, 30);
+        border-color: rgb(22, 93, 255);
+        box-shadow: 0 0 0 0 rgba(22, 93, 255, 0.3);
         &:deep(.yc-input-tag-inner) {
           .yc-tag {
             border-color: transparent;
-            background-color: #303030;
+            background-color: rgb(45, 45, 45);
           }
         }
       }
     }
     .yc-input-tag-prefix,
     .yc-input-tag-suffix {
-      color: rgba(255, 255, 255, 0.65);
+      color: rgb(153, 153, 153);
     }
     .yc-input-tag-inner {
       &:deep(.yc-tag) {
         &:hover {
-          background-color: #222;
+          background-color: rgb(30, 30, 30);
         }
       }
       .yc-input-tag-input {
         &::placeholder {
-          color: rgba(255, 255, 255, 0.45);
+          color: rgb(102, 102, 102);
         }
       }
     }
   }
   .yc-input-tag-error {
-    background-color: #4d2a25;
+    background-color: rgb(60, 30, 30);
     &:not(.yc-input-tag-disabled) {
       &:hover {
-        border-color: #4d2a25;
-        background-color: #6a3832;
+        border-color: transparent;
+        background-color: rgb(70, 40, 40);
       }
       &:focus-within {
-        background-color: #222;
-        border-color: #ff4d4f;
-        box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+        background-color: rgb(30, 30, 30);
+        border-color: rgb(245, 63, 63);
+        box-shadow: 0 0 0 0 rgba(245, 63, 63, 0.3);
       }
     }
   }
   .yc-input-tag-disabled {
-    background-color: #303030;
-    color: rgba(255, 255, 255, 0.3);
-    .yc-input-tag-prefix,
-    .yc-input-tag-suffix {
-      color: inherit;
-    }
+    background-color: rgb(40, 40, 40);
+    color: rgb(102, 102, 102);
     .yc-input-tag-inner {
       &:deep(.yc-tag) {
-        color: rgba(255, 255, 255, 0.3);
-        background-color: #303030;
-        border-color: #434343;
+        color: rgb(102, 102, 102);
+        background-color: rgb(40, 40, 40);
+        border-color: rgb(50, 50, 50);
         &:hover {
-          color: rgba(255, 255, 255, 0.3);
-          background-color: #303030;
-          border-color: #434343;
+          color: rgb(102, 102, 102);
+          background-color: rgb(40, 40, 40);
+          border-color: rgb(50, 50, 50);
         }
       }
     }

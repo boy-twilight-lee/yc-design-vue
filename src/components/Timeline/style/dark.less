@@ -1,81 +1,50 @@
+// timeline
 html[yc-design-dark] {
-  // timeline
-  .yc-timeline {
-    &:deep(.yc-timeline-item-dot-line) {
-      border-color: rgba(255, 255, 255, 0.12);
-    }
-  }
   .yc-timeline-reverse {
     &:deep(.yc-timeline-item-direction-vertical) {
       &:last-child {
         .yc-timeline-item-dot-line {
-          border-color: rgba(255, 255, 255, 0.12);
+          border-color: rgb(70, 70, 72);
         }
       }
     }
   }
-  // timeline-item
+}
+
+// item
+html[yc-design-dark] {
   .yc-timeline-item {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgb(229, 230, 235);
     &:not(:last-child),
     &.yc-timeline-item-reverse:last-child {
       .yc-timeline-item-dot-line {
-        border-color: rgba(255, 255, 255, 0.12);
+        border-color: rgb(70, 70, 72);
       }
     }
     .yc-timeline-item-dot-wrapper {
       .yc-timeline-item-dot-content {
         .yc-timeline-item-dot-custom {
-          color: rgb(96, 148, 255);
-          background-color: rgba(255, 255, 255, 0.08);
+          color: rgb(78, 134, 255);
+          background-color: rgb(24, 24, 28);
         }
         .yc-timeline-item-dot {
-          color: rgb(96, 148, 255);
           &.yc-timeline-item-dot-solid {
-            background-color: rgb(96, 148, 255);
+            background-color: rgb(78, 134, 255);
           }
           &.yc-timeline-item-dot-hollow {
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgb(96, 148, 255);
+            background-color: rgb(24, 24, 28);
+            border-color: rgb(78, 134, 255);
           }
         }
       }
     }
     .yc-timeline-item-content-wrapper {
       .yc-timeline-item-content {
-        color: rgba(255, 255, 255, 0.9);
+        color: rgb(229, 230, 235);
       }
     }
     .yc-timeline-item-label {
-      color: rgba(255, 255, 255, 0.4);
-    }
-  }
-  .yc-timeline-item-ghost {
-    &.yc-timeline-item-direction-horizontal {
-      .yc-timeline-item-dot-wrapper {
-        .yc-timeline-item-dot-content {
-          .yc-timeline-item-dot-custom {
-            color: rgb(96, 148, 255);
-            background-color: rgba(255, 255, 255, 0.08);
-          }
-        }
-      }
-    }
-  }
-  .yc-timeline-item-direction-vertical {
-    &:not(:last-child),
-    &.yc-timeline-item-reverse:last-child {
-      .yc-timeline-item-dot-line {
-        border-color: rgba(255, 255, 255, 0.12);
-      }
-    }
-  }
-  .yc-timeline-item-direction-horizontal {
-    &:not(:last-child),
-    &.yc-timeline-item-reverse:last-child {
-      .yc-timeline-item-dot-line {
-        border-color: rgba(255, 255, 255, 0.12);
-      }
+      color: rgb(151, 155, 165);
     }
   }
 }
