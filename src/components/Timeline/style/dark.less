@@ -1,0 +1,61 @@
+html[yc-design-dark] {
+  // timeline-item
+  @dark-colors: {
+    timeline-border: #5a5a5b;
+  };
+  .yc-timeline-reverse {
+    &:deep(.yc-timeline-item-direction-vertical) {
+      &:last-child {
+        .yc-timeline-item-dot-line {
+          border-color: @dark-colors[timeline-border];
+        }
+      }
+    }
+  }
+  // timeline-item
+  @item-dark-colors: {
+    item-color: #a9aeb8;
+    content-color: #ffffff;
+    label-color: #5a5a5b;
+    dot-color: #165dff;
+    dot-bg: #2a2a2b;
+    line-color: #5a5a5b;
+  };
+  .yc-timeline-item {
+    color: @item-dark-colors[item-color];
+    &:not(:last-child),
+    &.yc-timeline-item-reverse:last-child {
+      .yc-timeline-item-dot-line {
+        border-color: @item-dark-colors[line-color];
+      }
+    }
+    .yc-timeline-item-dot-wrapper {
+      .yc-timeline-item-dot-content {
+        .yc-timeline-item-dot-custom {
+          color: @item-dark-colors[dot-color];
+          background-color: @item-dark-colors[dot-bg];
+        }
+
+        .yc-timeline-item-dot {
+          color: @item-dark-colors[dot-color];
+
+          &.yc-timeline-item-dot-solid {
+            background-color: @item-dark-colors[dot-color];
+          }
+          &.yc-timeline-item-dot-hollow {
+            background-color: @item-dark-colors[dot-bg];
+            border-color: @item-dark-colors[dot-color];
+          }
+        }
+      }
+    }
+    .yc-timeline-item-content-wrapper {
+      .yc-timeline-item-content {
+        color: @item-dark-colors[content-color];
+      }
+    }
+    .yc-timeline-item-label {
+      color: @item-dark-colors[label-color];
+    }
+  }
+}

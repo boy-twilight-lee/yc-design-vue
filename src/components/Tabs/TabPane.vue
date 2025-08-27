@@ -37,4 +37,5 @@ const destoryOnHide = computed(() => {
 
 <style lang="less">
 @import './style/tabs.less';
+@import './style/dark.less';
 </style>

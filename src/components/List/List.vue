@@ -181,4 +181,5 @@ const curList = computed(() => {
 
 <style lang="less" scoped>
 @import './style/list.less';
+@import './style/dark.less';
 </style>

@@ -87,4 +87,5 @@ defineExpose<PopoverExpose>({
 
 <style lang="less">
 @import './style/popover.less';
+@import './style/dark.less';
 </style>

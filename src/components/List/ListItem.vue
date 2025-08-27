@@ -45,4 +45,5 @@ withDefaults(defineProps<ListItemProps>(), {
 
 <style lang="less" scoped>
 @import './style/list-item.less';
+@import './style/dark.less';
 </style>

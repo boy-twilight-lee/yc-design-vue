@@ -28,4 +28,5 @@ const { list, containerProps, wrapperProps } = useVirtualList(data, {
 
 <style lang="less">
 @import './style/list.less';
+@import './style/dark.less';
 </style>

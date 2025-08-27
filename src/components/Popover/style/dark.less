@@ -1,0 +1,26 @@
+html[yc-design-dark] {
+  @dark-colors: {
+    popover-bg: #2a2a2b;
+    popover-border: #5a5a5b;
+    popover-color: #a9aeb8;
+    popover-title: #ffffff;
+    popover-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  };
+
+  .yc-trigger {
+    &.yc-popover {
+      .yc-popover-popup-content {
+        color: @dark-colors[popover-color];
+        background-color: @dark-colors[popover-bg];
+        border-color: @dark-colors[popover-border];
+        box-shadow: @dark-colors[popover-shadow];
+        .yc-popover-title {
+          color: @dark-colors[popover-title];
+        }
+      }
+      .yc-popover-popup-arrow {
+        border-color: @dark-colors[popover-border];
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+html[yc-design-dark] {
+  // list
+  @dark-colors: {
+    border-color: #5a5a5b;
+    hover-bg: #3c3c3d;
+    scrollbar-bg: #2a2a2b;
+    content-color: #a9aeb8;
+  };
+  .yc-list-wrapper {
+    .yc-list-spin {
+      .yc-scrollbar {
+        &:deep(.yc-scrollbar-container) {
+          .yc-scrollbar-content {
+            background-color: @dark-colors[scrollbar-bg];
+          }
+        }
+      }
+      .yc-list-content-wrapper {
+        color: @dark-colors[content-color];
+      }
+    }
+  }
+  .yc-list-bordered {
+    .yc-scrollbar {
+      &:deep(.yc-scrollbar-container) {
+        border-color: @dark-colors[border-color];
+      }
+    }
+  }
+  .yc-list-split {
+    .yc-list-header {
+      border-bottom-color: @dark-colors[border-color];
+    }
+    &:deep(.yc-list-content) {
+      .yc-list-item {
+        &:not(:last-child) {
+          border-bottom-color: @dark-colors[border-color];
+        }
+      }
+    }
+    .yc-list-scroll-loading {
+      border-top-color: @dark-colors[border-color];
+    }
+    .yc-list-footer {
+      border-top-color: @dark-colors[border-color];
+    }
+  }
+  .yc-list-hoverable {
+    &:deep(.yc-list-item) {
+      &:hover {
+        background-color: @dark-colors[hover-bg];
+      }
+    }
+  }
+  //   list-item-meta
+  @meta-dark-colors: {
+    title-color: #ffffff;
+    description-color: #a9aeb8;
+  };
+  .yc-list-item-meta {
+    .yc-list-item-meta-content {
+      .yc-list-item-meta-title {
+        color: @meta-dark-colors[title-color];
+      }
+      .yc-list-item-meta-description {
+        color: @meta-dark-colors[description-color];
+      }
+    }
+  }
+}

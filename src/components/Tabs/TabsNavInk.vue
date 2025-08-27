@@ -60,4 +60,5 @@ const sliderStyle = computed(() => {
 
 <style lang="less" scoped>
 @import './style/tabs.less';
+@import './style/dark.less';
 </style>

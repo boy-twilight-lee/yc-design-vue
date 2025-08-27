@@ -1,0 +1,21 @@
+html[yc-design-dark] {
+  @dark-colors: {
+    text-color: #a9aeb8;
+    value-color: #ffffff;
+  };
+
+  .yc-statistic {
+    color: @dark-colors[text-color];
+
+    .yc-statistic-title,
+    .yc-statistic-extra {
+      color: @dark-colors[text-color];
+    }
+
+    .yc-statistic-content {
+      .yc-statistic-value {
+        color: @dark-colors[value-color];
+      }
+    }
+  }
+}

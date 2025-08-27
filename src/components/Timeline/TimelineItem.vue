@@ -75,4 +75,5 @@ const { direction, labelPosition, reverse } = useContext().inject();
 
 <style lang="less" scoped>
 @import './style/timeline-item.less';
+@import './style/dark.less';
 </style>

@@ -192,4 +192,5 @@ const handleAdd = async () => {
 
 <style lang="less" scoped>
 @import './style/tabs.less';
+@import './style/dark.less';
 </style>

@@ -54,4 +54,5 @@ const getPoistion = (i: number) => {
 
 <style lang="less" scoped>
 @import './style/timeline.less';
+@import './style/dark.less';
 </style>
