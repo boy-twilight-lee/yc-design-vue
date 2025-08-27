@@ -1,0 +1,68 @@
+html[yc-design-dark] {
+  .yc-trigger {
+    &.yc-popconfirm {
+      .yc-popconfirm-popup-content {
+        color: #e5e5e5;
+        background-color: #242424;
+        border-color: #343434;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+      .yc-popconfirm-popup-arrow {
+        border-color: #343434;
+      }
+    }
+  }
+  .yc-progress {
+    .yc-progress-steps-item {
+      background-color: #343434;
+    }
+    .yc-progress-line {
+      background-color: #343434;
+    }
+    .yc-progress-circle-bg {
+      stroke: #343434;
+    }
+    .yc-progress-steps-text,
+    .yc-progress-line-text,
+    .yc-progress-circle-text {
+      color: #e5e5e5;
+    }
+  }
+  @status: {
+    @normal: {
+      color: #4d88ff;
+      mini-bg-color: #6699ff;
+    };
+    @success: {
+      color: #00b336;
+      mini-bg-color: null;
+    };
+    @warning: {
+      color: #ff9933;
+      mini-bg-color: #ffb866;
+    };
+    @danger: {
+      color: #ff4d4d;
+      mini-bg-color: #ff6666;
+    };
+  };
+  each(@status, .(@value, @name) {
+      @key: replace(~"@{name}", "@", "");
+      html[yc-design-dark] .yc-progress-status-@{key} {
+        .yc-progress-steps-item-active,
+        .yc-progress-line-bar {
+          background-color: @value[color];
+        }
+        .yc-progress-circle-bar {
+          stroke: @value[color];
+        }
+        & when not (@key = success) and not (@value[mini-bg-color] = null) {
+          &.yc-progress-size-mini {
+            .yc-progress-circle-bg {
+              stroke: @value[mini-bg-color];
+            }
+          }
+        }
+      }
+    });
+}

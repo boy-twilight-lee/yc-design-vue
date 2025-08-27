@@ -205,4 +205,5 @@ defineExpose({
 
 <style lang="less" scoped>
 @import './style/time-picker-panel.less';
+@import './style/dark.less';
 </style>

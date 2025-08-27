@@ -1,0 +1,38 @@
+html[yc-design-dark] {
+  .yc-result {
+    .yc-result-title,
+    .yc-result-subtitle {
+      color: #e5e5e5;
+      &.yc-result-title {
+        color: #fff;
+      }
+    }
+    @type: {
+      @info: {
+        bg: #1a2d4a;
+        icon-color: #4d88ff;
+      };
+      @success: {
+        bg: #1a3323;
+        icon-color: #00b336;
+      };
+      @warning: {
+        bg: #4a331a;
+        icon-color: #ff9933;
+      };
+      @error: {
+        bg: #4a1a1a;
+        icon-color: #ff4d4d;
+      };
+    };
+    each(@type, .(@value, @name) {
+        @key: replace(~"@{name}", "@", "");
+        .yc-result-icon-@{key} {
+          color: @value[icon-color];
+          .yc-result-icon-tip {
+            background-color: @value[bg];
+          }
+        }
+      });
+  }
+}

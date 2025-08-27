@@ -1,0 +1,28 @@
+html[yc-design-dark] {
+  .yc-scrollbar-both-track::before {
+    background-color: #1c1e21;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .yc-scrollbar-vertical-track :deep(.yc-scrollbar-track-direction-vertical) {
+    background-color: #1c1e21;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .yc-scrollbar-horizontal-track
+    :deep(.yc-scrollbar-track-direction-horizontal) {
+    background-color: #1c1e21;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .yc-scrollbar-track {
+    .yc-scrollbar-thumb {
+      .yc-scrollbar-thumb-bar {
+        background-color: rgba(255, 255, 255, 0.2);
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.4);
+        }
+        &.yc-scrollbar-thumb-bar-dragging {
+          background-color: rgba(255, 255, 255, 0.4);
+        }
+      }
+    }
+  }
+}

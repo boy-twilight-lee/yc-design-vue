@@ -66,4 +66,5 @@ defineEmits<PageHeaderEmits>();
 
 <style lang="less" scoped>
 @import './style/page-header.less';
+@import './style/dark.less';
 </style>

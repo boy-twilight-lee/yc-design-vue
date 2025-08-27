@@ -1,0 +1,79 @@
+html[yc-design-dark] {
+  // select
+  .yc-select {
+    &:deep(.yc-input-outer) {
+      .yc-input-wrapper {
+        .yc-input {
+          &::placeholder {
+            color: rgb(134, 144, 156);
+          }
+        }
+      }
+    }
+    .yc-input-placeholder {
+      color: rgb(134, 144, 156);
+    }
+    .yc-select-suffix-icon,
+    .yc-select-search-icon,
+    .yc-select-clear-icon,
+    .yc-spin {
+      color: rgb(162, 169, 180);
+    }
+  }
+  .yc-select-no-border {
+    .yc-input-tag {
+      background-color: rgb(47, 49, 55);
+    }
+    &:deep(.yc-input-outer) {
+      .yc-input-wrapper {
+        background-color: rgb(47, 49, 55);
+      }
+    }
+  }
+  .yc-select-allow-search {
+    &:deep(.yc-input-outer) {
+      .yc-input-wrapper {
+        .yc-input {
+          &::placeholder {
+            color: rgb(134, 144, 156);
+          }
+        }
+      }
+    }
+  }
+  .yc-select-dropdown {
+    background-color: rgb(47, 49, 55);
+    border: 1px solid rgb(63, 65, 72);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    .yc-select-dropdown-header {
+      border-bottom: 1px solid rgb(63, 65, 72);
+    }
+    .yc-select-dropdown-footer {
+      border-top: 1px solid rgb(63, 65, 72);
+    }
+  }
+  // option
+  .yc-select-option {
+    color: rgb(217, 221, 228);
+    &:not(.yc-select-option-disabled):hover {
+      color: rgb(217, 221, 228);
+      background-color: rgb(63, 65, 72);
+    }
+    .yc-select-option-icon,
+    .yc-select-option-content,
+    .yc-select-option-suffix {
+      color: inherit;
+    }
+  }
+  .yc-select-option-disabled {
+    color: rgb(84, 89, 100);
+  }
+  .yc-select-option-active {
+    color: rgb(217, 221, 228);
+    background-color: rgb(63, 65, 72);
+  }
+  // option-group
+  .yc-option-group-label {
+    color: rgb(100, 108, 122);
+  }
+}

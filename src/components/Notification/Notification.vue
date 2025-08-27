@@ -94,4 +94,5 @@ onMounted(() => {
 
 <style lang="less" scoped>
 @import './style/notification.less';
+@import './style/dark.less';
 </style>

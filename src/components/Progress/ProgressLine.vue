@@ -87,4 +87,5 @@ const getBackground = (color?: string | Record<string, string>) => {
 
 <style scoped lang="less">
 @import './style/progress.less';
+@import './style/dark.less';
 </style>

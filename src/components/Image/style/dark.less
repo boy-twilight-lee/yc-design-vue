@@ -1,0 +1,57 @@
+html[yc-design-dark] {
+  // image
+  .yc-image {
+    .yc-image-overlay {
+      .yc-image-error {
+        color: rgb(78, 89, 105);
+        background-color: rgb(29, 33, 41);
+      }
+      .yc-image-loader {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .yc-image-footer-outer {
+      color: rgb(201, 205, 212);
+      .yc-image-footer-caption {
+        .yc-image-footer-caption-title {
+          color: rgb(229, 230, 235);
+        }
+      }
+    }
+  }
+  // image-preview
+  .yc-image-preview {
+    .yc-image-preview-mask {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .yc-image-preview-wrapper {
+      .yc-image-preview-toolbar {
+        background-color: rgb(36, 37, 39);
+
+        .yc-image-preview-toolbar-action {
+          color: rgba(255, 255, 255, 0.7);
+
+          &:not(.yc-image-preview-toolbar-action-disabled):hover {
+            color: rgb(22, 93, 255);
+            background-color: rgba(255, 255, 255, 0.08);
+          }
+
+          &-disabled {
+            color: rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
+
+      .yc-image-preview-arrow-right,
+      .yc-image-preview-arrow-left {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.15);
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.25);
+        }
+      }
+    }
+  }
+}

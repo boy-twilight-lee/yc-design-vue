@@ -140,4 +140,5 @@ const linearGradientId = computed(() => {
 
 <style lang="less" scoped>
 @import './style/progress.less';
+@import './style/dark.less';
 </style>

@@ -151,6 +151,7 @@ watch(
 
 <style lang="less" scoped>
 @import './style/color-picker.less';
+@import './style/dark.less';
 </style>
 
 <style lang="less">

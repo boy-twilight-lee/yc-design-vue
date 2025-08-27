@@ -1,0 +1,101 @@
+html[yc-design-dark] {
+  // picker
+  .yc-picker {
+    background-color: #2b2b2b;
+    border-color: #343434;
+    color: #e5e5e5;
+    &:not(.yc-picker-disabled):hover {
+      background-color: #343434;
+      border-color: #343434;
+    }
+    .yc-picker-prefix {
+      color: #e5e5e5;
+    }
+    .yc-picker-input input {
+      color: #e5e5e5;
+      &::placeholder {
+        color: #7c8692;
+      }
+      &.yc-picker-input-active {
+        input {
+          background-color: #2b2b2b;
+        }
+      }
+    }
+    .yc-picker-separator {
+      color: #7c8692;
+    }
+  }
+  .yc-picker-focus {
+    background-color: #343434;
+    border-color: #165dff;
+    box-shadow: 0 0 0 1px rgba(22, 93, 255, 0.2);
+    &:not(.yc-picker-disabled):hover {
+      background-color: #343434;
+      border-color: #165dff;
+    }
+  }
+  .yc-picker-error {
+    background-color: #402222;
+    border-color: #9d3636;
+    &:not(.yc-picker-disabled):hover {
+      background-color: #522b2b;
+    }
+    &.yc-picker-focus {
+      background-color: #343434;
+      border-color: #f53f3f;
+      box-shadow: 0 0 0 1px rgba(245, 63, 63, 0.2);
+      &:not(.yc-picker-disabled):hover {
+        background-color: #343434;
+      }
+    }
+  }
+  .yc-picker-disabled {
+    background-color: #2b2b2b;
+    color: #555;
+    -webkit-text-fill-color: #555;
+    .yc-picker-input input {
+      color: #555;
+      -webkit-text-fill-color: #555;
+      &::placeholder {
+        color: #555;
+      }
+    }
+  }
+  //panel
+  .yc-timepicker-container {
+    background-color: #2b2b2b;
+    border-color: #343434;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    .yc-timepicker {
+      .yc-timepicker-column {
+        &:not(:last-child) {
+          border-right-color: #343434;
+        }
+        ul {
+          .yc-timepicker-cell {
+            color: #e5e5e5;
+            .yc-timepicker-cell-inner {
+              color: #e5e5e5;
+            }
+          }
+          .yc-timepicker-cell-selected {
+            .yc-timepicker-cell-inner {
+              background-color: #343434;
+            }
+          }
+          .yc-timepicker-cell-disabled {
+            color: #555;
+          }
+        }
+      }
+    }
+    .yc-timepicker-footer-extra-wrapper {
+      border-top-color: #343434;
+      color: #e5e5e5;
+    }
+    .yc-timepicker-footer-btn-wrapper {
+      border-top-color: #343434;
+    }
+  }
+}

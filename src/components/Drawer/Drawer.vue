@@ -185,4 +185,5 @@ const {
 
 <style lang="less" scoped>
 @import './style/drawer.less';
+@import './style/dark.less';
 </style>

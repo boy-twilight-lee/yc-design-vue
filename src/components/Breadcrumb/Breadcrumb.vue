@@ -112,4 +112,5 @@ const getPaths = (index: number) => {
 
 <style lang="less" scoped>
 @import './style/breadcrumb.less';
+@import './style/dark.less';
 </style>

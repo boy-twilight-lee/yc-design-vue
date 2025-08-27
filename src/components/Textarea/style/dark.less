@@ -1,0 +1,52 @@
+html[yc-design-dark] {
+  .yc-textarea-wrapper {
+    background-color: #2b2b2b;
+    border-color: #343434;
+    color: #e5e5e5;
+
+    &:not(.yc-textarea-disabled) {
+      &:hover {
+        background-color: #343434;
+        border-color: #343434;
+      }
+
+      &:focus-within {
+        background-color: #343434;
+        border-color: #165dff;
+        box-shadow: 0 0 0 1px rgba(22, 93, 255, 0.2);
+      }
+    }
+
+    .yc-textarea-word-limit {
+      color: #7c8692;
+    }
+
+    .yc-textarea::placeholder {
+      color: #7c8692;
+    }
+  }
+
+  .yc-textarea-error {
+    background-color: #402222;
+    border-color: #9d3636;
+
+    &:not(.yc-textarea-disabled) {
+      &:hover {
+        background-color: #522b2b;
+        border-color: #9d3636;
+      }
+
+      &:focus-within {
+        background-color: #343434;
+        border-color: #f53f3f;
+        box-shadow: 0 0 0 1px rgba(245, 63, 63, 0.2);
+      }
+    }
+  }
+
+  .yc-textarea-disabled {
+    background-color: #2b2b2b;
+    color: #555;
+    -webkit-text-fill-color: #555;
+  }
+}

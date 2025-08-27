@@ -1,0 +1,32 @@
+html[yc-design-dark] {
+  // anchor
+  .yc-anchor {
+    .yc-anchor-line-slider {
+      background-color: rgba(22, 93, 255, 0.8);
+    }
+    .yc-anchor-line-track {
+      background-color: rgba(229, 230, 235, 0.2);
+    }
+  }
+  //   link-item
+  .yc-anchor-link-item {
+    .yc-anchor-link {
+      color: rgba(255, 255, 255, 0.6);
+      &:hover {
+        color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+  .yc-anchor-link-active {
+    & > .yc-anchor-link {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+  .yc-anchor-link-lineless-active {
+    & > .yc-anchor-link {
+      background-color: rgba(22, 93, 255, 0.1);
+      color: rgba(102, 167, 255, 1);
+    }
+  }
+}

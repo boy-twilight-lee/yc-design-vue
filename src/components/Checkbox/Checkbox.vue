@@ -115,4 +115,5 @@ const handleCollect = (e: Event) => {
 
 <style lang="less" scoped>
 @import './style/checkbox.less';
+@import './style/dark.less';
 </style>

@@ -51,4 +51,5 @@ const { options, curLevel, curPath, maxLevel, loading, slots } =
 
 <style lang="less" scoped>
 @import './style/panel.less';
+@import './style/dark.less';
 </style>

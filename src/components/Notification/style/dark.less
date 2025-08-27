@@ -1,0 +1,27 @@
+html[yc-design-dark] {
+  .yc-notification {
+    background-color: #242424;
+    border-color: #343434;
+    .yc-notification-right {
+      color: #e5e5e5;
+    }
+    .yc-notification-close-btn {
+      color: #e5e5e5;
+    }
+  }
+  @type: {
+    info: rgb(22, 93, 255);
+    warning: rgb(255, 125, 0);
+    success: rgb(0, 180, 42);
+    error: rgb(245, 63, 63);
+    loading: rgb(22, 93, 255);
+  };
+  each(@type, {
+      .yc-notification-@{key} {
+        & when not(@key = normal) {
+          background-color: #242424;
+          border-color: #343434;
+        }
+      };
+    });
+}

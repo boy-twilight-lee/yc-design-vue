@@ -1,0 +1,49 @@
+html[yc-design-dark] {
+  .yc-alert {
+    .yc-alert-body {
+      .yc-alert-title {
+        color: #e5e5e5;
+      }
+      .yc-alert-content {
+        color: #e5e5e5;
+      }
+    }
+    .yc-alert-close-btn {
+      color: #999;
+      &:hover {
+        color: #e5e5e5;
+      }
+    }
+  }
+  @type: {
+    @info: {
+      bg: #12243b;
+      icon-color: #669eff;
+    };
+    @success: {
+      bg: #0e2d10;
+      icon-color: #36b37e;
+    };
+    @warning: {
+      bg: #382a0e;
+      icon-color: #ffab00;
+    };
+    @error: {
+      bg: #3d1313;
+      icon-color: #ff7875;
+    };
+    @normal: {
+      bg: #2b2b2b;
+      icon-color: #666;
+    };
+  };
+  each(@type,.(@value,@name){
+      @key:replace(~"@{name}", "@", "");
+      .yc-alert-@{key}{
+        background-color: @value[bg];
+        .yc-alert-icon {
+          color: @value[icon-color]
+        }
+      }
+    });
+}

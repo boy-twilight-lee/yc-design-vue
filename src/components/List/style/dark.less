@@ -1,0 +1,54 @@
+html[yc-design-dark] {
+  // list
+  .yc-list-wrapper {
+    .yc-list-spin {
+      .yc-list-content-wrapper {
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+  }
+  .yc-list-bordered {
+    .yc-scrollbar {
+      &:deep(.yc-scrollbar-container) {
+        border-color: rgba(255, 255, 255, 0.09);
+      }
+    }
+  }
+  .yc-list-split {
+    .yc-list-header {
+      border-bottom-color: rgba(255, 255, 255, 0.09);
+    }
+    &:deep(.yc-list-content) {
+      .yc-list-item {
+        &:not(:last-child) {
+          border-bottom-color: rgba(255, 255, 255, 0.09);
+        }
+      }
+    }
+    .yc-list-scroll-loading {
+      border-top-color: rgba(255, 255, 255, 0.09);
+      background-color: transparent;
+    }
+    .yc-list-footer {
+      border-top-color: rgba(255, 255, 255, 0.09);
+    }
+  }
+  .yc-list-hoverable {
+    &:deep(.yc-list-item) {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.04);
+      }
+    }
+  }
+  //  list-item-meta
+  .yc-list-item-meta {
+    .yc-list-item-meta-content {
+      .yc-list-item-meta-title {
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .yc-list-item-meta-description {
+        color: rgba(255, 255, 255, 0.45);
+      }
+    }
+  }
+}

@@ -66,4 +66,5 @@ const isInRange = (value: number) => {
 
 <style lang="less" scoped>
 @import './style/slider.less';
+@import './style/dark.less';
 </style>

@@ -1,0 +1,58 @@
+html[yc-design-dark] {
+  .yc-switch {
+    .yc-switch-unchecked {
+      .yc-switch-handle {
+        background-color: #343434;
+        color: #7c8692;
+      }
+      .yc-switch-text {
+        color: #7c8692;
+      }
+    }
+    .yc-switch-checked {
+      .yc-switch-handle {
+        background-color: #343434;
+        color: #165dff;
+      }
+      .yc-switch-text {
+        color: #7c8692;
+      }
+    }
+    .yc-switch-loading,
+    .yc-switch-disabled {
+      &.yc-switch-unchecked {
+        &:not(.yc-switch-shape-line) {
+          background-color: #2b2b2b;
+        }
+        &::after {
+          background-color: #2b2b2b;
+        }
+        .yc-switch-handle {
+          color: #343434;
+        }
+        .yc-switch-text {
+          color: #7c8692;
+        }
+      }
+      &.yc-switch-checked {
+        &:not(.yc-switch-shape-line) {
+          background-color: #343434;
+        }
+        &::after {
+          background-color: #343434;
+        }
+        .yc-switch-handle {
+          color: #343434;
+        }
+        .yc-switch-text {
+          color: #7c8692;
+        }
+      }
+    }
+    .yc-switch-shape-line {
+      &::after {
+        background-color: #343434;
+      }
+    }
+  }
+}

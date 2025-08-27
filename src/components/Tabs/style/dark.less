@@ -1,0 +1,161 @@
+html[yc-design-dark] {
+  // tabs
+  .yc-tabs {
+    .yc-tabs-nav {
+      .yc-tabs-nav-tab {
+        .yc-tabs-nav-tab-list {
+          .yc-tabs-nav-ink {
+            background-color: rgb(48, 121, 255);
+          }
+        }
+      }
+      &::before {
+        background-color: rgb(48, 53, 69);
+      }
+    }
+    .yc-tabs-content {
+      border-color: rgb(48, 53, 69);
+    }
+  }
+  .yc-tabs-type-card,
+  .yc-tabs-type-card-gutter,
+  .yc-tabs-type-line {
+    &.yc-tabs-horizontal {
+      .yc-tabs-nav {
+        &::before {
+          background-color: rgb(48, 53, 69);
+        }
+      }
+      .yc-tabs-content {
+        border-color: rgb(48, 53, 69);
+      }
+    }
+    &.yc-tabs-vertical {
+      .yc-tabs-nav {
+        &::before {
+          background-color: rgb(48, 53, 69);
+        }
+      }
+      .yc-tabs-content {
+        border-color: rgb(48, 53, 69);
+      }
+    }
+    &:not(.yc-tabs-type-line) {
+      &.yc-tabs-horizontal {
+        .yc-tabs-content {
+          border-color: rgb(48, 53, 69);
+        }
+        &.yc-tabs-bottom {
+          .yc-tabs-content {
+            border-color: rgb(48, 53, 69);
+          }
+        }
+      }
+      &.yc-tabs-vertical {
+        .yc-tabs-content {
+          border-color: rgb(48, 53, 69);
+        }
+      }
+    }
+  }
+  .yc-tabs-type-capsule {
+    .yc-tabs-nav {
+      .yc-tabs-nav-tab {
+        .yc-tabs-nav-tab-list {
+          background-color: rgb(48, 53, 69);
+        }
+      }
+    }
+  }
+  // tabs-tab
+  .yc-tabs-tab {
+    color: rgba(255, 255, 255, 0.65);
+    &.yc-tabs-tab-active {
+      color: #598bff;
+    }
+  }
+
+  // line text
+  .yc-tabs-tab-type-line,
+  .yc-tabs-tab-type-text {
+    .yc-tabs-tab-title::after {
+      transition:
+        background-color 0.2s cubic-bezier(0, 0, 1, 1),
+        opacity 0.2s cubic-bezier(0, 0, 1, 1);
+    }
+    &:not(.yc-tabs-tab-active):not(.yc-tabs-tab-disabled):hover
+      .yc-tabs-tab-title::after {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    &.yc-tabs-tab-type-text {
+      &:not(:first-child)::before {
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+    }
+  }
+
+  // card card-gutter
+  .yc-tabs-tab-type-card,
+  .yc-tabs-tab-type-card-gutter {
+    border-color: rgba(255, 255, 255, 0.12);
+    &.yc-tabs-tab {
+      &:not(.yc-tabs-tab-disabled):not(.yc-tabs-tab-active):hover {
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+    }
+    &.yc-tabs-tab-type-card-gutter {
+      background-color: rgba(255, 255, 255, 0.04);
+    }
+    &.yc-tabs-tab-horizontal {
+      &.yc-tabs-tab-active {
+        background-color: transparent;
+        border-bottom-color: rgba(255, 255, 255, 0);
+        &.yc-tabs-tab-bottom {
+          border-top-color: rgba(255, 255, 255, 0);
+          border-bottom-color: rgba(255, 255, 255, 0.12);
+        }
+      }
+    }
+    &.yc-tabs-tab-vertical {
+      border-bottom-color: rgba(255, 255, 255, 0.12);
+      &:not(:last-child) {
+        border-bottom-color: rgba(255, 255, 255, 0.12);
+      }
+      &.yc-tabs-tab-active {
+        background-color: transparent;
+        border-right-color: rgba(255, 255, 255, 0);
+        &.yc-tabs-tab-right {
+          border-right-color: rgba(255, 255, 255, 0.12);
+          border-left-color: rgba(255, 255, 255, 0);
+        }
+      }
+    }
+  }
+
+  // rounded
+  .yc-tabs-tab-type-rounded {
+    &:not(.yc-tabs-tab-disabled):hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    &.yc-tabs-tab-active {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  // capsule
+  .yc-tabs-tab-type-capsule {
+    &:not(.yc-tabs-tab-disabled):hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    &.yc-tabs-tab-active {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  .yc-tabs-tab-disabled {
+    color: rgba(255, 255, 255, 0.3);
+    &.yc-tabs-tab-active {
+      color: rgba(89, 139, 255, 0.6);
+    }
+  }
+}

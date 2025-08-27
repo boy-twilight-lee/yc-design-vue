@@ -109,10 +109,11 @@ const width = computed(() => {
     medium: 64,
     large: 80,
   };
-  return _width.value ?? map[size.value];
+  return _width.value ?? map[size.value as string];
 });
 </script>
 
 <style lang="less" scoped>
 @import './style/progress.less';
+@import './style/dark.less';
 </style>

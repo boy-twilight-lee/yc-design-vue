@@ -1,0 +1,74 @@
+html[yc-design-dark] {
+  .yc-input-tag {
+    background-color: #303030;
+    border-color: #434343;
+    color: rgba(255, 255, 255, 0.85);
+    &:not(.yc-input-tag-disabled) {
+      &:hover {
+        border-color: #434343;
+        background-color: #434343;
+      }
+      &:focus-within {
+        background-color: #222;
+        border-color: #1890ff;
+        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+        &:deep(.yc-input-tag-inner) {
+          .yc-tag {
+            border-color: transparent;
+            background-color: #303030;
+          }
+        }
+      }
+    }
+    .yc-input-tag-prefix,
+    .yc-input-tag-suffix {
+      color: rgba(255, 255, 255, 0.65);
+    }
+    .yc-input-tag-inner {
+      &:deep(.yc-tag) {
+        &:hover {
+          background-color: #222;
+        }
+      }
+      .yc-input-tag-input {
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.45);
+        }
+      }
+    }
+  }
+  .yc-input-tag-error {
+    background-color: #4d2a25;
+    &:not(.yc-input-tag-disabled) {
+      &:hover {
+        border-color: #4d2a25;
+        background-color: #6a3832;
+      }
+      &:focus-within {
+        background-color: #222;
+        border-color: #ff4d4f;
+        box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+      }
+    }
+  }
+  .yc-input-tag-disabled {
+    background-color: #303030;
+    color: rgba(255, 255, 255, 0.3);
+    .yc-input-tag-prefix,
+    .yc-input-tag-suffix {
+      color: inherit;
+    }
+    .yc-input-tag-inner {
+      &:deep(.yc-tag) {
+        color: rgba(255, 255, 255, 0.3);
+        background-color: #303030;
+        border-color: #434343;
+        &:hover {
+          color: rgba(255, 255, 255, 0.3);
+          background-color: #303030;
+          border-color: #434343;
+        }
+      }
+    }
+  }
+}

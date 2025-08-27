@@ -28,6 +28,9 @@ each(@theme,.(@value,@name){
         .yc-dropdown{
          background-color: @value[bg];
          border: @value[border];
+         &:deep(.yc-dropdown-group-title){
+          color: #768390;
+         }
         }
        .yc-trigger-arrow {
          background-color: @value[bg];

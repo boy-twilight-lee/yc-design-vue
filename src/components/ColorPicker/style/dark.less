@@ -1,0 +1,69 @@
+html[yc-design-dark] {
+  .yc-color-picker-panel {
+    background-color: #1c1e22;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    .yc-color-picker-palette {
+      border-color: #343841;
+      .yc-color-picker-handler {
+        border-color: #343841;
+      }
+    }
+    .yc-color-picker-panel-control {
+      .yc-color-picker-control-wrapper {
+        &:not(.yc-color-picker-preview) > div {
+          color: #fff;
+        }
+        .yc-color-picker-control-bar {
+          border-color: #343841;
+          .yc-color-picker-control-bar-handler {
+            border-color: #343841;
+          }
+        }
+        .yc-color-picker-preview {
+          border-color: #343841;
+        }
+      }
+      .yc-color-picker-input-wrapper {
+        .yc-color-picker-color {
+          &:deep(.yc-input-outer) {
+            .yc-input-wrapper {
+              border-right-color: #343841;
+              &:last-child {
+                border-right-color: transparent;
+              }
+              &:focus-within:not(.yc-input-disabled) {
+                border-right-color: #165dff;
+              }
+            }
+          }
+        }
+      }
+    }
+    .yc-color-picker-panel-colors {
+      border-top-color: #343841;
+      .yc-color-picker-colors-section {
+        .yc-color-picker-colors-text {
+          color: #fff;
+        }
+        .yc-color-picker-colors-empty {
+          color: #86909c;
+        }
+      }
+    }
+  }
+  .yc-color-picker {
+    background-color: #2b2e33;
+    &:not(.yc-color-picker-disabled):hover {
+      background-color: #343841;
+    }
+    .yc-color-picker-value {
+      color: #fff;
+    }
+  }
+  .yc-color-picker-disabled {
+    background-color: #2b2e33;
+    .yc-color-picker-value {
+      color: #737987;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+html[yc-design-dark] {
+  .yc-skeleton-shape {
+    background-color: #1f2d3d;
+  }
+  .yc-skeleton-line {
+    .yc-skeleton-line-row {
+      background-color: #1f2d3d;
+    }
+  }
+  .yc-skeleton-animation {
+    .yc-skeleton-shape,
+    .yc-skeleton-line:deep(.yc-skeleton-line-row) {
+      background: linear-gradient(90deg, #1f2d3d 25%, #27394e 37%, #1f2d3d 63%);
+    }
+  }
+}

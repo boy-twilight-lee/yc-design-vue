@@ -126,4 +126,5 @@ collectOption(props, optionLabel);
 
 <style lang="less" scoped>
 @import './style/option.less';
+@import './style/dark.less';
 </style>

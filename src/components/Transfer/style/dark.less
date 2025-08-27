@@ -1,0 +1,35 @@
+html[yc-design-dark] {
+  .yc-transfer {
+    .yc-transfer-view {
+      border-color: #343434;
+      .yc-transfer-view-header {
+        background-color: #343434;
+        color: #e5e5e5;
+        .yc-transfer-view-header-count {
+          color: #888;
+        }
+      }
+      .yc-transfer-view-body {
+        .yc-transfer-list {
+          .yc-transfer-list-item {
+            color: #e5e5e5;
+            &:hover {
+              color: #e5e5e5;
+              background-color: #3d3d3d;
+            }
+            &.yc-transfer-list-item-disabled {
+              color: #555;
+            }
+          }
+        }
+      }
+    }
+  }
+  .yc-transfer-simple {
+    .yc-transfer-view {
+      &:last-child {
+        border-left-color: #343434;
+      }
+    }
+  }
+}

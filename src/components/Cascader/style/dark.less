@@ -1,0 +1,69 @@
+html[yc-design-dark] {
+  // cascader
+  .yc-cascader {
+    &:deep(.yc-input-outer) {
+      .yc-input-wrapper {
+        .yc-input {
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+          }
+        }
+      }
+    }
+    .yc-input-placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .yc-cascader-suffix-icon,
+    .yc-cascader-search-icon,
+    .yc-cascader-clear-icon,
+    .yc-spin {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+  .yc-cascader-allow-search {
+    &:deep(.yc-input-outer) {
+      .yc-input-wrapper {
+        .yc-input {
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+          }
+        }
+      }
+    }
+  }
+  // option
+  .yc-cascader-option {
+    color: rgba(255, 255, 255, 0.9);
+    &:not(.yc-cascader-option-disabled):hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    .yc-cascader-option-label {
+      .yc-icon {
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+  .yc-cascader-option-selected {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .yc-cascader-option-disabled {
+    color: rgba(255, 255, 255, 0.2);
+  }
+  //   panel
+  .yc-cascader-panel {
+    background-color: #141414;
+    border-color: #2e2e2e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    .yc-cascader-panel-column {
+      background-color: #141414;
+      &:not(:last-child) {
+        border-right-color: #2e2e2e;
+      }
+    }
+  }
+  .yc-cascader-search-panel {
+    .yc-cascader-empty {
+      color: rgba(255, 255, 255, 0.4);
+    }
+  }
+}

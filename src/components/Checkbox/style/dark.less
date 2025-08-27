@@ -1,0 +1,42 @@
+html[yc-design-dark] {
+  .yc-checkbox {
+    .yc-checkbox-icon {
+      border-color: #3a3a3a;
+    }
+    .yc-checkbox-label {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+  .yc-checkbox-unchecked {
+    &:not(.yc-checkbox-disabled):hover .yc-icon-button {
+      &::before {
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+      .yc-checkbox-icon {
+        border-color: #525252;
+      }
+    }
+  }
+  .yc-checkbox-checked,
+  .yc-checkbox-indeterminate {
+    .yc-checkbox-icon {
+      background-color: rgb(12, 70, 192);
+    }
+    &.yc-checkbox-disabled {
+      .yc-checkbox-icon {
+        background-color: rgba(148, 191, 255, 0.2);
+      }
+    }
+  }
+  .yc-checkbox-disabled {
+    .yc-icon-button {
+      .yc-checkbox-icon {
+        border-color: #2e2e2e;
+        background-color: #202020;
+      }
+    }
+    .yc-checkbox-label {
+      color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}

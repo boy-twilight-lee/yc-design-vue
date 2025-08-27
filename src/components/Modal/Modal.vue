@@ -234,4 +234,5 @@ const modalStyle = computed(() => {
 
 <style lang="less" scoped>
 @import './style/modal.less';
+@import './style/dark.less';
 </style>

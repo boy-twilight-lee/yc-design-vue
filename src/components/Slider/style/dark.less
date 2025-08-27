@@ -1,0 +1,64 @@
+html[yc-design-dark] {
+  .yc-slider {
+    .yc-slider-track {
+      &::before {
+        background-color: #343434;
+      }
+      .yc-slider-bar {
+        background-color: #165dff;
+      }
+      .yc-slider-btn {
+        &::before {
+          border-color: #165dff;
+        }
+      }
+    }
+    .yc-slider-input {
+      .yc-slider-input-divider {
+        background: #7c8692;
+      }
+      &:deep(.yc-input-outer) {
+        .yc-input-wrapper {
+          .yc-input {
+            color: #fff;
+          }
+        }
+      }
+    }
+    .yc-slider-ticks,
+    .yc-slider-dots,
+    .yc-slider-marks {
+      .yc-slider-tick {
+        background: #343434;
+        &.yc-slider-tick-active {
+          background-color: #165dff;
+        }
+      }
+      .yc-slider-dot {
+        background-color: #222;
+        border-color: #343434;
+        &.yc-slider-dot-active {
+          border-color: #165dff;
+        }
+      }
+      .yc-slider-mark {
+        color: #7c8692;
+      }
+    }
+  }
+  .yc-slider-disabled {
+    .yc-slider-track {
+      &::before {
+        background-color: #2b2b2b;
+      }
+      .yc-slider-bar {
+        background-color: #343434;
+      }
+      .yc-slider-btn {
+        &::before {
+          border-color: #343434;
+        }
+      }
+    }
+  }
+}

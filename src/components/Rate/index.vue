@@ -146,4 +146,5 @@ const handleMouseleave = () => {
 
 <style lang="less" scoped>
 @import './style/rate.less';
+@import './style/rate.less';
 </style>

@@ -157,4 +157,5 @@ defineExpose<TextareaExpose>({
 
 <style lang="less" scoped>
 @import './style/textarea.less';
+@import './style/dark.less';
 </style>

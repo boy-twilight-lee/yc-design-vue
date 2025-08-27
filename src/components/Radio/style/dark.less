@@ -1,0 +1,83 @@
+html[yc-design-dark] {
+  // radio
+  .yc-radio {
+    .yc-radio-icon {
+      border-color: rgb(47, 49, 55);
+      &::after {
+        background: rgb(47, 49, 55);
+      }
+    }
+    .yc-radio-label {
+      color: rgb(217, 218, 222);
+    }
+  }
+  .yc-radio-button {
+    color: rgb(162, 169, 180);
+    &::before {
+      background-color: rgb(47, 49, 55);
+    }
+    &:not(.yc-radio-disabled) {
+      &:hover {
+        background-color: rgb(47, 49, 55);
+        color: rgb(217, 218, 222);
+      }
+    }
+  }
+  .yc-radio-checked {
+    &.yc-radio {
+      .yc-radio-icon {
+        border-color: transparent;
+        background-color: rgb(0, 122, 255);
+        &::after {
+          background: #fff;
+        }
+      }
+    }
+    &.yc-radio-button {
+      color: rgb(0, 122, 255);
+      background-color: rgb(47, 49, 55);
+    }
+  }
+  .yc-radio-unchecked {
+    &:not(.yc-radio-disabled):hover .yc-icon-button {
+      &::before {
+        background-color: rgba(63, 65, 72);
+      }
+      .yc-radio-icon {
+        border-color: rgb(80, 84, 92);
+      }
+    }
+  }
+  .yc-radio-disabled {
+    &.yc-radio {
+      &.yc-radio-unchecked {
+        .yc-radio-icon {
+          border-color: rgb(47, 49, 55);
+          &::after {
+            background-color: rgb(63, 65, 72);
+          }
+        }
+      }
+      &.yc-radio-checked {
+        .yc-radio-icon {
+          background-color: rgb(61, 109, 180);
+        }
+      }
+      .yc-radio-label {
+        color: rgb(104, 108, 116);
+      }
+    }
+    &.yc-radio-button {
+      &.yc-radio-unchecked {
+        color: rgb(104, 108, 116);
+      }
+      &.yc-radio-checked {
+        color: rgb(61, 109, 180);
+      }
+    }
+  }
+  // radio-group
+  .yc-radio-button-group {
+    background-color: rgb(47, 49, 55);
+  }
+}

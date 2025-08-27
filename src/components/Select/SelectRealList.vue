@@ -72,4 +72,5 @@ defineExpose({
 
 <style lang="less" scoped>
 @import './style/select.less';
+@import './style/dark.less';
 </style>

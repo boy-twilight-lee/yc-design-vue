@@ -37,4 +37,5 @@ const gap = computed(() => valueToPx(lineSpacing.value));
 
 <style lang="less" scoped>
 @import './style/skeleton.less';
+@import './style/dark.less';
 </style>
