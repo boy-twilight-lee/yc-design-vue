@@ -13,3 +13,6 @@ DatePicker Form Upload TreeSelect Table Tree
 6. time-picker  use12-hours
 7. trigger支持多种触发方式,popup-translate支持多方向
 8. 暗黑模式，国际化，vite自动引入插件
+
+## 暗色主题存在问题
+checkbox、switch、time-picker、progress、skeleton存在问题
