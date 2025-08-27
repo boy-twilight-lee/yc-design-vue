@@ -105,4 +105,5 @@ const handleEvent = (type: 'close' | 'check', ev: MouseEvent) => {
 
 <style lang="less" scoped>
 @import './style/tag.less';
+@import './style/dark.less';
 </style>
