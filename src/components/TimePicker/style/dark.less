@@ -1,101 +1,95 @@
 html[yc-design-dark] {
-  // picker
   .yc-picker {
-    background-color: #2b2b2b;
-    border-color: #343434;
-    color: #e5e5e5;
+    background-color: #262626;
+    color: #bfbfbf;
     &:not(.yc-picker-disabled):hover {
-      background-color: #343434;
-      border-color: #343434;
+      background-color: #303030;
     }
     .yc-picker-prefix {
-      color: #e5e5e5;
+      color: #bfbfbf;
     }
-    .yc-picker-input input {
-      color: #e5e5e5;
-      &::placeholder {
-        color: #7c8692;
+    .yc-picker-input {
+      input {
+        background-color: transparent;
+        &::placeholder {
+          color: #666666;
+        }
       }
       &.yc-picker-input-active {
         input {
-          background-color: #2b2b2b;
+          background-color: #262626;
         }
       }
     }
     .yc-picker-separator {
-      color: #7c8692;
+      color: #666666;
     }
   }
   .yc-picker-focus {
-    background-color: #343434;
-    border-color: #165dff;
-    box-shadow: 0 0 0 1px rgba(22, 93, 255, 0.2);
+    background-color: #1a1a1a;
+    border-color: #306fff;
+    box-shadow: 0 0 0 0 rgba(48, 111, 255, 0.2);
     &:not(.yc-picker-disabled):hover {
-      background-color: #343434;
-      border-color: #165dff;
+      background-color: #1a1a1a;
+      border-color: #306fff;
     }
   }
   .yc-picker-error {
-    background-color: #402222;
-    border-color: #9d3636;
+    background-color: #261d1d;
     &:not(.yc-picker-disabled):hover {
-      background-color: #522b2b;
+      background-color: #332121;
     }
     &.yc-picker-focus {
-      background-color: #343434;
-      border-color: #f53f3f;
-      box-shadow: 0 0 0 1px rgba(245, 63, 63, 0.2);
+      background-color: #1a1a1a;
+      border-color: #ff4d4f;
+      box-shadow: 0 0 0 0 rgba(245, 63, 63, 0.2);
       &:not(.yc-picker-disabled):hover {
-        background-color: #343434;
+        background-color: #1a1a1a;
       }
     }
   }
   .yc-picker-disabled {
-    background-color: #2b2b2b;
-    color: #555;
-    -webkit-text-fill-color: #555;
-    .yc-picker-input input {
-      color: #555;
-      -webkit-text-fill-color: #555;
-      &::placeholder {
-        color: #555;
+    background-color: #262626;
+    color: #424242;
+    .yc-picker-input {
+      input {
+        &::placeholder {
+          color: #424242;
+        }
       }
     }
   }
-  //panel
   .yc-timepicker-container {
-    background-color: #2b2b2b;
-    border-color: #343434;
+    background-color: #1a1a1a;
+    border: 1px solid #303030;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    .yc-timepicker {
-      .yc-timepicker-column {
-        &:not(:last-child) {
-          border-right-color: #343434;
+    .yc-timepicker-column {
+      &:not(:last-child) {
+        border-right: 1px solid #303030;
+      }
+      ul {
+        .yc-timepicker-cell {
+          color: #bfbfbf;
+          .yc-timepicker-cell-inner {
+            font-size: 14px;
+          }
         }
-        ul {
-          .yc-timepicker-cell {
-            color: #e5e5e5;
-            .yc-timepicker-cell-inner {
-              color: #e5e5e5;
-            }
+        .yc-timepicker-cell-selected {
+          .yc-timepicker-cell-inner {
+            background-color: #262626;
           }
-          .yc-timepicker-cell-selected {
-            .yc-timepicker-cell-inner {
-              background-color: #343434;
-            }
-          }
-          .yc-timepicker-cell-disabled {
-            color: #555;
-          }
+        }
+        .yc-timepicker-cell-disabled {
+          color: #424242;
         }
       }
     }
-    .yc-timepicker-footer-extra-wrapper {
-      border-top-color: #343434;
-      color: #e5e5e5;
-    }
-    .yc-timepicker-footer-btn-wrapper {
-      border-top-color: #343434;
-    }
+  }
+  .yc-timepicker-footer-extra-wrapper {
+    border-top: 1px solid #303030;
+    color: #bfbfbf;
+  }
+  .yc-timepicker-footer-btn-wrapper {
+    border-top: 1px solid #303030;
   }
 }

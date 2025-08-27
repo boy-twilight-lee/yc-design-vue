@@ -1,42 +1,47 @@
 html[yc-design-dark] {
   .yc-checkbox {
     .yc-checkbox-icon {
-      border-color: #3a3a3a;
+      border-color: #424242;
     }
     .yc-checkbox-label {
       color: rgba(255, 255, 255, 0.9);
     }
   }
+
   .yc-checkbox-unchecked {
     &:not(.yc-checkbox-disabled):hover .yc-icon-button {
       &::before {
         background-color: rgba(255, 255, 255, 0.08);
       }
       .yc-checkbox-icon {
-        border-color: #525252;
+        border-color: #666666;
       }
     }
   }
+
   .yc-checkbox-checked,
   .yc-checkbox-indeterminate {
     .yc-checkbox-icon {
-      background-color: rgb(12, 70, 192);
+      background-color: #306fff;
     }
+
     &.yc-checkbox-disabled {
       .yc-checkbox-icon {
-        background-color: rgba(148, 191, 255, 0.2);
+        background-color: rgba(48, 111, 255, 0.4);
       }
     }
   }
+
   .yc-checkbox-disabled {
     .yc-icon-button {
       .yc-checkbox-icon {
-        border-color: #2e2e2e;
-        background-color: #202020;
+        border-color: #303030;
+        background-color: #262626;
       }
     }
+
     .yc-checkbox-label {
-      color: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.3);
     }
   }
 }

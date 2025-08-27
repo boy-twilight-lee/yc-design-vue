@@ -2,61 +2,58 @@ html[yc-design-dark] {
   .yc-slider {
     .yc-slider-track {
       &::before {
-        background-color: #343434;
+        background-color: #424242;
       }
       .yc-slider-bar {
-        background-color: #165dff;
+        background-color: #306fff;
       }
       .yc-slider-btn {
         &::before {
-          border-color: #165dff;
+          border-color: #306fff;
+          background: #1a1a1a;
+        }
+        &:hover::before {
+          box-shadow: 0 2px 5px #0000004d;
         }
       }
     }
     .yc-slider-input {
       .yc-slider-input-divider {
-        background: #7c8692;
-      }
-      &:deep(.yc-input-outer) {
-        .yc-input-wrapper {
-          .yc-input {
-            color: #fff;
-          }
-        }
+        background: #666666;
       }
     }
     .yc-slider-ticks,
     .yc-slider-dots,
     .yc-slider-marks {
       .yc-slider-tick {
-        background: #343434;
+        background: #424242;
         &.yc-slider-tick-active {
-          background-color: #165dff;
+          background-color: #306fff;
         }
       }
       .yc-slider-dot {
-        background-color: #222;
-        border-color: #343434;
+        background-color: #1a1a1a;
+        border-color: #424242;
         &.yc-slider-dot-active {
-          border-color: #165dff;
+          border-color: #306fff;
         }
       }
       .yc-slider-mark {
-        color: #7c8692;
+        color: #999999;
       }
     }
   }
   .yc-slider-disabled {
     .yc-slider-track {
       &::before {
-        background-color: #2b2b2b;
+        background-color: #262626;
       }
       .yc-slider-bar {
-        background-color: #343434;
+        background-color: #424242;
       }
       .yc-slider-btn {
         &::before {
-          border-color: #343434;
+          border-color: #424242;
         }
       }
     }

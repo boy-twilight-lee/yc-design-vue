@@ -2,77 +2,75 @@ html[yc-design-dark] {
   // radio
   .yc-radio {
     .yc-radio-icon {
-      border-color: rgb(47, 49, 55);
+      border-color: #424242;
       &::after {
-        background: rgb(47, 49, 55);
+        background-color: #ffffff;
       }
     }
     .yc-radio-label {
-      color: rgb(217, 218, 222);
+      color: rgba(255, 255, 255, 0.9);
     }
   }
+
   .yc-radio-button {
-    color: rgb(162, 169, 180);
+    color: rgba(255, 255, 255, 0.7);
     &::before {
-      background-color: rgb(47, 49, 55);
+      background-color: #424242;
     }
     &:not(.yc-radio-disabled) {
       &:hover {
-        background-color: rgb(47, 49, 55);
-        color: rgb(217, 218, 222);
+        background-color: #303030;
+        color: rgba(255, 255, 255, 0.9);
       }
     }
   }
+
   .yc-radio-checked {
     &.yc-radio {
       .yc-radio-icon {
-        border-color: transparent;
-        background-color: rgb(0, 122, 255);
-        &::after {
-          background: #fff;
-        }
+        background-color: #306fff;
       }
     }
     &.yc-radio-button {
-      color: rgb(0, 122, 255);
-      background-color: rgb(47, 49, 55);
+      color: #306fff;
+      background-color: #1a1a1a;
     }
   }
+
   .yc-radio-unchecked {
     &:not(.yc-radio-disabled):hover .yc-icon-button {
-      &::before {
-        background-color: rgba(63, 65, 72);
-      }
       .yc-radio-icon {
-        border-color: rgb(80, 84, 92);
+        border-color: #666666;
       }
     }
   }
+
   .yc-radio-disabled {
     &.yc-radio {
       &.yc-radio-unchecked {
         .yc-radio-icon {
-          border-color: rgb(47, 49, 55);
+          border-color: #424242;
           &::after {
-            background-color: rgb(63, 65, 72);
+            background-color: #262626;
           }
         }
       }
       &.yc-radio-checked {
         .yc-radio-icon {
-          background-color: rgb(61, 109, 180);
+          background-color: #29478f;
         }
       }
       .yc-radio-label {
-        color: rgb(104, 108, 116);
+        color: rgba(255, 255, 255, 0.3);
       }
     }
     &.yc-radio-button {
       &.yc-radio-unchecked {
-        color: rgb(104, 108, 116);
+        color: rgba(255, 255, 255, 0.3);
       }
       &.yc-radio-checked {
-        color: rgb(61, 109, 180);
+        color: #29478f;
+        background-color: #1a1a1a;
       }
     }
   }
