@@ -10,6 +10,20 @@
   --yc-badge-status-color-danger: var(--yc-badge-color-danger);
   --yc-badge-status-color-processing: rgb(22, 93, 255);
   --yc-badge-status-color-warning: rgb(255, 125, 0);
+  --yc-badge-color-red: rgb(245, 63, 63);
+  --yc-badge-color-orangered: rgb(247, 114, 52);
+  --yc-badge-color-orange: rgb(255, 125, 0);
+  --yc-badge-color-gold: rgb(247, 186, 30);
+  --yc-badge-color-lime: rgb(159, 219, 29);
+  --yc-badge-color-green: rgb(0, 180, 134);
+  --yc-badge-color-cyan: rgb(20, 201, 201);
+  --yc-badge-color-blue: rgb(52, 145, 250);
+  --yc-badge-color-arcoblue: rgb(22, 93, 255);
+  --yc-badge-color-purple: rgb(144, 46, 209);
+  --yc-badge-color-pinkpurple: rgb(217, 26, 217);
+  --yc-badge-color-magenta: rgb(245, 49, 157);
+  --yc-badge-color-gray: rgb(134, 144, 156);
+
   html[yc-design-dark] & {
     --yc-badge-box-shadow-color: rgb(29, 29, 30);
     --yc-badge-status-text-color: rgb(229, 230, 235);
@@ -17,6 +31,19 @@
     --yc-badge-status-color-success: rgb(19, 173, 58);
     --yc-badge-status-color-processing: rgb(46, 126, 255);
     --yc-badge-status-color-warning: rgb(250, 140, 42);
+    --yc-badge-color-red: rgb(223, 58, 58);
+    --yc-badge-color-orangered: rgb(225, 103, 47);
+    --yc-badge-color-orange: rgb(230, 113, 0);
+    --yc-badge-color-gold: rgb(224, 169, 27);
+    --yc-badge-color-lime: rgb(144, 198, 26);
+    --yc-badge-color-green: rgb(0, 163, 121);
+    --yc-badge-color-cyan: rgb(18, 182, 182);
+    --yc-badge-color-blue: rgb(47, 131, 227);
+    --yc-badge-color-arcoblue: rgb(20, 84, 232);
+    --yc-badge-color-purple: rgb(130, 41, 189);
+    --yc-badge-color-pinkpurple: rgb(197, 23, 197);
+    --yc-badge-color-magenta: rgb(223, 44, 142);
+    --yc-badge-color-gray: rgb(121, 130, 141);
   }
 }
 
@@ -97,31 +124,19 @@
   processing: var(--yc-badge-status-color-processing);
   warning: var(--yc-badge-status-color-warning);
 };
-// status
+
 each(@status,{
   .yc-badge-status-@{key}{
     background-color: @value;
   }
-})
-
-// color
-@color: {
-  red: rgb(245, 63, 63);
-  orangered: rgb(247, 114, 52);
-  orange: rgb(255, 125, 0);
-  gold: rgb(247, 186, 30);
-  lime: rgb(159, 219, 29);
-  green: rgb(0, 180, 134);
-  cyan: rgb(20, 201, 201);
-  blue: rgb(52, 145, 250);
-  arcoblue: rgb(22, 93, 255);
-  purple: rgb(144, 46, 209);
-  pinkpurple: rgb(217, 26, 217);
-  magenta: rgb(245, 49, 157);
-  gray: rgb(134, 144, 156);
-}
-each(@color, {
-  .yc-badge-color-@{key} {
-    background-color: @value;
-  }
 });
+
+@color-keys: red, orangered, orange, gold, lime, green, cyan, blue, arcoblue,
+  purple, pinkpurple, magenta, gray;
+
+each(@color-keys, {
+    @key: extract(@value, 1);
+    .yc-badge-color-@{key} {
+      background-color: var(~'--yc-badge-color-@{key}');
+    }
+  });

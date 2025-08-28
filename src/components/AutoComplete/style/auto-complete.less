@@ -1,16 +1,16 @@
 .yc-auto-complete {
-  --yc-select-placeholder-color: rgb(134, 144, 156);
+  --yc-auto-complete-placeholder-color: rgb(134, 144, 156);
   html[yc-design-dark] & {
-    --yc-select-placeholder-color: rgba(255, 255, 255, 0.4);
+    --yc-auto-complete-placeholder-color: rgba(255, 255, 255, 0.4);
   }
 }
-.yc-select {
+.yc-auto-complete {
   &.yc-auto-complete {
     .yc-input-outer {
       .yc-input-wrapper {
         .yc-input {
           &::placeholder {
-            color: var(--yc-select-placeholder-color);
+            color: var(--yc-auto-complete-placeholder-color);
           }
         }
       }
