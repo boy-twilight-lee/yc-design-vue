@@ -87,8 +87,7 @@ each(@status,{
   purple, pinkpurple, magenta, gray;
 
 each(@color-keys, {
-    @key: extract(@value, 1);
-    .yc-badge-color-@{key} {
-      background-color: rgb(var(~'--@{key}-6'));
+    .yc-badge-color-@{value} {
+      background-color: rgb(var(~'--@{value}-6'));
     }
   });

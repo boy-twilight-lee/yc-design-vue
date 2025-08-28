@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    <yc-calendar />
+    <yc-checkbox disabled />
   </div>
 </template>
 
@@ -17,6 +17,7 @@ import { ref } from 'vue';
   align-items: center;
   justify-content: center;
   gap: 10px;
+
   .a,
   .b {
     width: 200px;

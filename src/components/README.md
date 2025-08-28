@@ -12,7 +12,11 @@ DatePicker Form Upload TreeSelect Table Tree
 5. Menu mode
 6. time-picker  use12-hours
 7. trigger支持多种触发方式,popup-translate支持多方向
-8. 暗黑模式，国际化，vite自动引入插件
+8. 国际化，vite自动引入插件
 
 ## 单独处理一下
 avatar button candendar card link message notification popconfirm split tag typography
+
+## 检查出现问题
+1. switch整个色彩存在问题
+2. 处理icon-button的暗色模式
