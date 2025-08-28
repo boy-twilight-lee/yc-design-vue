@@ -1,12 +1,10 @@
-.yc-typography,
-.yc-typography blockquote {
+.yc-typography {
   --blockquote-bg: #fff;
   --blockquote-border: rgb(134, 144, 156);
-}
-
-html[yc-design-dark] {
-  --blockquote-bg: rgb(38, 38, 40);
-  --blockquote-border: rgb(81, 84, 86);
+  html[yc-design-dark] & {
+    --blockquote-bg: rgb(38, 38, 40);
+    --blockquote-border: rgb(81, 84, 86);
+  }
 }
 
 .yc-typography {

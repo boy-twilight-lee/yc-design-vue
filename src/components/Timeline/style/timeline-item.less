@@ -1,12 +1,27 @@
 .yc-timeline-item {
+  --yc-timeline-item-text-color: rgb(29, 33, 41);
+  --yc-timeline-item-label-color: rgb(134, 144, 156);
+  --yc-timeline-item-dot-line-border-color: rgb(229, 230, 235);
+  --yc-timeline-item-dot-accent-color: rgb(22, 93, 255);
+  --yc-timeline-item-dot-bg-color: #fff;
+  html[yc-design-dark] & {
+    --yc-timeline-item-text-color: rgb(229, 230, 235);
+    --yc-timeline-item-label-color: rgb(151, 155, 165);
+    --yc-timeline-item-dot-line-border-color: rgb(70, 70, 72);
+    --yc-timeline-item-dot-accent-color: rgb(78, 134, 255);
+    --yc-timeline-item-dot-bg-color: rgb(24, 24, 28);
+  }
+}
+
+.yc-timeline-item {
   position: relative;
-  color: rgb(29, 33, 41);
+  color: var(--yc-timeline-item-text-color);
   font-size: 14px;
   &:not(:last-child),
   &.yc-timeline-item-reverse:last-child {
     .yc-timeline-item-dot-line {
       position: absolute;
-      border-color: rgb(229, 230, 235);
+      border-color: var(--yc-timeline-item-dot-line-border-color);
     }
   }
   .yc-timeline-item-dot-wrapper {
@@ -20,8 +35,8 @@
         top: 50%;
         left: 50%;
         display: inline-flex;
-        color: rgb(22, 93, 255);
-        background-color: #fff;
+        color: var(--yc-timeline-item-dot-accent-color);
+        background-color: var(--yc-timeline-item-dot-bg-color);
         transform: translateX(-50%) translateY(-50%);
         transform-origin: center;
       }
@@ -30,15 +45,15 @@
         position: relative;
         width: 6px;
         height: 6px;
-        color: rgb(22, 93, 255);
+        color: var(--yc-timeline-item-dot-accent-color);
         border-radius: 50%;
 
         &.yc-timeline-item-dot-solid {
-          background-color: rgb(22, 93, 255);
+          background-color: var(--yc-timeline-item-dot-accent-color);
         }
         &.yc-timeline-item-dot-hollow {
-          background-color: #fff;
-          border: 2px solid rgb(22, 93, 255);
+          background-color: var(--yc-timeline-item-dot-bg-color);
+          border: 2px solid var(--yc-timeline-item-dot-accent-color);
         }
       }
     }
@@ -50,13 +65,13 @@
 
     gap: 4px;
     .yc-timeline-item-content {
-      color: rgb(29, 33, 41);
+      color: var(--yc-timeline-item-text-color);
       font-size: 14px;
       line-height: 1.5715;
     }
   }
   .yc-timeline-item-label {
-    color: rgb(134, 144, 156);
+    color: var(--yc-timeline-item-label-color);
     font-size: 12px;
     line-height: 1.667;
   }

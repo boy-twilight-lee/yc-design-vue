@@ -1,4 +1,4 @@
-:root {
+.yc-badge {
   --yc-badge-color-danger: rgb(245, 63, 63);
   --yc-badge-color-white: #fff;
   --yc-badge-background-color: var(--yc-badge-color-danger);
@@ -10,14 +10,14 @@
   --yc-badge-status-color-danger: var(--yc-badge-color-danger);
   --yc-badge-status-color-processing: rgb(22, 93, 255);
   --yc-badge-status-color-warning: rgb(255, 125, 0);
-}
-html[yc-design-dark] {
-  --yc-badge-box-shadow-color: rgb(29, 29, 30);
-  --yc-badge-status-text-color: rgb(229, 230, 235);
-  --yc-badge-status-color-normal: rgb(81, 84, 86);
-  --yc-badge-status-color-success: rgb(19, 173, 58);
-  --yc-badge-status-color-processing: rgb(46, 126, 255);
-  --yc-badge-status-color-warning: rgb(250, 140, 42);
+  html[yc-design-dark] & {
+    --yc-badge-box-shadow-color: rgb(29, 29, 30);
+    --yc-badge-status-text-color: rgb(229, 230, 235);
+    --yc-badge-status-color-normal: rgb(81, 84, 86);
+    --yc-badge-status-color-success: rgb(19, 173, 58);
+    --yc-badge-status-color-processing: rgb(46, 126, 255);
+    --yc-badge-status-color-warning: rgb(250, 140, 42);
+  }
 }
 
 .yc-badge {

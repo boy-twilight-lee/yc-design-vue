@@ -1,13 +1,12 @@
-:root {
+.yc-card-meta {
   --yc-card-meta-title-color: rgb(29, 33, 41);
   --yc-card-meta-description-color: #4e5969;
   --yc-card-meta-actions-right-color: rgb(78, 89, 105);
-}
-
-html[yc-design-dark] {
-  --yc-card-meta-title-color: rgb(229, 230, 235);
-  --yc-card-meta-description-color: rgb(193, 194, 195);
-  --yc-card-meta-actions-right-color: rgb(193, 194, 195);
+  html[yc-design-dark] & {
+    --yc-card-meta-title-color: rgb(229, 230, 235);
+    --yc-card-meta-description-color: rgb(193, 194, 195);
+    --yc-card-meta-actions-right-color: rgb(193, 194, 195);
+  }
 }
 
 .yc-card-meta {

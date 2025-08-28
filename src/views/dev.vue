@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    <yc-drawer :visible="true"> </yc-drawer>
+    <yc-button>测试</yc-button>
   </div>
 </template>
 

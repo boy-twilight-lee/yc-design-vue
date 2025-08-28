@@ -106,5 +106,4 @@ defineExpose<TooltipExpose>({
 
 <style lang="less">
 @import './style/tooltip.less';
-@import './style/dark.less';
 </style>

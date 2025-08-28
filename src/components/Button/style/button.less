@@ -1,4 +1,4 @@
-:root {
+.yc-button {
   --yc-primary-color: rgb(22, 93, 255);
   --yc-primary-hover-color: rgb(64, 128, 255);
   --yc-primary-active-color: rgb(14, 66, 210);
@@ -39,49 +39,48 @@
   --yc-dashed-danger-border-hover-color: rgb(251, 172, 163);
   --yc-dashed-danger-border-active-color: rgb(249, 137, 129);
   --yc-loading-bg: #fff;
-}
-
-.dark {
-  --yc-primary-color: rgb(53, 122, 255);
-  --yc-primary-hover-color: rgb(85, 150, 255);
-  --yc-primary-active-color: rgb(30, 90, 210);
-  --yc-warning-color: rgb(255, 168, 0);
-  --yc-warning-hover-color: rgb(255, 190, 40);
-  --yc-warning-active-color: rgb(210, 130, 0);
-  --yc-success-color: rgb(0, 200, 60);
-  --yc-success-hover-color: rgb(35, 215, 80);
-  --yc-success-active-color: rgb(0, 170, 50);
-  --yc-danger-color: rgb(255, 90, 90);
-  --yc-danger-hover-color: rgb(255, 120, 120);
-  --yc-danger-active-color: rgb(210, 60, 60);
-  --yc-text-color: rgb(220, 220, 220);
-  --yc-text-hover-bg: rgb(50, 50, 50);
-  --yc-text-active-bg: rgb(70, 70, 70);
-  --yc-secondary-bg: rgb(50, 54, 60);
-  --yc-secondary-hover-bg: rgb(70, 75, 85);
-  --yc-secondary-active-bg: rgb(90, 95, 105);
-  --yc-dashed-border-color: rgb(70, 75, 85);
-  --yc-dashed-border-hover-color: rgb(90, 95, 105);
-  --yc-dashed-border-active-color: rgb(110, 115, 125);
-  --yc-secondary-warning-bg: rgb(70, 60, 40);
-  --yc-secondary-warning-hover-bg: rgb(100, 80, 50);
-  --yc-secondary-warning-active-bg: rgb(130, 100, 60);
-  --yc-secondary-success-bg: rgb(40, 70, 45);
-  --yc-secondary-success-hover-bg: rgb(50, 100, 55);
-  --yc-secondary-success-active-bg: rgb(60, 130, 65);
-  --yc-secondary-danger-bg: rgb(70, 40, 40);
-  --yc-secondary-danger-hover-bg: rgb(100, 50, 50);
-  --yc-secondary-danger-active-bg: rgb(130, 60, 60);
-  --yc-dashed-warning-border-color: rgb(100, 80, 50);
-  --yc-dashed-warning-border-hover-color: rgb(130, 100, 60);
-  --yc-dashed-warning-border-active-color: rgb(160, 120, 70);
-  --yc-dashed-success-border-color: rgb(50, 100, 55);
-  --yc-dashed-success-border-hover-color: rgb(60, 130, 65);
-  --yc-dashed-success-border-active-color: rgb(70, 160, 75);
-  --yc-dashed-danger-border-color: rgb(100, 50, 50);
-  --yc-dashed-danger-border-hover-color: rgb(130, 60, 60);
-  --yc-dashed-danger-border-active-color: rgb(160, 70, 70);
-  --yc-loading-bg: #000;
+  html[yc-design-dark] & {
+    --yc-primary-color: rgb(53, 122, 255);
+    --yc-primary-hover-color: rgb(85, 150, 255);
+    --yc-primary-active-color: rgb(30, 90, 210);
+    --yc-warning-color: rgb(255, 168, 0);
+    --yc-warning-hover-color: rgb(255, 190, 40);
+    --yc-warning-active-color: rgb(210, 130, 0);
+    --yc-success-color: rgb(0, 200, 60);
+    --yc-success-hover-color: rgb(35, 215, 80);
+    --yc-success-active-color: rgb(0, 170, 50);
+    --yc-danger-color: rgb(255, 90, 90);
+    --yc-danger-hover-color: rgb(255, 120, 120);
+    --yc-danger-active-color: rgb(210, 60, 60);
+    --yc-text-color: rgb(220, 220, 220);
+    --yc-text-hover-bg: rgb(50, 50, 50);
+    --yc-text-active-bg: rgb(70, 70, 70);
+    --yc-secondary-bg: rgb(50, 54, 60);
+    --yc-secondary-hover-bg: rgb(70, 75, 85);
+    --yc-secondary-active-bg: rgb(90, 95, 105);
+    --yc-dashed-border-color: rgb(70, 75, 85);
+    --yc-dashed-border-hover-color: rgb(90, 95, 105);
+    --yc-dashed-border-active-color: rgb(110, 115, 125);
+    --yc-secondary-warning-bg: rgb(70, 60, 40);
+    --yc-secondary-warning-hover-bg: rgb(100, 80, 50);
+    --yc-secondary-warning-active-bg: rgb(130, 100, 60);
+    --yc-secondary-success-bg: rgb(40, 70, 45);
+    --yc-secondary-success-hover-bg: rgb(50, 100, 55);
+    --yc-secondary-success-active-bg: rgb(60, 130, 65);
+    --yc-secondary-danger-bg: rgb(70, 40, 40);
+    --yc-secondary-danger-hover-bg: rgb(100, 50, 50);
+    --yc-secondary-danger-active-bg: rgb(130, 60, 60);
+    --yc-dashed-warning-border-color: rgb(100, 80, 50);
+    --yc-dashed-warning-border-hover-color: rgb(130, 100, 60);
+    --yc-dashed-warning-border-active-color: rgb(160, 120, 70);
+    --yc-dashed-success-border-color: rgb(50, 100, 55);
+    --yc-dashed-success-border-hover-color: rgb(60, 130, 65);
+    --yc-dashed-success-border-active-color: rgb(70, 160, 75);
+    --yc-dashed-danger-border-color: rgb(100, 50, 50);
+    --yc-dashed-danger-border-hover-color: rgb(130, 60, 60);
+    --yc-dashed-danger-border-active-color: rgb(160, 70, 70);
+    --yc-loading-bg: #000;
+  }
 }
 
 .yc-button {

@@ -1,10 +1,10 @@
-:root {
+.yc-card-grid {
   --yc-card-grid-shadow-color: rgb(229, 230, 235);
   --yc-card-grid-hoverable-shadow: 0 4px 10px rgb(242, 243, 245);
-}
-html[yc-design-dark] {
-  --yc-card-grid-shadow-color: rgb(60, 60, 62);
-  --yc-card-grid-hoverable-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  html[yc-design-dark] & {
+    --yc-card-grid-shadow-color: rgb(60, 60, 62);
+    --yc-card-grid-hoverable-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .yc-card-grid {

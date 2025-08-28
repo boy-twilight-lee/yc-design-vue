@@ -95,5 +95,4 @@ onMounted(() => {
 
 <style lang="less" scoped>
 @import './style/tabs-tab.less';
-@import './style/dark.less';
 </style>

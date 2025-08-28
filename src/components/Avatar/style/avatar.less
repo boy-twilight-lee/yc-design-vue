@@ -1,18 +1,18 @@
-:root {
+.yc-avatar {
   --yc-avatar-bg: rgb(201, 205, 212);
   --yc-avatar-text-color: #fff;
   --yc-avatar-trigger-button-bg: rgb(242, 243, 245);
   --yc-avatar-trigger-button-color: rgb(201, 205, 212);
   --yc-avatar-trigger-mask-bg: #1d212999;
   --yc-avatar-trigger-button-hover-bg: rgb(229, 230, 235);
-}
-html[yc-design-dark] {
-  --yc-avatar-bg: rgb(81, 84, 86);
-  --yc-avatar-text-color: #fff;
-  --yc-avatar-trigger-button-bg: rgb(48, 48, 49);
-  --yc-avatar-trigger-button-color: rgb(134, 137, 140);
-  --yc-avatar-trigger-mask-bg: rgba(29, 29, 30, 0.6);
-  --yc-avatar-trigger-button-hover-bg: rgb(60, 60, 62);
+  html[yc-design-dark] & {
+    --yc-avatar-bg: rgb(81, 84, 86);
+    --yc-avatar-text-color: #fff;
+    --yc-avatar-trigger-button-bg: rgb(48, 48, 49);
+    --yc-avatar-trigger-button-color: rgb(134, 137, 140);
+    --yc-avatar-trigger-mask-bg: rgba(29, 29, 30, 0.6);
+    --yc-avatar-trigger-button-hover-bg: rgb(60, 60, 62);
+  }
 }
 
 .yc-avatar {

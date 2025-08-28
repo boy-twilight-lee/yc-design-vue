@@ -139,5 +139,4 @@ function getFormatValue(value: number | Date) {
 
 <style lang="less" scoped>
 @import './style/statistic.less';
-@import './style/dark.less';
 </style>

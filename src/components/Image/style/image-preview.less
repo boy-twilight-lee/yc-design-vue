@@ -1,4 +1,4 @@
-:root {
+.yc-image-preview {
   --yc-image-preview-mask-bg: rgba(29, 33, 41, 0.6);
   --yc-image-preview-toolbar-bg: #fff;
   --yc-image-preview-toolbar-action-color: rgb(78, 89, 105);
@@ -9,18 +9,18 @@
   --yc-image-preview-arrow-color: #fff;
   --yc-image-preview-arrow-bg: #ffffff4d;
   --yc-image-preview-arrow-hover-bg: #ffffff80;
-}
-html[yc-design-dark] {
-  --yc-image-preview-mask-bg: rgba(0, 0, 0, 0.6);
-  --yc-image-preview-toolbar-bg: #2a2f3a;
-  --yc-image-preview-toolbar-action-color: #a1a8b8;
-  --yc-image-preview-toolbar-action-hover-color: #5c8dff;
-  --yc-image-preview-toolbar-action-hover-bg: #303642;
-  --yc-image-preview-toolbar-action-disabled-color: #484d57;
-  --yc-image-preview-close-btn-bg: rgba(255, 255, 255, 0.1);
-  --yc-image-preview-arrow-color: #e5e6eb;
-  --yc-image-preview-arrow-bg: rgba(255, 255, 255, 0.1);
-  --yc-image-preview-arrow-hover-bg: rgba(255, 255, 255, 0.2);
+  html[yc-design-dark] & {
+    --yc-image-preview-mask-bg: rgba(0, 0, 0, 0.6);
+    --yc-image-preview-toolbar-bg: #2a2f3a;
+    --yc-image-preview-toolbar-action-color: #a1a8b8;
+    --yc-image-preview-toolbar-action-hover-color: #5c8dff;
+    --yc-image-preview-toolbar-action-hover-bg: #303642;
+    --yc-image-preview-toolbar-action-disabled-color: #484d57;
+    --yc-image-preview-close-btn-bg: rgba(255, 255, 255, 0.1);
+    --yc-image-preview-arrow-color: #e5e6eb;
+    --yc-image-preview-arrow-bg: rgba(255, 255, 255, 0.1);
+    --yc-image-preview-arrow-hover-bg: rgba(255, 255, 255, 0.2);
+  }
 }
 
 .yc-image-preview {

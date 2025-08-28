@@ -1,5 +1,5 @@
 <template>
-  <div class="yc-menu-group">
+  <div :class="['yc-menu-group', `yc-menu-group-theme-${theme}`]">
     <div class="yc-menu-group-title text-ellipsis">
       <slot name="title">
         {{ title }}
@@ -28,7 +28,7 @@ withDefaults(defineProps<MenuItemGroupProps>(), {
   title: '',
 });
 // 接收menu注入
-const { levelIndent } = useContext().inject();
+const { levelIndent, theme } = useContext().inject();
 </script>
 
 <style lang="less" scoped>

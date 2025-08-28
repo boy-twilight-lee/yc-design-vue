@@ -1,16 +1,16 @@
-:root {
+.yc-button-group {
   --yc-button-group-border-primary: rgb(64, 128, 255);
   --yc-button-group-border-secondary: rgb(229, 230, 235);
   --yc-button-group-border-warning: rgb(255, 154, 46);
   --yc-button-group-border-success: rgb(35, 195, 67);
   --yc-button-group-border-danger: rgb(247, 101, 96);
-}
-html[yc-design-dark] {
-  --yc-button-group-border-primary: rgb(22, 93, 255);
-  --yc-button-group-border-secondary: rgb(60, 60, 62);
-  --yc-button-group-border-warning: rgb(250, 140, 42);
-  --yc-button-group-border-success: rgb(19, 173, 58);
-  --yc-button-group-border-danger: rgb(245, 63, 63);
+  html[yc-design-dark] & {
+    --yc-button-group-border-primary: rgb(22, 93, 255);
+    --yc-button-group-border-secondary: rgb(60, 60, 62);
+    --yc-button-group-border-warning: rgb(250, 140, 42);
+    --yc-button-group-border-success: rgb(19, 173, 58);
+    --yc-button-group-border-danger: rgb(245, 63, 63);
+  }
 }
 .yc-button-group {
   display: inline-flex;

@@ -1,16 +1,16 @@
-:root {
+.yc-collapse-itemt {
   --yc-collapse-item-border-color: rgb(229, 230, 235);
   --yc-collapse-text-color: rgb(29, 33, 41);
   --yc-collapse-header-bg-color: #fff;
   --yc-collapse-content-bg-color: rgb(247, 248, 250);
   --yc-collapse-disabled-text-color: rgb(201, 205, 212);
-}
-html[yc-design-dark] {
-  --yc-collapse-item-border-color: rgb(60, 60, 62);
-  --yc-collapse-text-color: rgb(229, 230, 235);
-  --yc-collapse-header-bg-color: rgb(29, 29, 30);
-  --yc-collapse-content-bg-color: rgb(38, 38, 40);
-  --yc-collapse-disabled-text-color: rgb(81, 84, 86);
+  html[yc-design-dark] & {
+    --yc-collapse-item-border-color: rgb(60, 60, 62);
+    --yc-collapse-text-color: rgb(229, 230, 235);
+    --yc-collapse-header-bg-color: rgb(29, 29, 30);
+    --yc-collapse-content-bg-color: rgb(38, 38, 40);
+    --yc-collapse-disabled-text-color: rgb(81, 84, 86);
+  }
 }
 
 .yc-collapse-item {

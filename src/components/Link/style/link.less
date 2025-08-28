@@ -1,4 +1,4 @@
-:root {
+.yc-link {
   --yc-link-hover-bg: rgb(242, 243, 245);
   --yc-link-active-bg: rgb(229, 230, 235);
   --yc-link-loading-overlay: #fff;
@@ -6,15 +6,15 @@
   --yc-link-status-warning: rgb(255, 125, 0);
   --yc-link-status-success: rgb(0, 180, 42);
   --yc-link-status-danger: rgb(245, 63, 63);
-}
-html[yc-design-dark] {
-  --yc-link-hover-bg: rgb(48, 48, 49);
-  --yc-link-active-bg: rgb(60, 60, 62);
-  --yc-link-loading-overlay: rgb(29, 29, 30);
-  --yc-link-status-normal: rgb(46, 126, 255);
-  --yc-link-status-warning: rgb(250, 140, 42);
-  --yc-link-status-success: rgb(19, 173, 58);
-  --yc-link-status-danger: rgb(245, 63, 63);
+  html[yc-design-dark] & {
+    --yc-link-hover-bg: rgb(48, 48, 49);
+    --yc-link-active-bg: rgb(60, 60, 62);
+    --yc-link-loading-overlay: rgb(29, 29, 30);
+    --yc-link-status-normal: rgb(46, 126, 255);
+    --yc-link-status-warning: rgb(250, 140, 42);
+    --yc-link-status-success: rgb(19, 173, 58);
+    --yc-link-status-danger: rgb(245, 63, 63);
+  }
 }
 
 .yc-link {

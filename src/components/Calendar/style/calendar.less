@@ -1,17 +1,17 @@
-:root {
+.yc-calendar {
   --yc-calendar-color-primary: rgb(22, 93, 255);
   --yc-calendar-color-white: #fff;
   --yc-calendar-border-color: rgb(229, 230, 235);
   --yc-calendar-text-color-primary: rgb(29, 33, 41);
   --yc-calendar-text-color-secondary: #7d7d7f;
   --yc-calendar-text-color-disabled: rgb(201, 205, 212);
-}
-html[yc-design-dark] {
-  --yc-calendar-color-primary: rgb(46, 126, 255);
-  --yc-calendar-border-color: rgb(60, 60, 62);
-  --yc-calendar-text-color-primary: rgb(229, 230, 235);
-  --yc-calendar-text-color-secondary: rgb(134, 137, 140);
-  --yc-calendar-text-color-disabled: rgb(81, 84, 86);
+  html[yc-design-dark] & {
+    --yc-calendar-color-primary: rgb(46, 126, 255);
+    --yc-calendar-border-color: rgb(60, 60, 62);
+    --yc-calendar-text-color-primary: rgb(229, 230, 235);
+    --yc-calendar-text-color-secondary: rgb(134, 137, 140);
+    --yc-calendar-text-color-disabled: rgb(81, 84, 86);
+  }
 }
 
 .yc-calendar {

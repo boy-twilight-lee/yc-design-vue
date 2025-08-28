@@ -1,4 +1,4 @@
-:root {
+.yc-card {
   --yc-card-background: #fff;
   --yc-card-header-border-color: rgb(229, 230, 235);
   --yc-card-header-title-color: rgb(29, 33, 41);
@@ -7,16 +7,16 @@
   --yc-card-actions-right-color: rgb(78, 89, 105);
   --yc-card-bordered-border-color: rgb(229, 230, 235);
   --yc-card-hoverable-shadow-color: 0 4px 10px rgb(242, 243, 245);
-}
-html[yc-design-dark] {
-  --yc-card-background: rgb(29, 29, 30);
-  --yc-card-header-border-color: rgb(60, 60, 62);
-  --yc-card-header-title-color: rgb(229, 230, 235);
-  --yc-card-header-extra-color: rgb(46, 126, 255);
-  --yc-card-body-color: rgb(193, 194, 195);
-  --yc-card-actions-right-color: rgb(193, 194, 195);
-  --yc-card-bordered-border-color: rgb(60, 60, 62);
-  --yc-card-hoverable-shadow-color: 0 4px 10px rgba(0, 0, 0, 0.2);
+  html[yc-design-dark] & {
+    --yc-card-background: rgb(29, 29, 30);
+    --yc-card-header-border-color: rgb(60, 60, 62);
+    --yc-card-header-title-color: rgb(229, 230, 235);
+    --yc-card-header-extra-color: rgb(46, 126, 255);
+    --yc-card-body-color: rgb(193, 194, 195);
+    --yc-card-actions-right-color: rgb(193, 194, 195);
+    --yc-card-bordered-border-color: rgb(60, 60, 62);
+    --yc-card-hoverable-shadow-color: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .yc-card {

@@ -1,5 +1,5 @@
 @import './animation.less';
-:root {
+.yc-carousel {
   --yc-arrow-bg-color: rgba(255, 255, 255, 0.3);
   --yc-arrow-bg-color-hover: rgba(255, 255, 255, 0.5);
   --yc-indicator-item-bg-color-outer: rgba(201, 205, 212, 0.5);
@@ -9,14 +9,14 @@
   --yc-indicator-slider-bg-color-outer: rgba(201, 205, 212, 0.5);
   --yc-indicator-slider-item-bg-color-outer: rgb(201, 205, 212);
   --yc-indicator-slider-item-bg-color: #fff;
-}
-html[yc-design-dark] {
-  --yc-arrow-bg-color: rgba(0, 0, 0, 0.3);
-  --yc-arrow-bg-color-hover: rgba(0, 0, 0, 0.5);
-  --yc-indicator-item-bg-color-outer: rgba(81, 84, 86, 0.5);
-  --yc-indicator-item-bg-color-outer-active: rgb(81, 84, 86);
-  --yc-indicator-slider-bg-color-outer: rgba(81, 84, 86, 0.5);
-  --yc-indicator-slider-item-bg-color-outer: rgb(81, 84, 86);
+  html[yc-design-dark] & {
+    --yc-arrow-bg-color: rgba(0, 0, 0, 0.3);
+    --yc-arrow-bg-color-hover: rgba(0, 0, 0, 0.5);
+    --yc-indicator-item-bg-color-outer: rgba(81, 84, 86, 0.5);
+    --yc-indicator-item-bg-color-outer-active: rgb(81, 84, 86);
+    --yc-indicator-slider-bg-color-outer: rgba(81, 84, 86, 0.5);
+    --yc-indicator-slider-item-bg-color-outer: rgb(81, 84, 86);
+  }
 }
 
 .yc-carousel {

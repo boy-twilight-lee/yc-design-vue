@@ -1,10 +1,20 @@
+.yc-tooltip {
+  --yc-tooltip-text-color: #fff;
+  --yc-tooltip-bg-color: rgb(29, 33, 41);
+  html[yc-design-dark] {
+    --yc-tooltip-text-color: #e5e6eb;
+    --yc-tooltip-bg-color: #484d57;
+  }
+}
+
 .yc-trigger {
   &.yc-tooltip {
     .yc-tooltip-popup-content {
       max-width: 350px;
       padding: 8px 12px;
       border-radius: 2px;
-      color: #fff;
+      color: var(--yc-tooltip-text-color);
+      background-color: var(--yc-tooltip-bg-color);
       font-size: 14px;
       line-height: 1.5715;
       text-align: left;

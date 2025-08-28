@@ -1,15 +1,30 @@
 .yc-dropdown-option {
+  --yc-doption-color: rgb(29, 33, 41);
+  --yc-doption-hover-bg: rgb(242, 243, 245);
+  --yc-doption-active-color: rgb(22, 93, 255);
+  --yc-doption-disabled-color: rgb(201, 205, 212);
+  html[yc-design-dark] &,
+  &.yc-dropdown-option-theme-dark {
+    --yc-doption-color: rgb(201, 205, 212);
+    --yc-doption-hover-bg: rgba(255, 255, 255, 0.04);
+    --yc-doption-active-color: #fff;
+    --yc-doption-disabled-color: rgb(78, 89, 105);
+  }
+}
+
+.yc-dropdown-option {
   position: relative;
   z-index: 1;
   padding: 0 12px;
+  color: var(--yc-doption-color);
   line-height: 36px;
   font-size: 14px;
   text-align: left;
   display: flex;
   align-items: center;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
-  &.yc-dropdown-option-disabled {
-    cursor: not-allowed;
+  &:not(.yc-dropdown-option-disabled):hover {
+    background-color: var(--yc-doption-hover-bg);
   }
   .yc-dropdown-option-icon,
   .yc-dropdown-option-content,
@@ -30,37 +45,13 @@
     flex: 1;
     overflow: hidden;
   }
-}
-
-@option-theme: {
-  @light: {
-    color: rgb(29, 33, 41);
-    hover-bg: rgb(242, 243, 245);
-    hover-color: rgb(22, 93, 255);
-    disabled-color: rgb(201, 205, 212);
-  };
-  @dark: {
-    color: rgb(201, 205, 212);
-    hover-bg: rgba(255, 255, 255, 0.04);
-    hover-color: #fff;
-    disabled-color: rgb(78, 89, 105);
-  };
-};
-each(@option-theme,.(@value,@name){
-  @key:replace(~"@{name}", "@", "");
-  .yc-dropdown-option-theme-@{key}{
-    color: @value[color];
-    &:not(.yc-dropdown-option-disabled):hover {
-      background-color: @value[hover-bg];
-    }
-    &.yc-dropdown-option-active {
-      color: @value[hover-color];
-      background-color: @value[hover-bg];
-    }
-    &.yc-dropdown-optiond-disabled {
-      color: @value[disabled-color];
-      background: transparent;
-      cursor: not-allowed;
-    }
+  &.yc-dropdown-option-active {
+    color: var(--yc-doption-active-color);
+    background-color: var(--yc-doption-hover-bg);
   }
-});
+  &.yc-dropdown-option-disabled {
+    color: var(--yc-doption-disabled-color);
+    background: transparent; /* 禁用时背景透明 */
+    cursor: not-allowed;
+  }
+}
