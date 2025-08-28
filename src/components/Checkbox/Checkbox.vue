@@ -26,9 +26,7 @@
       <icon-button
         :hover-size="24"
         :hover-color="
-          computedChecked || computedDisabled
-            ? 'transparent'
-            : 'rgb(242, 243, 245)'
+          computedChecked || computedDisabled ? 'transparent' : undefined
         "
       >
         <span class="yc-checkbox-icon">

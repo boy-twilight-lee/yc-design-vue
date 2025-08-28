@@ -7,7 +7,6 @@
         [`yc-tabs-nav-button-${direction}`]: direction,
       },
     ]"
-    hover-color="rgb(242,243,245)"
     v-bind="$attrs"
   >
     <slot v-if="$slots.default" />

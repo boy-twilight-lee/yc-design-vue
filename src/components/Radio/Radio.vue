@@ -21,9 +21,7 @@
       <template v-if="computedType == 'radio'">
         <icon-button
           :hover-size="24"
-          :hover-color="
-            checked || computedDisabled ? 'transparent' : 'rgb(242, 243, 245)'
-          "
+          :hover-color="checked || computedDisabled ? 'transparent' : undefined"
         >
           <span class="yc-radio-icon"> </span>
         </icon-button>
