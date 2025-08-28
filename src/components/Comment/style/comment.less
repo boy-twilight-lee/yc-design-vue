@@ -1,17 +1,4 @@
 .yc-comment {
-  --yc-comment-author-color: rgb(78, 89, 105);
-  --yc-comment-datetime-color: rgb(134, 144, 156);
-  --yc-comment-content-color: rgb(29, 33, 41);
-  --yc-comment-actions-color: rgb(78, 89, 105);
-  html[yc-design-dark] & {
-    --yc-comment-author-color: rgb(193, 194, 195);
-    --yc-comment-datetime-color: rgb(134, 137, 140);
-    --yc-comment-content-color: rgb(229, 230, 235);
-    --yc-comment-actions-color: rgb(193, 194, 195);
-  }
-}
-
-.yc-comment {
   font-size: 14px;
   line-height: 1.5715;
   display: flex;
@@ -34,11 +21,11 @@
         align-items: center;
         gap: 8px;
         .yc-comment-author {
-          color: var(--yc-comment-author-color);
+          color: var(--color-text-2);
           font-size: 14px;
         }
         .yc-comment-datetime {
-          color: var(--yc-comment-datetime-color);
+          color: var(--color-text-3);
           font-size: 12px;
         }
         &.yc-comment-title-align-right {
@@ -46,11 +33,11 @@
         }
       }
       .yc-comment-content {
-        color: var(--yc-comment-content-color);
+        color: var(--color-text-1);
       }
       .yc-comment-actions {
         margin-top: 8px;
-        color: var(--yc-comment-actions-color);
+        color: var(--color-text-2);
         font-size: 14px;
         display: flex;
         align-items: center;

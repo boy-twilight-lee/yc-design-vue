@@ -1,24 +1,16 @@
 .yc-divider {
-  --yc-divider-text-color: rgb(29, 33, 41);
-  --yc-divider-bg: #fff;
-  html[yc-design-dark] & {
-    --yc-divider-text-color: rgb(229, 230, 235);
-    --yc-divider-bg: rgb(29, 29, 30);
-  }
-}
-
-.yc-divider {
   .yc-divider-text {
     position: absolute;
     top: 50%;
     padding: 0 16px;
-    color: var(--yc-divider-text-color);
+    color: var(--color-text-1);
     font-weight: 500;
     font-size: 14px;
     line-height: 2;
-    background: var(--yc-divider-bg);
+    background: var(--color-bg-1);
   }
 }
+
 // direction
 .yc-divider-direction-horizontal {
   position: relative;
@@ -26,6 +18,7 @@
   max-width: 100%;
   width: 100%;
 }
+
 .yc-divider-direction-vertical {
   display: inline-block;
   vertical-align: middle;
@@ -34,15 +27,17 @@
   min-width: 1px;
   max-width: 1px;
 }
-// text-direction+2
+
+// text-direction
 @position: {
   left: 0;
   center: -50%;
   right: 0;
 };
+
 each(@position, {
   .yc-divider-text-@{key} {
-    @{key}: if(key = center, 50%, 24px);
+    @{key}: if(@key = center, 50%, 24px);
     & when(@key = center) {
       left: 50%;
     }

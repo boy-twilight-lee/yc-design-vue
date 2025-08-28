@@ -1,23 +1,12 @@
 .yc-calendar {
-  --yc-calendar-color-primary: rgb(22, 93, 255);
-  --yc-calendar-color-white: #fff;
-  --yc-calendar-border-color: rgb(229, 230, 235);
-  --yc-calendar-text-color-primary: rgb(29, 33, 41);
-  --yc-calendar-text-color-secondary: #7d7d7f;
-  --yc-calendar-text-color-disabled: rgb(201, 205, 212);
-  html[yc-design-dark] & {
-    --yc-calendar-color-primary: rgb(46, 126, 255);
-    --yc-calendar-border-color: rgb(60, 60, 62);
-    --yc-calendar-text-color-primary: rgb(229, 230, 235);
-    --yc-calendar-text-color-secondary: rgb(134, 137, 140);
-    --yc-calendar-text-color-disabled: rgb(81, 84, 86);
-  }
-}
-
-.yc-calendar {
-  border: 1px solid var(--yc-calendar-border-color);
+  border: 1px solid var(--color-border-2);
   display: flex;
   flex-direction: column;
+
+  html[yc-design-dark] & {
+    border-color: var(--color-border);
+  }
+
   .yc-calendar-header {
     padding: 24px;
     display: flex;
@@ -32,7 +21,7 @@
         font-size: 12px;
       }
       .yc-calendar-header-value {
-        color: var(--yc-calendar-text-color-primary);
+        color: var(--color-text-1);
         font-weight: 500;
         font-size: 20px;
       }
@@ -47,12 +36,16 @@
     height: 55px;
     width: 100%;
     padding: 0;
-    border-bottom: 1px solid var(--yc-calendar-border-color);
-    display: flex;
+    border-bottom: 1px solid var(--color-border-2);
+
+    html[yc-design-dark] & {
+      border-bottom-color: var(--color-border);
+    }
+
     .yc-calendar-week-list-item {
       flex: 1;
       padding: 20px 16px;
-      color: var(--yc-calendar-text-color-secondary);
+      color: var(--color-text-3);
       text-align: left;
     }
   }
@@ -63,12 +56,18 @@
       display: flex;
       height: 100px;
       &:not(:last-child) {
-        border-bottom: 1px solid var(--yc-calendar-border-color);
+        border-bottom: 1px solid var(--color-border-2);
+        html[yc-design-dark] & {
+          border-bottom-color: var(--color-border);
+        }
       }
       .yc-calendar-cell {
         width: calc(100% / 7);
         &:not(:last-child) {
-          border-right: 1px solid var(--yc-calendar-border-color);
+          border-right: 1px solid var(--color-border-2);
+          html[yc-design-dark] & {
+            border-right-color: var(--color-border);
+          }
         }
         .yc-calendar-date {
           width: 100%;
@@ -76,7 +75,7 @@
           padding: 10px;
           cursor: pointer;
           .yc-calendar-date-value {
-            color: var(--yc-calendar-text-color-disabled);
+            color: var(--color-text-4);
             font-weight: 500;
             font-size: 16px;
             .yc-calendar-date-circle {
@@ -93,7 +92,7 @@
       .yc-calendar-cell-in-view {
         .yc-calendar-date {
           .yc-calendar-date-value {
-            color: var(--yc-calendar-text-color-primary);
+            color: var(--color-text-1);
           }
         }
       }
@@ -102,7 +101,7 @@
         .yc-calendar-date {
           .yc-calendar-date-value {
             .yc-calendar-date-circle {
-              border: 1px solid var(--yc-calendar-color-primary);
+              border: 1px solid rgb(var(--primary-6));
             }
           }
         }
@@ -112,9 +111,9 @@
         .yc-calendar-date {
           .yc-calendar-date-value {
             .yc-calendar-date-circle {
-              border: 1px solid var(--yc-calendar-color-primary);
-              color: var(--yc-calendar-color-white);
-              background-color: var(--yc-calendar-color-primary);
+              border: 1px solid rgb(var(--primary-6));
+              color: var(--color-white);
+              background-color: rgb(var(--primary-6));
             }
           }
         }
@@ -165,18 +164,24 @@
   .yc-calendar-year-row {
     display: flex;
     &:not(:last-child) {
-      border-bottom: 1px solid var(--yc-calendar-border-color);
+      border-bottom: 1px solid var(--color-border-2);
+      html[yc-design-dark] & {
+        border-bottom-color: var(--color-border);
+      }
     }
     .yc-calendar-year-cell {
       flex-shrink: 0;
       flex: 1;
       padding: 20px 8px;
       &:not(:last-child) {
-        border-right: 1px solid var(--yc-calendar-border-color);
+        border-right: 1px solid var(--color-border-2);
+        html[yc-design-dark] & {
+          border-right-color: var(--color-border);
+        }
       }
       .yc-calendar-year-cell-title {
         padding: 10px 6px;
-        color: var(--yc-calendar-text-color-primary);
+        color: var(--color-text-1);
         font-weight: 500;
         font-size: 16px;
       }

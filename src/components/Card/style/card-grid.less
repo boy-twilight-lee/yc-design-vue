@@ -1,21 +1,21 @@
 .yc-card-grid {
-  --yc-card-grid-shadow-color: rgb(229, 230, 235);
-  --yc-card-grid-hoverable-shadow: 0 4px 10px rgb(242, 243, 245);
-  html[yc-design-dark] & {
-    --yc-card-grid-shadow-color: rgb(60, 60, 62);
-    --yc-card-grid-hoverable-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-}
-
-.yc-card-grid {
   position: relative;
   width: 33.33%;
   box-shadow:
-    1px 0 0 0 var(--yc-card-grid-shadow-color),
-    0 1px 0 0 var(--yc-card-grid-shadow-color),
-    1px 1px 0 0 var(--yc-card-grid-shadow-color),
-    1px 0 0 0 var(--yc-card-grid-shadow-color) inset,
-    0 1px 0 0 var(--yc-card-grid-shadow-color) inset;
+    1px 0 0 0 var(--color-border-2),
+    0 1px 0 0 var(--color-border-2),
+    1px 1px 0 0 var(--color-border-2),
+    1px 0 0 0 var(--color-border-2) inset,
+    0 1px 0 0 var(--color-border-2) inset;
+
+  html[yc-design-dark] & {
+    box-shadow:
+      1px 0 0 0 var(--color-border),
+      0 1px 0 0 var(--color-border),
+      1px 1px 0 0 var(--color-border),
+      1px 0 0 0 var(--color-border) inset,
+      0 1px 0 0 var(--color-border) inset;
+  }
 
   &::before {
     content: '';
@@ -35,6 +35,10 @@
     z-index: 1;
   }
   &:hover::before {
-    box-shadow: var(--yc-card-grid-hoverable-shadow);
+    box-shadow: 0 4px 10px var(--color-neutral-2);
+  }
+
+  html[yc-design-dark] &:hover::before {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 }

@@ -1,11 +1,4 @@
 .yc-avatar-group {
-  --yc-avatar-group-border-color: #fff;
-  html[yc-design-dark] & {
-    --yc-avatar-group-border-color: rgb(29, 29, 30);
-  }
-}
-
-.yc-avatar-group {
   height: fit-content;
   width: fit-content;
   display: inline-flex;
@@ -13,6 +6,12 @@
 
   &:deep(.yc-avatar) {
     flex-shrink: 0;
-    border: 2px solid var(--yc-avatar-group-border-color);
+    border: 2px solid var(--color-bg-white);
+  }
+
+  html[yc-design-dark] & {
+    &:deep(.yc-avatar) {
+      border-color: var(--color-bg-1);
+    }
   }
 }

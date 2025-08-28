@@ -1,53 +1,4 @@
 .yc-badge {
-  --yc-badge-color-danger: rgb(245, 63, 63);
-  --yc-badge-color-white: #fff;
-  --yc-badge-background-color: var(--yc-badge-color-danger);
-  --yc-badge-box-shadow-color: var(--yc-badge-color-white);
-  --yc-badge-text-color: var(--yc-badge-color-white);
-  --yc-badge-status-text-color: rgb(29, 33, 41);
-  --yc-badge-status-color-normal: rgb(201, 205, 212);
-  --yc-badge-status-color-success: rgb(0, 180, 42);
-  --yc-badge-status-color-danger: var(--yc-badge-color-danger);
-  --yc-badge-status-color-processing: rgb(22, 93, 255);
-  --yc-badge-status-color-warning: rgb(255, 125, 0);
-  --yc-badge-color-red: rgb(245, 63, 63);
-  --yc-badge-color-orangered: rgb(247, 114, 52);
-  --yc-badge-color-orange: rgb(255, 125, 0);
-  --yc-badge-color-gold: rgb(247, 186, 30);
-  --yc-badge-color-lime: rgb(159, 219, 29);
-  --yc-badge-color-green: rgb(0, 180, 134);
-  --yc-badge-color-cyan: rgb(20, 201, 201);
-  --yc-badge-color-blue: rgb(52, 145, 250);
-  --yc-badge-color-arcoblue: rgb(22, 93, 255);
-  --yc-badge-color-purple: rgb(144, 46, 209);
-  --yc-badge-color-pinkpurple: rgb(217, 26, 217);
-  --yc-badge-color-magenta: rgb(245, 49, 157);
-  --yc-badge-color-gray: rgb(134, 144, 156);
-
-  html[yc-design-dark] & {
-    --yc-badge-box-shadow-color: rgb(29, 29, 30);
-    --yc-badge-status-text-color: rgb(229, 230, 235);
-    --yc-badge-status-color-normal: rgb(81, 84, 86);
-    --yc-badge-status-color-success: rgb(19, 173, 58);
-    --yc-badge-status-color-processing: rgb(46, 126, 255);
-    --yc-badge-status-color-warning: rgb(250, 140, 42);
-    --yc-badge-color-red: rgb(223, 58, 58);
-    --yc-badge-color-orangered: rgb(225, 103, 47);
-    --yc-badge-color-orange: rgb(230, 113, 0);
-    --yc-badge-color-gold: rgb(224, 169, 27);
-    --yc-badge-color-lime: rgb(144, 198, 26);
-    --yc-badge-color-green: rgb(0, 163, 121);
-    --yc-badge-color-cyan: rgb(18, 182, 182);
-    --yc-badge-color-blue: rgb(47, 131, 227);
-    --yc-badge-color-arcoblue: rgb(20, 84, 232);
-    --yc-badge-color-purple: rgb(130, 41, 189);
-    --yc-badge-color-pinkpurple: rgb(197, 23, 197);
-    --yc-badge-color-magenta: rgb(223, 44, 142);
-    --yc-badge-color-gray: rgb(121, 130, 141);
-  }
-}
-
-.yc-badge {
   position: relative;
   display: inline-block;
   line-height: 1;
@@ -62,9 +13,9 @@
     transform: translate(50%, -50%);
     transform-origin: 100% 0%;
     overflow: hidden;
-    background-color: var(--yc-badge-background-color);
+    background-color: rgb(var(--danger-6));
     border-radius: 20px;
-    box-shadow: 0 0 0 2px var(--yc-badge-box-shadow-color);
+    box-shadow: 0 0 0 2px var(--color-bg-1);
     text-align: center;
     &.yc-badge-dot {
       width: 6px;
@@ -72,7 +23,7 @@
       border-radius: 50%;
     }
     &.yc-badge-custom-dot {
-      background-color: var(--yc-badge-box-shadow-color);
+      background-color: var(--color-bg-1);
       box-shadow: none;
     }
     &.yc-badge-text,
@@ -80,7 +31,7 @@
       min-width: 20px;
       height: 20px;
       padding: 0 6px;
-      color: var(--yc-badge-text-color);
+      color: var(--color-white);
       font-weight: 500;
       font-size: 12px;
       line-height: 20px;
@@ -97,7 +48,7 @@
       border-radius: 50%;
     }
     .yc-badge-status-text {
-      color: var(--yc-badge-status-text-color);
+      color: var(--color-text-1);
       font-size: 12px;
       line-height: 1.5715;
     }
@@ -118,11 +69,11 @@
 
 // status
 @status: {
-  normal: var(--yc-badge-status-color-normal);
-  success: var(--yc-badge-status-color-success);
-  danger: var(--yc-badge-status-color-danger);
-  processing: var(--yc-badge-status-color-processing);
-  warning: var(--yc-badge-status-color-warning);
+  normal: rgb(var(--gray-4));
+  success: rgb(var(--success-6));
+  danger: rgb(var(--danger-6));
+  processing: rgb(var(--primary-6));
+  warning: rgb(var(--warning-6));
 };
 
 each(@status,{
@@ -131,12 +82,13 @@ each(@status,{
   }
 });
 
+// colors
 @color-keys: red, orangered, orange, gold, lime, green, cyan, blue, arcoblue,
   purple, pinkpurple, magenta, gray;
 
 each(@color-keys, {
     @key: extract(@value, 1);
     .yc-badge-color-@{key} {
-      background-color: var(~'--yc-badge-color-@{key}');
+      background-color: rgb(var(~'--@{key}-6'));
     }
   });

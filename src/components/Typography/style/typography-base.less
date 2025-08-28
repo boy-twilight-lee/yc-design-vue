@@ -1,53 +1,24 @@
 .yc-typography {
-  --yc-typography-color: rgb(29, 33, 41);
-  --yc-typography-mark-bg: rgb(252, 242, 107);
-  --yc-typography-code-bg: rgb(242, 243, 245);
-  --yc-typography-code-border: rgb(229, 230, 235);
-  --yc-typography-code-color: rgb(78, 89, 105);
-  --yc-typography-operation-color: rgb(78, 89, 105);
-  --yc-typography-operation-hover-bg: rgb(242, 243, 245);
-  --yc-typography-operation-hover-color: rgb(78, 89, 105);
-  --yc-typography-primary: rgb(22, 93, 255);
-  --yc-typography-secondary: rgb(78, 89, 105);
-  --yc-typography-success: rgb(0, 180, 42);
-  --yc-typography-danger: rgb(245, 63, 63);
-  --yc-typography-warning: rgb(255, 125, 0);
-  --yc-typography-disabled: rgb(201, 205, 212);
-  html[yc-design-dark] & {
-    --yc-typography-color: rgb(229, 230, 235);
-    --yc-typography-mark-bg: rgb(128, 97, 8);
-    --yc-typography-code-bg: rgb(48, 48, 49);
-    --yc-typography-code-border: rgb(60, 60, 62);
-    --yc-typography-code-color: rgb(193, 194, 195);
-    --yc-typography-operation-color: rgb(134, 137, 140);
-    --yc-typography-operation-hover-bg: rgb(48, 48, 49);
-    --yc-typography-operation-hover-color: rgb(193, 194, 195);
-    --yc-typography-primary: rgb(46, 126, 255);
-    --yc-typography-secondary: rgb(193, 194, 195);
-    --yc-typography-success: rgb(19, 173, 58);
-    --yc-typography-danger: rgb(245, 63, 63);
-    --yc-typography-warning: rgb(250, 140, 42);
-    --yc-typography-disabled: rgb(81, 84, 86);
-  }
-}
-
-.yc-typography {
-  color: var(--yc-typography-color);
+  color: var(--color-text-1);
   line-height: 1.5715;
   white-space: normal;
   overflow-wrap: anywhere;
 
   &:deep(mark) {
-    background-color: var(--yc-typography-mark-bg);
+    background-color: rgb(var(--yellow-4));
+    html[yc-design-dark] & {
+      // 暗色模式下的 mark 背景色与主题系统中的 yellow-4 反转色不完全匹配，因此进行覆盖
+      background-color: rgb(var(--yellow-2));
+    }
   }
   &:deep(code) {
     margin: 0 2px;
     padding: 2px 8px;
-    background-color: var(--yc-typography-code-bg);
-    border: 1px solid var(--yc-typography-code-border);
-    border-radius: 2px;
+    background-color: var(--color-fill-2);
+    border: 1px solid var(--color-border-2);
+    border-radius: var(--border-radius-small);
     font-size: 85%;
-    color: var(--yc-typography-code-color);
+    color: var(--color-text-2);
   }
   &:deep(del) {
     text-decoration: line-through;
@@ -64,9 +35,9 @@
     height: 100%;
     padding: 2px;
     margin-left: 2px;
-    border-radius: 2px;
+    border-radius: var(--border-radius-small);
     transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
-    color: var(--yc-typography-operation-color);
+    color: var(--color-text-3);
     display: inline-flex;
     align-items: center;
     > span {
@@ -74,19 +45,19 @@
       align-items: center;
     }
     &:hover {
-      color: var(--yc-typography-operation-hover-color);
-      background-color: var(--yc-typography-operation-hover-bg);
+      color: var(--color-text-2);
+      background-color: var(--color-fill-2);
     }
   }
 }
 // type
 @type: {
-  primary: var(--yc-typography-primary);
-  secondary: var(--yc-typography-secondary);
-  success: var(--yc-typography-success);
-  danger: var(--yc-typography-danger);
-  warning: var(--yc-typography-warning);
-  disabled: var(--yc-typography-disabled);
+  primary: rgb(var(--primary-6));
+  secondary: var(--color-text-2);
+  success: rgb(var(--success-6));
+  danger: rgb(var(--danger-6));
+  warning: rgb(var(--warning-6));
+  disabled: var(--color-text-4);
 };
 each(@type, {
   .yc-typography-@{key} {

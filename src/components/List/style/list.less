@@ -1,17 +1,4 @@
 .yc-list-wrapper {
-  --yc-list-text-color: rgb(29, 33, 41);
-  --yc-list-border-color: rgb(229, 230, 235);
-  --yc-list-hover-bg-color: rgb(247, 248, 250);
-  --yc-list-scroll-loading-bg-color: #fff;
-  html[yc-design-dark] & {
-    --yc-list-text-color: #e5e6eb;
-    --yc-list-border-color: #484d57;
-    --yc-list-hover-bg-color: #2a2f3a;
-    --yc-list-scroll-loading-bg-color: #1d2129;
-  }
-}
-
-.yc-list-wrapper {
   position: relative;
   width: 100%;
 
@@ -32,21 +19,21 @@
     .yc-list-content-wrapper {
       display: flex;
       flex-direction: column;
-      color: var(--yc-list-text-color);
+      color: var(--color-text-1);
       font-size: 14px;
       line-height: 1.5715;
       .yc-list-header {
         font-weight: 500;
         font-size: 16px;
         line-height: 1.5;
-        color: var(--yc-list-text-color);
+        color: var(--color-text-1);
       }
       .yc-list-content {
         display: flex;
         flex-direction: column;
       }
       .yc-list-scroll-loading {
-        background-color: var(--yc-list-scroll-loading-bg-color);
+        background-color: var(--color-bg-1);
         &:deep(.yc-list-item-content) {
           display: flex;
           justify-content: center;
@@ -60,33 +47,33 @@
 .yc-list-bordered {
   .yc-scrollbar {
     &:deep(.yc-scrollbar-container) {
-      border: 1px solid var(--yc-list-border-color);
+      border: 1px solid var(--color-border);
     }
   }
 }
 .yc-list-split {
   .yc-list-header {
-    border-bottom: 1px solid var(--yc-list-border-color);
+    border-bottom: 1px solid var(--color-border);
   }
   &:deep(.yc-list-content) {
     .yc-list-item {
       &:not(:last-child) {
-        border-bottom: 1px solid var(--yc-list-border-color);
+        border-bottom: 1px solid var(--color-border);
       }
     }
   }
   .yc-list-scroll-loading {
-    border-top: 1px solid var(--yc-list-border-color);
+    border-top: 1px solid var(--color-border);
   }
   .yc-list-footer {
-    border-top: 1px solid var(--yc-list-border-color);
+    border-top: 1px solid var(--color-border);
   }
 }
 // hoverable
 .yc-list-hoverable {
   &:deep(.yc-list-item) {
     &:hover {
-      background-color: var(--yc-list-hover-bg-color);
+      background-color: var(--color-fill-1);
     }
   }
 }

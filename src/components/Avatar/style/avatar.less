@@ -1,33 +1,30 @@
 .yc-avatar {
-  --yc-avatar-bg: rgb(201, 205, 212);
-  --yc-avatar-text-color: #fff;
-  --yc-avatar-trigger-button-bg: rgb(242, 243, 245);
-  --yc-avatar-trigger-button-color: rgb(201, 205, 212);
-  --yc-avatar-trigger-mask-bg: #1d212999;
-  --yc-avatar-trigger-button-hover-bg: rgb(229, 230, 235);
-  html[yc-design-dark] & {
-    --yc-avatar-bg: rgb(81, 84, 86);
-    --yc-avatar-text-color: #fff;
-    --yc-avatar-trigger-button-bg: rgb(48, 48, 49);
-    --yc-avatar-trigger-button-color: rgb(134, 137, 140);
-    --yc-avatar-trigger-mask-bg: rgba(29, 29, 30, 0.6);
-    --yc-avatar-trigger-button-hover-bg: rgb(60, 60, 62);
-  }
-}
-
-.yc-avatar {
   cursor: default;
   position: relative;
-  color: var(--yc-avatar-text-color);
+  color: var(--color-white);
   font-size: 20px;
-  background-color: var(--yc-avatar-bg);
+  background-color: var(--color-neutral-4);
   white-space: nowrap;
   vertical-align: middle;
   display: inline-flex;
   align-items: center;
 
+  html[yc-design-dark] & {
+    background-color: rgb(var(--gray-3));
+    .yc-avatar-trigger-icon-button {
+      background-color: var(--color-neutral-2);
+      color: var(--color-neutral-6);
+    }
+    &:hover .yc-avatar-trigger-icon-button {
+      background-color: var(--color-neutral-3);
+    }
+    .yc-avatar-trigger-icon-mask {
+      background-color: var(--color-mask-bg);
+    }
+  }
+
   &:hover .yc-avatar-trigger-icon-button {
-    background-color: var(--yc-avatar-trigger-button-hover-bg);
+    background-color: var(--color-neutral-3);
   }
   &:hover .yc-avatar-trigger-icon-mask {
     opacity: 1;
@@ -65,11 +62,11 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    color: var(--yc-avatar-trigger-button-color);
+    color: var(--color-neutral-4);
     font-size: 12px;
     line-height: 20px;
     text-align: center;
-    background-color: var(--yc-avatar-trigger-button-bg);
+    background-color: var(--color-neutral-2);
     transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
   }
   .yc-avatar-trigger-icon-mask {
@@ -78,9 +75,9 @@
     width: 100%;
     height: 100%;
     cursor: pointer;
-    background-color: var(--yc-avatar-trigger-mask-bg);
+    background-color: var(--color-mask-bg);
     opacity: 0;
-    color: var(--yc-avatar-text-color);
+    color: var(--color-white);
     font-size: 16px;
     transition: all 0.1s cubic-bezier(0, 0, 1, 1);
     display: flex;

@@ -1,29 +1,10 @@
 .yc-link {
-  --yc-link-hover-bg: rgb(242, 243, 245);
-  --yc-link-active-bg: rgb(229, 230, 235);
-  --yc-link-loading-overlay: #fff;
-  --yc-link-status-normal: rgb(22, 93, 255);
-  --yc-link-status-warning: rgb(255, 125, 0);
-  --yc-link-status-success: rgb(0, 180, 42);
-  --yc-link-status-danger: rgb(245, 63, 63);
-  html[yc-design-dark] & {
-    --yc-link-hover-bg: rgb(48, 48, 49);
-    --yc-link-active-bg: rgb(60, 60, 62);
-    --yc-link-loading-overlay: rgb(29, 29, 30);
-    --yc-link-status-normal: rgb(46, 126, 255);
-    --yc-link-status-warning: rgb(250, 140, 42);
-    --yc-link-status-success: rgb(19, 173, 58);
-    --yc-link-status-danger: rgb(245, 63, 63);
-  }
-}
-
-.yc-link {
   cursor: pointer;
   padding: 1px 4px;
   line-height: 1.5715;
-  background-color: none;
+  background-color: transparent;
   border: none;
-  border-radius: 2px;
+  border-radius: var(--border-radius-small);
   font-size: 14px;
   font-weight: 400;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
@@ -45,22 +26,24 @@
     }
   }
 }
-// hoverable（使用变量）
+
+// hoverable
 .yc-link-hoverable {
   &:hover {
-    background-color: var(--yc-link-hover-bg);
+    background-color: var(--color-fill-2);
   }
   &:active {
-    background-color: var(--yc-link-active-bg);
+    background-color: var(--color-fill-3);
   }
 }
+
 // disabled
 .yc-link-disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-// loading（使用变量）
+// loading
 .yc-link-loading {
   cursor: default;
   position: relative;
@@ -74,17 +57,21 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: var(--yc-link-loading-overlay);
+    background-color: var(--color-bg-white);
     opacity: 0.4;
+    html[yc-design-dark] & {
+      background-color: var(--color-bg-1);
+    }
   }
 }
 
 @status: {
-  normal: var(--yc-link-status-normal);
-  warning: var(--yc-link-status-warning);
-  success: var(--yc-link-status-success);
-  danger: var(--yc-link-status-danger);
+  normal: rgb(var(--primary-6));
+  warning: rgb(var(--warning-6));
+  success: rgb(var(--success-6));
+  danger: rgb(var(--danger-6));
 };
+
 each(@status, {
   .yc-link-status-@{key} {
     color: @value;

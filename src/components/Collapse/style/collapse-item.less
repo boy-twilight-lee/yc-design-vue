@@ -1,31 +1,16 @@
 .yc-collapse-item {
-  --yc-collapse-item-border-color: rgb(229, 230, 235);
-  --yc-collapse-text-color: rgb(29, 33, 41);
-  --yc-collapse-header-bg-color: #fff;
-  --yc-collapse-content-bg-color: rgb(247, 248, 250);
-  --yc-collapse-disabled-text-color: rgb(201, 205, 212);
-  html[yc-design-dark] & {
-    --yc-collapse-item-border-color: rgb(60, 60, 62);
-    --yc-collapse-text-color: rgb(229, 230, 235);
-    --yc-collapse-header-bg-color: rgb(29, 29, 30);
-    --yc-collapse-content-bg-color: rgb(38, 38, 40);
-    --yc-collapse-disabled-text-color: rgb(81, 84, 86);
-  }
-}
-
-.yc-collapse-item {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--yc-collapse-item-border-color);
+  border-bottom: 1px solid var(--color-border);
   .yc-collapse-item-header {
     cursor: pointer;
     position: relative;
     padding: 8px 12px;
     overflow: hidden;
-    color: var(--yc-collapse-text-color);
+    color: var(--color-text-1);
     font-size: 14px;
     line-height: 24px;
-    background-color: var(--yc-collapse-header-bg-color);
+    background-color: var(--color-bg-1);
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease;
     display: flex;
@@ -43,9 +28,9 @@
   .yc-collapse-item-content {
     position: relative;
     overflow: hidden;
-    color: var(--yc-collapse-text-color);
+    color: var(--color-text-1);
     font-size: 14px;
-    background-color: var(--yc-collapse-content-bg-color);
+    background-color: var(--color-bg-2);
     .yc-collapse-item-content-box {
       padding: 8px 0;
     }
@@ -76,8 +61,8 @@
 // disabled
 .yc-collapse-item-disabled {
   .yc-collapse-item-header {
-    color: var(--yc-collapse-disabled-text-color);
-    background-color: var(--yc-collapse-header-bg-color);
+    color: var(--color-text-4);
+    background-color: var(--color-bg-1);
     cursor: not-allowed;
   }
 }

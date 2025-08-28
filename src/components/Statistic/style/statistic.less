@@ -1,26 +1,17 @@
 .yc-statistic {
-  --yc-statistic-text-color: rgb(78, 89, 105);
-  --yc-statistic-value-color: rgb(29, 33, 41);
-  html[yc-design-dark] & {
-    --yc-statistic-text-color: #a1a8b8;
-    --yc-statistic-value-color: #e5e6eb;
-  }
-}
-
-.yc-statistic {
-  color: var(--yc-statistic-text-color);
+  color: var(--color-text-2);
   line-height: 1.5715;
   display: inline-flex;
   flex-direction: column;
   gap: 8px;
   .yc-statistic-title,
   .yc-statistic-extra {
-    color: var(--yc-statistic-text-color);
+    color: var(--color-text-2);
     font-size: 14px;
   }
   .yc-statistic-content {
     .yc-statistic-value {
-      color: var(--yc-statistic-value-color);
+      color: var(--color-text-1);
       font-weight: 500;
       font-size: 26px;
       white-space: nowrap;

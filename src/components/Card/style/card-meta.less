@@ -1,15 +1,4 @@
 .yc-card-meta {
-  --yc-card-meta-title-color: rgb(29, 33, 41);
-  --yc-card-meta-description-color: #4e5969;
-  --yc-card-meta-actions-right-color: rgb(78, 89, 105);
-  html[yc-design-dark] & {
-    --yc-card-meta-title-color: rgb(229, 230, 235);
-    --yc-card-meta-description-color: rgb(193, 194, 195);
-    --yc-card-meta-actions-right-color: rgb(193, 194, 195);
-  }
-}
-
-.yc-card-meta {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -19,12 +8,12 @@
     gap: 4px;
     .yc-card-meta-title {
       font-size: 16px;
-      color: var(--yc-card-meta-title-color);
+      color: var(--color-text-1);
       font-weight: 500;
     }
     .yc-card-meta-description {
       font-size: 14px;
-      color: var(--yc-card-meta-description-color);
+      color: var(--color-text-2);
       font-weight: 500;
     }
   }
@@ -37,7 +26,7 @@
       justify-content: flex-end;
       .yc-card-actions-right {
         cursor: pointer;
-        color: var(--yc-card-meta-actions-right-color);
+        color: var(--color-text-2);
         transition: color 0.2s cubic-bezier(0, 0, 1, 1);
         display: flex;
         align-items: center;

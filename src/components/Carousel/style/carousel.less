@@ -1,24 +1,3 @@
-@import './animation.less';
-.yc-carousel {
-  --yc-arrow-bg-color: rgba(255, 255, 255, 0.3);
-  --yc-arrow-bg-color-hover: rgba(255, 255, 255, 0.5);
-  --yc-indicator-item-bg-color-outer: rgba(201, 205, 212, 0.5);
-  --yc-indicator-item-bg-color-outer-active: rgb(201, 205, 212);
-  --yc-indicator-item-bg-color: rgba(255, 255, 255, 0.3);
-  --yc-indicator-item-bg-color-active: #fff;
-  --yc-indicator-slider-bg-color-outer: rgba(201, 205, 212, 0.5);
-  --yc-indicator-slider-item-bg-color-outer: rgb(201, 205, 212);
-  --yc-indicator-slider-item-bg-color: #fff;
-  html[yc-design-dark] & {
-    --yc-arrow-bg-color: rgba(0, 0, 0, 0.3);
-    --yc-arrow-bg-color-hover: rgba(0, 0, 0, 0.5);
-    --yc-indicator-item-bg-color-outer: rgba(81, 84, 86, 0.5);
-    --yc-indicator-item-bg-color-outer-active: rgb(81, 84, 86);
-    --yc-indicator-slider-bg-color-outer: rgba(81, 84, 86, 0.5);
-    --yc-indicator-slider-item-bg-color-outer: rgb(81, 84, 86);
-  }
-}
-
 .yc-carousel {
   position: relative;
   &:hover .yc-carousel-arrow-show-hover {
@@ -75,12 +54,12 @@
   align-items: center;
   width: 24px;
   height: 24px;
-  color: #fff;
-  background-color: var(--yc-arrow-bg-color);
+  color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   cursor: pointer;
   &:hover {
-    background-color: var(--yc-arrow-bg-color-hover);
+    background-color: rgba(255, 255, 255, 0.5);
   }
 }
 // show-hover
@@ -117,28 +96,28 @@
   display: flex;
   &.yc-carousel-indicator-position-outer {
     .yc-carousel-indicator-item {
-      background-color: var(--yc-indicator-item-bg-color-outer);
+      background-color: rgba(var(--gray-4), 0.5);
       &:hover,
       &.yc-carousel-indicator-item-active {
-        background-color: var(--yc-indicator-item-bg-color-outer-active);
+        background-color: var(--color-neutral-4);
       }
     }
 
     &.yc-carousel-indicator-shape-slider {
-      background-color: var(--yc-indicator-slider-bg-color-outer);
+      background-color: rgba(var(--gray-4), 0.5);
       .yc-carousel-indicator-item-slider {
-        background-color: var(--yc-indicator-slider-item-bg-color-outer);
+        background-color: var(--color-neutral-4);
       }
     }
   }
 
   .yc-carousel-indicator-item {
-    background-color: var(--yc-indicator-item-bg-color);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 4px;
     cursor: pointer;
     &:hover,
     &.yc-carousel-indicator-item-active {
-      background-color: var(--yc-indicator-item-bg-color-active);
+      background-color: var(--color-white);
     }
   }
 }
@@ -208,7 +187,7 @@
 .yc-carousel-indicator-shape-slider {
   cursor: pointer;
   border-radius: 4px;
-  background-color: var(--yc-indicator-item-bg-color);
+  background-color: rgba(255, 255, 255, 0.3);
   &.yc-carousel-indicator-position-left,
   &.yc-carousel-indicator-position-right {
     height: 48px;
@@ -237,6 +216,34 @@
     position: absolute;
     border-radius: 4px;
     transition: transform 0.3s;
-    background-color: var(--yc-indicator-slider-item-bg-color);
+    background-color: var(--color-white);
+  }
+}
+
+html[yc-design-dark] .yc-carousel {
+  .yc-carousel-arrow {
+    background-color: rgba(0, 0, 0, 0.3);
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .yc-carousel-indicator {
+    &.yc-carousel-indicator-position-outer {
+      .yc-carousel-indicator-item {
+        background-color: rgba(var(--gray-4), 0.5);
+        &:hover,
+        &.yc-carousel-indicator-item-active {
+          background-color: rgb(var(--gray-4));
+        }
+      }
+
+      &.yc-carousel-indicator-shape-slider {
+        background-color: rgba(var(--gray-4), 0.5);
+        .yc-carousel-indicator-item-slider {
+          background-color: rgb(var(--gray-4));
+        }
+      }
+    }
   }
 }

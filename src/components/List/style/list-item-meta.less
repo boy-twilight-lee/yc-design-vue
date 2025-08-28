@@ -1,13 +1,4 @@
 .yc-list-item-meta {
-  --yc-list-item-meta-title-color: rgb(29, 33, 41);
-  --yc-list-item-meta-description-color: rgb(78, 89, 105);
-  html[yc-design-dark] & {
-    --yc-list-item-meta-title-color: #e5e6eb;
-    --yc-list-item-meta-description-color: #a1a8b8;
-  }
-}
-
-.yc-list-item-meta {
   overflow: hidden;
   width: 100%;
   padding: 4px 0;
@@ -23,11 +14,11 @@
     flex-direction: column;
     gap: 2px;
     .yc-list-item-meta-title {
-      color: var(--yc-list-item-meta-title-color);
+      color: var(--color-text-1);
       font-weight: 500;
     }
     .yc-list-item-meta-description {
-      color: var(--yc-list-item-meta-description-color);
+      color: var(--color-text-2);
     }
   }
 }
