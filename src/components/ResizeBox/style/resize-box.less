@@ -1,4 +1,13 @@
 .yc-resizebox {
+  --yc-resizebox-trigger-icon-wrapper-bg: rgb(229, 230, 235);
+  --yc-resizebox-trigger-icon-wrapper-color: rgb(29, 33, 41);
+  html[yc-design-dark] & {
+    --yc-resizebox-trigger-icon-wrapper-bg: rgba(255, 255, 255, 0.08);
+    --yc-resizebox-trigger-icon-wrapper-color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.yc-resizebox {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -7,8 +16,8 @@
     user-select: none;
     .yc-resizebox-trigger-icon-wrapper {
       height: 100%;
-      background-color: rgb(229, 230, 235);
-      color: rgb(29, 33, 41);
+      background-color: var(--yc-resizebox-trigger-icon-wrapper-bg);
+      color: var(--yc-resizebox-trigger-icon-wrapper-color);
       font-size: 12px;
       line-height: 1;
       display: flex;

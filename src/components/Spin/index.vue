@@ -64,5 +64,4 @@ const { renderLoading } = getGlobalConfig();
 
 <style lang="less" scoped>
 @import './style/spin.less';
-@import './style/dark.less';
 </style>

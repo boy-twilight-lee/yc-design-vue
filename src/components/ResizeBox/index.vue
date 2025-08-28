@@ -170,5 +170,4 @@ useResizeObserver(
 
 <style lang="less" scoped>
 @import './style/resize-box.less';
-@import './style/dark.less';
 </style>

@@ -1,4 +1,13 @@
 .yc-anchor {
+  --yc-anchor-line-slider-bg-color: rgb(22, 93, 255);
+  --yc-anchor-line-track-bg-color: rgb(229, 230, 235);
+  html[yc-design-dark] & {
+    --yc-anchor-line-slider-bg-color: rgb(74, 139, 255);
+    --yc-anchor-line-track-bg-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.yc-anchor {
   position: relative;
   width: 150px;
   overflow: auto;
@@ -9,7 +18,7 @@
     z-index: 1;
     width: 2px;
     height: 12px;
-    background-color: rgb(22, 93, 255);
+    background-color: var(--yc-anchor-line-slider-bg-color);
     transition: top 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
   }
   .yc-anchor-line-track {
@@ -18,7 +27,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background-color: rgb(229, 230, 235);
+    background-color: var(--yc-anchor-line-track-bg-color);
   }
 
   .yc-anchor-list {

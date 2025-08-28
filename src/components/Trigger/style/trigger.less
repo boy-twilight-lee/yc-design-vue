@@ -1,13 +1,20 @@
 .yc-trigger {
+  --yc-trigger-bg-color: #fff;
+  html[yc-design-dark] & {
+    --yc-trigger-bg-color: rgb(42, 46, 54);
+  }
+}
+
+.yc-trigger {
   position: fixed;
   .yc-trigger-content {
-    background-color: #fff;
+    background-color: var(--yc-trigger-bg-color);
   }
   .yc-trigger-arrow {
     position: absolute;
     width: 8px;
     height: 8px;
-    background-color: #fff;
+    background-color: var(--yc-trigger-bg-color);
   }
 }
 

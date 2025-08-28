@@ -1,4 +1,17 @@
 .yc-scrollbar {
+  --yc-scrollbar-track-bg-color: rgb(247, 248, 250);
+  --yc-scrollbar-track-border-color: rgb(229, 230, 235);
+  --yc-scrollbar-thumb-bar-bg-color: rgb(201, 205, 212);
+  --yc-scrollbar-thumb-bar-hover-bg-color: rgb(134, 144, 156);
+  html[yc-design-dark] & {
+    --yc-scrollbar-track-bg-color: rgb(42, 46, 54);
+    --yc-scrollbar-track-border-color: rgb(64, 69, 77);
+    --yc-scrollbar-thumb-bar-bg-color: rgba(255, 255, 255, 0.12);
+    --yc-scrollbar-thumb-bar-hover-bg-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.yc-scrollbar {
   position: relative;
   overflow: hidden;
 
@@ -34,9 +47,9 @@
     content: '';
     width: 15px;
     height: 15px;
-    background-color: rgb(247, 248, 250);
-    border-right: 1px solid rgb(229, 230, 235);
-    border-bottom: 1px solid rgb(229, 230, 235);
+    background-color: var(--yc-scrollbar-track-bg-color);
+    border-right: 1px solid var(--yc-scrollbar-track-border-color);
+    border-bottom: 1px solid var(--yc-scrollbar-track-border-color);
   }
 }
 // 横向
@@ -45,9 +58,9 @@
     padding-right: 15px;
   }
   &:deep(.yc-scrollbar-track-direction-vertical) {
-    background-color: rgb(247, 248, 250);
-    border-left: 1px solid rgb(229, 230, 235);
-    border-right: 1px solid rgb(229, 230, 235);
+    background-color: var(--yc-scrollbar-track-bg-color);
+    border-left: 1px solid var(--yc-scrollbar-track-border-color);
+    border-right: 1px solid var(--yc-scrollbar-track-border-color);
   }
 }
 // 纵向
@@ -56,9 +69,9 @@
     padding-bottom: 15px;
   }
   &:deep(.yc-scrollbar-track-direction-horizontal) {
-    background-color: rgb(247, 248, 250);
-    border-top: 1px solid rgb(229, 230, 235);
-    border-bottom: 1px solid rgb(229, 230, 235);
+    background-color: var(--yc-scrollbar-track-bg-color);
+    border-top: 1px solid var(--yc-scrollbar-track-border-color);
+    border-bottom: 1px solid var(--yc-scrollbar-track-border-color);
   }
 }
 // track
@@ -74,15 +87,15 @@
     .yc-scrollbar-thumb-bar {
       user-select: none;
       border-radius: 5px;
-      background-color: rgb(201, 205, 212);
+      background-color: var(--yc-scrollbar-thumb-bar-bg-color);
       opacity: 0;
       transition: opacity 0.2s ease;
       &:hover {
-        background-color: rgb(134, 144, 156);
+        background-color: var(--yc-scrollbar-thumb-bar-hover-bg-color);
         opacity: 0.8;
       }
       &.yc-scrollbar-thumb-bar-dragging {
-        background-color: rgb(134, 144, 156);
+        background-color: var(--yc-scrollbar-thumb-bar-hover-bg-color);
         opacity: 0.8;
       }
       &.yc-scrollbar-thumb-bar-hover {

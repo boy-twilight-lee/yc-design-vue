@@ -173,6 +173,4 @@ defineExpose<TriggerExpose>({
 
 <style lang="less" scoped>
 @import './style/trigger.less';
-
-@import './style/dark.less';
 </style>

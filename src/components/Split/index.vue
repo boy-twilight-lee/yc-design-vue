@@ -147,5 +147,4 @@ watch(
 
 <style lang="less" scoped>
 @import './style/split.less';
-@import './style/dark.less';
 </style>

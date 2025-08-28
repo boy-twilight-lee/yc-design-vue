@@ -1,4 +1,21 @@
 .yc-anchor-link-item {
+  --yc-anchor-link-color: rgb(78, 89, 105);
+  --yc-anchor-link-hover-color: rgb(29, 33, 41);
+  --yc-anchor-link-hover-bg: rgb(242, 243, 245);
+  --yc-anchor-link-active-color: rgb(29, 33, 41);
+  --yc-anchor-link-lineless-active-bg: rgb(242, 243, 245);
+  --yc-anchor-link-lineless-active-color: rgb(22, 93, 255);
+  html[yc-design-dark] & {
+    --yc-anchor-link-color: rgba(255, 255, 255, 0.65);
+    --yc-anchor-link-hover-color: rgba(255, 255, 255, 0.85);
+    --yc-anchor-link-hover-bg: rgba(255, 255, 255, 0.08);
+    --yc-anchor-link-active-color: rgba(255, 255, 255, 0.85);
+    --yc-anchor-link-lineless-active-bg: rgba(255, 255, 255, 0.08);
+    --yc-anchor-link-lineless-active-color: rgb(74, 139, 255);
+  }
+}
+
+.yc-anchor-link-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -7,14 +24,14 @@
     min-height: 30px;
     padding: 4px 8px;
     border-radius: 2px;
-    color: rgb(78, 89, 105);
+    color: var(--yc-anchor-link-color);
     font-size: 14px;
     line-height: 1.5715;
     transition: all 0.1s cubic-bezier(0, 0, 1, 1);
     &:hover {
-      color: rgb(29, 33, 41);
+      color: var(--yc-anchor-link-hover-color);
       font-weight: 500;
-      background-color: rgb(242, 243, 245);
+      background-color: var(--yc-anchor-link-hover-bg);
     }
   }
   .yc-anchor-sublist {
@@ -28,14 +45,14 @@
 }
 .yc-anchor-link-active {
   & > .yc-anchor-link {
-    color: rgb(29, 33, 41);
+    color: var(--yc-anchor-link-active-color);
     font-weight: 500;
   }
 }
 .yc-anchor-link-lineless-active {
   & > .yc-anchor-link {
-    background-color: rgb(242, 243, 245);
-    color: rgb(22, 93, 255);
+    background-color: var(--yc-anchor-link-lineless-active-bg);
+    color: var(--yc-anchor-link-lineless-active-color);
     font-weight: 500;
   }
 }

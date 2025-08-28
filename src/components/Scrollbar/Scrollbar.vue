@@ -271,5 +271,4 @@ defineExpose<ScrollbarExpose>({
 
 <style lang="less" scoped>
 @import './style/scrollbar.less';
-@import './style/dark.less';
 </style>
