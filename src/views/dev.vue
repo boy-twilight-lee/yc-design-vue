@@ -1,11 +1,6 @@
 <template>
   <div class="test">
-    <yc-radio-group type="button">
-      <yc-radio value="Beijing">Beijing</yc-radio>
-      <yc-radio value="Shanghai">Shanghai</yc-radio>
-      <yc-radio value="Guangzhou">Guangzhou</yc-radio>
-      <yc-radio value="Shenzhen">Shenzhen</yc-radio>
-    </yc-radio-group>
+    <yc-calendar />
   </div>
 </template>
 
