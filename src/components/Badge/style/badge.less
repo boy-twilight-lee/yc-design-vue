@@ -1,3 +1,25 @@
+:root {
+  --yc-badge-color-danger: rgb(245, 63, 63);
+  --yc-badge-color-white: #fff;
+  --yc-badge-background-color: var(--yc-badge-color-danger);
+  --yc-badge-box-shadow-color: var(--yc-badge-color-white);
+  --yc-badge-text-color: var(--yc-badge-color-white);
+  --yc-badge-status-text-color: rgb(29, 33, 41);
+  --yc-badge-status-color-normal: rgb(201, 205, 212);
+  --yc-badge-status-color-success: rgb(0, 180, 42);
+  --yc-badge-status-color-danger: var(--yc-badge-color-danger);
+  --yc-badge-status-color-processing: rgb(22, 93, 255);
+  --yc-badge-status-color-warning: rgb(255, 125, 0);
+}
+html[yc-design-dark] {
+  --yc-badge-box-shadow-color: rgb(29, 29, 30);
+  --yc-badge-status-text-color: rgb(229, 230, 235);
+  --yc-badge-status-color-normal: rgb(81, 84, 86);
+  --yc-badge-status-color-success: rgb(19, 173, 58);
+  --yc-badge-status-color-processing: rgb(46, 126, 255);
+  --yc-badge-status-color-warning: rgb(250, 140, 42);
+}
+
 .yc-badge {
   position: relative;
   display: inline-block;
@@ -13,9 +35,9 @@
     transform: translate(50%, -50%);
     transform-origin: 100% 0%;
     overflow: hidden;
-    background-color: rgb(245, 63, 63);
+    background-color: var(--yc-badge-background-color);
     border-radius: 20px;
-    box-shadow: 0 0 0 2px #fff;
+    box-shadow: 0 0 0 2px var(--yc-badge-box-shadow-color);
     text-align: center;
     &.yc-badge-dot {
       width: 6px;
@@ -23,7 +45,7 @@
       border-radius: 50%;
     }
     &.yc-badge-custom-dot {
-      background-color: #fff;
+      background-color: var(--yc-badge-box-shadow-color);
       box-shadow: none;
     }
     &.yc-badge-text,
@@ -31,7 +53,7 @@
       min-width: 20px;
       height: 20px;
       padding: 0 6px;
-      color: #fff;
+      color: var(--yc-badge-text-color);
       font-weight: 500;
       font-size: 12px;
       line-height: 20px;
@@ -48,7 +70,7 @@
       border-radius: 50%;
     }
     .yc-badge-status-text {
-      color: rgb(29, 33, 41);
+      color: var(--yc-badge-status-text-color);
       font-size: 12px;
       line-height: 1.5715;
     }
@@ -69,11 +91,11 @@
 
 // status
 @status: {
-  normal: rgb(201, 205, 212);
-  success: rgb(0, 180, 42);
-  danger: rgb(245, 63, 63);
-  processing: rgb(22, 93, 255);
-  warning: rgb(255, 125, 0);
+  normal: var(--yc-badge-status-color-normal);
+  success: var(--yc-badge-status-color-success);
+  danger: var(--yc-badge-status-color-danger);
+  processing: var(--yc-badge-status-color-processing);
+  warning: var(--yc-badge-status-color-warning);
 };
 // status
 each(@status,{
@@ -81,6 +103,7 @@ each(@status,{
     background-color: @value;
   }
 })
+
 // color
 @color: {
   red: rgb(245, 63, 63);

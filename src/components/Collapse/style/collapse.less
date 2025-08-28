@@ -1,3 +1,10 @@
+:root {
+  --yc-collapse-border-color: rgb(229, 230, 235);
+}
+html[yc-design-dark] {
+  --yc-collapse-border-color: rgb(60, 60, 62);
+}
+
 .yc-collapse {
   width: 100%;
   overflow: hidden;
@@ -10,5 +17,5 @@
   }
 }
 .yc-collapse-bordered {
-  border: 1px solid rgb(229, 230, 235);
+  border: 1px solid var(--yc-collapse-border-color);
 }

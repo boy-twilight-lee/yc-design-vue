@@ -12,5 +12,4 @@ defineOptions({
 
 <style lang="less">
 @import './style/typography.less';
-@import './style/dark.less';
 </style>

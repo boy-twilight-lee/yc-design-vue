@@ -32,5 +32,4 @@ withDefaults(defineProps<TypographyParagraphProps>(), {
 
 <style lang="less" scoped>
 @import './style/typography-paragraph.less';
-@import './style/dark.less';
 </style>

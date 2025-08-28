@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, computed, useSlots } from 'vue';
+import { toRefs, computed } from 'vue';
 import { AvatarGroupProps, AvatarGroupSlots } from './type';
 import { findComponentsFromVnodes, valueToPx } from '@shared/utils';
 import useContext from './hooks/useContext';
@@ -79,5 +79,4 @@ const nodes = computed(() => {
 
 <style lang="less" scoped>
 @import './style/avatar-group.less';
-@import './style/dark.less';
 </style>

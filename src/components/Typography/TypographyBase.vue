@@ -193,5 +193,4 @@ const handleCopy = async () => {
 
 <style lang="less" scoped>
 @import './style/typography-base.less';
-@import './style/dark.less';
 </style>

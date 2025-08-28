@@ -205,5 +205,4 @@ intLisenter();
 
 <style lang="less" scoped>
 @import './style/image-preview.less';
-@import './style/dark.less';
 </style>

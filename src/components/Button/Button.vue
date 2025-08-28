@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, computed, useSlots } from 'vue';
+import { toRefs, computed } from 'vue';
 import { ButtonProps, ButtonEmits, ButtonSlots } from './type';
 import useContext from './hooks/useContext';
 import YcSpin from '@/components/Spin';
@@ -95,5 +95,4 @@ const handleEvent = (type: string, e: MouseEvent) => {
 
 <style lang="less" scoped>
 @import './style/button.less';
-@import './style/dark.less';
 </style>

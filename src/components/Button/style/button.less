@@ -1,3 +1,89 @@
+:root {
+  --yc-primary-color: rgb(22, 93, 255);
+  --yc-primary-hover-color: rgb(64, 128, 255);
+  --yc-primary-active-color: rgb(14, 66, 210);
+  --yc-warning-color: rgb(255, 125, 0);
+  --yc-warning-hover-color: rgb(255, 154, 46);
+  --yc-warning-active-color: rgb(210, 95, 0);
+  --yc-success-color: rgb(0, 180, 42);
+  --yc-success-hover-color: rgb(35, 195, 67);
+  --yc-success-active-color: rgb(0, 154, 41);
+  --yc-danger-color: rgb(245, 63, 63);
+  --yc-danger-hover-color: rgb(247, 101, 96);
+  --yc-danger-active-color: rgb(203, 39, 45);
+  --yc-text-color: rgb(78, 89, 105);
+  --yc-text-hover-bg: rgb(242, 243, 245);
+  --yc-text-active-bg: rgb(229, 230, 235);
+  --yc-secondary-bg: rgb(242, 243, 245);
+  --yc-secondary-hover-bg: rgb(229, 230, 235);
+  --yc-secondary-active-bg: rgb(201, 205, 212);
+  --yc-dashed-border-color: rgb(229, 230, 235);
+  --yc-dashed-border-hover-color: rgb(201, 205, 212);
+  --yc-dashed-border-active-color: rgb(169, 174, 184);
+  --yc-secondary-warning-bg: rgb(255, 247, 232);
+  --yc-secondary-warning-hover-bg: rgb(255, 228, 186);
+  --yc-secondary-warning-active-bg: rgb(255, 207, 139);
+  --yc-secondary-success-bg: rgb(232, 255, 234);
+  --yc-secondary-success-hover-bg: rgb(175, 240, 181);
+  --yc-secondary-success-active-bg: rgb(123, 225, 136);
+  --yc-secondary-danger-bg: rgb(255, 236, 232);
+  --yc-secondary-danger-hover-bg: rgb(253, 205, 197);
+  --yc-secondary-danger-active-bg: rgb(251, 172, 163);
+  --yc-dashed-warning-border-color: rgb(255, 228, 186);
+  --yc-dashed-warning-border-hover-color: rgb(255, 207, 139);
+  --yc-dashed-warning-border-active-color: rgb(255, 182, 93);
+  --yc-dashed-success-border-color: rgb(175, 240, 181);
+  --yc-dashed-success-border-hover-color: rgb(123, 225, 136);
+  --yc-dashed-success-border-active-color: rgb(76, 210, 99);
+  --yc-dashed-danger-border-color: rgb(253, 205, 197);
+  --yc-dashed-danger-border-hover-color: rgb(251, 172, 163);
+  --yc-dashed-danger-border-active-color: rgb(249, 137, 129);
+  --yc-loading-bg: #fff;
+}
+
+.dark {
+  --yc-primary-color: rgb(53, 122, 255);
+  --yc-primary-hover-color: rgb(85, 150, 255);
+  --yc-primary-active-color: rgb(30, 90, 210);
+  --yc-warning-color: rgb(255, 168, 0);
+  --yc-warning-hover-color: rgb(255, 190, 40);
+  --yc-warning-active-color: rgb(210, 130, 0);
+  --yc-success-color: rgb(0, 200, 60);
+  --yc-success-hover-color: rgb(35, 215, 80);
+  --yc-success-active-color: rgb(0, 170, 50);
+  --yc-danger-color: rgb(255, 90, 90);
+  --yc-danger-hover-color: rgb(255, 120, 120);
+  --yc-danger-active-color: rgb(210, 60, 60);
+  --yc-text-color: rgb(220, 220, 220);
+  --yc-text-hover-bg: rgb(50, 50, 50);
+  --yc-text-active-bg: rgb(70, 70, 70);
+  --yc-secondary-bg: rgb(50, 54, 60);
+  --yc-secondary-hover-bg: rgb(70, 75, 85);
+  --yc-secondary-active-bg: rgb(90, 95, 105);
+  --yc-dashed-border-color: rgb(70, 75, 85);
+  --yc-dashed-border-hover-color: rgb(90, 95, 105);
+  --yc-dashed-border-active-color: rgb(110, 115, 125);
+  --yc-secondary-warning-bg: rgb(70, 60, 40);
+  --yc-secondary-warning-hover-bg: rgb(100, 80, 50);
+  --yc-secondary-warning-active-bg: rgb(130, 100, 60);
+  --yc-secondary-success-bg: rgb(40, 70, 45);
+  --yc-secondary-success-hover-bg: rgb(50, 100, 55);
+  --yc-secondary-success-active-bg: rgb(60, 130, 65);
+  --yc-secondary-danger-bg: rgb(70, 40, 40);
+  --yc-secondary-danger-hover-bg: rgb(100, 50, 50);
+  --yc-secondary-danger-active-bg: rgb(130, 60, 60);
+  --yc-dashed-warning-border-color: rgb(100, 80, 50);
+  --yc-dashed-warning-border-hover-color: rgb(130, 100, 60);
+  --yc-dashed-warning-border-active-color: rgb(160, 120, 70);
+  --yc-dashed-success-border-color: rgb(50, 100, 55);
+  --yc-dashed-success-border-hover-color: rgb(60, 130, 65);
+  --yc-dashed-success-border-active-color: rgb(70, 160, 75);
+  --yc-dashed-danger-border-color: rgb(100, 50, 50);
+  --yc-dashed-danger-border-hover-color: rgb(130, 60, 60);
+  --yc-dashed-danger-border-active-color: rgb(160, 70, 70);
+  --yc-loading-bg: #000;
+}
+
 .yc-button {
   cursor: pointer;
   user-select: none;
@@ -30,8 +116,11 @@
     display: block;
     z-index: 1;
     position: absolute;
-    inset: -1px;
-    background-color: #fff;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    background-color: var(--yc-loading-bg);
     opacity: 0.4;
   }
 }
@@ -45,170 +134,147 @@
 }
 
 // type
-@colors: {
-  primary: rgb(22, 93, 255);
-  primary-hover: rgb(64, 128, 255);
-  primary-active: rgb(14, 66, 210);
-  warning: rgb(255, 125, 0);
-  warning-hover: rgb(255, 154, 46);
-  warning-active: rgb(210, 95, 0);
-  success: rgb(0, 180, 42);
-  success-hover: rgb(35, 195, 67);
-  success-active: rgb(0, 154, 41);
-  danger: rgb(245, 63, 63);
-  danger-hover: rgb(247, 101, 96);
-  danger-active: rgb(203, 39, 45);
-  text: rgb(78, 89, 105);
-  text-hover: rgb(242, 243, 245);
-  text-active: rgb(229, 230, 235);
-  secondary-bg: rgb(242, 243, 245);
-  secondary-hover: rgb(229, 230, 235);
-  secondary-active: rgb(201, 205, 212);
-  dashed-border: rgb(229, 230, 235);
-  dashed-border-hover: rgb(201, 205, 212);
-  dashed-border-active: rgb(169, 174, 184);
-};
 @type: {
   @primary: {
     @normal: {
-      bg: @colors[primary];
-      hover: @colors[primary-hover];
-      active: @colors[primary-active];
+      bg: var(--yc-primary-color);
+      hover: var(--yc-primary-hover-color);
+      active: var(--yc-primary-active-color);
       text: #fff;
     };
     @warning: {
-      bg: @colors[warning];
-      hover: @colors[warning-hover];
-      active: @colors[warning-active];
+      bg: var(--yc-warning-color);
+      hover: var(--yc-warning-hover-color);
+      active: var(--yc-warning-active-color);
       text: #fff;
     };
     @success: {
-      bg: @colors[success];
-      hover: @colors[success-hover];
-      active: @colors[success-active];
+      bg: var(--yc-success-color);
+      hover: var(--yc-success-hover-color);
+      active: var(--yc-success-active-color);
       text: #fff;
     };
     @danger: {
-      bg: @colors[danger];
-      hover: @colors[danger-hover];
-      active: @colors[danger-active];
+      bg: var(--yc-danger-color);
+      hover: var(--yc-danger-hover-color);
+      active: var(--yc-danger-active-color);
       text: #fff;
     };
   };
   @secondary: {
     @normal: {
-      bg: @colors[secondary-bg];
-      hover: @colors[secondary-hover];
-      active: @colors[secondary-active];
-      text: @colors[text];
+      bg: var(--yc-secondary-bg);
+      hover: var(--yc-secondary-hover-bg);
+      active: var(--yc-secondary-active-bg);
+      text: var(--yc-text-color);
     };
     @warning: {
-      bg: rgb(255, 247, 232);
-      hover: rgb(255, 228, 186);
-      active: rgb(255, 207, 139);
-      text: @colors[warning];
+      bg: var(--yc-secondary-warning-bg);
+      hover: var(--yc-secondary-warning-hover-bg);
+      active: var(--yc-secondary-warning-active-bg);
+      text: var(--yc-warning-color);
     };
     @success: {
-      bg: rgb(232, 255, 234);
-      hover: rgb(175, 240, 181);
-      active: rgb(123, 225, 136);
-      text: @colors[success];
+      bg: var(--yc-secondary-success-bg);
+      hover: var(--yc-secondary-success-hover-bg);
+      active: var(--yc-secondary-success-active-bg);
+      text: var(--yc-success-color);
     };
     @danger: {
-      bg: rgb(255, 236, 232);
-      hover: rgb(253, 205, 197);
-      active: rgb(251, 172, 163);
-      text: @colors[danger];
+      bg: var(--yc-secondary-danger-bg);
+      hover: var(--yc-secondary-danger-hover-bg);
+      active: var(--yc-secondary-danger-active-bg);
+      text: var(--yc-danger-color);
     };
   };
   @dashed: {
     @normal: {
-      bg: @colors[secondary-bg];
-      hover: @colors[secondary-hover];
-      active: @colors[secondary-active];
-      border: @colors[dashed-border];
-      border-hover: @colors[dashed-border-hover];
-      border-active: @colors[dashed-border-active];
-      text: @colors[text];
+      bg: var(--yc-secondary-bg);
+      hover: var(--yc-secondary-hover-bg);
+      active: var(--yc-secondary-active-bg);
+      border: var(--yc-dashed-border-color);
+      border-hover: var(--yc-dashed-border-hover-color);
+      border-active: var(--yc-dashed-border-active-color);
+      text: var(--yc-text-color);
     };
     @warning: {
-      bg: rgb(255, 247, 232);
-      hover: rgb(255, 228, 186);
-      active: rgb(255, 207, 139);
-      border: rgb(255, 228, 186);
-      border-hover: rgb(255, 207, 139);
-      border-active: rgb(255, 182, 93);
-      text: @colors[warning];
+      bg: var(--yc-secondary-warning-bg);
+      hover: var(--yc-secondary-warning-hover-bg);
+      active: var(--yc-secondary-warning-active-bg);
+      border: var(--yc-dashed-warning-border-color);
+      border-hover: var(--yc-dashed-warning-border-hover-color);
+      border-active: var(--yc-dashed-warning-border-active-color);
+      text: var(--yc-warning-color);
     };
     @success: {
-      bg: rgb(232, 255, 234);
-      hover: rgb(175, 240, 181);
-      active: rgb(123, 225, 136);
-      border: rgb(175, 240, 181);
-      border-hover: rgb(123, 225, 136);
-      border-active: rgb(76, 210, 99);
-      text: @colors[success];
+      bg: var(--yc-secondary-success-bg);
+      hover: var(--yc-secondary-success-hover-bg);
+      active: var(--yc-secondary-success-active-bg);
+      border: var(--yc-dashed-success-border-color);
+      border-hover: var(--yc-dashed-success-border-hover-color);
+      border-active: var(--yc-dashed-success-border-active-color);
+      text: var(--yc-success-color);
     };
     @danger: {
-      bg: rgb(255, 236, 232);
-      hover: rgb(253, 205, 197);
-      active: rgb(251, 172, 163);
-      border: rgb(253, 205, 197);
-      border-hover: rgb(251, 172, 163);
-      border-active: rgb(249, 137, 129);
-      text: @colors[danger];
+      bg: var(--yc-secondary-danger-bg);
+      hover: var(--yc-secondary-danger-hover-bg);
+      active: var(--yc-secondary-danger-active-bg);
+      border: var(--yc-dashed-danger-border-color);
+      border-hover: var(--yc-dashed-danger-border-hover-color);
+      border-active: var(--yc-dashed-danger-border-active-color);
+      text: var(--yc-danger-color);
     };
   };
   @outline: {
     @normal: {
       bg: transparent;
-      border: @colors[primary];
-      border-hover: @colors[primary-hover];
-      border-active: @colors[primary-active];
-      text: @colors[primary];
-      text-hover: @colors[primary-hover];
-      text-active: @colors[primary-active];
+      border: var(--yc-primary-color);
+      border-hover: var(--yc-primary-hover-color);
+      border-active: var(--yc-primary-active-color);
+      text: var(--yc-primary-color);
+      text-hover: var(--yc-primary-hover-color);
+      text-active: var(--yc-primary-active-color);
     };
     @warning: {
       bg: transparent;
-      border: @colors[warning];
-      border-hover: @colors[warning-hover];
-      border-active: @colors[warning-active];
-      text: @colors[warning];
-      text-hover: @colors[warning-hover];
-      text-active: @colors[warning-active];
+      border: var(--yc-warning-color);
+      border-hover: var(--yc-warning-hover-color);
+      border-active: var(--yc-warning-active-color);
+      text: var(--yc-warning-color);
+      text-hover: var(--yc-warning-hover-color);
+      text-active: var(--yc-warning-active-color);
     };
     @success: {
       bg: transparent;
-      border: @colors[success];
-      border-hover: @colors[success-hover];
-      border-active: @colors[success-active];
-      text: @colors[success];
-      text-hover: @colors[success-hover];
-      text-active: @colors[success-active];
+      border: var(--yc-success-color);
+      border-hover: var(--yc-success-hover-color);
+      border-active: var(--yc-success-active-color);
+      text: var(--yc-success-color);
+      text-hover: var(--yc-success-hover-color);
+      text-active: var(--yc-success-active-color);
     };
     @danger: {
       bg: transparent;
-      border: @colors[danger];
-      border-hover: @colors[danger-hover];
-      border-active: @colors[danger-active];
-      text: @colors[danger];
-      text-hover: @colors[danger-hover];
-      text-active: @colors[danger-active];
+      border: var(--yc-danger-color);
+      border-hover: var(--yc-danger-hover-color);
+      border-active: var(--yc-danger-active-color);
+      text: var(--yc-danger-color);
+      text-hover: var(--yc-danger-hover-color);
+      text-active: var(--yc-danger-active-color);
     };
   };
   @text: {
     @normal: {
-      text: @colors[primary];
+      text: var(--yc-primary-color);
     };
     @warning: {
-      text: @colors[warning];
+      text: var(--yc-warning-color);
     };
     @success: {
-      text: @colors[success];
+      text: var(--yc-success-color);
     };
     @danger: {
-      text: @colors[danger];
+      text: var(--yc-danger-color);
     };
   };
 };
@@ -256,10 +322,10 @@ each(@type, .(@type-value, @type-name) {
           background-color: transparent;
           &:not(.yc-button-disabled):not(.yc-button-loading) {
             &:hover {
-              background-color: @colors[text-hover];
+              background-color: var(--yc-text-hover-bg);
             }
             &:active {
-              background-color: @colors[text-active];
+              background-color: var(--yc-text-active-bg);
             }
           }
         }

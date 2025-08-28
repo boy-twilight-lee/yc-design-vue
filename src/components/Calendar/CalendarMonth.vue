@@ -110,5 +110,4 @@ const isSelected = (col: CalendarCellData) => {
 
 <style lang="less" scoped>
 @import './style/calendar.less';
-@import './style/dark.less';
 </style>

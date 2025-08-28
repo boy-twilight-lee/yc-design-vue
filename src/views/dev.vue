@@ -1,5 +1,7 @@
 <template>
-  <div class="test"></div>
+  <div class="test">
+    <yc-drawer :visible="true"> </yc-drawer>
+  </div>
 </template>
 
 <script lang="ts" setup>

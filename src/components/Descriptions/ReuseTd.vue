@@ -51,5 +51,4 @@ const { labelStyle, valueStyle, bordered, size, align, slots } =
 
 <style lang="less" scoped>
 @import './style/descriptions-item.less';
-@import './style/dark.less';
 </style>

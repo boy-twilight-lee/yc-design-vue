@@ -24,5 +24,4 @@ withDefaults(defineProps<CardGridProps>(), {
 
 <style lang="less" scoped>
 @import './style/card-grid.less';
-@import './style/dark.less';
 </style>

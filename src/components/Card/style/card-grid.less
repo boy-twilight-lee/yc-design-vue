@@ -1,12 +1,22 @@
+:root {
+  --yc-card-grid-shadow-color: rgb(229, 230, 235);
+  --yc-card-grid-hoverable-shadow: 0 4px 10px rgb(242, 243, 245);
+}
+html[yc-design-dark] {
+  --yc-card-grid-shadow-color: rgb(60, 60, 62);
+  --yc-card-grid-hoverable-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .yc-card-grid {
   position: relative;
   width: 33.33%;
   box-shadow:
-    1px 0 0 0 rgb(229, 230, 235),
-    0 1px 0 0 rgb(229, 230, 235),
-    1px 1px 0 0 rgb(229, 230, 235),
-    1px 0 0 0 rgb(229, 230, 235) inset,
-    0 1px 0 0 rgb(229, 230, 235) inset;
+    1px 0 0 0 var(--yc-card-grid-shadow-color),
+    0 1px 0 0 var(--yc-card-grid-shadow-color),
+    1px 1px 0 0 var(--yc-card-grid-shadow-color),
+    1px 0 0 0 var(--yc-card-grid-shadow-color) inset,
+    0 1px 0 0 var(--yc-card-grid-shadow-color) inset;
+
   &::before {
     content: '';
     pointer-events: none;
@@ -25,6 +35,6 @@
     z-index: 1;
   }
   &:hover::before {
-    box-shadow: 0 4px 10px rgb(242, 243, 245);
+    box-shadow: var(--yc-card-grid-hoverable-shadow);
   }
 }

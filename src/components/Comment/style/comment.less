@@ -1,3 +1,16 @@
+:root {
+  --yc-comment-author-color: rgb(78, 89, 105);
+  --yc-comment-datetime-color: rgb(134, 144, 156);
+  --yc-comment-content-color: rgb(29, 33, 41);
+  --yc-comment-actions-color: rgb(78, 89, 105);
+}
+html[yc-design-dark] {
+  --yc-comment-author-color: rgb(193, 194, 195);
+  --yc-comment-datetime-color: rgb(134, 137, 140);
+  --yc-comment-content-color: rgb(229, 230, 235);
+  --yc-comment-actions-color: rgb(193, 194, 195);
+}
+
 .yc-comment {
   font-size: 14px;
   line-height: 1.5715;
@@ -21,11 +34,11 @@
         align-items: center;
         gap: 8px;
         .yc-comment-author {
-          color: rgb(78, 89, 105);
+          color: var(--yc-comment-author-color);
           font-size: 14px;
         }
         .yc-comment-datetime {
-          color: rgb(134, 144, 156);
+          color: var(--yc-comment-datetime-color);
           font-size: 12px;
         }
         &.yc-comment-title-align-right {
@@ -33,11 +46,11 @@
         }
       }
       .yc-comment-content {
-        color: rgb(29, 33, 41);
+        color: var(--yc-comment-content-color);
       }
       .yc-comment-actions {
         margin-top: 8px;
-        color: rgb(78, 89, 105);
+        color: var(--yc-comment-actions-color);
         font-size: 14px;
         display: flex;
         align-items: center;

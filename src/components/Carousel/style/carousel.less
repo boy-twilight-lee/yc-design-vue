@@ -1,4 +1,24 @@
 @import './animation.less';
+:root {
+  --yc-arrow-bg-color: rgba(255, 255, 255, 0.3);
+  --yc-arrow-bg-color-hover: rgba(255, 255, 255, 0.5);
+  --yc-indicator-item-bg-color-outer: rgba(201, 205, 212, 0.5);
+  --yc-indicator-item-bg-color-outer-active: rgb(201, 205, 212);
+  --yc-indicator-item-bg-color: rgba(255, 255, 255, 0.3);
+  --yc-indicator-item-bg-color-active: #fff;
+  --yc-indicator-slider-bg-color-outer: rgba(201, 205, 212, 0.5);
+  --yc-indicator-slider-item-bg-color-outer: rgb(201, 205, 212);
+  --yc-indicator-slider-item-bg-color: #fff;
+}
+html[yc-design-dark] {
+  --yc-arrow-bg-color: rgba(0, 0, 0, 0.3);
+  --yc-arrow-bg-color-hover: rgba(0, 0, 0, 0.5);
+  --yc-indicator-item-bg-color-outer: rgba(81, 84, 86, 0.5);
+  --yc-indicator-item-bg-color-outer-active: rgb(81, 84, 86);
+  --yc-indicator-slider-bg-color-outer: rgba(81, 84, 86, 0.5);
+  --yc-indicator-slider-item-bg-color-outer: rgb(81, 84, 86);
+}
+
 .yc-carousel {
   position: relative;
   &:hover .yc-carousel-arrow-show-hover {
@@ -56,11 +76,11 @@
   width: 24px;
   height: 24px;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--yc-arrow-bg-color);
   border-radius: 50%;
   cursor: pointer;
   &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--yc-arrow-bg-color-hover);
   }
 }
 // show-hover
@@ -97,28 +117,28 @@
   display: flex;
   &.yc-carousel-indicator-position-outer {
     .yc-carousel-indicator-item {
-      background-color: rgba(201, 205, 212, 0.5);
+      background-color: var(--yc-indicator-item-bg-color-outer);
       &:hover,
       &.yc-carousel-indicator-item-active {
-        background-color: rgb(201, 205, 212);
+        background-color: var(--yc-indicator-item-bg-color-outer-active);
       }
     }
 
     &.yc-carousel-indicator-shape-slider {
-      background-color: rgba(201, 205, 212, 0.5);
+      background-color: var(--yc-indicator-slider-bg-color-outer);
       .yc-carousel-indicator-item-slider {
-        background-color: rgb(201, 205, 212);
+        background-color: var(--yc-indicator-slider-item-bg-color-outer);
       }
     }
   }
 
   .yc-carousel-indicator-item {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--yc-indicator-item-bg-color);
     border-radius: 4px;
     cursor: pointer;
     &:hover,
     &.yc-carousel-indicator-item-active {
-      background-color: #fff;
+      background-color: var(--yc-indicator-item-bg-color-active);
     }
   }
 }
@@ -188,7 +208,7 @@
 .yc-carousel-indicator-shape-slider {
   cursor: pointer;
   border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--yc-indicator-item-bg-color);
   &.yc-carousel-indicator-position-left,
   &.yc-carousel-indicator-position-right {
     height: 48px;
@@ -217,6 +237,6 @@
     position: absolute;
     border-radius: 4px;
     transition: transform 0.3s;
-    background-color: #fff;
+    background-color: var(--yc-indicator-slider-item-bg-color);
   }
 }

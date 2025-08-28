@@ -1,13 +1,21 @@
+:root {
+  --yc-descriptions-item-label-color: rgb(134, 144, 156);
+  --yc-descriptions-item-value-color: rgb(29, 33, 41);
+}
+html[yc-design-dark] {
+  --yc-descriptions-item-label-color: rgb(134, 137, 140);
+  --yc-descriptions-item-value-color: rgb(229, 230, 235);
+}
 .yc-descriptions-item-label,
 .yc-descriptions-item-value {
   line-height: 1.5715;
 }
 .yc-descriptions-item-label {
-  color: rgb(134, 144, 156);
+  color: var(--yc-descriptions-item-label-color);
   font-weight: 500;
 }
 .yc-descriptions-item-value {
-  color: rgb(29, 33, 41);
+  color: var(--yc-descriptions-item-value-color);
   font-weight: 400;
 }
 // size

@@ -160,5 +160,5 @@ watch(
 
 <style lang="less" scoped>
 @import './style/image';
-@import './style/dark.less';
+
 </style>

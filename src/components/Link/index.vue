@@ -57,5 +57,4 @@ const handleEvent = (type: string, e: MouseEvent) => {
 
 <style lang="less" scoped>
 @import './style/link.less';
-@import './style/dark.less';
 </style>

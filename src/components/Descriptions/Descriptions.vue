@@ -162,5 +162,4 @@ const calcSpan = (i: number, array: DescData[]) => {
 <style lang="less">
 @import './style/descriptions.less';
 @import './style/descriptions-item.less';
-@import './style/dark.less';
 </style>

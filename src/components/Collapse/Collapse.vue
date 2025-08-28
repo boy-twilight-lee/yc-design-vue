@@ -34,5 +34,4 @@ useContext().provide(props, emits);
 
 <style lang="less" scoped>
 @import './style/collapse.less';
-@import './style/dark.less';
 </style>

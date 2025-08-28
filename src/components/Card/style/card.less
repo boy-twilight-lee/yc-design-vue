@@ -1,15 +1,37 @@
+:root {
+  --yc-card-background: #fff;
+  --yc-card-header-border-color: rgb(229, 230, 235);
+  --yc-card-header-title-color: rgb(29, 33, 41);
+  --yc-card-header-extra-color: rgb(22, 93, 255);
+  --yc-card-body-color: rgb(78, 89, 105);
+  --yc-card-actions-right-color: rgb(78, 89, 105);
+  --yc-card-bordered-border-color: rgb(229, 230, 235);
+  --yc-card-hoverable-shadow-color: 0 4px 10px rgb(242, 243, 245);
+}
+html[yc-design-dark] {
+  --yc-card-background: rgb(29, 29, 30);
+  --yc-card-header-border-color: rgb(60, 60, 62);
+  --yc-card-header-title-color: rgb(229, 230, 235);
+  --yc-card-header-extra-color: rgb(46, 126, 255);
+  --yc-card-body-color: rgb(193, 194, 195);
+  --yc-card-actions-right-color: rgb(193, 194, 195);
+  --yc-card-bordered-border-color: rgb(60, 60, 62);
+  --yc-card-hoverable-shadow-color: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .yc-card {
   position: relative;
-  background: #fff;
+  background: var(--yc-card-background);
   transition:
     box-shadow 0.2s cubic-bezier(0, 0, 1, 1),
     -webkit-box-shadow 0.2s cubic-bezier(0, 0, 1, 1);
   font-size: 14px;
   display: flex;
   flex-direction: column;
+
   .yc-card-header {
     overflow: hidden;
-    border-bottom: 1px solid rgb(229, 230, 235);
+    border-bottom: 1px solid var(--yc-card-header-border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,30 +39,35 @@
     .yc-card-header-title {
       flex: 1;
       font-size: 16px;
-      color: rgb(29, 33, 41);
+      color: var(--yc-card-header-title-color);
       font-weight: 500;
       line-height: 1.5715;
     }
+
     .yc-card-header-extra {
-      color: rgb(22, 93, 255);
+      color: var(--yc-card-header-extra-color);
     }
   }
+
   .yc-card-body {
-    color: rgb(78, 89, 105);
+    color: var(--yc-card-body-color);
+
     .yc-card-cover {
       overflow: hidden;
     }
+
     .yc-card-actions {
       margin-top: 20px;
       display: flex;
       align-items: center;
       justify-content: flex-end;
+
       .yc-card-actions-right {
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: rgb(78, 89, 105);
+        color: var(--yc-card-actions-right-color);
         transition: color 0.2s cubic-bezier(0, 0, 1, 1);
       }
     }
@@ -48,7 +75,7 @@
 }
 // bordered
 .yc-card-bordered {
-  border: 1px solid rgb(229, 230, 235);
+  border: 1px solid var(--yc-card-bordered-border-color);
   border-radius: 2px;
   .yc-card-body {
     .yc-card-cover {
@@ -59,7 +86,7 @@
 // hoverable
 .yc-card-hoverable {
   &:hover {
-    box-shadow: 0 4px 10px rgb(242, 243, 245);
+    box-shadow: var(--yc-card-hoverable-shadow-color);
   }
 }
 // loading
@@ -102,8 +129,9 @@
     body-padding: 16px;
   };
 };
-each(@size, .(@value,@name){
-  @key:replace(~"@{name}", "@", "");
+
+each(@size, .(@value, @name) {
+  @key: replace(~"@{name}", "@", "");
   .yc-card-size-@{key} {
     .yc-card-header {
       height: @value[header-height];

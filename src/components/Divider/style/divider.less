@@ -1,13 +1,22 @@
+:root {
+  --yc-divider-text-color: rgb(29, 33, 41);
+  --yc-divider-bg: #fff;
+}
+html[yc-design-dark] {
+  --yc-divider-text-color: rgb(229, 230, 235);
+  --yc-divider-bg: rgb(29, 29, 30);
+}
+
 .yc-divider {
   .yc-divider-text {
     position: absolute;
     top: 50%;
     padding: 0 16px;
-    color: rgb(29, 33, 41);
+    color: var(--yc-divider-text-color);
     font-weight: 500;
     font-size: 14px;
     line-height: 2;
-    background: #fff;
+    background: var(--yc-divider-bg);
   }
 }
 // direction
@@ -34,7 +43,7 @@
 each(@position, {
   .yc-divider-text-@{key} {
     @{key}: if(key = center, 50%, 24px);
-    & when(@key = center){
+    & when(@key = center) {
       left: 50%;
     }
     transform: translate(@value, -50%);

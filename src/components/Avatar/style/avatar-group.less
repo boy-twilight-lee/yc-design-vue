@@ -1,10 +1,18 @@
+:root {
+  --yc-avatar-group-border-color: #fff;
+}
+html[yc-design-dark] {
+  --yc-avatar-group-border-color: rgb(29, 29, 30);
+}
+
 .yc-avatar-group {
   height: fit-content;
   width: fit-content;
   display: inline-flex;
   align-items: center;
+
   &:deep(.yc-avatar) {
     flex-shrink: 0;
-    border: 2px solid #fff;
+    border: 2px solid var(--yc-avatar-group-border-color);
   }
 }

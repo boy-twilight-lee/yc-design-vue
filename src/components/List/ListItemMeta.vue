@@ -35,5 +35,4 @@ withDefaults(defineProps<ListItemMetaProps>(), {
 
 <style lang="less" scoped>
 @import './style/list-item-meta.less';
-@import './style/dark.less';
 </style>

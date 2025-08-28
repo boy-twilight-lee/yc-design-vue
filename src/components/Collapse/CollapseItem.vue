@@ -110,5 +110,4 @@ const handleClick = () => {
 
 <style lang="less" scoped>
 @import './style/collapse-item.less';
-@import './style/dark.less';
 </style>

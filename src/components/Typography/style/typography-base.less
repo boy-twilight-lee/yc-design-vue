@@ -1,20 +1,53 @@
+:root {
+  --yc-typography-color: rgb(29, 33, 41);
+  --yc-typography-mark-bg: rgb(252, 242, 107);
+  --yc-typography-code-bg: rgb(242, 243, 245);
+  --yc-typography-code-border: rgb(229, 230, 235);
+  --yc-typography-code-color: rgb(78, 89, 105);
+  --yc-typography-operation-color: rgb(78, 89, 105);
+  --yc-typography-operation-hover-bg: rgb(242, 243, 245);
+  --yc-typography-operation-hover-color: rgb(78, 89, 105);
+  --yc-typography-primary: rgb(22, 93, 255);
+  --yc-typography-secondary: rgb(78, 89, 105);
+  --yc-typography-success: rgb(0, 180, 42);
+  --yc-typography-danger: rgb(245, 63, 63);
+  --yc-typography-warning: rgb(255, 125, 0);
+  --yc-typography-disabled: rgb(201, 205, 212);
+}
+html[yc-design-dark] {
+  --yc-typography-color: rgb(229, 230, 235);
+  --yc-typography-mark-bg: rgb(128, 97, 8);
+  --yc-typography-code-bg: rgb(48, 48, 49);
+  --yc-typography-code-border: rgb(60, 60, 62);
+  --yc-typography-code-color: rgb(193, 194, 195);
+  --yc-typography-operation-color: rgb(134, 137, 140);
+  --yc-typography-operation-hover-bg: rgb(48, 48, 49);
+  --yc-typography-operation-hover-color: rgb(193, 194, 195);
+  --yc-typography-primary: rgb(46, 126, 255);
+  --yc-typography-secondary: rgb(193, 194, 195);
+  --yc-typography-success: rgb(19, 173, 58);
+  --yc-typography-danger: rgb(245, 63, 63);
+  --yc-typography-warning: rgb(250, 140, 42);
+  --yc-typography-disabled: rgb(81, 84, 86);
+}
+
 .yc-typography {
-  color: rgb(29, 33, 41);
+  color: var(--yc-typography-color);
   line-height: 1.5715;
   white-space: normal;
   overflow-wrap: anywhere;
 
   &:deep(mark) {
-    background-color: rgb(252, 242, 107);
+    background-color: var(--yc-typography-mark-bg);
   }
   &:deep(code) {
     margin: 0 2px;
     padding: 2px 8px;
-    background-color: rgb(242, 243, 245);
-    border: 1px solid rgb(229, 230, 235);
+    background-color: var(--yc-typography-code-bg);
+    border: 1px solid var(--yc-typography-code-border);
     border-radius: 2px;
     font-size: 85%;
-    color: rgb(78, 89, 105);
+    color: var(--yc-typography-code-color);
   }
   &:deep(del) {
     text-decoration: line-through;
@@ -33,7 +66,7 @@
     margin-left: 2px;
     border-radius: 2px;
     transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
-    color: rgb(78, 89, 105);
+    color: var(--yc-typography-operation-color);
     display: inline-flex;
     align-items: center;
     > span {
@@ -41,25 +74,25 @@
       align-items: center;
     }
     &:hover {
-      color: rgb(78, 89, 105);
-      background-color: rgb(242, 243, 245);
+      color: var(--yc-typography-operation-hover-color);
+      background-color: var(--yc-typography-operation-hover-bg);
     }
   }
 }
 // type
 @type: {
-  primary: rgb(22, 93, 255);
-  secondary: rgb(78, 89, 105);
-  success: rgb(0, 180, 42);
-  danger: rgb(245, 63, 63);
-  warning: rgb(255, 125, 0);
-  disabled: rgb(201, 205, 212);
+  primary: var(--yc-typography-primary);
+  secondary: var(--yc-typography-secondary);
+  success: var(--yc-typography-success);
+  danger: var(--yc-typography-danger);
+  warning: var(--yc-typography-warning);
+  disabled: var(--yc-typography-disabled);
 };
-each(@type,{
-        .yc-typography-@{key}{
-             color: @value;
-             & when(@key = disabled){
-                cursor: not-allowed;
-             }
-        }
-    });
+each(@type, {
+  .yc-typography-@{key} {
+    color: @value;
+    & when (@key = disabled) {
+      cursor: not-allowed;
+    }
+  }
+});

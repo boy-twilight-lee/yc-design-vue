@@ -1,15 +1,24 @@
+.yc-typography,
+.yc-typography blockquote {
+  --blockquote-bg: #fff;
+  --blockquote-border: rgb(134, 144, 156);
+}
+
+html[yc-design-dark] {
+  --blockquote-bg: rgb(38, 38, 40);
+  --blockquote-border: rgb(81, 84, 86);
+}
+
 .yc-typography {
   margin-top: 0;
   margin-bottom: 1em;
 }
-// blockquote
 .yc-typography blockquote {
   margin: 0 0 1em;
   padding-left: 8px;
-  background-color: #fff;
-  border-left: 2px solid rgb(134, 144, 156);
+  background-color: var(--blockquote-bg);
+  border-left: 2px solid var(--blockquote-border);
 }
-// spacing
 .yc-typography-spacing-close {
   line-height: 1.3;
 }
