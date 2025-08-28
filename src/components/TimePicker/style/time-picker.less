@@ -1,48 +1,17 @@
 .yc-picker {
-  --yc-picker-bg: rgb(242, 243, 245);
-  --yc-picker-text-color: rgb(78, 89, 105);
-  --yc-picker-hover-bg: rgb(229, 230, 235);
-  --yc-picker-placeholder-color: rgb(134, 144, 156);
-  --yc-picker-separator-color: rgb(134, 144, 156);
-  --yc-picker-focus-bg: #fff;
-  --yc-picker-focus-border: rgb(22, 93, 255);
-  --yc-picker-focus-shadow: rgb(190, 218, 255);
-  --yc-picker-error-bg: rgb(255, 236, 232);
-  --yc-picker-error-hover-bg: rgb(253, 205, 197);
-  --yc-picker-error-focus-border: rgb(245, 63, 63);
-  --yc-picker-error-focus-shadow: rgb(253, 205, 197);
-  --yc-picker-disabled-bg: rgb(242, 243, 245);
-  --yc-picker-disabled-color: rgb(201, 205, 212);
-  html[yc-design-dark] {
-    --yc-picker-bg: rgb(36, 36, 36);
-    --yc-picker-text-color: rgb(229, 229, 229);
-    --yc-picker-hover-bg: rgb(54, 54, 54);
-    --yc-picker-placeholder-color: rgb(153, 153, 153);
-    --yc-picker-separator-color: rgb(153, 153, 153);
-    --yc-picker-focus-bg: rgb(36, 36, 36);
-    --yc-picker-focus-border: rgb(22, 93, 255);
-    --yc-picker-focus-shadow: rgb(190, 218, 255);
-    --yc-picker-error-bg: rgb(54, 34, 34);
-    --yc-picker-error-hover-bg: rgb(72, 43, 43);
-    --yc-picker-disabled-bg: rgb(36, 36, 36);
-    --yc-picker-disabled-color: rgb(102, 102, 102);
-  }
-}
-
-.yc-picker {
   position: relative;
   padding: 4px 11px 4px 4px;
-  background-color: var(--yc-picker-bg);
+  background-color: var(--color-fill-2);
   border: 1px solid transparent;
   border-radius: 2px;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
-  color: var(--yc-picker-text-color);
+  color: var(--color-text-2);
   line-height: 1.5715;
   display: inline-flex;
   align-items: center;
 
   &:not(.yc-picker-disabled):hover {
-    background-color: var(--yc-picker-hover-bg);
+    background-color: var(--color-fill-3);
     border-color: transparent;
   }
   .yc-picker-has-prefix,
@@ -53,7 +22,7 @@
   .yc-picker-prefix {
     margin-right: 4px;
     font-size: 14px;
-    color: var(--yc-picker-text-color);
+    color: var(--color-text-2);
   }
   .yc-picker-input {
     flex: 1;
@@ -71,19 +40,19 @@
       text-align: left;
       transition: all 0.1s cubic-bezier(0, 0, 1, 1);
       &::placeholder {
-        color: var(--yc-picker-placeholder-color);
+        color: var(--color-text-3);
       }
     }
     &.yc-picker-input-active {
       input {
-        background-color: var(--yc-picker-bg);
+        background-color: var(--color-fill-2);
       }
     }
   }
   .yc-picker-separator {
     min-width: 10px;
     padding: 0 8px;
-    color: var(--yc-picker-separator-color);
+    color: var(--color-text-3);
   }
   .yc-picker-suffix {
     margin-left: 4px;
@@ -115,41 +84,41 @@
 }
 // focus
 .yc-picker-focus {
-  background-color: var(--yc-picker-focus-bg);
-  border-color: var(--yc-picker-focus-border);
-  box-shadow: 0 0 0 0 var(--yc-picker-focus-shadow);
+  background-color: var(--color-bg-white);
+  border-color: rgb(var(--primary-6));
+  box-shadow: 0 0 0 0 var(--color-primary-light-2);
   &:not(.yc-picker-disabled):hover {
-    background-color: var(--yc-picker-focus-bg);
-    border-color: var(--yc-picker-focus-border);
+    background-color: var(--color-bg-white);
+    border-color: rgb(var(--primary-6));
   }
 }
 // error
 .yc-picker-error {
-  background-color: var(--yc-picker-error-bg);
+  background-color: var(--color-danger-light-1);
   border-color: transparent;
   &:not(.yc-picker-disabled):hover {
-    background-color: var(--yc-picker-error-hover-bg);
+    background-color: var(--color-danger-light-2);
   }
   &.yc-picker-focus {
-    background-color: var(--yc-picker-focus-bg);
-    border-color: var(--yc-picker-error-focus-border);
-    box-shadow: 0 0 0 0 var(--yc-picker-error-focus-shadow);
+    background-color: var(--color-bg-white);
+    border-color: rgb(var(--danger-6));
+    box-shadow: 0 0 0 0 var(--color-danger-light-2);
     &:not(.yc-picker-disabled):hover {
-      background-color: var(--yc-picker-focus-bg);
+      background-color: var(--color-bg-white);
     }
   }
 }
 // disabled
 .yc-picker-disabled {
   cursor: not-allowed;
-  background-color: var(--yc-picker-disabled-bg);
+  background-color: var(--color-fill-2);
   border-color: transparent;
-  color: var(--yc-picker-disabled-color);
+  color: var(--color-text-4);
   .yc-picker-input {
     input {
       cursor: not-allowed;
       &::placeholder {
-        color: var(--yc-picker-disabled-color);
+        color: var(--color-text-4);
       }
     }
   }
@@ -169,3 +138,65 @@ each(@size, {
     }
   }
 });
+
+html[yc-design-dark] {
+  .yc-picker {
+    background-color: var(--color-bg-2);
+    color: var(--color-text-1);
+    &:not(.yc-picker-disabled):hover {
+      background-color: var(--color-bg-4);
+    }
+    .yc-picker-prefix {
+      color: var(--color-text-1);
+    }
+    .yc-picker-input {
+      input {
+        &::placeholder {
+          color: rgb(var(--gray-6));
+        }
+      }
+      &.yc-picker-input-active {
+        input {
+          background-color: var(--color-bg-2);
+        }
+      }
+    }
+    .yc-picker-separator {
+      color: rgb(var(--gray-6));
+    }
+  }
+  .yc-picker-focus {
+    background-color: var(--color-bg-2);
+    border-color: rgb(var(--primary-6));
+    box-shadow: 0 0 0 0 var(--color-primary-light-1);
+    &:not(.yc-picker-disabled):hover {
+      background-color: var(--color-bg-2);
+      border-color: rgb(var(--primary-6));
+    }
+  }
+  .yc-picker-error {
+    background-color: var(--color-danger-light-1);
+    &:not(.yc-picker-disabled):hover {
+      background-color: var(--color-danger-light-2);
+    }
+    &.yc-picker-focus {
+      background-color: var(--color-bg-2);
+      border-color: rgb(var(--danger-5));
+      box-shadow: 0 0 0 0 var(--color-danger-light-1);
+      &:not(.yc-picker-disabled):hover {
+        background-color: var(--color-bg-2);
+      }
+    }
+  }
+  .yc-picker-disabled {
+    background-color: var(--color-bg-2);
+    color: rgb(var(--gray-4));
+    .yc-picker-input {
+      input {
+        &::placeholder {
+          color: rgb(var(--gray-4));
+        }
+      }
+    }
+  }
+}

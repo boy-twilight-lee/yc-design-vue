@@ -1,23 +1,4 @@
 .yc-transfer {
-  --yc-transfer-border-color: rgb(229, 230, 235);
-  --yc-transfer-header-bg-color: rgb(247, 248, 250);
-  --yc-transfer-header-text-color: rgb(29, 33, 41);
-  --yc-transfer-header-count-text-color: rgb(134, 144, 156);
-  --yc-transfer-item-text-color: rgb(29, 33, 41);
-  --yc-transfer-item-hover-bg-color: rgb(242, 243, 245);
-  --yc-transfer-item-disabled-text-color: rgb(201, 205, 212);
-  html[yc-design-dark] & {
-    --yc-transfer-border-color: rgb(54, 54, 54);
-    --yc-transfer-header-bg-color: rgb(36, 36, 36);
-    --yc-transfer-header-text-color: rgb(229, 229, 229);
-    --yc-transfer-header-count-text-color: rgb(153, 153, 153);
-    --yc-transfer-item-text-color: rgb(229, 229, 229);
-    --yc-transfer-item-hover-bg-color: rgb(54, 54, 54);
-    --yc-transfer-item-disabled-text-color: rgb(102, 102, 102);
-  }
-}
-
-.yc-transfer {
   display: flex;
   align-items: center;
 
@@ -25,7 +6,7 @@
     overflow: hidden;
     width: 200px;
     height: 224px;
-    border: 1px solid var(--yc-transfer-border-color);
+    border: 1px solid var(--color-border-2);
     border-radius: 2px;
     display: flex;
     flex-direction: column;
@@ -33,16 +14,16 @@
     .yc-transfer-view-header {
       height: 40px;
       padding: 0 10px;
-      color: var(--yc-transfer-header-text-color);
+      color: var(--color-text-1);
       font-weight: 500;
       font-size: 14px;
       line-height: 40px;
-      background-color: var(--yc-transfer-header-bg-color);
+      background-color: var(--color-neutral-1);
       display: flex;
       justify-content: space-between;
       align-items: center;
       .yc-transfer-view-header-count {
-        color: var(--yc-transfer-header-count-text-color);
+        color: var(--color-text-3);
         font-size: 12px;
         font-weight: 400;
       }
@@ -74,14 +55,14 @@
           max-width: 100%;
           padding: 0 12px;
           font-size: 14px;
-          color: var(--yc-transfer-item-text-color);
+          color: var(--color-text-1);
           display: flex;
           align-items: center;
           gap: 6px;
           transition: all 0.1s cubic-bezier(0, 0, 1, 1);
           &:hover {
-            color: var(--yc-transfer-item-text-color);
-            background-color: var(--yc-transfer-item-hover-bg-color);
+            color: var(--color-text-1);
+            background-color: var(--color-neutral-2);
           }
           .yc-checkbox {
             flex: 1;
@@ -90,7 +71,7 @@
             flex: 1;
           }
           &.yc-transfer-list-item-disabled {
-            color: var(--yc-transfer-item-disabled-text-color);
+            color: var(--color-text-4);
             background: transparent;
             cursor: not-allowed;
           }
@@ -118,6 +99,36 @@
   .yc-transfer-view {
     .yc-transfer-view-body {
       height: calc(100% - 88px);
+    }
+  }
+}
+
+html[yc-design-dark] {
+  .yc-transfer {
+    .yc-transfer-view {
+      border-color: var(--color-border);
+      .yc-transfer-view-header {
+        color: rgb(var(--gray-9));
+        background-color: var(--color-bg-2);
+        .yc-transfer-view-header-count {
+          color: rgb(var(--gray-6));
+        }
+      }
+      .yc-transfer-view-body {
+        .yc-transfer-list {
+          .yc-transfer-list-item {
+            color: rgb(var(--gray-9));
+            &:hover {
+              color: rgb(var(--gray-9));
+              // 原值 rgb(54, 54, 54) 接近 var(--color-bg-4)
+              background-color: var(--color-bg-4);
+            }
+            &.yc-transfer-list-item-disabled {
+              color: rgb(var(--gray-4));
+            }
+          }
+        }
+      }
     }
   }
 }

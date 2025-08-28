@@ -1,31 +1,20 @@
 .yc-cascader-panel {
-  --yc-cascader-panel-bg-color: #fff;
-  --yc-cascader-panel-border-color: rgb(229, 230, 235);
-  --yc-cascader-panel-shadow: 0 4px 10px #0000001a;
-  html[yc-design-dark] & {
-    --yc-cascader-panel-bg-color: rgb(37, 37, 41);
-    --yc-cascader-panel-border-color: rgb(70, 70, 72);
-    --yc-cascader-panel-shadow: 0 4px 10px #0000004d;
-  }
-}
-
-.yc-cascader-panel {
   overflow: hidden;
   height: 200px;
-  background-color: var(--yc-cascader-panel-bg-color);
+  background-color: var(--color-bg-2);
   border-radius: 4px;
-  border: 1px solid var(--yc-cascader-panel-border-color);
-  box-shadow: var(--yc-cascader-panel-shadow);
+  border: 1px solid var(--color-border-2);
+  box-shadow: 0 4px 10px #0000001a;
   display: inline-flex;
   .yc-cascader-panel-column {
     position: relative;
     min-width: 120px;
     border-right: 1px solid transparent;
-    background-color: var(--yc-cascader-panel-bg-color);
+    background-color: var(--color-bg-2);
     display: inline-flex;
     flex-direction: column;
     &:not(:last-child) {
-      border-right-color: var(--yc-cascader-panel-border-color);
+      border-right-color: var(--color-border-2);
     }
   }
   .yc-scrollbar {
@@ -44,6 +33,10 @@
   &:deep(.yc-empty) {
     min-width: 120px;
   }
+}
+
+html[yc-design-dark] .yc-cascader-panel {
+  box-shadow: 0 4px 10px #0000004d;
 }
 
 .yc-cascader-search-panel {

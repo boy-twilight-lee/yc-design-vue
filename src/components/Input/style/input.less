@@ -1,42 +1,3 @@
-.yc-input-outer {
-  --yc-input-prepend-append-color: rgb(29, 33, 41);
-  --yc-input-prepend-append-bg: rgb(242, 243, 245);
-  --yc-input-prepend-border: rgb(229, 230, 235);
-  --yc-input-append-border: rgb(229, 230, 235);
-  --yc-input-error-bg: rgb(255, 236, 232);
-  --yc-input-error-hover-bg: rgb(253, 205, 197);
-  --yc-input-error-focus-border: rgb(245, 63, 63);
-  --yc-input-disabled-bg: rgb(242, 243, 245);
-  --yc-input-disabled-color: rgb(201, 205, 212);
-  --yc-input-wrapper-bg: rgb(242, 243, 245);
-  --yc-input-wrapper-color: rgb(29, 33, 41);
-  --yc-input-wrapper-hover-bg: rgb(229, 230, 235);
-  --yc-input-wrapper-focus-bg: #fff;
-  --yc-input-wrapper-focus-border: rgb(22, 93, 255);
-  --yc-input-prefix-suffix-color: rgb(78, 89, 105);
-  --yc-input-word-limit-color: rgb(134, 144, 156);
-  --yc-input-placeholder-color: rgb(134, 144, 156);
-  html[yc-design-dark] & {
-    --yc-input-prepend-append-color: rgb(224, 224, 224);
-    --yc-input-prepend-append-bg: rgb(44, 44, 44);
-    --yc-input-prepend-border: rgb(64, 64, 64);
-    --yc-input-append-border: rgb(64, 64, 64);
-    --yc-input-error-bg: rgb(60, 46, 42);
-    --yc-input-error-hover-bg: rgb(82, 55, 48);
-    --yc-input-error-focus-border: rgb(208, 48, 48);
-    --yc-input-disabled-bg: rgb(44, 44, 44);
-    --yc-input-disabled-color: rgb(134, 144, 156);
-    --yc-input-wrapper-bg: rgb(44, 44, 44);
-    --yc-input-wrapper-color: rgb(224, 224, 224);
-    --yc-input-wrapper-hover-bg: rgb(64, 64, 64);
-    --yc-input-wrapper-focus-bg: rgb(30, 30, 30);
-    --yc-input-wrapper-focus-border: rgb(30, 98, 219);
-    --yc-input-prefix-suffix-color: rgb(166, 166, 166);
-    --yc-input-word-limit-color: rgb(134, 144, 156);
-    --yc-input-placeholder-color: rgb(134, 144, 156);
-  }
-}
-
 // yc-input-outer
 .yc-input-outer {
   width: 100%;
@@ -54,20 +15,20 @@
     overflow: hidden;
     height: 100%;
     padding: 0 12px;
-    color: var(--yc-input-prepend-append-color);
+    color: var(--color-text-1);
     font-weight: 400;
     white-space: nowrap;
-    background-color: var(--yc-input-prepend-append-bg);
+    background-color: var(--color-fill-2);
     display: flex;
     align-items: center;
 
     &.yc-input-prepend {
-      border-right: 1px solid var(--yc-input-prepend-border);
+      border-right: 1px solid var(--color-border-2);
       border-top-left-radius: 2px;
       border-bottom-left-radius: 2px;
     }
     &.yc-input-append {
-      border-left: 1px solid var(--yc-input-append-border);
+      border-left: 1px solid var(--color-border-2);
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
     }
@@ -88,16 +49,16 @@
 // error
 .yc-input-error {
   .yc-input-wrapper {
-    background-color: var(--yc-input-error-bg);
+    background-color: var(--color-danger-light-1);
     &:not(.yc-input-wrapper-disabled) {
       &:hover {
         border-color: transparent;
-        background-color: var(--yc-input-error-hover-bg);
+        background-color: var(--color-danger-light-2);
       }
       &:focus-within {
-        background: var(--yc-input-wrapper-focus-bg);
-        border-color: var(--yc-input-error-focus-border);
-        box-shadow: 0 0 0 0 rgb(253, 205, 197);
+        background: var(--color-bg-1);
+        border-color: rgb(var(--danger-6));
+        box-shadow: 0 0 0 0 var(--color-danger-light-2);
       }
     }
   }
@@ -108,15 +69,15 @@
   .yc-input-wrapper {
     cursor: not-allowed;
     border-color: transparent;
-    background-color: var(--yc-input-disabled-bg);
-    color: var(--yc-input-disabled-color);
+    background-color: var(--color-fill-2);
+    color: var(--color-text-4);
     .yc-input-prefix,
     .yc-input-suffix {
       color: inherit;
     }
     .yc-input {
       &::placeholder {
-        color: var(--yc-input-disabled-color);
+        color: var(--color-text-4);
       }
     }
   }
@@ -128,14 +89,14 @@
   width: 100%;
   cursor: text;
   padding: 0 12px;
-  background-color: var(--yc-input-wrapper-bg);
+  background-color: var(--color-fill-2);
   border: 1px solid transparent;
   border-radius: 2px;
   transition:
     color 0.1s cubic-bezier(0, 0, 1, 1),
     border-color 0.1s cubic-bezier(0, 0, 1, 1),
     background-color 0.1s cubic-bezier(0, 0, 1, 1);
-  color: var(--yc-input-wrapper-color);
+  color: var(--color-text-1);
   font-size: inherit;
   font-weight: 400;
   display: flex;
@@ -143,15 +104,15 @@
   &:not(.yc-input-wrapper-disabled) {
     &:hover {
       border-color: transparent;
-      background-color: var(--yc-input-wrapper-hover-bg);
+      background-color: var(--color-fill-3);
     }
     &:hover .yc-input-clear-button {
       visibility: visible;
     }
     &:focus-within {
-      background-color: var(--yc-input-wrapper-focus-bg);
-      border-color: var(--yc-input-wrapper-focus-border);
-      box-shadow: 0 0 0 0 rgb(190, 218, 255);
+      background-color: var(--color-bg-1);
+      border-color: rgb(var(--primary-6));
+      box-shadow: 0 0 0 0 var(--color-primary-light-2);
     }
   }
   .yc-input-prefix,
@@ -163,12 +124,12 @@
   .yc-input-prefix,
   .yc-input-suffix {
     height: 100%;
-    color: var(--yc-input-prefix-suffix-color);
+    color: var(--color-text-2);
     display: flex;
     justify-content: center;
     align-items: center;
     .yc-input-word-limit {
-      color: var(--yc-input-word-limit-color);
+      color: var(--color-text-3);
       font-size: 12px;
     }
     .yc-icon-button {
@@ -193,7 +154,7 @@
     background-color: transparent;
     color: inherit;
     &::placeholder {
-      color: var(--yc-input-placeholder-color);
+      color: var(--color-text-3);
     }
   }
 }

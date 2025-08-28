@@ -1,37 +1,10 @@
-.yc-textarea-wrapper {
-  --yc-textarea-bg: rgb(242, 243, 245);
-  --yc-textarea-text-color: rgb(29, 33, 41);
-  --yc-textarea-hover-bg: rgb(229, 230, 235);
-  --yc-textarea-focus-within-bg: #fff;
-  --yc-textarea-focus-within-border: rgb(22, 93, 255);
-  --yc-textarea-focus-within-shadow: rgb(190, 218, 255);
-  --yc-textarea-word-limit-color: rgb(134, 144, 156);
-  --yc-textarea-placeholder-color: rgb(134, 144, 156);
-  --yc-textarea-error-bg: rgb(255, 236, 232);
-  --yc-textarea-error-hover-bg: rgb(253, 205, 197);
-  --yc-textarea-error-focus-within-border: rgb(245, 63, 63);
-  --yc-textarea-error-focus-within-shadow: rgb(253, 205, 197);
-  --yc-textarea-disabled-bg: rgb(242, 243, 245);
-  --yc-textarea-disabled-color: rgb(201, 205, 212);
-  html[yc-design-dark] & {
-    --yc-textarea-bg: rgb(36, 36, 36);
-    --yc-textarea-text-color: rgb(229, 229, 229);
-    --yc-textarea-hover-bg: rgb(54, 54, 54);
-    --yc-textarea-word-limit-color: rgb(153, 153, 153);
-    --yc-textarea-placeholder-color: rgb(153, 153, 153);
-    --yc-textarea-error-bg: rgb(54, 34, 34);
-    --yc-textarea-error-hover-bg: rgb(72, 43, 43);
-    --yc-textarea-disabled-color: rgb(102, 102, 102);
-  }
-}
-
 // wrapper
 .yc-textarea-wrapper {
   position: relative;
   cursor: text;
   width: 100%;
   height: fit-content;
-  background-color: var(--yc-textarea-bg);
+  background-color: var(--color-fill-2);
   border: 1px solid transparent;
   border-radius: 2px;
   transition:
@@ -40,22 +13,22 @@
     background-color 0.1s cubic-bezier(0, 0, 1, 1);
   font-size: 14px;
   font-weight: 400;
-  color: var(--yc-textarea-text-color);
+  color: var(--color-text-1);
   overflow: hidden;
   display: inline-flex;
   align-items: center;
   &:not(.yc-textarea-disabled) {
     &:hover {
-      background-color: var(--yc-textarea-hover-bg);
+      background-color: var(--color-fill-3);
       border-color: transparent;
     }
     &:hover .yc-textarea-clear-button {
       visibility: visible;
     }
     &:focus-within {
-      background-color: var(--yc-textarea-focus-within-bg);
-      border-color: var(--yc-textarea-focus-within-border);
-      box-shadow: 0 0 0 0 var(--yc-textarea-focus-within-shadow);
+      background-color: var(--color-bg-white);
+      border-color: rgb(var(--primary-6));
+      box-shadow: 0 0 0 0 var(--color-primary-light-2);
     }
   }
 
@@ -64,7 +37,7 @@
     right: 10px;
     bottom: 6px;
     user-select: none;
-    color: var(--yc-textarea-word-limit-color);
+    color: var(--color-text-3);
     font-size: 12px;
   }
   .yc-textarea-clear-button {
@@ -99,7 +72,7 @@
   .yc-textarea {
     resize: vertical;
     &::placeholder {
-      color: var(--yc-textarea-placeholder-color);
+      color: var(--color-text-3);
     }
   }
   .yc-textarea-mirror {
@@ -117,16 +90,16 @@
 }
 // error
 .yc-textarea-error {
-  background-color: var(--yc-textarea-error-bg);
+  background-color: var(--color-danger-light-1);
   &:not(.yc-textarea-disabled) {
     &:hover {
-      background-color: var(--yc-textarea-error-hover-bg);
+      background-color: var(--color-danger-light-2);
       border-color: transparent;
     }
     &:focus-within {
-      background-color: var(--yc-textarea-focus-within-bg);
-      border-color: var(--yc-textarea-error-focus-within-border);
-      box-shadow: 0 0 0 0 var(--yc-textarea-error-focus-within-shadow);
+      background-color: var(--color-bg-white);
+      border-color: rgb(var(--danger-6));
+      box-shadow: 0 0 0 0 var(--color-danger-light-2);
     }
   }
 }
@@ -137,7 +110,53 @@
     cursor: not-allowed;
   }
   border-color: transparent;
-  background-color: var(--yc-textarea-disabled-bg);
-  color: var(--yc-textarea-disabled-color);
-  -webkit-text-fill-color: var(--yc-textarea-disabled-color);
+  background-color: var(--color-fill-2);
+  color: var(--color-text-4);
+  -webkit-text-fill-color: var(--color-text-4);
+}
+
+html[yc-design-dark] {
+  .yc-textarea-wrapper {
+    background-color: var(--color-bg-2);
+    color: var(--color-text-1);
+    &:not(.yc-textarea-disabled) {
+      &:hover {
+        background-color: var(--color-bg-4);
+      }
+      &:focus-within {
+        background-color: var(--color-bg-1);
+        border-color: rgb(var(--primary-6));
+        box-shadow: 0 0 0 0 var(--color-primary-light-2);
+      }
+    }
+    .yc-textarea-word-limit {
+      // 原值 rgb(153, 153, 153) 接近 --gray-6
+      color: rgb(var(--gray-6));
+    }
+    .yc-textarea {
+      &::placeholder {
+        color: rgb(var(--gray-6));
+      }
+    }
+  }
+
+  .yc-textarea-error {
+    background-color: var(--color-danger-light-1);
+    &:not(.yc-textarea-disabled) {
+      &:hover {
+        background-color: var(--color-danger-light-2);
+      }
+      &:focus-within {
+        background-color: var(--color-bg-1);
+        border-color: rgb(var(--danger-5));
+        box-shadow: 0 0 0 0 var(--color-danger-light-2);
+      }
+    }
+  }
+  .yc-textarea-disabled {
+    background-color: var(--color-bg-2);
+    // 原值 rgb(102, 102, 102) 接近 --gray-4
+    color: rgb(var(--gray-4));
+    -webkit-text-fill-color: rgb(var(--gray-4));
+  }
 }
