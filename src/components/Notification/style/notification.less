@@ -1,43 +1,22 @@
 .yc-notification {
-  --yc-notification-bg: #fff;
-  --yc-notification-border-color: rgb(229, 230, 235);
-  --yc-notification-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --yc-notification-text-color: rgb(29, 33, 41);
-  --yc-notification-close-btn-color: rgb(29, 33, 41);
-  --yc-notification-close-btn-hover-color: rgb(29, 33, 41);
-  --yc-notification-icon-info-color: rgb(22, 93, 255);
-  --yc-notification-icon-warning-color: rgb(255, 125, 0);
-  --yc-notification-icon-success-color: rgb(0, 180, 42);
-  --yc-notification-icon-error-color: rgb(245, 63, 63);
-  --yc-notification-icon-loading-color: rgb(22, 93, 255);
-  html[yc-design-dark] & {
-    --yc-notification-bg: rgb(42, 46, 54);
-    --yc-notification-border-color: rgb(64, 69, 77);
-    --yc-notification-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    --yc-notification-text-color: rgb(229, 230, 235);
-    --yc-notification-close-btn-color: rgb(177, 183, 193);
-    --yc-notification-close-btn-hover-color: rgb(229, 230, 235);
-    --yc-notification-icon-info-color: rgb(72, 143, 255);
-    --yc-notification-icon-warning-color: rgb(255, 174, 66);
-    --yc-notification-icon-success-color: rgb(72, 204, 115);
-    --yc-notification-icon-error-color: rgb(255, 104, 104);
-    --yc-notification-icon-loading-color: rgb(72, 143, 255);
-  }
-}
-
-.yc-notification {
   overflow: hidden;
   position: relative;
   width: 340px;
   padding: 20px;
-  background-color: var(--yc-notification-bg);
-  border: 1px solid var(--yc-notification-border-color);
-  border-radius: 4px;
-  box-shadow: var(--yc-notification-shadow);
+  background-color: var(--color-bg-popup);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 1;
   transition: opacity 0.2s cubic-bezier(0, 0, 1, 1);
   display: flex;
   gap: 16px;
+
+  html[yc-design-dark] & {
+    background-color: var(--color-bg-3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
   .yc-notification-left {
     .yc-notification-icon {
       font-size: 24px;
@@ -46,7 +25,7 @@
     }
   }
   .yc-notification-right {
-    color: var(--yc-notification-text-color);
+    color: var(--color-text-1);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -68,27 +47,23 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    color: var(--yc-notification-close-btn-color);
+    color: var(--color-text-3);
     font-size: 12px;
     &:hover {
-      color: var(--yc-notification-close-btn-hover-color);
+      color: var(--color-text-1);
     }
   }
 }
 // type
-@type: {
-  info: var(--yc-notification-icon-info-color);
-  warning: var(--yc-notification-icon-warning-color);
-  success: var(--yc-notification-icon-success-color);
-  error: var(--yc-notification-icon-error-color);
-  loading: var(--yc-notification-icon-loading-color);
+@notification-types: {
+  info: rgb(var(--primary-6));
+  warning: rgb(var(--warning-6));
+  success: rgb(var(--success-6));
+  error: rgb(var(--danger-6));
+  loading: rgb(var(--primary-6));
 };
-each(@type, {
+each(@notification-types, .(@value, @key) {
   .yc-notification-@{key} {
-    & when not(@key = normal) {
-      background-color: var(--yc-notification-bg);
-      border-color: var(--yc-notification-border-color);
-    }
     .yc-notification-icon {
       color: @value;
     }

@@ -1,40 +1,23 @@
-.yc-popconfirm {
-  --yc-popconfirm-text-color: rgb(78, 89, 105);
-  --yc-popconfirm-bg: #fff;
-  --yc-popconfirm-border-color: rgb(229, 230, 235);
-  --yc-popconfirm-shadow: 0 4px 10px #0000001a;
-  --yc-popconfirm-arrow-bg: #fff;
-  --yc-popconfirm-icon-info-color: rgb(22, 93, 255);
-  --yc-popconfirm-icon-success-color: rgb(0, 180, 42);
-  --yc-popconfirm-icon-warning-color: rgb(255, 125, 0);
-  --yc-popconfirm-icon-error-color: rgb(245, 63, 63);
-  html[yc-design-dark] & {
-    --yc-popconfirm-text-color: rgb(229, 229, 229);
-    --yc-popconfirm-bg: rgb(36, 36, 36);
-    --yc-popconfirm-border-color: rgb(54, 54, 54);
-    --yc-popconfirm-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
-    --yc-popconfirm-arrow-bg: rgb(36, 36, 36);
-    --yc-popconfirm-icon-info-color: rgb(74, 139, 255);
-    --yc-popconfirm-icon-success-color: rgb(73, 204, 102);
-    --yc-popconfirm-icon-warning-color: rgb(255, 162, 77);
-    --yc-popconfirm-icon-error-color: rgb(248, 114, 114);
-  }
-}
-
 .yc-trigger {
   &.yc-popconfirm {
     .yc-popconfirm-popup-content {
       padding: 16px;
-      color: var(--yc-popconfirm-text-color);
+      color: var(--color-text-2);
       font-size: 14px;
       line-height: 1.5715;
-      background-color: var(--yc-popconfirm-bg);
-      border: 1px solid var(--yc-popconfirm-border-color);
-      border-radius: 4px;
-      box-shadow: var(--yc-popconfirm-shadow);
+      background-color: var(--color-bg-popup);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-medium);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
       gap: 16px;
+
+      html[yc-design-dark] & {
+        color: var(--color-text-1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+      }
+
       .yc-popconfirm-body {
         display: flex;
         align-items: center;
@@ -61,17 +44,21 @@
     }
     .yc-popconfirm-popup-arrow {
       z-index: 1;
-      border: 1px solid var(--yc-popconfirm-border-color);
-      background-color: var(--yc-popconfirm-arrow-bg);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-bg-popup);
     }
   }
-  @type: {
-    info: var(--yc-popconfirm-icon-info-color);
-    success: var(--yc-popconfirm-icon-success-color);
-    warning: var(--yc-popconfirm-icon-warning-color);
-    error: var(--yc-popconfirm-icon-error-color);
+
+  // Consolidate types into a single map
+  @popconfirm-types: {
+    info: rgb(var(--primary-6));
+    success: rgb(var(--success-6));
+    warning: rgb(var(--warning-6));
+    error: rgb(var(--danger-6));
   };
-  each(@type, {
+
+  // Iterate over the map to generate icon color styles
+  each(@popconfirm-types, .(@value, @key) {
     &.yc-popconfirm-@{key} {
       .yc-popconfirm-icon {
         color: @value;

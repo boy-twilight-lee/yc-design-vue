@@ -122,7 +122,7 @@ onMounted(() => {
     .yc-modal-body-content {
       width: 100%;
       line-height: 26px;
-      color: #474c59;
+      color: var(--color-text-2);
       font-family: 'PingFang SC';
       font-size: 16px;
       font-weight: 400;
@@ -131,13 +131,13 @@ onMounted(() => {
 }
 // icon-color
 @type: {
-  info: rgb(22, 93, 255);
-  success: rgb(0, 180, 42);
-  warning: rgb(255, 125, 0);
-  error: rgb(245, 63, 63);
-  confirm: rgb(255, 125, 0);
+  info: rgb(var(--primary-6));
+  success: rgb(var(--success-6));
+  warning: rgb(var(--warning-6));
+  error: rgb(var(--danger-6));
+  confirm: rgb(var(--warning-6));
 };
-each(@type, {
+each(@type, .(@value, @key) {
     .yc-service-modal-@{key}  {
       .yc-modal-title-icon{
         color: @value;

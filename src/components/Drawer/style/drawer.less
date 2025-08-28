@@ -1,19 +1,4 @@
 .yc-drawer-wrapper {
-  --yc-drawer-mask-bg: rgba(29, 33, 41, 0.6);
-  --yc-drawer-container-bg: #fff;
-  --yc-drawer-border-color: rgb(229, 230, 235);
-  --yc-drawer-title-color: rgb(29, 33, 41);
-  --yc-drawer-body-color: rgb(29, 33, 41);
-  html[yc-design-dark] & {
-    --yc-drawer-mask-bg: rgba(0, 0, 0, 0.45);
-    --yc-drawer-container-bg: rgb(36, 36, 36);
-    --yc-drawer-border-color: rgb(54, 54, 54);
-    --yc-drawer-title-color: rgb(229, 229, 229);
-    --yc-drawer-body-color: rgb(229, 229, 229);
-  }
-}
-
-.yc-drawer-wrapper {
   overflow: hidden;
   position: fixed;
   height: 100%;
@@ -25,12 +10,12 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: var(--yc-drawer-mask-bg);
+    background-color: var(--color-mask-bg);
   }
   .yc-drawer-container {
     position: absolute;
     height: 100%;
-    background-color: var(--yc-drawer-container-bg);
+    background-color: var(--color-bg-popup);
     display: flex;
     flex-direction: column;
     .yc-drawer-footer,
@@ -44,7 +29,7 @@
       height: 48px;
       width: 100%;
       padding: 0 16px;
-      border-bottom: 1px solid var(--yc-drawer-border-color);
+      border-bottom: 1px solid var(--color-border);
       display: flex;
       align-items: center;
       .yc-drawer-title {
@@ -52,7 +37,7 @@
         span {
           font-size: 16px;
           font-weight: 500;
-          color: var(--yc-drawer-title-color);
+          color: var(--color-text-1);
         }
       }
       .yc-drawer-close-button {
@@ -63,14 +48,14 @@
       flex: 1;
       line-height: 1.5715;
       padding: 12px 16px;
-      color: var(--yc-drawer-body-color);
+      color: var(--color-text-1);
       font-size: 14px;
     }
     .yc-drawer-footer {
       height: 64px;
       width: 100%;
       padding: 0 16px;
-      border-top: 1px solid var(--yc-drawer-border-color);
+      border-top: 1px solid var(--color-border);
       display: flex;
       justify-content: flex-end;
       align-items: center;

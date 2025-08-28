@@ -1,19 +1,4 @@
 .yc-modal-container {
-  --yc-modal-mask-bg: rgba(29, 33, 41, 0.6);
-  --yc-modal-bg: #fff;
-  --yc-modal-border-color: rgb(229, 230, 235);
-  --yc-modal-title-color: rgb(29, 33, 41);
-  --yc-modal-body-color: rgb(29, 33, 41);
-  html[yc-design-dark] {
-    --yc-modal-mask-bg: rgba(0, 0, 0, 0.45);
-    --yc-modal-bg: rgb(36, 36, 36);
-    --yc-modal-border-color: rgb(54, 54, 54);
-    --yc-modal-title-color: rgb(229, 229, 229);
-    --yc-modal-body-color: rgb(229, 229, 229);
-  }
-}
-
-.yc-modal-container {
   overflow: hidden;
   position: fixed;
   height: 100%;
@@ -24,7 +9,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: var(--yc-modal-mask-bg);
+    background-color: var(--color-mask-bg);
   }
   .yc-modal-wrapper {
     position: absolute;
@@ -35,7 +20,7 @@
     .yc-modal {
       position: absolute;
       border-radius: 4px;
-      background-color: var(--yc-modal-bg);
+      background-color: var(--color-bg-popup);
       line-height: 1.5715;
       display: flex;
       flex-direction: column;
@@ -64,7 +49,7 @@
         height: 48px;
         width: 100%;
         padding: 0 20px;
-        border-bottom: 1px solid var(--yc-modal-border-color);
+        border-bottom: 1px solid var(--color-border);
         display: flex;
         align-items: center;
         .yc-modal-title {
@@ -72,7 +57,7 @@
           span {
             font-size: 16px;
             font-weight: 500;
-            color: var(--yc-modal-title-color);
+            color: var(--color-text-1);
           }
           &.title-align-center {
             text-align: center;
@@ -84,7 +69,7 @@
       }
       .yc-modal-body {
         padding: 24px 20px;
-        color: var(--yc-modal-body-color);
+        color: var(--color-text-1);
         font-size: 14px;
         line-height: 1.5715;
       }
@@ -92,7 +77,7 @@
         height: 64px;
         width: 100%;
         padding: 16px 20px;
-        border-top: 1px solid var(--yc-modal-border-color);
+        border-top: 1px solid var(--color-border);
         display: flex;
         justify-content: flex-end;
         align-items: center;
