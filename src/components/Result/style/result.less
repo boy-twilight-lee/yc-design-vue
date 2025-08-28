@@ -1,4 +1,29 @@
 .yc-result {
+  --yc-result-title-color: rgb(29, 33, 41);
+  --yc-result-subtitle-color: rgb(78, 89, 105);
+  --yc-result-info-bg: rgb(232, 243, 255);
+  --yc-result-info-icon-color: rgb(22, 93, 255);
+  --yc-result-success-bg: rgb(232, 255, 234);
+  --yc-result-success-icon-color: rgb(0, 180, 42);
+  --yc-result-warning-bg: rgb(255, 247, 232);
+  --yc-result-warning-icon-color: rgb(255, 125, 0);
+  --yc-result-error-bg: rgb(255, 236, 232);
+  --yc-result-error-icon-color: rgb(245, 63, 63);
+  html[yc-design-dark] & {
+    --yc-result-title-color: rgb(229, 229, 229);
+    --yc-result-subtitle-color: rgb(191, 191, 191);
+    --yc-result-info-bg: rgb(34, 66, 115);
+    --yc-result-info-icon-color: rgb(74, 139, 255);
+    --yc-result-success-bg: rgb(34, 115, 45);
+    --yc-result-success-icon-color: rgb(73, 204, 102);
+    --yc-result-warning-bg: rgb(115, 71, 34);
+    --yc-result-warning-icon-color: rgb(255, 162, 77);
+    --yc-result-error-bg: rgb(112, 44, 44);
+    --yc-result-error-icon-color: rgb(248, 114, 114);
+  }
+}
+
+.yc-result {
   width: 100%;
   padding: 32px 32px 24px;
   display: flex;
@@ -19,12 +44,12 @@
 
   .yc-result-title,
   .yc-result-subtitle {
-    color: rgb(78, 89, 105);
+    color: var(--yc-result-subtitle-color);
     font-size: 14px;
     line-height: 1.5715;
     text-align: center;
     &.yc-result-title {
-      color: rgb(29, 33, 41);
+      color: var(--yc-result-title-color);
     }
   }
   .yc-result-extra {
@@ -41,28 +66,20 @@
   // type
   @type: {
     @info: {
-      bg: rgb(232, 243, 255);
-      icon-color: rgb(22, 93, 255);
     };
     @success: {
-      bg: rgb(232, 255, 234);
-      icon-color: rgb(0, 180, 42);
     };
     @warning: {
-      bg: rgb(255, 247, 232);
-      icon-color: rgb(255, 125, 0);
     };
     @error: {
-      bg: rgb(255, 236, 232);
-      icon-color: rgb(245, 63, 63);
     };
   };
   each(@type, .(@value,@name){
     @key:replace(~"@{name}", "@", "");
     .yc-result-icon-@{key} {
-      color: @value[icon-color];
+      color: ~"var(--yc-result-@{key}-icon-color)";
       .yc-result-icon-tip {
-        background-color: @value[bg];
+        background-color: ~"var(--yc-result-@{key}-bg)";
       }
     }
   });

@@ -1,4 +1,30 @@
 .yc-progress {
+  // progress
+  --yc-progress-track-bg: rgb(229, 230, 235);
+  --yc-progress-text-color: rgb(78, 89, 105);
+  --yc-progress-circle-text-color: rgb(134, 144, 156);
+  --yc-progress-status-normal-color: rgb(22, 93, 255);
+  --yc-progress-status-normal-mini-bg-color: rgb(148, 191, 255);
+  --yc-progress-status-success-color: rgb(0, 180, 42);
+  --yc-progress-status-warning-color: rgb(255, 125, 0);
+  --yc-progress-status-warning-mini-bg-color: rgb(255, 207, 139);
+  --yc-progress-status-danger-color: rgb(245, 63, 63);
+  --yc-progress-status-danger-mini-bg-color: rgb(251, 172, 163);
+  html[yc-design-dark] & {
+    --yc-progress-track-bg: rgb(54, 54, 54);
+    --yc-progress-text-color: rgb(191, 191, 191);
+    --yc-progress-circle-text-color: rgb(191, 191, 191);
+    --yc-progress-status-normal-color: rgb(74, 139, 255);
+    --yc-progress-status-normal-mini-bg-color: rgb(34, 66, 115);
+    --yc-progress-status-success-color: rgb(73, 204, 102);
+    --yc-progress-status-warning-color: rgb(255, 162, 77);
+    --yc-progress-status-warning-mini-bg-color: rgb(115, 71, 34);
+    --yc-progress-status-danger-color: rgb(248, 114, 114);
+    --yc-progress-status-danger-mini-bg-color: rgb(112, 44, 44);
+  }
+}
+
+.yc-progress {
   position: relative;
   line-height: 1;
   font-size: 12px;
@@ -68,25 +94,25 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: rgb(134, 144, 156);
+      color: var(--yc-progress-circle-text-color);
     }
   }
   // 通用
   .yc-progress-steps-item {
-    background-color: rgb(229, 230, 235);
+    background-color: var(--yc-progress-track-bg);
   }
   .yc-progress-line {
-    background-color: rgb(229, 230, 235);
+    background-color: var(--yc-progress-track-bg);
   }
   .yc-progress-circle-bg {
-    stroke: rgb(229, 230, 235);
+    stroke: var(--yc-progress-track-bg);
   }
   .yc-progress-steps-text,
   .yc-progress-line-text,
   .yc-progress-circle-text {
     flex-shrink: 0;
     font-size: 12px;
-    color: rgb(78, 89, 105);
+    color: var(--yc-progress-text-color);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -149,20 +175,20 @@ each(@size, .(@size,@name){
 // status
 @status: {
   @normal: {
-    color: rgb(22, 93, 255);
-    mini-bg-color: rgb(148, 191, 255);
+    color: var(--yc-progress-status-normal-color);
+    mini-bg-color: var(--yc-progress-status-normal-mini-bg-color);
   };
   @success: {
-    color: rgb(0, 180, 42);
+    color: var(--yc-progress-status-success-color);
     mini-bg-color: null;
   };
   @warning: {
-    color: rgb(255, 125, 0);
-    mini-bg-color: rgb(255, 207, 139);
+    color: var(--yc-progress-status-warning-color);
+    mini-bg-color: var(--yc-progress-status-warning-mini-bg-color);
   };
   @danger: {
-    color: rgb(245, 63, 63);
-    mini-bg-color: rgb(251, 172, 163);
+    color: var(--yc-progress-status-danger-color);
+    mini-bg-color: var(--yc-progress-status-danger-mini-bg-color);
   };
 };
 

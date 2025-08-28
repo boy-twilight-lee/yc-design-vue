@@ -274,5 +274,4 @@ const handleEvent = async (
 
 <style lang="less" scoped>
 @import './style/cascader.less';
-@import './style/dark.less';
 </style>

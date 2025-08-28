@@ -74,5 +74,4 @@ const handleClose = (ev: MouseEvent) => {
 
 <style lang="less" scoped>
 @import './style/alert.less';
-@import './style/dark.less';
 </style>

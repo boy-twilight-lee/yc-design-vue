@@ -1,16 +1,48 @@
 .yc-picker {
+  --yc-picker-bg: rgb(242, 243, 245);
+  --yc-picker-text-color: rgb(78, 89, 105);
+  --yc-picker-hover-bg: rgb(229, 230, 235);
+  --yc-picker-placeholder-color: rgb(134, 144, 156);
+  --yc-picker-separator-color: rgb(134, 144, 156);
+  --yc-picker-focus-bg: #fff;
+  --yc-picker-focus-border: rgb(22, 93, 255);
+  --yc-picker-focus-shadow: rgb(190, 218, 255);
+  --yc-picker-error-bg: rgb(255, 236, 232);
+  --yc-picker-error-hover-bg: rgb(253, 205, 197);
+  --yc-picker-error-focus-border: rgb(245, 63, 63);
+  --yc-picker-error-focus-shadow: rgb(253, 205, 197);
+  --yc-picker-disabled-bg: rgb(242, 243, 245);
+  --yc-picker-disabled-color: rgb(201, 205, 212);
+  html[yc-design-dark] {
+    --yc-picker-bg: rgb(36, 36, 36);
+    --yc-picker-text-color: rgb(229, 229, 229);
+    --yc-picker-hover-bg: rgb(54, 54, 54);
+    --yc-picker-placeholder-color: rgb(153, 153, 153);
+    --yc-picker-separator-color: rgb(153, 153, 153);
+    --yc-picker-focus-bg: rgb(36, 36, 36);
+    --yc-picker-focus-border: rgb(22, 93, 255);
+    --yc-picker-focus-shadow: rgb(190, 218, 255);
+    --yc-picker-error-bg: rgb(54, 34, 34);
+    --yc-picker-error-hover-bg: rgb(72, 43, 43);
+    --yc-picker-disabled-bg: rgb(36, 36, 36);
+    --yc-picker-disabled-color: rgb(102, 102, 102);
+  }
+}
+
+.yc-picker {
   position: relative;
   padding: 4px 11px 4px 4px;
-  background-color: rgb(242, 243, 245);
+  background-color: var(--yc-picker-bg);
   border: 1px solid transparent;
   border-radius: 2px;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
-  color: rgb(78, 89, 105);
+  color: var(--yc-picker-text-color);
   line-height: 1.5715;
   display: inline-flex;
   align-items: center;
+
   &:not(.yc-picker-disabled):hover {
-    background-color: rgb(229, 230, 235);
+    background-color: var(--yc-picker-hover-bg);
     border-color: transparent;
   }
   .yc-picker-has-prefix,
@@ -21,7 +53,7 @@
   .yc-picker-prefix {
     margin-right: 4px;
     font-size: 14px;
-    color: rgb(78, 89, 105);
+    color: var(--yc-picker-text-color);
   }
   .yc-picker-input {
     flex: 1;
@@ -39,19 +71,19 @@
       text-align: left;
       transition: all 0.1s cubic-bezier(0, 0, 1, 1);
       &::placeholder {
-        color: rgb(134, 144, 156);
+        color: var(--yc-picker-placeholder-color);
       }
     }
     &.yc-picker-input-active {
       input {
-        background-color: rgb(242, 243, 245);
+        background-color: var(--yc-picker-bg);
       }
     }
   }
   .yc-picker-separator {
     min-width: 10px;
     padding: 0 8px;
-    color: rgb(134, 144, 156);
+    color: var(--yc-picker-separator-color);
   }
   .yc-picker-suffix {
     margin-left: 4px;
@@ -83,41 +115,41 @@
 }
 // focus
 .yc-picker-focus {
-  background-color: #fff;
-  border-color: rgb(22, 93, 255);
-  box-shadow: 0 0 0 0 rgb(190, 218, 255);
+  background-color: var(--yc-picker-focus-bg);
+  border-color: var(--yc-picker-focus-border);
+  box-shadow: 0 0 0 0 var(--yc-picker-focus-shadow);
   &:not(.yc-picker-disabled):hover {
-    background-color: #fff;
-    border-color: rgb(22, 93, 255);
+    background-color: var(--yc-picker-focus-bg);
+    border-color: var(--yc-picker-focus-border);
   }
 }
 // error
 .yc-picker-error {
-  background-color: rgb(255, 236, 232);
+  background-color: var(--yc-picker-error-bg);
   border-color: transparent;
   &:not(.yc-picker-disabled):hover {
-    background-color: rgb(253, 205, 197);
+    background-color: var(--yc-picker-error-hover-bg);
   }
   &.yc-picker-focus {
-    background-color: #fff;
-    border-color: rgb(245, 63, 63);
-    box-shadow: 0 0 0 0 rgb(253, 205, 197);
+    background-color: var(--yc-picker-focus-bg);
+    border-color: var(--yc-picker-error-focus-border);
+    box-shadow: 0 0 0 0 var(--yc-picker-error-focus-shadow);
     &:not(.yc-picker-disabled):hover {
-      background-color: #fff;
+      background-color: var(--yc-picker-focus-bg);
     }
   }
 }
 // disabled
 .yc-picker-disabled {
   cursor: not-allowed;
-  background-color: rgb(242, 243, 245);
+  background-color: var(--yc-picker-disabled-bg);
   border-color: transparent;
-  color: rgb(201, 205, 212);
+  color: var(--yc-picker-disabled-color);
   .yc-picker-input {
     input {
       cursor: not-allowed;
       &::placeholder {
-        color: rgb(201, 205, 212);
+        color: var(--yc-picker-disabled-color);
       }
     }
   }
@@ -129,11 +161,11 @@
   medium: 32px;
   large: 36px;
 };
-each(@size,{
-    .yc-picker-size-@{key}{
-      height: @value;
-      input{
-        font-size: if(@key = mini,12px,14px);
-      }
+each(@size, {
+  .yc-picker-size-@{key} {
+    height: @value;
+    input {
+      font-size: if((@key = mini), 12px, 14px);
     }
-  });
+  }
+});

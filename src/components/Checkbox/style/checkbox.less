@@ -1,4 +1,27 @@
 .yc-checkbox {
+  --yc-checkbox-icon-border-color: rgb(229, 230, 235);
+  --yc-checkbox-icon-bg-color: #fff;
+  --yc-checkbox-label-color: rgb(29, 33, 41);
+  --yc-checkbox-hover-bg-color: rgba(242, 243, 245);
+  --yc-checkbox-hover-border-color: rgb(201, 205, 212);
+  --yc-checkbox-checked-bg-color: rgb(22, 93, 255);
+  --yc-checkbox-disabled-label-color: rgb(201, 205, 212);
+  --yc-checkbox-disabled-icon-bg-color: rgb(242, 243, 245);
+  --yc-checkbox-disabled-checked-bg-color: rgb(148, 191, 255);
+  & html[yc-design-dark] {
+    --yc-checkbox-icon-border-color: rgb(70, 70, 72);
+    --yc-checkbox-icon-bg-color: #fff;
+    --yc-checkbox-label-color: rgb(229, 230, 235);
+    --yc-checkbox-hover-bg-color: rgba(70, 70, 72);
+    --yc-checkbox-hover-border-color: rgb(105, 109, 118);
+    --yc-checkbox-checked-bg-color: rgb(78, 134, 255);
+    --yc-checkbox-disabled-label-color: rgb(105, 109, 118);
+    --yc-checkbox-disabled-icon-bg-color: rgb(44, 44, 48);
+    --yc-checkbox-disabled-checked-bg-color: rgb(55, 99, 170);
+  }
+}
+
+.yc-checkbox {
   position: relative;
   cursor: pointer;
   padding-left: 5px;
@@ -24,7 +47,7 @@
     position: relative;
     width: 14px;
     height: 14px;
-    border: 2px solid rgb(229, 230, 235);
+    border: 2px solid var(--yc-checkbox-icon-border-color);
     border-radius: 2px;
     color: #fff;
     display: flex;
@@ -38,7 +61,7 @@
       display: block;
       width: 6px;
       height: 2px;
-      background: #fff;
+      background: var(--yc-checkbox-icon-bg-color);
       border-radius: 0.5px;
       transform: translateX(-50%) translateY(-50%) scale(0);
     }
@@ -46,7 +69,7 @@
   .yc-checkbox-label {
     user-select: none;
     flex: 1;
-    color: rgb(29, 33, 41);
+    color: var(--yc-checkbox-label-color);
   }
 }
 
@@ -72,10 +95,10 @@
 .yc-checkbox-unchecked {
   &:not(.yc-checkbox-disabled):hover .yc-icon-button {
     &::before {
-      background-color: rgba(242, 243, 245);
+      background-color: var(--yc-checkbox-hover-bg-color);
     }
     .yc-checkbox-icon {
-      border-color: rgb(201, 205, 212);
+      border-color: var(--yc-checkbox-hover-border-color);
     }
   }
 }
@@ -83,13 +106,13 @@
 .yc-checkbox-indeterminate {
   .yc-checkbox-icon {
     border-color: transparent;
-    background-color: rgb(22, 93, 255);
+    background-color: var(--yc-checkbox-checked-bg-color);
   }
 
   &.yc-checkbox-disabled {
     .yc-checkbox-icon {
       border-color: transparent;
-      background-color: rgb(148, 191, 255);
+      background-color: var(--yc-checkbox-disabled-checked-bg-color);
     }
   }
 }
@@ -108,12 +131,12 @@
   .yc-icon-button {
     cursor: not-allowed;
     .yc-checkbox-icon {
-      border-color: rgb(229, 230, 235);
-      background-color: rgb(242, 243, 245);
+      border-color: var(--yc-checkbox-icon-border-color);
+      background-color: var(--yc-checkbox-disabled-icon-bg-color);
     }
   }
 
   .yc-checkbox-label {
-    color: rgb(201, 205, 212);
+    color: var(--yc-checkbox-disabled-label-color);
   }
 }

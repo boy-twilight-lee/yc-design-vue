@@ -45,5 +45,4 @@ const renderIcon = (name: string) => {
 
 <style lang="less" scoped>
 @import './style/cascader.less';
-@import './style/dark.less';
 </style>

@@ -58,5 +58,4 @@ const popupVisible = ref<boolean>(false);
 
 <style lang="less" scoped>
 @import './style/breadcrumb-item.less';
-@import './style/dark.less';
 </style>

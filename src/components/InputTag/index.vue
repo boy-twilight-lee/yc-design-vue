@@ -323,5 +323,4 @@ defineExpose<InputTagExpose>({
 
 <style lang="less" scoped>
 @import './style/input-tag.less';
-@import './style/dark.less';
 </style>

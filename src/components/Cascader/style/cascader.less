@@ -1,4 +1,13 @@
 .yc-cascader {
+  --yc-cascader-input-placeholder-color: rgb(29, 33, 41);
+  --yc-cascader-placeholder-color: rgb(134, 144, 156);
+  html[yc-design-dark] & {
+    --yc-cascader-input-placeholder-color: rgb(151, 155, 165);
+    --yc-cascader-placeholder-color: rgb(151, 155, 165);
+  }
+}
+
+.yc-cascader {
   width: 100%;
   display: inline-flex;
   align-items: center;
@@ -6,13 +15,13 @@
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
-          color: rgb(29, 33, 41);
+          color: var(--yc-cascader-input-placeholder-color);
         }
       }
     }
   }
   .yc-input-placeholder {
-    color: rgb(134, 144, 156);
+    color: var(--yc-cascader-placeholder-color);
   }
   .yc-cascader-suffix-icon,
   .yc-cascader-search-icon,
@@ -41,7 +50,7 @@
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
-          color: rgb(134, 144, 156);
+          color: var(--yc-cascader-placeholder-color);
         }
       }
     }

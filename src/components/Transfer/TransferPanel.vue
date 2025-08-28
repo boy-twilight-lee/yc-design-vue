@@ -247,5 +247,4 @@ const renderItem = (item: TransferItem) => {
 
 <style lang="less" scoped>
 @import './style/transfer.less';
-@import './style/dark.less';
 </style>

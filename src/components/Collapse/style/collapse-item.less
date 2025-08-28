@@ -1,4 +1,4 @@
-.yc-collapse-itemt {
+.yc-collapse-item {
   --yc-collapse-item-border-color: rgb(229, 230, 235);
   --yc-collapse-text-color: rgb(29, 33, 41);
   --yc-collapse-header-bg-color: #fff;
@@ -16,23 +16,22 @@
 .yc-collapse-item {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--yc-collapse-item-border-color); /* 使用变量 */
+  border-bottom: 1px solid var(--yc-collapse-item-border-color);
   .yc-collapse-item-header {
     cursor: pointer;
     position: relative;
     padding: 8px 12px;
     overflow: hidden;
-    color: var(--yc-collapse-text-color); /* 使用变量 */
+    color: var(--yc-collapse-text-color);
     font-size: 14px;
     line-height: 24px;
-    background-color: var(--yc-collapse-header-bg-color); /* 使用变量 */
+    background-color: var(--yc-collapse-header-bg-color);
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease;
     display: flex;
     align-items: center;
     gap: 8px;
     .yc-collapse-item-header-icon {
-      // color: ;
       position: absolute;
     }
     .yc-collapse-item-header-title {
@@ -44,9 +43,9 @@
   .yc-collapse-item-content {
     position: relative;
     overflow: hidden;
-    color: var(--yc-collapse-text-color); /* 使用变量 */
+    color: var(--yc-collapse-text-color);
     font-size: 14px;
-    background-color: var(--yc-collapse-content-bg-color); /* 使用变量 */
+    background-color: var(--yc-collapse-content-bg-color);
     .yc-collapse-item-content-box {
       padding: 8px 0;
     }
@@ -77,8 +76,8 @@
 // disabled
 .yc-collapse-item-disabled {
   .yc-collapse-item-header {
-    color: var(--yc-collapse-disabled-text-color); /* 使用变量 */
-    background-color: var(--yc-collapse-header-bg-color); /* 使用变量 */
+    color: var(--yc-collapse-disabled-text-color);
+    background-color: var(--yc-collapse-header-bg-color);
     cursor: not-allowed;
   }
 }

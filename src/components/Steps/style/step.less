@@ -1,4 +1,22 @@
 .yc-steps-item {
+  --yc-steps-title-color: rgb(29, 33, 41);
+  --yc-steps-description-color: rgb(134, 144, 156);
+  --yc-steps-process-color: rgb(22, 93, 255);
+  --yc-steps-error-color: rgb(245, 63, 63);
+  --yc-steps-active-finish-bg: rgb(232, 243, 255);
+  --yc-steps-active-wait-bg: rgb(247, 248, 250);
+  --yc-steps-next-wait-bg: rgb(229, 230, 235);
+  html[yc-design-dark] & {
+    --yc-steps-title-color: rgba(255, 255, 255, 0.85);
+    --yc-steps-description-color: rgba(255, 255, 255, 0.65);
+    --yc-steps-process-color: rgb(74, 139, 255);
+    --yc-steps-active-finish-bg: rgba(32, 88, 179, 0.3);
+    --yc-steps-active-wait-bg: rgba(255, 255, 255, 0.08);
+    --yc-steps-next-wait-bg: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.yc-steps-item {
   .yc-steps-item-tail {
     position: absolute;
   }
@@ -21,13 +39,13 @@
     .yc-steps-item-title {
       line-height: 28px;
       font-size: 16px;
-      color: rgb(29, 33, 41);
+      color: var(--yc-steps-title-color);
       transition: all 0.1s cubic-bezier(0, 0, 1, 1);
     }
     .yc-steps-item-description {
       max-width: 140px;
       font-size: 12px;
-      color: rgb(134, 144, 156);
+      color: var(--yc-steps-description-color);
       transition: all 0.1s cubic-bezier(0, 0, 1, 1);
     }
   }
@@ -45,31 +63,31 @@
   }
   &.yc-steps-item-finish {
     &::after {
-      background-color: rgb(232, 243, 255);
+      background-color: var(--yc-steps-active-finish-bg);
     }
   }
   &.yc-steps-item-wait {
     &::after {
-      background-color: rgb(247, 248, 250);
+      background-color: var(--yc-steps-active-wait-bg);
     }
   }
   &.yc-steps-item-error {
     &::after {
-      background-color: rgb(245, 63, 63);
+      background-color: var(--yc-steps-error-color);
     }
   }
   &.yc-steps-item-process {
     &::after {
-      background-color: rgb(22, 93, 255);
+      background-color: var(--yc-steps-process-color);
     }
   }
 }
 // next-status
 @next-status: {
-  wait: rgb(229, 230, 235);
-  process: rgb(22, 93, 255);
-  finish: rgb(22, 93, 255);
-  error: rgb(245, 63, 63);
+  wait: --yc-steps-next-wait-bg;
+  process: --yc-steps-process-color;
+  finish: --yc-steps-process-color;
+  error: --yc-steps-error-color;
 };
 each(@next-status, {
   .yc-steps-item-next-@{key} {
@@ -77,7 +95,7 @@ each(@next-status, {
     .yc-steps-item-title,
     .yc-steps-item-tail {
       &::after {
-        background-color: @value;
+        background-color: var(@value);
       }
     }
   }

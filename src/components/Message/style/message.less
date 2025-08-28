@@ -1,14 +1,37 @@
 .yc-message {
+  --yc-message-bg-color: #fff;
+  --yc-message-border-color: rgb(229, 230, 235);
+  --yc-message-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --yc-message-text-color: rgb(29, 33, 41);
+  --yc-message-info-icon-color: rgb(22, 93, 255);
+  --yc-message-warning-icon-color: rgb(255, 125, 0);
+  --yc-message-success-icon-color: rgb(0, 180, 42);
+  --yc-message-error-icon-color: rgb(245, 63, 63);
+  --yc-message-loading-icon-color: rgb(22, 93, 255);
+  html[yc-design-dark] & {
+    --yc-message-bg-color: rgb(42, 46, 54);
+    --yc-message-border-color: rgb(64, 69, 77);
+    --yc-message-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    --yc-message-text-color: rgb(229, 230, 235);
+    --yc-message-info-icon-color: rgb(72, 143, 255);
+    --yc-message-warning-icon-color: rgb(255, 174, 66);
+    --yc-message-success-icon-color: rgb(72, 204, 115);
+    --yc-message-error-icon-color: rgb(255, 104, 104);
+    --yc-message-loading-icon-color: rgb(72, 143, 255);
+  }
+}
+
+.yc-message {
   pointer-events: auto;
   position: relative;
   overflow: hidden;
   padding: 10px 16px;
-  background-color: #fff;
-  border: 1px solid rgb(229, 230, 235);
+  background-color: var(--yc-message-bg-color);
+  border: 1px solid var(--yc-message-border-color);
   border-radius: 2px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--yc-message-shadow);
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
-  color: rgb(29, 33, 41);
+  color: var(--yc-message-text-color);
   line-height: 1;
   text-align: center;
   display: inline-flex;
@@ -28,20 +51,20 @@
 }
 // type
 @type: {
-  info: rgb(22, 93, 255);
-  warning: rgb(255, 125, 0);
-  success: rgb(0, 180, 42);
-  error: rgb(245, 63, 63);
-  loading: rgb(22, 93, 255);
+  info: unused;
+  warning: unused;
+  success: unused;
+  error: unused;
+  loading: unused;
 };
 each(@type,{
     .yc-message-@{key}{
       & when not(@key = normal){
-        background-color: #fff;
-        border-color: rgb(229,230,235);
+        background-color: var(--yc-message-bg-color);
+        border-color: var(--yc-message-border-color);
       }
       .yc-message-icon{
-        color: @value;
+        color: ~"var(--yc-message-@{key}-icon-color)";
       }
     };
   });

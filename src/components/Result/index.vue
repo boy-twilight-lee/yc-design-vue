@@ -53,5 +53,4 @@ const { status } = toRefs(props);
 
 <style lang="less" scoped>
 @import './style/result.less';
-@import './style/dark.less';
 </style>

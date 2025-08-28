@@ -1,8 +1,15 @@
+:root {
+  --yc-option-group-label-color: rgb(134, 144, 156);
+  html[yc-design-dark] & {
+    --yc-option-group-label-color: rgb(153, 153, 153);
+  }
+}
+
 .yc-option-group-label {
   width: 100%;
   margin-top: 8px;
   padding: 0 12px;
-  color: rgb(134, 144, 156);
+  color: var(--yc-option-group-label-color);
   font-size: 12px;
   line-height: 20px;
 }

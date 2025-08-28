@@ -1,3 +1,44 @@
+.yc-radio {
+  --yc-radio-icon-border-color: rgb(229, 230, 235);
+  --yc-radio-icon-after-bg-color: #fff;
+  --yc-radio-label-color: rgb(29, 33, 41);
+  --yc-radio-button-color: rgb(78, 89, 105);
+  --yc-radio-button-bg-color: transparent;
+  --yc-radio-button-before-bg-color: rgb(229, 230, 235);
+  --yc-radio-button-hover-bg-color: #fff;
+  --yc-radio-button-hover-color: rgb(29, 33, 41);
+  --yc-radio-checked-icon-bg-color: rgb(22, 93, 255);
+  --yc-radio-checked-button-color: rgb(22, 93, 255);
+  --yc-radio-checked-button-bg-color: #fff;
+  --yc-radio-unchecked-hover-icon-before-bg-color: rgba(242, 243, 245);
+  --yc-radio-unchecked-hover-icon-border-color: rgb(201, 205, 212);
+  --yc-radio-disabled-unchecked-icon-border-color: rgb(229, 230, 235);
+  --yc-radio-disabled-unchecked-icon-after-bg-color: rgb(242, 243, 245);
+  --yc-radio-disabled-checked-icon-bg-color: rgb(148, 191, 255);
+  --yc-radio-disabled-label-color: rgb(201, 205, 212);
+  --yc-radio-disabled-unchecked-button-color: rgb(201, 205, 212);
+  --yc-radio-disabled-checked-button-color: rgb(148, 191, 255);
+  html[yc-design-dark] & {
+    --yc-radio-icon-border-color: rgb(70, 70, 70);
+    --yc-radio-icon-after-bg-color: rgb(221, 221, 221);
+    --yc-radio-label-color: rgb(221, 221, 221);
+    --yc-radio-button-color: rgb(153, 153, 153);
+    --yc-radio-button-before-bg-color: rgb(70, 70, 70);
+    --yc-radio-button-hover-bg-color: rgb(50, 50, 50);
+    --yc-radio-button-hover-color: rgb(221, 221, 221);
+    --yc-radio-checked-icon-bg-color: rgb(22, 93, 255);
+    --yc-radio-checked-button-color: rgb(22, 93, 255);
+    --yc-radio-checked-button-bg-color: rgb(30, 30, 30);
+    --yc-radio-unchecked-hover-icon-border-color: rgb(102, 102, 102);
+    --yc-radio-disabled-unchecked-icon-border-color: rgb(50, 50, 50);
+    --yc-radio-disabled-unchecked-icon-after-bg-color: rgb(40, 40, 40);
+    --yc-radio-disabled-checked-icon-bg-color: rgb(70, 100, 180);
+    --yc-radio-disabled-label-color: rgb(102, 102, 102);
+    --yc-radio-disabled-unchecked-button-color: rgb(102, 102, 102);
+    --yc-radio-disabled-checked-button-color: rgb(70, 100, 180);
+  }
+}
+
 // radio
 .yc-radio {
   position: relative;
@@ -17,7 +58,7 @@
     position: relative;
     width: 14px;
     height: 14px;
-    border: 2px solid rgb(229, 230, 235);
+    border: 2px solid var(--yc-radio-icon-border-color);
     border-radius: 50%;
     color: #fff;
     display: flex;
@@ -31,13 +72,13 @@
       height: 10px;
       border-radius: 50%;
       transition: transform 0.3s cubic-bezier(0.3, 1.3, 0.3, 1);
-      background: #fff;
+      background: var(--yc-radio-icon-after-bg-color);
     }
   }
   .yc-radio-label {
     user-select: none;
     flex: 1;
-    color: rgb(29, 33, 41);
+    color: var(--yc-radio-label-color);
   }
 }
 // button
@@ -45,8 +86,8 @@
   position: relative;
   display: inline-block;
   margin: 1.5px;
-  color: rgb(78, 89, 105);
-  background-color: transparent;
+  color: var(--yc-radio-button-color);
+  background-color: var(--yc-radio-button-bg-color);
   border-radius: 2px;
   cursor: pointer;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
@@ -57,15 +98,15 @@
     top: 50%;
     left: -2px;
     transform: translateY(-50%);
-    background-color: rgb(229, 230, 235);
+    background-color: var(--yc-radio-button-before-bg-color);
     width: 1px;
     height: 14px;
     transition: all 0.1s cubic-bezier(0, 0, 1, 1);
   }
   &:not(.yc-radio-disabled) {
     &:hover {
-      background-color: #fff;
-      color: rgb(29, 33, 41);
+      background-color: var(--yc-radio-button-hover-bg-color);
+      color: var(--yc-radio-button-hover-color);
     }
     &:hover::before {
       opacity: 0;
@@ -97,15 +138,15 @@
   &.yc-radio {
     .yc-radio-icon {
       border-color: transparent;
-      background-color: rgb(22, 93, 255);
+      background-color: var(--yc-radio-checked-icon-bg-color);
       &::after {
         transform: scale(0.4);
       }
     }
   }
   &.yc-radio-button {
-    color: rgb(22, 93, 255);
-    background-color: #fff;
+    color: var(--yc-radio-checked-button-color);
+    background-color: var(--yc-radio-checked-button-bg-color);
     &::before {
       opacity: 0;
     }
@@ -120,11 +161,11 @@
 .yc-radio-unchecked {
   &:not(.yc-radio-disabled):hover .yc-icon-button {
     &::before {
-      background-color: rgba(242, 243, 245);
+      background-color: var(--yc-radio-unchecked-hover-icon-before-bg-color);
     }
     .yc-radio-icon {
       transition: border-color 0.1s cubic-bezier(0, 0, 1, 1);
-      border-color: rgb(201, 205, 212);
+      border-color: var(--yc-radio-unchecked-hover-icon-border-color);
     }
   }
 }
@@ -136,28 +177,30 @@
   &.yc-radio {
     &.yc-radio-unchecked {
       .yc-radio-icon {
-        border-color: rgb(229, 230, 235);
+        border-color: var(--yc-radio-disabled-unchecked-icon-border-color);
         &::after {
-          background-color: rgb(242, 243, 245);
+          background-color: var(
+            --yc-radio-disabled-unchecked-icon-after-bg-color
+          );
         }
       }
     }
     &.yc-radio-checked {
       .yc-radio-icon {
         border-color: transparent;
-        background-color: rgb(148, 191, 255);
+        background-color: var(--yc-radio-disabled-checked-icon-bg-color);
       }
     }
     .yc-radio-label {
-      color: rgb(201, 205, 212);
+      color: var(--yc-radio-disabled-label-color);
     }
   }
   &.yc-radio-button {
     &.yc-radio-unchecked {
-      color: rgb(201, 205, 212);
+      color: var(--yc-radio-disabled-unchecked-button-color);
     }
     &.yc-radio-checked {
-      color: rgb(148, 191, 255);
+      color: var(--yc-radio-disabled-checked-button-color);
     }
   }
 }

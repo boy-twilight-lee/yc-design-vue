@@ -1,4 +1,36 @@
 .yc-switch {
+  --yc-switch-unchecked-handle-bg-color: #fff;
+  --yc-switch-unchecked-handle-color: rgb(229, 230, 235);
+  --yc-switch-unchecked-text-color: #fff;
+  --yc-switch-checked-handle-bg-color: #fff;
+  --yc-switch-checked-handle-color: rgb(22, 93, 255);
+  --yc-switch-checked-text-color: #fff;
+  --yc-switch-disabled-unchecked-bg-color: rgb(242, 243, 245);
+  --yc-switch-disabled-unchecked-handle-color: rgb(229, 230, 235);
+  --yc-switch-disabled-unchecked-text-color: #fff;
+  --yc-switch-disabled-checked-bg-color: rgb(148, 191, 255);
+  --yc-switch-disabled-checked-handle-color: rgb(148, 191, 255);
+  --yc-switch-disabled-checked-text-color: rgb(232, 243, 255);
+  --yc-switch-line-handle-shadow-color: rgb(134, 144, 156);
+  html[yc-design-dark] & {
+    --yc-switch-unchecked-handle-bg-color: rgb(36, 36, 36);
+    --yc-switch-unchecked-handle-color: rgb(153, 153, 153);
+    --yc-switch-unchecked-text-color: rgb(153, 153, 153);
+    --yc-switch-checked-handle-bg-color: rgb(36, 36, 36);
+    --yc-switch-checked-handle-color: rgb(22, 93, 255);
+    --yc-switch-checked-text-color: #fff;
+    --yc-switch-disabled-unchecked-bg-color: rgb(54, 54, 54);
+    --yc-switch-disabled-unchecked-handle-color: rgb(72, 72, 72);
+    --yc-switch-disabled-unchecked-text-color: rgb(72, 72, 72);
+    --yc-switch-disabled-checked-bg-color: rgb(22, 93, 255);
+    --yc-switch-disabled-checked-handle-color: rgb(148, 191, 255);
+    --yc-switch-disabled-checked-text-color: rgb(232, 243, 255);
+    --yc-switch-line-track-bg-color: rgb(72, 72, 72);
+    --yc-switch-line-handle-shadow-color: rgb(134, 144, 156);
+  }
+}
+
+.yc-switch {
   cursor: pointer;
   position: relative;
   padding: 0;
@@ -41,23 +73,23 @@
 // unchecked
 .yc-switch-unchecked {
   .yc-switch-handle {
-    background-color: #fff;
-    color: rgb(229, 230, 235);
+    background-color: var(--yc-switch-unchecked-handle-bg-color);
+    color: var(--yc-switch-unchecked-handle-color);
   }
   .yc-switch-text {
     left: 26px;
-    color: #fff;
+    color: var(--yc-switch-unchecked-text-color);
   }
 }
 // checked
 .yc-switch-checked {
   .yc-switch-handle {
-    background-color: #fff;
-    color: rgb(22, 93, 255);
+    background-color: var(--yc-switch-checked-handle-bg-color);
+    color: var(--yc-switch-checked-handle-color);
   }
   .yc-switch-text {
     left: 8px;
-    color: #fff;
+    color: var(--yc-switch-checked-text-color);
   }
   .yc-switch-placeholder {
     margin: 0 26px 0 8px;
@@ -68,30 +100,30 @@
 .yc-switch-disabled {
   &.yc-switch-unchecked {
     &:not(.yc-switch-shape-line) {
-      background-color: rgb(242, 243, 245);
+      background-color: var(--yc-switch-disabled-unchecked-bg-color);
     }
     &::after {
-      background-color: rgb(242, 243, 245);
+      background-color: var(--yc-switch-disabled-unchecked-bg-color);
     }
     .yc-switch-handle {
-      color: rgb(229, 230, 235);
+      color: var(--yc-switch-disabled-unchecked-handle-color);
     }
     .yc-switch-text {
-      color: #fff;
+      color: var(--yc-switch-disabled-unchecked-text-color);
     }
   }
   &.yc-switch-checked {
     &:not(.yc-switch-shape-line) {
-      background-color: rgb(148, 191, 255);
+      background-color: var(--yc-switch-disabled-checked-bg-color);
     }
     &::after {
-      background-color: rgb(148, 191, 255);
+      background-color: var(--yc-switch-disabled-checked-bg-color);
     }
     .yc-switch-handle {
-      color: rgb(148, 191, 255);
+      color: var(--yc-switch-disabled-checked-handle-color);
     }
     .yc-switch-text {
-      color: rgb(232, 243, 255);
+      color: var(--yc-switch-disabled-checked-text-color);
     }
   }
 }
@@ -171,9 +203,10 @@
     transform: translateY(-50%);
     height: 6px;
     border-radius: 3px;
+    background-color: var(--yc-switch-line-track-bg-color);
   }
   .yc-switch-handle {
-    box-shadow: 0 1px 3px rgb(134, 144, 156);
+    box-shadow: 0 1px 3px var(--yc-switch-line-handle-shadow-color);
   }
 }
 .yc-switch-shape-round {

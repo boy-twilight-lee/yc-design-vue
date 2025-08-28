@@ -1,4 +1,21 @@
 .yc-select {
+  --yc-select-placeholder-color: rgb(29, 33, 41);
+  --yc-select-input-placeholder-color: rgb(134, 144, 156);
+  --yc-select-no-border-bg: #fff;
+  --yc-select-dropdown-bg: #fff;
+  --yc-select-dropdown-border-color: rgb(229, 230, 235);
+  --yc-select-dropdown-shadow: 0 4px 10px #0000001a;
+  html[yc-design-dark] & {
+    --yc-select-placeholder-color: rgb(221, 221, 221);
+    --yc-select-input-placeholder-color: rgb(153, 153, 153);
+    --yc-select-no-border-bg: rgb(30, 30, 30);
+    --yc-select-dropdown-bg: rgb(30, 30, 30);
+    --yc-select-dropdown-border-color: rgb(70, 70, 70);
+    --yc-select-dropdown-shadow: 0 4px 10px #0000004d;
+  }
+}
+
+.yc-select {
   width: 100%;
   display: inline-flex;
   align-items: center;
@@ -6,13 +23,13 @@
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
-          color: rgb(29, 33, 41);
+          color: var(--yc-select-placeholder-color);
         }
       }
     }
   }
   .yc-input-placeholder {
-    color: rgb(134, 144, 156);
+    color: var(--yc-select-input-placeholder-color);
   }
   .yc-select-suffix-icon,
   .yc-select-search-icon,
@@ -26,13 +43,13 @@
 // 无边框
 .yc-select-no-border {
   .yc-input-tag {
-    background-color: #fff;
+    background-color: var(--yc-select-no-border-bg);
     box-shadow: none;
     border: none;
   }
   &:deep(.yc-input-outer) {
     .yc-input-wrapper {
-      background-color: #fff;
+      background-color: var(--yc-select-no-border-bg);
       box-shadow: none;
       border: none;
     }
@@ -56,7 +73,7 @@
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
-          color: rgb(134, 144, 156);
+          color: var(--yc-select-input-placeholder-color);
         }
       }
     }
@@ -82,16 +99,16 @@
 .yc-select-dropdown {
   width: 100%;
   padding: 4px 0;
-  background-color: #fff;
-  border: 1px solid rgb(229, 230, 235);
+  background-color: var(--yc-select-dropdown-bg);
+  border: 1px solid var(--yc-select-dropdown-border-color);
   border-radius: 4px;
-  box-shadow: 0 4px 10px #0000001a;
+  box-shadow: var(--yc-select-dropdown-shadow);
 
   .yc-select-dropdown-header {
-    border-bottom: 1px solid rgb(229, 230, 235);
+    border-bottom: 1px solid var(--yc-select-dropdown-border-color);
   }
   .yc-select-dropdown-footer {
-    border-top: 1px solid rgb(229, 230, 235);
+    border-top: 1px solid var(--yc-select-dropdown-border-color);
   }
 
   .yc-scrollbar {

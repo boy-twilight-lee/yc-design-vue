@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    <yc-button>测试</yc-button>
+    <yc-alert />
   </div>
 </template>
 
@@ -17,5 +17,13 @@ import { ref } from 'vue';
   align-items: center;
   justify-content: center;
   gap: 10px;
+  .a,
+  .b {
+    width: 200px;
+    height: 200px;
+    & {
+      background-color: blue;
+    }
+  }
 }
 </style>

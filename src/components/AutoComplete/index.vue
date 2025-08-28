@@ -202,5 +202,4 @@ defineExpose<AutoCompleteExpose>({
 
 <style lang="less">
 @import './style/auto-complete.less';
-@import './style/dark.less';
 </style>

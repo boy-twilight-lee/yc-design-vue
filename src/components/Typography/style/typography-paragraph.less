@@ -1,9 +1,9 @@
 .yc-typography {
-  --blockquote-bg: #fff;
-  --blockquote-border: rgb(134, 144, 156);
+  --yc-typography-blockquote-bg: #fff;
+  --yc-typography-blockquote-border: rgb(134, 144, 156);
   html[yc-design-dark] & {
-    --blockquote-bg: rgb(38, 38, 40);
-    --blockquote-border: rgb(81, 84, 86);
+    --yc-typography-blockquote-bg: rgb(38, 38, 40);
+    --yc-typography-blockquote-border: rgb(81, 84, 86);
   }
 }
 
@@ -11,11 +11,11 @@
   margin-top: 0;
   margin-bottom: 1em;
 }
-.yc-typography blockquote {
+.yc-typography yc-typography-blockquote {
   margin: 0 0 1em;
   padding-left: 8px;
-  background-color: var(--blockquote-bg);
-  border-left: 2px solid var(--blockquote-border);
+  background-color: var(--yc-typography-blockquote-bg);
+  border-left: 2px solid var(--yc-typography-blockquote-border);
 }
 .yc-typography-spacing-close {
   line-height: 1.3;

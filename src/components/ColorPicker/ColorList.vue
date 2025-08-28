@@ -35,5 +35,4 @@ defineEmits<{
 
 <style lang="less" scoped>
 @import './style/color-picker.less';
-@import './style/dark.less';
 </style>

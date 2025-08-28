@@ -1,4 +1,13 @@
 .yc-rate {
+  --yc-rate-character-color: rgb(229, 230, 235);
+  --yc-rate-disabled-character-color: rgb(229, 230, 235);
+  html[yc-design-dark] & {
+    --yc-rate-character-color: rgb(70, 70, 70);
+    --yc-rate-disabled-character-color: rgb(50, 50, 50);
+  }
+}
+
+.yc-rate {
   min-height: 32px;
   font-size: 24px;
   line-height: 1;
@@ -19,7 +28,7 @@
   }
   .yc-rate-character {
     position: relative;
-    color: rgb(229, 230, 235);
+    color: var(--yc-rate-character-color);
     transition: transform 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
 
     .yc-rate-character-left {
@@ -37,5 +46,6 @@
   cursor: not-allowed;
   .yc-rate-character {
     cursor: not-allowed;
+    color: var(--yc-rate-disabled-character-color);
   }
 }

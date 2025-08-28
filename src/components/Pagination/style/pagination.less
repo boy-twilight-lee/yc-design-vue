@@ -1,10 +1,31 @@
 .yc-pagination {
+  --yc-pagination-total-color: rgb(29, 33, 41);
+  --yc-pagination-item-color: rgb(78, 89, 105);
+  --yc-pagination-item-hover-bg: rgb(247, 248, 250);
+  --yc-pagination-item-arrow-hover-color: rgb(22, 93, 255);
+  --yc-pagination-item-disabled-color: rgb(201, 205, 212);
+  --yc-pagination-item-active-color: rgb(22, 93, 255);
+  --yc-pagination-item-active-bg: rgb(232, 243, 255);
+  --yc-pagination-jumper-goto-color: rgb(134, 144, 156);
+  html[yc-design-dark] & {
+    --yc-pagination-total-color: rgb(255, 255, 255);
+    --yc-pagination-item-color: rgb(173, 179, 191);
+    --yc-pagination-item-hover-bg: rgb(44, 44, 44);
+    --yc-pagination-item-arrow-hover-color: rgb(74, 139, 255);
+    --yc-pagination-item-disabled-color: rgb(70, 70, 70);
+    --yc-pagination-item-active-color: rgb(74, 139, 255);
+    --yc-pagination-item-active-bg: rgb(30, 40, 50);
+    --yc-pagination-jumper-goto-color: rgb(173, 179, 191);
+  }
+}
+
+.yc-pagination {
   display: flex;
   align-items: center;
   gap: 8px;
   .yc-pagination-total {
     height: 100%;
-    color: rgb(29, 33, 41);
+    color: var(--yc-pagination-total-color);
     white-space: nowrap;
   }
   .yc-pagination-list {
@@ -33,29 +54,29 @@
     padding: 0 8px;
     border-radius: 2px;
     background-color: transparent;
-    color: rgb(78, 89, 105);
+    color: var(--yc-pagination-item-color);
     display: flex;
     justify-content: center;
     align-items: center;
     &:not(.yc-pagination-item-disabled):not(.yc-pagination-item-active):hover {
-      color: rgb(78, 89, 105);
-      background-color: rgb(247, 248, 250);
+      color: var(--yc-pagination-item-color);
+      background-color: var(--yc-pagination-item-hover-bg);
       transition:
         color 0.2s cubic-bezier(0, 0, 1, 1),
         background-color 0.2s cubic-bezier(0, 0, 1, 1);
       &.yc-pagination-item-previous,
       &.yc-pagination-item-next {
-        color: rgb(22, 93, 255);
+        color: var(--yc-pagination-item-arrow-hover-color);
       }
     }
     &.yc-pagination-item-disabled {
-      color: rgb(201, 205, 212);
+      color: var(--yc-pagination-item-disabled-color);
       cursor: not-allowed;
       background-color: transparent;
     }
     &.yc-pagination-item-active {
-      color: rgb(22, 93, 255);
-      background-color: rgb(232, 243, 255);
+      color: var(--yc-pagination-item-active-color);
+      background-color: var(--yc-pagination-item-active-bg);
     }
   }
   .yc-pagination-options {
@@ -79,7 +100,7 @@
       }
     }
     .yc-pagination-jumper-text-goto {
-      color: rgb(134, 144, 156);
+      color: var(--yc-pagination-jumper-goto-color);
       white-space: nowrap;
     }
   }

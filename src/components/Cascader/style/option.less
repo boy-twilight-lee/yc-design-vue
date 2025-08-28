@@ -1,11 +1,24 @@
 .yc-cascader-option {
+  --yc-cascader-option-bg-color: transparent;
+  --yc-cascader-option-text-color: rgb(29, 33, 41);
+  --yc-cascader-option-icon-color: rgb(78, 89, 105);
+  --yc-cascader-option-active-bg-color: rgb(242, 243, 245);
+  --yc-cascader-option-disabled-text-color: rgb(201, 205, 212);
+  html[yc-design-dark] & {
+    --yc-cascader-option-text-color: rgb(229, 230, 235);
+    --yc-cascader-option-active-bg-color: rgb(44, 44, 48);
+    --yc-cascader-option-disabled-text-color: rgb(105, 109, 118);
+  }
+}
+
+.yc-cascader-option {
   cursor: pointer;
   position: relative;
   height: 36px;
   padding-left: 12px;
   min-width: 100px;
-  background-color: transparent;
-  color: rgb(29, 33, 41);
+  background-color: var(--yc-cascader-option-bg-color);
+  color: var(--yc-cascader-option-text-color);
   font-size: 14px;
   line-height: 36px;
   transition: all 0.2s cubic-bezier(0, 0, 1, 1);
@@ -13,7 +26,7 @@
   align-items: center;
   gap: 8px;
   &:not(.yc-cascader-option-disabled):hover {
-    background-color: rgb(242, 243, 245);
+    background-color: var(--yc-cascader-option-active-bg-color);
   }
   .yc-checkbox {
     padding-left: 0;
@@ -25,17 +38,16 @@
       position: absolute;
       top: calc((100% - 12px) / 2);
       right: 10px;
-      // transform: translateY(-50%);
-      color: rgb(78, 89, 105);
+      color: var(--yc-cascader-option-icon-color);
       font-size: 12px;
     }
   }
 }
 .yc-cascader-option-selected {
-  background-color: rgb(242, 243, 245);
+  background-color: var(--yc-cascader-option-active-bg-color);
 }
 .yc-cascader-option-disabled {
-  color: rgb(201, 205, 212);
-  background-color: transparent;
+  color: var(--yc-cascader-option-disabled-text-color);
+  background-color: var(--yc-cascader-option-bg-color);
   cursor: not-allowed;
 }

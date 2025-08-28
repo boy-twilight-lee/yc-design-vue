@@ -1,15 +1,26 @@
 .yc-select-option {
+  --yc-select-option-color: rgb(29, 33, 41);
+  --yc-select-option-hover-bg-color: rgb(242, 243, 245);
+  --yc-select-option-disabled-color: rgb(201, 205, 212);
+  html[yc-design-dark] & {
+    --yc-select-option-color: rgb(221, 221, 221);
+    --yc-select-option-hover-bg-color: rgb(50, 50, 50);
+    --yc-select-option-disabled-color: rgb(102, 102, 102);
+  }
+}
+
+.yc-select-option {
   padding: 0 12px;
   line-height: 36px;
   font-size: 14px;
-  color: rgb(29, 33, 41);
+  color: var(--yc-select-option-color);
   text-align: left;
   display: flex;
   align-items: center;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
   &:not(.yc-select-option-disabled):hover {
-    color: rgb(29, 33, 41);
-    background-color: rgb(242, 243, 245);
+    color: var(--yc-select-option-color);
+    background-color: var(--yc-select-option-hover-bg-color);
   }
   .yc-select-option-icon,
   .yc-select-option-content,
@@ -39,12 +50,12 @@
 }
 // disabled
 .yc-select-option-disabled {
-  color: rgb(201, 205, 212);
+  color: var(--yc-select-option-disabled-color);
   background: transparent;
   cursor: not-allowed;
 }
 // active
 .yc-select-option-active {
-  color: rgb(29, 33, 41);
-  background-color: rgb(242, 243, 245);
+  color: var(--yc-select-option-color);
+  background-color: var(--yc-select-option-hover-bg-color);
 }

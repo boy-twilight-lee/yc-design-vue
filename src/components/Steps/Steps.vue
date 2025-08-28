@@ -39,5 +39,4 @@ const { type, labelPlacement, direction } = useContext().provide(props, emits);
 
 <style lang="less" scoped>
 @import './style/steps.less';
-@import './style/dark.less';
 </style>

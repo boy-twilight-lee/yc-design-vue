@@ -1,11 +1,20 @@
 .yc-breadcrumb {
+  --yc-breadcrumb-text-color: rgb(78, 89, 105);
+  --yc-breadcrumb-last-child-color: rgb(29, 33, 41);
+  html[yc-design-dark] & {
+    --yc-breadcrumb-text-color: rgb(173, 179, 191);
+    --yc-breadcrumb-last-child-color: rgb(255, 255, 255);
+  }
+}
+
+.yc-breadcrumb {
   display: inline-flex;
   align-items: center;
-  color: rgb(78, 89, 105);
+  color: var(--yc-breadcrumb-text-color);
   font-size: 14px;
   &:deep(.yc-breadcrumb-item) {
     &:last-child {
-      color: rgb(29, 33, 41);
+      color: var(--yc-breadcrumb-last-child-color);
       font-weight: 500;
     }
   }

@@ -1,4 +1,37 @@
 .yc-alert {
+  --yc-alert-title-color: rgb(29, 33, 41);
+  --yc-alert-content-color: rgb(29, 33, 41);
+  --yc-alert-close-btn-color: rgb(78, 89, 105);
+  --yc-alert-close-btn-hover-color: rgb(29, 33, 41);
+  --yc-alert-info-bg: rgb(232, 243, 255);
+  --yc-alert-info-icon-color: rgb(22, 93, 255);
+  --yc-alert-success-bg: rgb(232, 255, 234);
+  --yc-alert-success-icon-color: rgb(0, 180, 42);
+  --yc-alert-warning-bg: rgb(255, 247, 232);
+  --yc-alert-warning-icon-color: rgb(255, 125, 0);
+  --yc-alert-error-bg: rgb(255, 236, 232);
+  --yc-alert-error-icon-color: rgb(245, 63, 63);
+  --yc-alert-normal-bg: rgb(242, 243, 245);
+  --yc-alert-normal-icon-color: rgb(201, 205, 212);
+  html[yc-design-dark] & {
+    --yc-alert-title-color: rgb(229, 230, 235);
+    --yc-alert-content-color: rgb(229, 230, 235);
+    --yc-alert-close-btn-color: rgb(177, 183, 193);
+    --yc-alert-close-btn-hover-color: rgb(229, 230, 235);
+    --yc-alert-info-bg: rgb(11, 35, 75);
+    --yc-alert-info-icon-color: rgb(72, 143, 255);
+    --yc-alert-success-bg: rgb(12, 50, 21);
+    --yc-alert-success-icon-color: rgb(72, 204, 115);
+    --yc-alert-warning-bg: rgb(61, 45, 5);
+    --yc-alert-warning-icon-color: rgb(255, 174, 66);
+    --yc-alert-error-bg: rgb(65, 23, 25);
+    --yc-alert-error-icon-color: rgb(255, 104, 104);
+    --yc-alert-normal-bg: rgb(33, 36, 41);
+    --yc-alert-normal-icon-color: rgb(134, 144, 156);
+  }
+}
+
+.yc-alert {
   overflow: hidden;
   width: 100%;
   padding: 8px 15px;
@@ -27,16 +60,16 @@
       font-weight: 500;
       font-size: 16px;
       line-height: 1.5;
-      color: rgb(29, 33, 41);
+      color: var(--yc-alert-title-color);
     }
     .yc-alert-content {
-      color: rgb(29, 33, 41);
+      color: var(--yc-alert-content-color);
     }
   }
   .yc-alert-close-btn {
     cursor: pointer;
     height: 22px;
-    color: rgb(78, 89, 105);
+    color: var(--yc-alert-close-btn-color);
     font-size: 12px;
     transition: color 0.1s cubic-bezier(0, 0, 1, 1);
     display: flex;
@@ -48,7 +81,7 @@
     }
 
     &:hover {
-      color: rgb(29, 33, 41);
+      color: var(--yc-alert-close-btn-hover-color);
     }
   }
 }
@@ -82,34 +115,12 @@
 }
 
 // type
-@type: {
-  @info: {
-    bg: rgb(232, 243, 255);
-    icon-color: rgb(22, 93, 255);
-  };
-  @success: {
-    bg: rgb(232, 255, 234);
-    icon-color: rgb(0, 180, 42);
-  };
-  @warning: {
-    bg: rgb(255, 247, 232);
-    icon-color: rgb(255, 125, 0);
-  };
-  @error: {
-    bg: rgb(255, 236, 232);
-    icon-color: rgb(245, 63, 63);
-  };
-  @normal: {
-    bg: rgb(242, 243, 245);
-    icon-color: rgb(201, 205, 212);
-  };
-};
-each(@type,.(@value,@name){
-  @key:replace(~"@{name}", "@", "");
-  .yc-alert-@{key}{
-    background-color: @value[bg];
+@types: info, success, warning, error, normal;
+each(@types, .(@name) {
+  .yc-alert-@{name} {
+    background-color: ~"var(--yc-alert-@{name}-bg)";
     .yc-alert-icon {
-     color: @value[icon-color]
+      color: ~"var(--yc-alert-@{name}-icon-color)";
     }
   }
 });

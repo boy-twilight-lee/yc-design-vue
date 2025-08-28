@@ -50,5 +50,4 @@ const { options } = useContext().provide(props, emits);
 
 <style lang="less">
 @import './style/radio-group.less';
-@import './style/dark.less';
 </style>

@@ -1,4 +1,15 @@
 .yc-breadcrumb-item {
+  --yc-breadcrumb-item-hover-color: rgb(22, 93, 255);
+  --yc-breadcrumb-item-hover-bg: rgb(242, 243, 245);
+  --yc-breadcrumb-separator-color: rgb(201, 205, 212);
+  html[yc-design-dark] & {
+    --yc-breadcrumb-item-hover-color: rgb(74, 139, 255);
+    --yc-breadcrumb-item-hover-bg: rgb(44, 44, 44);
+    --yc-breadcrumb-separator-color: rgb(70, 70, 70);
+  }
+}
+
+.yc-breadcrumb-item {
   line-height: 24px;
   padding: 0 4px;
   display: inline-flex;
@@ -10,8 +21,8 @@
     border-radius: 2px;
     background-color: transparent;
     &:hover {
-      color: rgb(22, 93, 255);
-      background-color: rgb(242, 243, 245);
+      color: var(--yc-breadcrumb-item-hover-color);
+      background-color: var(--yc-breadcrumb-item-hover-bg);
     }
   }
   .yc-breadcrumb-item-dropdown-icon {
@@ -25,7 +36,7 @@
   min-width: 14px;
   font-size: 14px;
   line-height: 24px;
-  color: rgb(201, 205, 212);
+  color: var(--yc-breadcrumb-separator-color);
   display: flex;
   justify-content: center;
   align-items: center;

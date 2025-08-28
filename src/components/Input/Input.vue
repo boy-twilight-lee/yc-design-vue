@@ -204,5 +204,4 @@ defineExpose<InputExpose>({
 
 <style lang="less" scoped>
 @import './style/input.less';
-@import './style/dark.less';
 </style>

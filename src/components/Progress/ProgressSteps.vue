@@ -70,5 +70,4 @@ const stepList = computed(() => {
 
 <style lang="less">
 @import './style/progress.less';
-@import './style/dark.less';
 </style>

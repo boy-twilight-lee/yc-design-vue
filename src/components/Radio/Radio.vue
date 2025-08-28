@@ -108,5 +108,4 @@ const handleChange = (e: Event) => {
 
 <style lang="less" scoped>
 @import './style/radio.less';
-@import './style/dark.less';
 </style>

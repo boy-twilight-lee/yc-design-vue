@@ -53,5 +53,4 @@ const handleSet = () => {
 
 <style lang="less" scoped>
 @import './style/slider.less';
-@import './style/dark.less';
 </style>

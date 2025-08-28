@@ -1,15 +1,55 @@
 .yc-input-tag {
+  // light theme
+  --yc-input-tag-bg: rgb(242, 243, 245);
+  --yc-input-tag-color: rgb(29, 33, 41);
+  --yc-input-tag-hover-bg: rgb(229, 230, 235);
+  --yc-input-tag-focus-bg: #fff;
+  --yc-input-tag-focus-border: rgb(22, 93, 255);
+  --yc-input-tag-focus-shadow: 0 0 0 0 rgb(190, 218, 255);
+  --yc-input-tag-focus-inner-tag-bg: rgb(242, 243, 245);
+  --yc-input-tag-prefix-suffix-color: rgb(78, 89, 105);
+  --yc-input-tag-inner-tag-hover-bg: #fff;
+  --yc-input-tag-placeholder-color: rgb(134, 144, 156);
+  --yc-input-tag-error-bg: rgb(255, 236, 232);
+  --yc-input-tag-error-hover-bg: rgb(253, 205, 197);
+  --yc-input-tag-error-focus-border: rgb(245, 63, 63);
+  --yc-input-tag-error-focus-shadow: 0 0 0 0 rgb(253, 205, 197);
+  --yc-input-tag-disabled-color: rgb(201, 205, 212);
+  --yc-input-tag-disabled-tag-bg: rgb(242, 243, 245);
+  --yc-input-tag-disabled-tag-border: rgb(229, 230, 235);
+  html[yc-design-dark] & {
+    --yc-input-tag-bg: rgb(40, 40, 40);
+    --yc-input-tag-color: rgb(221, 221, 221);
+    --yc-input-tag-hover-bg: rgb(50, 50, 50);
+    --yc-input-tag-focus-bg: rgb(30, 30, 30);
+    --yc-input-tag-focus-border: rgb(22, 93, 255);
+    --yc-input-tag-focus-shadow: 0 0 0 0 rgba(22, 93, 255, 0.3);
+    --yc-input-tag-focus-inner-tag-bg: rgb(45, 45, 45);
+    --yc-input-tag-prefix-suffix-color: rgb(153, 153, 153);
+    --yc-input-tag-inner-tag-hover-bg: rgb(30, 30, 30);
+    --yc-input-tag-placeholder-color: rgb(102, 102, 102);
+    --yc-input-tag-error-bg: rgb(60, 30, 30);
+    --yc-input-tag-error-hover-bg: rgb(70, 40, 40);
+    --yc-input-tag-error-focus-border: rgb(245, 63, 63);
+    --yc-input-tag-error-focus-shadow: 0 0 0 0 rgba(245, 63, 63, 0.3);
+    --yc-input-tag-disabled-color: rgb(102, 102, 102);
+    --yc-input-tag-disabled-tag-bg: rgb(40, 40, 40);
+    --yc-input-tag-disabled-tag-border: rgb(50, 50, 50);
+  }
+}
+
+.yc-input-tag {
   cursor: text;
   position: relative;
   width: 100%;
-  background-color: rgb(242, 243, 245);
+  background-color: var(--yc-input-tag-bg);
   border: 1px solid transparent;
   border-radius: 2px;
   transition:
     color 0.1s cubic-bezier(0, 0, 1, 1),
     border-color 0.1s cubic-bezier(0, 0, 1, 1),
     background-color 0.1s cubic-bezier(0, 0, 1, 1);
-  color: rgb(29, 33, 41);
+  color: var(--yc-input-tag-color);
   font-weight: 400;
   display: inline-flex;
   align-items: center;
@@ -19,16 +59,16 @@
     }
     &:hover {
       border-color: transparent;
-      background-color: rgb(229, 230, 235);
+      background-color: var(--yc-input-tag-hover-bg);
     }
     &:focus-within {
-      background-color: #fff;
-      border-color: rgb(22, 93, 255);
-      box-shadow: 0 0 0 0 rgb(190, 218, 255);
+      background-color: var(--yc-input-tag-focus-bg);
+      border-color: var(--yc-input-tag-focus-border);
+      box-shadow: var(--yc-input-tag-focus-shadow);
       &:deep(.yc-input-tag-inner) {
         .yc-tag {
           border-color: transparent;
-          background-color: rgb(242, 243, 245);
+          background-color: var(--yc-input-tag-focus-inner-tag-bg);
         }
       }
     }
@@ -40,7 +80,7 @@
     justify-content: center;
     align-items: center;
     font-size: inherit;
-    color: rgb(78, 89, 105);
+    color: var(--yc-input-tag-prefix-suffix-color);
 
     &.yc-input-tag-prefix {
       padding-right: 12px;
@@ -77,7 +117,7 @@
     &:deep(.yc-tag) {
       max-width: 100%;
       &:hover {
-        background-color: #fff;
+        background-color: var(--yc-input-tag-inner-tag-hover-bg);
       }
     }
     .yc-input-tag-input {
@@ -89,23 +129,23 @@
       background-color: transparent;
       color: inherit;
       &::placeholder {
-        color: rgb(134, 144, 156);
+        color: var(--yc-input-tag-placeholder-color);
       }
     }
   }
 }
 // error
 .yc-input-tag-error {
-  background-color: rgb(255, 236, 232);
+  background-color: var(--yc-input-tag-error-bg);
   &:not(.yc-input-tag-disabled) {
     &:hover {
       border-color: transparent;
-      background-color: rgb(253, 205, 197);
+      background-color: var(--yc-input-tag-error-hover-bg);
     }
     &:focus-within {
-      background-color: #fff;
-      border-color: rgb(245, 63, 63);
-      box-shadow: 0 0 0 0 rgb(253, 205, 197);
+      background-color: var(--yc-input-tag-focus-bg);
+      border-color: var(--yc-input-tag-error-focus-border);
+      box-shadow: var(--yc-input-tag-error-focus-shadow);
     }
   }
 }
@@ -124,8 +164,8 @@
 .yc-input-tag-disabled {
   cursor: not-allowed;
   border-color: transparent;
-  background-color: rgb(242, 243, 245);
-  color: rgb(201, 205, 212);
+  background-color: var(--yc-input-tag-disabled-tag-bg);
+  color: var(--yc-input-tag-disabled-color);
   .yc-input-tag-prefix,
   .yc-input-tag-suffix {
     color: inherit;
@@ -133,13 +173,13 @@
   .yc-input-tag-inner {
     &:deep(.yc-tag) {
       cursor: not-allowed;
-      color: rgb(201, 205, 212);
-      background-color: rgb(242, 243, 245);
-      border-color: rgb(229, 230, 235);
+      color: var(--yc-input-tag-disabled-color);
+      background-color: var(--yc-input-tag-disabled-tag-bg);
+      border-color: var(--yc-input-tag-disabled-tag-border);
       &:hover {
-        color: rgb(201, 205, 212);
-        background-color: rgb(242, 243, 245);
-        border-color: rgb(229, 230, 235);
+        color: var(--yc-input-tag-disabled-color);
+        background-color: var(--yc-input-tag-disabled-tag-bg);
+        border-color: var(--yc-input-tag-disabled-tag-border);
       }
     }
   }

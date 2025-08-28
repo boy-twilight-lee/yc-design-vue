@@ -1,4 +1,11 @@
 .yc-verification-code {
+  --yc-verification-code-disabled-write-hover-bg: rgb(229, 230, 235);
+  html[yc-design-dark] & {
+    --yc-verification-code-disabled-write-hover-bg: #434343;
+  }
+}
+
+.yc-verification-code {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -16,7 +23,7 @@
         opacity: 1;
         cursor: text;
         &:hover {
-          background-color: rgb(229, 230, 235);
+          background-color: var(--yc-verification-code-disabled-write-hover-bg);
         }
         &:focus-within {
           border-color: transparent;

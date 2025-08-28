@@ -148,5 +148,4 @@ defineExpose<PopconfirmExpose>({
 
 <style lang="less">
 @import './style/popconfirm.less';
-@import './style/dark.less';
 </style>

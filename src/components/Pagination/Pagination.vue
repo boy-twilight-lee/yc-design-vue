@@ -160,5 +160,4 @@ const handleBlur = async (e: Event) => {
 
 <style lang="less" scoped>
 @import './style/pagination.less';
-@import './style/dark.less';
 </style>

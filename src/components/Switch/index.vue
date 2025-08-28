@@ -157,5 +157,4 @@ const handleClick = async (e: Event) => {
   }
 }
 @import './style/switch.less';
-@import './style/dark.less';
 </style>

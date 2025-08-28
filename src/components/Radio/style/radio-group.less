@@ -1,3 +1,10 @@
+.yc-radio-button-group {
+  --yc-radio-button-group-bg-color: rgb(242, 243, 245);
+  html[yc-design-dark] & {
+    --yc-radio-button-group-bg-color: rgb(40, 40, 40);
+  }
+}
+
 .yc-radio-group-direction-horizontal {
   display: inline-flex;
   align-items: center;
@@ -13,6 +20,6 @@
 .yc-radio-button-group {
   display: inline-flex;
   padding: 1.5px;
-  background-color: rgb(242, 243, 245);
+  background-color: var(--yc-radio-button-group-bg-color);
   border-radius: 2px;
 }

@@ -1,9 +1,26 @@
 .yc-timepicker-container {
+  --yc-timepicker-bg: #fff;
+  --yc-timepicker-border-color: rgb(229, 230, 235);
+  --yc-timepicker-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --yc-timepicker-cell-color: rgb(29, 33, 41);
+  --yc-timepicker-cell-selected-bg: rgb(242, 243, 245);
+  --yc-timepicker-cell-disabled-color: rgb(201, 205, 212);
+  html[yc-design-dark] & {
+    --yc-timepicker-bg: rgb(36, 36, 36);
+    --yc-timepicker-border-color: rgb(54, 54, 54);
+    --yc-timepicker-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --yc-timepicker-cell-color: rgb(229, 229, 229);
+    --yc-timepicker-cell-selected-bg: rgb(54, 54, 54);
+    --yc-timepicker-cell-disabled-color: rgb(102, 102, 102);
+  }
+}
+
+.yc-timepicker-container {
   overflow: hidden;
-  background-color: #fff;
-  border: 1px solid rgb(229, 230, 235);
+  background-color: var(--yc-timepicker-bg);
+  border: 1px solid var(--yc-timepicker-border-color);
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--yc-timepicker-shadow);
   .yc-timepicker {
     position: relative;
     display: flex;
@@ -13,12 +30,12 @@
       width: 64px;
       height: 224px;
       &:not(:last-child) {
-        border-right: 1px solid rgb(229, 230, 235);
+        border-right: 1px solid var(--yc-timepicker-border-color);
       }
       ul {
         .yc-timepicker-cell {
           padding: 4px 0;
-          color: rgb(29, 33, 41);
+          color: var(--yc-timepicker-cell-color);
           font-weight: 500;
           cursor: pointer;
           .yc-timepicker-cell-inner {
@@ -31,11 +48,11 @@
         .yc-timepicker-cell-selected {
           .yc-timepicker-cell-inner {
             font-weight: 500;
-            background-color: rgb(242, 243, 245);
+            background-color: var(--yc-timepicker-cell-selected-bg);
           }
         }
         .yc-timepicker-cell-disabled {
-          color: rgb(201, 205, 212);
+          color: var(--yc-timepicker-cell-disabled-color);
           cursor: not-allowed;
         }
         &::after {
@@ -49,13 +66,13 @@
   }
   .yc-timepicker-footer-extra-wrapper {
     padding: 8px;
-    border-top: 1px solid rgb(229, 230, 235);
-    color: rgb(29, 33, 41);
+    border-top: 1px solid var(--yc-timepicker-border-color);
+    color: var(--yc-timepicker-cell-color);
     font-size: 12px;
   }
   .yc-timepicker-footer-btn-wrapper {
     padding: 8px;
-    border-top: 1px solid rgb(229, 230, 235);
+    border-top: 1px solid var(--yc-timepicker-border-color);
     display: flex;
     justify-content: space-between;
   }

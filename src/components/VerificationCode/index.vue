@@ -132,5 +132,4 @@ const handleClick = async (i: number) => {
 
 <style lang="less" scoped>
 @import './style/verification-code.less';
-@import './style/dark.less';
 </style>
