@@ -2,7 +2,6 @@
   <div :class="['yc-menu-item-wrapper', 'yc-menu-item-mode-horizontal']">
     <yc-dropdown
       :popup-max-height="popupMaxHeight"
-      :theme="theme"
       :trigger-props="{
         position: 'bl',
         popupOffset: 20,

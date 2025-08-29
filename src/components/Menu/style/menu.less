@@ -1,21 +1,7 @@
 .yc-menu {
-  --yc-menu-bg: #fff;
-  --yc-menu-btn-color: rgb(134, 144, 156);
-  --yc-menu-btn-bg: rgb(247, 248, 250);
-  --yc-menu-btn-hover-bg: rgb(229, 230, 235);
-  html[yc-design-dark] &,
-  &.yc-menu-theme-dark {
-    --yc-menu-bg: #232324;
-    --yc-menu-btn-color: #fff;
-    --yc-menu-btn-bg: rgb(22, 93, 255);
-    --yc-menu-btn-hover-bg: rgb(14, 66, 210);
-  }
-}
-
-.yc-menu {
   position: relative;
   transition: width 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
-  background-color: var(--yc-menu-bg);
+  background-color: var(--color-bg-2);
   .yc-menu-inner {
     overflow: auto;
     padding: 4px 8px;
@@ -33,10 +19,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--yc-menu-btn-color);
-    background-color: var(--yc-menu-btn-bg);
+    color: var(--color-text-3);
+    background-color: var(--color-fill-1);
     &:hover {
-      background-color: var(--yc-menu-btn-hover-bg);
+      background-color: var(--color-fill-3);
+    }
+    body[yc-design-theme='dark'] & {
+      .yc-menu-collapse-button {
+        color: var(--color-white);
+        background-color: rgb(var(--primary-6));
+        &:hover {
+          background-color: rgb(var(--primary-7));
+        }
+      }
     }
   }
 }

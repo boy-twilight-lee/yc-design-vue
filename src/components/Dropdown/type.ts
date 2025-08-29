@@ -14,7 +14,6 @@ export interface DropdownProps {
   // triggerProps
   triggerProps?: TriggerProps;
   popupMaxHeight?: number | boolean;
-  theme?: Theme;
 }
 
 export interface DropdownEmits {

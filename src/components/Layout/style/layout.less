@@ -1,18 +1,3 @@
-.yc-layout,
-.yc-layout-sider {
-  --yc-sider-bg-color: #fff;
-  --yc-sider-text-color: rgb(29, 33, 41);
-  --yc-sider-box-shadow: 0 2px 5px #00000014;
-  --yc-sider-collapse-button-bg-color: #fff;
-  html[yc-design-dark] &,
-  &.yc-layout-sider-dark {
-    --yc-sider-bg-color: #232324;
-    --yc-sider-text-color: #fff;
-    --yc-sider-box-shadow: none;
-    --yc-sider-collapse-button-bg-color: rgba(255, 255, 255, 0.2);
-  }
-}
-
 // layout
 .yc-layout {
   flex: 1;
@@ -48,9 +33,9 @@
 // sider
 .yc-layout-sider {
   position: relative;
-  background: var(--yc-sider-bg-color);
-  box-shadow: var(--yc-sider-box-shadow);
-  color: var(--yc-sider-text-color);
+  background: var(--color-bg-2);
+  box-shadow: 0 2px 5px #00000014;
+  color: var(--color-text-1);
   transition: width 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
   .yc-collapse-button {
     cursor: pointer;
@@ -60,11 +45,18 @@
     left: 0;
     right: 0;
     height: 48px;
-    background-color: var(--yc-sider-collapse-button-bg-color);
+    background-color: var(--color-bg-1);
     color: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  body[yc-design-theme='dark'] & {
+    box-shadow: none;
+    .yc-collapse-button {
+      background-color: var(--color-fill-4);
+    }
   }
 }
 .yc-layout-sider-has-trigger {

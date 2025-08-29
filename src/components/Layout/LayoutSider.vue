@@ -55,7 +55,7 @@ defineOptions({
 });
 defineSlots<LayoutSiderSlots>();
 const props = withDefaults(defineProps<LayoutSiderProps>(), {
-  theme: 'light',
+  theme: undefined,
   collapsed: undefined,
   defaultCollapsed: false,
   collapsible: false,
@@ -73,11 +73,10 @@ const {
   collapsible,
   breakpoint,
   hideTrigger,
-  theme,
   width: _width,
   collapsedWidth: _collapsedWidth,
 } = toRefs(props);
-const { computedCollapsed } = useSiderContext().provide(props, emits);
+const { theme, computedCollapsed } = useSiderContext().provide(props, emits);
 // 宽度
 const asideWidth = ref<number>(_width.value);
 // 计算的宽度

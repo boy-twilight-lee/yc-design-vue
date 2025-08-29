@@ -14,15 +14,15 @@
 </template>
 
 <script lang="ts" setup>
-import useContext from './hooks/useContext';
 import { DgroupProps, DgroupSlots } from './type';
+import useMenuContext from '@/components/Menu/hooks/useContext';
 defineOptions({
   name: 'Dgroup',
 });
 defineSlots<DgroupSlots>();
 defineProps<DgroupProps>();
 // dropdown传递的值
-const { theme } = useContext().inject();
+const { theme } = useMenuContext().inject();
 </script>
 
 <style lang="less" scoped>

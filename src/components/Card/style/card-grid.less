@@ -8,7 +8,7 @@
     1px 0 0 0 var(--color-border-2) inset,
     0 1px 0 0 var(--color-border-2) inset;
 
-  html[yc-design-dark] & {
+  body[yc-design-theme='dark'] & {
     box-shadow:
       1px 0 0 0 var(--color-border),
       0 1px 0 0 var(--color-border),
@@ -38,7 +38,7 @@
     box-shadow: 0 4px 10px var(--color-neutral-2);
   }
 
-  html[yc-design-dark] &:hover::before {
+  body[yc-design-theme='dark'] &:hover::before {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 }

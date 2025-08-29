@@ -17,7 +17,6 @@
   >
     <yc-doption
       :disabled="disabled"
-      :theme="theme"
       :class="$attrs.class"
       :style="$attrs.style"
       is-submenu
@@ -57,7 +56,7 @@ import {
   useControlValue,
 } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
-import useContext from './hooks/useContext';
+import useMenuContext from '@/components/Menu/hooks/useContext';
 import {
   DsubmenuProps,
   DsubmenuSlots,
@@ -91,7 +90,7 @@ const {
   popupMaxHeight: _popupMaxHeight,
 } = toRefs(props);
 // 接收注入
-const { theme } = useContext().inject();
+const { theme } = useMenuContext().inject();
 // 受控的visible
 const computedVisible = useControlValue<boolean>(
   popupVisible,

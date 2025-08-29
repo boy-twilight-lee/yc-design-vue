@@ -61,7 +61,6 @@
     <yc-dropdown
       v-if="isSubmenu && isRoot && (mode != 'vertical' || computedCollapsed)"
       :popup-max-height="popupMaxHeight"
-      :theme="theme"
       :trigger-props="{
         autoFitPosition: false,
         position: mode == 'horizontal' ? 'bl' : 'rt',
