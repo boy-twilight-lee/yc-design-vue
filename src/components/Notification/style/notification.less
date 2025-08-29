@@ -3,19 +3,14 @@
   position: relative;
   width: 340px;
   padding: 20px;
-  background-color: var(--color-bg-popup);
+  background-color: var(--yc-notification-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-medium);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--yc-notification-shadow);
   opacity: 1;
   transition: opacity 0.2s cubic-bezier(0, 0, 1, 1);
   display: flex;
   gap: 16px;
-
-  body[yc-design-theme='dark'] & {
-    background-color: var(--color-bg-3);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
 
   .yc-notification-left {
     .yc-notification-icon {

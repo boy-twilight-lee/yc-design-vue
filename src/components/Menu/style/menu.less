@@ -19,19 +19,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text-3);
-    background-color: var(--color-fill-1);
+    color: var(--yc-menu-collapse-button-color);
+    background-color: var(--yc-menu-collapse-button-bg);
     &:hover {
-      background-color: var(--color-fill-3);
-    }
-    body[yc-design-theme='dark'] & {
-      .yc-menu-collapse-button {
-        color: var(--color-white);
-        background-color: rgb(var(--primary-6));
-        &:hover {
-          background-color: rgb(var(--primary-7));
-        }
-      }
+      background-color: var(--yc-menu-collapse-button-bg-hover);
     }
   }
 }

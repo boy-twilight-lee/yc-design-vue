@@ -3,10 +3,10 @@
   position: relative;
   overflow: hidden;
   padding: 10px 16px;
-  background-color: var(--color-bg-popup);
-  border: 1px solid var(--color-border);
+  background-color: var(--yc-message-bg);
+  border: 1px solid var(--yc-message-border-color);
   border-radius: var(--border-radius-small);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--yc-message-shadow);
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
   color: var(--color-text-1);
   line-height: 1;
@@ -14,12 +14,6 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
-  body[yc-design-theme='dark'] & {
-    background-color: var(--color-bg-3);
-    border-color: var(--color-border);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
 
   .yc-message-icon {
     vertical-align: middle;

@@ -55,11 +55,11 @@
   width: 24px;
   height: 24px;
   color: var(--color-white);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--yc-carousel-arrow-bg);
   border-radius: 50%;
   cursor: pointer;
   &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--yc-carousel-arrow-bg-hover);
   }
 }
 // show-hover
@@ -99,14 +99,14 @@
       background-color: rgba(var(--gray-4), 0.5);
       &:hover,
       &.yc-carousel-indicator-item-active {
-        background-color: var(--color-neutral-4);
+        background-color: var(--yc-carousel-indicator-outer-active-bg);
       }
     }
 
     &.yc-carousel-indicator-shape-slider {
       background-color: rgba(var(--gray-4), 0.5);
       .yc-carousel-indicator-item-slider {
-        background-color: var(--color-neutral-4);
+        background-color: var(--yc-carousel-indicator-outer-active-bg);
       }
     }
   }
@@ -217,33 +217,5 @@
     border-radius: 4px;
     transition: transform 0.3s;
     background-color: var(--color-white);
-  }
-}
-
-body[yc-design-theme='dark'] .yc-carousel {
-  .yc-carousel-arrow {
-    background-color: rgba(0, 0, 0, 0.3);
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-  }
-
-  .yc-carousel-indicator {
-    &.yc-carousel-indicator-position-outer {
-      .yc-carousel-indicator-item {
-        background-color: rgba(var(--gray-4), 0.5);
-        &:hover,
-        &.yc-carousel-indicator-item-active {
-          background-color: rgb(var(--gray-4));
-        }
-      }
-
-      &.yc-carousel-indicator-shape-slider {
-        background-color: rgba(var(--gray-4), 0.5);
-        .yc-carousel-indicator-item-slider {
-          background-color: rgb(var(--gray-4));
-        }
-      }
-    }
   }
 }

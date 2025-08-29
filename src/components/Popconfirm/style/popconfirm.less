@@ -2,21 +2,16 @@
   &.yc-popconfirm {
     .yc-popconfirm-popup-content {
       padding: 16px;
-      color: var(--color-text-2);
+      color: var(--yc-popconfirm-content-color);
       font-size: 14px;
       line-height: 1.5715;
       background-color: var(--color-bg-popup);
       border: 1px solid var(--color-border);
       border-radius: var(--border-radius-medium);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--yc-popconfirm-content-shadow);
       display: flex;
       flex-direction: column;
       gap: 16px;
-
-      body[yc-design-theme='dark'] & {
-        color: var(--color-text-1);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
-      }
 
       .yc-popconfirm-body {
         display: flex;

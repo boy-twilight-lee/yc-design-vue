@@ -4,7 +4,7 @@
   background-color: var(--color-bg-2);
   border-radius: 4px;
   border: 1px solid var(--color-border-2);
-  box-shadow: 0 4px 10px #0000001a;
+  box-shadow: var(--yc-cascader-panel-shadow);
   display: inline-flex;
   .yc-cascader-panel-column {
     position: relative;
@@ -33,10 +33,6 @@
   &:deep(.yc-empty) {
     min-width: 120px;
   }
-}
-
-body[yc-design-theme='dark'] .yc-cascader-panel {
-  box-shadow: 0 4px 10px #0000004d;
 }
 
 .yc-cascader-search-panel {

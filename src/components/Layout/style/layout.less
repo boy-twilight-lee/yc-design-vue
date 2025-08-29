@@ -34,7 +34,7 @@
 .yc-layout-sider {
   position: relative;
   background: var(--color-bg-2);
-  box-shadow: 0 2px 5px #00000014;
+  box-shadow: var(--yc-layout-sider-shadow);
   color: var(--color-text-1);
   transition: width 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
   .yc-collapse-button {
@@ -45,18 +45,11 @@
     left: 0;
     right: 0;
     height: 48px;
-    background-color: var(--color-bg-1);
+    background-color: var(--yc-layout-sider-collapse-button-bg);
     color: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  body[yc-design-theme='dark'] & {
-    box-shadow: none;
-    .yc-collapse-button {
-      background-color: var(--color-fill-4);
-    }
   }
 }
 .yc-layout-sider-has-trigger {

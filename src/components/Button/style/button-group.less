@@ -33,7 +33,7 @@
 
 @border-color: {
   primary: rgb(var(--primary-5));
-  secondary: var(--color-border-2);
+  secondary: var(--yc-button-group-secondary-border-color);
   warning: rgb(var(--warning-5));
   success: rgb(var(--success-5));
   danger: rgb(var(--danger-5));
@@ -47,11 +47,3 @@ each(@border-color,{
     }
   }
 });
-body[yc-design-theme='dark'] {
-  .yc-button-group-secondary,
-  .yc-button-group-status-secondary {
-    .yc-button:not(:last-child) {
-      border-right: 1px solid var(--color-border);
-    }
-  }
-}

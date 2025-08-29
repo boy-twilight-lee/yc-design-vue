@@ -19,7 +19,7 @@
   }
   .yc-rate-character {
     position: relative;
-    color: var(--color-neutral-3);
+    color: var(--yc-rate-character-color);
     transition: transform 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
 
     .yc-rate-character-left {
@@ -37,15 +37,6 @@
   cursor: not-allowed;
   .yc-rate-character {
     cursor: not-allowed;
-    color: var(--color-neutral-3);
-  }
-}
-
-body[yc-design-theme='dark'] {
-  .yc-rate .yc-rate-character {
-    color: rgb(var(--gray-3));
-  }
-  .yc-rate-disabled .yc-rate-character {
-    color: rgb(var(--gray-2));
+    color: var(--yc-rate-disabled-character-color);
   }
 }
