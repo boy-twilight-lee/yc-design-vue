@@ -66,15 +66,19 @@ export default () => {
     // 开始值
     const startValue = computed({
       get() {
-        return range.value ? computedValue.value[0] : computedValue.value;
+        const value =
+          range.value && isArray(computedValue.value)
+            ? computedValue.value[0]
+            : computedValue.value;
+        return value as number;
       },
       set(val) {
-        if (range.value) {
+        if (range.value && isArray(computedValue.value)) {
           computedValue.value[0] = val;
         } else {
           computedValue.value = val;
         }
-        tempStartValue.value = val;
+        tempStartValue.value = val as number;
       },
     });
     // 中间开始值
@@ -82,15 +86,19 @@ export default () => {
     // 结束值
     const endValue = computed({
       get() {
-        return range.value ? computedValue.value[1] : computedValue.value;
+        const value =
+          range.value && isArray(computedValue.value)
+            ? computedValue.value[1]
+            : computedValue.value;
+        return value as number;
       },
       set(val) {
-        if (range.value) {
+        if (range.value && isArray(computedValue.value)) {
           computedValue.value[1] = val;
         } else {
           computedValue.value = val;
         }
-        tempEndValue.value = val;
+        tempEndValue.value = val as number;
       },
     });
     // 中间结束值

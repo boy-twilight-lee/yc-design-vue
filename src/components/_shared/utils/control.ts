@@ -11,7 +11,7 @@ export default <T>(
   onGet: OnGet = (data: T) => data
 ) => {
   const controlValue = ref<T>(defaultValue);
-  return computed({
+  return computed<T>({
     get() {
       const value = isUndefined(modelValue.value)
         ? controlValue.value

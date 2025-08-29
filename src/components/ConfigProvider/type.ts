@@ -6,7 +6,6 @@ export interface ConfigProviderProps {
   popupContainer?: PopupContainer;
   updateAtScroll?: boolean;
   scrollToClose?: boolean;
-  exchangeTime?: boolean;
 }
 
 export interface ConfigconfigSlots {

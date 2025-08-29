@@ -317,8 +317,8 @@ export default () => {
       const value = multiple.value
         ? computedValue.value
         : [computedValue.value].map((item) => item);
-      return value
-        .map((v: CascaderOptionValue[]) => {
+      return (value as CascaderOptionValue[][])
+        .map((v) => {
           const option = getOption(v);
           if (option) {
             return {
@@ -338,7 +338,7 @@ export default () => {
           }
           return null;
         })
-        .filter((v: CascaderOptionProps) => v);
+        .filter((v) => v);
     });
     // 当前的层级
     const curLevel = ref<number>(1);

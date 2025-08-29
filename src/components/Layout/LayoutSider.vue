@@ -46,8 +46,9 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { LayoutSiderProps, LayoutSiderEmits, LayoutSiderSlots } from './type';
-import { useControlValue, mediaQueryHandler, valueToPx } from '@shared/utils';
+import { mediaQueryHandler, valueToPx } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
+import useSiderContext from './hooks/useSiderContext';
 import YcResizeBox from '@/components/ResizeBox';
 defineOptions({
   name: 'LayoutSider',
@@ -69,28 +70,20 @@ const props = withDefaults(defineProps<LayoutSiderProps>(), {
 });
 const emits = defineEmits<LayoutSiderEmits>();
 const {
-  collapsed,
-  defaultCollapsed,
   collapsible,
   breakpoint,
   hideTrigger,
+  theme,
   width: _width,
   collapsedWidth: _collapsedWidth,
 } = toRefs(props);
+const { computedCollapsed } = useSiderContext().provide(props, emits);
 // 宽度
 const asideWidth = ref<number>(_width.value);
 // 计算的宽度
 const computedWidth = computed(() => valueToPx(asideWidth.value));
 // 计算width
 const collapsedWidth = computed(() => valueToPx(_collapsedWidth.value));
-// 受控的收缩
-const computedCollapsed = useControlValue<boolean>(
-  collapsed,
-  defaultCollapsed.value,
-  (val) => {
-    emits('update:collapsed', val);
-  }
-);
 // 展示trigger
 const showTrigger = computed(() => {
   return !hideTrigger.value && collapsible.value;

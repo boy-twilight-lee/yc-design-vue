@@ -81,17 +81,17 @@ const handleAdd = () => {
   const checked = [...sourceChecked.value];
   computedValue.value = [...computedValue.value, ...sourceChecked.value];
   computedSelected.value = computedSelected.value.filter(
-    (item: string) => !checked.includes(item)
+    (item) => !checked.includes(item)
   );
 };
 // 处理删除
 const handleDel = () => {
   const checked = [...targetChecked.value];
   computedValue.value = computedValue.value.filter(
-    (item: string) => !checked.includes(item)
+    (item) => !checked.includes(item)
   );
   computedSelected.value = computedSelected.value.filter(
-    (item: string) => !checked.includes(item)
+    (item) => !checked.includes(item)
   );
 };
 </script>

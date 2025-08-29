@@ -16,7 +16,7 @@ import {
   ExpandIconPosition,
 } from '../type';
 import { Props, RequiredDeep } from '@shared/type';
-import { isUndefined, useControlValue } from '@shared/utils';
+import { useControlValue } from '@shared/utils';
 
 export const COLLAPSE_CONTEXT_KEY = 'collapse-context';
 export type CollapseContext = {

@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { MenuProps, MenuEmits, MenuSlots } from './type';
 import { mediaQueryHandler } from '@shared/utils';
 import { IconMenuFold, IconMenuUnfold } from '@shared/icons';
@@ -38,7 +38,7 @@ defineOptions({
 });
 defineSlots<MenuSlots>();
 const props = withDefaults(defineProps<MenuProps>(), {
-  theme: 'light',
+  theme: undefined,
   mode: 'vertical',
   levelIndent: 20,
   autoOpen: false,
@@ -66,7 +66,7 @@ const emits = defineEmits<MenuEmits>();
 // menuredf
 const menuRef = ref<HTMLDivElement>();
 // 注入数据
-const { computedCollapsed, collapsedWidth, breakpoint, menuTree, max } =
+const { computedCollapsed, collapsedWidth, breakpoint, menuTree, max, theme } =
   useContext().provide(props, emits, menuRef);
 // 处理点击
 const handleClick = () => {

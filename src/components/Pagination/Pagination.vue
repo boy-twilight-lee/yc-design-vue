@@ -153,7 +153,7 @@ const handleBlur = async (e: Event) => {
   await sleep(0);
   const target = e.target as HTMLInputElement;
   if (+target.value != computedCurrent.value) {
-    target.value = computedCurrent.value;
+    target.value = String(computedCurrent.value);
   }
 };
 </script>

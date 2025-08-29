@@ -173,7 +173,9 @@ const handleOpenPicker = (i: number) => {
   curIndex.value = i;
   computedVisible.value = true;
   panelRef.value?.scroll(
-    isArray(computedValue.value) ? computedValue.value[i] : computedValue.value
+    (isArray(computedValue.value)
+      ? computedValue.value[i]
+      : computedValue.value) as string
   );
 };
 // 处理点击到外面

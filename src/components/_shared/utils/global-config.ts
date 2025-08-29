@@ -22,16 +22,15 @@ export interface ConfigProviderProvide {
   popupContainer: Ref<PopupContainer>;
   updateAtScroll: Ref<boolean>;
   scrollToClose: Ref<boolean>;
-  exchangeTime: Ref<boolean>;
   slots: Partial<ConfigconfigSlots>;
 }
 
-type ValueType = string | number | boolean | PopupContainer | undefined;
+type ValueType = string | number | boolean | PopupContainer | undefined | any;
 
 const getVar = (value: Ref<ValueType>, _value: Ref<ValueType>) => {
   return computed(() => {
     return isUndefined(value?.value) ||
-      (isString(value?.value) && !value?.value?.length)
+      (isString(value.value) && !value.value.length)
       ? _value.value
       : value.value;
   });
@@ -45,14 +44,12 @@ export const getGlobalConfig = (props: Props = {}) => {
     size: _size,
     updateAtScroll: _updateAtScroll,
     scrollToClose: _scrollToClose,
-    exchangeTime: _exchangeTime,
     popupContainer: _popupContainer,
   } = inject<ConfigProviderProvide>(CONFIG_PROVIDER_PROVIDE_KEY, {
     zIndex: ref(1001),
     size: ref('medium'),
     updateAtScroll: ref(true),
     scrollToClose: ref(false),
-    exchangeTime: ref(true),
     popupContainer: ref('body'),
     slots: {},
   });
@@ -78,7 +75,6 @@ export const getGlobalConfig = (props: Props = {}) => {
     updateAtScroll: getVar(updateAtScroll, _updateAtScroll),
     scrollToClose: getVar(scrollToClose, _scrollToClose),
     popupContainer: getVar(popupContainer, _popupContainer),
-    exchangeTime: getVar(exchangeTime, _exchangeTime),
     renderEmpty,
     renderLoading,
   };

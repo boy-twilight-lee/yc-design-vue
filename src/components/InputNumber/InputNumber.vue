@@ -1,6 +1,6 @@
 <template>
   <yc-input
-    :model-value="computedValue"
+    :model-value="<string>computedValue"
     :allow-clear="allowClear"
     :disabled="disabled"
     :readonly="readonly"
@@ -202,7 +202,7 @@ function handlePrecision(value: InputNumberValue, type: 'number' | 'string') {
 }
 // 处理点击
 const handleStep = (type: 'minus' | 'plus') => {
-  const handleValue = +parserValue(computedValue.value);
+  const handleValue = +parserValue(computedValue.value as string);
   let value =
     type == 'minus' ? handleValue - step.value : handleValue + step.value;
   value = value < min.value ? min.value : value;
@@ -222,7 +222,7 @@ const handleUpdateValue = (
     emits('pressEnter', e as KeyboardEvent);
   }
   if (!computedValue.value) return;
-  let value = +parserValue(computedValue.value);
+  let value = +parserValue(computedValue.value as string);
   value = value < min.value ? min.value : value;
   value = value > max.value ? max.value : value;
   // 处理精度

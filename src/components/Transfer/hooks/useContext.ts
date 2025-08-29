@@ -102,12 +102,12 @@ export default () => {
     // 数据checked
     const sourceChecked = computed(() => {
       return computedSelected.value.filter(
-        (item: string) => !computedValueMap.value.has(item)
+        (item) => !computedValueMap.value.has(item)
       );
     });
     // 目标checked
     const targetChecked = computed(() => {
-      return computedSelected.value.filter((item: string) =>
+      return computedSelected.value.filter((item) =>
         computedValueMap.value.has(item)
       );
     });

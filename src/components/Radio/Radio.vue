@@ -14,10 +14,10 @@
       type="radio"
       class="yc-radio-target"
       :value="value"
-      :checked="checked"
+      :checked="<boolean>checked"
       :disabled="computedDisabled"
     />
-    <slot name="radio" :checked="checked" :disabled="computedDisabled">
+    <slot name="radio" :checked="<boolean>checked" :disabled="computedDisabled">
       <template v-if="computedType == 'radio'">
         <icon-button
           :hover-size="24"

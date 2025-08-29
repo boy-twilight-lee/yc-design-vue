@@ -31,6 +31,7 @@ import {
 import { SubMenu, MenuItem } from '../index';
 import { nanoid } from 'nanoid';
 import { useResizeObserver } from '@vueuse/core';
+import useSiderContext from '@/components/Layout/hooks/useSiderContext';
 
 const MENU_CONTEXT_KEY = 'menu-context';
 type MenuContext = {
@@ -205,12 +206,13 @@ export default () => {
       tooltipProps,
       autoOpenSelected,
       mode,
-      theme,
       autoScrollIntoView,
       scrollConfig,
       collapsedWidth,
       popupMaxHeight: _popupMaxHeight,
     } = toRefs(props as MenuProps);
+    const { theme: injectTheme, collapsed: injectCollapsed } =
+      useSiderContext().inject();
     // 选中的key
     const computedSelectedKeys = useControlValue<string>(
       selectedKeys,
@@ -228,6 +230,9 @@ export default () => {
           computedOpenKeys.value = [];
         }
         emits('update:collapsed', val);
+      },
+      (val) => {
+        return val || injectCollapsed.value;
       }
     );
     // 展开的key
@@ -257,6 +262,8 @@ export default () => {
     const menuTree = computed(() => buildMenuTree(menuTreeNodes.value));
     // 最大能展示元素的个数
     const max = ref<number>(1000000);
+    // theme
+    const theme = computed(() => props.theme || injectTheme.value);
     // 横向宽度检测
     if (mode.value == 'horizontal') {
       useResizeObserver(
@@ -301,6 +308,7 @@ export default () => {
       emits,
     });
     return {
+      theme,
       computedCollapsed,
       breakpoint,
       collapsedWidth: computed(() => valueToPx(collapsedWidth.value)),

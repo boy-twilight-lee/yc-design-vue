@@ -268,7 +268,7 @@ const handleEvent = (type: string, e: Event, id?: string) => {
           !uniqueValue.value ||
           (uniqueValue.value &&
             !computedValue.value.find(
-              (item: ObjectData) => (item?.[value] ?? item) == inputVal
+              (item) => ((item as ObjectData)?.[value] ?? item) == inputVal
             ));
 
         if (!inputVal || !allowCreate.value || !isUnique) {
@@ -299,7 +299,7 @@ const handleEvent = (type: string, e: Event, id?: string) => {
           0,
           computedValue.value.length - 1
         );
-        emits('remove', value.value, e as MouseEvent);
+        emits('remove', (value as TagData).value, e as MouseEvent);
       }
       break;
     case 'clear':

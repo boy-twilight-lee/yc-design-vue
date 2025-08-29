@@ -19,23 +19,15 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   popupContainer: 'body',
   updateAtScroll: true,
   scrollToClose: false,
-  exchangeTime: true,
 });
-const {
-  zIndex,
-  size,
-  updateAtScroll,
-  scrollToClose,
-  exchangeTime,
-  popupContainer,
-} = toRefs(props);
+const { zIndex, size, updateAtScroll, scrollToClose, popupContainer } =
+  toRefs(props);
 provide<ConfigProviderProvide>(CONFIG_PROVIDER_PROVIDE_KEY, {
   slots,
   zIndex,
   size,
   updateAtScroll,
   scrollToClose,
-  exchangeTime,
   popupContainer,
 });
 </script>
