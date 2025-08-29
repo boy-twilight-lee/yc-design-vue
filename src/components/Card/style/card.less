@@ -10,7 +10,7 @@
 
   .yc-card-header {
     overflow: hidden;
-    border-bottom: 1px solid var(--color-border-2);
+    border-bottom: 1px solid var(--yc-card-border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,35 +51,21 @@
       }
     }
   }
-
-  body[yc-design-theme='dark'] & {
-    .yc-card-header {
-      border-bottom-color: var(--color-border);
-    }
-  }
 }
 // bordered
 .yc-card-bordered {
-  border: 1px solid var(--color-border-2);
+  border: 1px solid var(--yc-card-border-color);
   border-radius: 2px;
   .yc-card-body {
     .yc-card-cover {
       border-radius: 2px 2px 0 0;
     }
   }
-
-  body[yc-design-theme='dark'] & {
-    border-color: var(--color-border);
-  }
 }
 // hoverable
 .yc-card-hoverable {
   &:hover {
-    box-shadow: 0 4px 10px var(--color-neutral-2);
-  }
-
-  body[yc-design-theme='dark'] &:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--yc-card-hover-shadow);
   }
 }
 // loading

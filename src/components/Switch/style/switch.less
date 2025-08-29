@@ -40,6 +40,12 @@
 }
 // unchecked
 .yc-switch-unchecked {
+  &:not(.yc-switch-shape-line) {
+    background-color: var(--yc-switch-unchecked-bg);
+  }
+  &.yc-switch-shape-line::after {
+    background-color: var(--yc-switch-unchecked-bg);
+  }
   .yc-switch-handle {
     background-color: var(--color-bg-white);
     color: var(--color-neutral-3);
@@ -51,6 +57,12 @@
 }
 // checked
 .yc-switch-checked {
+  &:not(.yc-switch-shape-line) {
+    background-color: var(--yc-switch-checked-bg);
+  }
+  &.yc-switch-shape-line::after {
+    background-color: var(--yc-switch-checked-bg);
+  }
   .yc-switch-handle {
     background-color: var(--color-bg-white);
     color: rgb(var(--primary-6));
@@ -68,13 +80,13 @@
 .yc-switch-disabled {
   &.yc-switch-unchecked {
     &:not(.yc-switch-shape-line) {
-      background-color: var(--color-neutral-2);
+      background-color: var(--yc-switch-disabled-unchecked-bg);
     }
-    &::after {
-      background-color: var(--color-neutral-2);
+    &.yc-switch-shape-line::after {
+      background-color: var(--yc-switch-disabled-unchecked-bg);
     }
     .yc-switch-handle {
-      color: var(--color-neutral-3);
+      color: var(--yc-switch-disabled-unchecked-handle-color);
     }
     .yc-switch-text {
       color: var(--color-white);
@@ -82,10 +94,10 @@
   }
   &.yc-switch-checked {
     &:not(.yc-switch-shape-line) {
-      background-color: rgb(var(--primary-3));
+      background-color: var(--yc-switch-disabled-checked-bg);
     }
-    &::after {
-      background-color: rgb(var(--primary-3));
+    &.yc-switch-shape-line::after {
+      background-color: var(--yc-switch-disabled-checked-bg);
     }
     .yc-switch-handle {
       color: rgb(var(--primary-3));
@@ -180,53 +192,5 @@
   border-radius: 2px;
   .yc-switch-handle {
     border-radius: 2px;
-  }
-}
-
-html[yc-design-theme='dark'] {
-  .yc-switch-unchecked {
-    background-color: var(--color-fill-4);
-    .yc-switch-handle {
-      color: var(--color-neutral-3);
-    }
-    &.yc-switch-shape-line {
-      background-color: transparent;
-      &::after {
-        background-color: var(--color-fill-4);
-      }
-    }
-  }
-  .yc-switch-checked {
-    background-color: rgb(var(--primary-6));
-    &.yc-switch-shape-line {
-      background-color: transparent;
-      &::after {
-        background-color: rgb(var(--primary-6));
-      }
-    }
-  }
-  .yc-switch-loading,
-  .yc-switch-disabled {
-    &.yc-switch-unchecked {
-      background-color: var(--color-fill-2);
-      .yc-switch-handle {
-        color: var(--color-fill-2);
-      }
-      &.yc-switch-shape-line {
-        background-color: transparent;
-        &::after {
-          background-color: var(--color-fill-2);
-        }
-      }
-    }
-    &.yc-switch-checked {
-      background-color: var(--color-primary-light-3);
-      &.yc-switch-shape-line {
-        background: transparent;
-        &::after {
-          background-color: var(--color-primary-light-3);
-        }
-      }
-    }
   }
 }

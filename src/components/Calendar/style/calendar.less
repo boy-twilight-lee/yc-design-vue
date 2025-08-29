@@ -1,11 +1,7 @@
 .yc-calendar {
-  border: 1px solid var(--color-border-2);
+  border: 1px solid var(--yc-calendar-border-color);
   display: flex;
   flex-direction: column;
-
-  body[yc-design-theme='dark'] & {
-    border-color: var(--color-border);
-  }
 
   .yc-calendar-header {
     padding: 24px;
@@ -36,12 +32,8 @@
     height: 55px;
     width: 100%;
     padding: 0;
-    border-bottom: 1px solid var(--color-border-2);
+    border-bottom: 1px solid var(--yc-calendar-border-color);
     display: flex;
-
-    body[yc-design-theme='dark'] & {
-      border-bottom-color: var(--color-border);
-    }
 
     .yc-calendar-week-list-item {
       flex: 1;
@@ -57,18 +49,12 @@
       display: flex;
       height: 100px;
       &:not(:last-child) {
-        border-bottom: 1px solid var(--color-border-2);
-        body[yc-design-theme='dark'] & {
-          border-bottom-color: var(--color-border);
-        }
+        border-bottom: 1px solid var(--yc-calendar-border-color);
       }
       .yc-calendar-cell {
         width: calc(100% / 7);
         &:not(:last-child) {
-          border-right: 1px solid var(--color-border-2);
-          body[yc-design-theme='dark'] & {
-            border-right-color: var(--color-border);
-          }
+          border-right: 1px solid var(--yc-calendar-border-color);
         }
         .yc-calendar-date {
           width: 100%;
@@ -165,20 +151,14 @@
   .yc-calendar-year-row {
     display: flex;
     &:not(:last-child) {
-      border-bottom: 1px solid var(--color-border-2);
-      body[yc-design-theme='dark'] & {
-        border-bottom-color: var(--color-border);
-      }
+      border-bottom: 1px solid var(--yc-calendar-border-color);
     }
     .yc-calendar-year-cell {
       flex-shrink: 0;
       flex: 1;
       padding: 20px 8px;
       &:not(:last-child) {
-        border-right: 1px solid var(--color-border-2);
-        body[yc-design-theme='dark'] & {
-          border-right-color: var(--color-border);
-        }
+        border-right: 1px solid var(--yc-calendar-border-color);
       }
       .yc-calendar-year-cell-title {
         padding: 10px 6px;

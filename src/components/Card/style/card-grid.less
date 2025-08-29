@@ -2,20 +2,11 @@
   position: relative;
   width: 33.33%;
   box-shadow:
-    1px 0 0 0 var(--color-border-2),
-    0 1px 0 0 var(--color-border-2),
-    1px 1px 0 0 var(--color-border-2),
-    1px 0 0 0 var(--color-border-2) inset,
-    0 1px 0 0 var(--color-border-2) inset;
-
-  body[yc-design-theme='dark'] & {
-    box-shadow:
-      1px 0 0 0 var(--color-border),
-      0 1px 0 0 var(--color-border),
-      1px 1px 0 0 var(--color-border),
-      1px 0 0 0 var(--color-border) inset,
-      0 1px 0 0 var(--color-border) inset;
-  }
+    1px 0 0 0 var(--yc-card-grid-border-color),
+    0 1px 0 0 var(--yc-card-grid-border-color),
+    1px 1px 0 0 var(--yc-card-grid-border-color),
+    1px 0 0 0 var(--yc-card-grid-border-color) inset,
+    0 1px 0 0 var(--yc-card-grid-border-color) inset;
 
   &::before {
     content: '';
@@ -35,10 +26,6 @@
     z-index: 1;
   }
   &:hover::before {
-    box-shadow: 0 4px 10px var(--color-neutral-2);
-  }
-
-  body[yc-design-theme='dark'] &:hover::before {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--yc-card-grid-hover-shadow);
   }
 }

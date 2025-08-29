@@ -2,14 +2,14 @@
   padding: 0 12px;
   line-height: 36px;
   font-size: 14px;
-  color: var(--color-text-1);
+  color: var(--yc-select-option-color);
   text-align: left;
   display: flex;
   align-items: center;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
   &:not(.yc-select-option-disabled):hover {
-    color: var(--color-text-1);
-    background-color: var(--color-neutral-2);
+    color: var(--yc-select-option-color);
+    background-color: var(--yc-select-option-bg-hover);
   }
   .yc-select-option-icon,
   .yc-select-option-content,
@@ -39,29 +39,12 @@
 }
 // disabled
 .yc-select-option-disabled {
-  color: var(--color-text-4);
+  color: var(--yc-select-option-disabled-color);
   background: transparent;
   cursor: not-allowed;
 }
 // active
 .yc-select-option-active {
-  color: var(--color-text-1);
-  background-color: var(--color-neutral-2);
-}
-
-html[yc-design-theme='dark'] {
-  .yc-select-option {
-    color: rgb(var(--gray-9));
-    &:not(.yc-select-option-disabled):hover {
-      color: rgb(var(--gray-9));
-      background-color: var(--color-fill-2);
-    }
-  }
-  .yc-select-option-disabled {
-    color: rgb(var(--gray-4));
-  }
-  .yc-select-option-active {
-    color: rgb(var(--gray-9));
-    background-color: var(--color-fill-2);
-  }
+  color: var(--yc-select-option-color);
+  background-color: var(--yc-select-option-bg-hover);
 }

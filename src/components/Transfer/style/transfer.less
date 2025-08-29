@@ -6,7 +6,7 @@
     overflow: hidden;
     width: 200px;
     height: 224px;
-    border: 1px solid var(--color-border-2);
+    border: 1px solid var(--yc-transfer-view-border-color);
     border-radius: 2px;
     display: flex;
     flex-direction: column;
@@ -14,16 +14,16 @@
     .yc-transfer-view-header {
       height: 40px;
       padding: 0 10px;
-      color: var(--color-text-1);
+      color: var(--yc-transfer-header-color);
       font-weight: 500;
       font-size: 14px;
       line-height: 40px;
-      background-color: var(--color-neutral-1);
+      background-color: var(--yc-transfer-header-bg);
       display: flex;
       justify-content: space-between;
       align-items: center;
       .yc-transfer-view-header-count {
-        color: var(--color-text-3);
+        color: var(--yc-transfer-header-count-color);
         font-size: 12px;
         font-weight: 400;
       }
@@ -55,14 +55,14 @@
           max-width: 100%;
           padding: 0 12px;
           font-size: 14px;
-          color: var(--color-text-1);
+          color: var(--yc-transfer-item-color);
           display: flex;
           align-items: center;
           gap: 6px;
           transition: all 0.1s cubic-bezier(0, 0, 1, 1);
           &:hover {
-            color: var(--color-text-1);
-            background-color: var(--color-neutral-2);
+            color: var(--yc-transfer-item-color);
+            background-color: var(--yc-transfer-item-hover-bg);
           }
           .yc-checkbox {
             flex: 1;
@@ -71,7 +71,7 @@
             flex: 1;
           }
           &.yc-transfer-list-item-disabled {
-            color: var(--color-text-4);
+            color: var(--yc-transfer-item-disabled-color);
             background: transparent;
             cursor: not-allowed;
           }
@@ -99,35 +99,6 @@
   .yc-transfer-view {
     .yc-transfer-view-body {
       height: calc(100% - 88px);
-    }
-  }
-}
-
-html[yc-design-theme='dark'] {
-  .yc-transfer {
-    .yc-transfer-view {
-      border-color: var(--color-border);
-      .yc-transfer-view-header {
-        color: rgb(var(--gray-9));
-        background-color: var(--color-bg-2);
-        .yc-transfer-view-header-count {
-          color: rgb(var(--gray-6));
-        }
-      }
-      .yc-transfer-view-body {
-        .yc-transfer-list {
-          .yc-transfer-list-item {
-            color: rgb(var(--gray-9));
-            &:hover {
-              color: rgb(var(--gray-9));
-              background-color: var(--color-bg-4);
-            }
-            &.yc-transfer-list-item-disabled {
-              color: rgb(var(--gray-4));
-            }
-          }
-        }
-      }
     }
   }
 }

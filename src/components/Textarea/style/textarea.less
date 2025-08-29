@@ -4,7 +4,7 @@
   cursor: text;
   width: 100%;
   height: fit-content;
-  background-color: var(--color-fill-2);
+  background-color: var(--yc-textarea-bg);
   border: 1px solid transparent;
   border-radius: 2px;
   transition:
@@ -19,14 +19,14 @@
   align-items: center;
   &:not(.yc-textarea-disabled) {
     &:hover {
-      background-color: var(--color-fill-3);
+      background-color: var(--yc-textarea-bg-hover);
       border-color: transparent;
     }
     &:hover .yc-textarea-clear-button {
       visibility: visible;
     }
     &:focus-within {
-      background-color: var(--color-bg-white);
+      background-color: var(--yc-textarea-focus-bg);
       border-color: rgb(var(--primary-6));
       box-shadow: 0 0 0 0 var(--color-primary-light-2);
     }
@@ -37,7 +37,7 @@
     right: 10px;
     bottom: 6px;
     user-select: none;
-    color: var(--color-text-3);
+    color: var(--yc-textarea-secondary-color);
     font-size: 12px;
   }
   .yc-textarea-clear-button {
@@ -72,7 +72,7 @@
   .yc-textarea {
     resize: vertical;
     &::placeholder {
-      color: var(--color-text-3);
+      color: var(--yc-textarea-secondary-color);
     }
   }
   .yc-textarea-mirror {
@@ -97,8 +97,8 @@
       border-color: transparent;
     }
     &:focus-within {
-      background-color: var(--color-bg-white);
-      border-color: rgb(var(--danger-6));
+      background-color: var(--yc-textarea-focus-bg);
+      border-color: var(--yc-textarea-error-focus-border-color);
       box-shadow: 0 0 0 0 var(--color-danger-light-2);
     }
   }
@@ -110,51 +110,7 @@
     cursor: not-allowed;
   }
   border-color: transparent;
-  background-color: var(--color-fill-2);
-  color: var(--color-text-4);
-  -webkit-text-fill-color: var(--color-text-4);
-}
-
-html[yc-design-theme='dark'] {
-  .yc-textarea-wrapper {
-    background-color: var(--color-bg-2);
-    color: var(--color-text-1);
-    &:not(.yc-textarea-disabled) {
-      &:hover {
-        background-color: var(--color-bg-4);
-      }
-      &:focus-within {
-        background-color: var(--color-bg-1);
-        border-color: rgb(var(--primary-6));
-        box-shadow: 0 0 0 0 var(--color-primary-light-2);
-      }
-    }
-    .yc-textarea-word-limit {
-      color: rgb(var(--gray-6));
-    }
-    .yc-textarea {
-      &::placeholder {
-        color: rgb(var(--gray-6));
-      }
-    }
-  }
-
-  .yc-textarea-error {
-    background-color: var(--color-danger-light-1);
-    &:not(.yc-textarea-disabled) {
-      &:hover {
-        background-color: var(--color-danger-light-2);
-      }
-      &:focus-within {
-        background-color: var(--color-bg-1);
-        border-color: rgb(var(--danger-5));
-        box-shadow: 0 0 0 0 var(--color-danger-light-2);
-      }
-    }
-  }
-  .yc-textarea-disabled {
-    background-color: var(--color-bg-2);
-    color: rgb(var(--gray-4));
-    -webkit-text-fill-color: rgb(var(--gray-4));
-  }
+  background-color: var(--yc-textarea-bg);
+  color: var(--yc-textarea-disabled-color);
+  -webkit-text-fill-color: var(--yc-textarea-disabled-color);
 }

@@ -3,28 +3,14 @@
   position: relative;
   color: var(--color-white);
   font-size: 20px;
-  background-color: var(--color-neutral-4);
+  background-color: var(--yc-avatar-bg-color);
   white-space: nowrap;
   vertical-align: middle;
   display: inline-flex;
   align-items: center;
 
-  body[yc-design-theme='dark'] & {
-    background-color: rgb(var(--gray-3));
-    .yc-avatar-trigger-icon-button {
-      background-color: var(--color-neutral-2);
-      color: var(--color-neutral-6);
-    }
-    &:hover .yc-avatar-trigger-icon-button {
-      background-color: var(--color-neutral-3);
-    }
-    .yc-avatar-trigger-icon-mask {
-      background-color: var(--color-mask-bg);
-    }
-  }
-
   &:hover .yc-avatar-trigger-icon-button {
-    background-color: var(--color-neutral-3);
+    background-color: var(--yc-avatar-trigger-icon-bg-color-hover);
   }
   &:hover .yc-avatar-trigger-icon-mask {
     opacity: 1;
@@ -62,11 +48,11 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    color: var(--color-neutral-4);
+    color: var(--yc-avatar-trigger-icon-color);
     font-size: 12px;
     line-height: 20px;
     text-align: center;
-    background-color: var(--color-neutral-2);
+    background-color: var(--yc-avatar-trigger-icon-bg-color);
     transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
   }
   .yc-avatar-trigger-icon-mask {

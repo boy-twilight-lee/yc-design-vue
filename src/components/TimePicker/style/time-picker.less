@@ -1,17 +1,17 @@
 .yc-picker {
   position: relative;
   padding: 4px 11px 4px 4px;
-  background-color: var(--color-fill-2);
+  background-color: var(--yc-picker-bg);
   border: 1px solid transparent;
   border-radius: 2px;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
-  color: var(--color-text-2);
+  color: var(--yc-picker-color);
   line-height: 1.5715;
   display: inline-flex;
   align-items: center;
 
   &:not(.yc-picker-disabled):hover {
-    background-color: var(--color-fill-3);
+    background-color: var(--yc-picker-bg-hover);
     border-color: transparent;
   }
   .yc-picker-has-prefix,
@@ -22,7 +22,7 @@
   .yc-picker-prefix {
     margin-right: 4px;
     font-size: 14px;
-    color: var(--color-text-2);
+    color: var(--yc-picker-color);
   }
   .yc-picker-input {
     flex: 1;
@@ -40,19 +40,19 @@
       text-align: left;
       transition: all 0.1s cubic-bezier(0, 0, 1, 1);
       &::placeholder {
-        color: var(--color-text-3);
+        color: var(--yc-picker-placeholder-color);
       }
     }
     &.yc-picker-input-active {
       input {
-        background-color: var(--color-fill-2);
+        background-color: var(--yc-picker-input-active-bg);
       }
     }
   }
   .yc-picker-separator {
     min-width: 10px;
     padding: 0 8px;
-    color: var(--color-text-3);
+    color: var(--yc-picker-separator-color);
   }
   .yc-picker-suffix {
     margin-left: 4px;
@@ -84,11 +84,11 @@
 }
 // focus
 .yc-picker-focus {
-  background-color: var(--color-bg-white);
+  background-color: var(--yc-picker-focus-bg);
   border-color: rgb(var(--primary-6));
-  box-shadow: 0 0 0 0 var(--color-primary-light-2);
+  box-shadow: var(--yc-picker-focus-shadow);
   &:not(.yc-picker-disabled):hover {
-    background-color: var(--color-bg-white);
+    background-color: var(--yc-picker-focus-bg);
     border-color: rgb(var(--primary-6));
   }
 }
@@ -100,25 +100,25 @@
     background-color: var(--color-danger-light-2);
   }
   &.yc-picker-focus {
-    background-color: var(--color-bg-white);
-    border-color: rgb(var(--danger-6));
-    box-shadow: 0 0 0 0 var(--color-danger-light-2);
+    background-color: var(--yc-picker-focus-bg);
+    border-color: var(--yc-picker-error-focus-border-color);
+    box-shadow: var(--yc-picker-error-focus-shadow);
     &:not(.yc-picker-disabled):hover {
-      background-color: var(--color-bg-white);
+      background-color: var(--yc-picker-focus-bg);
     }
   }
 }
 // disabled
 .yc-picker-disabled {
   cursor: not-allowed;
-  background-color: var(--color-fill-2);
+  background-color: var(--yc-picker-disabled-bg);
   border-color: transparent;
-  color: var(--color-text-4);
+  color: var(--yc-picker-disabled-color);
   .yc-picker-input {
     input {
       cursor: not-allowed;
       &::placeholder {
-        color: var(--color-text-4);
+        color: var(--yc-picker-disabled-placeholder-color);
       }
     }
   }
@@ -138,65 +138,3 @@ each(@size, {
     }
   }
 });
-
-html[yc-design-theme='dark'] {
-  .yc-picker {
-    background-color: var(--color-bg-2);
-    color: var(--color-text-1);
-    &:not(.yc-picker-disabled):hover {
-      background-color: var(--color-bg-4);
-    }
-    .yc-picker-prefix {
-      color: var(--color-text-1);
-    }
-    .yc-picker-input {
-      input {
-        &::placeholder {
-          color: rgb(var(--gray-6));
-        }
-      }
-      &.yc-picker-input-active {
-        input {
-          background-color: var(--color-bg-2);
-        }
-      }
-    }
-    .yc-picker-separator {
-      color: rgb(var(--gray-6));
-    }
-  }
-  .yc-picker-focus {
-    background-color: var(--color-bg-2);
-    border-color: rgb(var(--primary-6));
-    box-shadow: 0 0 0 0 var(--color-primary-light-1);
-    &:not(.yc-picker-disabled):hover {
-      background-color: var(--color-bg-2);
-      border-color: rgb(var(--primary-6));
-    }
-  }
-  .yc-picker-error {
-    background-color: var(--color-danger-light-1);
-    &:not(.yc-picker-disabled):hover {
-      background-color: var(--color-danger-light-2);
-    }
-    &.yc-picker-focus {
-      background-color: var(--color-bg-2);
-      border-color: rgb(var(--danger-5));
-      box-shadow: 0 0 0 0 var(--color-danger-light-1);
-      &:not(.yc-picker-disabled):hover {
-        background-color: var(--color-bg-2);
-      }
-    }
-  }
-  .yc-picker-disabled {
-    background-color: var(--color-bg-2);
-    color: rgb(var(--gray-4));
-    .yc-picker-input {
-      input {
-        &::placeholder {
-          color: rgb(var(--gray-4));
-        }
-      }
-    }
-  }
-}
