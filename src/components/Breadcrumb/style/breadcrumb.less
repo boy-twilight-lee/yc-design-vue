@@ -1,20 +1,11 @@
 .yc-breadcrumb {
-  --yc-breadcrumb-text-color: rgb(78, 89, 105);
-  --yc-breadcrumb-last-child-color: rgb(29, 33, 41);
-  html[yc-design-dark] & {
-    --yc-breadcrumb-text-color: rgb(173, 179, 191);
-    --yc-breadcrumb-last-child-color: rgb(255, 255, 255);
-  }
-}
-
-.yc-breadcrumb {
   display: inline-flex;
   align-items: center;
-  color: var(--yc-breadcrumb-text-color);
+  color: var(--color-text-3);
   font-size: 14px;
   &:deep(.yc-breadcrumb-item) {
     &:last-child {
-      color: var(--yc-breadcrumb-last-child-color);
+      color: var(--color-text-1);
       font-weight: 500;
     }
   }
