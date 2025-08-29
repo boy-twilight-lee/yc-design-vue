@@ -1,106 +1,4 @@
 .yc-tag {
-  --yc-tag-color-white: #fff;
-  --yc-tag-preset-text-color: rgb(29, 33, 41);
-  --yc-tag-preset-bg-color: #fff;
-  --yc-tag-preset-bg-hover-color: rgb(242, 243, 245);
-  --yc-tag-preset-border-color: rgb(229, 230, 235);
-  --yc-tag-default-text-color: rgb(29, 33, 41);
-  --yc-tag-default-icon-color: rgb(78, 89, 105);
-  --yc-tag-default-bg-color: rgb(242, 243, 245);
-  --yc-tag-default-bg-hover-color: rgb(229, 230, 235);
-  --yc-tag-default-border-color: rgb(229, 230, 235);
-  --yc-tag-red-text-color: rgb(245, 63, 63);
-  --yc-tag-red-bg-color: rgb(255, 236, 232);
-  --yc-tag-red-bg-hover-color: rgb(253, 205, 197);
-  --yc-tag-orangered-text-color: rgb(247, 114, 52);
-  --yc-tag-orangered-bg-color: rgb(255, 243, 232);
-  --yc-tag-orangered-bg-hover-color: rgb(253, 221, 195);
-  --yc-tag-orange-text-color: rgb(255, 125, 0);
-  --yc-tag-orange-bg-color: rgb(255, 247, 232);
-  --yc-tag-orange-bg-hover-color: rgb(255, 228, 186);
-  --yc-tag-gold-text-color: rgb(247, 186, 30);
-  --yc-tag-gold-bg-color: rgb(255, 252, 232);
-  --yc-tag-gold-bg-hover-color: rgb(252, 233, 150);
-  --yc-tag-lime-text-color: rgb(159, 219, 29);
-  --yc-tag-lime-bg-color: rgb(252, 255, 232);
-  --yc-tag-lime-bg-hover-color: rgb(237, 248, 187);
-  --yc-tag-green-text-color: rgb(0, 180, 134);
-  --yc-tag-green-bg-color: rgb(232, 255, 234);
-  --yc-tag-green-bg-hover-color: rgb(175, 240, 181);
-  --yc-tag-cyan-text-color: rgb(20, 201, 201);
-  --yc-tag-cyan-bg-color: rgb(232, 255, 251);
-  --yc-tag-cyan-bg-hover-color: rgb(183, 244, 236);
-  --yc-tag-blue-text-color: rgb(52, 145, 250);
-  --yc-tag-blue-bg-color: rgb(232, 247, 255);
-  --yc-tag-blue-bg-hover-color: rgb(195, 231, 254);
-  --yc-tag-arcoblue-text-color: rgb(22, 93, 255);
-  --yc-tag-arcoblue-bg-color: rgb(232, 243, 255);
-  --yc-tag-arcoblue-bg-hover-color: rgb(190, 218, 255);
-  --yc-tag-purple-text-color: rgb(144, 46, 209);
-  --yc-tag-purple-bg-color: rgb(245, 232, 255);
-  --yc-tag-purple-bg-hover-color: rgb(221, 190, 246);
-  --yc-tag-pinkpurple-text-color: rgb(217, 26, 217);
-  --yc-tag-pinkpurple-bg-color: rgb(255, 232, 251);
-  --yc-tag-pinkpurple-bg-hover-color: rgb(247, 186, 239);
-  --yc-tag-magenta-text-color: rgb(245, 49, 157);
-  --yc-tag-magenta-bg-color: rgb(255, 232, 241);
-  --yc-tag-magenta-bg-hover-color: rgb(253, 194, 219);
-  --yc-tag-gray-text-color: rgb(134, 144, 156);
-  --yc-tag-gray-bg-color: rgb(242, 243, 245);
-  --yc-tag-gray-bg-hover-color: rgb(229, 230, 235);
-  html[yc-design-dark] & {
-    --yc-tag-preset-text-color: rgba(255, 255, 255, 0.9);
-    --yc-tag-preset-bg-color: rgba(255, 255, 255, 0.08);
-    --yc-tag-preset-bg-hover-color: rgba(255, 255, 255, 0.12);
-    --yc-tag-preset-border-color: rgba(255, 255, 255, 0.12);
-    --yc-tag-default-text-color: rgba(255, 255, 255, 0.9);
-    --yc-tag-default-icon-color: rgba(255, 255, 255, 0.7);
-    --yc-tag-default-bg-color: rgba(255, 255, 255, 0.08);
-    --yc-tag-default-bg-hover-color: rgba(255, 255, 255, 0.12);
-    --yc-tag-default-border-color: rgba(255, 255, 255, 0.12);
-    --yc-tag-red-text-color: rgb(255, 106, 106);
-    --yc-tag-red-bg-color: rgba(255, 106, 106, 0.12);
-    --yc-tag-red-bg-hover-color: rgba(255, 106, 106, 0.2);
-    --yc-tag-orangered-text-color: rgb(255, 146, 92);
-    --yc-tag-orangered-bg-color: rgba(255, 146, 92, 0.12);
-    --yc-tag-orangered-bg-hover-color: rgba(255, 146, 92, 0.2);
-    --yc-tag-orange-text-color: rgb(255, 167, 64);
-    --yc-tag-orange-bg-color: rgba(255, 167, 64, 0.12);
-    --yc-tag-orange-bg-hover-color: rgba(255, 167, 64, 0.2);
-    --yc-tag-gold-text-color: rgb(255, 209, 77);
-    --yc-tag-gold-bg-color: rgba(255, 209, 77, 0.12);
-    --yc-tag-gold-bg-hover-color: rgba(255, 209, 77, 0.2);
-    --yc-tag-lime-text-color: rgb(187, 237, 77);
-    --yc-tag-lime-bg-color: rgba(187, 237, 77, 0.12);
-    --yc-tag-lime-bg-hover-color: rgba(187, 237, 77, 0.2);
-    --yc-tag-green-text-color: rgb(64, 214, 173);
-    --yc-tag-green-bg-color: rgba(64, 214, 173, 0.12);
-    --yc-tag-green-bg-hover-color: rgba(64, 214, 173, 0.2);
-    --yc-tag-cyan-text-color: rgb(77, 237, 237);
-    --yc-tag-cyan-bg-color: rgba(77, 237, 237, 0.12);
-    --yc-tag-cyan-bg-hover-color: rgba(77, 237, 237, 0.2);
-    --yc-tag-blue-text-color: rgb(106, 178, 255);
-    --yc-tag-blue-bg-color: rgba(106, 178, 255, 0.12);
-    --yc-tag-blue-bg-hover-color: rgba(106, 178, 255, 0.2);
-    --yc-tag-arcoblue-text-color: rgb(82, 133, 255);
-    --yc-tag-arcoblue-bg-color: rgba(82, 133, 255, 0.12);
-    --yc-tag-arcoblue-bg-hover-color: rgba(82, 133, 255, 0.2);
-    --yc-tag-purple-text-color: rgb(187, 106, 255);
-    --yc-tag-purple-bg-color: rgba(187, 106, 255, 0.12);
-    --yc-tag-purple-bg-hover-color: rgba(187, 106, 255, 0.2);
-    --yc-tag-pinkpurple-text-color: rgb(255, 106, 247);
-    --yc-tag-pinkpurple-bg-color: rgba(255, 106, 247, 0.12);
-    --yc-tag-pinkpurple-bg-hover-color: rgba(255, 106, 247, 0.2);
-    --yc-tag-magenta-text-color: rgb(255, 106, 187);
-    --yc-tag-magenta-bg-color: rgba(255, 106, 187, 0.12);
-    --yc-tag-magenta-bg-hover-color: rgba(255, 106, 187, 0.2);
-    --yc-tag-gray-text-color: rgba(255, 255, 255, 0.6);
-    --yc-tag-gray-bg-color: rgba(255, 255, 255, 0.08);
-    --yc-tag-gray-bg-hover-color: rgba(255, 255, 255, 0.12);
-  }
-}
-
-.yc-tag {
   padding: 0 8px;
   vertical-align: middle;
   border: 1px solid transparent;
@@ -177,103 +75,103 @@ each(@size, .(@value,@name){
 });
 // color
 .yc-tag-preset-color {
-  color: var(--yc-tag-preset-text-color);
-  background-color: var(--yc-tag-preset-bg-color);
+  color: var(--color-text-1);
+  background-color: var(--color-bg-1);
   &:hover {
-    background-color: var(--yc-tag-preset-bg-hover-color);
+    background-color: var(--color-fill-2);
   }
   &.yc-tag-bordered {
-    border-color: var(--yc-tag-preset-border-color);
+    border-color: var(--color-border-2);
   }
 }
 .yc-tag-custom-color {
-  color: var(--yc-tag-color-white);
+  color: var(--color-white);
 }
 @color: {
   @default: {
-    color: var(--yc-tag-default-text-color);
-    bg: var(--yc-tag-default-bg-color);
-    hover: var(--yc-tag-default-bg-hover-color);
-    border: var(--yc-tag-default-border-color);
-    icon: var(--yc-tag-default-icon-color);
+    color: var(--color-text-1);
+    bg: var(--color-fill-2);
+    hover: var(--color-fill-3);
+    border: var(--color-border-2);
+    icon: var(--color-text-2);
   };
   @red: {
-    color: var(--yc-tag-red-text-color);
-    bg: var(--yc-tag-red-bg-color);
-    hover: var(--yc-tag-red-bg-hover-color);
-    border: var(--yc-tag-red-text-color);
+    color: rgb(var(--red-6));
+    bg: rgb(var(--red-1));
+    hover: rgb(var(--red-2));
+    border: rgb(var(--red-6));
   };
   @orangered: {
-    color: var(--yc-tag-orangered-text-color);
-    bg: var(--yc-tag-orangered-bg-color);
-    hover: var(--yc-tag-orangered-bg-hover-color);
-    border: var(--yc-tag-orangered-text-color);
+    color: rgb(var(--orangered-6));
+    bg: rgb(var(--orangered-1));
+    hover: rgb(var(--orangered-2));
+    border: rgb(var(--orangered-6));
   };
   @orange: {
-    color: var(--yc-tag-orange-text-color);
-    bg: var(--yc-tag-orange-bg-color);
-    hover: var(--yc-tag-orange-bg-hover-color);
-    border: var(--yc-tag-orange-text-color);
+    color: rgb(var(--orange-6));
+    bg: rgb(var(--orange-1));
+    hover: rgb(var(--orange-2));
+    border: rgb(var(--orange-6));
   };
   @gold: {
-    color: var(--yc-tag-gold-text-color);
-    bg: var(--yc-tag-gold-bg-color);
-    hover: var(--yc-tag-gold-bg-hover-color);
-    border: var(--yc-tag-gold-text-color);
+    color: rgb(var(--gold-6));
+    bg: rgb(var(--gold-1));
+    hover: rgb(var(--gold-3));
+    border: rgb(var(--gold-6));
   };
   @lime: {
-    color: var(--yc-tag-lime-text-color);
-    bg: var(--yc-tag-lime-bg-color);
-    hover: var(--yc-tag-lime-bg-hover-color);
-    border: var(--yc-tag-lime-text-color);
+    color: rgb(var(--lime-6));
+    bg: rgb(var(--lime-1));
+    hover: rgb(var(--lime-2));
+    border: rgb(var(--lime-6));
   };
   @green: {
-    color: var(--yc-tag-green-text-color);
-    bg: var(--yc-tag-green-bg-color);
-    hover: var(--yc-tag-green-bg-hover-color);
-    border: var(--yc-tag-green-text-color);
+    color: rgb(var(--green-6));
+    bg: rgb(var(--green-1));
+    hover: rgb(var(--green-2));
+    border: rgb(var(--green-6));
   };
   @cyan: {
-    color: var(--yc-tag-cyan-text-color);
-    bg: var(--yc-tag-cyan-bg-color);
-    hover: var(--yc-tag-cyan-bg-hover-color);
-    border: var(--yc-tag-cyan-text-color);
+    color: rgb(var(--cyan-6));
+    bg: rgb(var(--cyan-1));
+    hover: rgb(var(--cyan-2));
+    border: rgb(var(--cyan-6));
   };
   @blue: {
-    color: var(--yc-tag-blue-text-color);
-    bg: var(--yc-tag-blue-bg-color);
-    hover: var(--yc-tag-blue-bg-hover-color);
-    border: var(--yc-tag-blue-text-color);
+    color: rgb(var(--blue-6));
+    bg: rgb(var(--blue-1));
+    hover: rgb(var(--blue-2));
+    border: rgb(var(--blue-6));
   };
   @arcoblue: {
-    color: var(--yc-tag-arcoblue-text-color);
-    bg: var(--yc-tag-arcoblue-bg-color);
-    hover: var(--yc-tag-arcoblue-bg-hover-color);
-    border: var(--yc-tag-arcoblue-text-color);
+    color: rgb(var(--primary-6));
+    bg: rgb(var(--primary-1));
+    hover: rgb(var(--primary-2));
+    border: rgb(var(--primary-6));
   };
   @purple: {
-    color: var(--yc-tag-purple-text-color);
-    bg: var(--yc-tag-purple-bg-color);
-    hover: var(--yc-tag-purple-bg-hover-color);
-    border: var(--yc-tag-purple-text-color);
+    color: rgb(var(--purple-6));
+    bg: rgb(var(--purple-1));
+    hover: rgb(var(--purple-2));
+    border: rgb(var(--purple-6));
   };
   @pinkpurple: {
-    color: var(--yc-tag-pinkpurple-text-color);
-    bg: var(--yc-tag-pinkpurple-bg-color);
-    hover: var(--yc-tag-pinkpurple-bg-hover-color);
-    border: var(--yc-tag-pinkpurple-text-color);
+    color: rgb(var(--pinkpurple-6));
+    bg: rgb(var(--pinkpurple-1));
+    hover: rgb(var(--pinkpurple-2));
+    border: rgb(var(--pinkpurple-6));
   };
   @magenta: {
-    color: var(--yc-tag-magenta-text-color);
-    bg: var(--yc-tag-magenta-bg-color);
-    hover: var(--yc-tag-magenta-bg-hover-color);
-    border: var(--yc-tag-magenta-text-color);
+    color: rgb(var(--magenta-6));
+    bg: rgb(var(--magenta-1));
+    hover: rgb(var(--magenta-2));
+    border: rgb(var(--magenta-6));
   };
   @gray: {
-    color: var(--yc-tag-gray-text-color);
-    bg: var(--yc-tag-gray-bg-color);
-    hover: var(--yc-tag-gray-bg-hover-color);
-    border: var(--yc-tag-gray-text-color);
+    color: rgb(var(--gray-6));
+    bg: rgb(var(--gray-2));
+    hover: rgb(var(--gray-3));
+    border: rgb(var(--gray-6));
   };
 };
 
