@@ -1,48 +1,27 @@
 .yc-image-preview {
-  --yc-image-preview-mask-bg: rgba(29, 33, 41, 0.6);
-  --yc-image-preview-toolbar-bg: #fff;
-  --yc-image-preview-toolbar-action-color: rgb(78, 89, 105);
-  --yc-image-preview-toolbar-action-hover-color: rgb(22, 93, 255);
-  --yc-image-preview-toolbar-action-hover-bg: rgb(242, 243, 245);
-  --yc-image-preview-toolbar-action-disabled-color: rgb(201, 205, 212);
-  --yc-image-preview-close-btn-bg: rgba(0, 0, 0, 0.5);
-  --yc-image-preview-arrow-color: #fff;
-  --yc-image-preview-arrow-bg: #ffffff4d;
-  --yc-image-preview-arrow-hover-bg: #ffffff80;
-  html[yc-design-dark] & {
-    --yc-image-preview-mask-bg: rgba(0, 0, 0, 0.6);
-    --yc-image-preview-toolbar-bg: #2a2f3a;
-    --yc-image-preview-toolbar-action-color: #a1a8b8;
-    --yc-image-preview-toolbar-action-hover-color: #5c8dff;
-    --yc-image-preview-toolbar-action-hover-bg: #303642;
-    --yc-image-preview-toolbar-action-disabled-color: #484d57;
-    --yc-image-preview-close-btn-bg: rgba(255, 255, 255, 0.1);
-    --yc-image-preview-arrow-color: #e5e6eb;
-    --yc-image-preview-arrow-bg: rgba(255, 255, 255, 0.1);
-    --yc-image-preview-arrow-hover-bg: rgba(255, 255, 255, 0.2);
-  }
-}
-
-.yc-image-preview {
   position: fixed;
   height: 100%;
   width: 100%;
   left: 0;
   top: 0;
+
   .yc-image-preview-mask {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: var(--yc-image-preview-mask-bg);
+    background-color: var(--color-bg-mask);
   }
+
   .yc-image-preview-wrapper {
     position: absolute;
     height: 100%;
     width: 100%;
+
     .yc-image-preview-img-container {
       height: 100%;
       width: 100%;
       position: absolute;
+
       .yc-image-preview-img {
         left: 50%;
         top: 50%;
@@ -55,40 +34,46 @@
         user-select: none;
       }
     }
+
     .yc-image-preview-toolbar {
       position: absolute;
       bottom: 46px;
       left: 50%;
       transform: translate(-50%);
       padding: 4px 16px;
-      background-color: var(--yc-image-preview-toolbar-bg);
+      background-color: var(--color-bg-2);
       border-radius: 4px;
       display: flex;
       align-items: flex-start;
+
       .yc-image-preview-toolbar-action {
         cursor: pointer;
         border-radius: 2px;
         background-color: transparent;
-        color: var(--yc-image-preview-toolbar-action-color);
+        color: var(--color-text-2);
         font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
+
         .yc-image-preview-toolbar-action-content {
           padding: 13px;
           line-height: 1;
         }
+
         &:not(.yc-image-preview-toolbar-action-disabled):hover {
-          color: var(--yc-image-preview-toolbar-action-hover-color);
-          background-color: var(--yc-image-preview-toolbar-action-hover-bg);
+          color: var(--color-primary);
+          background-color: var(--color-fill-3);
         }
       }
+
       .yc-image-preview-toolbar-action-disabled {
-        color: var(--yc-image-preview-toolbar-action-disabled-color);
+        color: var(--color-text-disabled);
         background-color: transparent;
         cursor: not-allowed;
       }
     }
+
     .yc-image-preview-close-btn {
       cursor: pointer;
       position: absolute;
@@ -96,15 +81,16 @@
       right: 36px;
       width: 32px;
       height: 32px;
-      background: var(--yc-image-preview-close-btn-bg);
+      background: var(--color-fill-3);
       border-radius: 50%;
-      color: #fff;
+      color: var(--color-white);
       font-size: 14px;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .yc-image-preview-arrow-right,
     .yc-image-preview-arrow-left {
       cursor: pointer;
@@ -112,21 +98,24 @@
       z-index: 2;
       width: 32px;
       height: 32px;
-      color: var(--yc-image-preview-arrow-color);
-      background-color: var(--yc-image-preview-arrow-bg);
+      color: var(--color-white);
+      background-color: var(--color-fill-3);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+
       &:hover {
-        background-color: var(--yc-image-preview-arrow-hover-bg);
+        background-color: var(--color-fill-4);
       }
     }
+
     .yc-image-preview-arrow-left {
       top: 50%;
       left: 20px;
       transform: translateY(-50%);
     }
+
     .yc-image-preview-arrow-right {
       top: 50%;
       right: 20px;

@@ -1,17 +1,4 @@
 .yc-image {
-  --yc-image-error-text-color: rgb(201, 205, 212);
-  --yc-image-error-bg: rgb(247, 248, 250);
-  --yc-image-footer-outer-color: rgb(78, 89, 105);
-  --yc-image-footer-title-color: rgb(29, 33, 41);
-  html[yc-design-dark] & {
-    --yc-image-error-text-color: #5f6777;
-    --yc-image-error-bg: #1d2129;
-    --yc-image-footer-outer-color: #a1a8b8;
-    --yc-image-footer-title-color: #e5e6eb;
-  }
-}
-
-.yc-image {
   position: relative;
   display: inline-block;
   border-radius: 2px;
@@ -32,8 +19,8 @@
     .yc-image-error {
       width: 100%;
       height: 100%;
-      color: var(--yc-image-error-text-color);
-      background-color: var(--yc-image-error-bg);
+      color: var(--color-text-3);
+      background-color: var(--color-fill-3);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -98,10 +85,10 @@
   }
   .yc-image-footer-outer {
     margin-top: 4px;
-    color: var(--yc-image-footer-outer-color);
+    color: var(--color-text-2);
     .yc-image-footer-caption {
       .yc-image-footer-caption-title {
-        color: var(--yc-image-footer-title-color);
+        color: var(--color-text-1);
       }
     }
   }

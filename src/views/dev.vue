@@ -1,31 +1,11 @@
 <template>
-  <div class="test">
-    <yc-steps>
-      <yc-step description="This is a description">
-        Succeeded
-        <template #icon>
-          <icon-home />
-        </template>
-      </yc-step>
-      <yc-step description="This is a description">
-        Processing
-        <template #icon>
-          <icon-loading />
-        </template>
-      </yc-step>
-      <yc-step description="This is a description">
-        Pending
-        <template #icon>
-          <icon-thumb-up />
-        </template>
-      </yc-step>
-    </yc-steps>
-  </div>
+  <div class="test"></div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 const size = ref('medium');
+document.documentElement.setAttribute('yc-design-dark', '');
 </script>
 
 <style lang="less" scoped>
@@ -34,7 +14,8 @@ const size = ref('medium');
   width: 100%;
   display: flex;
   flex-direction: column;
-
   gap: 10px;
+  @is-dark: html[yc-design-dark];
+  background-color: if(@is-dark, black, #fff);
 }
 </style>

@@ -1,23 +1,12 @@
 .yc-page-header {
-  --yc-page-header-icon-button-color: rgb(78, 89, 105);
-  --yc-page-header-title-color: rgb(29, 33, 41);
-  --yc-page-header-subtitle-color: rgb(134, 144, 156);
-  --yc-page-header-border-color: rgb(229, 230, 235);
-  html[yc-design-dark] & {
-    --yc-page-header-icon-button-color: rgb(173, 179, 191);
-    --yc-page-header-title-color: rgb(255, 255, 255);
-    --yc-page-header-subtitle-color: rgb(173, 179, 191);
-    --yc-page-header-border-color: rgb(44, 44, 44);
-  }
-}
-
-.yc-page-header {
   padding: 16px 0px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+
   .yc-page-header-wrapper {
     padding: 0 20px 0 24px;
+
     .yc-page-header-header {
       display: flex;
       justify-content: space-between;
@@ -29,19 +18,19 @@
         align-items: center;
         .yc-icon-button {
           margin-right: 12px;
-          color: var(--yc-page-header-icon-button-color);
+          color: var(--color-text-2);
           font-size: 14px;
           &:deep(.yc-icon) {
             transform: rotate(180deg);
           }
         }
         .yc-page-header-title {
-          color: var(--yc-page-header-title-color);
+          color: var(--color-text-1);
           font-weight: 600;
           font-size: 20px;
         }
         .yc-page-header-subtitle {
-          color: var(--yc-page-header-subtitle-color);
+          color: var(--color-text-3);
           font-size: 14px;
         }
       }
@@ -53,6 +42,6 @@
   }
   .yc-page-header-content {
     padding: 20px 32px;
-    border-top: 1px solid var(--yc-page-header-border-color);
+    border-top: 1px solid var(--color-border);
   }
 }
