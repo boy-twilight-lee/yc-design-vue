@@ -82,7 +82,7 @@
 }
 
 // type
-@alert-types: {
+@types: {
   @info: {
     bg: var(--color-primary-light-1);
     icon: rgb(var(--primary-6));
@@ -105,7 +105,7 @@
   };
 };
 
-each(@alert-types, .(@value, @name) {
+each(@types, .(@value, @name) {
   @key: replace(~"@{name}", "@", "");
   .yc-alert-@{key} {
     background-color: @value[bg];

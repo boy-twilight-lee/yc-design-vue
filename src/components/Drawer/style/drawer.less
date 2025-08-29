@@ -67,26 +67,26 @@
   position: absolute;
 }
 // placement
-@drawer-placements: left, right, bottom, top;
-each(@drawer-placements, .(@key){
-  .yc-drawer-placement-@{key} {
+@placements: left, right, bottom, top;
+each(@placements, {
+  .yc-drawer-placement-@{value} {
     .yc-drawer-container {
-      & when (@key = left),(@key = top),(@key = bottom){
+      & when (@value = left),(@value = top),(@value = bottom){
         left: 0;
       }
-      & when (@key = right){
+      & when (@value = right){
         right: 0;
       }
-      & when(@key = left),(@key = right),(@key = top){
+      & when(@value = left),(@value = right),(@value = top){
         top: 0;
       }
-      & when(@key = bottom){
+      & when(@value = bottom){
         bottom: 0;
       }
-      & when (@key = left),(@key = right){
+      & when (@value = left),(@value = right){
          bottom: 0;
       }
-      & when (@key = top),(@key = bottom){
+      & when (@value = top),(@value = bottom){
         right: 0;
      }
     }

@@ -148,41 +148,38 @@
 @size: {
   @mini: {
     height: 24px;
-    font-size: 12px;
     padding-x: 4px;
     inner-padding: 1px;
   };
   @small: {
     height: 28px;
-    font-size: 14px;
     padding-x: 4px;
     inner-padding: 2px;
   };
   @medium: {
     height: 32px;
-    font-size: 14px;
     padding-x: 4px;
     inner-padding: 2px;
   };
   @large: {
     height: 36px;
-    font-size: 14px;
     padding-x: 6px;
     inner-padding: 2px;
   };
 };
 each(@size, .(@value,@name){
   @key:replace(~"@{name}", "@", "");
+  @font-size:if(@key=mini,12px,14px);
   .yc-input-tag-size-@{key} {
     min-height: @value[height];
-    font-size: @value[font-size];
+    font-size: @font-size;
     padding: 0 @value[padding-x];
     .yc-input-tag-inner {
       padding: @value[inner-padding] 0;
       & when  (@key = large) {
         .yc-tag-size-large {
           min-height: 28px;
-         line-height: 26px
+          line-height: 26px
         }
       }
     }

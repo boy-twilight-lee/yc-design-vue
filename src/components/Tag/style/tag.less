@@ -155,25 +155,23 @@
 @size: {
   @large: {
     min-height: 32px;
-    font-size: 14px;
     line-height: 30px;
   };
   @medium: {
     min-height: 24px;
-    font-size: 12px;
     line-height: 22px;
   };
   @small: {
     min-height: 20px;
-    font-size: 12px;
     line-height: 18px;
   };
 };
 each(@size, .(@value,@name){
   @key:replace(~"@{name}", "@", "");
+  @font-size:if(@key=large,14px,12px);
   .yc-tag-size-@{key} {
     min-height: @value[min-height];
-    font-size: @value[font-size];
+    font-size: @font-size;
     line-height: @value[line-height];
   }
 });

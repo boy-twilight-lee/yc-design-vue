@@ -268,33 +268,29 @@ html[yc-design-dark] .yc-color-picker-panel {
 // size
 @size: {
   @mini: {
-    font-size: 12px;
     size: 24px;
     padding: 4px;
   };
   @small: {
-    font-size: 14px;
     size: 28px;
     padding: 3px 4px;
   };
   @medium: {
-    font-size: 14px;
     size: 32px;
     padding: 4px;
   };
   @large: {
-    font-size: 14px;
     size: 36px;
     padding: 5px;
   };
 };
-
 each(@size, .(@value, @name) {
   @key: replace(~'@{name}', '@', '');
+  @font-size:if(@key=mini,12px,14px);
   .yc-color-picker-size-@{key} {
     height: @value[size];
     padding: @value[padding];
-    font-size: @value[font-size];
+    font-size: @font-size;
     .yc-color-picker-preview {
       height: 100%;
       width: if(

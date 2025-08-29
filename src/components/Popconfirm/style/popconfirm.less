@@ -49,16 +49,13 @@
     }
   }
 
-  // Consolidate types into a single map
-  @popconfirm-types: {
+  @types: {
     info: rgb(var(--primary-6));
     success: rgb(var(--success-6));
     warning: rgb(var(--warning-6));
     error: rgb(var(--danger-6));
   };
-
-  // Iterate over the map to generate icon color styles
-  each(@popconfirm-types, .(@value, @key) {
+  each(@types,  {
     &.yc-popconfirm-@{key} {
       .yc-popconfirm-icon {
         color: @value;

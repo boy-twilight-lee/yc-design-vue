@@ -31,31 +31,28 @@
   }
 }
 
-.yc-button-group {
-  @border-color-map: {
-    primary: rgb(var(--primary-5));
-    secondary: var(--color-border-2);
-    warning: rgb(var(--warning-5));
-    success: rgb(var(--success-5));
-    danger: rgb(var(--danger-5));
-  };
+@border-color: {
+  primary: rgb(var(--primary-5));
+  secondary: var(--color-border-2);
+  warning: rgb(var(--warning-5));
+  success: rgb(var(--success-5));
+  danger: rgb(var(--danger-5));
+};
 
-  each(@border-color-map, .(@color, @status) {
-    &.yc-button-group-@{status},
-    &.yc-button-group-status-@{status} {
-      .yc-button:not(:last-child) {
-        border-right: 1px solid @color;
-      }
+each(@border-color,{
+  .yc-button-group-@{key},
+  .yc-button-group-status-@{key} {
+    .yc-button:not(:last-child) {
+      border-right: 1px solid @value;
     }
-  });
-
-  // 暗色模式下，部分变量名称不同，需要覆盖
-  html[yc-design-dark] & {
-    &.yc-button-group-secondary,
-    &.yc-button-group-status-secondary {
-      .yc-button:not(:last-child) {
-        border-right: 1px solid var(--color-border);
-      }
+  }
+});
+// 暗色模式下，部分变量名称不同，需要覆盖
+html[yc-design-dark] {
+  .yc-button-group-secondary,
+  .yc-button-group-status-secondary {
+    .yc-button:not(:last-child) {
+      border-right: 1px solid var(--color-border);
     }
   }
 }

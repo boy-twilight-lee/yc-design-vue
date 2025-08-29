@@ -13,30 +13,27 @@
 // size
 @item-size: {
   @mini: {
-    font-size: 12px;
     padding-bottom: 2px;
     bordered-padding: 3px;
   };
   @small: {
-    font-size: 14px;
     padding-bottom: 4px;
     bordered-padding: 3px;
   };
   @medium: {
-    font-size: 14px;
     padding-bottom: 8px;
     bordered-padding: 5px;
   };
   @large: {
-    font-size: 14px;
     padding-bottom: 16px;
     bordered-padding: 9px;
   };
 };
 each(@item-size, .(@value,@name){
   @key:replace(~"@{name}", "@", "");
+  @font-size:if(@key=mini,12px,14px);
   .yc-descriptions-item-cell-size-@{key} {
-    font-size: @value[font-size];
+    font-size: @font-size;
     padding: 0 20px @value[padding-bottom] 0;
   &.yc-descriptions-item-cell-bordered {
     padding: @value[bordered-padding] 20px;

@@ -162,39 +162,33 @@
 //size
 @sizes: {
   @mini: {
-    font-size: 12px;
     height: 24px;
     padding: 1px;
-    line-height: 1.667;
   };
   @small: {
-    font-size: 14px;
     height: 28px;
     padding: 2px;
-    line-height: 1.5715;
   };
   @medium: {
-    font-size: 14px;
     height: 32px;
     padding: 4px;
-    line-height: 1.5715;
   };
   @large: {
-    font-size: 14px;
     height: 36px;
     padding: 6px;
-    line-height: 1.5715;
   };
 };
 each(@sizes, .(@value, @name) {
   @key: replace(~"@{name}", "@", "");
+  @font-size:if(@key=mini,12px,14px);
+  @line-height:if(@key=mini,1.667,1.5715);
   .yc-input-size-@{key} {
-    font-size: @value[font-size];
+    font-size: @font-size;
     height: @value[height];
     .yc-input-wrapper{
       .yc-input {
         padding: @value[padding] 0;
-        line-height: @value[line-height];
+        line-height: @line-height;
       }
     }
   }

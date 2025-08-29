@@ -256,37 +256,34 @@ each(@type, .(@type-value, @type-name) {
   @mini: {
     height: 24px;
     padding: 11px;
-    font-size: 12px;
     margin-right: 4px;
   };
   @small: {
     height: 28px;
     padding: 15px;
-    font-size: 14px;
     margin-right: 6px;
   };
   @medium: {
     height: 32px;
     padding: 15px;
-    font-size: 14px;
     margin-right: 8px;
   };
   @large: {
     height: 36px;
     padding: 19px;
-    font-size: 14px;
     margin-right: 8px;
   };
 };
 each(@size,.(@value,@name){
        @key: replace(~"@{name}", "@", "");
+       @font-size:if(@key=mini,12px,14px);
       .yc-button-size-@{key} {
         height: @value[height];
         padding: 0  @value[padding];
-        font-size: @value[font-size];
+        font-size: @font-size;
         .yc-button-icon {
-          width: @value[font-size];
-          height: @value[font-size];
+          width: @font-size;
+          height: @font-size;
           margin-right: @value[margin-right];
         }
         &.yc-button-shape-circle{

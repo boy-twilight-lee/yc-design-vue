@@ -27,13 +27,10 @@ each(@size, {
   }
 });
 // shape
-@shape: {
-  square: 2px;
-  circle: 50%;
-};
+@shape: square, circle;
 each(@shape, {
-  .yc-skeleton-shape-shape-@{key} {
-    border-radius: @value;
+  .yc-skeleton-shape-shape-@{value} {
+    border-radius: if(@value=square,2px,50%);
   }
 });
 // line

@@ -107,38 +107,26 @@
 }
 // size
 @size: {
-  @mini: {
-    font-size: 12px;
-    item-size: 24px;
-  };
-  @small: {
-    font-size: 14px;
-    item-size: 28px;
-  };
-  @medium: {
-    font-size: 14px;
-    item-size: 32px;
-  };
-  @large: {
-    font-size: 14px;
-    item-size: 36px;
-  };
+  mini: 24px;
+  small: 28px;
+  medium: 32px;
+  large: 36px;
 };
-each(@size, .(@value,@name){
-  @key:replace(~"@{name}", "@", "");
+each(@size, {
+  @font-size:if(@key=mini,12px,14px);
   .yc-pagination-size-@{key} {
     .yc-pagination-total {
-      font-size:  @value[font-size];
-      line-height:  @value[item-size];
+      font-size:  @font-size;
+      line-height:  @value;
     }
     .yc-pagination-item {
-      min-width:  @value[item-size];
-      height:  @value[item-size];
-      font-size:  @value[font-size];
-      line-height:  @value[item-size];
+      min-width:  @value;
+      height:  @value;
+      font-size:  @font-size;
+      line-height:  @value;
     }
     .yc-pagination-jumper > span {
-      font-size:  @value[font-size];
+      font-size:  @font-size;
     }
     
     & when (@key = mini) {

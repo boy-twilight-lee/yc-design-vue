@@ -35,14 +35,14 @@
 }
 
 // type
-@message-types: {
+@types: {
   info: rgb(var(--primary-6));
   warning: rgb(var(--warning-6));
   success: rgb(var(--success-6));
   error: rgb(var(--danger-6));
   loading: rgb(var(--primary-6));
 };
-each(@message-types, .(@value, @key) {
+each(@types,  {
   .yc-message-@{key} {
     .yc-message-icon {
       color: @value;

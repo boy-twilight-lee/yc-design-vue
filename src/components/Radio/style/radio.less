@@ -163,27 +163,15 @@
 }
 //size
 @size: {
-  @mini: {
-    font-size: 12px;
-    line-height: 18px;
-  };
-  @small: {
-    font-size: 14px;
-    line-height: 22px;
-  };
-  @medium: {
-    font-size: 14px;
-    line-height: 26px;
-  };
-  @large: {
-    font-size: 14px;
-    line-height: 30px;
-  };
+  mini: 18px;
+  small: 22px;
+  medium: 26px;
+  large: 30px;
 };
-each(@size, .(@value,@name){
-  @key:replace(~"@{name}", "@", "");
+each(@size, {
+  @font-size:if(@key=mini,12px,14px);
   .yc-radio-button.yc-radio-button-size-@{key} {
-    font-size: @value[font-size];
-    line-height: @value[line-height];
+    font-size: @font-size;
+    line-height: @value;
   }
 });

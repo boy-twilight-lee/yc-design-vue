@@ -29,26 +29,21 @@
     }
   }
   // 处理trigger的direction
-  @direction: {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  };
+  @direction: top, left, right, bottom;
   each(@direction,{
-      .yc-resizebox-direction-@{key}{
-        @{key}:@value;
-        & when not(@key = right){
+      .yc-resizebox-direction-@{value}{
+        @{value}:0;
+        & when not(@value = right){
           left: 0;
         }
-        & when not(@key = bottom){
+        & when not(@value = bottom){
           top: 0;
         }
-        & when(@key = left),(@key = right){
+        & when(@value = left),(@value = right){
           cursor: col-resize;
           height: 100%;
         }
-        & when(@key = top),(@key = bottom){
+        & when(@value = top),(@value = bottom){
           cursor: row-resize;
           width: 100%;
         }

@@ -75,18 +75,15 @@
   processing: rgb(var(--primary-6));
   warning: rgb(var(--warning-6));
 };
-
 each(@status,{
   .yc-badge-status-@{key}{
     background-color: @value;
   }
 });
-
 // colors
-@color-keys: red, orangered, orange, gold, lime, green, cyan, blue, arcoblue,
-  purple, pinkpurple, magenta, gray;
-
-each(@color-keys, {
+@colors: red, orangered, orange, gold, lime, green, cyan, blue, arcoblue, purple,
+  pinkpurple, magenta, gray;
+each(@colors, {
     .yc-badge-color-@{value} {
       background-color: rgb(var(~'--@{value}-6'));
     }

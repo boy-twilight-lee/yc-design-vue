@@ -40,26 +40,16 @@
 .yc-result {
   // type
   @type: {
-    @info: {
-      theme-name: primary;
-    };
-    @success: {
-      theme-name: success;
-    };
-    @warning: {
-      theme-name: warning;
-    };
-    @error: {
-      theme-name: danger;
-    };
+    info: primary;
+    success: success;
+    warning: warning;
+    error: danger;
   };
-  each(@type, .(@value,@name){
-    @key: replace(~"@{name}", "@", "");
-    @theme-key: @value[theme-name];
+  each(@type,{
     .yc-result-icon-@{key} {
-      color: ~"rgb(var(--@{theme-key}-6))";
+      color: ~"rgb(var(--@{value}-6))";
       .yc-result-icon-tip {
-        background-color: ~"var(--color-@{theme-key}-light-1)";
+        background-color: ~"var(--color-@{value}-light-1)";
       }
     }
   });

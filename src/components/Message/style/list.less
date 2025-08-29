@@ -11,13 +11,10 @@
 }
 
 // postion
-@position: {
-  top: 40px;
-  bottom: 40px;
-};
+@position: top, bottom;
 each(@position,{
-    .yc-message-list-@{key}{
-      @{key}:@value;
+    .yc-message-list-@{value}{
+      @{value}:40px;
     }
   });
 

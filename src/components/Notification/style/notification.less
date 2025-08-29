@@ -55,14 +55,14 @@
   }
 }
 // type
-@notification-types: {
+@types: {
   info: rgb(var(--primary-6));
   warning: rgb(var(--warning-6));
   success: rgb(var(--success-6));
   error: rgb(var(--danger-6));
   loading: rgb(var(--primary-6));
 };
-each(@notification-types, .(@value, @key) {
+each(@types,  {
   .yc-notification-@{key} {
     .yc-notification-icon {
       color: @value;

@@ -7,25 +7,20 @@
   gap: 16px;
 }
 // posiiton
-@position: {
-  topLeft: 20px;
-  topRight: 20px;
-  bottomLeft: 20px;
-  bottomRight: 20px;
-};
+@position: topLeft, topRight, bottomLeft, bottomRight;
 each(@position,{
-  .yc-notification-list-@{key}{
-      & when(@key = topLeft),(@key = topRight){
-        top: @value;
+  .yc-notification-list-@{value}{
+      & when(@value = topLeft),(@value = topRight){
+        top: 20px;
       }
-      & when(@key = bottomLeft),(@key = bottomRight){
-        bottom: @value;
+      & when(@value = bottomLeft),(@value = bottomRight){
+        bottom: 20px;
       }
-      & when(@key = topLeft),(@key = bottomLeft){
-        left: @value;
+      & when(@value = topLeft),(@value = bottomLeft){
+        left: 20px;
       }
-      & when(@key = topRight),(@key = bottomRight){
-        right: @value;
+      & when(@value = topRight),(@value = bottomRight){
+        right: 20px;
       }
   }
 });
