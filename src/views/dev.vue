@@ -1,14 +1,25 @@
 <template>
   <div class="test">
-    <yc-space direction="vertical" size="large">
-      <yc-radio-group type="button" v-model="size">
-        <yc-radio value="mini">mini</yc-radio>
-        <yc-radio value="small">small</yc-radio>
-        <yc-radio value="medium">medium</yc-radio>
-        <yc-radio value="large">large</yc-radio>
-      </yc-radio-group>
-      <yc-tag :size="size">测试</yc-tag>
-    </yc-space>
+    <yc-steps>
+      <yc-step description="This is a description">
+        Succeeded
+        <template #icon>
+          <icon-home />
+        </template>
+      </yc-step>
+      <yc-step description="This is a description">
+        Processing
+        <template #icon>
+          <icon-loading />
+        </template>
+      </yc-step>
+      <yc-step description="This is a description">
+        Pending
+        <template #icon>
+          <icon-thumb-up />
+        </template>
+      </yc-step>
+    </yc-steps>
   </div>
 </template>
 

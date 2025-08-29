@@ -113,6 +113,5 @@ const handleClick = (e: Event) => {
 </script>
 
 <style lang="less" scoped>
-@import './style/step.less';
 @import './style/steps.less';
 </style>
