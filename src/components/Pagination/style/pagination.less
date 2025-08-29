@@ -38,24 +38,27 @@
     justify-content: center;
     align-items: center;
     &:not(.yc-pagination-item-disabled):not(.yc-pagination-item-active):hover {
-      color: var(--color-text-2);
-      background-color: var(--color-fill-3);
+      background-color: var(--color-fill-1);
       transition:
         color 0.2s cubic-bezier(0, 0, 1, 1),
         background-color 0.2s cubic-bezier(0, 0, 1, 1);
       &.yc-pagination-item-previous,
       &.yc-pagination-item-next {
-        color: var(--color-primary);
+        color: rgb(var(--primary-6));
       }
     }
     &.yc-pagination-item-disabled {
-      color: var(--color-text-3);
+      color: var(--color-text-4);
       cursor: not-allowed;
       background-color: transparent;
+      &.yc-pagination-item-active {
+        color: var(--color-primary-light-3);
+        background-color: var(--color-fill-1);
+      }
     }
     &.yc-pagination-item-active {
-      color: var(--color-primary);
-      background-color: var(--color-primary-light-5);
+      color: rgb(var(--primary-6));
+      background-color: var(--color-primary-light-1);
     }
   }
   .yc-pagination-options {
@@ -79,33 +82,45 @@
       }
     }
     .yc-pagination-jumper-text-goto {
-      color: var(--color-text-2);
+      color: var(--color-text-3);
       white-space: nowrap;
     }
   }
 }
 // size
 @size: {
-  mini: 24px;
-  small: 28px;
-  medium: 32px;
-  large: 36px;
+  @mini: {
+    font-size: 12px;
+    item-size: 24px;
+  };
+  @small: {
+    font-size: 14px;
+    item-size: 28px;
+  };
+  @medium: {
+    font-size: 14px;
+    item-size: 32px;
+  };
+  @large: {
+    font-size: 14px;
+    item-size: 36px;
+  };
 };
-each(@size, {
-  @font-size:if(@key=mini,12px,14px);
+each(@size, .(@value,@name){
+  @key:replace(~"@{name}", "@", "");
   .yc-pagination-size-@{key} {
     .yc-pagination-total {
-      font-size:  @font-size;
-      line-height:  @value;
+      font-size:  @value[font-size];
+      line-height:  @value[item-size];
     }
     .yc-pagination-item {
-      min-width:  @value;
-      height:  @value;
-      font-size:  @font-size;
-      line-height:  @value;
+      min-width:  @value[item-size];
+      height:  @value[item-size];
+      font-size:  @value[font-size];
+      line-height:  @value[item-size];
     }
     .yc-pagination-jumper > span {
-      font-size:  @font-size;
+      font-size:  @value[font-size];
     }
     
     & when (@key = mini) {

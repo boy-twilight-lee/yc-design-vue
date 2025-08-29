@@ -4,6 +4,7 @@
       'yc-icon-button',
       {
         'yc-icon-button-disabled': disabled,
+        'yc-icon-button-hoverable': hoverable,
       },
     ]"
     @mousedown="(e) => preventFocus && e.preventDefault()"
@@ -21,16 +22,16 @@ import { valueToPx } from '@shared/utils';
 const props = withDefaults(
   defineProps<{
     size?: number;
-    hoverColor?: string;
     hoverSize?: number;
     disabled?: boolean;
+    hoverable?: boolean;
     preventFocus?: boolean;
   }>(),
   {
     size: 12,
-    hoverColor: 'rgb(242, 243, 245)',
     hoverSize: 20,
     disabled: false,
+    hoverable: true,
     preventFocus: true,
   }
 );
@@ -43,14 +44,10 @@ const hoverSize = computed(() => valueToPx(_hoverSize.value));
   user-select: none;
   cursor: pointer;
   position: relative;
-  color: rgb(29, 33, 41);
+  color: var(--color-text-1);
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &:not(.yc-icon-button-disabled):hover::before {
-    background-color: v-bind(hoverColor);
-  }
   &::before {
     content: '';
     position: absolute;
@@ -67,8 +64,14 @@ const hoverSize = computed(() => valueToPx(_hoverSize.value));
     z-index: 1;
   }
 }
-
+// hoverable
+.yc-icon-button-hoverable {
+  &:not(.yc-icon-button-disabled):hover::before {
+    background-color: var(--color-fill-2);
+  }
+}
+// disabled
 .yc-icon-button-disabled {
-  color: rgb(201, 205, 212);
+  color: var(--color-text-3);
 }
 </style>

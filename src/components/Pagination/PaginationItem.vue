@@ -54,9 +54,9 @@ const disabled = computed(() => {
   if (['item', 'more-right', 'more-left'].includes(type.value)) {
     return _disabled.value;
   } else if (type.value == 'pre') {
-    return computedCurrent.value <= 1;
+    return computedCurrent.value <= 1 || _disabled.value;
   } else {
-    return computedCurrent.value >= pages.value;
+    return computedCurrent.value >= pages.value || _disabled.value;
   }
 });
 // 处理点击

@@ -25,9 +25,7 @@
     >
       <icon-button
         :hover-size="24"
-        :hover-color="
-          computedChecked || computedDisabled ? 'transparent' : undefined
-        "
+        :hoverable="!computedChecked && !computedDisabled"
       >
         <span class="yc-checkbox-icon">
           <icon-checkbox-checked :size="[8, 10]" />
