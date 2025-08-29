@@ -183,36 +183,25 @@
   }
 }
 
-// 这一块全是错的
 html[yc-design-dark] {
-  // --- 常规状态修正 ---
-
-  // 未选中 (常规)
   .yc-switch-unchecked {
-    // 关键：为“关闭”状态的轨道提供一个深色背景
     &:not(.yc-switch-shape-line):not(.yc-switch-disabled) {
       background-color: var(--color-fill-2);
     }
-    // Line 模式下的轨道背景
     &.yc-switch-shape-line::after {
       background-color: var(--color-fill-2);
     }
 
     .yc-switch-handle {
-      // 关键：将滑块背景从亮色主题的白色改为暗色背景，这是最重要的修改
       background-color: var(--color-bg-3);
-      // 图标颜色也需要调暗，使其不那么突出
       color: var(--color-text-3);
     }
     .yc-switch-text {
-      // 内部文字颜色同步调暗
       color: var(--color-text-3);
     }
   }
 
-  // 选中 (常规)
   .yc-switch-checked {
-    // 选中状态的轨道背景使用主色是正确的，无需修改
     &:not(.yc-switch-shape-line) {
       background-color: rgb(var(--primary-6));
     }
@@ -221,18 +210,13 @@ html[yc-design-dark] {
     }
 
     .yc-switch-handle {
-      // 关键：滑块背景同样改为暗色背景
       background-color: var(--color-bg-3);
-      // 滑块内的图标使用主色，与深色滑块背景形成对比，表示“开启”
       color: rgb(var(--primary-6));
     }
     .yc-switch-text {
-      // 内部文字需要高对比度，使用最亮的文本色是正确的
       color: var(--color-text-1);
     }
   }
-
-  // --- 禁用/加载状态 (保持之前的正确修改) ---
 
   .yc-switch-loading,
   .yc-switch-disabled {

@@ -1,16 +1,6 @@
-.yc-skeleton-line,
-.yc-skeleton-shape {
-  --yc-skeleton-bg-color: rgb(242, 243, 245);
-  --yc-skeleton-highlight-color: rgb(229, 230, 235);
-  html[yc-design-dark] & {
-    --yc-skeleton-bg-color: rgb(44, 44, 44);
-    --yc-skeleton-highlight-color: rgb(51, 51, 51);
-  }
-}
-
 // shape
 .yc-skeleton-shape {
-  background-color: var(--yc-skeleton-bg-color);
+  background-color: var(--color-fill-2);
 }
 // size
 @size: {
@@ -39,7 +29,7 @@ each(@shape, {
   display: flex;
   flex-direction: column;
   .yc-skeleton-line-row {
-    background-color: var(--yc-skeleton-bg-color);
+    background-color: var(--color-fill-2);
   }
 }
 
@@ -57,9 +47,9 @@ each(@shape, {
   .yc-skeleton-line:deep(.yc-skeleton-line-row) {
     background: linear-gradient(
       90deg,
-      var(--yc-skeleton-bg-color) 25%,
-      var(--yc-skeleton-highlight-color) 37%,
-      var(--yc-skeleton-bg-color) 63%
+      var(--color-fill-2) 25%,
+      var(--color-fill-3) 37%,
+      var(--color-fill-2) 63%
     );
     background-size: 400% 100%;
     animation: skeleton-circle 1.5s cubic-bezier(0, 0, 1, 1) infinite;

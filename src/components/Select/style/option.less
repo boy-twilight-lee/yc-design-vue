@@ -51,16 +51,13 @@
 
 html[yc-design-dark] {
   .yc-select-option {
-    // 原值 rgb(221, 221, 221) 匹配 --gray-9
     color: rgb(var(--gray-9));
     &:not(.yc-select-option-disabled):hover {
       color: rgb(var(--gray-9));
-      // 原值 rgb(50, 50, 50) 接近 --gray-2, 语义上更符合 --color-fill-2
       background-color: var(--color-fill-2);
     }
   }
   .yc-select-option-disabled {
-    // 原值 rgb(102, 102, 102) 接近 --gray-4
     color: rgb(var(--gray-4));
   }
   .yc-select-option-active {
