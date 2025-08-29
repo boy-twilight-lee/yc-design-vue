@@ -1,11 +1,12 @@
 <template>
-  <div class="test"></div>
+  <div class="test">
+    <yc-switch unchecked-text="测试" checked-text="测试1" />
+    <a-switch unchecked-text="测试" checked-text="测试1" />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-const size = ref('medium');
-document.documentElement.setAttribute('yc-design-dark', '');
 </script>
 
 <style lang="less" scoped>
@@ -14,8 +15,9 @@ document.documentElement.setAttribute('yc-design-dark', '');
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   gap: 10px;
-  @is-dark: html[yc-design-dark];
-  background-color: if(@is-dark, black, #fff);
 }
 </style>

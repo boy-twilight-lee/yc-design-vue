@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed, useSlots } from 'vue';
+import { ref, toRefs, computed } from 'vue';
 import { SwitchProps, SwitchEmits, SwitchSlots, SwitchValue } from './type';
 import { useControlValue, getGlobalConfig, isBoolean } from '@shared/utils';
 import YcSpin from '@/components/Spin';

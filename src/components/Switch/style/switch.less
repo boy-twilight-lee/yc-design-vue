@@ -185,76 +185,48 @@
 
 html[yc-design-dark] {
   .yc-switch-unchecked {
-    &:not(.yc-switch-shape-line):not(.yc-switch-disabled) {
-      background-color: var(--color-fill-2);
-    }
-    &.yc-switch-shape-line::after {
-      background-color: var(--color-fill-2);
-    }
-
+    background-color: var(--color-fill-4);
     .yc-switch-handle {
-      background-color: var(--color-bg-3);
-      color: var(--color-text-3);
+      color: var(--color-neutral-3);
     }
-    .yc-switch-text {
-      color: var(--color-text-3);
+    &.yc-switch-shape-line {
+      background-color: transparent;
+      &::after {
+        background-color: var(--color-fill-4);
+      }
     }
   }
-
   .yc-switch-checked {
-    &:not(.yc-switch-shape-line) {
-      background-color: rgb(var(--primary-6));
-    }
-    &.yc-switch-shape-line::after {
-      background-color: rgb(var(--primary-6));
-    }
-
-    .yc-switch-handle {
-      background-color: var(--color-bg-3);
-      color: rgb(var(--primary-6));
-    }
-    .yc-switch-text {
-      color: var(--color-text-1);
+    background-color: rgb(var(--primary-6));
+    &.yc-switch-shape-line {
+      background-color: transparent;
+      &::after {
+        background-color: rgb(var(--primary-6));
+      }
     }
   }
-
   .yc-switch-loading,
   .yc-switch-disabled {
     &.yc-switch-unchecked {
-      &:not(.yc-switch-shape-line) {
-        background-color: var(--color-fill-2);
-      }
-      &::after {
-        background-color: var(--color-fill-2);
-      }
+      background-color: var(--color-fill-2);
       .yc-switch-handle {
-        background-color: var(--color-bg-3);
-        color: var(--color-text-4);
+        color: var(--color-fill-2);
       }
-      .yc-switch-text {
-        color: var(--color-text-4);
+      &.yc-switch-shape-line {
+        background-color: transparent;
+        &::after {
+          background-color: var(--color-fill-2);
+        }
       }
     }
     &.yc-switch-checked {
-      &:not(.yc-switch-shape-line) {
-        background-color: var(--color-primary-light-1);
+      background-color: var(--color-primary-light-3);
+      &.yc-switch-shape-line {
+        background: transparent;
+        &::after {
+          background-color: var(--color-primary-light-3);
+        }
       }
-      &::after {
-        background-color: var(--color-primary-light-1);
-      }
-      .yc-switch-handle {
-        background-color: var(--color-bg-3);
-        color: rgba(var(--primary-6), 0.5);
-      }
-      .yc-switch-text {
-        color: var(--color-text-4);
-      }
-    }
-  }
-
-  .yc-switch-shape-line {
-    .yc-switch-handle {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
   }
 }

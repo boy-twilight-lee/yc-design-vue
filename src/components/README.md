@@ -15,6 +15,5 @@ DatePicker Form Upload TreeSelect Table Tree
 8. 国际化，vite自动引入插件
 ## 单独处理一下
 1. time-picker transfer textarea 单独处理一下变量
-2. switch整个暗色色彩存在问题，全是错的
-3. 处理icon-button的暗色模式
+2. 处理icon-button的暗色模式
 
