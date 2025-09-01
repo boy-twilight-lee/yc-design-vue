@@ -44,7 +44,7 @@ const margin = computed(() => {
 });
 // border
 const border = computed(
-  () => `${valueToPx(size.value)} ${type.value} rgb(229, 230, 235)`
+  () => `${valueToPx(size.value)} ${type.value} var(--color-neutral-3)`
 );
 </script>
 

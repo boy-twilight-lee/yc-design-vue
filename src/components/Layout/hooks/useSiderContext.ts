@@ -18,21 +18,20 @@ export type LayoutContext = {
 };
 
 export default () => {
+  // isDark
+  const isDark = useDark({
+    selector: 'body',
+    attribute: 'yc-design-theme',
+    valueDark: 'dark',
+    valueLight: 'light',
+    initialValue: 'light',
+  });
   const provide = (props: Props, emits: LayoutSiderEmits) => {
     const {
       theme: _theme,
       collapsed,
       defaultCollapsed,
     } = toRefs(props as RequiredDeep<LayoutSiderProps>);
-    // isDark
-    const isDark = useDark({
-      selector: 'body',
-      attribute: 'yc-design-theme',
-      valueDark: 'dark',
-      valueLight: 'light',
-      initialValue: 'light',
-    });
-    isDark.value = false;
     // 受控的收缩
     const computedCollapsed = useControlValue<boolean>(
       collapsed,
@@ -59,7 +58,7 @@ export default () => {
   };
   const inject = () => {
     return _inject<LayoutContext>(LAYOUT_CONTEXT_KEY, {
-      theme: ref('light'),
+      theme: computed(() => (isDark.value ? 'dark' : 'light')),
       collapsed: ref(false),
     });
   };

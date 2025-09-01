@@ -32,6 +32,7 @@ import { SubMenu, MenuItem } from '../index';
 import { nanoid } from 'nanoid';
 import { useResizeObserver } from '@vueuse/core';
 import useSiderContext from '@/components/Layout/hooks/useSiderContext';
+import { useDark } from '@vueuse/core';
 
 const MENU_CONTEXT_KEY = 'menu-context';
 type MenuContext = {
@@ -209,6 +210,7 @@ export default () => {
       autoScrollIntoView,
       scrollConfig,
       collapsedWidth,
+      theme: _theme,
       popupMaxHeight: _popupMaxHeight,
     } = toRefs(props as MenuProps);
     const { theme: injectTheme, collapsed: injectCollapsed } =
@@ -263,7 +265,7 @@ export default () => {
     // 最大能展示元素的个数
     const max = ref<number>(1000000);
     // theme
-    const theme = computed(() => props.theme || injectTheme.value);
+    const theme = computed(() => _theme.value || injectTheme.value);
     // 横向宽度检测
     if (mode.value == 'horizontal') {
       useResizeObserver(
@@ -317,6 +319,14 @@ export default () => {
     };
   };
   const inject = () => {
+    const isDark = useDark({
+      selector: 'body',
+      attribute: 'yc-design-theme',
+      valueDark: 'dark',
+      valueLight: 'light',
+      initialValue: 'light',
+    });
+    console.log(isDark.value, 'isDark');
     return _inject<MenuContext>(MENU_CONTEXT_KEY, {
       computedSelectedKeys: ref(''),
       computedOpenKeys: ref([]),
@@ -328,7 +338,7 @@ export default () => {
       triggerProps: ref({}),
       autoOpenSelected: ref(false),
       mode: ref('vertical'),
-      theme: ref('light'),
+      theme: computed(() => (isDark.value ? 'dark' : 'light')),
       popupMaxHeight: ref(),
       autoScrollIntoView: ref(false),
       scrollConfig: ref({}),

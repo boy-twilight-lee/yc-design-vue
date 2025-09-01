@@ -63,13 +63,11 @@
 @theme: {
   @light: {
     color: rgb(78, 89, 105);
-    selected-color: rgb(22, 93, 255);
     disabled-color: rgb(201, 205, 212);
     hover-bg: rgb(242, 243, 245);
   };
   @dark: {
     color: rgb(201, 205, 212);
-    selected-color: #fff;
     disabled-color: rgb(78, 89, 105);
     hover-bg: rgba(255, 255, 255, 0.04);
   };
@@ -86,10 +84,10 @@ each(@theme, .(@value,@name){
       }
       &.yc-menu-item-selected{
         font-weight: 500;
-        color: @value[selected-color];
+        color: rgb(var(--primary-6));
         background-color: @value[hover-bg];
         .yc-menu-icon{
-          color: @value[selected-color];
+          color: rgb(var(--primary-6));
         }
       }
       &.yc-menu-item-disabled{
@@ -101,11 +99,7 @@ each(@theme, .(@value,@name){
   .yc-menu-inline-header{
     .yc-menu-item{
       &.yc-menu-item-selected{
-        color:@theme[@light][selected-color];
         background-color:transparent;
-        .yc-menu-icon{
-          color:@theme[@light][selected-color];
-        }
       }
     }
   }
