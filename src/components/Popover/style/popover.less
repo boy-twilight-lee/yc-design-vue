@@ -2,26 +2,26 @@
   &.yc-popover {
     .yc-popover-popup-content {
       padding: 12px 16px;
+      background-color: var(--color-bg-popup);
+      border: 1px solid var(--color-neutral-3);
+      border-radius: 4px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       color: var(--color-text-2);
       font-size: 14px;
       line-height: 1.5715;
-      background-color: var(--yc-popover-content-bg);
-      border: 1px solid var(--yc-popover-content-border-color);
-      border-radius: 4px;
-      box-shadow: var(--yc-popover-content-shadow);
 
       .yc-popover-title {
+        margin-bottom: 4px;
         color: var(--color-text-1);
         font-weight: 500;
         font-size: 16px;
-        margin-bottom: 4px;
       }
     }
 
     .yc-popover-popup-arrow {
       z-index: 1;
-      border: 1px solid var(--yc-popover-arrow-border-color);
-      background-color: var(--yc-popover-arrow-bg);
+      background-color: var(--color-bg-popup);
+      border: 1px solid var(--color-neutral-3);
     }
   }
 }

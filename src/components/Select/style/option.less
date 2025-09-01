@@ -1,15 +1,16 @@
 .yc-select-option {
   padding: 0 12px;
+  background-color: var(--color-bg-popup);
   line-height: 36px;
   font-size: 14px;
-  color: var(--yc-select-option-color);
+  color: var(--color-text-1);
   text-align: left;
   display: flex;
   align-items: center;
   transition: all 0.1s cubic-bezier(0, 0, 1, 1);
   &:not(.yc-select-option-disabled):hover {
-    color: var(--yc-select-option-color);
-    background-color: var(--yc-select-option-bg-hover);
+    background-color: var(--color-fill-2);
+    color: var(--color-text-1);
   }
   .yc-select-option-icon,
   .yc-select-option-content,
@@ -39,12 +40,11 @@
 }
 // disabled
 .yc-select-option-disabled {
-  color: var(--yc-select-option-disabled-color);
-  background: transparent;
+  color: var(--color-text-4);
+  background-color: var(--color-bg-popup);
   cursor: not-allowed;
 }
 // active
 .yc-select-option-active {
-  color: var(--yc-select-option-color);
-  background-color: var(--yc-select-option-bg-hover);
+  background-color: var(--color-fill-2);
 }
