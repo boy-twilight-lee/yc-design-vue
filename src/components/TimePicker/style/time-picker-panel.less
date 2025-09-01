@@ -1,9 +1,9 @@
 .yc-timepicker-container {
   overflow: hidden;
-  background-color: var(--yc-timepicker-bg);
-  border: 1px solid var(--yc-timepicker-border-color);
+  background-color: var(--color-bg-popup);
+  border: 1px solid var(--color-neutral-3);
   border-radius: 4px;
-  box-shadow: var(--yc-timepicker-shadow);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   .yc-timepicker {
     position: relative;
     display: flex;
@@ -13,12 +13,12 @@
       width: 64px;
       height: 224px;
       &:not(:last-child) {
-        border-right: 1px solid var(--yc-timepicker-border-color);
+        border-right: 1px solid var(--color-neutral-3);
       }
       ul {
         .yc-timepicker-cell {
           padding: 4px 0;
-          color: var(--yc-timepicker-cell-color);
+          color: var(--color-text-1);
           font-weight: 500;
           cursor: pointer;
           .yc-timepicker-cell-inner {
@@ -31,11 +31,11 @@
         .yc-timepicker-cell-selected {
           .yc-timepicker-cell-inner {
             font-weight: 500;
-            background-color: var(--yc-timepicker-cell-selected-bg);
+            background-color: var(--color-fill-2);
           }
         }
         .yc-timepicker-cell-disabled {
-          color: var(--yc-timepicker-cell-disabled-color);
+          color: var(--color-text-4);
           cursor: not-allowed;
         }
         &::after {
@@ -49,13 +49,13 @@
   }
   .yc-timepicker-footer-extra-wrapper {
     padding: 8px;
-    border-top: 1px solid var(--yc-timepicker-border-color);
-    color: var(--yc-timepicker-cell-color);
+    border-top: 1px solid var(--color-neutral-3);
+    color: var(--color-text-1);
     font-size: 12px;
   }
   .yc-timepicker-footer-btn-wrapper {
     padding: 8px;
-    border-top: 1px solid var(--yc-timepicker-border-color);
+    border-top: 1px solid var(--color-neutral-3);
     display: flex;
     justify-content: space-between;
   }

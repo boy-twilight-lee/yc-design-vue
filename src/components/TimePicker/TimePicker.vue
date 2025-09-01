@@ -25,6 +25,7 @@
           'yc-picker-focus': computedVisible,
           'yc-picker-has-prefix': $slots.prefix,
           'yc-picker-allow-clear': showClearBtn,
+          'yc-picker-range': type == 'time-range',
         },
       ]"
       :style="{
