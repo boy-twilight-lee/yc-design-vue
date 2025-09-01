@@ -1,20 +1,38 @@
-.yc-dropdown-popup {
-  .yc-dropdown {
-    padding: 4px 0;
-    border-radius: 4px;
-    box-shadow: 0 4px 10px #0000001a;
-    background-color: var(--color-bg-2);
-    border: 1px solid var(--color-border);
-    .yc-dropdown-list {
-      display: flex;
-      flex-direction: column;
-    }
-    .yc-dropdown-footer {
-      border-top: 1px solid var(--color-border-2);
-    }
+.yc-dropdown {
+  padding: 4px 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px #0000001a;
+  .yc-dropdown-list {
+    display: flex;
+    flex-direction: column;
   }
-  .yc-trigger-arrow {
-    background-color: var(--color-bg-2);
-    border: 1px solid var(--color-border);
+  .yc-dropdown-footer {
+    border-top: 1px solid rgb(229, 230, 235);
   }
 }
+// theme
+@theme: {
+  @light: {
+    border: 1px solid rgb(229, 230, 235);
+    bg: #fff;
+  };
+  @dark: {
+    border: 1px solid #232324;
+    bg: #232324;
+  };
+};
+each(@theme,.(@value,@name){
+  @key:replace(~"@{name}", "@", "");
+    .yc-dropdown-popup{
+      &.yc-dropdown-@{key}{
+        .yc-dropdown{
+         background-color: @value[bg];
+         border: @value[border];
+        }
+       .yc-trigger-arrow {
+         background-color: @value[bg];
+         border: @value[border];
+       }
+     }
+    }
+});

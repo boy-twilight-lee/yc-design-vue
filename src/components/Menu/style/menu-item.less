@@ -77,23 +77,36 @@
 each(@theme, .(@value,@name){
   @key:replace(~"@{name}", "@", "");
   .yc-menu-item-@{key} {
-    &:not(.yc-menu-item-disabled) {
-      color: @value[color];
-      &:hover {
-        background-color: @value[hover-bg];
+     .yc-menu-item{
+      &:not(.yc-menu-item-disabled) {
+        color: @value[color];
+        &:hover {
+          background-color: @value[hover-bg];
+        }
       }
-    }
-    &.yc-menu-item-selected{
-      font-weight: 500;
-      color: @value[selected-color];
-      background-color: @value[hover-bg];
-      .yc-menu-icon{
+      &.yc-menu-item-selected{
+        font-weight: 500;
         color: @value[selected-color];
+        background-color: @value[hover-bg];
+        .yc-menu-icon{
+          color: @value[selected-color];
+        }
       }
-    }
-    &.yc-menu-item-disabled{
-      cursor: not-allowed;
-      color: @value[disabled-color];
+      &.yc-menu-item-disabled{
+        cursor: not-allowed;
+        color: @value[disabled-color];
+      }
+     }
+  }
+  .yc-menu-inline-header{
+    .yc-menu-item{
+      &.yc-menu-item-selected{
+        color:@theme[@light][selected-color];
+        background-color:transparent;
+        .yc-menu-icon{
+          color:@theme[@light][selected-color];
+        }
+      }
     }
   }
 });

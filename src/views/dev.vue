@@ -4,6 +4,7 @@
       :style="{ width: '200px', height: '100%' }"
       :default-open-keys="['0']"
       :default-selected-keys="['0_2']"
+      theme="dark"
       show-collapse-button
       breakpoint="xl"
     >
@@ -36,6 +37,7 @@
     <yc-menu
       :style="{ width: '200px', height: '100%' }"
       :default-open-keys="['0']"
+      theme="dark"
       default-selected-keys="0-2"
       show-collapse-button
       breakpoint="xl"

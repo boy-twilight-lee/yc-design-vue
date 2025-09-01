@@ -3,6 +3,7 @@
     v-if="curIndex < max"
     :class="[
       'yc-menu-item-wrapper',
+      `yc-menu-item-${theme}`,
       {
         'yc-menu-item-mode-horizontal': mode == 'horizontal',
       },
@@ -12,7 +13,6 @@
       <div
         :class="[
           'yc-menu-item',
-          `yc-menu-item-${theme}`,
           {
             'yc-menu-item-selected': isSelected,
             'yc-menu-item-disabled': disabled,

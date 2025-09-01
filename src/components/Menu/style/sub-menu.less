@@ -2,34 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-
   .yc-menu-inline-content {
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
 }
-
-// theme
-@theme: {
-  @light: {
-    selected-color: rgb(22, 93, 255);
-  };
-  @dark: {
-    selected-color: rgb(22, 93, 255);
-  };
-};
-each(@theme, .(@value,@name){
-  @key:replace(~"@{name}", "@", "");
-  .yc-menu-inline-@{key} {
-    &:deep(.yc-menu-inline-header){
-      .yc-menu-item-selected{
-        color: @value[selected-color];
-        background-color: transparent;
-        .yc-menu-icon{
-          color: @value[selected-color];
-        }
-      }
-    }
-  }
-});
