@@ -48,6 +48,7 @@
 }
 // arrow
 .yc-carousel-arrow {
+  cursor: pointer;
   position: absolute;
   z-index: 2;
   display: flex;
@@ -55,12 +56,17 @@
   align-items: center;
   width: 24px;
   height: 24px;
-  color: var(--color-white);
-  background-color: var(--yc-carousel-arrow-bg);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  cursor: pointer;
+  color: var(--color-white);
   &:hover {
-    background-color: var(--yc-carousel-arrow-bg-hover);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  body[yc-design-theme='dark'] {
+    background-color: rgba(23, 23, 26, 0.3);
+    &:hover {
+      background-color: rgba(23, 23, 26, 0.5);
+    }
   }
 }
 // show-hover

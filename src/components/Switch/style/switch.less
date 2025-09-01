@@ -40,11 +40,9 @@
 }
 // unchecked
 .yc-switch-unchecked {
-  &:not(.yc-switch-shape-line) {
-    background-color: var(--yc-switch-unchecked-bg);
-  }
+  &:not(.yc-switch-shape-line),
   &.yc-switch-shape-line::after {
-    background-color: var(--yc-switch-unchecked-bg);
+    background-color: var(--color-fill-4);
   }
   .yc-switch-handle {
     background-color: var(--color-bg-white);
@@ -57,11 +55,9 @@
 }
 // checked
 .yc-switch-checked {
-  &:not(.yc-switch-shape-line) {
-    background-color: var(--yc-switch-checked-bg);
-  }
+  &:not(.yc-switch-shape-line),
   &.yc-switch-shape-line::after {
-    background-color: var(--yc-switch-checked-bg);
+    background-color: rgb(var(--primary-6));
   }
   .yc-switch-handle {
     background-color: var(--color-bg-white);
@@ -79,31 +75,30 @@
 .yc-switch-loading,
 .yc-switch-disabled {
   &.yc-switch-unchecked {
-    &:not(.yc-switch-shape-line) {
-      background-color: var(--yc-switch-disabled-unchecked-bg);
-    }
+    &:not(.yc-switch-shape-line),
     &.yc-switch-shape-line::after {
-      background-color: var(--yc-switch-disabled-unchecked-bg);
+      background-color: var(--color-fill-2);
     }
     .yc-switch-handle {
-      color: var(--yc-switch-disabled-unchecked-handle-color);
+      color: var(--color-neutral-3);
     }
     .yc-switch-text {
       color: var(--color-white);
     }
   }
   &.yc-switch-checked {
-    &:not(.yc-switch-shape-line) {
-      background-color: var(--yc-switch-disabled-checked-bg);
-    }
+    &:not(.yc-switch-shape-line),
     &.yc-switch-shape-line::after {
-      background-color: var(--yc-switch-disabled-checked-bg);
+      background-color: var(--color-primary-light-3);
     }
     .yc-switch-handle {
-      color: rgb(var(--primary-3));
+      color: var(--color-primary-light-3);
     }
     .yc-switch-text {
-      color: rgb(var(--primary-1));
+      color: var(--color-primary-light-1);
+      body[yc-design-theme='dark'] & {
+        color: var(--color-white);
+      }
     }
   }
 }

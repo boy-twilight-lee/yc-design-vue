@@ -23,22 +23,20 @@
     }
   }
 }
-
 .yc-button-group-dashed,
 .yc-button-group-outline {
   .yc-button:not(:first-child) {
     border-left: none;
   }
 }
-
+// 组件单独的变量
 @border-color: {
   primary: rgb(var(--primary-5));
-  secondary: var(--yc-button-group-secondary-border-color);
+  secondary: var(--color-secondary-hover);
   warning: rgb(var(--warning-5));
   success: rgb(var(--success-5));
   danger: rgb(var(--danger-5));
 };
-
 each(@border-color,{
   .yc-button-group-@{key},
   .yc-button-group-status-@{key} {
