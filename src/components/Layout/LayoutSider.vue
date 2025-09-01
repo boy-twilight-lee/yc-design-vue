@@ -11,8 +11,14 @@
       },
     ]"
   >
-    <slot />
-    <div v-if="showTrigger" class="yc-collapse-button" @click="handleCollapse">
+    <div class="yc-layout-sider-children">
+      <slot />
+    </div>
+    <div
+      v-if="showTrigger"
+      class="yc-layout-sider-trigger"
+      @click="handleCollapse"
+    >
       <slot name="trigger" :collapsed="computedCollapsed">
         <icon-arrow-right
           :rotate="computedCollapsed && !reverseArrow ? 0 : 180"
@@ -32,8 +38,14 @@
       },
     ]"
   >
-    <slot />
-    <div v-if="showTrigger" class="yc-collapse-button" @click="handleCollapse">
+    <div class="yc-layout-sider-children">
+      <slot />
+    </div>
+    <div
+      v-if="showTrigger"
+      class="yc-layout-sider-trigger"
+      @click="handleCollapse"
+    >
       <slot name="trigger" :collapsed="computedCollapsed">
         <icon-arrow-right
           :rotate="computedCollapsed && !reverseArrow ? 0 : 180"

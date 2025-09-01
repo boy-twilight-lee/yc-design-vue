@@ -12,7 +12,7 @@
       <div
         :class="[
           'yc-menu-item',
-          `yc-menu-item-theme-${theme}`,
+          `yc-menu-item-${theme}`,
           {
             'yc-menu-item-selected': isSelected,
             'yc-menu-item-disabled': disabled,

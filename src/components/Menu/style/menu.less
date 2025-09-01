@@ -1,7 +1,6 @@
 .yc-menu {
   position: relative;
   transition: width 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
-  background-color: var(--color-bg-2);
   .yc-menu-inner {
     overflow: auto;
     padding: 4px 8px;
@@ -19,14 +18,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--yc-menu-collapse-button-color);
-    background-color: var(--yc-menu-collapse-button-bg);
-    &:hover {
-      background-color: var(--yc-menu-collapse-button-bg-hover);
-    }
   }
 }
+// mode
 .yc-menu-mode-vertical {
+  // height: 100%;
   .yc-menu-inner {
     height: 100%;
     flex-direction: column;
@@ -42,9 +38,38 @@
     padding: 14px 20px 14px 32px;
     display: flex;
     align-items: center;
-    .yc-menu-inline {
+    gap: 12px;
+
+    &:deep(.yc-menu-inline) {
       flex-shrink: 0;
     }
-    gap: 12px;
   }
 }
+// theme
+@theme: {
+  @light: {
+    bg: #fff;
+    btn-color: rgb(134, 144, 156);
+    btn-bg: rgb(247, 248, 250);
+    btn-hover-bg: rgb(229, 230, 235);
+  };
+  @dark: {
+    bg: #232324;
+    btn-color: #fff;
+    btn-bg: rgb(22, 93, 255);
+    btn-hover-bg: rgb(14, 66, 210);
+  };
+};
+each(@theme, .(@value,@name){
+  @key:replace(~"@{name}", "@", "");
+  .yc-menu-@{key} {
+    background-color: @value[bg];
+    .yc-menu-collapse-button {
+      color: @value[btn-color];
+      background-color: @value[btn-bg];
+      &:hover {
+        background-color: @value[btn-hover-bg];
+      }
+    }
+  }
+});

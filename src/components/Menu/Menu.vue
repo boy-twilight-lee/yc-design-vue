@@ -3,7 +3,7 @@
     :class="[
       'yc-menu',
       `yc-menu-mode-${mode}`,
-      `yc-menu-theme-${theme}`,
+      `yc-menu-${theme}`,
       {
         'yc-menu-collapsed': computedCollapsed && mode != 'horizontal',
       },

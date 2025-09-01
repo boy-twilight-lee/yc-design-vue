@@ -6,32 +6,14 @@
   min-height: 40px;
   line-height: 40px;
   font-size: 14px;
-  color: var(--color-text-2);
-  transition:
-    color 0.2s cubic-bezier(0, 0, 1, 1),
-    background-color 0.2s cubic-bezier(0, 0, 1, 1);
+  transition: color 0.2s cubic-bezier(0, 0, 1, 1);
   display: flex;
   justify-content: center;
   align-items: center;
-  &:not(.yc-menu-item-disabled):hover {
-    background-color: var(--color-fill-2);
-  }
-  &.yc-menu-item-selected {
-    font-weight: 500;
-    color: rgb(var(--primary-6));
-    background-color: var(--color-fill-2);
-    .yc-menu-icon {
-      color: rgb(var(--primary-6));
-    }
-  }
-  &.yc-menu-item-disabled {
-    cursor: not-allowed;
-    color: var(--color-text-4);
-  }
   .yc-menu-icon {
     line-height: 1;
     margin-right: 16px;
-    color: var(--color-text-3);
+    color: rgb(134, 144, 156);
   }
   .yc-menu-item-title {
     flex-shrink: 0;
@@ -66,7 +48,7 @@
         right: 12px;
         bottom: -14px;
         height: 3px;
-        background-color: rgb(var(--primary-6));
+        background-color: rgb(22, 93, 255);
       }
     }
   }
@@ -77,3 +59,41 @@
   top: 50%;
   transform: translateY(-50%);
 }
+// theme
+@theme: {
+  @light: {
+    color: rgb(78, 89, 105);
+    selected-color: rgb(22, 93, 255);
+    disabled-color: rgb(201, 205, 212);
+    hover-bg: rgb(242, 243, 245);
+  };
+  @dark: {
+    color: rgb(201, 205, 212);
+    selected-color: #fff;
+    disabled-color: rgb(78, 89, 105);
+    hover-bg: rgba(255, 255, 255, 0.04);
+  };
+};
+each(@theme, .(@value,@name){
+  @key:replace(~"@{name}", "@", "");
+  .yc-menu-item-@{key} {
+    &:not(.yc-menu-item-disabled) {
+      color: @value[color];
+      &:hover {
+        background-color: @value[hover-bg];
+      }
+    }
+    &.yc-menu-item-selected{
+      font-weight: 500;
+      color: @value[selected-color];
+      background-color: @value[hover-bg];
+      .yc-menu-icon{
+        color: @value[selected-color];
+      }
+    }
+    &.yc-menu-item-disabled{
+      cursor: not-allowed;
+      color: @value[disabled-color];
+    }
+  }
+});

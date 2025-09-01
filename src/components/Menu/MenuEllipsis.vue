@@ -14,7 +14,7 @@
         :class="[
           'yc-menu-item',
           'yc-menu-item-ellipsis',
-          `yc-menu-item-theme-${theme}`,
+          `yc-menu-item-${theme}`,
           {
             'yc-menu-item-selected': isSelected,
           },

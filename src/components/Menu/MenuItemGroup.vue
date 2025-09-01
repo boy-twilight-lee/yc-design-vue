@@ -1,5 +1,5 @@
 <template>
-  <div :class="['yc-menu-group', `yc-menu-group-theme-${theme}`]">
+  <div :class="['yc-menu-group', `yc-menu-group-${theme}`]">
     <div class="yc-menu-group-title text-ellipsis">
       <slot name="title">
         {{ title }}

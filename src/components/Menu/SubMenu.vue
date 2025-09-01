@@ -1,5 +1,5 @@
 <template>
-  <div class="yc-menu-inline">
+  <div :class="['yc-menu-inline', `yc-menu-inline-${theme}`]">
     <yc-menu-item
       is-submenu
       :path="path"
@@ -54,7 +54,8 @@ withDefaults(defineProps<SubMenuProps>(), {
   popupMaxHeight: undefined,
 });
 // 接收父级注入的属性
-const { mode, computedOpenKeys, computedCollapsed } = useContext().inject();
+const { mode, theme, computedOpenKeys, computedCollapsed } =
+  useContext().inject();
 </script>
 
 <style lang="less" scoped>

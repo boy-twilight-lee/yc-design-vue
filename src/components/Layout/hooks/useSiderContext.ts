@@ -30,7 +30,9 @@ export default () => {
       attribute: 'yc-design-theme',
       valueDark: 'dark',
       valueLight: 'light',
+      initialValue: 'light',
     });
+    isDark.value = false;
     // 受控的收缩
     const computedCollapsed = useControlValue<boolean>(
       collapsed,
