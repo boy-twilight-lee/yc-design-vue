@@ -1,23 +1,15 @@
 <template>
   <div class="test">
-    <yc-select :options="[1, 2, 3]" placeholder="请选择" :bordered="false">
-    </yc-select>
-    <a-select placeholder="请选择" :bordered="false">
-      <template #header> dsads </template>
-      <template #footer> dsads </template>
-      <a-option disabled> 1 </a-option>
-    </a-select>
+    <a-button loading>测试</a-button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { useDark } from '@vueuse/core';
-import { Notification } from '@arco-design/web-vue';
 // document.body.setAttribute('arco-theme', 'dark');
 // const isDark = useDark({
 //   selector: 'body',
-//   attribute: 'yc-design-theme',
+//   attribute: 'a-design-theme',
 //   valueDark: 'dark',
 //   valueLight: 'light',
 // });
@@ -31,5 +23,17 @@ import { Notification } from '@arco-design/web-vue';
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+</style>
+
+<style scoped>
+.card-demo {
+  width: 100%;
+}
+.card-demo .arco-card-header {
+  border: none;
+}
+.card-demo .a-card-header {
+  border: none;
 }
 </style>

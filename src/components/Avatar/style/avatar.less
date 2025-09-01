@@ -1,16 +1,16 @@
 .yc-avatar {
   cursor: default;
   position: relative;
+  background-color: var(--color-fill-4);
   color: var(--color-white);
   font-size: 20px;
-  background-color: var(--yc-avatar-bg-color);
   white-space: nowrap;
   vertical-align: middle;
   display: inline-flex;
   align-items: center;
 
   &:hover .yc-avatar-trigger-icon-button {
-    background-color: var(--yc-avatar-trigger-icon-bg-color-hover);
+    background-color: var(--color-neutral-3);
   }
   &:hover .yc-avatar-trigger-icon-mask {
     opacity: 1;
@@ -47,12 +47,12 @@
     cursor: pointer;
     width: 20px;
     height: 20px;
+    background-color: var(--color-neutral-2);
     border-radius: 50%;
-    color: var(--yc-avatar-trigger-icon-color);
+    color: var(--color-fill-4);
     font-size: 12px;
     line-height: 20px;
     text-align: center;
-    background-color: var(--yc-avatar-trigger-icon-bg-color);
     transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
   }
   .yc-avatar-trigger-icon-mask {
