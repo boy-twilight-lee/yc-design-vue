@@ -1,11 +1,12 @@
-import { defineConfig, Plugin } from 'vite';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import dts from 'vite-plugin-dts';
-import { YcDesignVueResolver } from './src/resolver/YcDesignVue';
+import StylePlugin from './src/plugin/style';
+// import { YcDesignVueResolver } from './src/resolver/YcDesignVue';
 // import AutoImport from 'unplugin-auto-import/vite';
-import Components from 'unplugin-vue-components/vite';
+// import Components from 'unplugin-vue-components/vite';
 
 export default defineConfig({
   plugins: [
@@ -15,12 +16,13 @@ export default defineConfig({
       outDir: ['es', 'lib'],
       exclude: ['node_modules/**'],
     }),
+    StylePlugin(),
     // AutoImport({
     //   resolvers: [YcDesignVueResolver()],
     // }),
-    Components({
-      resolvers: [YcDesignVueResolver()],
-    }),
+    // Components({
+    //   resolvers: [YcDesignVueResolver()],
+    // }),
   ],
   resolve: {
     alias: {
@@ -40,7 +42,6 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      // external: ['vue', /\.less$/],
       external: ['vue'],
       output: [
         {

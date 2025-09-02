@@ -66,6 +66,7 @@
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.55.1",
+    "@types/less": "^3.0.8",
     "@types/node": "^20.12.8",
     "@types/tinycolor2": "^1.4.6",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
