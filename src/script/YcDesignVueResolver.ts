@@ -12,11 +12,10 @@ interface ComponentResolver {
 
 export interface YcDesignVueResolverOptions {
   exclude?: string | RegExp | (string | RegExp)[];
-  importStyle?: boolean | 'css';
   sideEffect?: boolean;
 }
 
-// 检查名称是否应被排除。
+// 检查名称是否应被排除 (函数保持不变)
 function isExclude(
   name: string,
   exclude?: string | RegExp | (string | RegExp)[]
@@ -32,8 +31,7 @@ function isExclude(
   return false;
 }
 
-// 子组件及其对应的父组件映射
-// The key is the sub-component, and the value is its parent component.
+// 子组件及其对应的父组件映射 (保持不变)
 const subCompt: Record<string, string> = {
   AnchorLink: 'Anchor',
   AvatarGroup: 'Avatar',
@@ -80,39 +78,38 @@ const subCompt: Record<string, string> = {
 
 // 解析器
 export function YcDesignVueResolver(
+  // 默认开启副作用，即自动导入样式
   options: YcDesignVueResolverOptions = {
-    sideEffect: false,
+    sideEffect: true,
   }
 ): ComponentResolver {
   return {
     type: 'component',
     resolve: (name: string) => {
+      // 1. 检查组件名是否合法
       if (!name.match(/^Yc[A-Z]/) || isExclude(name, options.exclude)) {
         return undefined;
       }
+      // 2. 解析组件名和父组件
       const componentName = name.slice(2);
       const parentName = subCompt[componentName];
-      let importInfo;
-      if (parentName) {
-        importInfo = {
-          name: componentName,
-          from: `yc-design-vue/es/${parentName}`,
-        };
-      } else {
-        importInfo = {
-          name: 'default',
-          from: `yc-design-vue/es/${componentName}`,
-        };
-      }
+      const importDir = parentName || componentName;
+      // 如果是子组件，我们需要具名导入；如果是父组件，通常是默认导入
+      const importName = parentName ? componentName : 'default';
+      // 3. 核心修改: 将 from 路径直接指向入口 JS 文件
       const config: ComponentInfo = {
-        name: importInfo.name,
+        name: importName,
         as: componentName,
-        from: importInfo.from,
+        from: `yc-design-vue/es/${importDir}`,
       };
       // 4. 处理样式副作用
-      if (options.sideEffect !== false) {
-        const styleDir = parentName || componentName;
-        config.sideEffects = `yc-design-vue/es/${styleDir}/style/index.js`;
+      if (options.sideEffect) {
+        config.sideEffects = [
+          // 全局共享样式，应首先被引入
+          'yc-design-vue/es/shared.css',
+          // 组件自身的样式
+          `yc-design-vue/es/${importDir}/index.css`,
+        ];
       }
       return config;
     },

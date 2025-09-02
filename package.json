@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "1.6.0",
+  "version": "1.6.7",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -90,7 +90,7 @@
     "vite-plugin-dts": "^4.5.4",
     "vue": "^3.3.4",
     "vue-tsc": "^2.0.29",
-    "yc-design-vue": "^1.6.0"
+    "yc-design-vue": "^1.6.6"
   },
   "peerDependencies": {
     "vue": "^3.3.4"

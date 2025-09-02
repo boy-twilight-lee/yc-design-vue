@@ -46,7 +46,7 @@
   }
 }
 // theme
-@theme: {
+@menu-theme: {
   @light: {
     bg: #fff;
     btn-color: rgb(134, 144, 156);
@@ -60,7 +60,7 @@
     btn-hover-bg: rgb(14, 66, 210);
   };
 };
-each(@theme, .(@value,@name){
+each(@menu-theme, .(@value,@name){
   @key:replace(~"@{name}", "@", "");
   .yc-menu-@{key} {
     background-color: @value[bg];

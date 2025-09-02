@@ -32,7 +32,7 @@
   }
 }
 
-@option-theme: {
+@doption-theme: {
   @light: {
     color: rgb(29, 33, 41);
     hover-bg: rgb(242, 243, 245);
@@ -46,7 +46,7 @@
     disabled-color: rgb(78, 89, 105);
   };
 };
-each(@option-theme,.(@value,@name){
+each(@doption-theme,.(@value,@name){
   @key:replace(~"@{name}", "@", "");
   .yc-dropdown-option-theme-@{key}{
     color: @value[color];

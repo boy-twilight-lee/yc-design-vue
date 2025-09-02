@@ -3,8 +3,8 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import dts from 'vite-plugin-dts';
-import StylePlugin from './src/plugin/style';
-// import { YcDesignVueResolver } from './src/resolver/YcDesignVue';
+import StylePlugin from './src/script/StylePlugin';
+// import { YcDesignVueResolver } from './src/script/YcDesignVueResolver';
 // import AutoImport from 'unplugin-auto-import/vite';
 // import Components from 'unplugin-vue-components/vite';
 

@@ -11,7 +11,7 @@
   }
 }
 // theme
-@theme: {
+@dropdown-theme: {
   @light: {
     border: 1px solid rgb(229, 230, 235);
     bg: #fff;
@@ -21,7 +21,7 @@
     bg: #232324;
   };
 };
-each(@theme,.(@value,@name){
+each(@dropdown-theme,.(@value,@name){
   @key:replace(~"@{name}", "@", "");
   .yc-trigger-content{
     .yc-dropdown-@{key}{

@@ -60,7 +60,7 @@
   transform: translateY(-50%);
 }
 // theme
-@theme: {
+@menu-item-theme: {
   @light: {
     color: rgb(78, 89, 105);
     disabled-color: rgb(201, 205, 212);
@@ -72,7 +72,7 @@
     hover-bg: rgba(255, 255, 255, 0.04);
   };
 };
-each(@theme, .(@value,@name){
+each(@menu-item-theme, .(@value,@name){
   @key:replace(~"@{name}", "@", "");
   .yc-menu-item-@{key} {
      .yc-menu-item{
