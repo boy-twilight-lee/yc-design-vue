@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "1.5.4",
+  "version": "1.5.6",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [

@@ -62,7 +62,7 @@
     height: 14px;
     transition: all 0.1s cubic-bezier(0, 0, 1, 1);
   }
-  &:not(.yc-radio-disabled) {
+  &:not(.yc-radio-disabled):not(.yc-radio-checked) {
     &:hover {
       background-color: var(--color-bg-5);
       color: var(--color-text-1);
@@ -99,6 +99,7 @@
       border-color: rgb(var(--primary-6));
       background-color: rgb(var(--primary-6));
       &::after {
+        background-color: var(--color-white);
         transform: scale(0.4);
       }
     }
