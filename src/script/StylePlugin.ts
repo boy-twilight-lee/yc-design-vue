@@ -28,14 +28,12 @@ export default function ycDesignVueStyles(): Plugin {
       const lessOptions: Less.Options = {
         compress: true,
       };
-      // --- 1. 编译并写入 shared.css (已排除 var.less) ---
+      // --- 1. 编译并写入 shared.css (现在会包含 var.less) ---
       if (fs.existsSync(sharedStylesPath)) {
-        let sharedFiles = globSync(
+        const sharedFiles = globSync(
           path.join(sharedStylesPath, '**/*.{less,css}').replace(/\\/g, '/')
         );
-        sharedFiles = sharedFiles.filter(
-          (file) => path.basename(file) !== 'var.less'
-        );
+        // ⭐ 核心修改: 下面这行过滤 var.less 的代码已被移除
         let combinedSharedStyles = '';
         for (const file of sharedFiles) {
           combinedSharedStyles += fs.readFileSync(file, 'utf-8') + '\n';
@@ -115,7 +113,7 @@ export default function ycDesignVueStyles(): Plugin {
             }
           }
         } else {
-          // ⭐ 核心修改: 对于没有 style 目录的组件，创建一个空的 index.css
+          // ⭐ 对于没有 style 目录的组件，创建一个空的 index.css
           const outputCssPath = path.join(
             options.dir,
             componentName,
