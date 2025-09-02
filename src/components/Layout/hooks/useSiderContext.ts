@@ -7,31 +7,20 @@ import {
   computed,
 } from 'vue';
 import { Props, Theme, RequiredDeep } from '@shared/type';
-import { isUndefined, useControlValue } from '@shared/utils';
+import { useControlValue } from '@shared/utils';
 import { LayoutSiderEmits, LayoutSiderProps } from '../type';
-import { useDark } from '@vueuse/core';
 
 export const LAYOUT_CONTEXT_KEY = 'LAYOUT-CONTEXT';
 export type LayoutContext = {
-  theme: Ref<Theme>;
+  theme: Ref<Theme | undefined>;
   collapsed: Ref<boolean>;
 };
 
 export default () => {
-  // isDark
-  const isDark = useDark({
-    selector: 'body',
-    attribute: 'yc-design-theme',
-    valueDark: 'dark',
-    valueLight: 'light',
-    initialValue: 'light',
-  });
   const provide = (props: Props, emits: LayoutSiderEmits) => {
-    const {
-      theme: _theme,
-      collapsed,
-      defaultCollapsed,
-    } = toRefs(props as RequiredDeep<LayoutSiderProps>);
+    const { collapsed, defaultCollapsed, theme } = toRefs(
+      props as RequiredDeep<LayoutSiderProps>
+    );
     // 受控的收缩
     const computedCollapsed = useControlValue<boolean>(
       collapsed,
@@ -40,25 +29,20 @@ export default () => {
         emits('update:collapsed', val);
       }
     );
-    // 处理主题问题
-    const theme = computed<Theme>(() => {
-      if (!isUndefined(_theme.value)) {
-        return _theme.value;
-      }
-      return isDark.value ? 'dark' : 'light';
-    });
+    // light
+    const mergeTheme = computed(() => theme.value || 'light');
     _provide<LayoutContext>(LAYOUT_CONTEXT_KEY, {
       theme,
       collapsed: computedCollapsed,
     });
     return {
-      theme,
+      theme: mergeTheme,
       computedCollapsed,
     };
   };
   const inject = () => {
     return _inject<LayoutContext>(LAYOUT_CONTEXT_KEY, {
-      theme: computed(() => (isDark.value ? 'dark' : 'light')),
+      theme: ref(undefined),
       collapsed: ref(false),
     });
   };

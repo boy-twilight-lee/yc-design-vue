@@ -17,7 +17,7 @@
     position: relative;
     width: 14px;
     height: 14px;
-    border: 2px solid var(--color-border-2);
+    border: 2px solid var(--color-neutral-3);
     border-radius: 50%;
     color: var(--color-white);
     display: flex;
@@ -31,7 +31,7 @@
       height: 10px;
       border-radius: 50%;
       transition: transform 0.3s cubic-bezier(0.3, 1.3, 0.3, 1);
-      background: var(--color-white);
+      background-color: var(--color-bg-2);
     }
   }
   .yc-radio-label {
@@ -57,14 +57,14 @@
     top: 50%;
     left: -2px;
     transform: translateY(-50%);
-    background-color: var(--color-border-2);
+    background-color: var(--color-neutral-3);
     width: 1px;
     height: 14px;
     transition: all 0.1s cubic-bezier(0, 0, 1, 1);
   }
   &:not(.yc-radio-disabled) {
     &:hover {
-      background-color: var(--color-bg-1);
+      background-color: var(--color-bg-5);
       color: var(--color-text-1);
     }
     &:hover::before {
@@ -96,7 +96,7 @@
 .yc-radio-checked {
   &.yc-radio {
     .yc-radio-icon {
-      border-color: transparent;
+      border-color: rgb(var(--primary-6));
       background-color: rgb(var(--primary-6));
       &::after {
         transform: scale(0.4);
@@ -105,7 +105,7 @@
   }
   &.yc-radio-button {
     color: rgb(var(--primary-6));
-    background-color: var(--color-bg-1);
+    background-color: var(--color-bg-5);
     &::before {
       opacity: 0;
     }
@@ -124,7 +124,7 @@
     }
     .yc-radio-icon {
       transition: border-color 0.1s cubic-bezier(0, 0, 1, 1);
-      border-color: var(--color-border-3);
+      border-color: var(--color-neutral-3);
     }
   }
 }
@@ -136,7 +136,7 @@
   &.yc-radio {
     &.yc-radio-unchecked {
       .yc-radio-icon {
-        border-color: var(--color-border-2);
+        border-color: var(--color-neutral-3);
         &::after {
           background-color: var(--color-fill-2);
         }
@@ -145,7 +145,7 @@
     &.yc-radio-checked {
       .yc-radio-icon {
         border-color: transparent;
-        background-color: rgb(var(--primary-3));
+        background-color: var(--color-primary-light-3);
       }
     }
     .yc-radio-label {
@@ -157,7 +157,8 @@
       color: var(--color-text-4);
     }
     &.yc-radio-checked {
-      color: rgb(var(--primary-3));
+      color: var(--color-primary-light-3);
+      background-color: var(--color-bg-5);
     }
   }
 }

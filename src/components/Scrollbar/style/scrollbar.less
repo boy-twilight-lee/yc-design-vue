@@ -34,9 +34,9 @@
     content: '';
     width: 15px;
     height: 15px;
-    background-color: var(--color-fill-1);
-    border-right: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-neutral-1);
+    border-right: 1px solid var(--color-neutral-3);
+    border-bottom: 1px solid var(--color-neutral-3);
   }
 }
 // 横向
@@ -45,9 +45,9 @@
     padding-right: 15px;
   }
   &:deep(.yc-scrollbar-track-direction-vertical) {
-    background-color: var(--color-fill-1);
-    border-left: 1px solid var(--color-border);
-    border-right: 1px solid var(--color-border);
+    background-color: var(--color-neutral-1);
+    border-left: 1px solid var(--color-neutral-3);
+    border-right: 1px solid var(--color-neutral-3);
   }
 }
 // 纵向
@@ -56,9 +56,9 @@
     padding-bottom: 15px;
   }
   &:deep(.yc-scrollbar-track-direction-horizontal) {
-    background-color: var(--color-fill-1);
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-neutral-1);
+    border-top: 1px solid var(--color-neutral-3);
+    border-bottom: 1px solid var(--color-neutral-3);
   }
 }
 // track
@@ -74,15 +74,15 @@
     .yc-scrollbar-thumb-bar {
       user-select: none;
       border-radius: 5px;
-      background-color: var(--color-text-3);
+      background-color: var(--color-neutral-4);
       opacity: 0;
       transition: opacity 0.2s ease;
       &:hover {
-        background-color: var(--color-text-2);
+        background-color: var(--color-neutral-6);
         opacity: 0.8;
       }
       &.yc-scrollbar-thumb-bar-dragging {
-        background-color: var(--color-text-2);
+        background-color: var(--color-neutral-6);
         opacity: 0.8;
       }
       &.yc-scrollbar-thumb-bar-hover {

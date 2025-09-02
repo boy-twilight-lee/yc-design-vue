@@ -5,6 +5,7 @@
       `yc-collapse-item-expand-icon-${expandIconPosition}`,
       {
         'yc-collapse-item-disabled': disabled,
+        'yc-collapse-item-open': computedActiveKey.includes(path),
       },
     ]"
   >

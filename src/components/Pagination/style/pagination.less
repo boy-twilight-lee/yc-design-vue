@@ -37,11 +37,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition:
+      color 0.2s cubic-bezier(0, 0, 1, 1),
+      background-color 0.2s cubic-bezier(0, 0, 1, 1);
     &:not(.yc-pagination-item-disabled):not(.yc-pagination-item-active):hover {
       background-color: var(--color-fill-1);
-      transition:
-        color 0.2s cubic-bezier(0, 0, 1, 1),
-        background-color 0.2s cubic-bezier(0, 0, 1, 1);
       &.yc-pagination-item-previous,
       &.yc-pagination-item-next {
         color: rgb(var(--primary-6));

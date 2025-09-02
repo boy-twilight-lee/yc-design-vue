@@ -2,7 +2,7 @@
   overflow: hidden;
   width: 100%;
   padding: 8px 15px;
-  border-radius: var(--border-radius-small);
+  border-radius: 2px;
   font-size: 14px;
   line-height: 1.5715;
   display: flex;
@@ -30,13 +30,13 @@
       color: var(--color-text-1);
     }
     .yc-alert-content {
-      color: var(--color-text-1);
+      color: var(--color-text-2);
     }
   }
   .yc-alert-close-btn {
     cursor: pointer;
     height: 22px;
-    color: var(--color-text-3);
+    color: var(--color-text-2);
     font-size: 12px;
     transition: color 0.1s cubic-bezier(0, 0, 1, 1);
     display: flex;
@@ -74,7 +74,7 @@
 }
 // banner
 .yc-alert-banner {
-  border-radius: var(--border-radius-none);
+  border-radius: 0;
   justify-content: center;
   .yc-alert-body {
     flex: unset;

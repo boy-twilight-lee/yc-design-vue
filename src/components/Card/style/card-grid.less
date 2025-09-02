@@ -27,5 +27,8 @@
   }
   &:hover::before {
     box-shadow: 0 4px 10px rgb(var(--gray-2));
+    body[yc-design-theme='dark'] {
+      box-shadow: 0 4px 10px rgba(var(--gray-1), 40%);
+    }
   }
 }

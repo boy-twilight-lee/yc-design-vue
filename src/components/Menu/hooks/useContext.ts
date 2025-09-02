@@ -32,7 +32,7 @@ import { SubMenu, MenuItem } from '../index';
 import { nanoid } from 'nanoid';
 import { useResizeObserver } from '@vueuse/core';
 import useSiderContext from '@/components/Layout/hooks/useSiderContext';
-import { useDark } from '@vueuse/core';
+import useTheme from '@/components/Layout/hooks/useTheme';
 
 const MENU_CONTEXT_KEY = 'menu-context';
 type MenuContext = {
@@ -186,6 +186,7 @@ export const getPopupMaxHeight = (popupMaxHeight: PopupMaxHeight) => {
 };
 
 export default () => {
+  const { theme: sysTheme } = useTheme();
   const provide = (
     props: Props,
     emits: MenuEmits,
@@ -213,7 +214,7 @@ export default () => {
       theme: _theme,
       popupMaxHeight: _popupMaxHeight,
     } = toRefs(props as MenuProps);
-    const { theme: injectTheme, collapsed: injectCollapsed } =
+    const { theme: siderTheme, collapsed: injectCollapsed } =
       useSiderContext().inject();
     // 选中的key
     const computedSelectedKeys = useControlValue<string>(
@@ -265,7 +266,9 @@ export default () => {
     // 最大能展示元素的个数
     const max = ref<number>(1000000);
     // theme
-    const theme = computed(() => _theme.value || injectTheme.value);
+    const theme = computed(() => {
+      return _theme.value || siderTheme.value || sysTheme.value;
+    });
     // 横向宽度检测
     if (mode.value == 'horizontal') {
       useResizeObserver(
@@ -319,14 +322,6 @@ export default () => {
     };
   };
   const inject = () => {
-    const isDark = useDark({
-      selector: 'body',
-      attribute: 'yc-design-theme',
-      valueDark: 'dark',
-      valueLight: 'light',
-      initialValue: 'light',
-    });
-    console.log(isDark.value, 'isDark');
     return _inject<MenuContext>(MENU_CONTEXT_KEY, {
       computedSelectedKeys: ref(''),
       computedOpenKeys: ref([]),
@@ -338,7 +333,7 @@ export default () => {
       triggerProps: ref({}),
       autoOpenSelected: ref(false),
       mode: ref('vertical'),
-      theme: computed(() => (isDark.value ? 'dark' : 'light')),
+      theme: sysTheme,
       popupMaxHeight: ref(),
       autoScrollIntoView: ref(false),
       scrollConfig: ref({}),

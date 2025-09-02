@@ -39,7 +39,6 @@
 
 // disabled
 .yc-link-disabled {
-  opacity: 0.4;
   cursor: not-allowed;
 }
 
@@ -47,19 +46,6 @@
 .yc-link-loading {
   cursor: default;
   position: relative;
-
-  &::before {
-    content: '';
-    display: block;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #fff;
-    opacity: 0.4;
-  }
 }
 
 @status: {
@@ -71,5 +57,10 @@
 each(@status, {
   .yc-link-status-@{key} {
     color: @value;
+    &.yc-link-loading,
+    &.yc-link-disabled{
+      color: if(@key=normal,var(--color-link-light-3),var(~"--color-@{key}-light-3"));
+   }
   }
+
 });

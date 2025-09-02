@@ -1,17 +1,17 @@
 .yc-collapse-item {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-2);
   .yc-collapse-item-header {
+    overflow: hidden;
     cursor: pointer;
     position: relative;
     padding: 8px 12px;
-    overflow: hidden;
+    background-color: var(--color-bg-2);
+    border-bottom: 1px solid transparent;
     color: var(--color-text-1);
     font-size: 14px;
     line-height: 24px;
-    background-color: var(--color-bg-1);
-    border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease;
     display: flex;
     align-items: center;
@@ -24,19 +24,17 @@
       font-weight: 500;
     }
   }
-
   .yc-collapse-item-content {
     position: relative;
     overflow: hidden;
+    background-color: var(--color-fill-1);
     color: var(--color-text-1);
     font-size: 14px;
-    background-color: var(--color-bg-2);
     .yc-collapse-item-content-box {
       padding: 8px 0;
     }
   }
 }
-
 // postion
 .yc-collapse-item-expand-icon-left {
   .yc-collapse-item-header,
@@ -62,7 +60,13 @@
 .yc-collapse-item-disabled {
   .yc-collapse-item-header {
     color: var(--color-text-4);
-    background-color: var(--color-bg-1);
+    background-color: var(--color-bg-2);
     cursor: not-allowed;
+  }
+}
+// open
+.yc-collapse-item-open {
+  .yc-collapse-item-header {
+    border-color: var(--color-neutral-3);
   }
 }

@@ -37,6 +37,9 @@
   margin: 0;
   padding: 0;
   transition: width 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+  body[yc-design-theme='dark'] & {
+    background-color: #232324;
+  }
   .yc-layout-sider-children {
     height: 100%;
     overflow: auto;
@@ -63,17 +66,15 @@
 .yc-layout-sider-light {
   background-color: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.08);
-  body[yc-design-theme='dark'] & {
-    background-color: #232324;
-  }
   .yc-layout-sider-trigger {
     border-top: 1px solid var(--color-bg-5);
     color: var(--color-text-1);
   }
 }
 .yc-layout-sider-dark {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #232324;
   .yc-layout-sider-trigger {
+    background-color: rgba(255, 255, 255, 0.2);
     color: var(--color-white);
   }
 }

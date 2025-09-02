@@ -59,7 +59,7 @@
       left: -9px;
       width: 2px;
       height: 12px;
-      background-color: var(--color-border-2);
+      background-color: var(--color-fill-3);
       transform: translateY(-50%);
     }
     .yc-tabs-tab-title {
@@ -91,7 +91,7 @@
 .yc-tabs-tab-type-card,
 .yc-tabs-tab-type-card-gutter {
   padding: 0 16px;
-  border: 1px solid var(--color-border-2);
+  border: 1px solid var(--color-neutral-3);
   transition:
     padding 0.2s cubic-bezier(0, 0, 1, 1),
     color 0.2s cubic-bezier(0, 0, 1, 1);
@@ -118,18 +118,18 @@
     }
     &.yc-tabs-tab-active {
       background-color: transparent;
-      border-bottom-color: var(--color-bg-1);
+      border-bottom-color: var(--color-bg-2);
 
       &.yc-tabs-tab-bottom {
-        border-top-color: var(--color-bg-1);
-        border-bottom-color: var(--color-border-2);
+        border-top-color: var(--color-bg-2);
+        border-bottom-color: var(--color-neutral-3);
       }
     }
   }
   &.yc-tabs-tab-vertical {
     border-bottom: none;
     &:not(:last-child) {
-      border-bottom: 1px solid var(--color-border-2);
+      border-bottom: 1px solid var(--color-neutral-3);
     }
     &.yc-tabs-tab-type-card {
       &:not(:first-child) {
@@ -138,10 +138,10 @@
     }
     &.yc-tabs-tab-active {
       background-color: transparent;
-      border-right-color: var(--color-bg-1);
+      border-right-color: var(--color-bg-2);
       &.yc-tabs-tab-right {
-        border-right-color: var(--color-border-2);
-        border-left-color: var(--color-bg-1);
+        border-right-color: var(--color-neutral-3);
+        border-left-color: var(--color-bg-2);
       }
     }
   }
@@ -162,10 +162,10 @@
 .yc-tabs-tab-type-capsule {
   padding: 0 10px;
   &:not(.yc-tabs-tab-disabled):hover {
-    background-color: var(--color-bg-3);
+    background-color: var(--color-bg-2);
   }
   &.yc-tabs-tab-active {
-    background-color: var(--color-bg-3);
+    background-color: var(--color-bg-2);
   }
 }
 
@@ -234,6 +234,6 @@ each(@size, .(@value, @name) {
   background-color: transparent;
   color: var(--color-text-4);
   &.yc-tabs-tab-active {
-    color: rgb(var(--arcoblue-7));
+    color: var(--color-primary-light-3);
   }
 }
