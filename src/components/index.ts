@@ -30,7 +30,6 @@ import {
 } from './Dropdown';
 import Empty from './Empty';
 import { default as Grid, GridItem, GridRow, GridCol } from './Grid';
-import Icon from './Icon';
 import {
   default as Image,
   ImagePreview,
@@ -121,7 +120,6 @@ export * from './Drawer';
 export * from './Dropdown';
 export * from './Empty';
 export * from './Grid';
-export * from './Icon';
 export * from './Image';
 export * from './Input';
 export * from './InputNumber';
@@ -191,7 +189,6 @@ export {
   Dropdown,
   Empty,
   Grid,
-  Icon,
   Image,
   Input,
   InputNumber,
@@ -262,7 +259,6 @@ export const components: Record<string, Plugin> = {
   Dropdown,
   Empty,
   Grid,
-  Icon,
   Image,
   Input,
   InputNumber,

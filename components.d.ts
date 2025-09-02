@@ -66,7 +66,7 @@ declare module 'vue' {
     GridCol: typeof import('./src/components/Grid/GridCol.vue')['default']
     GridItem: typeof import('./src/components/Grid/GridItem.vue')['default']
     GridRow: typeof import('./src/components/Grid/GridRow.vue')['default']
-    Icon: typeof import('./src/components/Icon/index.vue')['default']
+    Icon: typeof import('./src/components/_shared/components/Icon.vue')['default']
     IconArrowDown: typeof import('./src/components/_shared/icons/IconArrowDown.vue')['default']
     IconArrowRight: typeof import('./src/components/_shared/icons/IconArrowRight.vue')['default']
     IconButton: typeof import('./src/components/_shared/components/IconButton.vue')['default']
@@ -205,9 +205,5 @@ declare module 'vue' {
     TypographyTitle: typeof import('./src/components/Typography/TypographyTitle.vue')['default']
     VerificationCode: typeof import('./src/components/VerificationCode/index.vue')['default']
     Watermark: typeof import('./src/components/Watermark/index.vue')['default']
-    YcAutoComplete: typeof import('yc-design-vue/es/AutoComplete')['AutoComplete']
-    YcButton: typeof import('yc-design-vue/es/Button')['Button']
-    YcMenu: typeof import('yc-design-vue')['Menu']
-    YcMenuItem: typeof import('yc-design-vue')['MenuItem']
   }
 }

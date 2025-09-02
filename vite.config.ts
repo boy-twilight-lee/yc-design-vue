@@ -3,9 +3,9 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import dts from 'vite-plugin-dts';
-// import { YcDesignVueResolver } from './src/resolver/YcDesignVue';
+import { YcDesignVueResolver } from './src/resolver/YcDesignVue';
 // import AutoImport from 'unplugin-auto-import/vite';
-// import Components from 'unplugin-vue-components/vite';
+import Components from 'unplugin-vue-components/vite';
 
 export default defineConfig({
   plugins: [
@@ -18,9 +18,9 @@ export default defineConfig({
     // AutoImport({
     //   resolvers: [YcDesignVueResolver()],
     // }),
-    // Components({
-    //   resolvers: [YcDesignVueResolver()],
-    // }),
+    Components({
+      resolvers: [YcDesignVueResolver()],
+    }),
   ],
   resolve: {
     alias: {
