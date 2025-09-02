@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "1.6.7",
+  "version": "1.6.8",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -47,15 +47,19 @@
       "require": "./lib/index.js"
     },
     "./es/style.css": "./es/style.css",
+    "./es/shared.css": "./es/shared.css",
     "./lib/style.css": "./lib/style.css",
+    "./lib/shared.css": "./lib/shared.css",
     "./es/*": {
       "types": "./es/*/index.d.ts",
       "import": "./es/*/index.js"
     },
+    "./es/*/index.css": "./es/*/index.css",
     "./lib/*": {
       "types": "./lib/*/index.d.ts",
       "require": "./lib/*/index.js"
-    }
+    },
+    "./lib/*/index.css": "./lib/*/index.css"
   },
   "dependencies": {
     "@vueuse/core": "^12.0.0",
@@ -89,8 +93,7 @@
     "vite": "^5.4.1",
     "vite-plugin-dts": "^4.5.4",
     "vue": "^3.3.4",
-    "vue-tsc": "^2.0.29",
-    "yc-design-vue": "^1.6.6"
+    "vue-tsc": "^2.0.29"
   },
   "peerDependencies": {
     "vue": "^3.3.4"

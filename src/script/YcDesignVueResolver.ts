@@ -80,7 +80,7 @@ const subCompt: Record<string, string> = {
 export function YcDesignVueResolver(
   // 默认开启副作用，即自动导入样式
   options: YcDesignVueResolverOptions = {
-    sideEffect: true,
+    sideEffect: false,
   }
 ): ComponentResolver {
   return {
