@@ -137,6 +137,6 @@ function getFormatValue(value: number | Date) {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/statistic.less';
 </style>

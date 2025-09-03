@@ -33,6 +33,6 @@ withDefaults(defineProps<ListItemMetaProps>(), {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/list-item-meta.less';
 </style>

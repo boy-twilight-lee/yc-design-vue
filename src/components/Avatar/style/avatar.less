@@ -15,10 +15,6 @@
   &:hover .yc-avatar-trigger-icon-mask {
     opacity: 1;
   }
-  &:deep(img) {
-    width: 100%;
-    height: 100%;
-  }
   .yc-avatar-text {
     position: absolute;
     left: 50%;
@@ -31,6 +27,10 @@
     display: inline-block;
     width: 100%;
     height: 100%;
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
     .yc-avatar-image-icon {
       width: 100%;
       height: 100%;

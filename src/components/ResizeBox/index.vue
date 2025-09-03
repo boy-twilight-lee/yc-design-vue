@@ -168,6 +168,6 @@ useResizeObserver(
 );
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/resize-box.less';
 </style>

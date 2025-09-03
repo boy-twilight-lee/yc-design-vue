@@ -190,6 +190,6 @@ const handleAdd = async () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/tabs.less';
 </style>

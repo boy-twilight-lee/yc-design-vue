@@ -58,6 +58,6 @@ const { mode, theme, computedOpenKeys, computedCollapsed } =
   useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/sub-menu.less';
 </style>

@@ -76,7 +76,7 @@ const attrs = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @keyframes spin {
   0% {
     transform: rotate(0deg);

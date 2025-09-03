@@ -89,6 +89,6 @@ const handleClick = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/pagination.less';
 </style>

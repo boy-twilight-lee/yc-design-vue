@@ -197,7 +197,7 @@ const handleClickOutSide = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 // container
 @import './style/time-picker.less';
 </style>

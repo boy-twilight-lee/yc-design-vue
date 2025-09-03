@@ -232,6 +232,6 @@ const modalStyle = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/modal.less';
 </style>

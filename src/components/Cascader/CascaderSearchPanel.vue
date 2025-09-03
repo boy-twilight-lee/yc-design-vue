@@ -28,6 +28,6 @@ const { renderEmpty } = getGlobalConfig();
 const { searchOptions, slots } = useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/panel.less';
 </style>

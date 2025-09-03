@@ -83,6 +83,6 @@ withDefaults(defineProps<CommentProps>(), {
 const { hasChildren } = useContext();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/comment.less';
 </style>

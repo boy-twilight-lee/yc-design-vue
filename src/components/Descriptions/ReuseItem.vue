@@ -52,6 +52,6 @@ defineProps<{
 const { labelStyle, valueStyle, slots, align } = useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/descriptions-item.less';
 </style>

@@ -47,6 +47,6 @@ withDefaults(defineProps<CardMetaProps>(), {
 const { slots } = useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/card-meta.less';
 </style>

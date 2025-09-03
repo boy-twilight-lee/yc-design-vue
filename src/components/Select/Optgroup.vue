@@ -16,6 +16,6 @@ defineSlots<OptgroupSlots>();
 defineProps<OptgroupProps>();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/option-group.less';
 </style>

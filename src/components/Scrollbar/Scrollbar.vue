@@ -269,6 +269,6 @@ defineExpose<ScrollbarExpose>({
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/scrollbar.less';
 </style>

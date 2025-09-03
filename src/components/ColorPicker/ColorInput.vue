@@ -149,15 +149,7 @@ watch(
 );
 </script>
 
-<style lang="less" scoped>
-@import './style/color-picker.less';
-</style>
-
 <style lang="less">
-.yc-color-picker-format-popup-content {
-  .yc-select-option {
-    font-size: 12px;
-    line-height: 24px;
-  }
-}
+@import './style/color-picker.less';
+@import './style/color-picker-select.less';
 </style>

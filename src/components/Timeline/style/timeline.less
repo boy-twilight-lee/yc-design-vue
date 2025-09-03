@@ -12,7 +12,7 @@
   &.yc-timeline-direction-horizontal {
     flex-direction: row-reverse;
   }
-  &:deep(.yc-timeline-item-direction-vertical) {
+  .yc-timeline-item-direction-vertical {
     &:first-child {
       .yc-timeline-item-dot-line {
         display: none;
@@ -35,7 +35,7 @@
 // alternate
 .yc-timeline-alternate {
   &.yc-timeline-direction-vertical {
-    &:deep(.yc-timeline-item) {
+    .yc-timeline-item {
       &:nth-child(2n) {
         margin-right: calc(50% - 6px);
       }
@@ -47,7 +47,7 @@
   &.yc-timeline-direction-horizontal {
     min-height: 200px;
     align-items: center;
-    &:deep(.yc-timeline-item) {
+    .yc-timeline-item {
       &:nth-child(2n) {
         transform: translateY(calc(-50% + 6px));
       }

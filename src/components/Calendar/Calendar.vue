@@ -177,6 +177,6 @@ const handleDateChange = (type: string) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/calendar.less';
 </style>

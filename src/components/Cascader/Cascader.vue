@@ -272,6 +272,6 @@ const handleEvent = async (
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/cascader.less';
 </style>

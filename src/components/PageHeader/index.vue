@@ -64,6 +64,6 @@ withDefaults(defineProps<PageHeaderProp>(), {
 defineEmits<PageHeaderEmits>();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/page-header.less';
 </style>

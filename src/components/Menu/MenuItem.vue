@@ -252,6 +252,6 @@ onMounted(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/menu-item.less';
 </style>

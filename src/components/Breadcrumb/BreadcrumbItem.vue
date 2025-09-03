@@ -56,6 +56,6 @@ withDefaults(defineProps<BreadcrumbItemProps>(), {
 const popupVisible = ref<boolean>(false);
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/breadcrumb-item.less';
 </style>

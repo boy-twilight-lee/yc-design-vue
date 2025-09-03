@@ -10,7 +10,7 @@
     gap: 24px;
     .yc-scrollbar {
       width: 100%;
-      &:deep(.yc-scrollbar-container) {
+      .yc-scrollbar-container {
         .yc-scrollbar-content {
           border-radius: 4px;
         }
@@ -34,7 +34,7 @@
       }
       .yc-list-scroll-loading {
         background-color: var(--color-bg-1);
-        &:deep(.yc-list-item-content) {
+        .yc-list-item-content {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -46,7 +46,7 @@
 // bordered
 .yc-list-bordered {
   .yc-scrollbar {
-    &:deep(.yc-scrollbar-container) {
+    .yc-scrollbar-container {
       border: 1px solid var(--color-border);
     }
   }
@@ -55,7 +55,7 @@
   .yc-list-header {
     border-bottom: 1px solid var(--color-border);
   }
-  &:deep(.yc-list-content) {
+  .yc-list-content {
     .yc-list-item {
       &:not(:last-child) {
         border-bottom: 1px solid var(--color-border);
@@ -71,7 +71,7 @@
 }
 // hoverable
 .yc-list-hoverable {
-  &:deep(.yc-list-item) {
+  .yc-list-item {
     &:hover {
       background-color: var(--color-fill-1);
     }
@@ -98,7 +98,7 @@ each(@size, .(@value,@name){
      .yc-list-header,.yc-list-footer,.yc-list-scroll-loading{
       padding: @value[header-padding];
      }
-     &:deep(.yc-list-item){
+     .yc-list-item{
       padding: @value[item-padding];
      }
     }

@@ -72,6 +72,6 @@ useEventListener(targetContainer, 'scroll', () => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/back-top.less';
 </style>

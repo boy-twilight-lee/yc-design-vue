@@ -152,6 +152,6 @@ const handleClick = async (e: Event) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/switch.less';
 </style>

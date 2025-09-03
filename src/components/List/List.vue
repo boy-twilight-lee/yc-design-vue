@@ -179,6 +179,6 @@ const curList = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/list.less';
 </style>

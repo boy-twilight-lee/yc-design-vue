@@ -57,6 +57,6 @@ defineEmits<{
 const { length, computedCurrent } = useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/carousel.less';
 </style>

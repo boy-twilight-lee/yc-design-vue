@@ -183,6 +183,6 @@ const {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/drawer.less';
 </style>

@@ -37,7 +37,7 @@ const transitions: ObjectData = {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .expand-enter-active,
 .expand-leave-active {
   transition:

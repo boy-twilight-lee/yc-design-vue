@@ -22,6 +22,6 @@ const props = withDefaults(defineProps<SkeletonShapeProps>(), {
 const { size } = getGlobalConfig(props);
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/skeleton.less';
 </style>

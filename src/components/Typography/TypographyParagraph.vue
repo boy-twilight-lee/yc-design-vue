@@ -30,6 +30,6 @@ withDefaults(defineProps<TypographyParagraphProps>(), {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/typography-paragraph.less';
 </style>

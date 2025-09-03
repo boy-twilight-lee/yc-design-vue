@@ -73,6 +73,6 @@ watch(
 );
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/calendar.less';
 </style>

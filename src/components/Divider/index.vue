@@ -48,6 +48,6 @@ const border = computed(
 );
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/divider.less';
 </style>

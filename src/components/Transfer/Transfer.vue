@@ -96,6 +96,6 @@ const handleDel = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/transfer.less';
 </style>

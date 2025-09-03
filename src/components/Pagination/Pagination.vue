@@ -158,6 +158,6 @@ const handleBlur = async (e: Event) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/pagination.less';
 </style>

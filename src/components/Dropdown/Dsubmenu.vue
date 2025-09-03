@@ -144,6 +144,6 @@ defineExpose<DropdownExpose>({
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/dropdown.less';
 </style>

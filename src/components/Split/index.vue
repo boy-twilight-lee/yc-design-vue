@@ -145,6 +145,6 @@ watch(
 );
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/split.less';
 </style>

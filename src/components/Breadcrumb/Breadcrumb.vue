@@ -110,6 +110,6 @@ const getPaths = (index: number) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/breadcrumb.less';
 </style>

@@ -62,6 +62,6 @@ const { define: DefineTemplate, reuse: ReuseTemplate } =
 const { renderLoading } = getGlobalConfig();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/spin.less';
 </style>

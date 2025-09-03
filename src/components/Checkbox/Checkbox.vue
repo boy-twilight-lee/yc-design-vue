@@ -109,6 +109,6 @@ const handleCollect = (e: Event) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/checkbox.less';
 </style>

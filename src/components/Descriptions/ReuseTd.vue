@@ -49,6 +49,6 @@ const { labelStyle, valueStyle, bordered, size, align, slots } =
   useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/descriptions-item.less';
 </style>

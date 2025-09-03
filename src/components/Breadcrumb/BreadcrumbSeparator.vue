@@ -42,6 +42,6 @@ const renderSeparator = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/breadcrumb-item.less';
 </style>

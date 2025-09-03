@@ -27,6 +27,6 @@ withDefaults(
 );
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/tab-button.less';
 </style>

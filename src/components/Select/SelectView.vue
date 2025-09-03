@@ -98,6 +98,6 @@ const renderSlots = (name: string) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/select.less';
 </style>

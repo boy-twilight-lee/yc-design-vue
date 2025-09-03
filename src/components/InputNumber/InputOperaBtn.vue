@@ -52,6 +52,6 @@ const disabled = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/input-number.less';
 </style>

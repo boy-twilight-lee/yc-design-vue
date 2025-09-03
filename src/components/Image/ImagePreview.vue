@@ -203,6 +203,6 @@ const intLisenter = () => {
 intLisenter();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/image-preview.less';
 </style>

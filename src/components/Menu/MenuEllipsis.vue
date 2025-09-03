@@ -77,6 +77,6 @@ const handleSelect = (value: DoptionValue) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/menu-item.less';
 </style>

@@ -138,6 +138,6 @@ const linearGradientId = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/progress.less';
 </style>

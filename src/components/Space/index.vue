@@ -87,6 +87,6 @@ const nodes = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/space.less';
 </style>

@@ -73,6 +73,6 @@ withDefaults(defineProps<TimelineItemProps>(), {
 const { direction, labelPosition, reverse } = useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/timeline-item.less';
 </style>

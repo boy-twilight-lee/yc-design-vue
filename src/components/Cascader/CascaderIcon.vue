@@ -43,6 +43,6 @@ const renderIcon = (name: string) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/cascader.less';
 </style>

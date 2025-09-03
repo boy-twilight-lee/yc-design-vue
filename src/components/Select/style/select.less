@@ -2,7 +2,7 @@
   width: 100%;
   display: inline-flex;
   align-items: center;
-  &:deep(.yc-input-outer) {
+  .yc-input-outer {
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
@@ -30,7 +30,7 @@
     box-shadow: none;
     border: none;
   }
-  &:deep(.yc-input-outer) {
+  .yc-input-outer {
     .yc-input-wrapper {
       background-color: transparent;
       box-shadow: none;
@@ -40,19 +40,19 @@
 }
 // allow-search
 .yc-select-allow-search {
-  &:deep(.yc-select-search-icon) {
+  .yc-select-search-icon {
     display: none;
   }
   &:focus-within {
-    &:deep(.yc-select-clear-icon),
-    &:deep(.yc-select-suffix-icon) {
+    .yc-select-clear-icon,
+    .yc-select-suffix-icon {
       display: none;
     }
-    &:deep(.yc-select-search-icon) {
+    .yc-select-search-icon {
       display: block;
     }
   }
-  &:deep(.yc-input-outer) {
+  .yc-input-outer {
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
@@ -64,15 +64,15 @@
 }
 // allow-clear
 .yc-select-allow-clear {
-  &:deep(.yc-select-clear-icon) {
+  .yc-select-clear-icon {
     display: none;
   }
   &:hover {
-    &:deep(.yc-select-search-icon),
-    &:deep(.yc-select-suffix-icon) {
+    .yc-select-search-icon,
+    .yc-select-suffix-icon {
       display: none;
     }
-    &:deep(.yc-select-clear-icon) {
+    .yc-select-clear-icon {
       display: flex;
     }
   }
@@ -95,7 +95,7 @@
   }
 
   .yc-scrollbar {
-    &:deep(.yc-scrollbar-container) {
+    .yc-scrollbar-container {
       max-height: 200px;
       overflow-x: hidden;
       .yc-scrollbar-content {

@@ -35,6 +35,6 @@ const { lineSpacing } = toRefs(props);
 const gap = computed(() => valueToPx(lineSpacing.value));
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/skeleton.less';
 </style>

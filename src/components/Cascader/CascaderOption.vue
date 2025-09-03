@@ -230,6 +230,6 @@ const renderLabel = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/option.less';
 </style>

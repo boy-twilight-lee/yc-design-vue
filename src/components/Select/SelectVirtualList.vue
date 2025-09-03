@@ -48,6 +48,6 @@ const renderLabel = (option: ObjectData) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/select.less';
 </style>

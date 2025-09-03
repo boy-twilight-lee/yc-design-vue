@@ -37,6 +37,6 @@ const emits = defineEmits<StepsEmits>();
 const { type, labelPlacement, direction } = useContext().provide(props, emits);
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/steps.less';
 </style>

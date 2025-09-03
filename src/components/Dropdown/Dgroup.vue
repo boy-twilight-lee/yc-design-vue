@@ -25,6 +25,6 @@ defineProps<DgroupProps>();
 const { theme } = useMenuContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/dgroup.less';
 </style>

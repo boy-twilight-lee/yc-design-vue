@@ -53,6 +53,6 @@ const handleClick = (ev: MouseEvent) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/doption.less';
 </style>

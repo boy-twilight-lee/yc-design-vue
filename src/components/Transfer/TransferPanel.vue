@@ -245,6 +245,6 @@ const renderItem = (item: TransferItem) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/transfer.less';
 </style>

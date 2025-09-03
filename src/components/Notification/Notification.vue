@@ -92,6 +92,6 @@ onMounted(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/notification.less';
 </style>

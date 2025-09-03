@@ -33,6 +33,6 @@ const tag = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/typography-title.less';
 </style>

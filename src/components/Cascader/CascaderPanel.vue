@@ -49,6 +49,6 @@ const { options, curLevel, curPath, maxLevel, loading, slots } =
   useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/panel.less';
 </style>

@@ -78,6 +78,6 @@ const { popupVisible, computedColor, size } = useContext().provide(
 );
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/color-picker.less';
 </style>

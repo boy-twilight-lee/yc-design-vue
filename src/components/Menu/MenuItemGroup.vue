@@ -31,6 +31,6 @@ withDefaults(defineProps<MenuItemGroupProps>(), {
 const { levelIndent, theme } = useContext().inject();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/menu-item-group.less';
 </style>

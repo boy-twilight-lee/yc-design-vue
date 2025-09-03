@@ -32,6 +32,6 @@ const emits = defineEmits<CollapseEmits>();
 useContext().provide(props, emits);
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/collapse.less';
 </style>

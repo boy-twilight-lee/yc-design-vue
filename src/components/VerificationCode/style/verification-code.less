@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
 
-  &:deep(.yc-input-outer) {
+  .yc-input-outer {
     .yc-input-wrapper {
       padding: 0;
       .yc-input {
@@ -35,7 +35,7 @@
 };
 each(@size, {
     .yc-verification-code-size-@{key} {
-      &:deep(.yc-input-outer) {
+      .yc-input-outer {
         width: @value;
       }
     }

@@ -41,6 +41,6 @@ const handleEvent = (type: string, ev: MouseEvent) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/image-preview.less';
 </style>

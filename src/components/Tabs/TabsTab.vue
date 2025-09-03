@@ -93,6 +93,6 @@ onMounted(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/tabs-tab.less';
 </style>

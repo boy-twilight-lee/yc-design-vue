@@ -27,6 +27,6 @@ withDefaults(defineProps<EmptyProps>(), {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/empty.less';
 </style>

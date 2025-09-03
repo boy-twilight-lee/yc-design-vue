@@ -51,6 +51,6 @@ const props = withDefaults(defineProps<ResultProps>(), {
 const { status } = toRefs(props);
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/result.less';
 </style>

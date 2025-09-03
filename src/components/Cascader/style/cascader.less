@@ -2,7 +2,7 @@
   width: 100%;
   display: inline-flex;
   align-items: center;
-  &:deep(.yc-input-outer) {
+  .yc-input-outer {
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
@@ -25,19 +25,19 @@
 }
 // allow-search
 .yc-cascader-allow-search {
-  &:deep(.yc-cascader-search-icon) {
+  .yc-cascader-search-icon {
     display: none;
   }
   &:focus-within {
-    &:deep(.yc-cascader-clear-icon),
-    &:deep(.yc-cascader-suffix-icon) {
+    .yc-cascader-clear-icon,
+    .yc-cascader-suffix-icon {
       display: none;
     }
-    &:deep(.yc-cascader-search-icon) {
+    .yc-cascader-search-icon {
       display: block;
     }
   }
-  &:deep(.yc-input-outer) {
+  .yc-input-outer {
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
@@ -49,15 +49,15 @@
 }
 // allow-clear
 .yc-cascader-allow-clear {
-  &:deep(.yc-cascader-clear-icon) {
+  .yc-cascader-clear-icon {
     display: none;
   }
   &:hover {
-    &:deep(.yc-cascader-search-icon),
-    &:deep(.yc-cascader-suffix-icon) {
+    .yc-cascader-search-icon,
+    .yc-cascader-suffix-icon {
       display: none;
     }
-    &:deep(.yc-cascader-clear-icon) {
+    .yc-cascader-clear-icon {
       display: flex;
     }
   }

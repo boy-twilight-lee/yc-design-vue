@@ -130,6 +130,6 @@ const handleClick = async (i: number) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/verification-code.less';
 </style>

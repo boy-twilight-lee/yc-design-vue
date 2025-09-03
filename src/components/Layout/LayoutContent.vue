@@ -12,6 +12,6 @@ defineOptions({
 defineSlots<LayoutContentSlots>();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/layout.less';
 </style>

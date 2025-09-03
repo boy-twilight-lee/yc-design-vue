@@ -104,6 +104,6 @@ const handleChange = (e: Event) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/radio.less';
 </style>

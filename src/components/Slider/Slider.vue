@@ -117,6 +117,6 @@ const position = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/slider.less';
 </style>

@@ -102,6 +102,6 @@ const initOvserver = () => {
 initOvserver();
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/avatar.less';
 </style>

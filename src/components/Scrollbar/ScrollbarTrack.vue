@@ -126,6 +126,6 @@ const handleClick = (e: MouseEvent) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/scrollbar.less';
 </style>

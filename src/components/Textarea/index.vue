@@ -155,6 +155,6 @@ defineExpose<TextareaExpose>({
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/textarea.less';
 </style>

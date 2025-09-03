@@ -321,6 +321,6 @@ defineExpose<InputTagExpose>({
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/input-tag.less';
 </style>

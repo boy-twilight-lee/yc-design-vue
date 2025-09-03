@@ -106,6 +106,6 @@ onBeforeUnmount(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/carousel.less';
 </style>

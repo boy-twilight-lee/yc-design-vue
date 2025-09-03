@@ -94,6 +94,6 @@ const hasGrid = computed(() => {
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/card.less';
 </style>
