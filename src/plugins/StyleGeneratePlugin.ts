@@ -4,7 +4,7 @@ import { globSync } from 'glob';
 import less from 'less';
 import type { Plugin, ResolvedConfig } from 'vite';
 
-export default function ycDesignVueStyles(): Plugin {
+export default (): Plugin => {
   let config: ResolvedConfig;
 
   return {
@@ -28,12 +28,11 @@ export default function ycDesignVueStyles(): Plugin {
       const lessOptions: Less.Options = {
         compress: true,
       };
-      // --- 1. 编译并写入 shared.css (现在会包含 var.less) ---
+      // 生成shared.css
       if (fs.existsSync(sharedStylesPath)) {
         const sharedFiles = globSync(
           path.join(sharedStylesPath, '**/*.{less,css}').replace(/\\/g, '/')
         );
-        // ⭐ 核心修改: 下面这行过滤 var.less 的代码已被移除
         let combinedSharedStyles = '';
         for (const file of sharedFiles) {
           combinedSharedStyles += fs.readFileSync(file, 'utf-8') + '\n';
@@ -55,7 +54,7 @@ export default function ycDesignVueStyles(): Plugin {
           }
         }
       }
-      // --- 2. 为每个组件编译 index.css (或生成空的 index.css) ---
+      // 为每个组件编译 index.css (或生成空的 index.css)
       if (!fs.existsSync(componentsPath)) {
         this.error('Components directory not found at: ' + componentsPath);
         return;
@@ -67,7 +66,6 @@ export default function ycDesignVueStyles(): Plugin {
       for (const componentName of componentDirs) {
         const stylesPath = path.join(componentsPath, componentName, 'style');
         if (fs.existsSync(stylesPath)) {
-          // --- 对于有 style 目录的组件，执行现有逻辑 ---
           const styleFiles = globSync(
             path.join(stylesPath, '**/*.{less,css}').replace(/\\/g, '/')
           );
@@ -113,18 +111,15 @@ export default function ycDesignVueStyles(): Plugin {
             }
           }
         } else {
-          // ⭐ 对于没有 style 目录的组件，创建一个空的 index.css
           const outputCssPath = path.join(
             options.dir,
             componentName,
             'index.css'
           );
-          // 确保父目录 (如 es/ComponentName) 存在
           fs.mkdirSync(path.dirname(outputCssPath), { recursive: true });
-          // 写入一个空文件
           fs.writeFileSync(outputCssPath, '');
         }
       }
     },
   };
-}
+};

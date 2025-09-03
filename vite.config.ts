@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import dts from 'vite-plugin-dts';
-import StylePlugin from './src/script/StylePlugin';
+import StyleGeneratePlugin from './src/plugins/StyleGeneratePlugin';
 
 export default defineConfig({
   plugins: [
@@ -13,7 +13,7 @@ export default defineConfig({
       outDir: ['es', 'lib'],
       exclude: ['node_modules/**'],
     }),
-    StylePlugin(),
+    StyleGeneratePlugin(),
   ],
   resolve: {
     alias: {
