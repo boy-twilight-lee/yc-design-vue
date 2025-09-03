@@ -64,6 +64,7 @@ const hoverSize = computed(() => valueToPx(_hoverSize.value));
     transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
   }
   &:deep(.yc-icon) {
+    position: relative;
     z-index: 1;
   }
 }
