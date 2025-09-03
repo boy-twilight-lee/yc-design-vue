@@ -41,6 +41,7 @@ const Drawer = Object.assign(_Drawer, {
       open,
     });
   },
+  open,
 });
 
 declare module 'vue' {
