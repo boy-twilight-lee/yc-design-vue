@@ -4,7 +4,7 @@
     :popup-container="popupContainer"
     :position="position"
     :arrow-class="['yc-tooltip-popup-arrow', arrowClass as string]"
-    :arrow-style="contentStyle"
+    :arrow-style="arrowStyle"
     :content-class="[
       'yc-tooltip-popup-content',
       contentClass as string,
@@ -12,7 +12,7 @@
         'yc-tooltip-mini': mini,
       },
     ]"
-    :content-style="arrowStyle"
+    :content-style="contentStyle"
     :popup-offset="10"
     :class="['yc-tooltip', $attrs.class]"
     :style="$attrs.style"

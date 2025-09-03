@@ -321,9 +321,9 @@ export default (params: {
         arrowRight = valueToPx((triggerWidth - arrowWidth) / 2);
       }
       inset = {
-        top: position.startsWith('b') ? '0' : '',
+        top: position.startsWith('b') ? valueToPx(-arrowHeight / 2) : '',
         right: arrowRight,
-        bottom: position.startsWith('t') ? '0' : '',
+        bottom: position.startsWith('t') ? valueToPx(-arrowHeight / 2) : '',
         left: arrowLeft,
       };
     } else {
@@ -338,9 +338,9 @@ export default (params: {
       }
       inset = {
         top: arrowTop,
-        right: position.startsWith('l') ? '0' : '',
+        right: position.startsWith('l') ? valueToPx(-arrowWidth / 2) : '',
         bottom: arrowBottom,
-        left: position.startsWith('r') ? '0' : '',
+        left: position.startsWith('r') ? valueToPx(-arrowWidth / 2) : '',
       };
     }
     return inset;

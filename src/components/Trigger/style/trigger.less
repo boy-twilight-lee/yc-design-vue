@@ -5,6 +5,7 @@
   }
   .yc-trigger-arrow {
     position: absolute;
+    transform: rotate(45deg);
     width: 8px;
     height: 8px;
     background-color: var(--color-bg-5);
@@ -21,7 +22,6 @@
   &.yc-trigger-position-tl,
   &.yc-trigger-position-tr {
     .yc-trigger-arrow {
-      transform: translate(-50%, 50%) rotate(45deg);
       border-bottom-right-radius: 2px;
       border-top: none;
       border-left: none;
@@ -31,7 +31,6 @@
   &.yc-trigger-position-bl,
   &.yc-trigger-position-br {
     .yc-trigger-arrow {
-      transform: translate(-50%, -50%) rotate(45deg);
       border-top-left-radius: 2px;
       border-bottom: none;
       border-right: none;
@@ -41,7 +40,6 @@
   &.yc-trigger-position-lt,
   &.yc-trigger-position-lb {
     .yc-trigger-arrow {
-      transform: translate(50%, -50%) rotate(45deg);
       border-top-right-radius: 2px;
       border-bottom: none;
       border-left: none;
@@ -51,7 +49,6 @@
   &.yc-trigger-position-rt,
   &.yc-trigger-position-rb {
     .yc-trigger-arrow {
-      transform: translate(-50%, -50%) rotate(45deg);
       border-bottom-left-radius: 2px;
       border-top: none;
       border-right: none;

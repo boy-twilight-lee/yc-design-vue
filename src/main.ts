@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import ArcoIcon from '@arco-design/web-vue/es/icon';
 import Arco from '@arco-design/web-vue';
+import ArcoIcon from '@arco-design/web-vue/es/icon';
 import '@arco-design/web-vue/dist/arco.css';
 import YcDesign from '@/components';
 import '@/components/index.less';
