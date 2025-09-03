@@ -1,3 +1,62 @@
-@import '../components/ExpandTransition/index.less';
-@import '../components/Icon/index.less';
-@import '../components/IconButton/index.less';
+// expand-transition
+.expand-enter-active,
+.expand-leave-active {
+  transition:
+    max-height 0.2s cubic-bezier(0.34, 0.69, 0.1, 1),
+    opacity 0.2s cubic-bezier(0.3, 1.3, 0.3, 1);
+}
+
+// icon
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+// icon
+.yc-icon {
+  display: inline-block;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+}
+.yc-icon-spin {
+  animation: spin 1s infinite cubic-bezier(0, 0, 1, 1);
+}
+
+// icon-button
+.yc-icon-button {
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  color: var(--color-text-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: transparent;
+    transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
+  }
+  &:deep(.yc-icon) {
+    z-index: 1;
+  }
+}
+// hoverable
+.yc-icon-button-hoverable {
+  &:not(.yc-icon-button-disabled):hover::before {
+    background-color: var(--color-fill-2);
+  }
+}
+// disabled
+.yc-icon-button-disabled {
+  color: var(--color-text-3);
+}

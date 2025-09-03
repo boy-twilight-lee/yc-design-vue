@@ -38,5 +38,10 @@ const transitions: ObjectData = {
 </script>
 
 <style lang="less" scoped>
-@import './index.less';
+.expand-enter-active,
+.expand-leave-active {
+  transition:
+    max-height 0.2s cubic-bezier(0.34, 0.69, 0.1, 1),
+    opacity 0.2s cubic-bezier(0.3, 1.3, 0.3, 1);
+}
 </style>

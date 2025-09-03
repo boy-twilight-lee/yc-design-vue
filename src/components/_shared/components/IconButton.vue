@@ -40,11 +40,38 @@ const hoverSize = computed(() => valueToPx(_hoverSize.value));
 </script>
 
 <style lang="less" scoped>
-@import './index.less';
 .yc-icon-button {
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  color: var(--color-text-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: v-bind(hoverSize);
     height: v-bind(hoverSize);
+    border-radius: 50%;
+    background: transparent;
+    transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
   }
+  &:deep(.yc-icon) {
+    z-index: 1;
+  }
+}
+// hoverable
+.yc-icon-button-hoverable {
+  &:not(.yc-icon-button-disabled):hover::before {
+    background-color: var(--color-fill-2);
+  }
+}
+// disabled
+.yc-icon-button-disabled {
+  color: var(--color-text-3);
 }
 </style>
