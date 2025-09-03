@@ -249,6 +249,6 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style lang="less">
 @import './style/watermark.less';
 </style>

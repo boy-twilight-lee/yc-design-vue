@@ -25,6 +25,6 @@ const animationName = computed(() => {
   return `slide-${dir}-notification`;
 });
 </script>
-<style scoped lang="less">
+<style lang="less">
 @import './style/notification-list.less';
 </style>
