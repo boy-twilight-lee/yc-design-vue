@@ -124,8 +124,10 @@ each(@size, .(@value,@name){
     }
     
     & when (@key = mini) {
-      .yc-pagination-options:deep(.yc-select) {
-        width:  102px;
+      .yc-pagination-options {
+        .yc-select{
+          width:  102px;
+        }
       }
     }
   }
