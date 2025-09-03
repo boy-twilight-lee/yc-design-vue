@@ -1,0 +1,43 @@
+.yc-service-modal {
+  .yc-modal-header {
+    .yc-modal-title {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      .yc-modal-title-icon {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+      }
+      .yc-modal-title-content {
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+    }
+  }
+  .yc-modal-body {
+    .yc-modal-body-content {
+      width: 100%;
+      line-height: 26px;
+      color: var(--color-text-2);
+      font-family: 'PingFang SC';
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
+// icon-color
+@type: {
+  info: rgb(var(--primary-6));
+  success: rgb(var(--success-6));
+  warning: rgb(var(--warning-6));
+  error: rgb(var(--danger-6));
+  confirm: rgb(var(--warning-6));
+};
+each(@type, .(@value, @key) {
+      .yc-service-modal-@{key}  {
+        .yc-modal-title-icon{
+          color: @value;
+        }
+      }
+    });
