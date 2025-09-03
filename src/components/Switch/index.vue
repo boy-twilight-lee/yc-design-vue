@@ -10,6 +10,9 @@
         'yc-switch-disabled': disabled,
       },
     ]"
+    :style="{
+      '--switch-background': background,
+    }"
     :aria-checked="compuedChecked"
     role="switch"
     @focus="$emit('focus', $event)"
@@ -58,8 +61,8 @@ const props = withDefaults(defineProps<SwitchProps>(), {
   size: undefined,
   checkedValue: true,
   uncheckedValue: false,
-  checkedColor: 'rgba(22, 93, 255)',
-  uncheckedColor: 'rgb(201, 205, 212)',
+  checkedColor: 'rgb(var(--primary-6))',
+  uncheckedColor: 'var(--color-fill-4)',
   checkedText: '',
   uncheckedText: '',
   beforeChange: () => {
@@ -150,11 +153,5 @@ const handleClick = async (e: Event) => {
 </script>
 
 <style lang="less" scoped>
-.yc-switch {
-  background-color: v-bind(background);
-  &::after {
-    background-color: v-bind(background);
-  }
-}
 @import './style/switch.less';
 </style>

@@ -7,6 +7,9 @@
         'yc-icon-button-hoverable': hoverable,
       },
     ]"
+    :style="{
+      '--icon-btn-size': hoverSize,
+    }"
     @mousedown="(e) => preventFocus && e.preventDefault()"
   >
     <slot>
@@ -54,8 +57,8 @@ const hoverSize = computed(() => valueToPx(_hoverSize.value));
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: v-bind(hoverSize);
-    height: v-bind(hoverSize);
+    width: var(--icon-btn-size);
+    height: var(--icon-btn-size);
     border-radius: 50%;
     background: transparent;
     transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);

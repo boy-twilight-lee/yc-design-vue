@@ -2,11 +2,15 @@
   cursor: pointer;
   position: relative;
   padding: 0;
+  background-color: var(--switch-background);
   outline: none;
   border: none;
   border-radius: 20px;
   vertical-align: middle;
   transition: background-color 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+  &::after {
+    background-color: var(--switch-background);
+  }
   .yc-switch-handle {
     z-index: 1;
     position: absolute;
@@ -40,10 +44,6 @@
 }
 // unchecked
 .yc-switch-unchecked {
-  &:not(.yc-switch-shape-line),
-  &.yc-switch-shape-line::after {
-    background-color: var(--color-fill-4);
-  }
   .yc-switch-handle {
     background-color: var(--color-bg-white);
     color: var(--color-neutral-3);
@@ -55,10 +55,6 @@
 }
 // checked
 .yc-switch-checked {
-  &:not(.yc-switch-shape-line),
-  &.yc-switch-shape-line::after {
-    background-color: rgb(var(--primary-6));
-  }
   .yc-switch-handle {
     background-color: var(--color-bg-white);
     color: rgb(var(--primary-6));

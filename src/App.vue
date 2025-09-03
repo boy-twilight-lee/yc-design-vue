@@ -1,5 +1,9 @@
 <template>
-  <div class="test"></div>
+  <div class="test">
+    <div class="menu-demo">
+      <yc-switch></yc-switch>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts"></script>
@@ -16,5 +20,12 @@
     justify-content: center;
     align-items: center;
   }
+}
+.menu-demo {
+  box-sizing: border-box;
+  width: 100%;
+  height: 600px;
+  padding: 40px;
+  background-color: var(--color-neutral-2);
 }
 </style>

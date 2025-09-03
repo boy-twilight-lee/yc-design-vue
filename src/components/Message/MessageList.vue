@@ -23,5 +23,5 @@ withDefaults(defineProps<MessageContainerProps>(), {
 </script>
 
 <style lang="less" scoped>
-@import './style/list.less';
+@import './style/message-list.less';
 </style>

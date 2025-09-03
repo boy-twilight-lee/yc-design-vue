@@ -4,10 +4,17 @@
       'yc-menu',
       `yc-menu-mode-${mode}`,
       `yc-menu-${theme}`,
+      $attrs.class,
       {
         'yc-menu-collapsed': computedCollapsed && mode != 'horizontal',
       },
     ]"
+    :style="{
+      ...($attrs.style || {}),
+      width: computedCollapsed
+        ? collapsedWidth
+        : ($attrs.style as CSSProperties)?.width,
+    }"
   >
     <div class="yc-menu-inner" ref="menuRef">
       <slot />
@@ -27,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, CSSProperties } from 'vue';
 import { MenuProps, MenuEmits, MenuSlots } from './type';
 import { mediaQueryHandler } from '@shared/utils';
 import { IconMenuFold, IconMenuUnfold } from '@shared/icons';
@@ -35,6 +42,7 @@ import useContext from './hooks/useContext';
 import MenuEllipsis from './MenuEllipsis.vue';
 defineOptions({
   name: 'Menu',
+  inheritAttrs: false,
 });
 defineSlots<MenuSlots>();
 const props = withDefaults(defineProps<MenuProps>(), {
@@ -85,11 +93,4 @@ mediaQueryHandler((_, order, i) => {
 
 <style lang="less" scoped>
 @import './style/menu.less';
-// 收缩
-.yc-menu-collapsed {
-  width: v-bind(collapsedWidth) !important;
-  .yc-menu-inner {
-    padding: 4px;
-  }
-}
 </style>

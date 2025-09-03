@@ -6,6 +6,7 @@
     :class="[
       'yc-layout-sider',
       `yc-layout-sider-${theme}`,
+      $attrs.class,
       {
         'yc-layout-sider-has-trigger': showTrigger,
       },
@@ -32,11 +33,17 @@
       'yc-layout-sider',
       'yc-layout-sider-translation',
       `yc-layout-sider-${theme}`,
+      $attrs.class,
       {
-        'yc-layout-sider-collapsed': computedCollapsed,
         'yc-layout-sider-has-trigger': showTrigger,
       },
     ]"
+    :style="{
+      ...($attrs.style || {}),
+      width: computedCollapsed
+        ? valueToPx(collapsedWidth)
+        : ($attrs.style as CSSProperties)?.width || valueToPx(asideWidth),
+    }"
   >
     <div class="yc-layout-sider-children">
       <slot />
@@ -56,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed } from 'vue';
+import { ref, toRefs, computed, CSSProperties } from 'vue';
 import { LayoutSiderProps, LayoutSiderEmits, LayoutSiderSlots } from './type';
 import { mediaQueryHandler, valueToPx } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
@@ -64,6 +71,7 @@ import useSiderContext from './hooks/useSiderContext';
 import YcResizeBox from '@/components/ResizeBox';
 defineOptions({
   name: 'LayoutSider',
+  inheritAttrs: false,
 });
 defineSlots<LayoutSiderSlots>();
 const props = withDefaults(defineProps<LayoutSiderProps>(), {
@@ -85,16 +93,12 @@ const {
   collapsible,
   breakpoint,
   hideTrigger,
+  collapsedWidth,
   width: _width,
-  collapsedWidth: _collapsedWidth,
 } = toRefs(props);
 const { theme, computedCollapsed } = useSiderContext().provide(props, emits);
 // 宽度
 const asideWidth = ref<number>(_width.value);
-// 计算的宽度
-const computedWidth = computed(() => valueToPx(asideWidth.value));
-// 计算width
-const collapsedWidth = computed(() => valueToPx(_collapsedWidth.value));
 // 展示trigger
 const showTrigger = computed(() => {
   return !hideTrigger.value && collapsible.value;
@@ -104,7 +108,7 @@ const handleCollapse = () => {
   if (!collapsible.value) return;
   const value = !computedCollapsed.value;
   computedCollapsed.value = value;
-  asideWidth.value = value ? _collapsedWidth.value : _width.value;
+  asideWidth.value = value ? collapsedWidth.value : _width.value;
   emits('collapse', value, 'clickTrigger');
 };
 // 处理媒体查询搜索
@@ -112,7 +116,7 @@ mediaQueryHandler((_, order, i) => {
   if (!collapsible.value || !breakpoint.value) return;
   const value = i <= order[breakpoint.value];
   computedCollapsed.value = value;
-  asideWidth.value = value ? _collapsedWidth.value : _width.value;
+  asideWidth.value = value ? collapsedWidth.value : _width.value;
   emits('collapse', value, 'responsive');
   emits('breakpoint', value);
 });
@@ -120,10 +124,4 @@ mediaQueryHandler((_, order, i) => {
 
 <style lang="less" scoped>
 @import './style/layout.less';
-.yc-layout-sider {
-  width: v-bind(computedWidth);
-}
-.yc-layout-sider-collapsed {
-  width: v-bind(collapsedWidth) !important;
-}
 </style>
