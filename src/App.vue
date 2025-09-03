@@ -1,10 +1,16 @@
 <template>
   <div class="test">
-    <yc-input allow-clear />
+    <yc-color-picker></yc-color-picker>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+const collapsed = ref(false);
+const toggleCollapse = () => {
+  collapsed.value = !collapsed.value;
+};
+</script>
 
 <style lang="less">
 #app {
