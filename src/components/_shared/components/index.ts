@@ -1,4 +1,4 @@
-export { default as IconButton } from './PreventFocus.vuen.vue';
-export { default as PreventFocus } from './index.vue';
-export { default as ExpandTransition } from './ExpandTransition/ExpandTransition.vue';
-export { default as Icon } from './PreventFocus.vuen.vue';
+export { default as IconButton } from './IconButton.vue';
+export { default as PreventFocus } from './PreventFocus.vue';
+export { default as ExpandTransition } from './ExpandTransition.vue';
+export { default as Icon } from './Icon.vue';
