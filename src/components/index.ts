@@ -1,4 +1,5 @@
 import { App, Plugin } from 'vue';
+import i18n from '@shared/locale/i18n';
 import './index.less';
 import Affix from './Affix';
 import Alert from './Alert';
@@ -89,7 +90,6 @@ import {
 import { default as Tabs, TabPane } from './Tabs';
 import VerificationCode from './VerificationCode';
 import Watermark from './Watermark';
-import i18n from '@shared/locale/i18n';
 export type {
   Size,
   Direction,
