@@ -60,13 +60,13 @@
     <div v-if="showHistory || showPreset" class="yc-color-picker-panel-colors">
       <color-list
         v-if="showHistory"
-        :label="t('colorPicker.history')"
+        :label="$t('colorPicker.history')"
         :colors="historyColors"
         @color-click="handleColorClick"
       />
       <color-list
         v-if="showPreset"
-        :label="t('colorPicker.preset')"
+        :label="$t('colorPicker.preset')"
         :colors="presetColors"
         @color-click="handleColorClick"
       />
@@ -76,7 +76,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 import useContext from './hooks/useContext';
 import ColorPalette from './ColorPalette.vue';
 import ColorInput from './ColorInput.vue';
@@ -96,8 +95,6 @@ const {
   presetColors,
   historyColors,
 } = useContext().inject();
-// 国际化
-const { t } = useI18n();
 // 组件实例
 const colorBarRef = ref<InstanceType<typeof ColorControl>>();
 const alphaBarRef = ref<InstanceType<typeof ColorControl>>();

@@ -3,7 +3,7 @@
     <template v-for="action in actionsLayout" :key="action">
       <image-preview-action
         v-if="iconMap[action]"
-        :name="t(`imagePreview.${action}`)"
+        :name="$t(`imagePreview.${action}`)"
         @click="(ev) => $emit('click', action, ev)"
       >
         <component :is="iconMap[action]" />
@@ -14,7 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
 import {
   IconFullScreen,
   IconZoomIn,
@@ -36,8 +35,6 @@ withDefaults(
 defineEmits<{
   (e: 'click', action: string, ev: MouseEvent): void;
 }>();
-// 国际化
-const { t } = useI18n();
 // actionMap
 const iconMap: ObjectData = {
   fullScreen: IconFullScreen,

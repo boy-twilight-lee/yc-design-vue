@@ -33,7 +33,7 @@
       @click="handleEdit"
     >
       <yc-tooltip
-        :content="t('typography.edit')"
+        :content="$t('typography.edit')"
         position="top"
         v-bind="editTooltiProps"
       >
@@ -55,7 +55,7 @@
         </span>
         <template #content>
           <slot name="copy-tooltip" :copied="isCopied">
-            {{ t(`typography.${isCopied ? 'copied' : 'copy'}`) }}
+            {{ $t(`typography.${isCopied ? 'copied' : 'copy'}`) }}
           </slot>
         </template>
       </yc-tooltip>
@@ -70,7 +70,6 @@ import {
   TypographyBaseEmits,
   TypographyBaseSlots,
 } from './type';
-import { useI18n } from 'vue-i18n';
 import { useClipboard } from '@vueuse/core';
 import { useControlValue, sleep, getDomText } from '@shared/utils';
 import { IconEdit, IconCopy, IconInfo } from '@shared/icons';
@@ -117,8 +116,6 @@ const {
   underline,
   bold,
 } = toRefs(props);
-// 国际化
-const { t } = useI18n();
 // 复制hook
 const { isSupported, copy } = useClipboard();
 // 是否已经复制

@@ -2,7 +2,7 @@
   <div class="yc-color-picker-colors-section">
     <div class="yc-color-picker-colors-text">{{ label }}</div>
     <div v-if="!colors.length" class="yc-color-picker-colors-empty">
-      {{ t('colorPicker.empty') }}
+      {{ $t('colorPicker.empty') }}
     </div>
     <div class="yc-color-picker-colors-list">
       <div
@@ -26,7 +26,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
 defineProps<{
   label: string;
   colors: string[];
@@ -34,8 +33,6 @@ defineProps<{
 defineEmits<{
   (e: 'colorClick', color: string): void;
 }>();
-// 国际化
-const { t } = useI18n();
 </script>
 
 <style lang="less">

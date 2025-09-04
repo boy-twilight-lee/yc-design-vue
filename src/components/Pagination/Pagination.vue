@@ -6,7 +6,7 @@
     <!-- total -->
     <span v-if="showTotal" class="yc-pagination-total">
       <slot name="total" :total="total">
-        {{ t('pagination.total', [total]) }}
+        {{ $t('pagination.total', [total]) }}
       </slot>
     </span>
     <!-- page-list -->
@@ -75,7 +75,7 @@
     <!-- jumper -->
     <span v-if="showJumper" class="yc-pagination-jumper">
       <span class="yc-pagination-jumper-text-goto">
-        {{ t('pagination.goto') }}
+        {{ $t('pagination.goto') }}
       </span>
       <yc-input-number
         v-model="tempCurrent"
@@ -139,7 +139,6 @@ const {
   size,
   total,
   sizeOptions,
-  t,
 } = useContext().provide(props, emits);
 // 设置失焦的时候设置value
 const tempCurrent = ref(computedCurrent.value);

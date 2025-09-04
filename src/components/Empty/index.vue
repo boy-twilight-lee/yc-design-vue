@@ -6,19 +6,18 @@
         <icon-empty />
       </slot>
     </div>
-    <div v-if="description" class="yc-empty-description">
+    <div class="yc-empty-description">
       <slot>
-        {{ description }}
+        {{ description || $t('empty.description') }}
       </slot>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { toRefs, computed } from 'vue';
+import { toRefs } from 'vue';
 import { EmptyProps, EmptySlots } from './type';
 import { IconEmpty } from '@shared/icons';
-import { useI18n } from 'vue-i18n';
 defineOptions({
   name: 'Empty',
 });
@@ -28,12 +27,6 @@ const props = withDefaults(defineProps<EmptyProps>(), {
   imgSrc: '',
 });
 const { description: _description } = toRefs(props);
-// 国际化
-const { t } = useI18n();
-// 获取渲染的desc
-const description = computed(
-  () => _description.value || t('empty.description')
-);
 </script>
 
 <style lang="less">

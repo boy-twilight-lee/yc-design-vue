@@ -88,7 +88,7 @@
                   v-bind="cancelButtonProps"
                   @click="handleClose('cancelBtn', $event)"
                 >
-                  {{ cancelText || t('modal.cancelText') }}
+                  {{ cancelText || $t('modal.cancelText') }}
                 </yc-button>
                 <yc-button
                   type="primary"
@@ -96,7 +96,7 @@
                   v-bind="okButtonProps"
                   @click="handleClose('confirmBtn', $event)"
                 >
-                  {{ okText || t('modal.okText') }}
+                  {{ okText || $t('modal.okText') }}
                 </yc-button>
               </slot>
             </div>
@@ -111,7 +111,6 @@
 import { ref, toRefs, computed, CSSProperties } from 'vue';
 import { ModalProps, ModalEmits, ModalSlots } from './type';
 import { getGlobalConfig, valueToPx } from '@shared/utils';
-import { useI18n } from 'vue-i18n';
 import useModalClose from './hooks/useModalClose';
 import useModalDraggable from './hooks/useModalDraggable';
 import YcButton from '@/components/Button';
@@ -189,8 +188,6 @@ const {
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收属性
 const { popupContainer, zIndex } = getGlobalConfig(props);
-// 国际化
-const { t } = useI18n();
 // 处理组件关闭开启
 const {
   outerVisible,
