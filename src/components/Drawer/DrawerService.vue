@@ -33,8 +33,8 @@ const props = withDefaults(defineProps<DrawerServiceProps>(), {
   mask: true,
   maskClosable: true,
   closable: true,
-  okText: '确认',
-  cancelText: '取消',
+  okText: '',
+  cancelText: '',
   okLoading: false,
   okButtonProps: () => {
     return {};

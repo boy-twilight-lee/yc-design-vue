@@ -15,7 +15,7 @@
 
         <div class="yc-calendar-header-value">
           <slot name="header" :year="recordDate.year" :month="recordDate.month">
-            {{ recordDate.year }} 年 {{ recordDate.month }} 月
+            {{ recordDateFormat }}
           </slot>
         </div>
         <icon-button
@@ -29,7 +29,7 @@
           <icon-arrow-right />
         </icon-button>
         <yc-button @click="handleDateChange('today')" size="small">
-          今天
+          {{ t('calendar.today') }}
         </yc-button>
       </div>
       <div class="yc-calendar-header-right">
@@ -76,6 +76,7 @@ import {
   CalendarMode,
 } from './type';
 import { ObjectData } from '@shared/type';
+import { useI18n } from 'vue-i18n';
 import { useControlValue } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import { IconButton } from '@shared/components';
@@ -103,6 +104,8 @@ const {
   defaultMode,
   modes: _modes,
 } = toRefs(props);
+// 国际化
+const { t } = useI18n();
 // 受控的值
 const computedValue = useControlValue<Date>(
   modelValue,
@@ -114,6 +117,14 @@ const computedValue = useControlValue<Date>(
 );
 // 记录的date
 const recordDate = ref<Record<string, number>>({});
+// 格式化的
+const recordDateFormat = computed(() => {
+  const { year, month } = recordDate.value;
+  return dayjs()
+    .set('year', year)
+    .set('month', month)
+    .format(t('calendar.formatMonth'));
+});
 watch(
   () => computedValue.value,
   (val) => {
@@ -139,14 +150,10 @@ const computedMode = useControlValue<CalendarMode>(
 );
 // 数组
 const modes = computed(() => {
-  const map = {
-    month: '月',
-    year: '年',
-  };
-  return _modes.value.map((item) => {
+  return _modes.value.map((v) => {
     return {
-      label: map[item],
-      value: item,
+      label: t(`calendar.view.${v}`),
+      value: v,
     };
   }) as ObjectData[] as RadioOption[];
 });

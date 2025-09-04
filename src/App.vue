@@ -1,15 +1,13 @@
 <template>
-  <div class="test">
-    <yc-color-picker></yc-color-picker>
-  </div>
+  <yc-config-provider locale="en-US">
+    <div class="test">
+      <yc-calendar />
+    </div>
+  </yc-config-provider>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-const collapsed = ref(false);
-const toggleCollapse = () => {
-  collapsed.value = !collapsed.value;
-};
 </script>
 
 <style lang="less">
@@ -23,6 +21,7 @@ const toggleCollapse = () => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
   }
 }
 </style>

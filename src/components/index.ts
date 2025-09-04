@@ -89,6 +89,7 @@ import {
 import { default as Tabs, TabPane } from './Tabs';
 import VerificationCode from './VerificationCode';
 import Watermark from './Watermark';
+import i18n from '@shared/locale/i18n';
 export type {
   Size,
   Direction,
@@ -348,6 +349,7 @@ export default {
   TypographyTitle,
   TypographyParagraph,
   install: (app: App) => {
+    app.use(i18n);
     for (const key of Object.keys(components)) {
       app.use(components[key]);
     }

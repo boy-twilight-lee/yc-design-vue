@@ -39,7 +39,7 @@
     >
       <div class="yc-image-loader">
         <slot name="loader">
-          <yc-spin :size="30" tip="加载中" />
+          <yc-spin :size="30" :tip="t('image.loading')" />
         </slot>
       </div>
     </div>
@@ -89,6 +89,7 @@ import { ref, toRefs, watch } from 'vue';
 import { ImageProps, ImageEmits, ImageSlots } from './type';
 import { useControlValue, valueToPx } from '@shared/utils';
 import { IconImageClose } from '@shared/icons';
+import { useI18n } from 'vue-i18n';
 import useContext from './hooks/useContext';
 import YcSpin from '@/components/Spin';
 import ImagePreview from './ImagePreview.vue';
@@ -115,6 +116,8 @@ const emits = defineEmits<ImageEmits>();
 const { src, preview, previewVisible, defaultPreviewVisible } = toRefs(props);
 //  接收注入
 const { hasGroupFather, handleClick: previewImage } = useContext().inject();
+//  国际化
+const { t } = useI18n();
 // 图片预览可见性
 const computedVisible = useControlValue<boolean>(
   previewVisible,

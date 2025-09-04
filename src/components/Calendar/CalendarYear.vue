@@ -23,7 +23,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toRefs } from 'vue';
+import { ref, watch, toRefs, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { generateMonthCalendar, CalendarCellData } from '@shared/utils';
 import MonthCalendar from './CalendarMonth.vue';
 const props = defineProps<{
@@ -35,23 +36,27 @@ defineEmits<{
 }>();
 // 结构属性
 const { computedValue, recordDate } = toRefs(props);
+// 国际化
+const { t } = useI18n();
 // 日历数组
 const calendar = ref<CalendarCellData[][][][]>([]);
 // 中文月
-const monthList = [
-  '一月',
-  '二月',
-  '三月',
-  '四月',
-  '五月',
-  '六月',
-  '七月',
-  '八月',
-  '九月',
-  '十月',
-  '十一月',
-  '十二月',
-];
+const monthList = computed(() => {
+  return [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ].map((v) => t(`calendar.month.short.${v}`));
+});
 // 处理日期
 watch(
   () => recordDate.value.year,

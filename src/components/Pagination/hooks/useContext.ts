@@ -10,6 +10,7 @@ import {
 import { PaginationProps as _PaginationProps, PaginationEmits } from '../type';
 import { Props, RequiredDeep } from '@shared/type';
 import { useControlValue, getGlobalConfig } from '@shared/utils';
+import { useI18n } from 'vue-i18n';
 
 const PAGINATION_CONTEXT_KEY = 'pagination-context';
 interface PaginationContext {
@@ -41,6 +42,8 @@ export default () => {
       total: _total,
     } = toRefs(props as PaginationProps);
     const { size } = getGlobalConfig(props);
+    // 国际化
+    const { t } = useI18n();
     // total
     const total = useControlValue<number>(
       autoAdjust.value ? _total : ref(),
@@ -119,7 +122,7 @@ export default () => {
     const sizeOptions = computed(() => {
       return pageSizeOptions.value.map((item) => {
         return {
-          label: `${item}条/页`,
+          label: `${item}${t('pagination.countPerPage')}`,
           value: item,
         };
       });
@@ -143,6 +146,7 @@ export default () => {
       computedCurrent,
       computedPageSize,
       sizeOptions,
+      t,
     };
   };
   const inject = () => {

@@ -32,7 +32,11 @@
       class="yc-typography-operation-edit"
       @click="handleEdit"
     >
-      <yc-tooltip content="编辑" position="top" v-bind="editTooltiProps">
+      <yc-tooltip
+        :content="t('typography.edit')"
+        position="top"
+        v-bind="editTooltiProps"
+      >
         <span><icon-edit /></span>
       </yc-tooltip>
     </span>
@@ -51,7 +55,7 @@
         </span>
         <template #content>
           <slot name="copy-tooltip" :copied="isCopied">
-            {{ `${isCopied ? '已复制' : '复制'}` }}
+            {{ t(`typography.${isCopied ? 'copied' : 'copy'}`) }}
           </slot>
         </template>
       </yc-tooltip>
@@ -66,6 +70,7 @@ import {
   TypographyBaseEmits,
   TypographyBaseSlots,
 } from './type';
+import { useI18n } from 'vue-i18n';
 import { useClipboard } from '@vueuse/core';
 import { useControlValue, sleep, getDomText } from '@shared/utils';
 import { IconEdit, IconCopy, IconInfo } from '@shared/icons';
@@ -112,6 +117,8 @@ const {
   underline,
   bold,
 } = toRefs(props);
+// 国际化
+const { t } = useI18n();
 // 复制hook
 const { isSupported, copy } = useClipboard();
 // 是否已经复制
@@ -133,7 +140,6 @@ const computedText = useControlValue<string>(editText, '', (val) => {
   emits('update:editText', val);
   emits('change', val);
 });
-const ellipsisInfo = ref<Record<string, any>>({});
 // 渲染的tags
 const tags = computed(() => {
   const tags = ['mark', 'code', 'del', 'u', 'b'];

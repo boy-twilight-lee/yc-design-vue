@@ -33,7 +33,7 @@
       </div>
       <div class="yc-popconfirm-footer">
         <yc-button size="mini" v-bind="cancelButtonProps" @click="handleCancel">
-          {{ cancelText }}
+          {{ cancelText || t('popconfirm.cancelText') }}
         </yc-button>
         <yc-button
           size="mini"
@@ -42,7 +42,7 @@
           v-bind="okButtonProps"
           @click="handleOk"
         >
-          {{ okText }}
+          {{ okText || t('popconfirm.okText') }}
         </yc-button>
       </div>
     </template>
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, StyleValue } from 'vue';
+import { ref, toRefs } from 'vue';
 import {
   PopconfirmProps,
   PopconfirmEmits,
@@ -59,6 +59,7 @@ import {
 } from './type';
 import { TYPE_ICON_MAP } from '@shared/constants';
 import { useControlValue } from '@shared/utils';
+import { useI18n } from 'vue-i18n';
 import useOnBeforeClose from '@/components/Modal/hooks/useOnBeforeClose';
 import { default as YcTrigger, TriggerInstance } from '@/components/Trigger';
 import YcButton from '@/components/Button';
@@ -72,8 +73,8 @@ const props = withDefaults(defineProps<PopconfirmProps>(), {
   popupVisible: undefined,
   defaultPopupVisible: false,
   type: 'info',
-  okText: '确定',
-  cancelText: '取消',
+  okText: '',
+  cancelText: '',
   okLoading: false,
   okButtonProps: () => {
     return {};
@@ -99,6 +100,8 @@ const props = withDefaults(defineProps<PopconfirmProps>(), {
 const emits = defineEmits<PopconfirmEmits>();
 const { popupVisible, defaultPopupVisible, type } = toRefs(props);
 const { onBeforeOk, onBeforeCancel } = props;
+// 国际化
+const { t } = useI18n();
 // 异步关闭的loading
 const asyncLoading = ref<boolean>(false);
 // 触发器实例

@@ -48,6 +48,7 @@
 
 <script lang="ts" setup>
 import { computed, toRefs, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import dayjs from 'dayjs';
 import { generateMonthCalendar, CalendarCellData } from '@shared/utils';
 import { useControlValue } from '@shared/utils';
@@ -68,11 +69,19 @@ defineEmits<{
 }>();
 // 结构属性
 const { computedValue, calendar: _calendar, small, recordDate } = toRefs(props);
+// 国际化
+const { t } = useI18n();
 // 周日列表
 const weekList = computed(() => {
-  return small.value
-    ? ['日', '一', '二', '三', '四', '五', '六']
-    : ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+  return [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+  ].map((v) => t(`calendar.week.${small.value ? 'short' : 'long'}.${v}`));
 });
 // 日历数组
 const calendar = useControlValue<CalendarCellData[][]>(_calendar, []);

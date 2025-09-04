@@ -2,11 +2,11 @@
   <div v-if="actionsLayout.length" class="yc-image-preview-toolbar">
     <template v-for="action in actionsLayout" :key="action">
       <image-preview-action
-        v-if="actionMap[action]"
-        :name="actionMap[action].name"
+        v-if="iconMap[action]"
+        :name="t(`imagePreview.${action}`)"
         @click="(ev) => $emit('click', action, ev)"
       >
-        <component :is="actionMap[action].icon" />
+        <component :is="iconMap[action]" />
       </image-preview-action>
     </template>
     <slot name="actions" />
@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n';
 import {
   IconFullScreen,
   IconZoomIn,
@@ -35,33 +36,16 @@ withDefaults(
 defineEmits<{
   (e: 'click', action: string, ev: MouseEvent): void;
 }>();
-
+// 国际化
+const { t } = useI18n();
 // actionMap
-const actionMap: ObjectData = {
-  fullScreen: {
-    icon: IconFullScreen,
-    name: '全屏',
-  },
-  rotateRight: {
-    icon: IconRotateRight,
-    name: '向右旋转',
-  },
-  rotateLeft: {
-    icon: IconRotateLeft,
-    name: '向左旋转',
-  },
-  zoomIn: {
-    icon: IconZoomIn,
-    name: '放大',
-  },
-  zoomOut: {
-    icon: IconZoomOut,
-    name: '缩小',
-  },
-  originalSize: {
-    icon: IconOriginSize,
-    name: '还原',
-  },
+const iconMap: ObjectData = {
+  fullScreen: IconFullScreen,
+  rotateRight: IconRotateRight,
+  rotateLeft: IconRotateLeft,
+  zoomIn: IconZoomIn,
+  zoomOut: IconZoomOut,
+  originalSize: IconOriginSize,
 };
 </script>
 

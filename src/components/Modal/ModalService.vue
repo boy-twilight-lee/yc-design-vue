@@ -50,8 +50,8 @@ const props = withDefaults(defineProps<ModalServiceProps>(), {
   maskClosable: true,
   hideCancel: false,
   closable: true,
-  okText: '确认',
-  cancelText: '取消',
+  okText: '',
+  cancelText: '',
   okLoading: false,
   okButtonProps: () => {
     return {};

@@ -22,7 +22,6 @@ export default () => {
             'yc-design-theme'
           );
           theme.value = value === 'dark' ? 'dark' : 'light';
-          console.log(theme.value, 'theme');
         }
       }
     },
