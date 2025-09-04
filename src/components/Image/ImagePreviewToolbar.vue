@@ -3,7 +3,7 @@
     <template v-for="action in actionsLayout" :key="action">
       <image-preview-action
         v-if="iconMap[action]"
-        :name="$t(`imagePreview.${action}`)"
+        :name="t(`imagePreview.${action}`)"
         @click="(ev) => $emit('click', action, ev)"
       >
         <component :is="iconMap[action]" />
@@ -23,6 +23,7 @@ import {
   IconOriginSize,
 } from '@shared/icons';
 import { ObjectData } from '@shared/type';
+import { t } from '@shared/locale/i18n';
 import ImagePreviewAction from './ImagePreviewAction.vue';
 withDefaults(
   defineProps<{

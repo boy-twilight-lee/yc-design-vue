@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "1.8.4",
+  "version": "1.8.7",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -71,6 +71,7 @@
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.55.1",
+    "@intlify/unplugin-vue-i18n": "^6.0.8",
     "@types/less": "^3.0.8",
     "@types/node": "^20.12.8",
     "@types/tinycolor2": "^1.4.6",

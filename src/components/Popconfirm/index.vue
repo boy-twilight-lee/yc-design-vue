@@ -33,7 +33,7 @@
       </div>
       <div class="yc-popconfirm-footer">
         <yc-button size="mini" v-bind="cancelButtonProps" @click="handleCancel">
-          {{ cancelText || $t('popconfirm.cancelText') }}
+          {{ cancelText || t('popconfirm.cancelText') }}
         </yc-button>
         <yc-button
           size="mini"
@@ -42,7 +42,7 @@
           v-bind="okButtonProps"
           @click="handleOk"
         >
-          {{ okText || $t('popconfirm.okText') }}
+          {{ okText || t('popconfirm.okText') }}
         </yc-button>
       </div>
     </template>
@@ -58,6 +58,7 @@ import {
   PopconfirmExpose,
 } from './type';
 import { TYPE_ICON_MAP } from '@shared/constants';
+import { t } from '@shared/locale/i18n';
 import { useControlValue } from '@shared/utils';
 import useOnBeforeClose from '@/components/Modal/hooks/useOnBeforeClose';
 import { default as YcTrigger, TriggerInstance } from '@/components/Trigger';

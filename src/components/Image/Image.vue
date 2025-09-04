@@ -39,7 +39,7 @@
     >
       <div class="yc-image-loader">
         <slot name="loader">
-          <yc-spin :size="30" :tip="$t('image.loading')" />
+          <yc-spin :size="30" :tip="t('image.loading')" />
         </slot>
       </div>
     </div>
@@ -87,6 +87,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, watch } from 'vue';
 import { ImageProps, ImageEmits, ImageSlots } from './type';
+import { t } from '@shared/locale/i18n';
 import { useControlValue, valueToPx } from '@shared/utils';
 import { IconImageClose } from '@shared/icons';
 import useContext from './hooks/useContext';

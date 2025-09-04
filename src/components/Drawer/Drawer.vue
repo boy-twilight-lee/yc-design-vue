@@ -67,7 +67,7 @@
                 v-bind="cancelButtonProps"
                 @click="handleClose('cancelBtn', $event)"
               >
-                {{ cancelText || $t('drawer.cancelText') }}
+                {{ cancelText || t('drawer.cancelText') }}
               </yc-button>
               <yc-button
                 type="primary"
@@ -75,7 +75,7 @@
                 v-bind="okButtonProps"
                 @click="handleClose('confirmBtn', $event)"
               >
-                {{ okText || $t('drawer.okText') }}
+                {{ okText || t('drawer.okText') }}
               </yc-button>
             </div>
           </slot>
@@ -87,6 +87,7 @@
 
 <script lang="ts" setup>
 import { toRefs, computed, CSSProperties } from 'vue';
+import { t } from '@shared/locale/i18n';
 import { DrawerProps, DrawerEmits, DrawerSlots } from './type';
 import { getGlobalConfig, valueToPx } from '@shared/utils';
 import useDrawerClose from '@/components/Modal/hooks/useModalClose';

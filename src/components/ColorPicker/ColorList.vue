@@ -2,7 +2,7 @@
   <div class="yc-color-picker-colors-section">
     <div class="yc-color-picker-colors-text">{{ label }}</div>
     <div v-if="!colors.length" class="yc-color-picker-colors-empty">
-      {{ $t('colorPicker.empty') }}
+      {{ t('colorPicker.empty') }}
     </div>
     <div class="yc-color-picker-colors-list">
       <div
@@ -26,6 +26,7 @@
 </template>
 
 <script lang="ts" setup>
+import { t } from '@shared/locale/i18n';
 defineProps<{
   label: string;
   colors: string[];

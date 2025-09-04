@@ -6,7 +6,7 @@
     <!-- total -->
     <span v-if="showTotal" class="yc-pagination-total">
       <slot name="total" :total="total">
-        {{ $t('pagination.total', [total]) }}
+        {{ t('pagination.total', [total]) }}
       </slot>
     </span>
     <!-- page-list -->
@@ -75,7 +75,7 @@
     <!-- jumper -->
     <span v-if="showJumper" class="yc-pagination-jumper">
       <span class="yc-pagination-jumper-text-goto">
-        {{ $t('pagination.goto') }}
+        {{ t('pagination.goto') }}
       </span>
       <yc-input-number
         v-model="tempCurrent"
@@ -96,6 +96,7 @@ import { ref, watch } from 'vue';
 import { PaginationProps, PaginationEmits, PaginationSlots } from './type';
 import { isNumber, sleep } from '@shared/utils';
 import useContext from './hooks/useContext';
+import { t } from '@shared/locale/i18n';
 import PaginationItem from './PaginationItem.vue';
 import YcSelect from '@/components/Select';
 import YcInputNumber from '@/components/InputNumber';

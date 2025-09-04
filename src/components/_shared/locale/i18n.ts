@@ -15,6 +15,8 @@ const i18n = createI18n({
 });
 // i18n全局对象
 const i18nGlobal = i18n.global;
+// 全局的t
+export const t = i18n.global.t;
 // 加载的语言模块
 const langModules = import.meta.glob('./lang/*.json');
 // 异步加载并设置语言环境。

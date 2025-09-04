@@ -60,13 +60,13 @@
     <div v-if="showHistory || showPreset" class="yc-color-picker-panel-colors">
       <color-list
         v-if="showHistory"
-        :label="$t('colorPicker.history')"
+        :label="t('colorPicker.history')"
         :colors="historyColors"
         @color-click="handleColorClick"
       />
       <color-list
         v-if="showPreset"
-        :label="$t('colorPicker.preset')"
+        :label="t('colorPicker.preset')"
         :colors="presetColors"
         @color-click="handleColorClick"
       />
@@ -76,6 +76,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { t } from '@shared/locale/i18n';
 import useContext from './hooks/useContext';
 import ColorPalette from './ColorPalette.vue';
 import ColorInput from './ColorInput.vue';

@@ -76,7 +76,7 @@ import {
   CalendarMode,
 } from './type';
 import { ObjectData } from '@shared/type';
-import { useI18n } from 'vue-i18n';
+import { t } from '@shared/locale/i18n';
 import { useControlValue } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import { IconButton } from '@shared/components';
@@ -104,8 +104,6 @@ const {
   defaultMode,
   modes: _modes,
 } = toRefs(props);
-// 国际化
-const { t } = useI18n();
 // 受控的值
 const computedValue = useControlValue<Date>(
   modelValue,

@@ -8,7 +8,7 @@
     </div>
     <div class="yc-empty-description">
       <slot>
-        {{ description || $t('empty.description') }}
+        {{ description || t('empty.description') }}
       </slot>
     </div>
   </div>
@@ -17,6 +17,7 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue';
 import { EmptyProps, EmptySlots } from './type';
+import { t } from '@shared/locale/i18n';
 import { IconEmpty } from '@shared/icons';
 defineOptions({
   name: 'Empty',
