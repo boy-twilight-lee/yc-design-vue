@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "1.9.2",
+  "version": "1.9.4",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -39,9 +39,9 @@
       "require": "./lib/index.js"
     },
     "./lang/*": {
-      "types": "./lang-es/*.d.ts",
-      "import": "./lang-es/*.js",
-      "require": "./lang-lib/*.js"
+      "types": "./es/lang-es/*.d.ts",
+      "import": "./es/lang-es/*.js",
+      "require": "./lib/lang-lib/*.js"
     },
     "./es/style.css": "./es/style.css",
     "./es/shared.css": "./es/shared.css",
