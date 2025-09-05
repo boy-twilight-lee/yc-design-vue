@@ -32,18 +32,18 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import zhCN from '@shared/lang/zh-cn';
-import enUS from '@shared/lang/en-us';
-import esES from '@shared/lang/es-es';
-import jaJP from '@shared/lang/ja-jp';
-import idID from '@shared/lang/id-id';
-import frFR from '@shared/lang/fr-fr';
-import ptPT from '@shared/lang/pt-pt';
-import deDE from '@shared/lang/de-de';
-import koKR from '@shared/lang/ko-kr';
-import itIT from '@shared/lang/it-it';
-import thTH from '@shared/lang/th-th';
-import viVN from '@shared/lang/vi-vn';
+import zhCN from '../public/lang-es/zh-cn';
+import enUS from '../public/lang-es/en-us';
+import esES from '../public/lang-es/es-es';
+import jaJP from '../public/lang-es/ja-jp';
+import idID from '../public/lang-es/id-id';
+import frFR from '../public/lang-es/fr-fr';
+import ptPT from '../public/lang-es/pt-pt';
+import deDE from '../public/lang-es/de-de';
+import koKR from '../public/lang-es/ko-kr';
+import itIT from '../public/lang-es/it-it';
+import thTH from '../public/lang-es/th-th';
+import viVN from '../public/lang-es/vi-vn';
 const locales: Record<string, any> = {
   'zh-CN': zhCN,
   'en-US': enUS,

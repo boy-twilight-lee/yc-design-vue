@@ -1,18 +1,14 @@
 import { ref, reactive, computed } from 'vue';
 import { isString } from './is';
 import { getGlobalConfig } from './global-config';
-import zhCN from '@shared/lang/zh-cn';
+import zhCN from '../../../../public/lang-es/zh-cn';
 
 const LOCALE = ref('zh-CN');
 const I18N_MESSAGES = reactive<Record<string, any>>({
   'zh-CN': zhCN,
 });
 
-/**
- * 添加地区语言包。添加过后的语言包可以通过 `useLocale` 使用
- * @param messages 需要添加的地区语言数据
- * @param options
- */
+// 添加地区语言包。添加过后的语言包可以通过 `useLocale` 使用
 export const addI18nMessages = (
   messages: Record<string, any>,
   options?: {
@@ -26,10 +22,12 @@ export const addI18nMessages = (
   }
 };
 
-/**
- * 切换地区语言。仅在未提供ConfigProvider时生效。
- * @param locale
- */
+//  获取当前的地区语言
+export const getLocale = () => {
+  return LOCALE.value;
+};
+
+//切换地区语言。仅在未提供ConfigProvider时生效。
 export const useLocale = (locale: string) => {
   if (!I18N_MESSAGES[locale]) {
     // eslint-disable-next-line no-console
@@ -37,13 +35,6 @@ export const useLocale = (locale: string) => {
     return;
   }
   LOCALE.value = locale;
-};
-
-/**
- * 获取当前的地区语言
- */
-export const getLocale = () => {
-  return LOCALE.value;
 };
 
 // 仅内部使用
