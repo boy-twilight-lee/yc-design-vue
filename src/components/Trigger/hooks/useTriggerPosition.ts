@@ -33,7 +33,6 @@ export default (params: {
     autoFitPopupMinWidth,
     autoFitPopupWidth,
     autoSetPosition,
-    showArrow,
     position: _position,
     arrowStyle: _arrowStyle,
     contentStyle: _contentStyle,

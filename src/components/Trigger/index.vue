@@ -65,11 +65,7 @@ import {
   TriggerSlots,
   TriggerExpose,
 } from './type';
-import {
-  findFirstLegitChild,
-  getGlobalConfig,
-  isUndefined,
-} from '@shared/utils';
+import { findFirstLegitChild, getGlobalConfig } from '@shared/utils';
 import useTriggerVisible from './hooks/useTriggerVisible';
 import useTriggerPosition from './hooks/useTriggerPosition';
 import { PreventFocus } from '@shared/components';

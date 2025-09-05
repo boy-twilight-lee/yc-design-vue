@@ -44,7 +44,7 @@
 <script lang="ts" setup>
 import { SpinProps, SpinSlots } from './type';
 import { createReusableTemplate } from '@vueuse/core';
-import { getGlobalConfig, valueToPx } from '@shared/utils';
+import { valueToPx } from '@shared/utils';
 import { IconLoading } from '@shared/icons';
 defineOptions({
   name: 'Spin',

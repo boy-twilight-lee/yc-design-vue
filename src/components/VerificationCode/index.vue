@@ -33,7 +33,6 @@ import { ref, toRefs, computed } from 'vue';
 import { VerificationCodeProps, VerificationCodeEmits } from './type';
 import {
   useControlValue,
-  getGlobalConfig,
   sleep,
   getSlotFunction,
   isFunction,
@@ -58,8 +57,6 @@ const props = withDefaults(defineProps<VerificationCodeProps>(), {
 const emits = defineEmits<VerificationCodeEmits>();
 const { modelValue, defaultValue, length: _length } = toRefs(props);
 const { formatter } = props;
-// 接收传入的属性
-const { size } = getGlobalConfig(props);
 // 受控值
 const computedValue = useControlValue<string>(
   modelValue,

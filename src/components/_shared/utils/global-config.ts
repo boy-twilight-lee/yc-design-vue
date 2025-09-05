@@ -1,18 +1,7 @@
-import {
-  toRefs,
-  inject,
-  ref,
-  isReactive,
-  reactive,
-  Ref,
-  VNode,
-  computed,
-} from 'vue';
-import { ConfigconfigSlots, EmptyComponent } from '@/components/ConfigProvider';
+import { toRefs, inject, ref, isReactive, reactive, Ref, computed } from 'vue';
+import { ConfigconfigSlots } from '@/components/ConfigProvider';
 import { ObjectData, PopupContainer, Props, Size } from '@shared/type';
 import { isString, isUndefined } from '../utils';
-import YcEmpty from '@/components/Empty';
-import { IconLoading } from '@shared/icons';
 
 export const CONFIG_PROVIDER_PROVIDE_KEY = 'config-props';
 
