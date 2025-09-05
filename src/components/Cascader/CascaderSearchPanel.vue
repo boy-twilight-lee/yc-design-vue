@@ -2,7 +2,7 @@
   <div class="yc-cascader-panel yc-cascader-search-panel">
     <!-- empty -->
     <div v-if="!searchOptions.length" class="yc-cascader-empty">
-      <component :is="slots.empty || renderEmpty('Select')" />
+      <component :is="slots.empty || YcEmpty" />
     </div>
     <yc-scrollbar class="yc-cascader-column-content">
       <ul role="menu" class="yc-cascader-list">
@@ -18,12 +18,9 @@
 
 <script lang="ts" setup>
 import useContext from './hooks/useContext';
-import { getGlobalConfig } from '@shared/utils';
-
 import YcCascaderOption from './CascaderOption.vue';
 import YcScrollbar from '@/components/Scrollbar';
-// configProvider
-const { renderEmpty } = getGlobalConfig();
+import YcEmpty from '@/components/Empty';
 // 接收注入
 const { searchOptions, slots } = useContext().inject();
 </script>

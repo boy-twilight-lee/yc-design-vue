@@ -8,11 +8,7 @@ import {
   VNode,
   computed,
 } from 'vue';
-import {
-  ConfigconfigSlots,
-  EmptyComponent,
-  YcLang,
-} from '@/components/ConfigProvider';
+import { ConfigconfigSlots, EmptyComponent } from '@/components/ConfigProvider';
 import { ObjectData, PopupContainer, Props, Size } from '@shared/type';
 import { isString, isUndefined } from '../utils';
 import YcEmpty from '@/components/Empty';
@@ -44,7 +40,6 @@ const getVar = (value: Ref<ValueType>, _value: Ref<ValueType>) => {
 export const getGlobalConfig = (props: Props = {}) => {
   // 接收值
   const {
-    slots,
     zIndex,
     locale,
     size: _size,
@@ -60,30 +55,16 @@ export const getGlobalConfig = (props: Props = {}) => {
     popupContainer: ref('body'),
     slots: {},
   });
-  // 渲染empty
-  const renderEmpty = (name: EmptyComponent) => {
-    return slots.empty
-      ? () =>
-          slots.empty?.({
-            component: name,
-          })
-      : (YcEmpty as VNode);
-  };
-  const renderLoading = () => {
-    return slots.loading ? slots.loading : (IconLoading as VNode);
-  };
   // 接收属性
-  const { size, updateAtScroll, scrollToClose, exchangeTime, popupContainer } =
-    toRefs(isReactive(props) ? props : reactive(props));
+  const { size, updateAtScroll, scrollToClose, popupContainer } = toRefs(
+    isReactive(props) ? props : reactive(props)
+  );
   return {
-    slots,
     zIndex,
     locale,
     size: getVar(size, _size),
     updateAtScroll: getVar(updateAtScroll, _updateAtScroll),
     scrollToClose: getVar(scrollToClose, _scrollToClose),
     popupContainer: getVar(popupContainer, _popupContainer),
-    renderEmpty,
-    renderLoading,
   };
 };

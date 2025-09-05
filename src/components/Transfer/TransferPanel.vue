@@ -88,7 +88,7 @@
         </div>
       </yc-scrollbar>
       <!-- 渲染empty -->
-      <component :is="renderEmpty('Transfer')" />
+      <component :is="YcEmpty" />
     </div>
   </div>
 </template>
@@ -98,18 +98,16 @@ import { ref, toRefs, computed } from 'vue';
 import { TransferItem, TransferPanelSlots, TransferItemValue } from './type';
 import { IconDelete, IconClose, IconSearch } from '@shared/icons';
 import useContext from './hooks/useContext';
-import { getGlobalConfig } from '@shared/utils';
 import YcCheckbox from '@/components/Checkbox';
 import YcScrollbar from '@/components/Scrollbar';
 import YcInput from '@/components/Input';
+import YcEmpty from '@/components/Empty';
 import { IconButton } from '@shared/components';
 defineSlots<TransferPanelSlots>();
 const props = defineProps<{
   type: 'source' | 'target';
 }>();
 const { type } = toRefs(props);
-// configProvider
-const { renderEmpty } = getGlobalConfig();
 // 接收注入
 const {
   computedValue,

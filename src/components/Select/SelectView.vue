@@ -27,7 +27,7 @@
       <!-- list -->
       <select-real-list v-else :scrollbar="scrollbar" ref="realListRef" />
       <!-- empty -->
-      <component v-if="isEmpty" :is="slots.empty || renderEmpty('Select')" />
+      <component v-if="isEmpty" :is="slots.empty || YcEmpty" />
       <!-- footer -->
       <div
         v-if="slots.footer && (showFooterOnEmpty || !isEmpty)"
@@ -43,12 +43,12 @@
 import { ref, toRefs, computed } from 'vue';
 import { VirtualListProps } from './type';
 import { unrefElement } from '@vueuse/core';
-import { getGlobalConfig } from '@shared/utils';
 import useContext from './hooks/useContext';
 import useScrollReach from '@/components/List/hooks/useScrollReach';
 import SelectVirtualList from './SelectVirtualList.vue';
 import SelectRealList from './SelectRealList.vue';
 import YcSpin from '@/components/Spin';
+import YcEmpty from '@/components/Empty';
 const props = defineProps<{
   loading: boolean;
   scrollbar: boolean;
@@ -59,8 +59,6 @@ const props = defineProps<{
 const { virtualListProps } = toRefs(props);
 // 接收注入
 const { slots, options, isEmpty, emits } = useContext().inject();
-// configProvider
-const { renderEmpty } = getGlobalConfig();
 // realList
 const realListRef = ref<InstanceType<typeof SelectRealList>>();
 // virtualList

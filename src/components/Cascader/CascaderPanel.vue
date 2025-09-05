@@ -3,10 +3,7 @@
     <!-- loading -->
     <yc-spin v-if="loading" :loading="loading" />
     <!-- empty -->
-    <component
-      v-else-if="!options.length"
-      :is="slots.empty || renderEmpty('Select')"
-    />
+    <component v-else-if="!options.length" :is="slots.empty || YcEmpty" />
     <!-- 渲染panel -->
     <template v-else>
       <div
@@ -40,10 +37,8 @@
 import { default as useContext, findOptions } from './hooks/useContext';
 import YcCascaderOption from './CascaderOption.vue';
 import YcScrollbar from '@/components/Scrollbar';
-import { getGlobalConfig } from '@shared/utils';
 import YcSpin from '@/components/Spin';
-// configProvider
-const { renderEmpty } = getGlobalConfig();
+import YcEmpty from '@/components/Empty';
 // 接收注入
 const { options, curLevel, curPath, maxLevel, loading, slots } =
   useContext().inject();

@@ -23,6 +23,7 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
 });
 const { locale, zIndex, size, updateAtScroll, scrollToClose, popupContainer } =
   toRefs(props);
+// 全局注入
 provide<ConfigProviderProvide>(CONFIG_PROVIDER_PROVIDE_KEY, {
   slots,
   locale,

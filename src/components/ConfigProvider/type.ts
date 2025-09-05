@@ -11,11 +11,8 @@ export interface ConfigProviderProps {
 
 export interface ConfigconfigSlots {
   default?: () => VNode[];
-  loading?: () => VNode[];
-  empty?: (scope: { component: EmptyComponent }) => VNode[];
 }
 
-export type EmptyComponent = 'Select' | 'List' | 'Transfer';
 export type YcLang =
   | 'ar-EG'
   | 'de-DE'

@@ -50,7 +50,7 @@
           <!-- empty -->
           <component
             v-if="!$slots.default && !curList.length"
-            :is="$slots.empty || renderEmpty('List')"
+            :is="slots.empty || YcEmpty"
           />
           <!-- footer -->
           <div v-if="$slots.footer" class="yc-list-footer">
@@ -90,6 +90,7 @@ import {
 import YcPagination from '@/components/Pagination';
 import VirtualList from './ListVirtual.vue';
 import YcListItem from './ListItem.vue';
+import YcEmpty from '@/components/Empty';
 defineOptions({
   name: 'List',
 });
@@ -110,7 +111,7 @@ const props = withDefaults(defineProps<ListProps>(), {
 const emits = defineEmits<ListEmits>();
 const { data, paginationProps, virtualListProps, bottomOffset } = toRefs(props);
 // 注入全局属性
-const { size, renderEmpty } = getGlobalConfig(props);
+const { size } = getGlobalConfig(props);
 // 是否触底
 const isBottomReached = ref<boolean>(false);
 // scrollbar
