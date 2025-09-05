@@ -76,8 +76,7 @@ import {
   CalendarMode,
 } from './type';
 import { ObjectData } from '@shared/type';
-import { t } from '@shared/locale/i18n';
-import { useControlValue } from '@shared/utils';
+import { useControlValue, useI18n } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import { IconButton } from '@shared/components';
 import { CalendarCellData } from '@shared/utils';
@@ -113,6 +112,8 @@ const computedValue = useControlValue<Date>(
     emits('change', val);
   }
 );
+// 国际化
+const { t } = useI18n();
 // 记录的date
 const recordDate = ref<Record<string, number>>({});
 // 格式化的

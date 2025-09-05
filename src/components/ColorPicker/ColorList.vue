@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from '@shared/locale/i18n';
+import { useI18n } from '@shared/utils';
 defineProps<{
   label: string;
   colors: string[];
@@ -34,6 +34,8 @@ defineProps<{
 defineEmits<{
   (e: 'colorClick', color: string): void;
 }>();
+// 国际化
+const { t } = useI18n();
 </script>
 
 <style lang="less">

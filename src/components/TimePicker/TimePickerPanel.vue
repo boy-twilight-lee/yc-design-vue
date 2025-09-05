@@ -62,15 +62,16 @@
             });
           }
         "
-        >此刻</yc-button
       >
+        {{ t('datePicker.now') }}
+      </yc-button>
       <yc-button
         type="primary"
         size="mini"
         :disabled="disabled"
         @click="handleConfirm"
       >
-        确定
+        {{ t('datePicker.ok') }}
       </yc-button>
     </div>
   </div>
@@ -81,7 +82,7 @@ import { ref, computed } from 'vue';
 import BTween from 'b-tween';
 import { default as dayjs, UnitType } from 'dayjs';
 import { TimeUnit } from './type';
-import { isUndefined, isArray, sleep } from '@shared/utils';
+import { isUndefined, isArray, sleep, useI18n } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcButton from '@/components/Button';
 import {
@@ -104,6 +105,8 @@ const {
   disabledMinutes,
   disabledSeconds,
 } = useContext().inject();
+// 国际化
+const { t } = useI18n();
 // 滚动的refs
 const scrollRefs = ref<ScrollbarInstance[]>([]);
 // 禁止confirm

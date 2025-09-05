@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue';
 import { EmptyProps, EmptySlots } from './type';
-import { t } from '@shared/locale/i18n';
+import { useI18n } from '@shared/utils';
 import { IconEmpty } from '@shared/icons';
 defineOptions({
   name: 'Empty',
@@ -28,6 +28,8 @@ const props = withDefaults(defineProps<EmptyProps>(), {
   imgSrc: '',
 });
 const { description: _description } = toRefs(props);
+// 国际化
+const { t } = useI18n();
 </script>
 
 <style lang="less">

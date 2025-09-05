@@ -69,6 +69,9 @@
         :options="sizeOptions"
         :size="size"
         v-bind="pageSizeProps"
+        :format-label="
+          (option) => `${option.value}${t('pagination.countPerPage')}`
+        "
         :disabled="disabled"
       />
     </span>
@@ -94,9 +97,8 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 import { PaginationProps, PaginationEmits, PaginationSlots } from './type';
-import { isNumber, sleep } from '@shared/utils';
+import { isNumber, sleep, useI18n } from '@shared/utils';
 import useContext from './hooks/useContext';
-import { t } from '@shared/locale/i18n';
 import PaginationItem from './PaginationItem.vue';
 import YcSelect from '@/components/Select';
 import YcInputNumber from '@/components/InputNumber';
@@ -141,6 +143,8 @@ const {
   total,
   sizeOptions,
 } = useContext().provide(props, emits);
+// 国际化
+const { t } = useI18n();
 // 设置失焦的时候设置value
 const tempCurrent = ref(computedCurrent.value);
 watch(

@@ -24,8 +24,11 @@
 
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { generateMonthCalendar, CalendarCellData } from '@shared/utils';
+import {
+  generateMonthCalendar,
+  CalendarCellData,
+  useI18n,
+} from '@shared/utils';
 import MonthCalendar from './CalendarMonth.vue';
 const props = defineProps<{
   computedValue: Date;

@@ -110,8 +110,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, CSSProperties } from 'vue';
 import { ModalProps, ModalEmits, ModalSlots } from './type';
-import { getGlobalConfig, valueToPx } from '@shared/utils';
-import { t } from '@shared/locale/i18n';
+import { getGlobalConfig, valueToPx, useI18n } from '@shared/utils';
 import useModalClose from './hooks/useModalClose';
 import useModalDraggable from './hooks/useModalDraggable';
 import YcButton from '@/components/Button';
@@ -189,6 +188,8 @@ const {
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收属性
 const { popupContainer, zIndex } = getGlobalConfig(props);
+// 国际化
+const { t } = useI18n();
 // 处理组件关闭开启
 const {
   outerVisible,

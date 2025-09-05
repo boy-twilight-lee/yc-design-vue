@@ -76,7 +76,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { t } from '@shared/locale/i18n';
+import { useI18n } from '@shared/utils';
 import useContext from './hooks/useContext';
 import ColorPalette from './ColorPalette.vue';
 import ColorInput from './ColorInput.vue';
@@ -96,6 +96,8 @@ const {
   presetColors,
   historyColors,
 } = useContext().inject();
+// 国际化
+const { t } = useI18n();
 // 组件实例
 const colorBarRef = ref<InstanceType<typeof ColorControl>>();
 const alphaBarRef = ref<InstanceType<typeof ColorControl>>();

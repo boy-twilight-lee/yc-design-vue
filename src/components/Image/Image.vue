@@ -87,8 +87,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, watch } from 'vue';
 import { ImageProps, ImageEmits, ImageSlots } from './type';
-import { t } from '@shared/locale/i18n';
-import { useControlValue, valueToPx } from '@shared/utils';
+import { useControlValue, valueToPx, useI18n } from '@shared/utils';
 import { IconImageClose } from '@shared/icons';
 import useContext from './hooks/useContext';
 import YcSpin from '@/components/Spin';
@@ -116,6 +115,8 @@ const emits = defineEmits<ImageEmits>();
 const { src, preview, previewVisible, defaultPreviewVisible } = toRefs(props);
 //  接收注入
 const { hasGroupFather, handleClick: previewImage } = useContext().inject();
+// 国际化
+const { t } = useI18n();
 // 图片预览可见性
 const computedVisible = useControlValue<boolean>(
   previewVisible,

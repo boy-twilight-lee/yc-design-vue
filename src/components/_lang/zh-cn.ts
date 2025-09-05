@@ -63,6 +63,7 @@ const calendarLang = {
 };
 
 const lang = {
+  locale: 'zh-CN',
   empty: {
     description: '暂无数据',
   },
@@ -84,30 +85,6 @@ const lang = {
     countPerPage: '条/页',
     total: '共 {0} 条',
   },
-  calendar: calendarLang,
-  image: {
-    loading: '加载中',
-  },
-  imagePreview: {
-    fullScreen: '全屏',
-    rotateRight: '向右旋转',
-    rotateLeft: '向左旋转',
-    zoomIn: '放大',
-    zoomOut: '缩小',
-    originalSize: '原始尺寸',
-  },
-  typography: {
-    copied: '已复制',
-    copy: '复制',
-    expand: '展开',
-    collapse: '折叠',
-    edit: '编辑',
-  },
-  colorPicker: {
-    history: '最近使用颜色',
-    preset: '系统预设颜色',
-    empty: '暂无',
-  },
   table: {
     okText: '确定',
     resetText: '重置',
@@ -123,6 +100,7 @@ const lang = {
     dragHover: '释放文件并开始上传',
     error: '上传失败',
   },
+  calendar: calendarLang,
   datePicker: {
     view: calendarLang.view,
     month: calendarLang.month,
@@ -147,6 +125,24 @@ const lang = {
     today: '今天',
     now: '此刻',
     ok: '确定',
+  },
+  image: {
+    loading: '加载中',
+  },
+  imagePreview: {
+    fullScreen: '全屏',
+    rotateRight: '向右旋转',
+    rotateLeft: '向左旋转',
+    zoomIn: '放大',
+    zoomOut: '缩小',
+    originalSize: '原始尺寸',
+  },
+  typography: {
+    copied: '已复制',
+    copy: '复制',
+    expand: '展开',
+    collapse: '折叠',
+    edit: '编辑',
   },
   form: {
     validateMessages: {
@@ -195,6 +191,11 @@ const lang = {
         false: '期望是 `false`',
       },
     },
+  },
+  colorPicker: {
+    history: '最近使用颜色',
+    preset: '系统预设颜色',
+    empty: '暂无',
   },
 };
 

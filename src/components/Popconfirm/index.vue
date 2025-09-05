@@ -58,8 +58,7 @@ import {
   PopconfirmExpose,
 } from './type';
 import { TYPE_ICON_MAP } from '@shared/constants';
-import { t } from '@shared/locale/i18n';
-import { useControlValue } from '@shared/utils';
+import { useControlValue, useI18n } from '@shared/utils';
 import useOnBeforeClose from '@/components/Modal/hooks/useOnBeforeClose';
 import { default as YcTrigger, TriggerInstance } from '@/components/Trigger';
 import YcButton from '@/components/Button';
@@ -100,6 +99,8 @@ const props = withDefaults(defineProps<PopconfirmProps>(), {
 const emits = defineEmits<PopconfirmEmits>();
 const { popupVisible, defaultPopupVisible, type } = toRefs(props);
 const { onBeforeOk, onBeforeCancel } = props;
+// 国际化
+const { t } = useI18n();
 // 异步关闭的loading
 const asyncLoading = ref<boolean>(false);
 // 触发器实例

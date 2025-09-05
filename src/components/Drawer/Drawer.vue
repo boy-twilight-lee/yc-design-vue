@@ -87,9 +87,8 @@
 
 <script lang="ts" setup>
 import { toRefs, computed, CSSProperties } from 'vue';
-import { t } from '@shared/locale/i18n';
 import { DrawerProps, DrawerEmits, DrawerSlots } from './type';
-import { getGlobalConfig, valueToPx } from '@shared/utils';
+import { getGlobalConfig, valueToPx, useI18n } from '@shared/utils';
 import useDrawerClose from '@/components/Modal/hooks/useModalClose';
 import YcButton from '@/components/Button';
 import { IconButton } from '@shared/components';
@@ -151,6 +150,8 @@ const {
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收configProvider
 const { zIndex, popupContainer } = getGlobalConfig(props);
+// 国际化
+const { t } = useI18n();
 // drawer绝对定位的left,top
 const drawerStyle = computed(() => {
   return {

@@ -118,7 +118,13 @@
 
 <script lang="ts" setup>
 import { ref, computed, toRefs, StyleValue } from 'vue';
-import { SelectProps, SelectEmits, SelectSlots, SelectExpose } from './type';
+import {
+  SelectProps,
+  SelectEmits,
+  SelectSlots,
+  SelectExpose,
+  SelectValue,
+} from './type';
 import { sleep, isUndefined } from '@shared/utils';
 import useContext from './hooks/useContext';
 import SelectIcon from './SelectIcon.vue';
@@ -208,7 +214,7 @@ const {
 // 是否展示清除按钮
 const showClearBtn = computed(() => {
   const hasValue = multiple.value
-    ? computedValue.value.length
+    ? (computedValue.value as SelectValue[]).length
     : String(computedValue.value).length;
   return allowClear.value && !disabled.value && !loading.value && !!hasValue;
 });

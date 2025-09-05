@@ -1,5 +1,4 @@
 import { App, Plugin } from 'vue';
-import i18n from '@shared/locale/i18n';
 import './index.less';
 import Affix from './Affix';
 import Alert from './Alert';
@@ -349,7 +348,6 @@ export default {
   TypographyTitle,
   TypographyParagraph,
   install: (app: App) => {
-    app.use(i18n);
     for (const key of Object.keys(components)) {
       app.use(components[key]);
     }

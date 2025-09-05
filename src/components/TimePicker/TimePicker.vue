@@ -128,9 +128,7 @@ const props = withDefaults(defineProps<TimePickerProps>(), {
   readonly: false,
   error: false,
   format: 'HH:mm:ss',
-  placeholder: (props) => {
-    return props.type == 'time-range' ? ['开始时间', '结束时间'] : '请选择时间';
-  },
+  placeholder: undefined,
   size: undefined,
   popupContainer: undefined,
   use12Hours: false,
@@ -161,6 +159,7 @@ const {
   curIndex,
   inputRefs,
   format,
+  placeholder,
 } = useContext().provide(props, emits);
 // panelRef
 const panelRef = ref<InstanceType<typeof TimePickerPanel>>();

@@ -23,7 +23,7 @@ import {
   IconOriginSize,
 } from '@shared/icons';
 import { ObjectData } from '@shared/type';
-import { t } from '@shared/locale/i18n';
+import { useI18n } from '@shared/utils';
 import ImagePreviewAction from './ImagePreviewAction.vue';
 withDefaults(
   defineProps<{
@@ -36,6 +36,8 @@ withDefaults(
 defineEmits<{
   (e: 'click', action: string, ev: MouseEvent): void;
 }>();
+// 国际化
+const { t } = useI18n();
 // actionMap
 const iconMap: ObjectData = {
   fullScreen: IconFullScreen,

@@ -17,7 +17,7 @@ import {
   DisabledSeconds,
 } from '../type';
 import { Props, RequiredDeep } from '@shared/type';
-import { useControlValue, isArray } from '@shared/utils';
+import { useControlValue, isArray, useI18n } from '@shared/utils';
 
 const TIME_PICKER_CONTEXT_KEY = 'time-picker-context';
 type TimePickerContext = {
@@ -54,9 +54,12 @@ export default () => {
       disableConfirm,
       hideDisabledOptions,
       step,
+      placeholder: _placeholder,
     } = toRefs(props as TimePickerProps);
     const { disabledHours, disabledMinutes, disabledSeconds } =
       props as TimePickerProps;
+    // 国际化
+    const { t } = useI18n();
     // 计算的值
     const computedValue = useControlValue(
       modelValue,
@@ -113,6 +116,15 @@ export default () => {
         };
       });
     });
+    // placeholder
+    const placeholder = computed(() => {
+      return (
+        _placeholder.value ??
+        t(
+          `datePicker.${type.value == 'time-range' ? 'rangePlaceholder.time' : 'placeholder.time'}`
+        )
+      );
+    });
     // inputRefs
     const inputRefs = ref<HTMLInputElement[]>([]);
     _provide<TimePickerContext>(TIME_PICKER_CONTEXT_KEY, {
@@ -142,6 +154,7 @@ export default () => {
       curIndex,
       inputRefs,
       format,
+      placeholder,
     };
   };
   const inject = () => {

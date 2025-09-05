@@ -71,8 +71,7 @@ import {
   TypographyBaseSlots,
 } from './type';
 import { useClipboard } from '@vueuse/core';
-import { t } from '@shared/locale/i18n';
-import { useControlValue, sleep, getDomText } from '@shared/utils';
+import { useControlValue, sleep, getDomText, useI18n } from '@shared/utils';
 import { IconEdit, IconCopy, IconInfo } from '@shared/icons';
 import { default as YcInput, InputInstance } from '@/components/Input';
 import { default as YcTooltip } from '@/components/Tooltip';
@@ -117,6 +116,8 @@ const {
   underline,
   bold,
 } = toRefs(props);
+// 国际化
+const { t } = useI18n();
 // 复制hook
 const { isSupported, copy } = useClipboard();
 // 是否已经复制
