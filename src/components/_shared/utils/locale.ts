@@ -1,7 +1,7 @@
 import { ref, reactive, computed } from 'vue';
 import { isString } from './is';
 import { getGlobalConfig } from './global-config';
-import zhCN from '@/components/_lang/zh-cn';
+import zhCN from '@shared/lang/zh-cn';
 
 const LOCALE = ref('zh-CN');
 const I18N_MESSAGES = reactive<Record<string, any>>({

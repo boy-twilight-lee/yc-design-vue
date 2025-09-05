@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "1.8.8",
+  "version": "1.9.0",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -38,28 +38,18 @@
       "import": "./es/index.js",
       "require": "./lib/index.js"
     },
-    "./es": {
-      "types": "./es/index.d.ts",
-      "import": "./es/index.js"
-    },
-    "./lib": {
-      "types": "./lib/index.d.ts",
-      "require": "./lib/index.js"
-    },
     "./es/style.css": "./es/style.css",
     "./es/shared.css": "./es/shared.css",
-    "./lib/style.css": "./lib/style.css",
-    "./lib/shared.css": "./lib/shared.css",
+    "./lang/*": {
+      "types": "./es/_shared/lang/*.d.ts",
+      "import": "./es/_shared/lang/*.js",
+      "require": "./lib/_shared/lang/*.js"
+    },
     "./es/*": {
       "types": "./es/*/index.d.ts",
       "import": "./es/*/index.js"
     },
-    "./es/*/index.css": "./es/*/index.css",
-    "./lib/*": {
-      "types": "./lib/*/index.d.ts",
-      "require": "./lib/*/index.js"
-    },
-    "./lib/*/index.css": "./lib/*/index.css"
+    "./es/*/index.css": "./es/*/index.css"
   },
   "dependencies": {
     "@vueuse/core": "^12.0.0",
