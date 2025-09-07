@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   const isDev = mode == 'development';
   return {
     publicDir: resolve(__dirname, 'src/lang'),
-    root: isDev ? './src/dev' : './src',
+    root: isDev ? './src/dev' : undefined,
     plugins: [
       vue(),
       dts({
