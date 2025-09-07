@@ -5,8 +5,6 @@ export interface ConfigProviderProps {
   zIndex?: number;
   size?: Size;
   popupContainer?: PopupContainer;
-  updateAtScroll?: boolean;
-  scrollToClose?: boolean;
 }
 
 export interface ConfigconfigSlots {

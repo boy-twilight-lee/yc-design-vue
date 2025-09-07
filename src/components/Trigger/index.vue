@@ -26,7 +26,7 @@
           `yc-trigger-position-${position}`,
           {
             'yc-trigger-transform-origin': needTransformOrigin,
-            'yc-trigger-absolute': _popupContainer,
+            'yc-trigger-absolute': isAbsolute,
           },
           $attrs.class,
         ]"
@@ -105,8 +105,8 @@ const props = withDefaults(defineProps<TriggerProps>(), {
   popupContainer: undefined,
   renderToBody: true,
   autoFitPosition: true,
-  updateAtScroll: undefined,
-  scrollToClose: undefined,
+  updateAtScroll: true,
+  scrollToClose: false,
   scrollToCloseDistance: 1,
   preventFocus: false,
   alignPoint: false,
@@ -114,9 +114,8 @@ const props = withDefaults(defineProps<TriggerProps>(), {
   autoSetPosition: false,
 });
 const emits = defineEmits<TriggerEmits>();
-const { popupContainer: _popupContainer } = toRefs(props);
 // 接收属性
-const { popupContainer } = getGlobalConfig(props);
+const { popupContainer, isAbsolute } = getGlobalConfig(props);
 // 弹出层的ref
 const popupRef = ref<HTMLDivElement>();
 // trigger的ref

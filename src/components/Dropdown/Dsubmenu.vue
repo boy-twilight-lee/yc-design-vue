@@ -28,7 +28,7 @@
       </template>
     </yc-doption>
     <template #content>
-      <div :class="['yc-dropdown', `yc-dropdown-theme-${theme}`]">
+      <div class="yc-dropdown">
         <yc-scrollbar
           :style="{
             maxHeight: popupMaxHeight,
@@ -56,7 +56,6 @@ import {
   useControlValue,
 } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
-import useMenuContext from '@/components/Menu/hooks/useContext';
 import {
   DsubmenuProps,
   DsubmenuSlots,
@@ -89,8 +88,6 @@ const {
   position: _position,
   popupMaxHeight: _popupMaxHeight,
 } = toRefs(props);
-// 接收注入
-const { theme } = useMenuContext().inject();
 // 受控的visible
 const computedVisible = useControlValue<boolean>(
   popupVisible,

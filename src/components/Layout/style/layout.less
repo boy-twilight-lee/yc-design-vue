@@ -62,19 +62,16 @@
 .yc-layout-sider-translation {
   transition: width 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
 }
-// theme
-.yc-layout-sider-light {
-  background-color: #fff;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.08);
-  .yc-layout-sider-trigger {
-    border-top: 1px solid var(--color-bg-5);
-    color: var(--color-text-1);
+
+@layout-theme: light, dark;
+each(@layout-theme,{
+  .yc-layout-sider-@{value}{
+    background-color: if(@value=light,var(--color-menu-light-bg),var(--color-menu-dark-bg));
+    box-shadow: if(@value=light,0 2px 5px 0 rgba(0, 0, 0, 0.08),none);
+    .yc-layout-sider-trigger{
+      background-color: if(@value=light,unset,rgba(255, 255, 255, 0.2));
+      border-top: if(@value=light,1px solid var(--color-bg-5),none);
+      color: if(@value=light, var(--color-text-1),var(--color-white));
+    }
   }
-}
-.yc-layout-sider-dark {
-  background-color: #232324;
-  .yc-layout-sider-trigger {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--color-white);
-  }
-}
+});

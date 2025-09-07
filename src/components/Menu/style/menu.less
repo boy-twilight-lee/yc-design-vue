@@ -52,29 +52,15 @@
   }
 }
 // theme
-@menu-theme: {
-  @light: {
-    bg: #fff;
-    btn-color: rgb(134, 144, 156);
-    btn-bg: rgb(247, 248, 250);
-    btn-hover-bg: rgb(229, 230, 235);
-  };
-  @dark: {
-    bg: #232324;
-    btn-color: #fff;
-    btn-bg: rgb(22, 93, 255);
-    btn-hover-bg: rgb(14, 66, 210);
-  };
-};
-each(@menu-theme, .(@value,@name){
-  @key:replace(~"@{name}", "@", "");
-  .yc-menu-@{key} {
-    background-color: @value[bg];
+@menu-theme: light, dark;
+each(@menu-theme, {
+  .yc-menu-@{value} {
+    background-color: if(@value=light,var(--color-menu-light-bg),var(--color-menu-dark-bg));
     .yc-menu-collapse-button {
-      color: @value[btn-color];
-      background-color: @value[btn-bg];
+      color: if(@value=light,var(--color-text-3),var(--color-white));
+      background-color: if(@value=light,var(--color-fill-1),rgb(var(--primary-6)));
       &:hover {
-        background-color: @value[btn-hover-bg];
+        background-color: if(@value=light,var(--color-fill-3),rgb(var(--primary-7)));
       }
     }
   }

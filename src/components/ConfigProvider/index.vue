@@ -18,19 +18,13 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   zIndex: 1001,
   size: 'medium',
   popupContainer: 'body',
-  updateAtScroll: true,
-  scrollToClose: false,
 });
-const { locale, zIndex, size, updateAtScroll, scrollToClose, popupContainer } =
-  toRefs(props);
+const { locale, zIndex, size, popupContainer } = toRefs(props);
 // 全局注入
 provide<ConfigProviderProvide>(CONFIG_PROVIDER_PROVIDE_KEY, {
-  slots,
   locale,
   zIndex,
   size,
-  updateAtScroll,
-  scrollToClose,
   popupContainer,
 });
 </script>

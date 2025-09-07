@@ -29,11 +29,10 @@ export default (params: {
     focusDelay,
     disabled,
     scrollToCloseDistance,
+    scrollToClose,
     autoSetPosition,
     alignPoint,
   } = toRefs(props as TriggerProps);
-  // 接收全局属性
-  const { scrollToClose } = getGlobalConfig(props);
   // 处理事件
   const {
     onTriggerMouseclick,

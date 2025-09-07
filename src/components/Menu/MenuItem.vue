@@ -70,6 +70,7 @@
         showArrow: true,
         ...triggerProps,
       }"
+      :class="[`yc-dropdown-popup-${theme}`]"
       @select="handleSelect"
     >
       <reuse-template />

@@ -8,7 +8,7 @@
         `yc-drawer-placement-${placement}`,
         $attrs.class,
         {
-          'yc-drawer-position-absolute': _popupContainer || !renderToBody,
+          'yc-drawer-position-absolute': isAbsolute,
         },
       ]"
       :style="{
@@ -145,11 +145,10 @@ const {
   escToClose,
   drawerStyle: _drawerStyle,
   renderToBody,
-  popupContainer: _popupContainer,
 } = toRefs(props);
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收configProvider
-const { zIndex, popupContainer } = getGlobalConfig(props);
+const { zIndex, popupContainer, isAbsolute } = getGlobalConfig(props);
 // 国际化
 const { t } = useI18n();
 // drawer绝对定位的left,top

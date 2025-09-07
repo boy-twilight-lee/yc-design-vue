@@ -6,7 +6,7 @@
         'yc-image-preview',
         $attrs.class,
         {
-          'yc-image-preview-absolute': _popupContainer,
+          'yc-image-preview-absolute': isAbsolute,
         },
       ]"
       :style="{
@@ -114,10 +114,9 @@ const {
   zoomRate,
   wheelZoom,
   keyboard,
-  popupContainer: _popupContainer,
 } = toRefs(props);
 // 接收全局属性
-const { zIndex, popupContainer } = getGlobalConfig(props);
+const { zIndex, popupContainer, isAbsolute } = getGlobalConfig(props);
 // imageRef
 const imageRef = ref<HTMLImageElement>();
 // scale

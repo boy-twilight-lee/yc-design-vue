@@ -32,7 +32,6 @@ import { SubMenu, MenuItem } from '../index';
 import { nanoid } from 'nanoid';
 import { useResizeObserver } from '@vueuse/core';
 import useSiderContext from '@/components/Layout/hooks/useSiderContext';
-import useTheme from '@/components/Layout/hooks/useTheme';
 
 const MENU_CONTEXT_KEY = 'menu-context';
 type MenuContext = {
@@ -186,7 +185,6 @@ export const getPopupMaxHeight = (popupMaxHeight: PopupMaxHeight) => {
 };
 
 export default () => {
-  const { theme: sysTheme } = useTheme();
   const provide = (
     props: Props,
     emits: MenuEmits,
@@ -267,7 +265,7 @@ export default () => {
     const max = ref<number>(1000000);
     // theme
     const theme = computed(() => {
-      return _theme.value || siderTheme.value || sysTheme.value;
+      return _theme.value || siderTheme.value || 'light';
     });
     // 横向宽度检测
     if (mode.value == 'horizontal') {
@@ -333,7 +331,7 @@ export default () => {
       triggerProps: ref({}),
       autoOpenSelected: ref(false),
       mode: ref('vertical'),
-      theme: sysTheme,
+      theme: ref('light'),
       popupMaxHeight: ref(),
       autoScrollIntoView: ref(false),
       scrollConfig: ref({}),

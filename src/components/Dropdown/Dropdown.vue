@@ -10,7 +10,7 @@
     :auto-fit-popup-min-width="
       !alignPoint && ['top', 'bottom'].includes(position)
     "
-    :class="['yc-dropdown-popup', , `yc-dropdown-${theme}`, $attrs.class]"
+    :class="['yc-dropdown-popup', $attrs.class]"
     :style="$attrs.style"
     animation-name="slide-dynamic-origin"
     need-transform-origin
@@ -46,7 +46,6 @@ import {
 } from './type';
 import { isUndefined, isBoolean, valueToPx } from '@shared/utils';
 import useContext from './hooks/useContext';
-import useMenuContext from '@/components/Menu/hooks/useContext';
 import { default as YcTrigger } from '@/components/Trigger';
 import YcScrollbar from '@/components/Scrollbar';
 defineOptions({
@@ -78,8 +77,6 @@ const {
 } = toRefs(props);
 // 注入
 const { computedVisible } = useContext().provide(props, emits);
-// 接收注入
-const { theme } = useMenuContext().inject();
 // 位置
 const position = computed(() => {
   return ['top', 'tl', 'tr', 'bottom', 'bl', 'br'].includes(_position.value)

@@ -2,7 +2,13 @@
   <div class="test"></div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { Message } from '@/components';
+const collapsed = ref(false);
+</script>
+
+<style lang="less" scoped></style>
 
 <style lang="less">
 #app {

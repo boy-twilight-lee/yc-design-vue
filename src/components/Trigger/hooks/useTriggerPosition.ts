@@ -33,12 +33,13 @@ export default (params: {
     autoFitPopupMinWidth,
     autoFitPopupWidth,
     autoSetPosition,
+    updateAtScroll,
     position: _position,
     arrowStyle: _arrowStyle,
     contentStyle: _contentStyle,
   } = toRefs(props as TriggerProps);
   // 接收provider传入的属性
-  const { updateAtScroll, zIndex } = getGlobalConfig(props);
+  const { zIndex } = getGlobalConfig(props);
   // 动态计算当前的位置
   const position = ref<TriggerPostion>(_position.value);
   // 获取popup的size

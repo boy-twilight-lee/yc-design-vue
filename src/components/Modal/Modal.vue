@@ -8,7 +8,7 @@
         $attrs.class,
         {
           'yc-modal-simple': simple,
-          'yc-modal-position-absolute': _popupContainer || !renderToBody,
+          'yc-modal-position-absolute': isAbsolute,
         },
       ]"
       :style="{
@@ -183,11 +183,10 @@ const {
   fullscreen,
   draggable,
   renderToBody,
-  popupContainer: _popupContainer,
 } = toRefs(props);
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收属性
-const { popupContainer, zIndex } = getGlobalConfig(props);
+const { popupContainer, zIndex, isAbsolute } = getGlobalConfig(props);
 // 国际化
 const { t } = useI18n();
 // 处理组件关闭开启

@@ -1,7 +1,6 @@
 import { toRefs, inject, ref, isReactive, reactive, Ref, computed } from 'vue';
-import { ConfigconfigSlots } from '@/components/ConfigProvider';
 import { ObjectData, PopupContainer, Props, Size } from '@shared/type';
-import { isString, isUndefined } from '../utils';
+import { isBoolean, isString, isUndefined } from '../utils';
 
 export const CONFIG_PROVIDER_PROVIDE_KEY = 'config-props';
 
@@ -10,9 +9,6 @@ export interface ConfigProviderProvide {
   size: Ref<Size>;
   locale: Ref<ObjectData | undefined>;
   popupContainer: Ref<PopupContainer>;
-  updateAtScroll: Ref<boolean>;
-  scrollToClose: Ref<boolean>;
-  slots: Partial<ConfigconfigSlots>;
 }
 
 type ValueType = string | number | boolean | PopupContainer | undefined | any;
@@ -32,28 +28,29 @@ export const getGlobalConfig = (props: Props = {}) => {
     zIndex,
     locale,
     size: _size,
-    updateAtScroll: _updateAtScroll,
-    scrollToClose: _scrollToClose,
     popupContainer: _popupContainer,
   } = inject<ConfigProviderProvide>(CONFIG_PROVIDER_PROVIDE_KEY, {
     locale: ref(),
     zIndex: ref(1001),
     size: ref('medium'),
-    updateAtScroll: ref(true),
-    scrollToClose: ref(false),
     popupContainer: ref('body'),
-    slots: {},
   });
   // 接收属性
-  const { size, updateAtScroll, scrollToClose, popupContainer } = toRefs(
+  const { size, popupContainer, renderToBody } = toRefs(
     isReactive(props) ? props : reactive(props)
   );
+  // 是否绝对定位
+  const isAbsolute = computed(() => {
+    return (
+      popupContainer.value ||
+      (isBoolean(renderToBody?.value) && !renderToBody.value)
+    );
+  });
   return {
     zIndex,
     locale,
     size: getVar(size, _size),
-    updateAtScroll: getVar(updateAtScroll, _updateAtScroll),
-    scrollToClose: getVar(scrollToClose, _scrollToClose),
+    isAbsolute,
     popupContainer: getVar(popupContainer, _popupContainer),
   };
 };
