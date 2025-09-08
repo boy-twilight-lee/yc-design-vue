@@ -27,14 +27,14 @@
   }
 }
 // icon-color
-@type: {
+@modal-type: {
   info: rgb(var(--primary-6));
   success: rgb(var(--success-6));
   warning: rgb(var(--warning-6));
   error: rgb(var(--danger-6));
   confirm: rgb(var(--warning-6));
 };
-each(@type, .(@value, @key) {
+each(@modal-type, .(@value, @key) {
       .yc-service-modal-@{key}  {
         .yc-modal-title-icon{
           color: @value;

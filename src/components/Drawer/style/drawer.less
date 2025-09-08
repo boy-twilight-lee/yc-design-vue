@@ -65,8 +65,8 @@
   position: absolute;
 }
 // placement
-@placements: left, right, bottom, top;
-each(@placements, {
+@drawer-placement: left, right, bottom, top;
+each(@drawer-placement, {
   .yc-drawer-placement-@{value} {
     .yc-drawer-container {
       & when (@value = left),(@value = top),(@value = bottom){

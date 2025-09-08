@@ -7,8 +7,8 @@
   gap: 16px;
 }
 // posiiton
-@position: topLeft, topRight, bottomLeft, bottomRight;
-each(@position,{
+@notification-position: topLeft, topRight, bottomLeft, bottomRight;
+each(@notification-position,{
   .yc-notification-list-@{value}{
       & when(@value = topLeft),(@value = topRight){
         top: 20px;

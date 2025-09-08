@@ -77,22 +77,5 @@ const attrs = computed(() => {
 </script>
 
 <style lang="less">
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.yc-icon {
-  display: inline-block;
-  overflow: hidden;
-  width: 1em;
-  height: 1em;
-  color: inherit;
-}
-.yc-icon-spin {
-  animation: spin 1s infinite cubic-bezier(0, 0, 1, 1);
-}
+@import './style/icon.less';
 </style>

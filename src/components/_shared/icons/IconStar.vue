@@ -9,5 +9,5 @@
 </template>
 
 <script lang="ts" setup>
-import YcIcon from '../components/Icon.vue';
+import { Icon as YcIcon } from '../components';
 </script>

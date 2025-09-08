@@ -20,28 +20,38 @@ export default (): Plugin => {
         return;
       }
       const projectRoot = config.root;
-      const sharedStylesPath = path.resolve(
-        projectRoot,
-        'src/components/_shared/styles'
-      );
       const componentsPath = path.resolve(projectRoot, 'src/components');
+      const sharedBasePath = path.resolve(componentsPath, '_shared');
+      const sharedStylesPath = path.resolve(sharedBasePath, 'styles');
       const lessOptions: Less.Options = {
         compress: true,
       };
-      // 生成shared.css
-      if (fs.existsSync(sharedStylesPath)) {
-        const sharedFiles = globSync(
-          path.join(sharedStylesPath, '**/*.{less,css}').replace(/\\/g, '/')
-        );
+      // --- 生成 shared.css ---
+      const sharedStyleSourcePaths = [
+        path.join(sharedStylesPath, '**/*.{less,css}'),
+        path.join(sharedBasePath, 'components/*/style/**/*.{less,css}'),
+        path.join(componentsPath, 'Drawer/style/**/*.{less,css}'),
+        path.join(componentsPath, 'Modal/style/**/*.{less,css}'),
+        path.join(componentsPath, 'Message/style/**/*.{less,css}'),
+        path.join(componentsPath, 'Notification/style/**/*.{less,css}'),
+      ].map((p) => p.replace(/\\/g, '/'));
+      const sharedFiles = globSync(sharedStyleSourcePaths);
+      if (sharedFiles.length > 0) {
         let combinedSharedStyles = '';
         for (const file of sharedFiles) {
           combinedSharedStyles += fs.readFileSync(file, 'utf-8') + '\n';
         }
         if (combinedSharedStyles) {
           try {
+            // 为less编译提供所有可能的根路径，以便@import能正确解析
+            const lessPaths = [
+              sharedStylesPath,
+              componentsPath,
+              path.resolve(sharedBasePath, 'components'),
+            ];
             const output = await less.render(combinedSharedStyles, {
               ...lessOptions,
-              paths: [sharedStylesPath],
+              paths: Array.from(new Set(lessPaths)),
             });
             if (output.css) {
               fs.writeFileSync(
@@ -54,14 +64,25 @@ export default (): Plugin => {
           }
         }
       }
-      // 为每个组件编译 index.css (或生成空的 index.css)
+      // --- 为其余每个组件编译独立的 index.css (或生成空的 index.css) ---
       if (!fs.existsSync(componentsPath)) {
         this.error('Components directory not found at: ' + componentsPath);
         return;
       }
+      // 定义需要从独立打包中排除的组件列表
+      const excludedComponents = new Set([
+        '_shared',
+        'Drawer',
+        'Modal',
+        'Message',
+        'Notification',
+      ]);
       const componentDirs = fs.readdirSync(componentsPath).filter((file) => {
         const fullPath = path.join(componentsPath, file);
-        return fs.statSync(fullPath).isDirectory() && file !== '_shared';
+        // 过滤掉非目录文件和已合并到shared.css的组件
+        return (
+          fs.statSync(fullPath).isDirectory() && !excludedComponents.has(file)
+        );
       });
       for (const componentName of componentDirs) {
         const stylesPath = path.join(componentsPath, componentName, 'style');
@@ -79,6 +100,7 @@ export default (): Plugin => {
               'virtual-entry.less'
             );
             let finalStylesToCompile = combinedComponentStyles;
+            // 确保 var.less 被引入
             if (
               !/(@import|@import \(reference\)).*var\.less/.test(
                 finalStylesToCompile
@@ -89,7 +111,7 @@ export default (): Plugin => {
             try {
               const output = await less.render(finalStylesToCompile, {
                 ...lessOptions,
-                paths: [stylesPath, sharedStylesPath],
+                paths: [stylesPath, sharedStylesPath], // 为@import提供查找路径
                 filename: virtualEntryFilePath,
               });
               const outputCssPath = path.join(
@@ -111,6 +133,7 @@ export default (): Plugin => {
             }
           }
         } else {
+          // 如果组件没有style文件夹，则为其生成一个空的index.css
           const outputCssPath = path.join(
             options.dir,
             componentName,

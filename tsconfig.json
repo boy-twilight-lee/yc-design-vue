@@ -10,44 +10,18 @@
       "@/*": ["src/*"],
       "@shared/*": ["src/components/_shared/*"]
     },
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    /* Linting */
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/dev/main.tsn.ts",
-    "src/dev/main.tsn.ts",
-    "src/components/_shared/locale/lang/de-de.json",
-    "src/components/_shared/locale/lang/en-us.json",
-    "src/components/_shared/locale/lang/es-es.json",
-    "src/components/_shared/locale/lang/fr-fr.json",
-    "src/components/_shared/locale/lang/id-id.json",
-    "src/components/_shared/locale/lang/it-it.json",
-    "src/components/_shared/locale/lang/ja-jp.json",
-    "src/components/_shared/locale/lang/ko-kr.json",
-    "src/components/_shared/locale/lang/km-kh.json",
-    "src/components/_shared/locale/lang/ms-my.json",
-    "src/components/_shared/locale/lang/nl-nl.json",
-    "src/components/_shared/locale/lang/pt-pt.json",
-    "src/components/_shared/locale/lang/th-th.json",
-    "src/components/_shared/locale/lang/ru-ru.json",
-    "src/components/_shared/locale/lang/vi-vn.json",
-    "src/components/_shared/locale/lang/zh-tw.json",
-    "src/components/_shared/locale/lang/zh-cn.json"
-  ],
-  "exclude": ["node_modules", "src/yc-ui", "dist.test"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
