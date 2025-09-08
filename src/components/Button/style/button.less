@@ -298,9 +298,9 @@ each(@size,.(@value,@name){
     });
 // shape
 @shape: {
-  square: 2px;
+  square: var(--border-radius-small);
   round: 30px;
-  circle: 50%;
+  circle: var(--border-radius-circle);
 };
 each(@shape, {
       .yc-button-shape-@{key} {

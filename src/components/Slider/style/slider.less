@@ -12,12 +12,12 @@
       content: '';
       position: absolute;
       background-color: var(--color-fill-3);
-      border-radius: 2px;
+      border-radius: var(--border-radius-small);
     }
     .yc-slider-bar {
       position: absolute;
       background-color: rgb(var(--primary-6));
-      border-radius: 2px;
+      border-radius: var(--border-radius-small);
     }
     .yc-slider-btn {
       z-index: 2;
@@ -41,7 +41,7 @@
         height: 12px;
         background: var(--color-bg-2);
         border: 2px solid rgb(var(--primary-6));
-        border-radius: 50%;
+        border-radius: var(--border-radius-circle);
         transition: all 0.3s cubic-bezier(0.3, 1.3, 0.3, 1);
       }
     }
@@ -87,7 +87,7 @@
       height: 8px;
       background-color: var(--color-bg-2);
       border: 2px solid var(--color-fill-3);
-      border-radius: 50%;
+      border-radius: var(--border-radius-circle);
       &.yc-slider-dot-active {
         border-color: rgb(var(--primary-6));
       }

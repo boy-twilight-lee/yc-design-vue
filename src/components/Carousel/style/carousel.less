@@ -57,7 +57,7 @@
   width: 24px;
   height: 24px;
   background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
+  border-radius: var(--border-radius-circle);
   color: var(--color-white);
   &:hover {
     background-color: rgba(255, 255, 255, 0.5);
@@ -120,7 +120,7 @@
 
   .yc-carousel-indicator-item {
     background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
+    border-radius: var(--border-radius-medium);
     cursor: pointer;
     &:hover,
     &.yc-carousel-indicator-item-active {
@@ -170,7 +170,7 @@
   .yc-carousel-indicator-item {
     width: 6px;
     height: 6px;
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle);
   }
 }
 .yc-carousel-indicator-shape-line {
@@ -193,7 +193,7 @@
 }
 .yc-carousel-indicator-shape-slider {
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: var(--border-radius-medium);
   background-color: rgba(255, 255, 255, 0.3);
   &.yc-carousel-indicator-position-left,
   &.yc-carousel-indicator-position-right {
@@ -221,7 +221,7 @@
   }
   .yc-carousel-indicator-item-slider {
     position: absolute;
-    border-radius: 4px;
+    border-radius: var(--border-radius-medium);
     transition: transform 0.3s;
     background-color: var(--color-white);
   }

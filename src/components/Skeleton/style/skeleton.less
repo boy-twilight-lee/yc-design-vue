@@ -20,7 +20,7 @@ each(@size, {
 @shape: square, circle;
 each(@shape, {
   .yc-skeleton-shape-shape-@{value} {
-    border-radius: if(@value=square,2px,50%);
+    border-radius: if(@value=square,var(--border-radius-small),var(--border-radius-circle));
   }
 });
 // line
