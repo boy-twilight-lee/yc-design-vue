@@ -31,6 +31,7 @@
           $attrs.class,
         ]"
         :style="{
+          zIndex,
           ...popupStyle,
           ...($attrs.style || {}),
         }"
@@ -58,7 +59,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, toRefs } from 'vue';
+import { ref, computed } from 'vue';
 import {
   TriggerProps,
   TriggerEmits,
@@ -115,7 +116,7 @@ const props = withDefaults(defineProps<TriggerProps>(), {
 });
 const emits = defineEmits<TriggerEmits>();
 // 接收属性
-const { popupContainer, isAbsolute } = getGlobalConfig(props);
+const { popupContainer, isAbsolute, zIndex } = getGlobalConfig(props);
 // 弹出层的ref
 const popupRef = ref<HTMLDivElement>();
 // trigger的ref

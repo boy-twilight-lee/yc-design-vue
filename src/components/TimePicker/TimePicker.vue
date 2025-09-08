@@ -147,7 +147,7 @@ const props = withDefaults(defineProps<TimePickerProps>(), {
 });
 const emits = defineEmits<TimePickerEmits>();
 // 获取全局注入配置
-const { popupContainer, size } = getGlobalConfig(props);
+const { size } = getGlobalConfig(props);
 // 注入数据
 const {
   type,

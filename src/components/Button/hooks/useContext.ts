@@ -26,13 +26,6 @@ type ButtonContext = {
 };
 type ButtonProps = RequiredDeep<_ButtonProps>;
 type ButtonGroupProps = RequiredDeep<_ButtonGroupProps>;
-type FieldValue =
-  | ButtonShape
-  | ButtonStatus
-  | ButtonType
-  | boolean
-  | Size
-  | undefined;
 
 export default () => {
   const provide = (props: Props) => {
@@ -63,28 +56,14 @@ export default () => {
       shape: ref('square'),
       disabled: ref(false),
     });
-    // 获取field
-    const getField = (
-      value: FieldValue,
-      injectValue: FieldValue,
-      globalValue?: FieldValue
-    ) => {
-      if (!isUndefined(value)) {
-        return value;
-      }
-      if (isUndefined(globalValue)) {
-        return injectValue;
-      }
-      return !isUndefined(injectValue) ? injectValue : globalValue;
-    };
     return {
       disabled: computed(() => disabled.value ?? _disabled.value),
       type: computed(() => type.value ?? _type.value),
       status: computed(() => status.value ?? _status.value),
       shape: computed(() => shape.value ?? _shape.value),
-      size: computed(() =>
-        getField(size.value, _size?.value, globalSize.value)
-      ),
+      size: computed(() => {
+        return size.value ?? _size?.value ?? globalSize.value;
+      }),
     };
   };
   return {

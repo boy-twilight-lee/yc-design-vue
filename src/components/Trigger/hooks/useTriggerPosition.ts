@@ -3,7 +3,7 @@ import { useElementBounding, useElementSize, unrefElement } from '@vueuse/core';
 import { TriggerPostion } from '../type';
 import { TriggerProps } from './useContext';
 import { Props } from '@shared/type';
-import { getGlobalConfig, sleep, valueToPx } from '@shared/utils';
+import { sleep, valueToPx } from '@shared/utils';
 
 export default (params: {
   props: Props;
@@ -38,8 +38,6 @@ export default (params: {
     arrowStyle: _arrowStyle,
     contentStyle: _contentStyle,
   } = toRefs(props as TriggerProps);
-  // 接收provider传入的属性
-  const { zIndex } = getGlobalConfig(props);
   // 动态计算当前的位置
   const position = ref<TriggerPostion>(_position.value);
   // 获取popup的size
@@ -86,7 +84,6 @@ export default (params: {
             (autoFitPosition.value ? 0 : popupWidth.value / 2) +
             offsetX
         ),
-        zIndex: zIndex.value,
       };
     }
     // 计算初始位置
@@ -106,7 +103,6 @@ export default (params: {
       return {
         top: valueToPx(offsetTop + offsetY),
         left: valueToPx(offsetLeft + offsetX),
-        zIndex: zIndex.value,
       };
     }
     // 边界检测
@@ -140,7 +136,6 @@ export default (params: {
     return {
       left: valueToPx(newLeft + newOffsetX),
       top: valueToPx(newTop + newOffsetY),
-      zIndex: zIndex.value,
     };
   });
   // contentStyle

@@ -42,7 +42,9 @@ export default (params: {
       curIndex.value =
         curIndex.value >= options.value.length ? 0 : curIndex.value;
     } else {
-      const value = options.value[curIndex.value].value;
+      const option = options.value[curIndex.value];
+      if (option.disabled) return;
+      const value = option.value;
       if (multiple.value) {
         const curValue = computedValue.value as ObjectData[];
         const index = curValue.findIndex((item) => item == value);

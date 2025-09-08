@@ -49,8 +49,8 @@ export const getGlobalConfig = (props: Props = {}) => {
   return {
     zIndex,
     locale,
-    size: getVar(size, _size),
     isAbsolute,
+    size: getVar(size, _size),
     popupContainer: getVar(popupContainer, _popupContainer),
   };
 };

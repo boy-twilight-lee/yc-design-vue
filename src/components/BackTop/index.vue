@@ -3,9 +3,6 @@
     <div
       v-show="curScroll >= visibleHeight"
       class="yc-back-top"
-      :style="{
-        zIndex,
-      }"
       ref="buttonRef"
       @click="handleTop"
     >
@@ -26,7 +23,6 @@ import {
   getElement,
   isUndefined,
   findFirstScrollableParent,
-  getGlobalConfig,
 } from '@shared/utils';
 import BTween from 'b-tween';
 import { useEventListener } from '@vueuse/core';
@@ -41,8 +37,6 @@ const props = withDefaults(defineProps<BackTopProps>(), {
   duration: 200,
 });
 const { targetContainer: _targetContainer, easeing, duration } = toRefs(props);
-// 接收configProvier的属性
-const { zIndex } = getGlobalConfig(props);
 // buttonRef
 const buttonRef = ref<HTMLDivElement>();
 // 当前的滚动

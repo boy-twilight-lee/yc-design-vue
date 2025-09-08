@@ -1,15 +1,14 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "1.9.7",
+  "version": "1.9.8",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
     "vue",
     "vue3",
     "ui",
-    "components",
-    "yc-ui"
+    "components"
   ],
   "author": "2429162154@qq.com",
   "license": "MIT",
