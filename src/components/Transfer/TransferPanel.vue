@@ -48,43 +48,44 @@
       <yc-scrollbar v-if="curData.length">
         <component v-if="slots[type]" :is="renderList" />
         <div v-else role="list" class="yc-transfer-list">
-          <template v-for="item in curData" :key="item.value">
-            <div
-              role="listitem"
-              :class="[
-                'yc-transfer-list-item',
-                {
-                  'yc-transfer-list-item-disabled': item.disabled || disabled,
-                },
-              ]"
-              @click="handleClick(item)"
+          <div
+            v-for="item in curData"
+            :key="item.value"
+            role="listitem"
+            :class="[
+              'yc-transfer-list-item',
+              {
+                'yc-transfer-list-item-disabled': item.disabled || disabled,
+              },
+            ]"
+            @click="handleClick(item)"
+          >
+            <!-- checkbox -->
+            <yc-checkbox
+              v-if="(!oneWay || (oneWay && type == 'source')) && !simple"
+              :model-value="curSeleced.includes(item.value as string)"
+              :disabled="item.disabled || disabled"
+              @change="
+                (isSelected) => handleCheck(isSelected, item.value as string)
+              "
             >
-              <!-- checkbox -->
-              <yc-checkbox
-                v-if="(!oneWay || (oneWay && type == 'source')) && !simple"
-                :model-value="curSeleced.includes(item.value as string)"
-                :disabled="item.disabled || disabled"
-                @change="
-                  (isSelected) => handleCheck(isSelected, item.value as string)
-                "
-              >
-                <component v-if="slots.item" :is="renderItem(item)" />
-                {{ slots.item ? '' : item.label }}
-              </yc-checkbox>
+              <component v-if="slots.item" :is="renderItem(item)" />
               <template v-else>
-                <span class="yc-transfer-list-item-content text-ellipsis">
-                  <component v-if="slots.item" :is="renderItem(item)" />
-                  {{ slots.item ? '' : item.label }}
-                </span>
-                <icon-button
-                  v-if="type == 'target' && !simple"
-                  :hover-size="20"
-                >
-                  <icon-close />
-                </icon-button>
+                {{ item.label }}
               </template>
-            </div>
-          </template>
+            </yc-checkbox>
+            <template v-else>
+              <span class="yc-transfer-list-item-content text-ellipsis">
+                <component v-if="slots.item" :is="renderItem(item)" />
+                <template v-else>
+                  {{ item.label }}
+                </template>
+              </span>
+              <icon-button v-if="type == 'target' && !simple" :hover-size="20">
+                <icon-close />
+              </icon-button>
+            </template>
+          </div>
         </div>
       </yc-scrollbar>
       <!-- 渲染empty -->

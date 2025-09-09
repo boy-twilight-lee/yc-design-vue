@@ -32,13 +32,13 @@ export interface TransferSlots {
   'target-title'?: (scope: TitleSlots) => VNode[];
   'to-source-icon'?: () => VNode[];
   'to-target-icon'?: () => VNode[];
-  item?: (scope: { value: string; label: string }) => VNode[];
+  item?: (scope: TransferItem) => VNode[];
 }
 
 export interface TransferPanelSlots {
   default: (scope: DefaultSlots) => VNode[];
   title: (scope: TitleSlots) => VNode[];
-  item: (scope: { value: string; label: string }) => VNode[];
+  item: (scope: TransferItem) => VNode[];
 }
 
 export interface TransferItem {
@@ -61,6 +61,6 @@ type TitleSlots = {
 
 type DefaultSlots = {
   data: TransferItem[];
-  selectedKeys: string[];
+  selectedKeys: TransferItemValue[];
   onSelect: (value: TransferItemValue[]) => void;
 };

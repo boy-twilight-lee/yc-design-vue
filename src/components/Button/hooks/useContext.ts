@@ -14,7 +14,7 @@ import {
   ButtonGroupProps as _ButtonGroupProps,
 } from '../type';
 import { Size, RequiredDeep, Props } from '@shared/type';
-import { getGlobalConfig, isUndefined } from '@shared/utils';
+import { getGlobalConfig } from '@shared/utils';
 
 const BUTTON_GROUP_CONTEXT_KEY = 'button-group-context';
 type ButtonContext = {
