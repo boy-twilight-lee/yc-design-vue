@@ -11,7 +11,7 @@ node_modules
 dist
 lib
 es
-dev
+src/dev
 dist-ssr
 *.local
 

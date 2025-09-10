@@ -1,5 +1,13 @@
 <template>
-  <div class="test"></div>
+  <div class="test">
+    <yc-space direction="vertical">
+      <yc-button type="primary">Primary</yc-button>
+      <yc-button>Default</yc-button>
+      <yc-button type="dashed">Dashed</yc-button>
+      <yc-button type="outline">Outline</yc-button>
+      <yc-button type="text">Text</yc-button>
+    </yc-space>
+  </div>
 </template>
 
 <script setup lang="ts">

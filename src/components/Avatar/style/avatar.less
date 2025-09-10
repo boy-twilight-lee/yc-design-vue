@@ -73,17 +73,16 @@
 }
 
 // shape
-.yc-avatar-shape-round {
-  border-radius: var(--border-radius-circle);
-  .yc-avatar-image,
-  .yc-avatar-trigger-icon-mask {
-    border-radius: var(--border-radius-circle);
+@shape: {
+  round: var(--border-radius-circle);
+  square: var(--border-radius-medium);
+};
+each(@shape,{
+  .yc-avatar-shape-@{key}{
+    border-radius: @value;
+    .yc-avatar-image,
+    .yc-avatar-trigger-icon-mask {
+      border-radius: @value;
+    }
   }
-}
-.yc-avatar-shape-square {
-  border-radius: var(--border-radius-medium);
-  .yc-avatar-image,
-  .yc-avatar-trigger-icon-mask {
-    border-radius: var(--border-radius-medium);
-  }
-}
+});

@@ -20,7 +20,6 @@
     }
   }
 }
-
 // loading
 .yc-button-loading {
   cursor: default;
@@ -38,7 +37,8 @@
     opacity: 0.4;
   }
 }
-&.yc-button-disabled {
+// disabled
+.yc-button-disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
@@ -46,7 +46,6 @@
 .yc-button-long {
   width: 100%;
 }
-
 // type
 @type: {
   @primary: {
@@ -194,45 +193,40 @@
 };
 each(@type, .(@type-value, @type-name) {
   @type-key: replace(~"@{type-name}", "@", "");
-  .yc-button.yc-button-@{type-key} {
+  .yc-button-@{type-key} {
+    // 遍历每种状态 (normal, warning, success, danger)
     each(@type-value, .(@status-value, @status-name) {
       @status-key: replace(~"@{status-name}", "@", "");
       &.yc-button-status-@{status-key} {
-        color: @status-value[text];
-        & when(isdefined(@status-value[bg])){
-          background-color: @status-value[bg];
-        }
-        & when(isdefined(@status-value[border])){
-          border-color: @status-value[border];
-        }
-         &:not(.yc-button-disabled):not(.yc-button-loading) {
+        each(@status-value, .(@value, @key) {
+          & when (@key = bg) {
+            background-color: @value;
+          }
+          & when (@key = text) {
+            color: @value;
+          }
+          & when (@key = border) {
+            border-color: @value;
+          }
+          //  应用交互状态样式 (hover/active)
+          &:not(.yc-button-disabled):not(.yc-button-loading) {
             &:hover {
-              & when(isdefined(@status-value[hover])){
-                background-color: @status-value[hover];
-              }
-              & when(isdefined(@status-value[text-hover])){
-                color: @status-value[text-hover];
-              }
-              & when(isdefined(@status-value[border-hover])){
-                border-color: @status-value[border-hover];
-              }
+              & when (@key = hover) { background-color: @value; }
+              & when (@key = text-hover) { color: @value; }
+              & when (@key = border-hover) { border-color: @value; }
             }
             &:active {
-              & when(isdefined(@status-value[border-active])){
-                border-color: @status-value[border-active];
-              }
-              & when(isdefined(@status-value[text-active])){
-                color: @status-value[text-active];
-              }
-              & when(isdefined(@status-value[active])){
-                background-color: @status-value[active];
-              }
+              & when (@key = active) { background-color: @value; }
+              & when (@key = text-active) { color: @value; }
+              & when (@key = border-active) { border-color: @value; }
             }
           }
-        & when(@type-key = dashed){
-         border-style: dashed;
+        });
+        // 处理特定按钮类型的样式覆盖 (这些是基于类型，而非属性)
+        & when (@type-key = dashed) {
+          border-style: dashed;
         }
-        & when(@type-key = text){
+        & when (@type-key = text) {
           background-color: transparent;
           &:not(.yc-button-disabled):not(.yc-button-loading) {
             &:hover {
@@ -244,8 +238,7 @@ each(@type, .(@type-value, @type-name) {
           }
         }
       }
-    }
-    )
+    });
   }
 });
 // size
