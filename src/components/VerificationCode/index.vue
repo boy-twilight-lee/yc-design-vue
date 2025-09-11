@@ -38,6 +38,7 @@ import {
   isFunction,
   isNumber,
   isString,
+  getGlobalConfig,
 } from '@shared/utils';
 import { nanoid } from 'nanoid';
 import { default as YcInput, InputInstance } from '@/components/Input';
@@ -57,6 +58,8 @@ const props = withDefaults(defineProps<VerificationCodeProps>(), {
 const emits = defineEmits<VerificationCodeEmits>();
 const { modelValue, defaultValue, length: _length } = toRefs(props);
 const { formatter } = props;
+// 获取全局配置
+const { size } = getGlobalConfig(props);
 // 受控值
 const computedValue = useControlValue<string>(
   modelValue,

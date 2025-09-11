@@ -14,7 +14,7 @@ export type AutoCompleteProps = {
   data?: SelectOptions;
   popupContainer?: PopupContainer;
   strict?: boolean;
-  filterOption?: (inputValue: string, option: SelectOptionData) => boolean;
+  filterOption?: FilterOption;
   triggerProps?: TriggerProps;
   allowClear?: boolean;
   vistualListProps?: VirtualListProps;
@@ -51,3 +51,5 @@ export interface AutoCompleteExpose {
   getMirrorRef(): HTMLDivElement | undefined;
   updatePosition(x: number, y: number): void;
 }
+
+type FilterOption = (inputValue: string, option: SelectOptionData) => boolean;

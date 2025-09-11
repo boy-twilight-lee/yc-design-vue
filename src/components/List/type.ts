@@ -1,5 +1,4 @@
 import { Direction, ObjectData } from '@shared/type';
-import { GridProps } from '../Grid';
 import { PaginationProps } from '../Pagination';
 import { VirtualListProps } from '../Select';
 import { VNode } from 'vue';

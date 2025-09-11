@@ -158,7 +158,6 @@ const {
   disabled,
   hideButton,
   mode,
-  modelEvent,
   precision: _precision,
 } = toRefs(props);
 const { formatter, parser } = props;
@@ -169,10 +168,7 @@ const computedValue = useControlValue<InputNumberValue>(
   modelValue,
   defaultValue.value,
   (val) => {
-    emits(
-      'update:modelValue',
-      modelEvent.value == 'change' ? val : handlePrecision(val, 'number')
-    );
+    emits('update:modelValue', val);
   },
   (val) => {
     const value = isString(val) ? val : handlePrecision(val, 'string');

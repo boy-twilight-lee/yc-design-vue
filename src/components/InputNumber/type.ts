@@ -14,7 +14,6 @@ export interface InputNumberProps {
   hideButton?: boolean;
   size?: Size;
   allowClear?: boolean;
-  modelEvent?: ModelEvent;
   formatter?: InputNumberFormatter;
   parser?: InputNumberParser;
   readonly?: boolean;
@@ -49,6 +48,5 @@ export interface InputNumberExpose {
 
 export type InputNumberValue = number | string;
 export type InputNumberMode = 'embed' | 'button';
-export type ModelEvent = 'change' | 'input';
 export type InputNumberFormatter = (value: string) => string;
 export type InputNumberParser = (value: string) => string;
