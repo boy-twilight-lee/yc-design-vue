@@ -1,13 +1,19 @@
 <template>
   <div class="test">
-    <yc-verification-code style="width: 300px" />
+    <yc-resize-box
+      v-model:width="width"
+      v-model:height="height"
+      :directions="['left', 'right', 'top', 'bottom']"
+    >
+    </yc-resize-box>
+    <yc-button @click="width += 50">测试</yc-button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Message } from '@/components';
-const collapsed = ref(false);
+const width = ref(500);
+const height = ref(500);
 </script>
 
 <style lang="less" scoped></style>

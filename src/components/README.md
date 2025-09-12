@@ -11,4 +11,4 @@ DatePicker Form Upload TreeSelect Table Tree  Icon(没有意义不在实现)
 5. Menu mode
 6. time-picker  use12-hours
 7. trigger支持多种触发方式,popup-translate支持多方向
-
+8. 文档进度到progress

@@ -1,5 +1,13 @@
 <template>
-  <component :is="component" class="yc-resizebox" ref="boxRef">
+  <component
+    :is="component"
+    :style="{
+      minWidth: valueToPx(triggerSize.left + triggerSize.right),
+      minHeight: valueToPx(triggerSize.top + triggerSize.bottom),
+    }"
+    class="yc-resizebox"
+    ref="boxRef"
+  >
     <slot />
     <div
       v-for="(dir, i) in directions"
@@ -25,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, reactive } from 'vue';
+import { ref, toRefs, reactive, watch, nextTick } from 'vue';
 import { useResizeObserver, useEventListener } from '@vueuse/core';
 import {
   ResizeBoxProps,
@@ -46,13 +54,13 @@ const props = withDefaults(defineProps<ResizeBoxProps>(), {
   directions: () => ['right'],
 });
 const emits = defineEmits<ResizeBoxEmits>();
-const { width, height } = toRefs(props);
+const { width: _width, height: _height } = toRefs(props);
 // 计算的宽度
-const computedWidth = useControlValue<number>(width, 0, (val) => {
+const computedWidth = useControlValue<number>(_width, 0, (val) => {
   emits('update:width', val);
 });
 // 计算的宽度
-const computedHeight = useControlValue<number>(height, 0, (val) => {
+const computedHeight = useControlValue<number>(_height, 0, (val) => {
   emits('update:height', val);
 });
 // triggerMap
@@ -69,23 +77,21 @@ const boxRef = ref<HTMLDivElement>();
 // 拖拽方向
 const dragDirection = ref<ResizeBoxDirection | null>(null);
 // 初始位置和尺寸
-const x = ref<number>(0);
-const y = ref<number>(0);
+let x = 0;
+let y = 0;
 // 记录拖拽之前body的光标
 let cursor: string;
-let tempW = 0;
 // 处理拖拽开始
-const handleMovingStart = (dir: ResizeBoxDirection, e: MouseEvent) => {
+const handleMovingStart = async (dir: ResizeBoxDirection, e: MouseEvent) => {
   // 防止文本选中等副作用
   e.preventDefault();
   dragDirection.value = dir;
   const { width, height } = boxRef.value!.getBoundingClientRect();
-  const { clientX, clientY } = e;
   computedWidth.value = width;
   computedHeight.value = height;
-  tempW = width;
-  x.value = clientX;
-  y.value = clientY;
+  const { clientX, clientY } = e;
+  x = clientX;
+  y = clientY;
   cursor = getComputedStyle(document.body).cursor;
   document.body.style.cursor = ['left', 'right'].includes(dir)
     ? 'col-resize'
@@ -99,32 +105,25 @@ const handleMoving = async (e: MouseEvent) => {
   }
   const { clientX, clientY } = e;
   // 计算鼠标偏移量
-  const movementX =
-    dragDirection.value == 'left' ? x.value - clientX : clientX - x.value;
-  const movementY =
-    dragDirection.value == 'top' ? y.value - clientY : clientY - y.value;
-  // 计算临界最小宽高
-  const minWidth = triggerSize.left + triggerSize.right;
-  const minHeight = triggerSize.top + triggerSize.bottom;
+  const movementX = dragDirection.value == 'left' ? x - clientX : clientX - x;
+  const movementY = dragDirection.value == 'top' ? y - clientY : clientY - y;
   // 赋值
-  x.value = clientX;
-  y.value = clientY;
+  x = clientX;
+  y = clientY;
   // 计算宽高
   if (['left', 'right'].includes(dragDirection.value)) {
     computedWidth.value += movementX;
-    computedWidth.value <= minWidth && (computedWidth.value = minWidth);
-    boxRef.value.style.width = valueToPx(computedWidth.value);
+    boxRef.value.style.width = `${valueToPx(computedWidth.value)}`;
   } else {
     computedHeight.value += movementY;
-    computedHeight.value <= minHeight && (computedHeight.value = minHeight);
-    boxRef.value.style.height = valueToPx(computedHeight.value);
+    boxRef.value.style.height = `${valueToPx(computedHeight.value)}`;
   }
   const { width, height } = boxRef.value!.getBoundingClientRect();
-  if (computedWidth.value != width) {
+  if (width != computedWidth.value) {
     computedWidth.value = width;
   }
   if (height != computedHeight.value) {
-    computedHeight.value = height;
+    computedHeight.value = width;
   }
   emits(
     'moving',
@@ -140,6 +139,7 @@ const handleMovingEnd = (e: MouseEvent) => {
   if (!dragDirection.value) return;
   dragDirection.value = null;
   document.body.style.cursor = cursor;
+
   emits('moving-end', e);
 };
 // 处理鼠标移动
@@ -164,6 +164,18 @@ useResizeObserver(
   },
   {
     box: 'border-box',
+  }
+);
+watch(
+  [computedWidth, computedHeight],
+  async () => {
+    if (dragDirection.value) return;
+    await nextTick();
+    boxRef.value!.style.width = `${valueToPx(computedWidth.value)}`;
+    boxRef.value!.style.height = `${valueToPx(computedHeight.value)}`;
+  },
+  {
+    immediate: true,
   }
 );
 </script>
