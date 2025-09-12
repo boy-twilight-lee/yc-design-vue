@@ -30,13 +30,10 @@ export interface TypographyBaseEmits {
   (e: 'change', value: string): void;
   (e: 'copy', value: string): void;
   (e: 'edit-end'): void;
-  (e: 'ellipsis', isEllipsis: boolean): void;
-  (e: 'expand', expanded: boolean): void;
 }
 
 export interface TypographyBaseSlots {
   default?: () => VNode[];
-  'expand-node': (scope: { expanded: boolean }) => VNode[];
   'copy-icon': (scope: { copied: boolean }) => VNode[];
   'copy-tooltip': (scope: { copied: boolean }) => VNode[];
 }

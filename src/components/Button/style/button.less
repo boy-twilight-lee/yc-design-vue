@@ -26,15 +26,15 @@
   position: relative;
   &::before {
     content: '';
-    display: block;
     z-index: 1;
     position: absolute;
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
     left: -1px;
+    top: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
     background-color: #fff;
     opacity: 0.4;
+    display: block;
   }
 }
 // disabled

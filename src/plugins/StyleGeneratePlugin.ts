@@ -106,7 +106,7 @@ export default (): Plugin => {
                 finalStylesToCompile
               )
             ) {
-              finalStylesToCompile = `@import (reference) "var.less";\n${finalStylesToCompile}`;
+              finalStylesToCompile = `@import (reference) "variable.less";\n${finalStylesToCompile}`;
             }
             try {
               const output = await less.render(finalStylesToCompile, {
