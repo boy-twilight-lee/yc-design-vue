@@ -171,8 +171,12 @@ watch(
   async () => {
     if (dragDirection.value) return;
     await nextTick();
-    boxRef.value!.style.width = `${valueToPx(computedWidth.value)}`;
-    boxRef.value!.style.height = `${valueToPx(computedHeight.value)}`;
+    boxRef.value!.style.width = computedWidth.value
+      ? `${valueToPx(computedWidth.value)}`
+      : '';
+    boxRef.value!.style.height = computedHeight.value
+      ? `${valueToPx(computedHeight.value)}`
+      : '';
   },
   {
     immediate: true,
