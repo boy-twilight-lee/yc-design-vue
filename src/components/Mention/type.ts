@@ -1,11 +1,11 @@
-import { SelectOptions, SelectValue } from '@/components/Select';
+import { SelectOption, OptionValue } from '@/components/Select';
 import { ObjectData } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface MentionProps {
   modelValue?: string;
   defaultValue?: string;
-  data?: SelectOptions;
+  data?: SelectOption[];
   prefix?: string | string[];
   split?: string;
   type?: 'input' | 'textarea';
@@ -17,7 +17,7 @@ export interface MentionEmits {
   (e: 'update:modelValue', value: string): void;
   (e: 'change', value: string): void;
   (e: 'search', value: string): void;
-  (e: 'select', value: SelectValue): void;
+  (e: 'select', value: OptionValue): void;
   (e: 'focus', ev: FocusEvent): void;
   (e: 'blur', ev: FocusEvent): void;
   (e: 'clear', ev: MouseEvent): void;

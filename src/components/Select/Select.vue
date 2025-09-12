@@ -123,7 +123,7 @@ import {
   SelectEmits,
   SelectSlots,
   SelectExpose,
-  SelectValue,
+  OptionValue,
 } from './type';
 import { sleep, isUndefined } from '@shared/utils';
 import useContext from './hooks/useContext';
@@ -214,7 +214,7 @@ const {
 // 是否展示清除按钮
 const showClearBtn = computed(() => {
   const hasValue = multiple.value
-    ? (computedValue.value as SelectValue[]).length
+    ? (computedValue.value as OptionValue[]).length
     : String(computedValue.value).length;
   return allowClear.value && !disabled.value && !loading.value && !!hasValue;
 });

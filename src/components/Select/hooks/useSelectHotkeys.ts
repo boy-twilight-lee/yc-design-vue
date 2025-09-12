@@ -44,13 +44,13 @@ export default (params: {
     } else {
       const option = options.value[curIndex.value];
       if (option.disabled) return;
-      const value = option.value;
+      const value = option.value!;
       if (multiple.value) {
         const curValue = computedValue.value as ObjectData[];
         const index = curValue.findIndex((item) => item == value);
         if (index == -1) {
           if (limit.value > 0 && curValue.length == limit.value) {
-            return emits('exceedLimit', value as SelectValue);
+            return emits('exceedLimit', value);
           }
           computedValue.value = [...curValue, value];
         } else {
@@ -60,7 +60,7 @@ export default (params: {
         computedValue.value = value as string;
         blur();
       }
-      emits('select', value as SelectValue);
+      emits('select', value);
     }
   });
   return {

@@ -4,25 +4,20 @@ import { ObjectData, Props } from '@shared/type';
 import {
   OptionProps,
   SelectValue,
-  SelectOptions,
+  SelectOption,
   FallbackOption,
   FormatLabel,
   SelectOptionData,
+  OptionValue,
 } from '../index';
-import {
-  isNull,
-  isNumber,
-  isObject,
-  isString,
-  isUndefined,
-} from '@shared/utils';
+import { isNull, isObject, isString, isUndefined } from '@shared/utils';
 
 export default (params: {
   multiple: Ref<boolean>;
   computedValue: Ref<SelectValue>;
-  provideOptions: Ref<SelectOptions>;
+  provideOptions: Ref<SelectOption[]>;
   showExtraOptions: Ref<boolean>;
-  getValue: (value: string | ObjectData) => SelectValue;
+  getValue: (value: OptionValue) => OptionValue;
   fallbackOption?: FallbackOption;
   formatLabel?: FormatLabel;
 }) => {
@@ -55,7 +50,7 @@ export default (params: {
       });
   });
   // 渲染的option数组
-  const renderOptions = computed<SelectOptions>(() => {
+  const renderOptions = computed<SelectOption[]>(() => {
     return [
       ...provideOptions.value,
       ...createOptions.value,

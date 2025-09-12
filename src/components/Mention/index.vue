@@ -41,7 +41,7 @@ import {
 import { ObjectData } from '@shared/type';
 import { isNull, isArray, useControlValue } from '@shared/utils';
 import useCursor from '@/components/Input/hooks/useCursor';
-import { SelectValue } from '@/components/Select';
+import { OptionValue } from '@/components/Select';
 import {
   default as YcAutoComplete,
   AutoCompleteInstance,
@@ -144,7 +144,7 @@ const handleEvent = async (
       break;
     case 'select':
       {
-        emits('select', value as SelectValue);
+        emits('select', value as OptionValue);
         popupVisible.value = false;
         const needSplit = prefixTexts.value.some((prefixText) => {
           return computedValue.value.includes(prefixText);

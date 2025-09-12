@@ -70,7 +70,7 @@ import {
   default as YcSelect,
   SelectOptionData,
   SelectInstance,
-  SelectOptions,
+  SelectOption,
 } from '@/components/Select';
 import { default as YcTextarea, TextareaInstance } from '@/components/Textarea';
 import { default as YcInput, InputInstance } from '@/components/Input';
@@ -113,7 +113,7 @@ const computedValue = useControlValue<string>(
   }
 );
 //当前的选项
-const curOptions = ref<SelectOptions>([]);
+const curOptions = ref<SelectOption[]>([]);
 // 默认过滤函数
 const defaultFilter = (inputValue: string, option: SelectOptionData) => {
   const labelValue = option.label as string;

@@ -1,4 +1,4 @@
-import { SelectOptions } from '@/components/Select';
+import { SelectOption } from '@/components/Select';
 import { ObjectData } from '@shared/type';
 import Icon403 from '@shared/icons/Icon403.svg';
 import Icon404 from '@shared/icons/Icon404.svg';
@@ -91,7 +91,7 @@ export const COLOR_PICKER_PRESET_COLORS = [
   '#9FD4FD',
 ];
 
-export const COLOR_PICKER_FORMAT_OPTIONS: SelectOptions = [
+export const COLOR_PICKER_FORMAT_OPTIONS: SelectOption[] = [
   {
     label: 'RGB',
     value: 'rgb',

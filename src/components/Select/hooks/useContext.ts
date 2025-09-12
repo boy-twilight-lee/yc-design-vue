@@ -13,6 +13,7 @@ import {
   SelectOptionData,
   SelectEmits,
   SelectProps as _SelectProps,
+  OptionValue,
 } from '../type';
 import { InputInstance } from '@/components/Input';
 import { ObjectData, RequiredDeep, Props } from '@shared/type';
@@ -22,7 +23,7 @@ import useSelectHotkeys from './useSelectHotkeys';
 
 const SELECT_CONTEXT_KEY = 'select-context';
 type SelectContext = {
-  computedValue: Ref<SelectValue | SelectValue[] | undefined>;
+  computedValue: Ref<SelectValue | undefined>;
   computedInputValue: Ref<string>;
   multiple: Ref<boolean>;
   limit: Ref<number>;
@@ -34,7 +35,7 @@ type SelectContext = {
   slots: Slots;
   blur: () => void;
   filterOption: (option: SelectOptionData) => boolean;
-  getValue: (value: SelectValue | ObjectData) => SelectValue;
+  getValue: (value: OptionValue | ObjectData) => OptionValue;
   collectOption: (props: Props, optionLabel: Ref<string>) => void;
   emits: SelectEmits;
 };
@@ -177,7 +178,7 @@ export default () => {
       emits,
     });
     // 获取value
-    function getValue(value: SelectValue) {
+    function getValue(value: OptionValue): OptionValue {
       return (value as ObjectData)?.[valueKey.value] ?? value;
     }
     // 失焦
