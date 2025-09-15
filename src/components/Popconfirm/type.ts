@@ -39,9 +39,9 @@ export interface PopconfirmSlots {
   icon?: () => VNode[];
 }
 
-export type PopconfirmType = 'info' | 'success' | 'warning' | 'error';
-
 export interface PopconfirmExpose {
   hide(): void;
   show(): void;
 }
+
+export type PopconfirmType = 'info' | 'success' | 'warning' | 'error';

@@ -7,7 +7,7 @@ export interface BadgeProps {
   maxCount?: number;
   offset?: number[];
   color?: string;
-  status?: BadgeStatus;
+  status?: 'normal' | 'processing' | 'success' | 'warning' | 'danger';
   count?: number;
 }
 
@@ -15,10 +15,3 @@ export interface BadgeSlots {
   default?: () => VNode[];
   content?: () => VNode[];
 }
-
-export type BadgeStatus =
-  | 'normal'
-  | 'processing'
-  | 'success'
-  | 'warning'
-  | 'danger';

@@ -18,7 +18,6 @@ export interface TypographyBaseProps {
   copyable?: boolean;
   copyText?: string;
   copyDelay?: number;
-  ellipsis?: boolean | EllipsisConfig;
   editTooltiProps?: TooltipProps;
   copyTooltiProps?: TooltipProps;
 }
@@ -47,16 +46,6 @@ export interface TypographyTitleProps {
   heading?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-export type EllipsisConfig = {
-  rows?: number;
-  expandable?: boolean;
-  ellipsisStr?: string;
-  suffix?: string;
-  showTooltip?:
-    | boolean
-    | { type: 'tooltip' | 'popover'; props: Record<string, any> };
-  css?: boolean;
-};
 export type TypographyType =
   | 'primary'
   | 'secondary'

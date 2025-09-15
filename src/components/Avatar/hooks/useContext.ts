@@ -6,12 +6,12 @@ import {
   inject as _inject,
   computed,
 } from 'vue';
-import { AvatarGroupProps as _AvatarGroupProps, AvatarShape } from '../type';
+import { AvatarProps, AvatarGroupProps as _AvatarGroupProps } from '../type';
 import { Props, RequiredDeep } from '@shared/type';
 
 const AVATAR_GROUP_CONTEXT_KEY = 'radio-group-context';
 type AvatarContext = {
-  shape: Ref<AvatarShape>;
+  shape: Ref<AvatarProps['shape']>;
   size: Ref<number>;
   autoFixFontSize: Ref<boolean>;
 };

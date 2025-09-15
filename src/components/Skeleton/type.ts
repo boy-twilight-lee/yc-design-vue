@@ -23,4 +23,5 @@ export interface SkeletonShapeProps {
 }
 
 export type SkeletonShapeSize = 'small' | 'medium' | 'large';
+
 export type SkeletonShapeShape = 'sqaure' | 'circle';

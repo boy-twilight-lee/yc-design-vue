@@ -52,5 +52,7 @@ export interface InputExpose {
 }
 
 export type WordSlice = (value: string, maxLength: number) => string;
+
 export type WordLength = (value: string) => number;
+
 export type MaxLength = number | { length: number; errorOnly?: boolean };

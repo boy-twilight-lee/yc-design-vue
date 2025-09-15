@@ -98,6 +98,9 @@ export interface DropdownButtonSlots {
 }
 
 export type DoptionValue = string | number | boolean | ObjectData;
+
 export type DropdownPosition = 'top' | 'tr' | 'tl' | 'bottom' | 'br' | 'bl';
+
 export type DsubmenuTrigger = 'hover' | 'click';
+
 export type DsubmenuPosition = 'rt' | 'lt';

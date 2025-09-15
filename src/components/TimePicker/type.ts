@@ -52,15 +52,21 @@ export interface TimePickerSlots {
 }
 
 export type TimeUnit = 'hour' | 'minute' | 'second';
+
 export type TimePickerValue =
   | string
   | number
   | Date
   | (string | number | Date)[];
+
 export type TimePickerType = 'time' | 'time-range';
+
 export type TimePickerPosition = 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
+
 export type DisabledHours = () => number[];
+
 export type DisabledMinutes = (selectedHour?: number) => number[];
+
 export type DisabledSeconds = (
   selectedHour?: number,
   selectedMinute?: number

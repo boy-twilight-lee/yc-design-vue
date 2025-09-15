@@ -13,4 +13,5 @@ export interface DividerSlots {
 }
 
 export type Orientation = 'left' | 'center' | 'right';
+
 export type DividerType = 'solid' | 'dashed' | 'dotted' | 'double';

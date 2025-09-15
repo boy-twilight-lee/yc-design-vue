@@ -25,6 +25,7 @@ export type VerificationCodeSeparator = (
   index: number,
   character: string
 ) => VNode;
+
 export type VerificationCodeFormatter = (
   inputValue: string,
   index: number,

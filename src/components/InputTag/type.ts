@@ -56,5 +56,7 @@ export type TagData =
   | ObjectData;
 
 export type InputTagValue = (string | number | TagData)[];
+
 export type InputRetainValue = boolean | { create?: boolean; blur?: boolean };
+
 export type FormatTag = (data: TagData) => string;

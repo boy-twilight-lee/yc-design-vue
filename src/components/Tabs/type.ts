@@ -46,6 +46,7 @@ export interface TabPaneSlots {
 }
 
 export type TabKey = string | number;
+
 export type TabType =
   | 'line'
   | 'card'
@@ -53,5 +54,7 @@ export type TabType =
   | 'text'
   | 'rounded'
   | 'capsule';
+
 export type TabPositon = 'left' | 'right' | 'bottom' | 'top';
+
 export type TabTrigger = 'click' | 'hover';

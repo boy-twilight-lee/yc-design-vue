@@ -39,6 +39,8 @@ export interface CheckboxGroupSlots {
   label?: (scope: { data: ObjectData }) => void;
 }
 
+export type CheckboxValue = string | number | boolean;
+
 export type CheckboxOption = (
   | CheckboxValue
   | {
@@ -48,5 +50,3 @@ export type CheckboxOption = (
       indeterminate?: boolean;
     }
 )[];
-
-export type CheckboxValue = string | number | boolean;

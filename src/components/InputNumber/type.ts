@@ -47,6 +47,9 @@ export interface InputNumberExpose {
 }
 
 export type InputNumberValue = number | string;
+
 export type InputNumberMode = 'embed' | 'button';
+
 export type InputNumberFormatter = (value: string) => string;
+
 export type InputNumberParser = (value: string) => string;

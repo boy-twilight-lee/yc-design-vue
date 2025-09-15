@@ -31,7 +31,11 @@ export interface TimelineItemSlots {
 }
 
 export type TimelineMode = 'left' | 'right' | 'top' | 'bottom' | 'alternate';
+
 export type TimelineLabelPosition = 'relative' | 'same';
+
 export type TimelineDotType = 'hollow' | 'solid';
+
 export type TimelineLineType = 'solid' | 'dashed' | 'dotted';
+
 export type TimelinePositon = 'left' | 'right' | 'top' | 'bottom';

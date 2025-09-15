@@ -8,7 +8,7 @@ export interface MentionProps {
   data?: SelectOption[];
   prefix?: string | string[];
   split?: string;
-  type?: 'input' | 'textarea';
+  type?: MentionType;
   disabled?: boolean;
   allowClear?: boolean;
 }
@@ -32,3 +32,5 @@ export interface MentionExpose {
 export interface MentionSlots {
   option?: (scope: { data: ObjectData }) => VNode[];
 }
+
+export type MentionType = 'input' | 'textarea';

@@ -107,26 +107,34 @@ export interface OptgroupSlots {
 }
 
 export type OptionValue = string | number | boolean | ObjectData;
+
 export type SelectValue = OptionValue | OptionValue[];
+
 export type SelectOptionData = {
   render?: RenderContent;
 } & OptionProps;
+
 export type SelectOptionGroup = {
   id?: string;
   label?: string;
   isGroup?: true;
   options?: SelectOptionData[];
 };
+
 export type SelectOption =
   | OptionValue
   | SelectOptionData
   | SelectOptionGroup
   | ObjectData;
+
 export type FilterOption =
   | boolean
   | ((inputValue: string, option: SelectOptionData) => boolean);
+
 export type FallbackOption = (value: OptionValue) => SelectOptionData;
+
 export type FormatLabel = (data: SelectOptionData) => string;
+
 export type VirtualListProps = {
   itemHeight?: number;
   buffer?: number;

@@ -14,4 +14,5 @@ export interface SpaceSlots {
 }
 
 export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
+
 export type SpaceSize = Size | number;

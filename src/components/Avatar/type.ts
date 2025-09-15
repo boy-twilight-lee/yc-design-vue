@@ -2,13 +2,13 @@ import { CSSProperties, VNode } from 'vue';
 import { TriggerProps } from '../Trigger';
 
 export interface AvatarProps {
-  shape?: AvatarShape;
+  shape?: 'square' | 'round';
   imageUrl?: string;
   size?: number;
   autoFixFontSize?: boolean;
-  triggerType?: AvatarTriggerType;
+  triggerType?: 'mask' | 'button';
   triggerIconStyle?: CSSProperties;
-  objectFit?: ObjectFit;
+  objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
 }
 
 export interface AvatarEmits {
@@ -23,7 +23,7 @@ export interface AvatarSlots {
 }
 
 export interface AvatarGroupProps {
-  shape?: AvatarShape;
+  shape?: AvatarProps['shape'];
   size?: number;
   autoFixFontSize?: boolean;
   maxCount?: number;
@@ -35,7 +35,3 @@ export interface AvatarGroupProps {
 export interface AvatarGroupSlots {
   default?: () => VNode[];
 }
-
-export type AvatarShape = 'square' | 'round';
-export type AvatarTriggerType = 'mask' | 'button';
-export type ObjectFit = 'cover' | 'contain' | 'fill' | 'none';

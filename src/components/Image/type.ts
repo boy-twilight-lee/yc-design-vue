@@ -1,12 +1,13 @@
 import { ClassName, PopupContainer } from '@shared/type';
 import { VNode } from 'vue';
+import { AvatarProps } from '../Avatar';
 export interface ImageProps {
   src?: string;
   width?: number | string;
   height?: number | string;
   title?: string;
   description?: string;
-  fit?: ImageObjectFit;
+  fit?: AvatarProps['objectFit'];
   alt?: string;
   hideFooter?: HideFooter;
   footerPosition?: FooterPostion;
@@ -90,11 +91,6 @@ export interface ImagePreviewActionSlots {
   default?: () => VNode[];
 }
 
-export type ImageObjectFit =
-  | 'contain'
-  | 'cover'
-  | 'fill'
-  | 'none'
-  | 'scale-down';
 export type HideFooter = boolean | 'never';
+
 export type FooterPostion = 'inner' | 'outer';

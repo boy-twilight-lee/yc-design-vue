@@ -20,10 +20,10 @@ export interface CascaderProps {
   defaultPopupVisible?: boolean;
   expandTrigger?: ExpandTrigger;
   placeholder?: string;
-  filterOption?: (inputValue: string, option: CascaderOption) => boolean;
+  filterOption?: FilterOption;
   popupContainer?: PopupContainer;
   maxTagCount?: number;
-  formatLabel?: (options: CascaderOption[]) => string;
+  formatLabel?: FormatLabel;
   triggerProps?: TriggerProps;
   // checkStrictly?:boolean;
   loadMore?: LoadMore;
@@ -86,10 +86,16 @@ export type CascaderOptionProps = {
 } & CascaderOption;
 
 export type ExpandTrigger = 'click' | 'hover';
+
 export type LoadMore = (
   option: CascaderOption,
   done: (children?: CascaderOption[]) => void
 ) => void;
+
 export type FallBack =
   | boolean
   | ((value: CascaderOptionValue | CascaderOptionValue[]) => string);
+
+type FormatLabel = (options: CascaderOption[]) => string;
+
+type FilterOption = (inputValue: string, option: CascaderOption) => boolean;

@@ -2,7 +2,7 @@ import { TargetContainer } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface AnchorProps {
-  boundary?: AnchorBoundary;
+  boundary?: 'start' | 'end' | 'center' | 'nearest' | number;
   lineLess?: boolean;
   scrollContainer?: TargetContainer;
   changeHash?: boolean;
@@ -22,5 +22,3 @@ export interface AnchorLinkSlots {
   default?: () => VNode[];
   sublist?: () => VNode[];
 }
-
-export type AnchorBoundary = 'start' | 'end' | 'center' | 'nearest' | number;

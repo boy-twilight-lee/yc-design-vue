@@ -53,13 +53,18 @@ export type ResponsiveValue<T = number | string> = {
   xl?: T;
   xxl?: T;
 };
+
 export type GridRowJustify =
   | 'start'
   | 'center'
   | 'end'
   | 'space-around'
   | 'space-between';
+
 export type GridRowAlign = 'start' | 'center' | 'end' | 'stretch';
+
 export type BreakpointName = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+
 export type GridColFlex = number | string | 'initial' | 'auto' | 'none';
+
 export type Gutter = number | ResponsiveValue;

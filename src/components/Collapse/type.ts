@@ -20,7 +20,7 @@ export interface CollapseSlots {
   'expand-icon': (scope: {
     active: boolean;
     disabled: boolean;
-    position: 'left' | 'right';
+    position: ExpandIconPosition;
   }) => VNode[];
 }
 
@@ -39,9 +39,10 @@ export interface CollapseItemSlots {
   ['expand-icon']?: (scope: {
     active: boolean;
     disabled: boolean;
-    position: 'left' | 'right';
+    position: ExpandIconPosition;
   }) => VNode[];
 }
 
 export type CollapseValue = string | number;
+
 export type ExpandIconPosition = 'left' | 'right';

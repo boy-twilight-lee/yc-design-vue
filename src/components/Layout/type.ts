@@ -1,6 +1,7 @@
 import { BreakpointName } from '@/components/Grid';
 import { Theme } from '@shared/type';
 import { VNode } from 'vue';
+import { ResizeBoxDirection } from '../ResizeBox';
 
 export interface LayoutProps {
   hasSider?: boolean;
@@ -32,7 +33,7 @@ export interface LayoutSiderProps {
   reverseArrow?: boolean;
   breakpoint?: BreakpointName;
   hideTrigger?: boolean;
-  resizeDirections?: ResizeDirections;
+  resizeDirections?: ResizeBoxDirection[];
 }
 
 export interface LayoutSiderEmits {
@@ -49,5 +50,3 @@ export interface LayoutSiderSlots {
   default?: () => VNode[];
   trigger?: (scope: { collapsed: boolean }) => VNode[];
 }
-
-export type ResizeDirections = Array<'left' | 'right' | 'top' | 'bottom'>;

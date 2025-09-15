@@ -39,13 +39,17 @@ export interface DescData {
 }
 
 export type TextAlign = 'left' | 'right' | 'center';
+
 export type DescriptionsAlign =
   | TextAlign
   | { label?: TextAlign; value?: TextAlign };
+
 export type DescriptionsColumn = number | ResponsiveValue;
+
 export type DescriptionsLayout =
   | 'horizontal'
   | 'vertical'
   | 'inline-horizontal'
   | 'inline-vertical';
+
 export type TableLayout = 'auto' | 'fixed';
