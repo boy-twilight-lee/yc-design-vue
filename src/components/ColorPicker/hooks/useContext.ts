@@ -4,7 +4,7 @@ import {
   ColorPickerEmits,
   ColorFormat,
 } from '../type';
-import { Required, , ObjectData } from '@shared/type';
+import { Required, ObjectType } from '@shared/type';
 import { useControlValue, parseColor, getGlobalConfig } from '@shared/utils';
 
 const COLOR_PICKER_CONTEXT_KEY = 'color-picker-context';
@@ -26,7 +26,7 @@ type ColorPickerContext = {
 type ColorPickerProps = Required<_ColorPickerProps>;
 
 export default () => {
-  const provide = (props: ObjectData, emits: ColorPickerEmits) => {
+  const provide = (props: ObjectType, emits: ColorPickerEmits) => {
     const {
       modelValue,
       defaultValue,

@@ -22,7 +22,7 @@ import {
   IconRotateRight,
   IconOriginSize,
 } from '@shared/icons';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import { useI18n } from '@shared/utils';
 import ImagePreviewAction from './ImagePreviewAction.vue';
 withDefaults(
@@ -39,7 +39,7 @@ defineEmits<{
 // 国际化
 const { t } = useI18n();
 // actionMap
-const iconMap: ObjectData = {
+const iconMap: ObjectType = {
   fullScreen: IconFullScreen,
   rotateRight: IconRotateRight,
   rotateLeft: IconRotateLeft,

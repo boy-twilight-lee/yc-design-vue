@@ -1,4 +1,4 @@
-import { Size, ObjectData } from '@shared/type';
+import { Size, ObjectType } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface InputProps {
@@ -14,7 +14,7 @@ export interface InputProps {
   wordLength?: WordLength;
   wordSlice?: WordSlice;
   showWordLimit?: boolean;
-  inputAttrs?: ObjectData;
+  inputAttrs?: ObjectType;
   // password使用
   isPassword?: boolean;
   visibility?: boolean;

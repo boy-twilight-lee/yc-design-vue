@@ -1,10 +1,10 @@
 import { ref, computed, Ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { Direction, ObjectData } from '@shared/type';
+import { Direction, ObjectType } from '@shared/type';
 import { sleep } from '@shared/utils';
 export default (params: {
   direction: Ref<Direction>;
-  panes: Ref<ObjectData[]>;
+  panes: Ref<ObjectType[]>;
   listRef: Ref<HTMLDivElement | undefined>;
 }) => {
   const { direction, panes, listRef } = params;

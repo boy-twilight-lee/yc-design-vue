@@ -7,7 +7,7 @@ import {
   computed,
 } from 'vue';
 import { AvatarProps, AvatarGroupProps as _AvatarGroupProps } from '../type';
-import { ObjectData, Required } from '@shared/type';
+import { ObjectType, Required } from '@shared/type';
 
 const AVATAR_GROUP_CONTEXT_KEY = 'radio-group-context';
 type AvatarContext = {
@@ -18,7 +18,7 @@ type AvatarContext = {
 type AvatarGroupProps = Required<_AvatarGroupProps>;
 
 export default () => {
-  const provide = (props: ObjectData) => {
+  const provide = (props: ObjectType) => {
     const { shape, size, autoFixFontSize } = toRefs(props as AvatarGroupProps);
     _provide<AvatarContext>(AVATAR_GROUP_CONTEXT_KEY, {
       shape,
@@ -26,7 +26,7 @@ export default () => {
       autoFixFontSize,
     });
   };
-  const inject = (props: ObjectData) => {
+  const inject = (props: ObjectType) => {
     const { shape, size, autoFixFontSize } = toRefs(props);
     const {
       shape: _shape,

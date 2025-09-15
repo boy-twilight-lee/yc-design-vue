@@ -1,4 +1,4 @@
-import { Size, ObjectData } from '@shared/type';
+import { Size, ObjectType } from '@shared/type';
 import { TagProps } from '@/components/Tag';
 import { VNode } from 'vue';
 
@@ -35,7 +35,7 @@ export interface InputTagEmits {
 }
 
 export interface InputTagSlots {
-  tag?: (scope: { tag: ObjectData }) => VNode[];
+  tag?: (scope: { tag: ObjectType }) => VNode[];
   prefix?: () => VNode[];
   suffix?: () => VNode[];
 }
@@ -53,7 +53,7 @@ export type TagData =
       closeable?: boolean;
       tagProps?: TagProps;
     }
-  | ObjectData;
+  | ObjectType;
 
 export type InputTagValue = (string | number | TagData)[];
 

@@ -15,7 +15,7 @@ import {
   StepStatus,
   StepType,
 } from '../type';
-import { , Direction, Required, ObjectData } from '@shared/type';
+import { Direction, Required, ObjectType } from '@shared/type';
 import { nanoid } from 'nanoid';
 import { isUndefined, useControlValue } from '@shared/utils';
 
@@ -36,7 +36,7 @@ type StepsContext = {
 type StepsProps = Required<_StepsProps>;
 
 export default () => {
-  const provide = (props: ObjectData, emits: StepsEmits) => {
+  const provide = (props: ObjectType, emits: StepsEmits) => {
     const {
       status,
       current,
@@ -97,7 +97,7 @@ export default () => {
       type,
     };
   };
-  const inject = (props: ObjectData) => {
+  const inject = (props: ObjectType) => {
     const { status: _status } = toRefs(props);
     const injection = _inject<StepsContext>(STEPS_CONTEXT_KEY, {
       stepMap: reactive(new Map()),

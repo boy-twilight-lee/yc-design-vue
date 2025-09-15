@@ -3,7 +3,7 @@ import {
   SelectOptionData,
   VirtualListProps,
 } from '@/components/Select';
-import { PopupContainer, ObjectData } from '@shared/type';
+import { PopupContainer, ObjectType } from '@shared/type';
 import { TriggerProps } from '@/components/Trigger';
 import { VNode } from 'vue';
 
@@ -39,7 +39,7 @@ export interface AutoCompleteEmits {
 }
 
 export interface AutoCompleteSlots {
-  option?: (scope: { data: ObjectData }) => VNode[];
+  option?: (scope: { data: ObjectType }) => VNode[];
   footer?: () => VNode[];
   trigger?: () => VNode[];
 }

@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import { valueToPx } from '@shared/utils';
 // 过渡时间
-const transitions: ObjectData = {
+const transitions: ObjectType = {
   onBeforeEnter(el: HTMLDivElement) {
     el.style.maxHeight = '0';
     el.style.opacity = '0';

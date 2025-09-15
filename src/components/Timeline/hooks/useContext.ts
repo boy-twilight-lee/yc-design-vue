@@ -13,7 +13,7 @@ import {
   TimelineLabelPosition,
   TimelineMode,
 } from '../type';
-import { , Direction, Required, ObjectData } from '@shared/type';
+import { Direction, Required, ObjectType } from '@shared/type';
 import { findComponentsFromVnodes } from '@shared/utils';
 import TimelineItem from '../TimelineItem.vue';
 import TimelineItemPending from '../TimelineItemPending.vue';
@@ -28,7 +28,7 @@ type TimelineContext = {
 type TimelineProps = Required<_TimelineProps>;
 
 export default () => {
-  const provide = (props: ObjectData) => {
+  const provide = (props: ObjectType) => {
     const {
       direction,
       labelPosition,

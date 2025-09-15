@@ -1,7 +1,7 @@
 import { ref, Ref } from 'vue';
 import { onKeyStroke } from '@vueuse/core';
 import { SelectEmits, SelectOptionData, SelectValue } from '../type';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 
 export default (params: {
   hotkeys: Ref<boolean>;
@@ -46,7 +46,7 @@ export default (params: {
       if (option.disabled) return;
       const value = option.value!;
       if (multiple.value) {
-        const curValue = computedValue.value as ObjectData[];
+        const curValue = computedValue.value as ObjectType[];
         const index = curValue.findIndex((item) => item == value);
         if (index == -1) {
           if (limit.value > 0 && curValue.length == limit.value) {

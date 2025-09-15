@@ -75,7 +75,7 @@ import {
   CalendarSlots,
   CalendarMode,
 } from './type';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import { useControlValue, useI18n } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import { IconButton } from '@shared/components';
@@ -154,7 +154,7 @@ const modes = computed(() => {
       label: t(`calendar.view.${v}`),
       value: v,
     };
-  }) as ObjectData[] as RadioOption[];
+  }) as ObjectType[] as RadioOption[];
 });
 // 处理点击
 const handleClick = (col: CalendarCellData) => {

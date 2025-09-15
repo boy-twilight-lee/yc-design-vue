@@ -1,4 +1,4 @@
-import { Direction, ObjectData } from '@shared/type';
+import { Direction, ObjectType } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface CheckboxProps {
@@ -36,7 +36,7 @@ export interface CheckboxGroupEmits {
 export interface CheckboxGroupSlots {
   default?: () => void;
   checkbox?: (scope: { checked: boolean; disabled: boolean }) => void;
-  label?: (scope: { data: ObjectData }) => void;
+  label?: (scope: { data: ObjectType }) => void;
 }
 
 export type CheckboxValue = string | number | boolean;

@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import { getSlotFunction } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcOption from './Option.vue';
@@ -53,7 +53,7 @@ const { fieldKey, renderOptions, slots, emits } = useContext().inject();
 // scrollbar
 const scrollbarRef = ref<ScrollbarInstance>();
 // 渲染label
-const renderLabel = (option: ObjectData) => {
+const renderLabel = (option: ObjectType) => {
   if (slots.option) {
     return () =>
       slots.option?.({

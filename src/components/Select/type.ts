@@ -1,4 +1,4 @@
-import { ObjectData, RenderContent, Size, PopupContainer } from '@shared/type';
+import { ObjectType, RenderContent, Size, PopupContainer } from '@shared/type';
 import { TriggerInstance, TriggerProps } from '../Trigger';
 import { TagProps } from '../Tag';
 import { VNode } from 'vue';
@@ -69,8 +69,8 @@ export interface SelectSlots {
   'arrow-icon'?: () => VNode[];
   footer?: () => VNode[];
   header?: () => VNode[];
-  label?: (scope: { data: ObjectData }) => VNode[];
-  option?: (scope: { data: ObjectData }) => VNode[];
+  label?: (scope: { data: ObjectType }) => VNode[];
+  option?: (scope: { data: ObjectType }) => VNode[];
   empty?: () => VNode[];
 }
 
@@ -106,7 +106,7 @@ export interface OptgroupSlots {
   label?: () => VNode[];
 }
 
-export type OptionValue = string | number | boolean | ObjectData;
+export type OptionValue = string | number | boolean | ObjectType;
 
 export type SelectValue = OptionValue | OptionValue[];
 
@@ -125,7 +125,7 @@ export type SelectOption =
   | OptionValue
   | SelectOptionData
   | SelectOptionGroup
-  | ObjectData;
+  | ObjectType;
 
 export type FilterOption =
   | boolean

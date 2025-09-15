@@ -1,4 +1,4 @@
-import { ObjectData, PopupContainer, Theme } from '@shared/type';
+import { ObjectType, PopupContainer, Theme } from '@shared/type';
 import { TriggerProps, TriggerType } from '@/components/Trigger';
 import { ButtonProps, ButtonType } from '@/components/Button';
 import { Size } from '@shared/type';
@@ -97,7 +97,7 @@ export interface DropdownButtonSlots {
   icon?: () => VNode[];
 }
 
-export type DoptionValue = string | number | boolean | ObjectData;
+export type DoptionValue = string | number | boolean | ObjectType;
 
 export type DropdownPosition = 'top' | 'tr' | 'tl' | 'bottom' | 'br' | 'bl';
 

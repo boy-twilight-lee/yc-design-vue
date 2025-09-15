@@ -1,6 +1,6 @@
 import { Comment, Fragment, Text, h, VNode, isVNode } from 'vue';
 import { isFunction, isObject } from './is';
-import { ObjectData, RenderContent } from '../type';
+import { ObjectType, RenderContent } from '../type';
 
 // 获取renderFunction
 export const getSlotFunction = (param: RenderContent | undefined) => {
@@ -55,9 +55,9 @@ export const findFirstLegitChild = (
 
 // 扁平化插槽components
 export const findComponentsFromVnodes = (vnodes: VNode[], name: string) => {
-  const result: ObjectData[] = [];
+  const result: ObjectType[] = [];
   // 是否是option
-  const traverse = (nodes: ObjectData | ObjectData[]) => {
+  const traverse = (nodes: ObjectType | ObjectType[]) => {
     if (!nodes) return;
     const nodeList = Array.isArray(nodes) ? nodes : [nodes];
     for (const node of nodeList) {

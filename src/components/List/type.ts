@@ -1,10 +1,10 @@
-import { Direction, ObjectData } from '@shared/type';
+import { Direction, ObjectType } from '@shared/type';
 import { PaginationProps } from '../Pagination';
 import { VirtualListProps } from '../Select';
 import { VNode } from 'vue';
 
 export interface ListProps {
-  data?: ObjectData[];
+  data?: ObjectType[];
   size?: ListSize;
   bordered?: boolean;
   split?: boolean;
@@ -30,7 +30,7 @@ export interface ListSlots {
   footer?: () => VNode[];
   default?: () => VNode[];
   'scroll-loading'?: () => VNode[];
-  item?: (scope: { index: number; item: ObjectData }) => VNode[];
+  item?: (scope: { index: number; item: ObjectType }) => VNode[];
 }
 
 export interface ListItemProps {

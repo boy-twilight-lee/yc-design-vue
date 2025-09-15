@@ -1,6 +1,6 @@
 import { Ref, computed } from 'vue';
 import { useElementSize } from '@vueuse/core';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import { AutoSize } from '../type';
 import { valueToPx } from '@shared/utils';
 
@@ -21,7 +21,7 @@ export default (
   };
   // 高度范围
   const style = computed(() => {
-    const { minRows: min = 1, maxRows: max = 10000 } = autoSize as ObjectData;
+    const { minRows: min = 1, maxRows: max = 10000 } = autoSize as ObjectType;
     const minRows = min <= 1 ? 1 : min;
     const minHeight = calcHeightFromRows(min);
     const maxRows = max <= minRows ? minRows : max;

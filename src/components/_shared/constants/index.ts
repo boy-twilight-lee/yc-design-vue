@@ -1,5 +1,5 @@
 import { SelectOption } from '@/components/Select';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import Icon403 from '@shared/icons/Icon403.svg';
 import Icon404 from '@shared/icons/Icon404.svg';
 import Icon500 from '@shared/icons/Icon500.svg';
@@ -15,7 +15,7 @@ import {
 } from '@shared/icons';
 
 // icon映射
-export const TYPE_ICON_MAP: ObjectData = {
+export const TYPE_ICON_MAP: ObjectType = {
   success: IconSuccess,
   warning: IconWarning,
   error: IconError,

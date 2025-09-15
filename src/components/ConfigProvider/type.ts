@@ -1,7 +1,7 @@
-import { Size, PopupContainer, ObjectData } from '@shared/type';
+import { Size, PopupContainer, ObjectType } from '@shared/type';
 import { VNode } from 'vue';
 export interface ConfigProviderProps {
-  locale?: ObjectData;
+  locale?: ObjectType;
   zIndex?: number;
   size?: Size;
   popupContainer?: PopupContainer;

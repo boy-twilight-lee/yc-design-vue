@@ -5,11 +5,11 @@
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
 import { valueToPx, isUndefined } from '@shared/utils';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import useContext from './hooks/useContext';
 const props = defineProps<{
   curIndex: number;
-  panes: ObjectData[];
+  panes: ObjectType[];
 }>();
 const { curIndex, panes } = toRefs(props);
 // 接收注入

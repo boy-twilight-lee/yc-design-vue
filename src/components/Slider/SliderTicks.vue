@@ -23,11 +23,11 @@
 
 <script lang="ts" setup>
 import { toRefs } from 'vue';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import useContext from './hooks/useContext';
 const props = defineProps<{
   type: 'dots' | 'marks' | 'ticks';
-  data: ObjectData[];
+  data: ObjectType[];
 }>();
 defineEmits<{
   (e: 'labelClick', value: number): void;

@@ -1,4 +1,4 @@
-import { Direction, Size, ObjectData } from '@shared/type';
+import { Direction, Size, ObjectType } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface RadioProps {
@@ -37,7 +37,7 @@ export interface RadioGroupEmits {
 export interface RadioGroupSlots {
   default?: () => VNode[];
   radio?: (scope: { checked: boolean; disabled: boolean }) => VNode[];
-  label?: (scope: { data: ObjectData }) => VNode[];
+  label?: (scope: { data: ObjectType }) => VNode[];
 }
 
 export type RadioOption = (

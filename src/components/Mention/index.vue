@@ -38,7 +38,7 @@ import {
   MentionSlots,
   MentionExpose,
 } from './type';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import { isNull, isArray, useControlValue } from '@shared/utils';
 import useCursor from '@/components/Input/hooks/useCursor';
 import { OptionValue } from '@/components/Select';
@@ -89,9 +89,9 @@ const inputRef = ref<HTMLInputElement | HTMLTextAreaElement>();
 const prefixTexts = computed(() => {
   return isArray(prefix.value)
     ? prefix.value
-        .map((ch) => data.value.map((op) => ch + (op as ObjectData).value))
+        .map((ch) => data.value.map((op) => ch + (op as ObjectType).value))
         .flat(1)
-    : data.value.map((op) => prefix.value + (op as ObjectData).value);
+    : data.value.map((op) => prefix.value + (op as ObjectType).value);
 });
 // 记录光标位置
 const { recordCursor, getCursor } = useCursor(inputRef);

@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { LayoutProps, LayoutSlots } from './type';
-import { ObjectData } from '@shared/type';
+import { ObjectType } from '@shared/type';
 import { isUndefined } from '@shared/utils';
 import LayoutSider from './LayoutSider.vue';
 defineOptions({
@@ -29,7 +29,7 @@ const { hasSider: _hasSider } = toRefs(props);
 const hasSider = computed(() => {
   if (!isUndefined(_hasSider.value)) return _hasSider.value;
   const sider = (slots.default?.() || []).find(
-    (item) => (item.type as ObjectData).name == LayoutSider.name
+    (item) => (item.type as ObjectType).name == LayoutSider.name
   );
   return !!sider;
 });

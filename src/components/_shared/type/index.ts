@@ -17,9 +17,9 @@ export type ClassName =
   | Record<string, boolean>
   | (string | Record<string, boolean>)[];
 
-export type RenderContent = string | ObjectData[] | RenderFunction;
+export type RenderContent = string | ObjectType[] | RenderFunction;
 
-export type ObjectData = Record<string, any>;
+export type ObjectType = Record<string, any>;
 
 export type Required<T> = {
   [P in keyof T]-?: T[P] extends object ? Required<T[P]> : T[P];

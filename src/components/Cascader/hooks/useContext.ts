@@ -20,7 +20,7 @@ import {
   LoadMore,
 } from '../type';
 import { InputInstance } from '@/components/Input';
-import { ObjectData, , Required } from '@shared/type';
+import { ObjectType, Required } from '@shared/type';
 import {
   isObject,
   useControlValue,
@@ -207,7 +207,7 @@ function transformField(
 
 export default () => {
   const provide = (
-    props: ObjectData,
+    props: ObjectType,
     emits: CascaderEmits,
     inputRef: Ref<InputInstance | undefined>
   ) => {
@@ -338,7 +338,7 @@ export default () => {
           }
           return null;
         })
-        .filter((v) => v) as ObjectData[];
+        .filter((v) => v) as ObjectType[];
     });
     // 当前的层级
     const curLevel = ref<number>(1);
