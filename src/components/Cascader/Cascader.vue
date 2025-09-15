@@ -113,7 +113,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, StyleValue } from 'vue';
-import { CascaderProps, CascaderEmits } from './type';
+import { CascaderProps, CascaderEmits, CascaderOptionValue } from './type';
 import { sleep } from '@shared/utils';
 import useContext from './hooks/useContext';
 import { default as YcInput, InputInstance } from '@/components/Input';
@@ -193,14 +193,14 @@ const {
 } = useContext().provide(props, emits, inputRef);
 // 是否展示清除按钮
 const showClearBtn = computed(() => {
-  let hasValue = true;
+  let hasValue;
   if (pathMode.value) {
     hasValue = multiple.value
-      ? computedValue.value.flat(1).length
-      : computedValue.value.length;
+      ? (computedValue.value as CascaderOptionValue[][]).flat(1).length
+      : (computedValue.value as CascaderOptionValue[]).length;
   } else {
     hasValue = multiple.value
-      ? computedValue.value.length
+      ? (computedValue.value as CascaderOptionValue[]).length
       : computedValue.value;
   }
   return allowClear.value && !disabled.value && !loading.value && !!hasValue;
@@ -241,7 +241,9 @@ const handleEvent = async (
         }
         // 计算回显的面板
         const value = getValueKey(
-          multiple.value ? computedValue.value[0] : computedValue.value
+          multiple.value
+            ? (computedValue.value as CascaderOptionValue[])[0]
+            : computedValue.value
         );
         const option = value ? getOption(value) : null;
         if (option) {

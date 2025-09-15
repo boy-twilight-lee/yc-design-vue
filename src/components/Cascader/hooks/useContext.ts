@@ -20,7 +20,7 @@ import {
   LoadMore,
 } from '../type';
 import { InputInstance } from '@/components/Input';
-import { Props, RequiredDeep } from '@shared/type';
+import { ObjectData, Props, RequiredDeep } from '@shared/type';
 import {
   isObject,
   useControlValue,
@@ -338,7 +338,7 @@ export default () => {
           }
           return null;
         })
-        .filter((v) => v);
+        .filter((v) => v) as ObjectData[];
     });
     // 当前的层级
     const curLevel = ref<number>(1);

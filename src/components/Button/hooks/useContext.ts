@@ -7,6 +7,9 @@ import {
   inject as _inject,
 } from 'vue';
 import {
+  ButtonType,
+  ButtonShape,
+  ButtonStatus,
   ButtonProps as _ButtonProps,
   ButtonGroupProps as _ButtonGroupProps,
 } from '../type';
@@ -15,10 +18,10 @@ import { getGlobalConfig } from '@shared/utils';
 
 const BUTTON_GROUP_CONTEXT_KEY = 'button-group-context';
 type ButtonContext = {
-  type: Ref<ButtonProps['type']>;
-  status: Ref<ButtonProps['status']>;
-  shape: Ref<ButtonProps['shape']>;
+  type: Ref<ButtonType>;
+  status: Ref<ButtonStatus>;
   size?: Ref<Size>;
+  shape: Ref<ButtonShape>;
   disabled: Ref<boolean>;
 };
 type ButtonProps = RequiredDeep<_ButtonProps>;

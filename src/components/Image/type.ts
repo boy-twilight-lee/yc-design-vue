@@ -1,13 +1,13 @@
 import { ClassName, PopupContainer } from '@shared/type';
 import { VNode } from 'vue';
-import { AvatarProps } from '../Avatar';
+import { ObjectFit } from '../Avatar';
 export interface ImageProps {
   src?: string;
   width?: number | string;
   height?: number | string;
   title?: string;
   description?: string;
-  fit?: AvatarProps['objectFit'];
+  fit?: ObjectFit;
   alt?: string;
   hideFooter?: HideFooter;
   footerPosition?: FooterPostion;
