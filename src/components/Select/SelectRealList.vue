@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { ObjectData } from '@shared/type';
 import { getSlotFunction } from '@shared/utils';
 import useContext from './hooks/useContext';

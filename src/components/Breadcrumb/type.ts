@@ -1,11 +1,10 @@
 import { DropdownProps } from '@/components/Dropdown';
 import { VNode } from 'vue';
-
 export interface BreadcrumbProps {
   maxCount?: number;
   routes?: BreadcrumbRoute[];
-  separator?: string | number;
-  customUrl?: (path: string[]) => string;
+  separator?: BreadcrumbSeparator;
+  customUrl?: CustomUrl;
 }
 
 export interface BreadcrumbSlots {
@@ -20,7 +19,7 @@ export interface BreadcrumbSlots {
 }
 
 export interface BreadcrumbItemProps {
-  separator?: BreadcrumbProps['separator'];
+  separator?: BreadcrumbSeparator;
   droplist?: BreadcrumbRoute[];
   dropdownProps?: DropdownProps;
   path?: string;
@@ -39,3 +38,7 @@ export interface BreadcrumbRoute {
   index?: number;
   children?: BreadcrumbRoute[];
 }
+
+export type CustomUrl = (path: string[]) => string;
+
+export type BreadcrumbSeparator = string | number;

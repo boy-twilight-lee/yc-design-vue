@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, computed, useSlots } from 'vue';
+import { toRefs, computed } from 'vue';
 import { LayoutProps, LayoutSlots } from './type';
 import { ObjectData } from '@shared/type';
 import { isUndefined } from '@shared/utils';

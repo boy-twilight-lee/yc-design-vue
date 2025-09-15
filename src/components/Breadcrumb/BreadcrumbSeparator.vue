@@ -7,14 +7,14 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { BreadcrumbProps } from './type';
+import { BreadcrumbSeparator } from './type';
 import { IconSeparator } from '@shared/icons';
 import { isUndefined } from '@shared/utils';
 const props = defineProps<{
   separatorSlots?: () => any;
-  separator?: BreadcrumbProps['separator'];
+  separator?: BreadcrumbSeparator;
   itemSeparatorSlots?: () => any;
-  itemSeparator?: BreadcrumbProps['separator'];
+  itemSeparator?: BreadcrumbSeparator;
 }>();
 const showSeparator = computed(() => {
   if (isUndefined(props.itemSeparatorSlots)) {

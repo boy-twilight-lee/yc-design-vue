@@ -2,14 +2,14 @@ import { Size } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface ButtonProps {
-  type?: 'primary' | 'secondary' | 'dashed' | 'outline' | 'text';
-  shape?: 'square' | 'circle' | 'round';
-  status?: 'normal' | 'warning' | 'success' | 'danger';
+  type?: ButtonType;
+  shape?: ButtonShape;
+  status?: ButtonStatus;
   size?: Size;
   long?: boolean;
   loading?: boolean;
   disabled?: boolean;
-  htmlType?: 'button' | 'reset' | 'submit';
+  htmlType?: ButtonHtmlType;
   autofocus?: boolean;
   href?: string;
 }
@@ -28,9 +28,9 @@ export interface ButtonSlots {
 }
 
 export interface ButtonGroupProps {
-  type?: ButtonProps['type'];
-  status?: ButtonProps['status'];
-  shape?: ButtonProps['shape'];
+  type?: ButtonType;
+  status?: ButtonStatus;
+  shape?: ButtonShape;
   size?: Size;
   disabled?: boolean;
 }
@@ -38,3 +38,16 @@ export interface ButtonGroupProps {
 export interface ButtonGroupSlots {
   default?: () => VNode[];
 }
+
+export type ButtonStatus = 'normal' | 'warning' | 'success' | 'danger';
+
+export type ButtonShape = 'square' | 'circle' | 'round';
+
+export type ButtonType =
+  | 'primary'
+  | 'secondary'
+  | 'dashed'
+  | 'outline'
+  | 'text';
+
+export type ButtonHtmlType = 'button' | 'reset' | 'submit';

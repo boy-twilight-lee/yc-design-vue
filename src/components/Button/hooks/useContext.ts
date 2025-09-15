@@ -17,8 +17,8 @@ const BUTTON_GROUP_CONTEXT_KEY = 'button-group-context';
 type ButtonContext = {
   type: Ref<ButtonProps['type']>;
   status: Ref<ButtonProps['status']>;
-  size?: Ref<Size>;
   shape: Ref<ButtonProps['shape']>;
+  size?: Ref<Size>;
   disabled: Ref<boolean>;
 };
 type ButtonProps = RequiredDeep<_ButtonProps>;

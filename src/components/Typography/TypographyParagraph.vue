@@ -11,9 +11,6 @@
     <template v-if="$slots['copy-tooltip']" #copy-tooltip="scope">
       <slot name="copy-tooltip" v-bind="scope" />
     </template>
-    <template v-if="$slots['expand-node']" #expand-node="scope">
-      <slot name="expand-node" v-bind="scope" />
-    </template>
   </typography-base>
 </template>
 
