@@ -11,7 +11,7 @@ import {
   ImagePreviewGroupProps as _ImagePreviewGroupProps,
   ImagePreviewGroupEmits,
 } from '../type';
-import { Props, RequiredDeep } from '@shared/type';
+import { ObjectData, Required } from '@shared/type';
 import { findComponentsFromVnodes, useControlValue } from '@shared/utils';
 import Image from '../Image.vue';
 
@@ -20,10 +20,10 @@ type ImageContext = {
   hasGroupFather: Ref<boolean>;
   handleClick: (src: string) => void;
 };
-type ImagePreviewGroupProps = RequiredDeep<_ImagePreviewGroupProps>;
+type ImagePreviewGroupProps = Required<_ImagePreviewGroupProps>;
 
 export default () => {
-  const provide = (props: Props, emits: ImagePreviewGroupEmits) => {
+  const provide = (props: ObjectData, emits: ImagePreviewGroupEmits) => {
     const {
       srcList: _srcList,
       current,

@@ -16,7 +16,7 @@ import {
   OptionValue,
 } from '../type';
 import { InputInstance } from '@/components/Input';
-import { ObjectData, RequiredDeep, Props } from '@shared/type';
+import { ObjectData, Required } from '@shared/type';
 import { isBoolean, isFunction, useControlValue } from '@shared/utils';
 import useSelectOptions from './useSelectOptions';
 import useSelectHotkeys from './useSelectHotkeys';
@@ -36,14 +36,14 @@ type SelectContext = {
   blur: () => void;
   filterOption: (option: SelectOptionData) => boolean;
   getValue: (value: OptionValue | ObjectData) => OptionValue;
-  collectOption: (props: Props, optionLabel: Ref<string>) => void;
+  collectOption: (props: ObjectData, optionLabel: Ref<string>) => void;
   emits: SelectEmits;
 };
-type SelectProps = RequiredDeep<_SelectProps>;
+type SelectProps = Required<_SelectProps>;
 
 export default () => {
   const provide = (
-    props: Props,
+    props: ObjectData,
     emits: SelectEmits,
     inputRef: Ref<InputInstance | undefined>
   ) => {

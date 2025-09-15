@@ -1,4 +1,5 @@
 import { VNode } from 'vue';
+import { Size } from '@shared/type';
 
 export interface SwitchProps {
   modelValue?: SwitchValue;
@@ -34,7 +35,7 @@ export type SwitchValue = string | number | boolean;
 
 export type SwitchType = 'circle' | 'round' | 'line';
 
-export type SwitchSize = 'small' | 'medium';
+export type SwitchSize = Exclude<Size, 'mini' | 'large'>;
 
 export type BeforeChange = (
   newValue: SwitchValue

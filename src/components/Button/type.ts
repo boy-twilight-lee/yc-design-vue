@@ -1,9 +1,9 @@
-import { Size } from '@shared/type';
+import { Shape, Size } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface ButtonProps {
   type?: ButtonType;
-  shape?: ButtonShape;
+  shape?: Shape;
   status?: ButtonStatus;
   size?: Size;
   long?: boolean;
@@ -30,7 +30,7 @@ export interface ButtonSlots {
 export interface ButtonGroupProps {
   type?: ButtonType;
   status?: ButtonStatus;
-  shape?: ButtonShape;
+  shape?: Shape;
   size?: Size;
   disabled?: boolean;
 }
@@ -40,8 +40,6 @@ export interface ButtonGroupSlots {
 }
 
 export type ButtonStatus = 'normal' | 'warning' | 'success' | 'danger';
-
-export type ButtonShape = 'square' | 'circle' | 'round';
 
 export type ButtonType =
   | 'primary'

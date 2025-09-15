@@ -6,7 +6,7 @@ import {
   ref,
   computed,
 } from 'vue';
-import { Props, Theme, RequiredDeep } from '@shared/type';
+import { Theme, Required, ObjectData } from '@shared/type';
 import { useControlValue } from '@shared/utils';
 import { LayoutSiderEmits, LayoutSiderProps } from '../type';
 
@@ -17,9 +17,9 @@ export type LayoutContext = {
 };
 
 export default () => {
-  const provide = (props: Props, emits: LayoutSiderEmits) => {
+  const provide = (props: ObjectData, emits: LayoutSiderEmits) => {
     const { collapsed, defaultCollapsed, theme } = toRefs(
-      props as RequiredDeep<LayoutSiderProps>
+      props as Required<LayoutSiderProps>
     );
     // 受控的收缩
     const computedCollapsed = useControlValue<boolean>(

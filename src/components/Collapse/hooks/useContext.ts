@@ -15,7 +15,7 @@ import {
   CollapseValue,
   ExpandIconPosition,
 } from '../type';
-import { Props, RequiredDeep } from '@shared/type';
+import { ObjectData, , Required } from '@shared/type';
 import { useControlValue } from '@shared/utils';
 
 export const COLLAPSE_CONTEXT_KEY = 'collapse-context';
@@ -27,11 +27,11 @@ export type CollapseContext = {
   destroyOnHide: Ref<boolean>;
   slots: Slots;
 };
-export type CollapseProps = RequiredDeep<_CollapseProps>;
-export type CollapseItemProps = RequiredDeep<_CollapseItemProps>;
+export type CollapseProps = Required<_CollapseProps>;
+export type CollapseItemProps = Required<_CollapseItemProps>;
 
 export default () => {
-  const provide = (props: Props, emits: CollapseEmits) => {
+  const provide = (props: ObjectData, emits: CollapseEmits) => {
     const {
       activeKey,
       defaultActiveKey,
@@ -60,7 +60,7 @@ export default () => {
       slots,
     });
   };
-  const inject = (props: Props) => {
+  const inject = (props: ObjectData) => {
     const { showExpandIcon, destroyOnHide } = toRefs(
       props as CollapseItemProps
     );

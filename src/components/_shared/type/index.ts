@@ -6,6 +6,8 @@ export type Direction = 'vertical' | 'horizontal';
 
 export type Theme = 'light' | 'dark';
 
+export type Shape = 'square' | 'round' | 'circle';
+
 export type TargetContainer = string | HTMLElement;
 
 export type PopupContainer = string | HTMLElement;
@@ -17,10 +19,8 @@ export type ClassName =
 
 export type RenderContent = string | ObjectData[] | RenderFunction;
 
-export type Props = ObjectData;
-
 export type ObjectData = Record<string, any>;
 
-export type RequiredDeep<T> = {
-  [P in keyof T]-?: T[P] extends object ? RequiredDeep<T[P]> : T[P];
+export type Required<T> = {
+  [P in keyof T]-?: T[P] extends object ? Required<T[P]> : T[P];
 };

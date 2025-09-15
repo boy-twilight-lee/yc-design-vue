@@ -47,4 +47,4 @@ export type NotificationPosition =
   | 'bottomLeft'
   | 'bottomRight';
 
-export type NotificationType = 'info' | 'success' | 'warning' | 'error';
+export type NotificationType = 'info' | 'warning' | 'error' | 'success';

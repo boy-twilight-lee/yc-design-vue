@@ -17,7 +17,7 @@ import {
   PopupMaxHeight,
   MenuEmits,
 } from '../type';
-import { Props, ObjectData, RequiredDeep } from '@shared/type';
+import { ObjectData, Required } from '@shared/type';
 import {
   useControlValue,
   isObject,
@@ -64,7 +64,7 @@ export type MenuTreeNode = {
   label: () => any;
   children?: MenuTreeNode[];
 };
-type MenuProps = RequiredDeep<_MenuProps>;
+type MenuProps = Required<_MenuProps>;
 // 扁平化nodetree
 export function FlattenMenuTree(vnodes: VNode[], componentName: string[]) {
   const result: MenuTreeNode[] = [];
@@ -186,7 +186,7 @@ export const getPopupMaxHeight = (popupMaxHeight: PopupMaxHeight) => {
 
 export default () => {
   const provide = (
-    props: Props,
+    props: ObjectData,
     emits: MenuEmits,
     menuRef: Ref<HTMLDivElement | undefined>
   ) => {

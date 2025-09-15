@@ -13,7 +13,7 @@ import {
   RadioValue,
   RadioOption,
 } from '../type';
-import { Size, Props, RequiredDeep, ObjectData } from '@shared/type';
+import { Size, , Required, ObjectData } from '@shared/type';
 import { useControlValue, getGlobalConfig, isObject } from '@shared/utils';
 
 const RADIO_GROUP_CONTEXT_KEY = 'radio-group-context';
@@ -25,10 +25,10 @@ interface RadioContext {
   hasGroup: Ref<boolean>;
   emits: RadioGroupEmits;
 }
-type RadioGroupProps = RequiredDeep<_RadioGroupProps>;
+type RadioGroupProps = Required<_RadioGroupProps>;
 
 export default () => {
-  const provide = (props: Props, emits: RadioGroupEmits) => {
+  const provide = (props: ObjectData, emits: RadioGroupEmits) => {
     const {
       modelValue,
       defaultValue,

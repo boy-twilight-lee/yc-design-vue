@@ -15,7 +15,7 @@ import {
   TransferProps as _TransferProps,
 } from '../type';
 import { InputProps } from '@/components/Input';
-import { RequiredDeep, Props } from '@shared/type';
+import { Required, ObjectData } from '@shared/type';
 import { useControlValue } from '@shared/utils';
 
 const TRANSFER_CONTEXT_KEY = 'transfer-context';
@@ -37,10 +37,10 @@ type TransferContext = {
   slots: Slots;
   emits: TransferEmits;
 };
-type TransferProps = RequiredDeep<_TransferProps>;
+type TransferProps = Required<_TransferProps>;
 
 export default () => {
-  const provide = (props: Props, emits: TransferEmits) => {
+  const provide = (props: ObjectData, emits: TransferEmits) => {
     const {
       modelValue,
       defaultValue,

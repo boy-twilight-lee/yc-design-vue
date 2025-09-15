@@ -15,7 +15,7 @@ import {
   DescriptionsProps as _DescriptionsProps,
 } from '../type';
 import { BreakpointName } from '@/components/Grid/type';
-import { Props, RequiredDeep, Size } from '@shared/type';
+import { ObjectData, , Required, Size } from '@shared/type';
 import {
   getGlobalConfig,
   findComponentsFromVnodes,
@@ -33,10 +33,10 @@ type DescriptionsContext = {
   size: Ref<Size>;
   slots: Slots;
 };
-type DescriptionsProps = RequiredDeep<_DescriptionsProps>;
+type DescriptionsProps = Required<_DescriptionsProps>;
 
 export default () => {
-  const provide = (props: Props) => {
+  const provide = (props: ObjectData) => {
     const {
       data: _data,
       column: _column,

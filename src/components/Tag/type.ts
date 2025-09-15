@@ -1,4 +1,5 @@
 import { VNode } from 'vue';
+import { Size } from '@shared/type';
 
 export interface TagProps {
   color?: string;
@@ -27,4 +28,4 @@ export interface TagSlots {
   'close-icon'?: () => VNode[];
 }
 
-export type TagSize = 'small' | 'medium' | 'large';
+export type TagSize = Exclude<Size, 'mini'>;

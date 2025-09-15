@@ -1,5 +1,6 @@
 import { CSSProperties, VNode } from 'vue';
 import { TriggerProps } from '../Trigger';
+import { Shape } from '@shared/type';
 
 export interface AvatarProps {
   shape?: AvatarShape;
@@ -36,7 +37,7 @@ export interface AvatarGroupSlots {
   default?: () => VNode[];
 }
 
-export type AvatarShape = 'square' | 'round';
+export type AvatarShape = Exclude<Shape, 'circle'>;
 
 export type AvatarTriggerType = 'mask' | 'button';
 

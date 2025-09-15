@@ -1,4 +1,5 @@
 import { VNode } from 'vue';
+import { Shape, Size } from '@shared/type';
 
 export interface SkeletonProps {
   animation?: boolean;
@@ -22,6 +23,6 @@ export interface SkeletonShapeProps {
   size?: SkeletonShapeSize;
 }
 
-export type SkeletonShapeSize = 'small' | 'medium' | 'large';
+export type SkeletonShapeSize = Exclude<Size, 'mini'>;
 
-export type SkeletonShapeShape = 'sqaure' | 'circle';
+export type SkeletonShapeShape = Exclude<Shape, 'round'>;

@@ -11,7 +11,7 @@ import {
   CheckboxValue,
   CheckboxGroupEmits,
 } from '../type';
-import { ObjectData, Props, RequiredDeep } from '@shared/type';
+import { ObjectData, , Required } from '@shared/type';
 import { isObject, useControlValue } from '@shared/utils';
 
 const CHECKBOX_GROUP_CONTEXT_KEY = 'checkbox-group-context';
@@ -21,10 +21,10 @@ type CheckboxContext = {
   disabled: Ref<boolean>;
   hasGroup: Ref<boolean>;
 };
-type CheckboxGroupProps = RequiredDeep<_CheckboxGroupProps>;
+type CheckboxGroupProps = Required<_CheckboxGroupProps>;
 
 export default () => {
-  const provide = (props: Props, emits: CheckboxGroupEmits) => {
+  const provide = (props: ObjectData, emits: CheckboxGroupEmits) => {
     const {
       modelValue,
       defaultValue,

@@ -8,7 +8,7 @@ import {
   inject as _inject,
 } from 'vue';
 import { AnchorProps as _AnchorProps } from '../type';
-import { Props, RequiredDeep } from '@shared/type';
+import { ObjectData, Required } from '@shared/type';
 import {
   getElement,
   findFirstScrollableParent,
@@ -26,10 +26,13 @@ type AnchorContext = {
   curHref: Ref<string>;
   scrollContainer: Ref<HTMLElement | undefined>;
 };
-type AnchorProps = RequiredDeep<_AnchorProps>;
+type AnchorProps = Required<_AnchorProps>;
 
 export default () => {
-  const provide = (props: Props, listRef: Ref<HTMLDivElement | undefined>) => {
+  const provide = (
+    props: ObjectData,
+    listRef: Ref<HTMLDivElement | undefined>
+  ) => {
     const {
       changeHash,
       smooth,

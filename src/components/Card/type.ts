@@ -1,4 +1,5 @@
 import { CSSProperties, VNode } from 'vue';
+import { Size } from '@shared/type';
 
 export interface CardProps {
   bordered?: boolean;
@@ -38,4 +39,4 @@ export interface CardGridSlots {
   default?: () => VNode[];
 }
 
-export type CardSize = 'medium' | 'small';
+export type CardSize = Exclude<Size, 'mini' | 'large'>;

@@ -20,7 +20,7 @@ import {
   LoadMore,
 } from '../type';
 import { InputInstance } from '@/components/Input';
-import { ObjectData, Props, RequiredDeep } from '@shared/type';
+import { ObjectData, , Required } from '@shared/type';
 import {
   isObject,
   useControlValue,
@@ -52,7 +52,7 @@ type CascaderContext = {
     value: CascaderOptionValue | CascaderOptionValue[]
   ) => CascaderOptionProps;
 };
-type CascaderProps = RequiredDeep<_CascaderProps>;
+type CascaderProps = Required<_CascaderProps>;
 // 增强option添加indexPath,valuePath,level,labelPath
 export const transformOptions = (
   options: CascaderOption[],
@@ -207,7 +207,7 @@ function transformField(
 
 export default () => {
   const provide = (
-    props: Props,
+    props: ObjectData,
     emits: CascaderEmits,
     inputRef: Ref<InputInstance | undefined>
   ) => {

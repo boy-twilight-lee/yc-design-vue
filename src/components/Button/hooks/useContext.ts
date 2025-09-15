@@ -8,12 +8,11 @@ import {
 } from 'vue';
 import {
   ButtonType,
-  ButtonShape,
   ButtonStatus,
   ButtonProps as _ButtonProps,
   ButtonGroupProps as _ButtonGroupProps,
 } from '../type';
-import { Size, RequiredDeep, Props } from '@shared/type';
+import { Size, Shape, Required, ObjectData } from '@shared/type';
 import { getGlobalConfig } from '@shared/utils';
 
 const BUTTON_GROUP_CONTEXT_KEY = 'button-group-context';
@@ -21,14 +20,14 @@ type ButtonContext = {
   type: Ref<ButtonType>;
   status: Ref<ButtonStatus>;
   size?: Ref<Size>;
-  shape: Ref<ButtonShape>;
+  shape: Ref<Shape>;
   disabled: Ref<boolean>;
 };
-type ButtonProps = RequiredDeep<_ButtonProps>;
-type ButtonGroupProps = RequiredDeep<_ButtonGroupProps>;
+type ButtonProps = Required<_ButtonProps>;
+type ButtonGroupProps = Required<_ButtonGroupProps>;
 
 export default () => {
-  const provide = (props: Props) => {
+  const provide = (props: ObjectData) => {
     const { type, status, shape, disabled } = toRefs(props as ButtonGroupProps);
     const { size } = getGlobalConfig(props);
     _provide<ButtonContext>(BUTTON_GROUP_CONTEXT_KEY, {
@@ -39,7 +38,7 @@ export default () => {
       disabled,
     });
   };
-  const inject = (props: Props) => {
+  const inject = (props: ObjectData) => {
     const { size: globalSize } = getGlobalConfig(props);
     const { type, status, shape, size, disabled } = toRefs(
       props as ButtonProps

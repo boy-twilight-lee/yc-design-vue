@@ -11,7 +11,7 @@ import {
   inject as _inject,
 } from 'vue';
 import { BreakpointName, Gutter, ResponsiveValue } from '../type';
-import { Props } from '@shared/type';
+import { ObjectData } from '@shared/type';
 import { getBreakpointValue, isArray } from '@shared/utils';
 import { nanoid } from 'nanoid';
 
@@ -37,7 +37,7 @@ export type SpanMap = Map<
 export type GutterValue = Gutter | [Gutter, Gutter];
 
 export default () => {
-  const provide = (props: Props) => {
+  const provide = (props: ObjectData) => {
     const {
       gutter: _gutter = ref<GutterValue>(0),
       cols: _cols = ref(24),

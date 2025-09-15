@@ -1,6 +1,6 @@
 import { ref, computed, Ref, onMounted, reactive } from 'vue';
 import { nanoid } from 'nanoid';
-import { ObjectData, Props } from '@shared/type';
+import { ObjectData } from '@shared/type';
 import {
   OptionProps,
   SelectValue,
@@ -95,7 +95,7 @@ export default (params: {
     return isUndefined(val) || isNull(val) || (isString(val) && !val.length);
   };
   // 收集option
-  const collectOption = (props: Props, optionLabel: Ref<string>) => {
+  const collectOption = (props: ObjectData, optionLabel: Ref<string>) => {
     if (props.isFallbackOption) return;
     const id = nanoid();
     // 挂载的时候收集option

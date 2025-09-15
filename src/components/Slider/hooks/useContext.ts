@@ -12,7 +12,7 @@ import {
   SliderValue,
   SliderProps as _SliderProps,
 } from '../type';
-import { Direction, Props, RequiredDeep } from '@shared/type';
+import { Direction, ObjectData, , Required } from '@shared/type';
 import { useControlValue, isArray } from '@shared/utils';
 
 const SLIDER_CONTEXT_KEY = 'slider-context';
@@ -33,11 +33,11 @@ type SliderContext = {
   normalizeValue: (value: number) => number;
   denormalizeValue: (value: number) => number;
 };
-type SliderProp = RequiredDeep<_SliderProps>;
+type SliderProp = Required<_SliderProps>;
 
 export default () => {
   const provide = (
-    props: Props,
+    props: ObjectData,
     emits: SliderEmits,
     trackRef: Ref<HTMLDivElement | undefined>
   ) => {

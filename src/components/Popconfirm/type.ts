@@ -44,4 +44,4 @@ export interface PopconfirmExpose {
   show(): void;
 }
 
-export type PopconfirmType = 'info' | 'success' | 'warning' | 'error';
+export type PopconfirmType = 'info' | 'warning' | 'error' | 'success';

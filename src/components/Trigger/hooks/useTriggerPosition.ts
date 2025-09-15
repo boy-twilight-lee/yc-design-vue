@@ -2,11 +2,11 @@ import { watch, computed, CSSProperties, Ref, ref, toRefs } from 'vue';
 import { useElementBounding, useElementSize, unrefElement } from '@vueuse/core';
 import { TriggerPostion } from '../type';
 import { TriggerProps } from './useContext';
-import { Props } from '@shared/type';
+import { ObjectData } from '@shared/type';
 import { sleep, valueToPx } from '@shared/utils';
 
 export default (params: {
-  props: Props;
+  props: ObjectData;
   popupRef: Ref<HTMLDivElement | undefined>;
   triggerRef: Ref<HTMLElement | undefined>;
   arrowRef: Ref<HTMLElement | undefined>;

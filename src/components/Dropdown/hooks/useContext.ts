@@ -1,6 +1,6 @@
-import { ref, toRefs, provide as _provide, inject as _inject, Ref } from 'vue';
+import { toRefs, provide as _provide, inject as _inject } from 'vue';
 import { DoptionValue, DropdownEmits } from '../type';
-import { Props } from '@shared/type';
+import { ObjectData } from '@shared/type';
 import { useControlValue } from '@shared/utils';
 
 const DROPDOWN_CONTEXT_KEY = 'dropdown-context';
@@ -9,7 +9,7 @@ type DropdownContext = {
 };
 
 export default () => {
-  const provide = (props: Props, emits: DropdownEmits) => {
+  const provide = (props: ObjectData, emits: DropdownEmits) => {
     const {
       popupVisible,
       defaultPopupVisible,

@@ -13,7 +13,7 @@ import {
   TimelineLabelPosition,
   TimelineMode,
 } from '../type';
-import { Props, Direction, RequiredDeep } from '@shared/type';
+import { , Direction, Required, ObjectData } from '@shared/type';
 import { findComponentsFromVnodes } from '@shared/utils';
 import TimelineItem from '../TimelineItem.vue';
 import TimelineItemPending from '../TimelineItemPending.vue';
@@ -25,10 +25,10 @@ type TimelineContext = {
   reverse: Ref<boolean>;
   labelPosition: Ref<TimelineLabelPosition>;
 };
-type TimelineProps = RequiredDeep<_TimelineProps>;
+type TimelineProps = Required<_TimelineProps>;
 
 export default () => {
-  const provide = (props: Props) => {
+  const provide = (props: ObjectData) => {
     const {
       direction,
       labelPosition,

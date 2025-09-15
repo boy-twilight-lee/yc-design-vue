@@ -16,7 +16,7 @@ import {
   DisabledMinutes,
   DisabledSeconds,
 } from '../type';
-import { Props, RequiredDeep } from '@shared/type';
+import { ObjectData, , Required } from '@shared/type';
 import { useControlValue, isArray, useI18n } from '@shared/utils';
 
 const TIME_PICKER_CONTEXT_KEY = 'time-picker-context';
@@ -36,11 +36,11 @@ type TimePickerContext = {
   disabledMinutes: DisabledMinutes;
   disabledSeconds: DisabledSeconds;
 };
-type TimePickerProps = RequiredDeep<_TimePickerProps>;
+type TimePickerProps = Required<_TimePickerProps>;
 type TimePickerCell = { label: string; value: number };
 
 export default () => {
-  const provide = (props: Props, emits: TimePickerEmits) => {
+  const provide = (props: ObjectData, emits: TimePickerEmits) => {
     const {
       modelValue,
       defaultValue,

@@ -16,7 +16,7 @@ import {
   TabType,
   TabPositon,
 } from '../type';
-import { Direction, Props, RequiredDeep, Size } from '@shared/type';
+import { Direction, ObjectData, , Required, Size } from '@shared/type';
 import { useControlValue, getGlobalConfig } from '@shared/utils';
 
 const TABS_CONTEXT_KEY = 'tabs-context';
@@ -35,15 +35,15 @@ type TabsContext = {
   size: Ref<Size>;
   emits: TabsEmits;
 };
-type TabsProps = RequiredDeep<_TabsProps>;
-type TabPaneProps = RequiredDeep<_TabPaneProps>;
+type TabsProps = Required<_TabsProps>;
+type TabPaneProps = Required<_TabPaneProps>;
 export type PaneNode = {
   slots: Slots;
 } & TabPaneProps;
 
 export default () => {
   const provide = (
-    props: Props,
+    props: ObjectData,
     emits: TabsEmits,
     listRef: Ref<HTMLDivElement | undefined>
   ) => {

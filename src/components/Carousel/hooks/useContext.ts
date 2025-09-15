@@ -13,7 +13,7 @@ import {
   CarouselEmits,
   CarouselShowArrow,
 } from '../type';
-import { ClassName, Direction, Props, RequiredDeep } from '@shared/type';
+import { ClassName, Direction, ObjectData, Required } from '@shared/type';
 import {
   useControlValue,
   sleep,
@@ -36,10 +36,10 @@ type CarouselContext = {
   getValidIndex: (val: number) => number;
 };
 type MoveType = 'positive' | 'negative';
-type CarouselProps = RequiredDeep<_CarouselProps>;
+type CarouselProps = Required<_CarouselProps>;
 
 export default () => {
-  const provide = (props: Props, emits: CarouselEmits) => {
+  const provide = (props: ObjectData, emits: CarouselEmits) => {
     const {
       current,
       defaultCurrent,
