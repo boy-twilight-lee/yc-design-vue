@@ -1,5 +1,5 @@
 import { VNode } from 'vue';
-import { Theme, BreakpointName } from '@shared/type';
+import { Theme, BreakpointName, collapseType } from '@shared/type';
 import { ResizeBoxDirection } from '../ResizeBox';
 
 export interface LayoutProps {
@@ -37,11 +37,7 @@ export interface LayoutSiderProps {
 
 export interface LayoutSiderEmits {
   (e: 'update:collapsed', collapsed: boolean): void;
-  (
-    e: 'collapse',
-    collapsed: boolean,
-    type: 'clickTrigger' | 'responsive'
-  ): void;
+  (e: 'collapse', collapsed: boolean, type: collapseType): void;
   (e: 'breakpoint', collapsed: boolean): void;
 }
 

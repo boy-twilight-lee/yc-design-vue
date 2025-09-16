@@ -43,6 +43,8 @@ export type PopupPosition =
   | 'rt'
   | 'rb';
 
+export type collapseType = 'clickTrigger' | 'responsive';
+
 export type ClassName =
   | string
   | Record<string, boolean>
