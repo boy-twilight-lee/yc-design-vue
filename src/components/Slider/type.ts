@@ -1,4 +1,4 @@
-import { Direction } from '@shared/type';
+import { Direction, Format } from '@shared/type';
 
 export interface SliderProps {
   modelValue?: SliderValue;
@@ -13,7 +13,7 @@ export interface SliderProps {
   showInput?: boolean;
   range?: boolean;
   showTooltip?: boolean;
-  formatTooltip?: FormatTooltip;
+  formatTooltip?: Format<number>;
 }
 
 export interface SliderEmits {
@@ -22,5 +22,3 @@ export interface SliderEmits {
 }
 
 export type SliderValue = number | number[];
-
-export type FormatTooltip = (value: number) => string;

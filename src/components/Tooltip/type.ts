@@ -1,12 +1,12 @@
 import { CSSProperties, VNode } from 'vue';
-import { ClassName, PopupContainer } from '@shared/type';
-import { TriggerPostion, TriggerProps } from '@/components/Trigger/type';
+import { ClassName, PopupContainer, PopupPosition } from '@shared/type';
+import { TriggerProps } from '@/components/Trigger/type';
 
 export interface TooltipProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   content?: string;
-  position?: TriggerPostion;
+  position?: PopupPosition;
   mini?: boolean;
   backgroundColor?: string;
   contentClass?: ClassName;

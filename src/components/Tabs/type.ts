@@ -1,4 +1,4 @@
-import { Direction, Size } from '@shared/type';
+import { Direction, Size, EventTrigger } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface TabsProps {
@@ -16,7 +16,7 @@ export interface TabsProps {
   headerPadding?: boolean;
   autoSwitch?: boolean;
   hideContent?: boolean;
-  trigger?: TabTrigger;
+  trigger?: EventTrigger;
 }
 
 export interface TabsEmits {
@@ -56,5 +56,3 @@ export type TabType =
   | 'capsule';
 
 export type TabPositon = 'left' | 'right' | 'bottom' | 'top';
-
-export type TabTrigger = 'click' | 'hover';

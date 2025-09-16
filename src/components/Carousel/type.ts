@@ -1,12 +1,13 @@
-import { ClassName, Direction } from '@shared/type';
 import { VNode } from 'vue';
+import { ClassName, Direction, EventTrigger } from '@shared/type';
+
 export interface CarouselProps {
   current?: number;
   defaultCurrent?: number;
   autoPlay?: AutoPlay;
   moveSpeed?: number;
   animationName?: CarouselAnimationName;
-  trigger?: IndicatorTrigger;
+  trigger?: EventTrigger;
   direction?: Direction;
   showArrow?: CarouselShowArrow;
   arrowClass?: ClassName;
@@ -38,5 +39,3 @@ export type AutoPlay = boolean | { interval?: number; hoverToPause?: boolean };
 export type IndicatorPosition = 'bottom' | 'top' | 'left' | 'right' | 'outer';
 
 export type IndicatorType = 'line' | 'dot' | 'slider' | 'never';
-
-export type IndicatorTrigger = 'click' | 'hover';

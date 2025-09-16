@@ -14,8 +14,7 @@ import {
   DescData,
   DescriptionsProps as _DescriptionsProps,
 } from '../type';
-import { BreakpointName } from '@/components/Grid/type';
-import { ObjectType, Required, Size } from '@shared/type';
+import { ObjectType, Required, Size, BreakpointName } from '@shared/type';
 import {
   getGlobalConfig,
   findComponentsFromVnodes,

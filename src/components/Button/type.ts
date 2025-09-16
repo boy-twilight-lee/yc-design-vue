@@ -39,7 +39,7 @@ export interface ButtonGroupSlots {
   default?: () => VNode[];
 }
 
-export type ButtonStatus = 'normal' | 'warning' | 'success' | 'danger';
+export type ButtonStatus = 'success' | 'warning' | 'danger' | 'normal';
 
 export type ButtonType =
   | 'primary'

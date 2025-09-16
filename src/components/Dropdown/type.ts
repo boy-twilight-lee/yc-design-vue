@@ -1,4 +1,9 @@
-import { ObjectType, PopupContainer, Theme } from '@shared/type';
+import {
+  EventTrigger,
+  ObjectType,
+  PopupContainer,
+  PopupMaxHeight,
+} from '@shared/type';
 import { TriggerProps, TriggerType } from '@/components/Trigger';
 import { ButtonProps, ButtonType } from '@/components/Button';
 import { Size } from '@shared/type';
@@ -13,7 +18,7 @@ export interface DropdownProps {
   alignPoint?: boolean;
   // triggerProps
   triggerProps?: TriggerProps;
-  popupMaxHeight?: number | boolean;
+  popupMaxHeight?: PopupMaxHeight;
 }
 
 export interface DropdownEmits {
@@ -49,13 +54,13 @@ export interface DoptionSlots {
 
 export interface DsubmenuProps {
   disabled?: boolean;
-  trigger?: DsubmenuTrigger;
+  trigger?: EventTrigger;
   position?: DsubmenuPosition;
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   // triggerProps
   triggerProps?: TriggerProps;
-  popupMaxHeight?: number;
+  popupMaxHeight?: PopupMaxHeight;
 }
 
 export interface DsubmenuEmits {
@@ -100,7 +105,5 @@ export interface DropdownButtonSlots {
 export type DoptionValue = string | number | boolean | ObjectType;
 
 export type DropdownPosition = 'top' | 'tr' | 'tl' | 'bottom' | 'br' | 'bl';
-
-export type DsubmenuTrigger = 'hover' | 'click';
 
 export type DsubmenuPosition = 'rt' | 'lt';

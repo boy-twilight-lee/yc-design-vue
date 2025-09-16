@@ -1,12 +1,11 @@
-import { BreakpointName } from '@/components/Grid';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
-import { Theme } from '@shared/type';
+import { Theme, BreakpointName, PopupMaxHeight, Direction } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface MenuProps {
   theme?: Theme;
-  mode?: MenuMode;
+  mode?: Direction;
   levelIndent?: number;
   autoOpen?: boolean;
   collapsed?: boolean;
@@ -78,7 +77,3 @@ export interface MenuItemGroupSlots {
   default?: () => VNode[];
   title?: () => VNode[];
 }
-
-export type MenuMode = 'vertical' | 'horizontal';
-
-export type PopupMaxHeight = boolean | number;

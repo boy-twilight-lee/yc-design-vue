@@ -1,6 +1,6 @@
-import { ClassName, PopupContainer } from '@shared/type';
 import { VNode } from 'vue';
-import { ObjectFit } from '../Avatar';
+import { ClassName, PopupContainer, ObjectFit } from '@shared/type';
+
 export interface ImageProps {
   src?: string;
   width?: number | string;

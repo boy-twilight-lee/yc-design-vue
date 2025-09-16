@@ -15,10 +15,10 @@ export interface ResultSlots {
 }
 
 export type ResultStatus =
-  | 'info'
   | 'success'
   | 'warning'
   | 'error'
+  | 'info'
   | '403'
   | '404'
   | '500'

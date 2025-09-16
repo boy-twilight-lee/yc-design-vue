@@ -21,4 +21,4 @@ export interface LinkSlots {
   icon?: () => VNode[];
 }
 
-export type LinkStatus = 'normal' | 'warning' | 'success' | 'danger';
+export type LinkStatus = 'success' | 'warning' | 'danger' | 'normal';

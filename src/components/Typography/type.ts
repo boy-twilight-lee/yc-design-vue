@@ -39,12 +39,16 @@ export interface TypographyBaseSlots {
 
 export interface TypographyParagraphProps {
   blockquote?: boolean;
-  spacing?: 'default' | 'close';
+  spacing?: Spacing;
 }
 
 export interface TypographyTitleProps {
-  heading?: 1 | 2 | 3 | 4 | 5 | 6;
+  heading?: Heading;
 }
+
+export type Heading = 1 | 2 | 3 | 4 | 5 | 6;
+
+export type Spacing = 'default' | 'close';
 
 export type TypographyType =
   | 'primary'

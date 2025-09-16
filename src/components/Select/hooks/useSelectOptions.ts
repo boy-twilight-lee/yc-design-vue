@@ -8,7 +8,7 @@ import {
   FallbackOption,
   FormatLabel,
   SelectOptionData,
-  OptionValue,
+  SelectOptionValue,
 } from '../index';
 import { isNull, isObject, isString, isUndefined } from '@shared/utils';
 
@@ -17,7 +17,7 @@ export default (params: {
   computedValue: Ref<SelectValue>;
   provideOptions: Ref<SelectOption[]>;
   showExtraOptions: Ref<boolean>;
-  getValue: (value: OptionValue) => OptionValue;
+  getValue: (value: SelectOptionValue) => SelectOptionValue;
   fallbackOption?: FallbackOption;
   formatLabel?: FormatLabel;
 }) => {

@@ -1,8 +1,7 @@
 import { watch, computed, CSSProperties, Ref, ref, toRefs } from 'vue';
 import { useElementBounding, useElementSize, unrefElement } from '@vueuse/core';
-import { TriggerPostion } from '../type';
 import { TriggerProps } from './useContext';
-import { ObjectType } from '@shared/type';
+import { ObjectType, PopupPosition } from '@shared/type';
 import { sleep, valueToPx } from '@shared/utils';
 
 export default (params: {
@@ -39,7 +38,7 @@ export default (params: {
     contentStyle: _contentStyle,
   } = toRefs(props as TriggerProps);
   // 动态计算当前的位置
-  const position = ref<TriggerPostion>(_position.value);
+  const position = ref<PopupPosition>(_position.value);
   // 获取popup的size
   const { width: popupWidth, height: popupHeight } = useElementSize(
     popupRef,
@@ -129,7 +128,7 @@ export default (params: {
       triggerHeight: triggerHeight.value,
       popupHeight: popupHeight.value,
       popupWidth: popupWidth.value,
-    }) as TriggerPostion;
+    }) as PopupPosition;
     // 计算新的offset
     const [newOffsetX, newOffsetY] = calcPopupOffset();
     // 返回最终结果
@@ -180,7 +179,7 @@ export default (params: {
   };
   // 计算最初的pop位置
   const calcPopupPosition = (params: {
-    position: TriggerPostion;
+    position: PopupPosition;
     top: number;
     bottom: number;
     left: number;
@@ -227,7 +226,7 @@ export default (params: {
   };
   // 计算边界
   const calcCurPopupPosition = (params: {
-    position: TriggerPostion;
+    position: PopupPosition;
     offsetLeft: number;
     offsetTop: number;
     top: number;
@@ -287,7 +286,7 @@ export default (params: {
   };
   // 计算arrow的positon
   const calcArrowPosition = (params: {
-    position: TriggerPostion;
+    position: PopupPosition;
     triggerWidth: number;
     triggerHeight: number;
     arrowWidth: number;

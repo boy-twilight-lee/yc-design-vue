@@ -1,6 +1,6 @@
 import { CSSProperties, VNode } from 'vue';
 import { TriggerProps } from '../Trigger';
-import { Shape } from '@shared/type';
+import { Shape, ObjectFit } from '@shared/type';
 
 export interface AvatarProps {
   shape?: AvatarShape;
@@ -40,5 +40,3 @@ export interface AvatarGroupSlots {
 export type AvatarShape = Exclude<Shape, 'circle'>;
 
 export type AvatarTriggerType = 'mask' | 'button';
-
-export type ObjectFit = 'cover' | 'contain' | 'fill' | 'none';

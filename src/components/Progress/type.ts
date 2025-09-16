@@ -18,4 +18,4 @@ export type ProgressType = 'line' | 'circle';
 
 export type ProgressColor = string | Record<string, string>;
 
-export type ProgressStatus = 'normal' | 'success' | 'warning' | 'danger';
+export type ProgressStatus = 'success' | 'warning' | 'danger' | 'normal';

@@ -22,4 +22,4 @@ export interface AlertSlots {
   'close-element'?: () => VNode[];
 }
 
-export type AlertType = 'info' | 'warning' | 'error' | 'success' | 'normal';
+export type AlertType = 'success' | 'warning' | 'error' | 'info' | 'normal';

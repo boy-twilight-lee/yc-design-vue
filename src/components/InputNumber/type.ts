@@ -1,4 +1,4 @@
-import { Size, ObjectType } from '@shared/type';
+import { Size, ObjectType, Format } from '@shared/type';
 import { VNode } from 'vue';
 export interface InputNumberProps {
   modelValue?: InputNumberValue;
@@ -14,7 +14,7 @@ export interface InputNumberProps {
   hideButton?: boolean;
   size?: Size;
   allowClear?: boolean;
-  formatter?: InputNumberFormatter;
+  formatter?: Format<string>;
   parser?: InputNumberParser;
   readonly?: boolean;
   inputAttrs?: ObjectType;
@@ -49,7 +49,5 @@ export interface InputNumberExpose {
 export type InputNumberValue = number | string;
 
 export type InputNumberMode = 'embed' | 'button';
-
-export type InputNumberFormatter = (value: string) => string;
 
 export type InputNumberParser = (value: string) => string;

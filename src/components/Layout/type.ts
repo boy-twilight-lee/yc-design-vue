@@ -1,6 +1,5 @@
-import { BreakpointName } from '@/components/Grid';
-import { Theme } from '@shared/type';
 import { VNode } from 'vue';
+import { Theme, BreakpointName } from '@shared/type';
 import { ResizeBoxDirection } from '../ResizeBox';
 
 export interface LayoutProps {

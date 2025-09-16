@@ -1,10 +1,6 @@
 import { CSSProperties, VNode } from 'vue';
-import { ClassName, PopupContainer } from '@shared/type';
-import {
-  TriggerPostion,
-  TriggerProps,
-  TriggerType,
-} from '@/components/Trigger';
+import { ClassName, PopupContainer, PopupPosition } from '@shared/type';
+import { TriggerProps, TriggerType } from '@/components/Trigger';
 
 export interface PopoverProps {
   popupVisible?: boolean;
@@ -12,7 +8,7 @@ export interface PopoverProps {
   title?: string;
   content?: string;
   trigger?: TriggerType;
-  position?: TriggerPostion;
+  position?: PopupPosition;
   contentClass?: ClassName;
   contentStyle?: CSSProperties;
   arrowClass?: ClassName;

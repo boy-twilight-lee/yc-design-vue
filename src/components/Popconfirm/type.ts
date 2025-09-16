@@ -1,12 +1,12 @@
 import { CSSProperties, VNode } from 'vue';
-import { ClassName, PopupContainer } from '@shared/type';
+import { ClassName, PopupContainer, PopupPosition } from '@shared/type';
 import { OnBeforeCancel, OnBeforeOk } from '@/components/Modal';
-import { TriggerPostion, TriggerProps } from '@/components/Trigger';
+import { TriggerProps } from '@/components/Trigger';
 import { ButtonProps } from '@/components/Button';
 
 export interface PopconfirmProps {
   content?: string;
-  position?: TriggerPostion;
+  position?: PopupPosition;
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   type?: PopconfirmType;
@@ -44,4 +44,4 @@ export interface PopconfirmExpose {
   show(): void;
 }
 
-export type PopconfirmType = 'info' | 'warning' | 'error' | 'success';
+export type PopconfirmType = 'success' | 'warning' | 'error' | 'info';

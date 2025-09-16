@@ -1,10 +1,15 @@
 import { CSSProperties, VNode } from 'vue';
-import { ClassName, PopupContainer } from '@shared/type';
+import {
+  ClassName,
+  EventTrigger,
+  PopupContainer,
+  PopupPosition,
+} from '@shared/type';
 export interface TriggerProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   trigger?: TriggerType;
-  position?: TriggerPostion;
+  position?: PopupPosition;
   disabled?: boolean;
   popupOffset?: number;
   popupTranslate?: number[];
@@ -64,17 +69,4 @@ export interface TriggerExpose {
   updatePosition(x: number, y: number): void;
 }
 
-export type TriggerPostion =
-  | 'top'
-  | 'tl'
-  | 'tr'
-  | 'bottom'
-  | 'bl'
-  | 'br'
-  | 'left'
-  | 'lt'
-  | 'lb'
-  | 'right'
-  | 'rt'
-  | 'rb';
-export type TriggerType = 'hover' | 'click' | 'focus' | 'contextMenu';
+export type TriggerType = EventTrigger | 'focus' | 'contextMenu';

@@ -1,4 +1,12 @@
-import { ObjectType, RenderContent, Size, PopupContainer } from '@shared/type';
+import {
+  ObjectType,
+  RenderContent,
+  Size,
+  PopupContainer,
+  FilterOption,
+  Format,
+  FallBack,
+} from '@shared/type';
 import { TriggerInstance, TriggerProps } from '../Trigger';
 import { TagProps } from '../Tag';
 import { VNode } from 'vue';
@@ -23,12 +31,12 @@ export interface SelectProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   unmountonClose?: boolean;
-  filterOption?: FilterOption;
+  filterOption?: boolean | FilterOption<SelectOptionData>;
   options?: SelectOption[];
   virtualListProps?: VirtualListProps;
   triggerProps?: TriggerProps;
-  formatLabel?: FormatLabel;
-  fallbackOption?: FallbackOption;
+  formatLabel?: Format<SelectOptionData>;
+  fallbackOption?: FallBack<SelectOptionValue, SelectOptionData>;
   showExtraOptions?: boolean;
   valueKey?: string;
   searchDelay?: number;
@@ -53,11 +61,11 @@ export interface SelectEmits {
   (e: 'clear'): void;
   (e: 'remove', index: number | string, ev: Event): void;
   (e: 'search', value: string): void;
-  (e: 'exceedLimit', value: OptionValue, ev?: MouseEvent): void;
+  (e: 'exceedLimit', value: SelectOptionValue, ev?: MouseEvent): void;
   (e: 'popup-visible-change', value: boolean): void;
   (e: 'dropdown-scroll', ev: Event): void;
   (e: 'dropdown-reach-bottom', ev: Event): void;
-  (e: 'select', value: OptionValue): void;
+  (e: 'select', value: SelectOptionValue): void;
 }
 
 export interface SelectSlots {
@@ -82,7 +90,7 @@ export interface SelectExpose {
 
 export interface OptionProps {
   label?: string;
-  value?: OptionValue;
+  value?: SelectOptionValue;
   disabled?: boolean;
   tagProps?: TagProps;
   // 选项id
@@ -106,9 +114,9 @@ export interface OptgroupSlots {
   label?: () => VNode[];
 }
 
-export type OptionValue = string | number | boolean | ObjectType;
+export type SelectOptionValue = string | number | boolean | ObjectType;
 
-export type SelectValue = OptionValue | OptionValue[];
+export type SelectValue = SelectOptionValue | SelectOptionValue[];
 
 export type SelectOptionData = {
   render?: RenderContent;
@@ -122,21 +130,12 @@ export type SelectOptionGroup = {
 };
 
 export type SelectOption =
-  | OptionValue
+  | SelectOptionValue
   | SelectOptionData
   | SelectOptionGroup
   | ObjectType;
 
-export type FilterOption =
-  | boolean
-  | ((inputValue: string, option: SelectOptionData) => boolean);
-
-export type FallbackOption = (value: OptionValue) => SelectOptionData;
-
-export type FormatLabel = (data: SelectOptionData) => string;
-
 export type VirtualListProps = {
   itemHeight?: number;
-  buffer?: number;
   threshold?: number;
 };

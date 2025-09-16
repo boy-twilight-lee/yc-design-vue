@@ -1,4 +1,4 @@
-import { SelectOption, OptionValue } from '@/components/Select';
+import { SelectOption, SelectOptionValue } from '@/components/Select';
 import { ObjectType } from '@shared/type';
 import { VNode } from 'vue';
 
@@ -17,7 +17,7 @@ export interface MentionEmits {
   (e: 'update:modelValue', value: string): void;
   (e: 'change', value: string): void;
   (e: 'search', value: string): void;
-  (e: 'select', value: OptionValue): void;
+  (e: 'select', value: SelectOptionValue): void;
   (e: 'focus', ev: FocusEvent): void;
   (e: 'blur', ev: FocusEvent): void;
   (e: 'clear', ev: MouseEvent): void;

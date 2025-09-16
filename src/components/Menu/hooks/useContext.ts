@@ -11,13 +11,8 @@ import {
 } from 'vue';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
-import {
-  MenuProps as _MenuProps,
-  MenuMode,
-  PopupMaxHeight,
-  MenuEmits,
-} from '../type';
-import { ObjectType, Required } from '@shared/type';
+import { MenuProps as _MenuProps, MenuEmits } from '../type';
+import { ObjectType, Required, PopupMaxHeight, Direction } from '@shared/type';
 import {
   useControlValue,
   isObject,
@@ -42,7 +37,7 @@ type MenuContext = {
   accordion: Ref<boolean>;
   autoOpen: Ref<boolean>;
   autoOpenSelected: Ref<boolean>;
-  mode: Ref<MenuMode>;
+  mode: Ref<Direction>;
   theme: Ref<'light' | 'dark'>;
   autoScrollIntoView: Ref<boolean>;
   scrollConfig: Ref<ScrollIntoViewOptions>;

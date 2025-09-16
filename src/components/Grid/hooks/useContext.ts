@@ -10,8 +10,8 @@ import {
   provide as _provide,
   inject as _inject,
 } from 'vue';
-import { BreakpointName, Gutter, ResponsiveValue } from '../type';
-import { ObjectType } from '@shared/type';
+import { Gutter } from '../type';
+import { ObjectType, BreakpointName, ResponsiveValue } from '@shared/type';
 import { getBreakpointValue, isArray } from '@shared/utils';
 import { nanoid } from 'nanoid';
 

@@ -1,4 +1,5 @@
 import { VNode } from 'vue';
+import { ResponsiveValue } from '@shared/type';
 
 export interface GridProps {
   cols?: number | ResponsiveValue;
@@ -23,7 +24,7 @@ export interface GridItemSlots {
 }
 
 export interface GridRowProps {
-  gutter?: Gutter | [Gutter, Gutter];
+  gutter?: GridRowGutter | [GridRowGutter, GridRowGutter];
   justify?: GridRowJustify;
   align?: GridRowAlign;
   div?: boolean;
@@ -38,21 +39,14 @@ export interface GridColProps {
   span?: number | ResponsiveValue;
   offset?: number | ResponsiveValue;
   order?: number | ResponsiveValue;
-  flex?: GridColFlex | ResponsiveValue;
+  flex?: GridColFlex | ResponsiveValue<GridColFlex>;
 }
 
 export interface GridColSlots {
   default?: () => VNode[];
 }
 
-export type ResponsiveValue<T = number | string> = {
-  xs?: T;
-  sm?: T;
-  md?: T;
-  lg?: T;
-  xl?: T;
-  xxl?: T;
-};
+export type GridRowGutter = number | ResponsiveValue;
 
 export type GridRowJustify =
   | 'start'
@@ -63,8 +57,4 @@ export type GridRowJustify =
 
 export type GridRowAlign = 'start' | 'center' | 'end' | 'stretch';
 
-export type BreakpointName = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-
 export type GridColFlex = number | string | 'initial' | 'auto' | 'none';
-
-export type Gutter = number | ResponsiveValue;

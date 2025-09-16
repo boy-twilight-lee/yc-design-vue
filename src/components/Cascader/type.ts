@@ -1,5 +1,12 @@
 import { RenderFunction, VNode } from 'vue';
-import { PopupContainer, Size } from '@shared/type';
+import {
+  PopupContainer,
+  Size,
+  FilterOption,
+  EventTrigger,
+  Format,
+  FallBack,
+} from '@shared/type';
 import { TagProps } from '../Tag';
 import { TriggerProps } from '../Trigger';
 
@@ -18,12 +25,12 @@ export interface CascaderProps {
   defaultInputValue?: string;
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
-  expandTrigger?: ExpandTrigger;
+  expandTrigger?: EventTrigger;
   placeholder?: string;
-  filterOption?: FilterOption;
+  filterOption?: FilterOption<CascaderOption>;
   popupContainer?: PopupContainer;
   maxTagCount?: number;
-  formatLabel?: FormatLabel;
+  formatLabel?: Format<CascaderOption[]>;
   triggerProps?: TriggerProps;
   // checkStrictly?:boolean;
   loadMore?: LoadMore;
@@ -32,7 +39,9 @@ export interface CascaderProps {
   searchDelay?: number;
   fieldNames?: Record<string, string>;
   valueKey?: string;
-  fallback?: FallBack;
+  fallback?:
+    | boolean
+    | FallBack<CascaderOptionValue | CascaderOptionValue[], string>;
   expandChild?: boolean;
   // virtual-list-props
   tagNowrap?: boolean;
@@ -85,17 +94,7 @@ export type CascaderOptionProps = {
   nodePath?: CascaderOptionProps[];
 } & CascaderOption;
 
-export type ExpandTrigger = 'click' | 'hover';
-
 export type LoadMore = (
   option: CascaderOption,
   done: (children?: CascaderOption[]) => void
 ) => void;
-
-export type FallBack =
-  | boolean
-  | ((value: CascaderOptionValue | CascaderOptionValue[]) => string);
-
-type FormatLabel = (options: CascaderOption[]) => string;
-
-type FilterOption = (inputValue: string, option: CascaderOption) => boolean;

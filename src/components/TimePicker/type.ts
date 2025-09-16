@@ -51,13 +51,13 @@ export interface TimePickerSlots {
   extra?: () => VNode[];
 }
 
-export type TimeUnit = 'hour' | 'minute' | 'second';
-
 export type TimePickerValue =
   | string
   | number
   | Date
   | (string | number | Date)[];
+
+export type TimeUnit = 'hour' | 'minute' | 'second';
 
 export type TimePickerType = 'time' | 'time-range';
 

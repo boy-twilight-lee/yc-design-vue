@@ -17,8 +17,8 @@ export interface BadgeSlots {
 }
 
 export type BadgeStatus =
-  | 'normal'
-  | 'processing'
   | 'success'
   | 'warning'
-  | 'danger';
+  | 'danger'
+  | 'normal'
+  | 'processing';

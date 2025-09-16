@@ -3,18 +3,18 @@ import {
   SelectOptionData,
   VirtualListProps,
 } from '@/components/Select';
-import { PopupContainer, ObjectType } from '@shared/type';
+import { PopupContainer, ObjectType, FilterOption } from '@shared/type';
 import { TriggerProps } from '@/components/Trigger';
 import { VNode } from 'vue';
 
-export type AutoCompleteProps = {
+export interface AutoCompleteProps {
   modelValue?: string;
   defaultValue?: string;
   disabled?: boolean;
   data?: SelectOption[];
   popupContainer?: PopupContainer;
   strict?: boolean;
-  filterOption?: FilterOption;
+  filterOption?: FilterOption<SelectOptionData>;
   triggerProps?: TriggerProps;
   allowClear?: boolean;
   vistualListProps?: VirtualListProps;
@@ -22,7 +22,7 @@ export type AutoCompleteProps = {
   isSelectSetValue?: boolean;
   isSearch?: boolean;
   type?: 'textarea' | 'input';
-};
+}
 
 export interface AutoCompleteEmits {
   (e: 'update:modelValue', value: string): void;
@@ -51,5 +51,3 @@ export interface AutoCompleteExpose {
   getMirrorRef(): HTMLDivElement | undefined;
   updatePosition(x: number, y: number): void;
 }
-
-type FilterOption = (inputValue: string, option: SelectOptionData) => boolean;

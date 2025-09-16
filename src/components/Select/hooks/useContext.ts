@@ -13,7 +13,7 @@ import {
   SelectOptionData,
   SelectEmits,
   SelectProps as _SelectProps,
-  OptionValue,
+  SelectOptionValue,
 } from '../type';
 import { InputInstance } from '@/components/Input';
 import { ObjectType, Required } from '@shared/type';
@@ -35,7 +35,7 @@ type SelectContext = {
   slots: Slots;
   blur: () => void;
   filterOption: (option: SelectOptionData) => boolean;
-  getValue: (value: OptionValue | ObjectType) => OptionValue;
+  getValue: (value: SelectOptionValue | ObjectType) => SelectOptionValue;
   collectOption: (props: ObjectType, optionLabel: Ref<string>) => void;
   emits: SelectEmits;
 };
@@ -178,7 +178,7 @@ export default () => {
       emits,
     });
     // 获取value
-    function getValue(value: OptionValue): OptionValue {
+    function getValue(value: SelectOptionValue): SelectOptionValue {
       return (value as ObjectType)?.[valueKey.value] ?? value;
     }
     // 失焦

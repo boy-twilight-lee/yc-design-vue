@@ -1,6 +1,5 @@
-import { RenderContent, Size } from '@shared/type';
-import { ResponsiveValue } from '../Grid';
 import { CSSProperties, VNode } from 'vue';
+import { RenderContent, Size, ResponsiveValue } from '@shared/type';
 
 export interface DescriptionsProps {
   data?: DescData[];

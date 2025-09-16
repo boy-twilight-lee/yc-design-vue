@@ -1,4 +1,4 @@
-import { Size, ObjectType } from '@shared/type';
+import { Size, ObjectType, Format } from '@shared/type';
 import { TagProps } from '@/components/Tag';
 import { VNode } from 'vue';
 
@@ -15,7 +15,7 @@ export interface InputTagProps {
   size?: Size;
   maxTagCount?: number;
   retainInputValue?: InputRetainValue;
-  formatTag?: FormatTag;
+  formatTag?: Format<TagData>;
   uniqueValue?: boolean;
   tagNowrap?: boolean;
   fieldNames?: Record<string, string>;
@@ -45,6 +45,8 @@ export interface InputTagExpose {
   blur(): void;
 }
 
+export type InputTagValue = (string | number | TagData)[];
+
 export type TagData =
   | {
       id?: string;
@@ -55,8 +57,4 @@ export type TagData =
     }
   | ObjectType;
 
-export type InputTagValue = (string | number | TagData)[];
-
 export type InputRetainValue = boolean | { create?: boolean; blur?: boolean };
-
-export type FormatTag = (data: TagData) => string;

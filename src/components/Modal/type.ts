@@ -105,7 +105,7 @@ export type ModalMethod = {
   confirm: (props: ModalConfig) => ModuleStatus;
 };
 
-export type ModalType = 'info' | 'warning' | 'error' | 'success';
+export type ModalType = 'success' | 'warning' | 'error' | 'info';
 
 export type ModalTitleAlign = 'start' | 'center';
 
