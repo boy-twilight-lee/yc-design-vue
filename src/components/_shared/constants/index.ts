@@ -1,5 +1,5 @@
+import { RecordType } from '@shared/type';
 import { SelectOption } from '@/components/Select';
-import { ObjectType } from '@shared/type';
 import Icon403 from '@shared/icons/Icon403.svg';
 import Icon404 from '@shared/icons/Icon404.svg';
 import Icon500 from '@shared/icons/Icon500.svg';
@@ -15,7 +15,7 @@ import {
 } from '@shared/icons';
 
 // icon映射
-export const TYPE_ICON_MAP: ObjectType = {
+export const TYPE_ICON_MAP: RecordType = {
   success: IconSuccess,
   warning: IconWarning,
   error: IconError,
@@ -31,7 +31,7 @@ export const TYPE_ICON_MAP: ObjectType = {
   'result-success': IconCheck,
 };
 
-export const TYPE_ICON_COLOR_MAP: Record<string, string> = {
+export const TYPE_ICON_COLOR_MAP: RecordType<string> = {
   info: 'rgb(22, 93, 255)',
   success: ' rgb(0, 180, 42)',
   warning: 'rgb(255, 125, 0)',
@@ -41,7 +41,7 @@ export const TYPE_ICON_COLOR_MAP: Record<string, string> = {
   normal: 'rgb(201, 205, 212)',
 };
 
-export const SIZE_MAP: Record<string, number> = {
+export const SIZE_MAP: RecordType<number> = {
   mini: 24,
   small: 28,
   medium: 32,

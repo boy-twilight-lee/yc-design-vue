@@ -8,7 +8,7 @@ import {
   inject as _inject,
 } from 'vue';
 import { PaginationProps as _PaginationProps, PaginationEmits } from '../type';
-import { ObjectType, Required } from '@shared/type';
+import { RecordType, Required } from '@shared/type';
 import { useControlValue, getGlobalConfig, useI18n } from '@shared/utils';
 
 const PAGINATION_CONTEXT_KEY = 'pagination-context';
@@ -25,7 +25,7 @@ interface PaginationContext {
 type PaginationProps = Required<_PaginationProps>;
 
 export default () => {
-  const provide = (props: ObjectType, emits: PaginationEmits) => {
+  const provide = (props: RecordType, emits: PaginationEmits) => {
     const {
       disabled,
       current,

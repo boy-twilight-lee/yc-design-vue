@@ -20,12 +20,18 @@ export interface MessageContainerProps {
   position?: MessagePostion;
 }
 
+export type MessagePostion = 'top' | 'bottom';
+
+export type MessageType =
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'loading'
+  | 'normal';
+
 export type MessageConfig = Omit<MessageProps, 'type' | 'onDestory'> &
   MessageContainerProps;
-
-export type MessageReturn = {
-  close?: () => void;
-};
 
 export type MessageMethod = {
   info: (config: string | MessageConfig) => MessageReturn;
@@ -37,12 +43,6 @@ export type MessageMethod = {
   clear: (position: MessagePostion) => MessageReturn;
 };
 
-export type MessagePostion = 'top' | 'bottom';
-
-export type MessageType =
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'loading'
-  | 'normal';
+export type MessageReturn = {
+  close?: () => void;
+};

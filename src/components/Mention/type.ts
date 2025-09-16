@@ -1,5 +1,5 @@
 import { SelectOption, SelectOptionValue } from '@/components/Select';
-import { ObjectType } from '@shared/type';
+import { RecordType } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface MentionProps {
@@ -30,7 +30,7 @@ export interface MentionExpose {
 }
 
 export interface MentionSlots {
-  option?: (scope: { data: ObjectType }) => VNode[];
+  option?: (scope: { data: RecordType }) => VNode[];
 }
 
 export type MentionType = 'input' | 'textarea';

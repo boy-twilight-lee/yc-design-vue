@@ -1,5 +1,5 @@
-import { TargetContainer } from '@shared/type';
 import { VNode } from 'vue';
+import { TargetContainer } from '@shared/type';
 
 export interface BackTopProps {
   visibleHeight?: number;

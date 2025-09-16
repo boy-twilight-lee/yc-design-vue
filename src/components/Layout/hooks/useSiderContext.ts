@@ -6,7 +6,7 @@ import {
   ref,
   computed,
 } from 'vue';
-import { Theme, Required, ObjectType } from '@shared/type';
+import { Theme, Required, RecordType } from '@shared/type';
 import { useControlValue } from '@shared/utils';
 import { LayoutSiderEmits, LayoutSiderProps } from '../type';
 
@@ -17,7 +17,7 @@ export type LayoutContext = {
 };
 
 export default () => {
-  const provide = (props: ObjectType, emits: LayoutSiderEmits) => {
+  const provide = (props: RecordType, emits: LayoutSiderEmits) => {
     const { collapsed, defaultCollapsed, theme } = toRefs(
       props as Required<LayoutSiderProps>
     );

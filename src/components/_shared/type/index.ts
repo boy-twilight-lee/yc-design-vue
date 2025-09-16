@@ -48,16 +48,16 @@ export type ClassName =
   | Record<string, boolean>
   | (string | Record<string, boolean>)[];
 
-export type RenderContent = string | ObjectType[] | RenderFunction;
+export type RenderContent = string | RecordType[] | RenderFunction;
 
-export type ObjectType = Record<string, any>;
+export type RecordType<T = any> = Record<string, T>;
+
+export type Required<T> = {
+  [P in keyof T]-?: T[P] extends object ? Required<T[P]> : T[P];
+};
 
 export type FilterOption<T> = (inputValue: string, option: T) => boolean;
 
 export type Format<T> = (value: T) => string;
 
 export type FallBack<K, R> = (value: K) => R;
-
-export type Required<T> = {
-  [P in keyof T]-?: T[P] extends object ? Required<T[P]> : T[P];
-};

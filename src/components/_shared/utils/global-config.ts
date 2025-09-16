@@ -1,5 +1,5 @@
 import { toRefs, inject, ref, isReactive, reactive, Ref, computed } from 'vue';
-import { ObjectType, PopupContainer, Size } from '@shared/type';
+import { RecordType, PopupContainer, Size } from '@shared/type';
 import { isBoolean, isString, isUndefined } from '../utils';
 
 export const CONFIG_PROVIDER_PROVIDE_KEY = 'config-props';
@@ -7,7 +7,7 @@ export const CONFIG_PROVIDER_PROVIDE_KEY = 'config-props';
 export interface ConfigProviderProvide {
   zIndex: Ref<number>;
   size: Ref<Size>;
-  locale: Ref<ObjectType | undefined>;
+  locale: Ref<RecordType | undefined>;
   popupContainer: Ref<PopupContainer>;
 }
 
@@ -22,7 +22,7 @@ const getVar = (value: Ref<ValueType>, _value: Ref<ValueType>) => {
   });
 };
 
-export const getGlobalConfig = (props: ObjectType = {}) => {
+export const getGlobalConfig = (props: RecordType = {}) => {
   // 接收值
   const {
     zIndex,

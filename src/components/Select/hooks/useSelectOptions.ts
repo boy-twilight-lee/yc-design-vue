@@ -1,12 +1,11 @@
 import { ref, computed, Ref, onMounted, reactive } from 'vue';
 import { nanoid } from 'nanoid';
-import { ObjectType } from '@shared/type';
+import { RecordType } from '@shared/type';
 import {
+  SelectProps,
   OptionProps,
   SelectValue,
   SelectOption,
-  FallbackOption,
-  FormatLabel,
   SelectOptionData,
   SelectOptionValue,
 } from '../index';
@@ -18,8 +17,8 @@ export default (params: {
   provideOptions: Ref<SelectOption[]>;
   showExtraOptions: Ref<boolean>;
   getValue: (value: SelectOptionValue) => SelectOptionValue;
-  fallbackOption?: FallbackOption;
-  formatLabel?: FormatLabel;
+  fallbackOption?: SelectProps['fallbackOption'];
+  formatLabel?: SelectProps['formatLabel'];
 }) => {
   const {
     computedValue,
@@ -31,7 +30,7 @@ export default (params: {
     formatLabel,
   } = params;
   // optionMap
-  const optionMap = reactive<Map<string, ObjectType>>(new Map());
+  const optionMap = reactive<Map<string, RecordType>>(new Map());
   // 所有的options
   const options = computed(() => [...optionMap.values()]);
   // 创建的options
@@ -65,14 +64,14 @@ export default (params: {
       }
       return {
         id: nanoid(),
-        ...(option as ObjectType),
+        ...(option as RecordType),
       };
     });
   });
   // 选中的value
   const selectValue = computed(() => {
     const value = multiple.value ? computedValue.value : [computedValue.value];
-    return (value as ObjectType[])
+    return (value as RecordType[])
       .map((item) => getValue(item))
       .filter((v) => !isEmpty(v));
   });
@@ -95,7 +94,7 @@ export default (params: {
     return isUndefined(val) || isNull(val) || (isString(val) && !val.length);
   };
   // 收集option
-  const collectOption = (props: ObjectType, optionLabel: Ref<string>) => {
+  const collectOption = (props: RecordType, optionLabel: Ref<string>) => {
     if (props.isFallbackOption) return;
     const id = nanoid();
     // 挂载的时候收集option

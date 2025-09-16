@@ -1,5 +1,5 @@
 import {
-  ObjectType,
+  RecordType,
   RenderContent,
   Size,
   PopupContainer,
@@ -77,8 +77,8 @@ export interface SelectSlots {
   'arrow-icon'?: () => VNode[];
   footer?: () => VNode[];
   header?: () => VNode[];
-  label?: (scope: { data: ObjectType }) => VNode[];
-  option?: (scope: { data: ObjectType }) => VNode[];
+  label?: (scope: { data: RecordType }) => VNode[];
+  option?: (scope: { data: RecordType }) => VNode[];
   empty?: () => VNode[];
 }
 
@@ -114,7 +114,7 @@ export interface OptgroupSlots {
   label?: () => VNode[];
 }
 
-export type SelectOptionValue = string | number | boolean | ObjectType;
+export type SelectOptionValue = string | number | boolean | RecordType;
 
 export type SelectValue = SelectOptionValue | SelectOptionValue[];
 
@@ -133,9 +133,10 @@ export type SelectOption =
   | SelectOptionValue
   | SelectOptionData
   | SelectOptionGroup
-  | ObjectType;
+  | RecordType;
 
 export type VirtualListProps = {
   itemHeight?: number;
   threshold?: number;
+  buffer?: number;
 };

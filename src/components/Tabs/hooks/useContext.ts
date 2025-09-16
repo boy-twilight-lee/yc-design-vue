@@ -12,18 +12,23 @@ import {
   TabsProps as _TabsProps,
   TabKey,
   TabsEmits,
-  TabTrigger,
   TabType,
   TabPositon,
 } from '../type';
-import { Direction, ObjectType, Required, Size } from '@shared/type';
+import {
+  Direction,
+  EventTrigger,
+  RecordType,
+  Required,
+  Size,
+} from '@shared/type';
 import { useControlValue, getGlobalConfig } from '@shared/utils';
 
 const TABS_CONTEXT_KEY = 'tabs-context';
 type TabsContext = {
   computedActiveKey: Ref<TabKey>;
   type: Ref<TabType>;
-  trigger: Ref<TabTrigger>;
+  trigger: Ref<EventTrigger>;
   direction: Ref<Direction>;
   position: Ref<TabPositon>;
   editable: Ref<boolean>;
@@ -43,7 +48,7 @@ export type PaneNode = {
 
 export default () => {
   const provide = (
-    props: ObjectType,
+    props: RecordType,
     emits: TabsEmits,
     listRef: Ref<HTMLDivElement | undefined>
   ) => {

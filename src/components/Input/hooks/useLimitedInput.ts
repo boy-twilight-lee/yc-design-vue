@@ -1,5 +1,5 @@
 import { computed, Ref, ref, toRefs, nextTick } from 'vue';
-import { ObjectType, Required } from '@shared/type';
+import { RecordType, Required } from '@shared/type';
 import { TextareaEmits } from '@/components/Textarea';
 import { InputProps as _InputProps, InputEmits } from '@/components/Input';
 import {
@@ -13,7 +13,7 @@ import useCursor from './useCursor';
 export type InputProps = Required<_InputProps>;
 
 export default (params: {
-  props: ObjectType;
+  props: RecordType;
   emits: InputEmits | TextareaEmits;
   inputRef: Ref<HTMLInputElement | HTMLTextAreaElement | undefined>;
 }) => {

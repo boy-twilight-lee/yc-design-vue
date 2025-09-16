@@ -57,6 +57,16 @@ export interface ModalSlots {
   title?: () => VNode[];
 }
 
+export type ModalType = 'success' | 'warning' | 'error' | 'info';
+
+export type ModalTitleAlign = 'start' | 'center';
+
+export type OnBeforeOk = (
+  done: (closed: boolean) => void
+) => void | boolean | Promise<boolean | void>;
+
+export type OnBeforeCancel = () => boolean;
+
 export type ModalConfig = Omit<
   ModalProps,
   'visible' | 'defaultVisible' | 'popupContainer'
@@ -91,11 +101,6 @@ export type ModalServiceProps = ModalConfig & {
   serviceClose?: () => void;
 };
 
-export type ModalReturn = {
-  close: () => void;
-  update: (config: ModalUpdateConfig) => void;
-};
-
 export type ModalMethod = {
   open: (props: ModalConfig) => ModalReturn;
   success: (props: ModalConfig) => ModalReturn;
@@ -105,12 +110,7 @@ export type ModalMethod = {
   confirm: (props: ModalConfig) => ModuleStatus;
 };
 
-export type ModalType = 'success' | 'warning' | 'error' | 'info';
-
-export type ModalTitleAlign = 'start' | 'center';
-
-export type OnBeforeOk = (
-  done: (closed: boolean) => void
-) => void | boolean | Promise<boolean | void>;
-
-export type OnBeforeCancel = () => boolean;
+export type ModalReturn = {
+  close: () => void;
+  update: (config: ModalUpdateConfig) => void;
+};

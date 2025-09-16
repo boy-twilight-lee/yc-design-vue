@@ -12,7 +12,7 @@ import {
   ButtonProps as _ButtonProps,
   ButtonGroupProps as _ButtonGroupProps,
 } from '../type';
-import { Size, Shape, Required, ObjectType } from '@shared/type';
+import { Size, Shape, Required, RecordType } from '@shared/type';
 import { getGlobalConfig } from '@shared/utils';
 
 const BUTTON_GROUP_CONTEXT_KEY = 'button-group-context';
@@ -27,7 +27,7 @@ type ButtonProps = Required<_ButtonProps>;
 type ButtonGroupProps = Required<_ButtonGroupProps>;
 
 export default () => {
-  const provide = (props: ObjectType) => {
+  const provide = (props: RecordType) => {
     const { type, status, shape, disabled } = toRefs(props as ButtonGroupProps);
     const { size } = getGlobalConfig(props);
     _provide<ButtonContext>(BUTTON_GROUP_CONTEXT_KEY, {
@@ -38,7 +38,7 @@ export default () => {
       disabled,
     });
   };
-  const inject = (props: ObjectType) => {
+  const inject = (props: RecordType) => {
     const { size: globalSize } = getGlobalConfig(props);
     const { type, status, shape, size, disabled } = toRefs(
       props as ButtonProps

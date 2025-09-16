@@ -11,7 +11,7 @@ import {
   ImagePreviewGroupProps as _ImagePreviewGroupProps,
   ImagePreviewGroupEmits,
 } from '../type';
-import { ObjectType, Required } from '@shared/type';
+import { RecordType, Required } from '@shared/type';
 import { findComponentsFromVnodes, useControlValue } from '@shared/utils';
 import Image from '../Image.vue';
 
@@ -23,7 +23,7 @@ type ImageContext = {
 type ImagePreviewGroupProps = Required<_ImagePreviewGroupProps>;
 
 export default () => {
-  const provide = (props: ObjectType, emits: ImagePreviewGroupEmits) => {
+  const provide = (props: RecordType, emits: ImagePreviewGroupEmits) => {
     const {
       srcList: _srcList,
       current,

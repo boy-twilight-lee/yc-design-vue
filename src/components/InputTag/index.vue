@@ -95,7 +95,7 @@ import {
   InputTagSlots,
   InputTagExpose,
 } from './type';
-import { ObjectType } from '@shared/type';
+import { RecordType } from '@shared/type';
 import { nanoid } from 'nanoid';
 import { useElementSize } from '@vueuse/core';
 import {
@@ -181,7 +181,7 @@ const computedValue = useControlValue<InputTagValue>(
     const { id, label, value, closable, tagProps } = fieldKey.value;
     return val.map((v) => {
       if (isObject(v)) {
-        const val = v as ObjectType;
+        const val = v as RecordType;
         val[id] = val[id] ?? nanoid();
         val[closable] = val[closable] ?? true;
         val[tagProps] = val[tagProps] ?? {
@@ -190,7 +190,7 @@ const computedValue = useControlValue<InputTagValue>(
         };
         return v;
       }
-      const tagData: ObjectType = {};
+      const tagData: RecordType = {};
       tagData[id] = nanoid();
       tagData[label] = v;
       tagData[value] = v;
@@ -218,7 +218,7 @@ const curList = computed(() => {
       ? computedValue.value.slice(0, maxTagCount.value)
       : computedValue.value;
   return {
-    visibleList: visibleList as ObjectType,
+    visibleList: visibleList as RecordType,
     hideList: computedValue.value.slice(maxTagCount.value),
   };
 });
@@ -268,13 +268,13 @@ const handleEvent = (type: string, e: Event, id?: string) => {
           !uniqueValue.value ||
           (uniqueValue.value &&
             !computedValue.value.find(
-              (item) => ((item as ObjectType)?.[value] ?? item) == inputVal
+              (item) => ((item as RecordType)?.[value] ?? item) == inputVal
             ));
 
         if (!inputVal || !allowCreate.value || !isUnique) {
           return;
         }
-        const tagData: ObjectType = {};
+        const tagData: RecordType = {};
         tagData[id] = nanoid();
         tagData[label] = computedInputValue.value;
         tagData[value] = computedInputValue.value;

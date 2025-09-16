@@ -81,7 +81,7 @@ import { ref, toRefs, watch } from 'vue';
 import { parseColor } from '@shared/utils';
 import { ColorFormat } from '@/components/ColorPicker/type';
 import { COLOR_PICKER_FORMAT_OPTIONS } from '@shared/constants';
-import { ObjectType } from '@shared/type';
+import { RecordType } from '@shared/type';
 import YcSelect from '@/components/Select';
 import YcInput from '@/components/Input';
 import YcInputNumber from '@/components/InputNumber';
@@ -104,7 +104,7 @@ const format = ref<ColorFormat>('hex');
 // hex
 const hex = ref<string>('');
 // rgb对象
-const rgb = ref<ObjectType>({});
+const rgb = ref<RecordType>({});
 // alpha
 const alpha = ref<number>(_alpha.value);
 // 处理设置

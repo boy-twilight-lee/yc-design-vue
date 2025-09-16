@@ -1,6 +1,6 @@
 import {
   EventTrigger,
-  ObjectType,
+  RecordType,
   PopupContainer,
   PopupMaxHeight,
 } from '@shared/type';
@@ -102,7 +102,7 @@ export interface DropdownButtonSlots {
   icon?: () => VNode[];
 }
 
-export type DoptionValue = string | number | boolean | ObjectType;
+export type DoptionValue = string | number | boolean | RecordType;
 
 export type DropdownPosition = 'top' | 'tr' | 'tl' | 'bottom' | 'br' | 'bl';
 

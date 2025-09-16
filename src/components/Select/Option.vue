@@ -51,7 +51,7 @@
 <script lang="ts" setup>
 import { toRefs, ref, computed, Ref } from 'vue';
 import { OptionProps, OptionSlots } from './type';
-import { ObjectType } from '@shared/type';
+import { RecordType } from '@shared/type';
 import { isUndefined, getDomText } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcCheckbox from '@/components/Checkbox';
@@ -94,7 +94,7 @@ const optionLabel = computed(() => {
 // value
 const checked = computed(() => {
   if (!multiple.value) return false;
-  const index = (computedValue.value as ObjectType[]).findIndex((item) => {
+  const index = (computedValue.value as RecordType[]).findIndex((item) => {
     return getValue(item) === getValue(optionValue.value);
   });
   return index != -1;
@@ -108,7 +108,7 @@ const handleSingle = () => {
 };
 // 处理多选
 const handleMuti = (v: boolean) => {
-  const curValue = computedValue.value as ObjectType[];
+  const curValue = computedValue.value as RecordType[];
   const { value } = optionValue;
   if (!v) {
     computedValue.value = curValue.filter((item) => item != value);

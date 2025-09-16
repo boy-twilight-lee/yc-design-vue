@@ -28,10 +28,6 @@ export interface NotificationContainerProps {
 export type NotificationConfig = Omit<NotificationProps, 'type' | 'onDestory'> &
   NotificationContainerProps;
 
-export type NotificationReturn = {
-  close?: () => void;
-};
-
 export type NotificationMethods = {
   info: (config: string | NotificationConfig) => NotificationReturn;
   success: (config: string | NotificationConfig) => NotificationReturn;
@@ -39,6 +35,10 @@ export type NotificationMethods = {
   error: (config: string | NotificationConfig) => NotificationReturn;
   remove: (id: string) => void;
   clear: (position: NotificationPosition) => NotificationReturn;
+};
+
+export type NotificationReturn = {
+  close?: () => void;
 };
 
 export type NotificationPosition =

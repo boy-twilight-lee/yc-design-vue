@@ -16,11 +16,10 @@ import {
   CascaderOption,
   CascaderOptionValue,
   CascaderOptionProps,
-  ExpandTrigger,
   LoadMore,
 } from '../type';
 import { InputInstance } from '@/components/Input';
-import { ObjectType, Required } from '@shared/type';
+import { EventTrigger, RecordType, Required } from '@shared/type';
 import {
   isObject,
   useControlValue,
@@ -42,7 +41,7 @@ type CascaderContext = {
   pathMode: Ref<boolean>;
   multiple: Ref<boolean>;
   loading: Ref<boolean>;
-  expandTrigger: Ref<ExpandTrigger>;
+  expandTrigger: Ref<EventTrigger>;
   expandChild: Ref<boolean>;
   slots: Slots;
   blur: () => void;
@@ -207,7 +206,7 @@ function transformField(
 
 export default () => {
   const provide = (
-    props: ObjectType,
+    props: RecordType,
     emits: CascaderEmits,
     inputRef: Ref<InputInstance | undefined>
   ) => {
@@ -338,7 +337,7 @@ export default () => {
           }
           return null;
         })
-        .filter((v) => v) as ObjectType[];
+        .filter((v) => v) as RecordType[];
     });
     // 当前的层级
     const curLevel = ref<number>(1);

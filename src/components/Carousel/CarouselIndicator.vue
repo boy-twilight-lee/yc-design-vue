@@ -40,12 +40,12 @@
 </template>
 
 <script lang="ts" setup>
-import { IndicatorTrigger, IndicatorType, IndicatorPosition } from './type';
-import { ClassName } from '@shared/type';
+import { IndicatorType, IndicatorPosition } from './type';
+import { ClassName, EventTrigger } from '@shared/type';
 import { valueToPx } from '@shared/utils';
 import useContext from './hooks/useContext';
 defineProps<{
-  trigger: IndicatorTrigger;
+  trigger: EventTrigger;
   indicatorType: IndicatorType;
   indicatorPosition: IndicatorPosition;
   indicatorClass: ClassName;

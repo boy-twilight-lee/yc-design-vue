@@ -8,7 +8,7 @@ import {
   inject as _inject,
 } from 'vue';
 import { AnchorProps as _AnchorProps } from '../type';
-import { ObjectType, Required } from '@shared/type';
+import { RecordType, Required } from '@shared/type';
 import {
   getElement,
   findFirstScrollableParent,
@@ -30,7 +30,7 @@ type AnchorProps = Required<_AnchorProps>;
 
 export default () => {
   const provide = (
-    props: ObjectType,
+    props: RecordType,
     listRef: Ref<HTMLDivElement | undefined>
   ) => {
     const {

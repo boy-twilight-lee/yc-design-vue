@@ -10,8 +10,8 @@ import {
   provide as _provide,
   inject as _inject,
 } from 'vue';
-import { Gutter } from '../type';
-import { ObjectType, BreakpointName, ResponsiveValue } from '@shared/type';
+import { GridRowGutter } from '../type';
+import { RecordType, BreakpointName, ResponsiveValue } from '@shared/type';
 import { getBreakpointValue, isArray } from '@shared/utils';
 import { nanoid } from 'nanoid';
 
@@ -34,10 +34,10 @@ export type SpanMap = Map<
     suffix: boolean;
   }
 >;
-export type GutterValue = Gutter | [Gutter, Gutter];
+export type GutterValue = GridRowGutter | [GridRowGutter, GridRowGutter];
 
 export default () => {
-  const provide = (props: ObjectType) => {
+  const provide = (props: RecordType) => {
     const {
       gutter: _gutter = ref<GutterValue>(0),
       cols: _cols = ref(24),

@@ -11,7 +11,7 @@ import {
   CheckboxValue,
   CheckboxGroupEmits,
 } from '../type';
-import { ObjectType, Required } from '@shared/type';
+import { RecordType, Required } from '@shared/type';
 import { isObject, useControlValue } from '@shared/utils';
 
 const CHECKBOX_GROUP_CONTEXT_KEY = 'checkbox-group-context';
@@ -24,7 +24,7 @@ type CheckboxContext = {
 type CheckboxGroupProps = Required<_CheckboxGroupProps>;
 
 export default () => {
-  const provide = (props: ObjectType, emits: CheckboxGroupEmits) => {
+  const provide = (props: RecordType, emits: CheckboxGroupEmits) => {
     const {
       modelValue,
       defaultValue,
@@ -45,7 +45,7 @@ export default () => {
     const options = computed(() => {
       return _options.value.map((item) => {
         return isObject(item) ? item : { label: item, value: item };
-      }) as ObjectType[];
+      }) as RecordType[];
     });
     _provide<CheckboxContext>(CHECKBOX_GROUP_CONTEXT_KEY, {
       computedValue,

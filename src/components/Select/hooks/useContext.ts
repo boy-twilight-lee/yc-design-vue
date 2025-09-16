@@ -16,7 +16,7 @@ import {
   SelectOptionValue,
 } from '../type';
 import { InputInstance } from '@/components/Input';
-import { ObjectType, Required } from '@shared/type';
+import { RecordType, Required } from '@shared/type';
 import { isBoolean, isFunction, useControlValue } from '@shared/utils';
 import useSelectOptions from './useSelectOptions';
 import useSelectHotkeys from './useSelectHotkeys';
@@ -29,21 +29,21 @@ type SelectContext = {
   limit: Ref<number>;
   curIndex: Ref<number>;
   options: Ref<SelectOptionData[]>;
-  renderOptions: Ref<ObjectType[]>;
+  renderOptions: Ref<RecordType[]>;
   fieldKey: Ref<Record<string, string>>;
   isEmpty: Ref<boolean>;
   slots: Slots;
   blur: () => void;
   filterOption: (option: SelectOptionData) => boolean;
-  getValue: (value: SelectOptionValue | ObjectType) => SelectOptionValue;
-  collectOption: (props: ObjectType, optionLabel: Ref<string>) => void;
+  getValue: (value: SelectOptionValue | RecordType) => SelectOptionValue;
+  collectOption: (props: RecordType, optionLabel: Ref<string>) => void;
   emits: SelectEmits;
 };
 type SelectProps = Required<_SelectProps>;
 
 export default () => {
   const provide = (
-    props: ObjectType,
+    props: RecordType,
     emits: SelectEmits,
     inputRef: Ref<InputInstance | undefined>
   ) => {
@@ -179,7 +179,7 @@ export default () => {
     });
     // 获取value
     function getValue(value: SelectOptionValue): SelectOptionValue {
-      return (value as ObjectType)?.[valueKey.value] ?? value;
+      return (value as RecordType)?.[valueKey.value] ?? value;
     }
     // 失焦
     function blur() {
@@ -195,7 +195,7 @@ export default () => {
       options,
       isEmpty,
       fieldKey,
-      renderOptions: renderOptions as Ref<ObjectType[]>,
+      renderOptions: renderOptions as Ref<RecordType[]>,
       slots: useSlots(),
       filterOption,
       blur,

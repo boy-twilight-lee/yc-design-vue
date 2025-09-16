@@ -1,11 +1,11 @@
+import { VNode } from 'vue';
+import { PopupContainer, RecordType, FilterOption } from '@shared/type';
 import {
   SelectOption,
   SelectOptionData,
   VirtualListProps,
 } from '@/components/Select';
-import { PopupContainer, ObjectType, FilterOption } from '@shared/type';
 import { TriggerProps } from '@/components/Trigger';
-import { VNode } from 'vue';
 
 export interface AutoCompleteProps {
   modelValue?: string;
@@ -39,7 +39,7 @@ export interface AutoCompleteEmits {
 }
 
 export interface AutoCompleteSlots {
-  option?: (scope: { data: ObjectType }) => VNode[];
+  option?: (scope: { data: RecordType }) => VNode[];
   footer?: () => VNode[];
   trigger?: () => VNode[];
 }

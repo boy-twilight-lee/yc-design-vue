@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue';
 import { useVirtualList } from '@vueuse/core';
-import { ObjectType } from '@shared/type';
+import { RecordType } from '@shared/type';
 import { getSlotFunction } from '@shared/utils';
 import useContext from './hooks/useContext';
 import { Option as YcOption, VirtualListProps } from './index';
@@ -34,7 +34,7 @@ const { list, wrapperProps, containerProps } = useVirtualList(renderOptions, {
   itemHeight: virtualListProps.value?.itemHeight || 36,
 });
 // 渲染label
-const renderLabel = (option: ObjectType) => {
+const renderLabel = (option: RecordType) => {
   if (slots.option) {
     return () =>
       slots.option?.({

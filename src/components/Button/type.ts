@@ -1,5 +1,5 @@
-import { Shape, Size } from '@shared/type';
 import { VNode } from 'vue';
+import { Shape, Size } from '@shared/type';
 
 export interface ButtonProps {
   type?: ButtonType;

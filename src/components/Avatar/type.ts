@@ -1,6 +1,6 @@
 import { CSSProperties, VNode } from 'vue';
-import { TriggerProps } from '../Trigger';
 import { Shape, ObjectFit } from '@shared/type';
+import { TriggerProps } from '@/components/Trigger';
 
 export interface AvatarProps {
   shape?: AvatarShape;

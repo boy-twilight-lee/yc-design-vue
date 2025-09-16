@@ -1,4 +1,4 @@
-import { Size, ObjectType, Format } from '@shared/type';
+import { Size, RecordType, Format } from '@shared/type';
 import { VNode } from 'vue';
 export interface InputNumberProps {
   modelValue?: InputNumberValue;
@@ -17,7 +17,7 @@ export interface InputNumberProps {
   formatter?: Format<string>;
   parser?: InputNumberParser;
   readonly?: boolean;
-  inputAttrs?: ObjectType;
+  inputAttrs?: RecordType;
 }
 
 export interface InputNumberEmits {

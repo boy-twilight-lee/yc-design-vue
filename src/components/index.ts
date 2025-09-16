@@ -89,13 +89,7 @@ import {
 import { default as Tabs, TabPane } from './Tabs';
 import VerificationCode from './VerificationCode';
 import Watermark from './Watermark';
-export type {
-  Size,
-  Direction,
-  Theme,
-  TargetContainer,
-  PopupContainer,
-} from '@shared/type';
+export * from '@shared/type';
 export * from './Affix';
 export * from './Alert';
 export * from './Anchor';

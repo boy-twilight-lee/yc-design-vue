@@ -31,7 +31,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, watch } from 'vue';
 import { StatisticProps, StatisticEmits, StatisticSlots } from './type';
-import { ObjectType } from '@shared/type';
+import { RecordType } from '@shared/type';
 import {
   isNumber,
   formatSeconds,
@@ -105,7 +105,7 @@ watch(
       },
       duration: animationDuration.value,
       easeing: easeing.value,
-      onUpdate: (current: ObjectType) => {
+      onUpdate: (current: RecordType) => {
         valueRef.value!.textContent = getFormatValue(current.textContent);
       },
       onFinish() {

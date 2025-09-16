@@ -7,12 +7,12 @@ import {
   provide as _provide,
 } from 'vue';
 import {
-  FormatTooltip,
+  SliderProps,
   SliderEmits,
   SliderValue,
   SliderProps as _SliderProps,
 } from '../type';
-import { Direction, ObjectType, Required } from '@shared/type';
+import { Direction, RecordType, Required } from '@shared/type';
 import { useControlValue, isArray } from '@shared/utils';
 
 const SLIDER_CONTEXT_KEY = 'slider-context';
@@ -29,7 +29,7 @@ type SliderContext = {
   showTooltip: Ref<boolean>;
   disabled: Ref<boolean>;
   trackRef: Ref<HTMLDivElement | undefined>;
-  formatTooltip?: FormatTooltip;
+  formatTooltip?: SliderProps['formatTooltip'];
   normalizeValue: (value: number) => number;
   denormalizeValue: (value: number) => number;
 };
@@ -37,7 +37,7 @@ type SliderProp = Required<_SliderProps>;
 
 export default () => {
   const provide = (
-    props: ObjectType,
+    props: RecordType,
     emits: SliderEmits,
     trackRef: Ref<HTMLDivElement | undefined>
   ) => {

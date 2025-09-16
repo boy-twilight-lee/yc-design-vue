@@ -14,7 +14,7 @@ import {
   DescData,
   DescriptionsProps as _DescriptionsProps,
 } from '../type';
-import { ObjectType, Required, Size, BreakpointName } from '@shared/type';
+import { RecordType, Required, Size, BreakpointName } from '@shared/type';
 import {
   getGlobalConfig,
   findComponentsFromVnodes,
@@ -35,7 +35,7 @@ type DescriptionsContext = {
 type DescriptionsProps = Required<_DescriptionsProps>;
 
 export default () => {
-  const provide = (props: ObjectType) => {
+  const provide = (props: RecordType) => {
     const {
       data: _data,
       column: _column,

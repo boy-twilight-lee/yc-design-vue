@@ -7,8 +7,8 @@ import {
   Format,
   FallBack,
 } from '@shared/type';
-import { TagProps } from '../Tag';
-import { TriggerProps } from '../Trigger';
+import { TagProps } from '@/components/Tag';
+import { TriggerProps } from '@/components/Trigger';
 
 export interface CascaderProps {
   pathMode?: boolean;

@@ -2,11 +2,11 @@ import { nextTick, Ref, ref, toRefs, computed, watch } from 'vue';
 import { onClickOutside, useEventListener, unrefElement } from '@vueuse/core';
 import { TriggerEmits } from '../type';
 import { default as useContext, TriggerProps } from './useContext';
-import { ObjectType } from '@shared/type';
+import { RecordType } from '@shared/type';
 import { findFirstScrollableParent, useControlValue } from '@shared/utils';
 
 export default (params: {
-  props: ObjectType;
+  props: RecordType;
   emits: TriggerEmits;
   popupRef: Ref<HTMLDivElement | undefined>;
   triggerRef: Ref<HTMLElement | undefined>;
