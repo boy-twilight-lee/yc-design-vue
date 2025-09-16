@@ -59,7 +59,7 @@ import useContext from './hooks/useContext';
 defineOptions({
   name: 'Avatar',
 });
-defineSlots<AvatarSlots>();
+const $slots = defineSlots<AvatarSlots>();
 const props = withDefaults(defineProps<AvatarProps>(), {
   shape: undefined,
   imageUrl: '',

@@ -37,9 +37,9 @@ const open = (props: DrawerConfig) => {
 const Drawer = Object.assign(_Drawer, {
   install: (app: App) => {
     app.component('Yc' + _Drawer.name, _Drawer);
-    app.config.globalProperties.$drawer = Object.assign(_Drawer, {
+    app.config.globalProperties.$drawer = {
       open,
-    });
+    };
   },
   open,
 });

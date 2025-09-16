@@ -116,7 +116,7 @@ defineOptions({
   name: 'TimePicker',
   inheritAttrs: false,
 });
-defineSlots<TimePickerSlots>();
+const $slots = defineSlots<TimePickerSlots>();
 const props = withDefaults(defineProps<TimePickerProps>(), {
   type: 'time',
   modelValue: undefined,

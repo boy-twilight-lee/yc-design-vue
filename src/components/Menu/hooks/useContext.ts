@@ -248,8 +248,8 @@ export default () => {
     // 扁平化的树节点
     const menuTreeNodes = computed(() => {
       return FlattenMenuTree(slots.default?.() || [], [
-        SubMenu.name,
-        MenuItem.name,
+        SubMenu.name ?? '',
+        MenuItem.name ?? '',
       ]);
     });
     // menuItemdoms

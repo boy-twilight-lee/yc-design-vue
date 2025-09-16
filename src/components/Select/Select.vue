@@ -139,7 +139,7 @@ import { default as YcTrigger, TriggerInstance } from '@/components/Trigger';
 defineOptions({
   name: 'Select',
 });
-defineSlots<SelectSlots>();
+const $slots = defineSlots<SelectSlots>();
 const props = withDefaults(defineProps<SelectProps>(), {
   multiple: false,
   modelValue: undefined,

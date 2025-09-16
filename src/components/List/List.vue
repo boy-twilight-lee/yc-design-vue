@@ -50,7 +50,7 @@
           <!-- empty -->
           <component
             v-if="!$slots.default && !curList.length"
-            :is="slots.empty || YcEmpty"
+            :is="$slots.empty || YcEmpty"
           />
           <!-- footer -->
           <div v-if="$slots.footer" class="yc-list-footer">
@@ -94,7 +94,7 @@ import YcEmpty from '@/components/Empty';
 defineOptions({
   name: 'List',
 });
-const slots = defineSlots<ListSlots>();
+const $slots = defineSlots<ListSlots>();
 const props = withDefaults(defineProps<ListProps>(), {
   data: () => [],
   size: undefined,

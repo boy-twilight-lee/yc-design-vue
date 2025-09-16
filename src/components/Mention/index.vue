@@ -49,7 +49,7 @@ import {
 defineOptions({
   name: 'Mention',
 });
-defineSlots<MentionSlots>();
+const $slots = defineSlots<MentionSlots>();
 const props = withDefaults(defineProps<MentionProps>(), {
   modelValue: undefined,
   defaultValue: '',

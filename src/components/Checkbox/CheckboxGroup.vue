@@ -33,7 +33,7 @@ import YcCheckbox from './Checkbox.vue';
 defineOptions({
   name: 'CheckboxGroup',
 });
-defineSlots<CheckboxGroupSlots>();
+const $slots = defineSlots<CheckboxGroupSlots>();
 const props = withDefaults(defineProps<CheckboxGroupProps>(), {
   modelValue: undefined,
   defaultValue: () => [],

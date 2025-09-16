@@ -48,7 +48,7 @@
         :recordDate="recordDate"
         @cell-click="handleClick"
       >
-        <template v-if="$slots.default" #default="scope">
+        <template v-if="slots.default" #default="scope">
           <slot v-bind="scope" />
         </template>
       </month-calendar>
@@ -58,7 +58,7 @@
         :record-date="recordDate"
         @cell-click="handleClick"
       >
-        <template v-if="$slots.default" #default="scope">
+        <template v-if="slots.default" #default="scope">
           <slot v-bind="scope" />
         </template>
       </year-calendar>
@@ -87,7 +87,7 @@ import YearCalendar from './CalendarYear.vue';
 defineOptions({
   name: 'Calendar',
 });
-defineSlots<CalendarSlots>();
+const slots = defineSlots<CalendarSlots>();
 const props = withDefaults(defineProps<CalendarProps>(), {
   modelValue: undefined,
   defaultValue: () => new Date(),

@@ -51,7 +51,7 @@ import YcScrollbar from '@/components/Scrollbar';
 defineOptions({
   name: 'Dropdown',
 });
-defineSlots<DropdownSlots>();
+const $slots = defineSlots<DropdownSlots>();
 const props = withDefaults(defineProps<DropdownProps>(), {
   popupVisible: undefined,
   defaultPopupVisible: false,

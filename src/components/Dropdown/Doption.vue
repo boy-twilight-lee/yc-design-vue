@@ -29,7 +29,7 @@ import useContext from './hooks/useContext';
 defineOptions({
   name: 'Doption',
 });
-defineSlots<DoptionSlots>();
+const $slots = defineSlots<DoptionSlots>();
 const props = withDefaults(defineProps<DoptionProps>(), {
   disabled: false,
   isActive: false,

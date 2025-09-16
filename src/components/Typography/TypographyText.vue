@@ -16,5 +16,5 @@ import { TypographyBaseSlots } from './type';
 defineOptions({
   name: 'TypographyText',
 });
-defineSlots<TypographyBaseSlots>();
+const $slots = defineSlots<TypographyBaseSlots>();
 </script>

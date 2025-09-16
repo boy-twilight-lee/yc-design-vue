@@ -46,7 +46,7 @@ import YcSpin from '@/components/Spin';
 defineOptions({
   name: 'Button',
 });
-const slots = defineSlots<ButtonSlots>();
+const $slots = defineSlots<ButtonSlots>();
 const props = withDefaults(defineProps<ButtonProps>(), {
   type: undefined,
   status: undefined,
@@ -82,7 +82,7 @@ const className = computed(() => {
       'yc-button-long': long.value,
       'yc-button-loading': loading.value,
       'yc-button-disabled': disabled.value,
-      'yc-button-only-icon': !slots.default,
+      'yc-button-only-icon': !$slots.default,
     },
   ];
 });

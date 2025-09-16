@@ -1,6 +1,6 @@
 <template>
   <yc-spin v-if="loading" :size="12" class="yc-cascader-loading-icon">
-    <template v-if="$slots['loading-icon']" #icon>
+    <template v-if="slots['loading-icon']" #icon>
       <component :is="renderIcon('loading-icon')" />
     </template>
   </yc-spin>

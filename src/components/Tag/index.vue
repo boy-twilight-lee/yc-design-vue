@@ -56,7 +56,7 @@ import { IconButton } from '@shared/components';
 defineOptions({
   name: 'Tag',
 });
-defineSlots<TagSlots>();
+const $slots = defineSlots<TagSlots>();
 const props = withDefaults(defineProps<TagProps>(), {
   color: 'default',
   size: undefined,

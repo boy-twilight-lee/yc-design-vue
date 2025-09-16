@@ -4,7 +4,7 @@ import { isUndefined } from '../utils';
 type OnSet = (...args: any) => any;
 type OnGet = (...args: any) => any;
 
-export default <T>(
+export const useControlValue = <T>(
   modelValue: Ref<T | undefined>,
   defaultValue: T,
   onSet: OnSet = (data: T) => data,

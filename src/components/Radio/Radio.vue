@@ -45,7 +45,7 @@ import { IconButton } from '@shared/components';
 defineOptions({
   name: 'Radio',
 });
-defineSlots<RadioSlots>();
+const $slots = defineSlots<RadioSlots>();
 const props = withDefaults(defineProps<RadioProps>(), {
   modelValue: undefined,
   defaultChecked: false,

@@ -94,7 +94,7 @@ import useContext from './hooks/useContext';
 defineOptions({
   name: 'Descriptions',
 });
-defineSlots<DescriptionsSlots>();
+const $slots = defineSlots<DescriptionsSlots>();
 const props = withDefaults(defineProps<DescriptionsProps>(), {
   data: () => [],
   column: 3,

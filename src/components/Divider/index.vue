@@ -24,7 +24,7 @@ import { isUndefined, valueToPx } from '@shared/utils';
 defineOptions({
   name: 'Divider',
 });
-defineSlots<DividerSlots>();
+const $slots = defineSlots<DividerSlots>();
 const props = withDefaults(defineProps<DividerProps>(), {
   direction: 'horizontal',
   orientation: 'center',

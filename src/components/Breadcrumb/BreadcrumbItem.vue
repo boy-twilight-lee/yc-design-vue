@@ -42,7 +42,7 @@ import {
 defineOptions({
   name: 'BreadcrumbItem',
 });
-defineSlots<BreadcrumbItemSlots>();
+const $slots = defineSlots<BreadcrumbItemSlots>();
 withDefaults(defineProps<BreadcrumbItemProps>(), {
   separator: '',
   droplist: () => [],

@@ -20,7 +20,7 @@ import { TypographyParagraphProps, TypographyBaseSlots } from './type';
 defineOptions({
   name: 'TypographyParagraph',
 });
-defineSlots<TypographyBaseSlots>();
+const $slots = defineSlots<TypographyBaseSlots>();
 withDefaults(defineProps<TypographyParagraphProps>(), {
   blockquote: false,
   spacing: 'default',

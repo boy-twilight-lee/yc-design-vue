@@ -54,7 +54,10 @@ export const findFirstLegitChild = (
 };
 
 // 扁平化插槽components
-export const findComponentsFromVnodes = (vnodes: VNode[], name: string) => {
+export const findComponentsFromVnodes = (
+  vnodes: VNode[],
+  name: string = ''
+) => {
   const result: RecordType[] = [];
   // 是否是option
   const traverse = (nodes: RecordType | RecordType[]) => {

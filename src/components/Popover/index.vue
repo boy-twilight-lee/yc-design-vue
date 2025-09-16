@@ -43,7 +43,7 @@ import YcTrigger from '@/components/Trigger';
 defineOptions({
   name: 'Popover',
 });
-defineSlots<PopoverSlots>();
+const $slots = defineSlots<PopoverSlots>();
 const props = withDefaults(defineProps<PopoverProps>(), {
   popupVisible: undefined,
   defaultPopupVisible: false,

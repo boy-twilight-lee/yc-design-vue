@@ -110,7 +110,7 @@ import { PreventFocus, IconButton } from '@shared/components';
 defineOptions({
   name: 'InputTag',
 });
-defineSlots<InputTagSlots>();
+const $slots = defineSlots<InputTagSlots>();
 const props = withDefaults(defineProps<InputTagProps>(), {
   modelValue: undefined,
   defaultValue: () => [],

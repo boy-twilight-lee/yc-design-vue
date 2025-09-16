@@ -17,7 +17,7 @@ import TypographyBase from './TypographyBase.vue';
 defineOptions({
   name: 'TypographyTitle',
 });
-defineSlots<TypographyBaseSlots>();
+const $slots = defineSlots<TypographyBaseSlots>();
 const props = withDefaults(defineProps<TypographyTitleProps>(), {
   heading: 1,
 });

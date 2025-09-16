@@ -59,7 +59,7 @@ import useContext from './hooks/useContext';
 defineOptions({
   name: 'TimelineItem',
 });
-defineSlots<TimelineItemSlots>();
+const $slots = defineSlots<TimelineItemSlots>();
 withDefaults(defineProps<TimelineItemProps>(), {
   dotColor: '',
   dotType: 'solid',

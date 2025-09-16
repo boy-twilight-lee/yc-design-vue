@@ -27,7 +27,7 @@ import useContext from './hooks/useContext';
 defineOptions({
   name: 'AnchorLink',
 });
-defineSlots<AnchorLinkSlots>();
+const $slots = defineSlots<AnchorLinkSlots>();
 const props = withDefaults(defineProps<AnchorLinkProps>(), {
   title: '',
   href: '',

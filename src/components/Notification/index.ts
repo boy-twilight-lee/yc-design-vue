@@ -126,10 +126,7 @@ const NotificationMethod = {
 
 const Notification = Object.assign(_Notification, {
   install: (app: App) => {
-    app.config.globalProperties.$notification = Object.assign(
-      _Notification,
-      NotificationMethod
-    );
+    app.config.globalProperties.$notification = NotificationMethod;
   },
   ...NotificationMethod,
 });

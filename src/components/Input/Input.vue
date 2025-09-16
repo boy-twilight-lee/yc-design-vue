@@ -25,7 +25,7 @@
       </prevent-focus>
       <!-- input -->
       <input
-        v-show="!$slots.label || ($slots.label && showInput)"
+        v-show="!$slots.label || showInput"
         :value="computedValue"
         :type="type"
         :disabled="disabled"
@@ -91,7 +91,7 @@ import InputSuffix from './InputSuffix.vue';
 defineOptions({
   name: 'Input',
 });
-defineSlots<InputSlots>();
+const $slots = defineSlots<InputSlots>();
 const props = withDefaults(defineProps<InputProps>(), {
   modelValue: undefined,
   defaultValue: '',

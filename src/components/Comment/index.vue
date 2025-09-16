@@ -72,7 +72,7 @@ import YcAvatar from '@/components/Avatar';
 defineOptions({
   name: 'Comment',
 });
-defineSlots<CommentSlots>();
+const $slots = defineSlots<CommentSlots>();
 withDefaults(defineProps<CommentProps>(), {
   author: '',
   avatar: '',

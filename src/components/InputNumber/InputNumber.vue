@@ -127,7 +127,7 @@ import { default as YcInput, InputInstance } from '@/components/Input';
 defineOptions({
   name: 'InputNumber',
 });
-defineSlots<InputNumberSlots>();
+const $slots = defineSlots<InputNumberSlots>();
 const props = withDefaults(defineProps<InputNumberProps>(), {
   modelValue: undefined,
   defaultValue: '',

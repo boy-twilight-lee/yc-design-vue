@@ -77,7 +77,7 @@ import { default as YcInput, InputInstance } from '@/components/Input';
 defineOptions({
   name: 'AutoComplete',
 });
-defineSlots<AutoCompleteSlots>();
+const $slots = defineSlots<AutoCompleteSlots>();
 const props = withDefaults(defineProps<AutoCompleteProps>(), {
   modelValue: undefined,
   defaultValue: '',

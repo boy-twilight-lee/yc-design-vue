@@ -46,7 +46,7 @@
           {{ header }}
         </slot>
       </div>
-      <div v-if="$slots.extra" class="yc-collapse-item-header-extra">
+      <div v-if="slots.extra" class="yc-collapse-item-header-extra">
         <slot name="extra" />
       </div>
     </div>

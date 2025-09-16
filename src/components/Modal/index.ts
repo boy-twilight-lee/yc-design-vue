@@ -58,7 +58,7 @@ const modalMethod = {
 const Modal = Object.assign(_Modal, {
   install: (app: App) => {
     app.component('Yc' + _Modal.name, _Modal);
-    app.config.globalProperties.$modal = Object.assign(Modal, modalMethod);
+    app.config.globalProperties.$modal = modalMethod;
   },
   ...modalMethod,
 });

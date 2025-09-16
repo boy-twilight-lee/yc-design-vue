@@ -58,7 +58,7 @@ import YcCheckbox from '@/components/Checkbox';
 defineOptions({
   name: 'Option',
 });
-defineSlots<OptionSlots>();
+const $slots = defineSlots<OptionSlots>();
 const props = withDefaults(defineProps<OptionProps>(), {
   label: '',
   value: '',

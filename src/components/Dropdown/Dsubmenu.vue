@@ -68,7 +68,7 @@ import YcScrollbar from '@/components/Scrollbar';
 defineOptions({
   name: 'Dsubmenu',
 });
-defineSlots<DsubmenuSlots>();
+const $slots = defineSlots<DsubmenuSlots>();
 const props = withDefaults(defineProps<DsubmenuProps>(), {
   popupVisible: undefined,
   defaultPopupVisible: false,

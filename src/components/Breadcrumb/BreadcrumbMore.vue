@@ -6,10 +6,10 @@
 </template>
 
 <script lang="ts" setup>
-import { Slots } from 'vue';
+import { BreadcrumbSlots } from './type';
 import { IconMore } from '@shared/icons';
 import YcBreadcrumbItem from './BreadcrumbItem.vue';
 defineProps<{
-  slots: Slots;
+  slots: Readonly<BreadcrumbSlots>;
 }>();
 </script>

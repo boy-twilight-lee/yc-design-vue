@@ -53,7 +53,7 @@ import { IconButton } from '@shared/components';
 defineOptions({
   name: 'Alert',
 });
-defineSlots<AlertSlots>();
+const $slots = defineSlots<AlertSlots>();
 withDefaults(defineProps<AlertProps>(), {
   type: 'info',
   showIcon: true,

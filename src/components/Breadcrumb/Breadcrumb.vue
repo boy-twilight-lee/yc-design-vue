@@ -3,7 +3,7 @@
     <!-- 渲染默认插槽 -->
     <template v-if="$slots.default">
       <template v-for="(node, i) in breadcrumbItems" :key="i">
-        <breadcrumb-more v-if="node?.type == 'more-icon'" :slots="slots" />
+        <breadcrumb-more v-if="node?.type == 'more-icon'" :slots="$slots" />
         <component v-else :is="node" />
         <!-- 分隔符 -->
         <breadcrumb-separator
@@ -17,9 +17,9 @@
     </template>
     <!-- routes渲染 -->
     <template v-else>
-      <template v-for="(route, i) in routeData" :key="route.path">
+      <template v-for="(route, i) in routeData" :key="i">
         <!-- more-icon -->
-        <breadcrumb-more v-if="isString(route)" :slots="slots" />
+        <breadcrumb-more v-if="isString(route)" :slots="$slots" />
         <slot
           v-else
           name="item-render"
@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, computed, useSlots } from 'vue';
+import { toRefs, computed } from 'vue';
 import { BreadcrumbProps, BreadcrumbSlots } from './type';
 import { findComponentsFromVnodes, isString } from '@shared/utils';
 import { BreadcrumbItem as YcBreadcrumbItem } from './index';
@@ -60,7 +60,7 @@ import BreadcrumbMore from './BreadcrumbMore.vue';
 defineOptions({
   name: 'Breadcrumb',
 });
-defineSlots<BreadcrumbSlots>();
+const $slots = defineSlots<BreadcrumbSlots>();
 const props = withDefaults(defineProps<BreadcrumbProps>(), {
   maxCount: 0,
   routes: () => [],
@@ -68,12 +68,10 @@ const props = withDefaults(defineProps<BreadcrumbProps>(), {
   customUrl: undefined,
 });
 const { maxCount, routes } = toRefs(props);
-// 注入数据
-const slots = useSlots();
 // slot-items
 const breadcrumbItems = computed(() => {
   const nodes = findComponentsFromVnodes(
-    slots.default?.() || [],
+    $slots.default?.() || [],
     YcBreadcrumbItem.name as string
   );
   return maxCount.value > 0 && nodes.length > maxCount.value

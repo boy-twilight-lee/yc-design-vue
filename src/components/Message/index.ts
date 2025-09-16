@@ -101,10 +101,7 @@ const messageMethod = {
 
 const Message = Object.assign(_Message, {
   install: (app: App) => {
-    app.config.globalProperties.$message = Object.assign(
-      _Message,
-      messageMethod
-    );
+    app.config.globalProperties.$message = messageMethod;
   },
   ...messageMethod,
 });

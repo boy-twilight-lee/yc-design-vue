@@ -95,7 +95,7 @@ import ImagePreview from './ImagePreview.vue';
 defineOptions({
   name: 'Image',
 });
-defineSlots<ImageSlots>();
+const $slots = defineSlots<ImageSlots>();
 const props = withDefaults(defineProps<ImageProps>(), {
   src: '',
   title: '',

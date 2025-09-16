@@ -69,7 +69,7 @@ import useContext from './hooks/useContext';
 defineOptions({
   name: 'Step',
 });
-defineSlots<StepSlots>();
+const $slots = defineSlots<StepSlots>();
 const props = withDefaults(defineProps<StepProps>(), {
   title: '',
   description: '',

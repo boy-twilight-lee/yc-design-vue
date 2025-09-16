@@ -61,7 +61,7 @@ import CardMeta from './CardMeta.vue';
 defineOptions({
   name: 'Card',
 });
-defineSlots<CardSlots>();
+const $slots = defineSlots<CardSlots>();
 const props = withDefaults(defineProps<CardProps>(), {
   bordered: true,
   loading: false,

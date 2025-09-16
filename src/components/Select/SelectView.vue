@@ -6,7 +6,7 @@
       :loading="loading"
       class="yc-select-dropdown-loading"
     >
-      <template v-if="$slots['loading-icon']" #icon>
+      <template v-if="slots['loading-icon']" #icon>
         <component :is="renderSlots('loading-icon')" />
       </template>
     </yc-spin>

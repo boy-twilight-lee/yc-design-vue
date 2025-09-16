@@ -45,7 +45,7 @@ import { MenuItem as YcMenuItem } from './index';
 defineOptions({
   name: 'SubMenu',
 });
-defineSlots<SubMenuSlots>();
+const $slots = defineSlots<SubMenuSlots>();
 withDefaults(defineProps<SubMenuProps>(), {
   path: '',
   title: '',

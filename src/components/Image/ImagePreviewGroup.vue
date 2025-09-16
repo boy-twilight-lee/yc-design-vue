@@ -37,7 +37,7 @@ defineOptions({
   name: 'ImagePreviewGroup',
   inheritAttrs: false,
 });
-defineSlots<ImagePreviewGroupSlots>();
+const $slots = defineSlots<ImagePreviewGroupSlots>();
 const props = withDefaults(defineProps<ImagePreviewGroupProps>(), {
   visible: undefined,
   defaultVisible: false,

@@ -32,7 +32,7 @@ import YcSpin from '@/components/Spin';
 defineOptions({
   name: 'Link',
 });
-defineSlots<LinkSlots>();
+const $slots = defineSlots<LinkSlots>();
 const props = withDefaults(defineProps<LinkProps>(), {
   href: '',
   status: 'normal',

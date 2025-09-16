@@ -41,7 +41,7 @@ import { TAG_PRESET_COLORS } from '@shared/constants';
 defineOptions({
   name: 'Badge',
 });
-const slots = defineSlots<BadgeSlots>();
+const $slots = defineSlots<BadgeSlots>();
 const props = withDefaults(defineProps<BadgeProps>(), {
   text: '',
   dot: false,
@@ -67,7 +67,7 @@ const style = computed(() => {
 });
 // 动态计算className
 const className = computed(() => {
-  if (slots.content) return 'yc-badge-custom-dot';
+  if ($slots.content) return 'yc-badge-custom-dot';
   if (color.value || status.value) return 'yc-badge-status';
   if (text.value) return 'yc-badge-text';
   if (dot.value) return 'yc-badge-dot';

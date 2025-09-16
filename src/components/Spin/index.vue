@@ -49,7 +49,7 @@ import { IconLoading } from '@shared/icons';
 defineOptions({
   name: 'Spin',
 });
-defineSlots<SpinSlots>();
+const $slots = defineSlots<SpinSlots>();
 withDefaults(defineProps<SpinProps>(), {
   size: 20,
   loading: false,

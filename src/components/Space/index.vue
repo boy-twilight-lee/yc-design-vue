@@ -40,7 +40,7 @@ import {
 defineOptions({
   name: 'Space',
 });
-const slots = defineSlots<SpaceSlots>();
+const $slots = defineSlots<SpaceSlots>();
 const props = withDefaults(defineProps<SpaceProps>(), {
   direction: 'horizontal',
   align: undefined,
@@ -74,9 +74,9 @@ const align = computed(() => {
 });
 // node
 const nodes = computed(() => {
-  if (!slots.split) return [];
+  if (!$slots.split) return [];
   const result: VNode[] = [];
-  (slots.default?.() || []).forEach((node) => {
+  ($slots.default?.() || []).forEach((node) => {
     if (node.type === Fragment) {
       result.push(...(node.children as VNode[]));
     } else if (node.type !== Comment) {

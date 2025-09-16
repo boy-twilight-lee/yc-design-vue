@@ -37,7 +37,7 @@ import { ListItemProps, ListItemSlots } from './type';
 defineOptions({
   name: 'ListItem',
 });
-defineSlots<ListItemSlots>();
+const $slots = defineSlots<ListItemSlots>();
 withDefaults(defineProps<ListItemProps>(), {
   actionLayout: 'horizontal',
 });

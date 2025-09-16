@@ -105,7 +105,7 @@ import YcInputNumber from '@/components/InputNumber';
 defineOptions({
   name: 'Pagination',
 });
-defineSlots<PaginationSlots>();
+const $slots = defineSlots<PaginationSlots>();
 const props = withDefaults(defineProps<PaginationProps>(), {
   current: undefined,
   defaultCurrent: 1,

@@ -48,7 +48,7 @@ import { IconButton } from '@shared/components';
 defineOptions({
   name: 'Checkbox',
 });
-defineSlots<CheckboxSlots>();
+const $slots = defineSlots<CheckboxSlots>();
 const props = withDefaults(defineProps<CheckboxProps>(), {
   modelValue: undefined,
   defaultChecked: false,

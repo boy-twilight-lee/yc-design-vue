@@ -42,7 +42,7 @@ import Btween from 'b-tween';
 defineOptions({
   name: 'Statistic',
 });
-defineSlots<StatisticSlots>();
+const $slots = defineSlots<StatisticSlots>();
 const props = withDefaults(defineProps<StatisticProps>(), {
   title: '',
   value: 0,

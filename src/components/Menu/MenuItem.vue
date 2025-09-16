@@ -125,7 +125,7 @@ import YcTooltip from '@/components/Tooltip';
 defineOptions({
   name: 'MenuItem',
 });
-defineSlots<MenuItemSlots>();
+const $slots = defineSlots<MenuItemSlots>();
 const props = withDefaults(defineProps<MenuItemProps>(), {
   path: '',
   disabled: false,

@@ -38,7 +38,7 @@ import useContext from './hooks/useContext';
 defineOptions({
   name: 'CardMeta',
 });
-defineSlots<CardMetaSlots>();
+const $slots = defineSlots<CardMetaSlots>();
 withDefaults(defineProps<CardMetaProps>(), {
   title: '',
   description: '',

@@ -55,7 +55,7 @@ import { IconButton } from '@shared/components';
 defineOptions({
   name: 'PageHeader',
 });
-defineSlots<PageHeaderSlots>();
+const $slots = defineSlots<PageHeaderSlots>();
 withDefaults(defineProps<PageHeaderProp>(), {
   title: '',
   subtitle: '',

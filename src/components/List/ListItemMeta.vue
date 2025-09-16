@@ -26,7 +26,7 @@ import { ListItemMetaProps, ListItemMetaSlots } from './type';
 defineOptions({
   name: 'ListItemMeta',
 });
-defineSlots<ListItemMetaSlots>();
+const $slots = defineSlots<ListItemMetaSlots>();
 withDefaults(defineProps<ListItemMetaProps>(), {
   title: '',
   description: '',

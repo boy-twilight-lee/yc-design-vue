@@ -33,7 +33,7 @@ import YcRadio from './Radio.vue';
 defineOptions({
   name: 'RadioGroup',
 });
-defineSlots<RadioGroupSlots>();
+const $slots = defineSlots<RadioGroupSlots>();
 const props = withDefaults(defineProps<RadioGroupProps>(), {
   modelValue: undefined,
   defaultValue: '',

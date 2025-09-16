@@ -82,7 +82,7 @@ defineOptions({
   name: 'ImagePreview',
   inheritAttrs: false,
 });
-defineSlots<ImagePreviewSlots>();
+const $slots = defineSlots<ImagePreviewSlots>();
 const props = withDefaults(defineProps<ImagePreviewProps>(), {
   src: '',
   visible: undefined,

@@ -16,8 +16,8 @@ export interface CalendarEmits {
 }
 
 export interface CalendarSlots {
-  header: (scope: { year: number; month: number }) => VNode[];
-  default: (scope: { year: number; month: number; day: number }) => VNode[];
+  header?: (scope: { year: number; month: number }) => VNode[];
+  default?: (scope: { year: number; month: number; day: number }) => VNode[];
 }
 
 export type CalendarMode = 'month' | 'year';

@@ -42,7 +42,7 @@ import { TYPE_ICON_MAP } from '@shared/constants';
 defineOptions({
   name: 'Result',
 });
-defineSlots<ResultSlots>();
+const $slots = defineSlots<ResultSlots>();
 const props = withDefaults(defineProps<ResultProps>(), {
   status: 'info',
   title: '',

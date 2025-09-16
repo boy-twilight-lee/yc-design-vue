@@ -15,7 +15,7 @@ defineOptions({
   name: 'SkeletonShape',
 });
 const props = withDefaults(defineProps<SkeletonShapeProps>(), {
-  shape: 'sqaure',
+  shape: 'square',
   size: undefined,
 });
 // 获取全局配置
