@@ -36,7 +36,7 @@ export interface TextareaExpose {
   getMirrorRef(): HTMLDivElement;
 }
 
-type AutoSize =
+export type AutoSize =
   | boolean
   | {
       minRows?: number;

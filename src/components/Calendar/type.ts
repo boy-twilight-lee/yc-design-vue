@@ -3,14 +3,14 @@ import { VNode } from 'vue';
 export interface CalendarProps {
   modelValue?: Date;
   defaultValue?: Date;
-  mode?: Mode;
-  defaultMode?: Mode;
-  modes?: Mode[];
+  mode?: CalendarMode;
+  defaultMode?: CalendarMode;
+  modes?: CalendarMode[];
 }
 
 export interface CalendarEmits {
   (e: 'update:modelValue', value: Date): void;
-  (e: 'update:mode', mode: Mode): void;
+  (e: 'update:mode', mode: CalendarMode): void;
   (e: 'change', value: Date): void;
   (e: 'panel-change', value: Date): void;
 }
@@ -20,4 +20,4 @@ export interface CalendarSlots {
   default?: (scope: { year: number; month: number; day: number }) => VNode[];
 }
 
-type Mode = 'month' | 'year';
+export type CalendarMode = 'month' | 'year';

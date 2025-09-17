@@ -26,12 +26,12 @@
 
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
-import { InputNumberMode, InputNumberValue } from './type';
+import { ButtonMode, InputNumberValue } from './type';
 import { Size } from '@shared/type';
 import { IconArrowDown, IconPlus, IconMinus } from '@shared/icons';
 import YcButton from '@/components/Button';
 const props = defineProps<{
-  mode: InputNumberMode;
+  mode: ButtonMode;
   type: 'minus' | 'plus';
   disabled: boolean;
   computedValue: InputNumberValue;

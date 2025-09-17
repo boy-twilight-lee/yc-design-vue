@@ -3,7 +3,7 @@ import { VNode } from 'vue';
 export interface InputNumberProps {
   modelValue?: InputNumberValue;
   defaultValue?: InputNumberValue;
-  mode?: Mode;
+  mode?: ButtonMode;
   precision?: number;
   step?: number;
   disabled?: boolean;
@@ -48,6 +48,6 @@ export interface InputNumberExpose {
 
 export type InputNumberValue = number | string;
 
-type Mode = 'embed' | 'button';
+export type ButtonMode = 'embed' | 'button';
 
 type Parser = (value: string) => string;

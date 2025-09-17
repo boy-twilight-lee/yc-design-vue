@@ -6,7 +6,7 @@ export interface DescriptionsProps {
   column?: Column;
   title?: string;
   layout?: Layout;
-  align?: Align;
+  align?: DescriptionsAlign;
   size?: Size;
   bordered?: boolean;
   labelStyle?: CSSProperties;
@@ -39,7 +39,9 @@ export interface DescData {
 
 type TextAlign = 'left' | 'right' | 'center';
 
-type Align = TextAlign | { label?: TextAlign; value?: TextAlign };
+export type DescriptionsAlign =
+  | TextAlign
+  | { label?: TextAlign; value?: TextAlign };
 
 type Column = number | ResponsiveValue;
 
