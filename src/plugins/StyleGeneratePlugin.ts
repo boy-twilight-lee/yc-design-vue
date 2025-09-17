@@ -15,6 +15,10 @@ export default (): Plugin => {
       config = resolvedConfig;
     },
     async writeBundle(options) {
+      if (options.format === 'umd') {
+        this.info('Skipping on-demand style generation for UMD bundle.');
+        return;
+      }
       if (!options.dir) {
         this.error("Output directory 'dir' is not defined in Rollup options.");
         return;

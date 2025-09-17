@@ -22,9 +22,9 @@
 
 <script lang="ts" setup>
 import { toRefs, onMounted, watch } from 'vue';
-import { useTimeoutFn } from '@vueuse/core';
 import { MessageProps } from './type';
 import { isUndefined } from '@shared/utils/is';
+import { useTimeoutFn } from '@shared/utils/vue-utils';
 import { TYPE_ICON_MAP } from '@shared/constants';
 import { IconButton } from '@shared/components';
 defineOptions({

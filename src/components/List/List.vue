@@ -79,7 +79,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { ListProps, ListEmits, ListSlots } from './type';
-import { unrefElement } from '@vueuse/core';
+import { unrefElement } from '@shared/utils/vue-utils';
 import { useControlValue } from '@shared/utils/control';
 import { getGlobalConfig } from '@shared/utils/global-config';
 import { valueToPx } from '@shared/utils/dom';

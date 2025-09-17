@@ -11,9 +11,9 @@
 
 <script lang="ts" setup>
 import { toRefs } from 'vue';
-import { useVirtualList } from '@vueuse/core';
 import { VirtualListProps } from '@/components/Select';
 import { RecordType } from '@shared/type';
+import { useVirtualList } from '@shared/utils/vue-utils';
 const props = defineProps<{
   data: RecordType[];
   virtualListProps: VirtualListProps;

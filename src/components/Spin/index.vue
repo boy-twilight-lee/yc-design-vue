@@ -42,9 +42,9 @@
 </template>
 
 <script lang="ts" setup>
-import { createReusableTemplate } from '@vueuse/core';
 import { SpinProps, SpinSlots } from './type';
 import { valueToPx } from '@shared/utils/dom';
+import { createReusableTemplate } from '@shared/utils/vue-utils';
 import { IconLoading } from '@shared/icons';
 defineOptions({
   name: 'Spin',

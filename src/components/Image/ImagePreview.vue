@@ -68,7 +68,6 @@
 
 <script lang="ts" setup>
 import { ref, toRefs } from 'vue';
-import { useEventListener, onKeyStroke } from '@vueuse/core';
 import {
   ImagePreviewProps,
   ImagePreviewEmits,
@@ -77,6 +76,7 @@ import {
 import { IconClose } from '@shared/icons';
 import { useControlValue } from '@shared/utils/control';
 import { getGlobalConfig } from '@shared/utils/global-config';
+import { useEventListener, onKeyStroke } from '@shared/utils/vue-utils';
 import useModalClose from '@/components/Modal/hooks/useModalClose';
 import ImagePreviewToolbar from './ImagePreviewToolbar.vue';
 defineOptions({

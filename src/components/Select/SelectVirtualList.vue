@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { toRefs } from 'vue';
-import { useVirtualList } from '@vueuse/core';
+import { useVirtualList } from '@shared/utils/vue-utils';
 import { RecordType } from '@shared/type';
 import { getSlotFunction } from '@shared/utils/vue-utils';
 import useContext from './hooks/useContext';

@@ -17,12 +17,12 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
-import { useEventListener } from '@vueuse/core';
 import BTween from 'b-tween';
 import { BackTopProps, BackTopSlots } from './type';
 import { IconToTop } from '@shared/icons';
 import { getElement, findFirstScrollableParent } from '@shared/utils/dom';
 import { isUndefined } from '@shared/utils/is';
+import { useEventListener } from '@shared/utils/vue-utils';
 import YcButton from '@/components/Button';
 defineOptions({
   name: 'BackTop',

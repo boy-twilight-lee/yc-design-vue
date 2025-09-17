@@ -1,5 +1,5 @@
 import { nextTick, ref, Ref, watch } from 'vue';
-import { onKeyStroke } from '@vueuse/core';
+import { onKeyStroke } from '@shared/utils/vue-utils';
 import { ModalEmits } from '@/components/Modal/type';
 import { OnBeforeOk, OnBeforeCancel } from '../type';
 import { useControlValue } from '@shared/utils/control';

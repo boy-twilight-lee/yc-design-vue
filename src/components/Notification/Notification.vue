@@ -36,7 +36,7 @@ import { TYPE_ICON_MAP } from '@shared/constants';
 import { isFunction, isUndefined } from '@shared/utils/is';
 import { getSlotFunction } from '@shared/utils/vue-utils';
 import { IconButton } from '@shared/components';
-import { useTimeoutFn } from '@vueuse/core';
+import { useTimeoutFn } from '@shared/utils/vue-utils';
 defineOptions({
   name: 'Notification',
 });

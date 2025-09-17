@@ -1,5 +1,5 @@
 import { ref, Ref } from 'vue';
-import { onKeyStroke } from '@vueuse/core';
+import { onKeyStroke } from '@shared/utils/vue-utils';
 import { SelectEmits, SelectOptionData, SelectValue } from '../type';
 import { RecordType } from '@shared/type';
 

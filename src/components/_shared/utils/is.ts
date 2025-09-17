@@ -66,18 +66,3 @@ export function isArray(value: unknown): value is Array<unknown> {
 export function isObject(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === 'object';
 }
-
-export default {
-  element: isElement,
-  null: isNull,
-  undefined: isUndefined,
-  nan: isNaN,
-  number: isNumber,
-  string: isString,
-  boolean: isBoolean,
-  regexp: isRegExp,
-  date: isDate,
-  function: isFunction,
-  array: isArray,
-  object: isObject,
-};

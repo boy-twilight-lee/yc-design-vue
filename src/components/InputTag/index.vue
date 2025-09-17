@@ -97,7 +97,7 @@ import {
 } from './type';
 import { RecordType } from '@shared/type';
 import { nanoid } from 'nanoid';
-import { useElementSize } from '@vueuse/core';
+import { useElementSize } from '@shared/utils/vue-utils';
 import { isBoolean, isObject } from '@shared/utils/is';
 import { valueToPx } from '@shared/utils/dom';
 import { useControlValue } from '@shared/utils/control';

@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import autoprefixer from 'autoprefixer';
 import dts from 'vite-plugin-dts';
 import StyleGeneratePlugin from './src/plugins/StyleGeneratePlugin';
+import FixDeclarationsPlugin from './src/plugins/FixDeclarationsPlugin';
 
 export default defineConfig(({ mode }) => {
   // 是否是开发环境
@@ -19,6 +20,7 @@ export default defineConfig(({ mode }) => {
         exclude: ['node_modules/**'],
       }),
       StyleGeneratePlugin(),
+      FixDeclarationsPlugin(),
     ],
     resolve: {
       alias: {
@@ -35,7 +37,6 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: resolve(__dirname, 'src/components/index.ts'),
         name: 'YcDesignVue',
-        fileName: 'index',
       },
       rollupOptions: {
         external: ['vue'],
@@ -55,6 +56,16 @@ export default defineConfig(({ mode }) => {
             preserveModules: true,
             preserveModulesRoot: 'src/components',
             exports: 'named',
+          },
+          {
+            format: 'umd',
+            dir: 'dist',
+            entryFileNames: '[name].umd.js',
+            name: 'YcDesignVue',
+            exports: 'named',
+            globals: {
+              vue: 'Vue',
+            },
           },
         ],
       },

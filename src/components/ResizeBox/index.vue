@@ -34,7 +34,7 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, reactive, watch, nextTick } from 'vue';
-import { useResizeObserver, useEventListener } from '@vueuse/core';
+import { useResizeObserver, useEventListener } from '@shared/utils/vue-utils';
 import {
   ResizeBoxProps,
   ResizeBoxEmits,

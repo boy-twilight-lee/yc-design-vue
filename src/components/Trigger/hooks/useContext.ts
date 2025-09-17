@@ -1,9 +1,9 @@
 import { ref, watch, Ref, provide, inject } from 'vue';
 import { nanoid } from 'nanoid';
-import { unrefElement } from '@vueuse/core';
 import { TriggerType, TriggerProps as _TriggerProps } from '../type';
 import { Required } from '@shared/type';
 import { sleep } from '@shared/utils/dom';
+import { unrefElement } from '@shared/utils/vue-utils';
 
 const TRIGGER_CONTEXT_KEY = 'trigger-context';
 type TriggerContext = {

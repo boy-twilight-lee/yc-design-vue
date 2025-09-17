@@ -48,10 +48,10 @@
 
 <script lang="ts" setup>
 import { ref, computed, toRefs, nextTick } from 'vue';
-import { unrefElement } from '@vueuse/core';
 import { isUndefined, isBoolean } from '@shared/utils/is';
 import { valueToPx } from '@shared/utils/dom';
 import { useControlValue } from '@shared/utils/control';
+import { unrefElement } from '@shared/utils/vue-utils';
 import { IconArrowRight } from '@shared/icons';
 import {
   DsubmenuProps,

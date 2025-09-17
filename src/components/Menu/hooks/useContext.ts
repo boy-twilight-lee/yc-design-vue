@@ -10,7 +10,6 @@ import {
   isVNode,
 } from 'vue';
 import { nanoid } from 'nanoid';
-import { useResizeObserver } from '@vueuse/core';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
 import { MenuProps as _MenuProps, MenuEmits } from '../type';
@@ -23,6 +22,7 @@ import {
   isBoolean,
 } from '@shared/utils/is';
 import { throttle, valueToPx } from '@shared/utils/dom';
+import { useResizeObserver } from '@shared/utils/vue-utils';
 import { useControlValue } from '@shared/utils/control';
 import { SubMenu, MenuItem } from '../index';
 import useSiderContext from '@/components/Layout/hooks/useSiderContext';

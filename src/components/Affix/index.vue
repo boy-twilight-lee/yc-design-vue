@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, CSSProperties, watch } from 'vue';
 import { AffixProps, AffixEmits, AffixSlots, AffixExpose } from './type';
-import { useResizeObserver, useEventListener } from '@vueuse/core';
+import { useResizeObserver, useEventListener } from '@shared/utils/vue-utils';
 import {
   findFirstScrollableParent,
   getElement,

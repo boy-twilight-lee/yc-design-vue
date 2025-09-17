@@ -92,3 +92,21 @@ export const findComponentsFromVnodes = (
   traverse(vnodes);
   return result;
 };
+
+export {
+  unrefElement,
+  createReusableTemplate,
+  useEventListener,
+  useResizeObserver,
+  useDraggable,
+  useElementBounding,
+  useElementSize,
+  useMediaQuery,
+  useMutationObserver,
+  useClipboard,
+  onClickOutside,
+  useTimeoutFn,
+  onKeyStroke,
+  useVirtualList,
+  useScroll,
+} from '@vueuse/core';

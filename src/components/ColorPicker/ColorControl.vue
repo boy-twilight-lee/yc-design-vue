@@ -23,8 +23,8 @@
 
 <script lang="ts" setup>
 import { ref, watch, toRefs } from 'vue';
-import { useDraggable } from '@vueuse/core';
 import { sleep, valueToPx } from '@shared/utils/dom';
+import { useDraggable } from '@shared/utils/vue-utils';
 import { GradientColorCalculator, parseColor } from '@shared/utils/color';
 const props = defineProps<{
   color: string;
