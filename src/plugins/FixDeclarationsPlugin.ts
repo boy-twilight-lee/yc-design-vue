@@ -15,17 +15,19 @@ export default function FixInvalidDeclarationsPlugin(): Plugin {
       }
       const invalidDeclarationRegex =
         /(?:function|const|let|var)\s+([\w$]+\.[\w$.]+)/g;
-      const invalidNames = new Set<string>();
-      for (const match of code.matchAll(invalidDeclarationRegex)) {
-        invalidNames.add(match[1]);
+      const invalidSet = new Set<string>();
+      const matchs = Array.from(code.matchAll(invalidDeclarationRegex));
+      for (const match of matchs) {
+        invalidSet.add(match[1]);
       }
-      if (invalidNames.size === 0) {
+      if (invalidSet.size === 0) {
         return null;
       }
       console.log(
-        `\n[fix-invalid-declarations] Found and fixing ${invalidNames.size} types of invalid declarations in UMD chunk: ${chunk.fileName}.`
+        `\n[fix-invalid-declarations] Found and fixing ${invalidSet.size} types of invalid declarations in UMD chunk: ${chunk.fileName}.`
       );
       let modifiedCode = code;
+      const invalidNames = Array.from(invalidSet);
       for (const invalidName of invalidNames) {
         // Replace dot with underscore: "index$1.COLOR_PICKER" -> "index$1_COLOR_PICKER"
         const validName = invalidName.replace(/\./g, '_');
