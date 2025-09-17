@@ -9,7 +9,7 @@ export interface ModalProps {
   top?: number;
   mask?: boolean;
   title?: string;
-  titleAlign?: ModalTitleAlign;
+  titleAlign?: TitleAlign;
   alignCenter?: boolean;
   unmountOnClose?: boolean;
   maskClosable?: boolean;
@@ -56,7 +56,7 @@ export interface ModalSlots {
   title?: () => VNode[];
 }
 
-export type ModalTitleAlign = 'start' | 'center';
+type TitleAlign = 'start' | 'center';
 
 export type OnBeforeOk = (
   done: (closed: boolean) => void

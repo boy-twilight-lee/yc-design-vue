@@ -9,9 +9,9 @@ import {
 } from 'vue';
 import {
   CarouselProps as _CarouselProps,
-  CarouselAnimationName,
   CarouselEmits,
-  CarouselShowArrow,
+  AnimationName,
+  ShowArrow,
 } from '../type';
 import { ClassName, Direction, RecordType, Required } from '@shared/type';
 import { sleep } from '@shared/utils/dom';
@@ -24,12 +24,12 @@ type CarouselContext = {
   length: Ref<number>;
   computedCurrent: Ref<number>;
   transitionTimingFunction: Ref<string>;
-  animationName: Ref<CarouselAnimationName>;
+  animationName: Ref<AnimationName>;
   moveType: Ref<MoveType>;
   preIndex: Ref<number>;
   moveSpeed: Ref<number>;
   direction: Ref<Direction>;
-  showArrow: Ref<CarouselShowArrow>;
+  showArrow: Ref<ShowArrow>;
   arrowClass: Ref<ClassName>;
   getValidIndex: (val: number) => number;
 };

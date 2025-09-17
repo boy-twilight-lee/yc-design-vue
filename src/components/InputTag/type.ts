@@ -57,4 +57,4 @@ export type TagData =
     }
   | RecordType;
 
-export type InputRetainValue = boolean | { create?: boolean; blur?: boolean };
+type InputRetainValue = boolean | { create?: boolean; blur?: boolean };

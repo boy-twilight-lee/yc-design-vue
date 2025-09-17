@@ -3,6 +3,7 @@ import {
   RecordType,
   PopupContainer,
   PopupMaxHeight,
+  PopupPosition,
 } from '@shared/type';
 import { TriggerProps, TriggerType } from '@/components/Trigger';
 import { ButtonProps, ButtonType } from '@/components/Button';
@@ -12,7 +13,10 @@ export interface DropdownProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   trigger?: TriggerType;
-  position?: DropdownPosition;
+  position?: Extract<
+    PopupPosition,
+    'top' | 'tr' | 'tl' | 'bottom' | 'br' | 'bl'
+  >;
   popupContainer?: PopupContainer;
   hideOnSelect?: boolean;
   alignPoint?: boolean;
@@ -55,7 +59,7 @@ export interface DoptionSlots {
 export interface DsubmenuProps {
   disabled?: boolean;
   trigger?: EventTrigger;
-  position?: DsubmenuPosition;
+  position?: Extract<PopupPosition, 'rt' | 'lt'>;
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   // triggerProps
@@ -87,7 +91,10 @@ export interface DropdownButtonProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   trigger?: TriggerType;
-  position?: DropdownPosition;
+  position?: Extract<
+    PopupPosition,
+    'top' | 'tr' | 'tl' | 'bottom' | 'br' | 'bl'
+  >;
   popupContainer?: PopupContainer;
   disabled?: boolean;
   type?: ButtonType;
@@ -103,7 +110,3 @@ export interface DropdownButtonSlots {
 }
 
 export type DoptionValue = string | number | boolean | RecordType;
-
-export type DropdownPosition = 'top' | 'tr' | 'tl' | 'bottom' | 'br' | 'bl';
-
-export type DsubmenuPosition = 'rt' | 'lt';

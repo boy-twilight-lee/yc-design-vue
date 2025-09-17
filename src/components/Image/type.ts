@@ -91,6 +91,6 @@ export interface ImagePreviewActionSlots {
   default?: () => VNode[];
 }
 
-export type HideFooter = boolean | 'never';
+type HideFooter = boolean | 'never';
 
-export type FooterPostion = 'inner' | 'outer';
+type FooterPostion = 'inner' | 'outer';

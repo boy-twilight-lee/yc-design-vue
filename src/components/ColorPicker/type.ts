@@ -23,4 +23,4 @@ export interface ColorPickerEmits {
   (e: 'popup-visible-change', value: boolean, color: string): void;
 }
 
-export type ColorFormat = 'hex' | 'rgb';
+type ColorFormat = 'hex' | 'rgb';

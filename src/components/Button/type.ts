@@ -9,7 +9,7 @@ export interface ButtonProps {
   long?: boolean;
   loading?: boolean;
   disabled?: boolean;
-  htmlType?: ButtonHtmlType;
+  htmlType?: HtmlType;
   autofocus?: boolean;
   href?: string;
 }
@@ -46,4 +46,4 @@ export type ButtonType =
   | 'outline'
   | 'text';
 
-export type ButtonHtmlType = 'button' | 'reset' | 'submit';
+type HtmlType = 'button' | 'reset' | 'submit';

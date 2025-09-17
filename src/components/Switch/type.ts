@@ -33,8 +33,8 @@ export interface SwitchSlots {
 
 export type SwitchValue = string | number | boolean;
 
-export type SwitchType = 'circle' | 'round' | 'line';
+type SwitchType = 'circle' | 'round' | 'line';
 
-export type BeforeChange = (
+type BeforeChange = (
   newValue: SwitchValue
 ) => Promise<boolean | void> | boolean | void;

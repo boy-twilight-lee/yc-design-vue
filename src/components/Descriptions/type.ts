@@ -3,10 +3,10 @@ import { RenderContent, Size, ResponsiveValue } from '@shared/type';
 
 export interface DescriptionsProps {
   data?: DescData[];
-  column?: DescriptionsColumn;
+  column?: Column;
   title?: string;
-  layout?: DescriptionsLayout;
-  align?: DescriptionsAlign;
+  layout?: Layout;
+  align?: Align;
   size?: Size;
   bordered?: boolean;
   labelStyle?: CSSProperties;
@@ -37,18 +37,16 @@ export interface DescData {
   span?: number;
 }
 
-export type TextAlign = 'left' | 'right' | 'center';
+type TextAlign = 'left' | 'right' | 'center';
 
-export type DescriptionsAlign =
-  | TextAlign
-  | { label?: TextAlign; value?: TextAlign };
+type Align = TextAlign | { label?: TextAlign; value?: TextAlign };
 
-export type DescriptionsColumn = number | ResponsiveValue;
+type Column = number | ResponsiveValue;
 
-export type DescriptionsLayout =
+type Layout =
   | 'horizontal'
   | 'vertical'
   | 'inline-horizontal'
   | 'inline-vertical';
 
-export type TableLayout = 'auto' | 'fixed';
+type TableLayout = 'auto' | 'fixed';

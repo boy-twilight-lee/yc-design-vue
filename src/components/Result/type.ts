@@ -1,7 +1,7 @@
 import { VNode } from 'vue';
 
 export interface ResultProps {
-  status?: ResultStatus;
+  status?: Status;
   title?: string;
   subtitle?: string;
 }
@@ -14,7 +14,7 @@ export interface ResultSlots {
   extra?: () => VNode[];
 }
 
-export type ResultStatus =
+type Status =
   | 'success'
   | 'warning'
   | 'error'

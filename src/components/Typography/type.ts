@@ -4,7 +4,7 @@ import { VNode } from 'vue';
 // base
 export interface TypographyBaseProps {
   tag?: string;
-  type?: TypographyType;
+  type?: BaseType;
   bold?: boolean;
   disabled?: boolean;
   mark?: boolean;
@@ -46,13 +46,8 @@ export interface TypographyTitleProps {
   heading?: Heading;
 }
 
-export type Heading = 1 | 2 | 3 | 4 | 5 | 6;
+type Heading = 1 | 2 | 3 | 4 | 5 | 6;
 
-export type Spacing = 'default' | 'close';
+type Spacing = 'default' | 'close';
 
-export type TypographyType =
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'primary'
-  | 'secondary';
+type BaseType = 'success' | 'warning' | 'danger' | 'primary' | 'secondary';

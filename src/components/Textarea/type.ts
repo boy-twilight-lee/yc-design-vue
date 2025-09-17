@@ -29,14 +29,14 @@ export interface TextareaEmits {
   (e: 'keydown', ev: KeyboardEvent): void;
 }
 
-export type TextareaExpose = {
+export interface TextareaExpose {
   focus(): void;
   blur(): void;
   getInputRef(): HTMLTextAreaElement;
   getMirrorRef(): HTMLDivElement;
-};
+}
 
-export type AutoSize =
+type AutoSize =
   | boolean
   | {
       minRows?: number;

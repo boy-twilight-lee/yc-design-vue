@@ -1,5 +1,5 @@
-import { Position } from '@vueuse/core';
 import { VNode } from 'vue';
+import { Position } from '@shared/type';
 
 export interface ResizeBoxProps {
   width?: number;

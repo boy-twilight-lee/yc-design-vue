@@ -40,6 +40,8 @@ export interface RadioGroupSlots {
   label?: (scope: { data: RecordType }) => VNode[];
 }
 
+export type RadioValue = string | number | boolean;
+
 export type RadioOption = (
   | RadioValue
   | {
@@ -48,7 +50,5 @@ export type RadioOption = (
       disabled?: boolean;
     }
 )[];
-
-export type RadioValue = string | number | boolean;
 
 export type RadioType = 'radio' | 'button';

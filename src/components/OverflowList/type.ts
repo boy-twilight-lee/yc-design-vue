@@ -3,7 +3,7 @@ import { VNode } from 'vue';
 export interface OverflowListProps {
   min?: number;
   margin?: number;
-  from?: OverflowListFrom;
+  from?: From;
 }
 
 export interface OverflowListEmits {
@@ -15,4 +15,4 @@ export interface OverflowListSlots {
   overflow?: () => VNode[];
 }
 
-export type OverflowListFrom = 'start' | 'end';
+type From = 'start' | 'end';

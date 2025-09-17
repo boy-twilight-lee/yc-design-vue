@@ -7,7 +7,7 @@ export interface AvatarProps {
   imageUrl?: string;
   size?: number;
   autoFixFontSize?: boolean;
-  triggerType?: AvatarTriggerType;
+  triggerType?: TriggerType;
   triggerIconStyle?: CSSProperties;
   objectFit?: ObjectFit;
 }
@@ -39,4 +39,4 @@ export interface AvatarGroupSlots {
 
 export type AvatarShape = Exclude<Shape, 'circle'>;
 
-export type AvatarTriggerType = 'mask' | 'button';
+type TriggerType = 'mask' | 'button';

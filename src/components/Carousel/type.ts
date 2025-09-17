@@ -1,16 +1,15 @@
 import { VNode } from 'vue';
-import { ClassName, Direction, EventTrigger } from '@shared/type';
-import { Position } from '@vueuse/core';
+import { ClassName, Direction, EventTrigger, Position } from '@shared/type';
 
 export interface CarouselProps {
   current?: number;
   defaultCurrent?: number;
   autoPlay?: AutoPlay;
   moveSpeed?: number;
-  animationName?: CarouselAnimationName;
+  animationName?: AnimationName;
   trigger?: EventTrigger;
   direction?: Direction;
-  showArrow?: CarouselShowArrow;
+  showArrow?: ShowArrow;
   arrowClass?: ClassName;
   indicatorType?: IndicatorType;
   indicatorPosition?: IndicatorPosition;
@@ -31,9 +30,9 @@ export interface CarouselItemSlots {
   default?: () => VNode[];
 }
 
-export type CarouselAnimationName = 'slide' | 'fade';
+export type AnimationName = 'slide' | 'fade';
 
-export type CarouselShowArrow = 'always' | 'hover' | 'never';
+export type ShowArrow = 'always' | 'hover' | 'never';
 
 export type AutoPlay = boolean | { interval?: number; hoverToPause?: boolean };
 

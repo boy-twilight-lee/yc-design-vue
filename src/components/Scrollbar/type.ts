@@ -24,4 +24,4 @@ export interface ScrollbarExpose {
   getScrollRef(): HTMLDivElement;
 }
 
-export type TackType = 'track' | 'embed';
+type TackType = 'track' | 'embed';

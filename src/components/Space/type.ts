@@ -1,7 +1,7 @@
-import { Direction, Size } from '@shared/type';
+import { Direction, Size as _Size } from '@shared/type';
 import { VNode } from 'vue';
 export interface SpaceProps {
-  align?: SpaceAlign;
+  align?: Align;
   direction?: Direction;
   wrap?: boolean;
   fill?: boolean;
@@ -13,6 +13,6 @@ export interface SpaceSlots {
   split?: () => VNode[];
 }
 
-export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
+type Align = 'start' | 'end' | 'center' | 'baseline';
 
-export type SpaceSize = Size | number;
+type SpaceSize = _Size | number;
