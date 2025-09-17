@@ -47,9 +47,6 @@ export default defineConfig(({ mode }) => {
             preserveModules: true,
             preserveModulesRoot: 'src/components',
             exports: 'named',
-            globals: {
-              vue: 'Vue',
-            },
           },
           {
             format: 'cjs',
@@ -58,9 +55,6 @@ export default defineConfig(({ mode }) => {
             preserveModules: true,
             preserveModulesRoot: 'src/components',
             exports: 'named',
-            globals: {
-              vue: 'Vue',
-            },
           },
         ],
       },
