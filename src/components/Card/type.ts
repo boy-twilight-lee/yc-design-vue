@@ -5,7 +5,7 @@ export interface CardProps {
   bordered?: boolean;
   loading?: boolean;
   hoverable?: boolean;
-  size?: CardSize;
+  size?: Exclude<Size, 'mini' | 'large'>;
   headerStyle?: CSSProperties;
   bodyStyle?: CSSProperties;
   title?: string;
@@ -38,5 +38,3 @@ export interface CardGridProps {
 export interface CardGridSlots {
   default?: () => VNode[];
 }
-
-export type CardSize = Exclude<Size, 'mini' | 'large'>;

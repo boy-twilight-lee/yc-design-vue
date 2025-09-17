@@ -43,7 +43,11 @@ export type PopupPosition =
   | 'rt'
   | 'rb';
 
-export type collapseType = 'clickTrigger' | 'responsive';
+export type Position = 'left' | 'right' | 'top' | 'bottom';
+
+export type Type<T = never> = 'success' | 'warning' | 'error' | 'info' | T;
+
+export type Status<T = never> = 'success' | 'warning' | 'danger' | 'normal' | T;
 
 export type ClassName =
   | string

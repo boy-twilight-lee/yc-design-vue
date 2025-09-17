@@ -7,7 +7,7 @@ export interface SwitchProps {
   disabled?: boolean;
   loading?: boolean;
   type?: SwitchType;
-  size?: SwitchSize;
+  size?: Exclude<Size, 'mini' | 'large'>;
   checkedValue?: SwitchValue;
   uncheckedValue?: SwitchValue;
   checkedColor?: string;
@@ -34,8 +34,6 @@ export interface SwitchSlots {
 export type SwitchValue = string | number | boolean;
 
 export type SwitchType = 'circle' | 'round' | 'line';
-
-export type SwitchSize = Exclude<Size, 'mini' | 'large'>;
 
 export type BeforeChange = (
   newValue: SwitchValue

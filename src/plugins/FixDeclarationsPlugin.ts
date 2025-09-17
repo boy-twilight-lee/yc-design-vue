@@ -1,9 +1,5 @@
 import type { Plugin } from 'vite';
 
-function escapeRegExp(str: string): string {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 export default function FixInvalidDeclarationsPlugin(): Plugin {
   return {
     name: 'fix-invalid-declarations-in-umd',
@@ -34,7 +30,10 @@ export default function FixInvalidDeclarationsPlugin(): Plugin {
         console.log(
           `   - Replacing all occurrences of "${invalidName}" with "${validName}"`
         );
-        const searchRegex = new RegExp(escapeRegExp(invalidName), 'g');
+        const searchRegex = new RegExp(
+          invalidName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+          'g'
+        );
         modifiedCode = modifiedCode.replace(searchRegex, validName);
       }
       return {

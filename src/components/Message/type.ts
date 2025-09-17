@@ -1,4 +1,4 @@
-import { RenderContent } from '@shared/type';
+import { Position, RenderContent, Type } from '@shared/type';
 import { RenderFunction } from 'vue';
 
 export interface MessageProps {
@@ -20,15 +20,9 @@ export interface MessageContainerProps {
   position?: MessagePostion;
 }
 
-export type MessagePostion = 'top' | 'bottom';
+export type MessageType = Type<'loading' | 'normal'>;
 
-export type MessageType =
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'loading'
-  | 'normal';
+export type MessagePostion = Exclude<Position, 'left' | 'right'>;
 
 export type MessageConfig = Omit<MessageProps, 'type' | 'onDestory'> &
   MessageContainerProps;

@@ -1,7 +1,8 @@
 import { VNode } from 'vue';
+import { Type } from '@shared/type';
 
 export interface AlertProps {
-  type?: AlertType;
+  type?: Type<'normal'>;
   showIcon?: boolean;
   closable?: boolean;
   title?: string;
@@ -21,5 +22,3 @@ export interface AlertSlots {
   action?: () => VNode[];
   'close-element'?: () => VNode[];
 }
-
-export type AlertType = 'success' | 'warning' | 'error' | 'info' | 'normal';

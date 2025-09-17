@@ -1,4 +1,5 @@
 import { CSSProperties, VNode } from 'vue';
+import { Status } from '@shared/type';
 
 export interface BadgeProps {
   text?: string;
@@ -7,7 +8,7 @@ export interface BadgeProps {
   maxCount?: number;
   offset?: number[];
   color?: string;
-  status?: BadgeStatus;
+  status?: Status<'processing'>;
   count?: number;
 }
 
@@ -15,10 +16,3 @@ export interface BadgeSlots {
   default?: () => VNode[];
   content?: () => VNode[];
 }
-
-export type BadgeStatus =
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'normal'
-  | 'processing';

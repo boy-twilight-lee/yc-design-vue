@@ -13,11 +13,11 @@ import {
   TabKey,
   TabsEmits,
   TabType,
-  TabPositon,
 } from '../type';
 import {
   Direction,
   EventTrigger,
+  Position,
   RecordType,
   Required,
   Size,
@@ -31,7 +31,7 @@ type TabsContext = {
   type: Ref<TabType>;
   trigger: Ref<EventTrigger>;
   direction: Ref<Direction>;
-  position: Ref<TabPositon>;
+  position: Ref<Position>;
   editable: Ref<boolean>;
   destoryOnHide: Ref<boolean>;
   listRef: Ref<HTMLDivElement | undefined>;

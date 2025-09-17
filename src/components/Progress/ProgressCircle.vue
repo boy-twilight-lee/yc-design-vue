@@ -76,16 +76,16 @@
 
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
-import { ProgressColor, ProgressStatus } from './type';
+import { ProgressColor } from './type';
 import { isObject } from '@shared/utils/is';
 import { valueToPx } from '@shared/utils/dom';
-import { Size } from '@shared/type';
+import { Size, Status } from '@shared/type';
 import { IconCheck, IconExclamation } from '@shared/icons';
 import { TYPE_ICON_COLOR_MAP } from '@shared/constants';
 const props = defineProps<{
   type: string;
   percent: number;
-  status?: ProgressStatus;
+  status?: Status;
   size: Size;
   text: string;
   showText: boolean;

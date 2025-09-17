@@ -8,17 +8,16 @@ import {
 } from 'vue';
 import {
   ButtonType,
-  ButtonStatus,
   ButtonProps as _ButtonProps,
   ButtonGroupProps as _ButtonGroupProps,
 } from '../type';
-import { Size, Shape, Required, RecordType } from '@shared/type';
+import { Size, Shape, Status, Required, RecordType } from '@shared/type';
 import { getGlobalConfig } from '@shared/utils/global-config';
 
 const BUTTON_GROUP_CONTEXT_KEY = 'button-group-context';
 type ButtonContext = {
   type: Ref<ButtonType>;
-  status: Ref<ButtonStatus>;
+  status: Ref<Status>;
   size?: Ref<Size>;
   shape: Ref<Shape>;
   disabled: Ref<boolean>;

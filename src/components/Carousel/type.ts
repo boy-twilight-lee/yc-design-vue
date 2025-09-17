@@ -1,5 +1,6 @@
 import { VNode } from 'vue';
 import { ClassName, Direction, EventTrigger } from '@shared/type';
+import { Position } from '@vueuse/core';
 
 export interface CarouselProps {
   current?: number;
@@ -36,6 +37,6 @@ export type CarouselShowArrow = 'always' | 'hover' | 'never';
 
 export type AutoPlay = boolean | { interval?: number; hoverToPause?: boolean };
 
-export type IndicatorPosition = 'bottom' | 'top' | 'left' | 'right' | 'outer';
+export type IndicatorPosition = Position | 'outer';
 
 export type IndicatorType = 'line' | 'dot' | 'slider' | 'never';

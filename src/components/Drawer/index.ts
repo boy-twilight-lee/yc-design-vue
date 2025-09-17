@@ -1,5 +1,5 @@
 import { App, render, h } from 'vue';
-import { DrawerConfig, DrawerUpdateConfig } from './type';
+import { DrawerConfig, DrawerMethod } from './type';
 import _Drawer from './Drawer.vue';
 import _DrawerService from './DrawerService.vue';
 
@@ -19,8 +19,6 @@ const open = (props: DrawerConfig) => {
   const close = () => {
     render(null, container as HTMLDivElement);
   };
-  // 更新函数
-  const update = (_updateProps: DrawerUpdateConfig) => {};
   // 挂在vnode
   const vnode = h(_DrawerService, {
     ...props,
@@ -51,11 +49,7 @@ declare module 'vue' {
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $drawer: {
-      open: (props: DrawerConfig) => {
-        close: () => void;
-      };
-    };
+    $drawer: DrawerMethod;
   }
 }
 

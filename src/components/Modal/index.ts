@@ -1,7 +1,8 @@
 import { App, h, render } from 'vue';
-import { ModalConfig, ModalUpdateConfig, ModalMethod, ModalType } from './type';
+import { ModalConfig, ModalMethod } from './type';
 import _Modal from './Modal.vue';
 import _ModalService from './ModalService.vue';
+import { Type } from '@shared/type';
 
 export type ModalInstance = InstanceType<typeof _Modal>;
 export * from './type';
@@ -20,8 +21,6 @@ const open = (props: ModalConfig) => {
   const close = () => {
     render(null, container as HTMLDivElement);
   };
-  // 更新函数
-  const update = (_updateProps: ModalUpdateConfig) => {};
   // 挂在vnode
   const vnode = h(_ModalService, {
     ...props,
@@ -31,7 +30,6 @@ const open = (props: ModalConfig) => {
   render(vnode, container);
   return {
     close,
-    update,
   };
 };
 // modal方法
@@ -44,7 +42,7 @@ const modalMethod = {
         (props: ModalConfig) => {
           return open({
             ...props,
-            type: type as ModalType,
+            type: type as Type,
             simple: true,
             hideCancel: type != 'confirm',
             width: 400,

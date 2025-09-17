@@ -1,3 +1,4 @@
+import { Position } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface CollapseProps {
@@ -45,4 +46,4 @@ export interface CollapseItemSlots {
 
 export type CollapseValue = string | number;
 
-export type ExpandIconPosition = 'left' | 'right';
+export type ExpandIconPosition = Exclude<Position, 'top' | 'bottom'>;

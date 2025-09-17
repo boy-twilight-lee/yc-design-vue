@@ -1,8 +1,8 @@
-import { ClassName, RenderContent } from '@shared/type';
+import { ClassName, RenderContent, Type } from '@shared/type';
 import { CSSProperties, RenderFunction } from 'vue';
 
 export interface NotificationProps {
-  type?: NotificationType;
+  type?: Type;
   content?: RenderContent;
   title?: RenderContent;
   icon?: RenderFunction;
@@ -25,6 +25,12 @@ export interface NotificationContainerProps {
   position?: NotificationPosition;
 }
 
+export type NotificationPosition =
+  | 'topLeft'
+  | 'topRight'
+  | 'bottomLeft'
+  | 'bottomRight';
+
 export type NotificationConfig = Omit<NotificationProps, 'type' | 'onDestory'> &
   NotificationContainerProps;
 
@@ -40,11 +46,3 @@ export type NotificationMethod = {
 export type NotificationReturn = {
   close?: () => void;
 };
-
-export type NotificationPosition =
-  | 'topLeft'
-  | 'topRight'
-  | 'bottomLeft'
-  | 'bottomRight';
-
-export type NotificationType = 'success' | 'warning' | 'error' | 'info';

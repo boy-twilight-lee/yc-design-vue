@@ -1,10 +1,10 @@
 import { VNode } from 'vue';
-
+import { Status } from '@shared/type';
 // icon
 export interface LinkProps {
   href?: string;
   icon?: boolean;
-  status?: LinkStatus;
+  status?: Status;
   hoverable?: boolean;
   disabled?: boolean;
   loading?: boolean;
@@ -20,5 +20,3 @@ export interface LinkSlots {
   default?: () => VNode[];
   icon?: () => VNode[];
 }
-
-export type LinkStatus = 'success' | 'warning' | 'danger' | 'normal';

@@ -51,8 +51,8 @@ export type Heading = 1 | 2 | 3 | 4 | 5 | 6;
 export type Spacing = 'default' | 'close';
 
 export type TypographyType =
-  | 'primary'
-  | 'secondary'
   | 'success'
+  | 'warning'
   | 'danger'
-  | 'warning';
+  | 'primary'
+  | 'secondary';

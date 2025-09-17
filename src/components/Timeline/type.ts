@@ -1,4 +1,4 @@
-import { Direction } from '@shared/type';
+import { Direction, Position } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface TimelineProps {
@@ -20,7 +20,7 @@ export interface TimelineItemProps {
   lineType?: TimelineLineType;
   lineColor?: string;
   label?: string;
-  position?: TimelinePositon;
+  position?: Position;
   isGhost?: boolean;
 }
 
@@ -30,12 +30,10 @@ export interface TimelineItemSlots {
   default?: () => VNode[];
 }
 
-export type TimelineMode = 'left' | 'right' | 'top' | 'bottom' | 'alternate';
+export type TimelineMode = Position | 'alternate';
 
 export type TimelineLabelPosition = 'relative' | 'same';
 
 export type TimelineDotType = 'hollow' | 'solid';
 
 export type TimelineLineType = 'solid' | 'dashed' | 'dotted';
-
-export type TimelinePositon = 'left' | 'right' | 'top' | 'bottom';

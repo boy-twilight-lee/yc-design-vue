@@ -1,11 +1,11 @@
-import { Direction, RecordType } from '@shared/type';
+import { Direction, RecordType, Size } from '@shared/type';
 import { PaginationProps } from '../Pagination';
 import { VirtualListProps } from '../Select';
 import { VNode } from 'vue';
 
 export interface ListProps {
   data?: RecordType[];
-  size?: ListSize;
+  size?: Exclude<Size, 'mini'>;
   bordered?: boolean;
   split?: boolean;
   loading?: boolean;
@@ -54,5 +54,3 @@ export interface ListItemMetaSlots {
   title?: () => VNode[];
   description?: () => VNode[];
 }
-
-export type ListSize = 'small' | 'medium' | 'large';

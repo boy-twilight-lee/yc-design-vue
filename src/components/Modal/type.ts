@@ -1,7 +1,6 @@
 import { CSSProperties, VNode } from 'vue';
 import { ButtonProps } from '@/components/Button';
-import { RenderContent, PopupContainer, ClassName } from '@shared/type';
-import { ModuleStatus } from 'vm';
+import { RenderContent, PopupContainer, ClassName, Type } from '@shared/type';
 
 export interface ModalProps {
   visible?: boolean;
@@ -57,8 +56,6 @@ export interface ModalSlots {
   title?: () => VNode[];
 }
 
-export type ModalType = 'success' | 'warning' | 'error' | 'info';
-
 export type ModalTitleAlign = 'start' | 'center';
 
 export type OnBeforeOk = (
@@ -73,7 +70,7 @@ export type ModalConfig = Omit<
 > & {
   title?: RenderContent;
   content?: RenderContent;
-  type?: ModalType;
+  type?: Type;
   onOk?: () => void | Promise<void>;
   onCancel?: () => void | Promise<void>;
   onOpen?: () => void;
@@ -81,21 +78,6 @@ export type ModalConfig = Omit<
   onBeforeOpen?: () => void;
   onBeforeClose?: () => void;
 };
-
-export type ModalUpdateConfig = Omit<
-  ModalConfig,
-  | 'title'
-  | 'content'
-  | 'footer'
-  | 'onOk'
-  | 'onCancel'
-  | 'onBeforeOk'
-  | 'onBeforeCancel'
-  | 'onOpen'
-  | 'onClose'
-  | 'onBeforeOpen'
-  | 'onBeforeClose'
->;
 
 export type ModalServiceProps = ModalConfig & {
   serviceClose?: () => void;
@@ -107,10 +89,9 @@ export type ModalMethod = {
   error: (props: ModalConfig) => ModalReturn;
   warning: (props: ModalConfig) => ModalReturn;
   info: (props: ModalConfig) => ModalReturn;
-  confirm: (props: ModalConfig) => ModuleStatus;
+  confirm: (props: ModalConfig) => ModalReturn;
 };
 
 export type ModalReturn = {
   close: () => void;
-  update: (config: ModalUpdateConfig) => void;
 };

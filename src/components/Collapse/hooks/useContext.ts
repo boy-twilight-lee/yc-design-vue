@@ -18,8 +18,8 @@ import {
 import { RecordType, Required } from '@shared/type';
 import { useControlValue } from '@shared/utils/control';
 
-export const COLLAPSE_CONTEXT_KEY = 'collapse-context';
-export type CollapseContext = {
+const COLLAPSE_CONTEXT_KEY = 'collapse-context';
+type CollapseContext = {
   computedActiveKey: Ref<CollapseValue[]>;
   accordion: Ref<boolean>;
   expandIconPosition: Ref<ExpandIconPosition>;
@@ -27,8 +27,8 @@ export type CollapseContext = {
   destroyOnHide: Ref<boolean>;
   slots: Slots;
 };
-export type CollapseProps = Required<_CollapseProps>;
-export type CollapseItemProps = Required<_CollapseItemProps>;
+type CollapseProps = Required<_CollapseProps>;
+type CollapseItemProps = Required<_CollapseItemProps>;
 
 export default function useCollapseContext() {
   const provide = (props: RecordType, emits: CollapseEmits) => {

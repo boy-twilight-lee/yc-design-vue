@@ -1,12 +1,6 @@
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
-import {
-  Theme,
-  BreakpointName,
-  PopupMaxHeight,
-  Direction,
-  collapseType,
-} from '@shared/type';
+import { Theme, BreakpointName, PopupMaxHeight, Direction } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface MenuProps {
@@ -36,7 +30,11 @@ export interface MenuEmits {
   (e: 'update:selectedKeys', value: string): void;
   (e: 'update:openKeys', value: string): void;
   (e: 'update:collapsed', value: boolean): void;
-  (e: 'collapse', collapsed: boolean, type: collapseType): void;
+  (
+    e: 'collapse',
+    collapsed: boolean,
+    type: 'clickTrigger' | 'responsive'
+  ): void;
   (e: 'menu-item-click', key: string): void;
   (e: 'sub-menu-click', key: string, openKeys: string[]): void;
 }

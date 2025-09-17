@@ -16,8 +16,8 @@ import { RecordType, BreakpointName, ResponsiveValue } from '@shared/type';
 import { isArray } from '@shared/utils/is';
 import { getBreakpointValue } from '@shared/utils/dom';
 
-export const GRID_CONTEXT_KEY = 'grid-context';
-export type GridContext = {
+const GRID_CONTEXT_KEY = 'grid-context';
+type GridContext = {
   breakpoint: Ref<BreakpointName>;
   div: Ref<boolean>;
   gutter: Ref<number[]>;

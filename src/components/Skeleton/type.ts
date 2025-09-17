@@ -19,10 +19,6 @@ export interface SkeletonLineProps {
 }
 
 export interface SkeletonShapeProps {
-  shape?: SkeletonShapeShape;
-  size?: SkeletonShapeSize;
+  shape?: Exclude<Shape, 'round'>;
+  size?: Exclude<Size, 'mini'>;
 }
-
-export type SkeletonShapeSize = Exclude<Size, 'mini'>;
-
-export type SkeletonShapeShape = Exclude<Shape, 'round'>;

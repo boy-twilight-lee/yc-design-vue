@@ -1,10 +1,10 @@
-import { Direction, Size, EventTrigger } from '@shared/type';
+import { Direction, Size, EventTrigger, Position } from '@shared/type';
 import { VNode } from 'vue';
 
 export interface TabsProps {
   activeKey?: TabKey;
   defaultActiveKey?: TabKey;
-  position?: TabPositon;
+  position?: Position;
   size?: Size;
   type?: TabType;
   direction?: Direction;
@@ -54,5 +54,3 @@ export type TabType =
   | 'text'
   | 'rounded'
   | 'capsule';
-
-export type TabPositon = 'left' | 'right' | 'bottom' | 'top';

@@ -1,11 +1,11 @@
 import { CSSProperties, VNode } from 'vue';
 import { ButtonProps } from '@/components/Button';
 import { OnBeforeCancel, OnBeforeOk } from '@/components/Modal';
-import { RenderContent, PopupContainer } from '@shared/type';
+import { RenderContent, PopupContainer, Position } from '@shared/type';
 export interface DrawerProps {
   visible?: boolean;
   defaultVisible?: boolean;
-  placement?: DrawerPlacement;
+  placement?: Position;
   title?: string;
   mask?: boolean;
   maskClosable?: boolean;
@@ -60,24 +60,14 @@ export type DrawerConfig = Omit<
   onBeforeClose?: () => void;
 };
 
-export declare type DrawerUpdateConfig = Omit<
-  DrawerConfig,
-  | 'title'
-  | 'content'
-  | 'onOk'
-  | 'onCancel'
-  | 'onBeforeOk'
-  | 'onBeforeCancel'
-  | 'onOpen'
-  | 'onClose'
-  | 'onBeforeOpen'
-  | 'onBeforeClose'
-  | 'header'
-  | 'footer'
->;
-
 export type DrawerServiceProps = DrawerConfig & {
   serviceClose?: () => void;
 };
 
-export type DrawerPlacement = 'right' | 'left' | 'top' | 'bottom';
+export type DrawerMethod = {
+  open: (props: DrawerConfig) => DrawerReturn;
+};
+
+export type DrawerReturn = {
+  close: () => void;
+};

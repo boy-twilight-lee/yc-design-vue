@@ -3,7 +3,7 @@ import { Size } from '@shared/type';
 
 export interface TagProps {
   color?: string;
-  size?: TagSize;
+  size?: Exclude<Size, 'mini'>;
   bordered?: boolean;
   visible?: boolean;
   defaultVisible?: boolean;
@@ -27,5 +27,3 @@ export interface TagSlots {
   icon?: () => VNode[];
   'close-icon'?: () => VNode[];
 }
-
-export type TagSize = Exclude<Size, 'mini'>;

@@ -1,10 +1,11 @@
+import { Position } from '@vueuse/core';
 import { VNode } from 'vue';
 
 export interface ResizeBoxProps {
   width?: number;
   height?: number;
   component?: string;
-  directions?: ResizeBoxDirection[];
+  directions?: Position[];
 }
 
 export interface ResizeBoxEmits {
@@ -17,8 +18,6 @@ export interface ResizeBoxEmits {
 
 export interface ResizeBoxSlots {
   default?: () => VNode[];
-  'resize-trigger'?: (scope: { direction: ResizeBoxDirection }) => VNode[];
-  'resize-trigger-icon'?: (scope: { direction: ResizeBoxDirection }) => VNode[];
+  'resize-trigger'?: (scope: { direction: Position }) => VNode[];
+  'resize-trigger-icon'?: (scope: { direction: Position }) => VNode[];
 }
-
-export type ResizeBoxDirection = 'left' | 'right' | 'top' | 'bottom';

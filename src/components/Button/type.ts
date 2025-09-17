@@ -1,10 +1,10 @@
 import { VNode } from 'vue';
-import { Shape, Size } from '@shared/type';
+import { Shape, Size, Status } from '@shared/type';
 
 export interface ButtonProps {
   type?: ButtonType;
   shape?: Shape;
-  status?: ButtonStatus;
+  status?: Status;
   size?: Size;
   long?: boolean;
   loading?: boolean;
@@ -29,7 +29,7 @@ export interface ButtonSlots {
 
 export interface ButtonGroupProps {
   type?: ButtonType;
-  status?: ButtonStatus;
+  status?: Status;
   shape?: Shape;
   size?: Size;
   disabled?: boolean;
@@ -38,8 +38,6 @@ export interface ButtonGroupProps {
 export interface ButtonGroupSlots {
   default?: () => VNode[];
 }
-
-export type ButtonStatus = 'success' | 'warning' | 'danger' | 'normal';
 
 export type ButtonType =
   | 'primary'
