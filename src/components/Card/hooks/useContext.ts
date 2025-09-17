@@ -5,7 +5,7 @@ type CardContext = {
   slots: Slots;
 };
 
-export default () => {
+export default function useCardContext() {
   const provide = () => {
     const slots = useSlots();
     _provide<CardContext>(CARD_CONTEXT_KEY, {
@@ -21,4 +21,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

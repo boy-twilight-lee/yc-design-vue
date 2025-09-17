@@ -36,7 +36,7 @@ type StepsContext = {
 };
 type StepsProps = Required<_StepsProps>;
 
-export default () => {
+export default function useStepsContext() {
   const provide = (props: RecordType, emits: StepsEmits) => {
     const {
       status,
@@ -168,4 +168,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

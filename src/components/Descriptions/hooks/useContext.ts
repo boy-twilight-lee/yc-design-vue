@@ -31,7 +31,7 @@ type DescriptionsContext = {
 };
 type DescriptionsProps = Required<_DescriptionsProps>;
 
-export default () => {
+export default function useDescContext() {
   const provide = (props: RecordType) => {
     const {
       data: _data,
@@ -102,4 +102,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

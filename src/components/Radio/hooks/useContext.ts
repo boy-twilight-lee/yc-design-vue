@@ -29,7 +29,7 @@ interface RadioContext {
 }
 type RadioGroupProps = Required<_RadioGroupProps>;
 
-export default () => {
+export default function useRadioContext() {
   const provide = (props: RecordType, emits: RadioGroupEmits) => {
     const {
       modelValue,
@@ -88,4 +88,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

@@ -36,7 +36,7 @@ type CarouselContext = {
 type MoveType = 'positive' | 'negative';
 type CarouselProps = Required<_CarouselProps>;
 
-export default () => {
+export default function useCarouselContext() {
   const provide = (props: RecordType, emits: CarouselEmits) => {
     const {
       current,
@@ -138,4 +138,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

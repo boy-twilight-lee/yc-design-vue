@@ -18,7 +18,7 @@ type AvatarContext = {
 };
 type AvatarGroupProps = Required<_AvatarGroupProps>;
 
-export default () => {
+export default function useAvatarContext() {
   const provide = (props: RecordType) => {
     const { shape, size, autoFixFontSize } = toRefs(props as AvatarGroupProps);
     _provide<AvatarContext>(AVATAR_GROUP_CONTEXT_KEY, {
@@ -54,4 +54,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

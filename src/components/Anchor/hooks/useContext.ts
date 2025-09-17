@@ -25,7 +25,7 @@ type AnchorContext = {
 };
 type AnchorProps = Required<_AnchorProps>;
 
-export default () => {
+export default function useAnchorContext() {
   const provide = (
     props: RecordType,
     listRef: Ref<HTMLDivElement | undefined>
@@ -88,4 +88,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

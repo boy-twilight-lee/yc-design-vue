@@ -23,7 +23,7 @@ type ImageContext = {
 };
 type ImagePreviewGroupProps = Required<_ImagePreviewGroupProps>;
 
-export default () => {
+export default function useImageContext() {
   const provide = (props: RecordType, emits: ImagePreviewGroupEmits) => {
     const {
       srcList: _srcList,
@@ -92,4 +92,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

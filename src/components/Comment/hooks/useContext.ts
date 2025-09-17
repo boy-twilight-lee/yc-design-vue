@@ -14,7 +14,7 @@ type CommentContext = {
   depths: Reactive<Map<string, string>>;
 };
 
-export default () => {
+export default function useCommentContext() {
   const { depths } = inject<CommentContext>(COMMENT_CONTEXT_KEY, {
     depths: reactive(new Map()),
   });
@@ -30,4 +30,4 @@ export default () => {
   return {
     hasChildren,
   };
-};
+}

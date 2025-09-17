@@ -39,7 +39,7 @@ type TransferContext = {
 };
 type TransferProps = Required<_TransferProps>;
 
-export default () => {
+export default function useTransferContext() {
   const provide = (props: RecordType, emits: TransferEmits) => {
     const {
       modelValue,
@@ -162,4 +162,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

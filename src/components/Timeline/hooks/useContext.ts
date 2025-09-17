@@ -27,7 +27,7 @@ type TimelineContext = {
 };
 type TimelineProps = Required<_TimelineProps>;
 
-export default () => {
+export default function useTimelineContext() {
   const provide = (props: RecordType) => {
     const {
       direction,
@@ -86,4 +86,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

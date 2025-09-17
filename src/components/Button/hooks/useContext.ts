@@ -26,7 +26,7 @@ type ButtonContext = {
 type ButtonProps = Required<_ButtonProps>;
 type ButtonGroupProps = Required<_ButtonGroupProps>;
 
-export default () => {
+export default function useButtonContext() {
   const provide = (props: RecordType) => {
     const { type, status, shape, disabled } = toRefs(props as ButtonGroupProps);
     const { size } = getGlobalConfig(props);
@@ -69,4 +69,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

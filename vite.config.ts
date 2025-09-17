@@ -66,6 +66,10 @@ export default defineConfig(({ mode }) => {
             globals: {
               vue: 'Vue',
             },
+            interop: 'auto',
+            generatedCode: {
+              constBindings: true,
+            },
           },
         ],
       },

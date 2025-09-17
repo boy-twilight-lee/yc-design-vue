@@ -41,7 +41,7 @@ type TimePickerContext = {
 type TimePickerProps = Required<_TimePickerProps>;
 type TimePickerCell = { label: string; value: number };
 
-export default () => {
+export default function useTimePickerContext() {
   const provide = (props: RecordType, emits: TimePickerEmits) => {
     const {
       modelValue,
@@ -181,4 +181,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

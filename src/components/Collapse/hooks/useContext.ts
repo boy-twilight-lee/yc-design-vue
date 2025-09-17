@@ -30,7 +30,7 @@ export type CollapseContext = {
 export type CollapseProps = Required<_CollapseProps>;
 export type CollapseItemProps = Required<_CollapseItemProps>;
 
-export default () => {
+export default function useCollapseContext() {
   const provide = (props: RecordType, emits: CollapseEmits) => {
     const {
       activeKey,
@@ -89,4 +89,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

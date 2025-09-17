@@ -12,7 +12,7 @@ type ScrollbarContext = {
   scrollRef: Ref<HTMLDivElement | undefined>;
 };
 
-export default () => {
+export default function useScrollbarContext() {
   const provide = (params: ScrollbarContext) => {
     _provide<ScrollbarContext>(SCROLLBAR_CONTEXT_KEY, params);
   };
@@ -32,4 +32,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

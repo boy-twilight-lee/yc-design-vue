@@ -199,7 +199,7 @@ function transformField(
   });
 }
 
-export default () => {
+export default function useCascaderContext() {
   const provide = (
     props: RecordType,
     emits: CascaderEmits,
@@ -444,4 +444,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

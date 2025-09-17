@@ -16,7 +16,7 @@ export type LayoutContext = {
   collapsed: Ref<boolean>;
 };
 
-export default () => {
+export default function useLayoutContext() {
   const provide = (props: RecordType, emits: LayoutSiderEmits) => {
     const { collapsed, defaultCollapsed, theme } = toRefs(
       props as Required<LayoutSiderProps>
@@ -50,4 +50,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

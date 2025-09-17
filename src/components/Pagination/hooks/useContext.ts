@@ -26,7 +26,7 @@ interface PaginationContext {
 }
 type PaginationProps = Required<_PaginationProps>;
 
-export default () => {
+export default function usePaginationContext() {
   const provide = (props: RecordType, emits: PaginationEmits) => {
     const {
       disabled,
@@ -167,4 +167,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

@@ -8,7 +8,7 @@ type DropdownContext = {
   select: (value: DoptionValue, ev: MouseEvent) => void;
 };
 
-export default () => {
+export default function useDropdownContext() {
   const provide = (props: RecordType, emits: DropdownEmits) => {
     const {
       popupVisible,
@@ -47,4 +47,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

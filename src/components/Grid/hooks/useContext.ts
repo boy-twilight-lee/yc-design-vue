@@ -37,7 +37,7 @@ export type SpanMap = Map<
 >;
 export type GutterValue = GridRowGutter | [GridRowGutter, GridRowGutter];
 
-export default () => {
+export default function useGridContext() {
   const provide = (props: RecordType) => {
     const {
       gutter: _gutter = ref<GutterValue>(0),
@@ -131,4 +131,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

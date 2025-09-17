@@ -22,12 +22,12 @@ export type TriggerProps = Required<_TriggerProps>;
  *  groupIds 同一个submenu里面的groupId集合
  *  groupId  组件标识，用于标识元素是否处于一个嵌套中
  */
-export default (params: {
+export default function useTriggerContext(params: {
   trigger: TriggerType;
   mouseEnterDelay: Ref<number>;
   computedVisible: Ref<boolean>;
   popupRef: Ref<HTMLDivElement | undefined>;
-}) => {
+}) {
   const { trigger, popupRef, computedVisible, mouseEnterDelay } = params;
   // 接收
   const {
@@ -136,4 +136,4 @@ export default (params: {
     clickOutsideHandler,
     mosueLeaveHandler,
   };
-};
+}

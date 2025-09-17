@@ -27,7 +27,7 @@ type ColorPickerContext = {
 };
 type ColorPickerProps = Required<_ColorPickerProps>;
 
-export default () => {
+export default function useColorPickerContext() {
   const provide = (props: RecordType, emits: ColorPickerEmits) => {
     const {
       modelValue,
@@ -114,4 +114,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

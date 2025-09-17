@@ -47,7 +47,7 @@ export type PaneNode = {
   slots: Slots;
 } & TabPaneProps;
 
-export default () => {
+export default function useTabsContext() {
   const provide = (
     props: RecordType,
     emits: TabsEmits,
@@ -134,4 +134,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

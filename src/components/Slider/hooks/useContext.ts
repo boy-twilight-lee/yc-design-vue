@@ -36,7 +36,7 @@ type SliderContext = {
 };
 type SliderProp = Required<_SliderProps>;
 
-export default () => {
+export default function useSliderContext() {
   const provide = (
     props: RecordType,
     emits: SliderEmits,
@@ -207,4 +207,4 @@ export default () => {
     inject,
     provide,
   };
-};
+}

@@ -42,7 +42,7 @@ type SelectContext = {
 };
 type SelectProps = Required<_SelectProps>;
 
-export default () => {
+export default function useSelectContext() {
   const provide = (
     props: RecordType,
     emits: SelectEmits,
@@ -238,4 +238,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

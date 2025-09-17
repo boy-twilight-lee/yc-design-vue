@@ -178,7 +178,7 @@ export const getPopupMaxHeight = (popupMaxHeight: PopupMaxHeight) => {
   }
 };
 
-export default () => {
+export default function useMenuContext() {
   const provide = (
     props: RecordType,
     emits: MenuEmits,
@@ -340,4 +340,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}

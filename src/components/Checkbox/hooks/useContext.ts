@@ -24,7 +24,7 @@ type CheckboxContext = {
 };
 type CheckboxGroupProps = Required<_CheckboxGroupProps>;
 
-export default () => {
+export default function useCheckboxContext() {
   const provide = (props: RecordType, emits: CheckboxGroupEmits) => {
     const {
       modelValue,
@@ -70,4 +70,4 @@ export default () => {
     provide,
     inject,
   };
-};
+}
