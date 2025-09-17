@@ -46,6 +46,7 @@ export default defineConfig(({ mode }) => {
             entryFileNames: '[name].js',
             preserveModules: true,
             preserveModulesRoot: 'src/components',
+            exports: 'named',
             globals: {
               vue: 'Vue',
             },
@@ -56,6 +57,7 @@ export default defineConfig(({ mode }) => {
             entryFileNames: '[name].js',
             preserveModules: true,
             preserveModulesRoot: 'src/components',
+            exports: 'named',
             globals: {
               vue: 'Vue',
             },
