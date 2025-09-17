@@ -30,12 +30,12 @@ import { ref, toRefs, computed, CSSProperties, watch } from 'vue';
 import { AffixProps, AffixEmits, AffixSlots, AffixExpose } from './type';
 import { useResizeObserver, useEventListener } from '@vueuse/core';
 import {
-  isUndefined,
   findFirstScrollableParent,
   getElement,
   throttleByRaf,
   valueToPx,
-} from '@shared/utils';
+} from '@shared/utils/dom';
+import { isUndefined } from '@shared/utils/is';
 defineOptions({
   name: 'Affix',
   inheritAttrs: false,

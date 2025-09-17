@@ -8,7 +8,7 @@ import {
   MessageType,
   MessagePostion,
 } from './type';
-import { isString } from '@shared/utils';
+import { isString } from '@shared/utils/is';
 
 export type MessageInstance = InstanceType<typeof _Message>;
 export * from './type';
@@ -106,9 +106,9 @@ const Message = Object.assign(_Message, {
   ...messageMethod,
 });
 
-declare module 'vue' {
-  export interface ComponentCustomProperties {
-    $message: typeof Message;
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $message: MessageMethod;
   }
 }
 

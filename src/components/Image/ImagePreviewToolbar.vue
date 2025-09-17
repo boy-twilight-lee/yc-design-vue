@@ -23,7 +23,7 @@ import {
   IconOriginSize,
 } from '@shared/icons';
 import { RecordType } from '@shared/type';
-import { useI18n } from '@shared/utils';
+import { useI18n } from '@shared/utils/locale';
 import ImagePreviewAction from './ImagePreviewAction.vue';
 withDefaults(
   defineProps<{

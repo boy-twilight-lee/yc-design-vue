@@ -29,7 +29,7 @@
 import { ref, toRefs, computed, watchEffect } from 'vue';
 import { useDraggable, useResizeObserver } from '@vueuse/core';
 import { Direction } from '@shared/type';
-import { valueToPx } from '@shared/utils';
+import { valueToPx } from '@shared/utils/dom';
 import useContext from './hooks/useContext';
 const props = withDefaults(
   defineProps<{

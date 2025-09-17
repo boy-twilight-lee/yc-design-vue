@@ -41,14 +41,15 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { AvatarGroupProps, AvatarGroupSlots } from './type';
-import { findComponentsFromVnodes, valueToPx } from '@shared/utils';
+import { valueToPx } from '@shared/utils/dom';
+import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
 import useContext from './hooks/useContext';
 import YcAvatar from './index';
 import YcPopover from '@/components/Popover';
 defineOptions({
   name: 'AvatarGroup',
 });
-const slots = defineSlots<AvatarGroupSlots>();
+const $slots = defineSlots<AvatarGroupSlots>();
 const props = withDefaults(defineProps<AvatarGroupProps>(), {
   size: 40,
   shape: 'round',
@@ -67,7 +68,7 @@ const { maxCount } = toRefs(props);
 useContext().provide(props);
 const nodes = computed(() => {
   const avatars = findComponentsFromVnodes(
-    slots.default?.() || [],
+    $slots.default?.() || [],
     YcAvatar.name as string
   );
   return {

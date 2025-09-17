@@ -82,7 +82,9 @@ import { ref, computed } from 'vue';
 import BTween from 'b-tween';
 import { default as dayjs, UnitType } from 'dayjs';
 import { TimeUnit } from './type';
-import { isUndefined, isArray, sleep, useI18n } from '@shared/utils';
+import { isUndefined, isArray } from '@shared/utils/is';
+import { sleep } from '@shared/utils/dom';
+import { useI18n } from '@shared/utils/locale';
 import useContext from './hooks/useContext';
 import YcButton from '@/components/Button';
 import {

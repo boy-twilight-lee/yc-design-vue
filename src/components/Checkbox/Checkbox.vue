@@ -41,7 +41,8 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { CheckboxProps, CheckboxEmits, CheckboxSlots } from './type';
-import { useControlValue, isUndefined } from '@shared/utils';
+import { isUndefined } from '@shared/utils/is';
+import { useControlValue } from '@shared/utils/control';
 import useContext from './hooks/useContext';
 import { IconCheckboxChecked } from '@shared/icons';
 import { IconButton } from '@shared/components';

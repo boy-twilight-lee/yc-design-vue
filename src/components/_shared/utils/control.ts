@@ -1,5 +1,5 @@
 import { computed, ref, Ref } from 'vue';
-import { isUndefined } from '../utils';
+import { isUndefined } from './is';
 
 type OnSet = (...args: any) => any;
 type OnGet = (...args: any) => any;

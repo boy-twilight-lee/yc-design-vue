@@ -78,10 +78,10 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, watch } from 'vue';
-import { parseColor } from '@shared/utils';
 import { ColorFormat } from '@/components/ColorPicker/type';
-import { COLOR_PICKER_FORMAT_OPTIONS } from '@shared/constants';
 import { RecordType } from '@shared/type';
+import { parseColor } from '@shared/utils/color';
+import { COLOR_PICKER_FORMAT_OPTIONS } from '@shared/constants';
 import YcSelect from '@/components/Select';
 import YcInput from '@/components/Input';
 import YcInputNumber from '@/components/InputNumber';

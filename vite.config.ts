@@ -50,16 +50,16 @@ export default defineConfig(({ mode }) => {
               vue: 'Vue',
             },
           },
-          // {
-          //   format: 'cjs',
-          //   dir: 'lib',
-          //   entryFileNames: '[name].js',
-          //   preserveModules: true,
-          //   preserveModulesRoot: 'src/components',
-          //   globals: {
-          //     vue: 'Vue',
-          //   },
-          // },
+          {
+            format: 'cjs',
+            dir: 'lib',
+            entryFileNames: '[name].js',
+            preserveModules: true,
+            preserveModulesRoot: 'src/components',
+            globals: {
+              vue: 'Vue',
+            },
+          },
         ],
       },
       minify: 'terser',

@@ -115,13 +115,9 @@ import {
   InputNumberExpose,
   InputNumberValue,
 } from './type';
-import {
-  isNumber,
-  isString,
-  isFunction,
-  useControlValue,
-  sleep,
-} from '@shared/utils';
+import { isNumber, isString, isFunction } from '@shared/utils/is';
+import { useControlValue } from '@shared/utils/control';
+import { sleep } from '@shared/utils/dom';
 import OperaBtn from './InputOperaBtn.vue';
 import { default as YcInput, InputInstance } from '@/components/Input';
 defineOptions({

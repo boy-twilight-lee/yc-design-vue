@@ -1,6 +1,6 @@
 import { toRefs, inject, ref, isReactive, reactive, Ref, computed } from 'vue';
 import { RecordType, PopupContainer, Size } from '@shared/type';
-import { isBoolean, isString, isUndefined } from '../utils';
+import { isBoolean, isString, isUndefined } from './is';
 
 export const CONFIG_PROVIDER_PROVIDE_KEY = 'config-props';
 

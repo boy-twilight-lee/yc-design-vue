@@ -33,7 +33,8 @@
 import { toRefs, onMounted, watch } from 'vue';
 import { NotificationProps } from './type';
 import { TYPE_ICON_MAP } from '@shared/constants';
-import { getSlotFunction, isFunction, isUndefined } from '@shared/utils';
+import { isFunction, isUndefined } from '@shared/utils/is';
+import { getSlotFunction } from '@shared/utils/vue-utils';
 import { IconButton } from '@shared/components';
 import { useTimeoutFn } from '@vueuse/core';
 defineOptions({

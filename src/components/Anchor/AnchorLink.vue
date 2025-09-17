@@ -22,7 +22,8 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue';
 import { AnchorLinkProps, AnchorLinkSlots } from './type';
-import { isNumber, getElement } from '@shared/utils';
+import { getElement } from '@shared/utils/dom';
+import { isNumber } from '@shared/utils/is';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'AnchorLink',

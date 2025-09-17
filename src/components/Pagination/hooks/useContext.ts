@@ -9,7 +9,9 @@ import {
 } from 'vue';
 import { PaginationProps as _PaginationProps, PaginationEmits } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue, getGlobalConfig, useI18n } from '@shared/utils';
+import { useControlValue } from '@shared/utils/control';
+import { getGlobalConfig } from '@shared/utils/global-config';
+import { useI18n } from '@shared/utils/locale';
 
 const PAGINATION_CONTEXT_KEY = 'pagination-context';
 interface PaginationContext {

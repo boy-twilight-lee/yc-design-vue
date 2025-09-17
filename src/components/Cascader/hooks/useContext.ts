@@ -20,13 +20,8 @@ import {
 } from '../type';
 import { InputInstance } from '@/components/Input';
 import { EventTrigger, RecordType, Required } from '@shared/type';
-import {
-  isObject,
-  useControlValue,
-  isArray,
-  isBoolean,
-  isFunction,
-} from '@shared/utils';
+import { isObject, isArray, isBoolean, isFunction } from '@shared/utils/is';
+import { useControlValue } from '@shared/utils/control';
 
 const CASCADER_CONTEXT_KEY = 'cascader-context';
 type CascaderContext = {

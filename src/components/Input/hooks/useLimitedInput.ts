@@ -2,12 +2,8 @@ import { computed, Ref, ref, toRefs, nextTick } from 'vue';
 import { RecordType, Required } from '@shared/type';
 import { TextareaEmits } from '@/components/Textarea';
 import { InputProps as _InputProps, InputEmits } from '@/components/Input';
-import {
-  isFunction,
-  isNumber,
-  isUndefined,
-  useControlValue,
-} from '@shared/utils';
+import { isFunction, isNumber, isUndefined } from '@shared/utils/is';
+import { useControlValue } from '@shared/utils/control';
 import useCursor from './useCursor';
 
 export type InputProps = Required<_InputProps>;

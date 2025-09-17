@@ -28,7 +28,7 @@ export interface NotificationContainerProps {
 export type NotificationConfig = Omit<NotificationProps, 'type' | 'onDestory'> &
   NotificationContainerProps;
 
-export type NotificationMethods = {
+export type NotificationMethod = {
   info: (config: string | NotificationConfig) => NotificationReturn;
   success: (config: string | NotificationConfig) => NotificationReturn;
   warning: (config: string | NotificationConfig) => NotificationReturn;

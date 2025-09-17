@@ -14,11 +14,9 @@ import {
   CarouselShowArrow,
 } from '../type';
 import { ClassName, Direction, RecordType, Required } from '@shared/type';
-import {
-  useControlValue,
-  sleep,
-  findComponentsFromVnodes,
-} from '@shared/utils';
+import { sleep } from '@shared/utils/dom';
+import { useControlValue } from '@shared/utils/control';
+import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
 import CarouselItem from '../CarouselItem.vue';
 
 const CAROUSEL_CONTEXT_KEY = 'carousel-context';

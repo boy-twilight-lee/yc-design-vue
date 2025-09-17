@@ -30,7 +30,6 @@ const open = (props: DrawerConfig) => {
   render(vnode, container);
   return {
     close,
-    update,
   };
 };
 
@@ -48,8 +47,15 @@ declare module 'vue' {
   export interface GlobalComponents {
     YcDrawer: typeof Drawer;
   }
-  export interface ComponentCustomProperties {
-    $drawer: typeof Drawer;
+}
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $drawer: {
+      open: (props: DrawerConfig) => {
+        close: () => void;
+      };
+    };
   }
 }
 

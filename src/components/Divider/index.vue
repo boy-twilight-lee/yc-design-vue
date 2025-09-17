@@ -20,7 +20,8 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { DividerProps, DividerSlots } from './type';
-import { isUndefined, valueToPx } from '@shared/utils';
+import { valueToPx } from '@shared/utils/dom';
+import { isUndefined } from '@shared/utils/is';
 defineOptions({
   name: 'Divider',
 });

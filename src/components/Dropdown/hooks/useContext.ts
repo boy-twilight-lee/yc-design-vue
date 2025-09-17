@@ -1,7 +1,7 @@
 import { toRefs, provide as _provide, inject as _inject } from 'vue';
 import { DoptionValue, DropdownEmits } from '../type';
 import { RecordType } from '@shared/type';
-import { useControlValue } from '@shared/utils';
+import { useControlValue } from '@shared/utils/control';
 
 const DROPDOWN_CONTEXT_KEY = 'dropdown-context';
 type DropdownContext = {

@@ -106,7 +106,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { TimePickerProps, TimePickerEmits, TimePickerSlots } from './type';
-import { getGlobalConfig, isArray, isValidTimeRange } from '@shared/utils';
+import { getGlobalConfig } from '@shared/utils/global-config';
+import { isArray } from '@shared/utils/is';
+import { isValidTimeRange } from '@shared/utils/time';
 import useContext from './hooks/useContext';
 import { IconButton } from '@shared/components';
 import { IconTime } from '@shared/icons';

@@ -4,7 +4,8 @@
 
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
-import { valueToPx, isUndefined } from '@shared/utils';
+import { isUndefined } from '@shared/utils/is';
+import { valueToPx } from '@shared/utils/dom';
 import { RecordType } from '@shared/type';
 import useContext from './hooks/useContext';
 const props = defineProps<{

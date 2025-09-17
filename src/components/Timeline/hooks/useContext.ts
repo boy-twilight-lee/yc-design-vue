@@ -14,7 +14,7 @@ import {
   TimelineMode,
 } from '../type';
 import { Direction, Required, RecordType } from '@shared/type';
-import { findComponentsFromVnodes } from '@shared/utils';
+import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
 import TimelineItem from '../TimelineItem.vue';
 import TimelineItemPending from '../TimelineItemPending.vue';
 

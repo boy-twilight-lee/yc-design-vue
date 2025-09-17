@@ -87,7 +87,9 @@
 <script lang="ts" setup>
 import { ref, toRefs, watch } from 'vue';
 import { ImageProps, ImageEmits, ImageSlots } from './type';
-import { useControlValue, valueToPx, useI18n } from '@shared/utils';
+import { useControlValue } from '@shared/utils/control';
+import { valueToPx } from '@shared/utils/dom';
+import { useI18n } from '@shared/utils/locale';
 import { IconImageClose } from '@shared/icons';
 import useContext from './hooks/useContext';
 import YcSpin from '@/components/Spin';

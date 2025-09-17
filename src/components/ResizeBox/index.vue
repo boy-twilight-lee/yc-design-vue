@@ -42,11 +42,12 @@ import {
   ResizeBoxDirection,
 } from './type';
 import { IconDragDot } from '@shared/icons';
-import { useControlValue, valueToPx, sleep } from '@shared/utils';
+import { valueToPx } from '@shared/utils/dom';
+import { useControlValue } from '@shared/utils/control';
 defineOptions({
   name: 'ResizeBox',
 });
-const slots = defineSlots<ResizeBoxSlots>();
+defineSlots<ResizeBoxSlots>();
 const props = withDefaults(defineProps<ResizeBoxProps>(), {
   width: undefined,
   height: undefined,

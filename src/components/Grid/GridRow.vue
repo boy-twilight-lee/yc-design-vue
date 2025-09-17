@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue';
 import { GridRowProps, GridRowSlots } from './type';
-import { mediaQueryHandler, valueToPx } from '@shared/utils';
+import { mediaQueryHandler, valueToPx } from '@shared/utils/dom';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'Row',

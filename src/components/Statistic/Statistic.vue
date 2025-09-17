@@ -32,12 +32,8 @@
 import { ref, toRefs, computed, watch } from 'vue';
 import { StatisticProps, StatisticEmits, StatisticSlots } from './type';
 import { RecordType } from '@shared/type';
-import {
-  isNumber,
-  formatSeconds,
-  isUndefined,
-  formatDate,
-} from '@shared/utils';
+import { isNumber, isUndefined } from '@shared/utils/is';
+import { formatSeconds, formatDate } from '@shared/utils/time';
 import Btween from 'b-tween';
 defineOptions({
   name: 'Statistic',

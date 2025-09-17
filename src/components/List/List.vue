@@ -80,7 +80,9 @@
 import { ref, toRefs, computed } from 'vue';
 import { ListProps, ListEmits, ListSlots } from './type';
 import { unrefElement } from '@vueuse/core';
-import { getGlobalConfig, useControlValue, valueToPx } from '@shared/utils';
+import { useControlValue } from '@shared/utils/control';
+import { getGlobalConfig } from '@shared/utils/global-config';
+import { valueToPx } from '@shared/utils/dom';
 import useScrollReach from './hooks/useScrollReach';
 import YcSpin from '@/components/Spin';
 import {

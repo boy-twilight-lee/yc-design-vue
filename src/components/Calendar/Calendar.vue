@@ -48,7 +48,7 @@
         :recordDate="recordDate"
         @cell-click="handleClick"
       >
-        <template v-if="slots.default" #default="scope">
+        <template v-if="$slots.default" #default="scope">
           <slot v-bind="scope" />
         </template>
       </month-calendar>
@@ -58,7 +58,7 @@
         :record-date="recordDate"
         @cell-click="handleClick"
       >
-        <template v-if="slots.default" #default="scope">
+        <template v-if="$slots.default" #default="scope">
           <slot v-bind="scope" />
         </template>
       </year-calendar>
@@ -76,10 +76,11 @@ import {
   CalendarMode,
 } from './type';
 import { RecordType } from '@shared/type';
-import { useControlValue, useI18n } from '@shared/utils';
+import { useI18n } from '@shared/utils/locale';
+import { useControlValue } from '@shared/utils/control';
+import { CalendarCellData } from '@shared/utils/time';
 import { IconArrowRight } from '@shared/icons';
 import { IconButton } from '@shared/components';
-import { CalendarCellData } from '@shared/utils';
 import YcButton from '@/components/Button';
 import { RadioGroup as YcRadioGroup, RadioOption } from '@/components/Radio';
 import MonthCalendar from './CalendarMonth.vue';
@@ -87,7 +88,7 @@ import YearCalendar from './CalendarYear.vue';
 defineOptions({
   name: 'Calendar',
 });
-const slots = defineSlots<CalendarSlots>();
+const $slots = defineSlots<CalendarSlots>();
 const props = withDefaults(defineProps<CalendarProps>(), {
   modelValue: undefined,
   defaultValue: () => new Date(),

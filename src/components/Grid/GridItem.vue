@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { toRefs, computed, CSSProperties } from 'vue';
 import { GridItemProps, GridItemSlots } from './type';
-import { getBreakpointValue, valueToPx } from '@shared/utils';
+import { getBreakpointValue, valueToPx } from '@shared/utils/dom';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'GridItem',

@@ -37,7 +37,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { RecordType } from '@shared/type';
-import { getSlotFunction } from '@shared/utils';
+import { getSlotFunction } from '@shared/utils/vue-utils';
 import useContext from './hooks/useContext';
 import YcOption from './Option.vue';
 import YcOptgroup from './Optgroup.vue';

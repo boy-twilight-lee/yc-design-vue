@@ -52,7 +52,7 @@ import { useElementSize, useResizeObserver } from '@vueuse/core';
 import {
   isHorizontallyScrollable,
   isVerticallyScrollable,
-} from '@shared/utils';
+} from '@shared/utils/dom';
 import ScrollbarTrack from './ScrollbarTrack.vue';
 import useContext from './hooks/useContext';
 defineOptions({

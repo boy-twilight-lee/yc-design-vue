@@ -32,17 +32,13 @@ import {
   OverflowListSlots,
 } from './type';
 import { useResizeObserver, unrefElement } from '@vueuse/core';
-import {
-  throttle,
-  sleep,
-  findComponentsFromVnodes,
-  valueToPx,
-} from '@shared/utils';
+import { throttle, sleep, valueToPx } from '@shared/utils/dom';
+import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
 import { default as YcTag } from '@/components/Tag';
 defineOptions({
   name: 'OverflowList',
 });
-const slots = defineSlots<OverflowListSlots>();
+const $slots = defineSlots<OverflowListSlots>();
 const props = withDefaults(defineProps<OverflowListProps>(), {
   min: 0,
   margin: 8,
@@ -57,7 +53,7 @@ const widths = ref<number[]>([]);
 // 获取插槽的tags
 const tags = computed(() => {
   return findComponentsFromVnodes(
-    slots.default?.() || [],
+    $slots.default?.() || [],
     YcTag.name as string
   );
 });

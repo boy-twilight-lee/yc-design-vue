@@ -54,7 +54,9 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { RateProps, RateEmits, RateSlots } from './type';
-import { useControlValue, isObject, sleep } from '@shared/utils';
+import { useControlValue } from '@shared/utils/control';
+import { isObject } from '@shared/utils/is';
+import { sleep } from '@shared/utils/dom';
 import { IconStar, IconFaceSmile } from '@shared/icons';
 defineOptions({
   name: 'Rate',

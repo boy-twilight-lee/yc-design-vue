@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from '@shared/utils';
+import { useI18n } from '@shared/utils/locale';
 defineProps<{
   label: string;
   colors: string[];

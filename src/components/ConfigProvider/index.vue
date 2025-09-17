@@ -8,11 +8,11 @@ import { ConfigProviderProps, ConfigconfigSlots } from './type';
 import {
   CONFIG_PROVIDER_PROVIDE_KEY,
   ConfigProviderProvide,
-} from '@shared/utils';
+} from '@shared/utils/global-config';
 defineOptions({
   name: 'ConfigProvider',
 });
-const slots = defineSlots<ConfigconfigSlots>();
+defineSlots<ConfigconfigSlots>();
 const props = withDefaults(defineProps<ConfigProviderProps>(), {
   locale: undefined,
   zIndex: 1001,

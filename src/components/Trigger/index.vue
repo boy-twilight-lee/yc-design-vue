@@ -66,7 +66,8 @@ import {
   TriggerSlots,
   TriggerExpose,
 } from './type';
-import { findFirstLegitChild, getGlobalConfig } from '@shared/utils';
+import { findFirstLegitChild } from '@shared/utils/vue-utils';
+import { getGlobalConfig } from '@shared/utils/global-config';
 import useTriggerVisible from './hooks/useTriggerVisible';
 import useTriggerPosition from './hooks/useTriggerPosition';
 import { PreventFocus } from '@shared/components';
@@ -74,7 +75,7 @@ defineOptions({
   name: 'Trigger',
   inheritAttrs: false,
 });
-const slots = defineSlots<TriggerSlots>();
+const $slots = defineSlots<TriggerSlots>();
 const props = withDefaults(defineProps<TriggerProps>(), {
   popupVisible: undefined,
   defaultPopupVisible: false,
@@ -125,7 +126,7 @@ const triggerRef = ref<HTMLElement>();
 const arrowRef = ref<HTMLElement>();
 // slots
 const vNode = computed(() => {
-  return findFirstLegitChild(slots.default?.() || []);
+  return findFirstLegitChild($slots.default?.() || []);
 });
 // 处理trigger关闭与开启
 const {

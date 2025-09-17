@@ -12,7 +12,8 @@ import {
   ImagePreviewGroupEmits,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { findComponentsFromVnodes, useControlValue } from '@shared/utils';
+import { useControlValue } from '@shared/utils/control';
+import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
 import Image from '../Image.vue';
 
 const IMAGE_CONTEXT_KEY = 'image-context';

@@ -53,7 +53,7 @@
 import { ref, computed } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { IconImageClose } from '@shared/icons';
-import { valueToPx } from '@shared/utils';
+import { valueToPx } from '@shared/utils/dom';
 import { AvatarProps, AvatarSlots, AvatarEmits } from './type';
 import useContext from './hooks/useContext';
 defineOptions({

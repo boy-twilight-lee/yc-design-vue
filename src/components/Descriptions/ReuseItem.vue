@@ -43,8 +43,10 @@
 
 <script lang="ts" setup>
 import { DescData } from './type';
-import { getSlotFunction, isObject } from '@shared/utils';
+import { isObject } from '@shared/utils/is';
+import { getSlotFunction } from '@shared/utils/vue-utils';
 import useContext from './hooks/useContext';
+
 defineProps<{
   data: DescData;
   index: number;

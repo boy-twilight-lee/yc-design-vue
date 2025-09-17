@@ -9,23 +9,22 @@ import {
   useSlots,
   isVNode,
 } from 'vue';
+import { nanoid } from 'nanoid';
+import { useResizeObserver } from '@vueuse/core';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
 import { MenuProps as _MenuProps, MenuEmits } from '../type';
 import { RecordType, Required, PopupMaxHeight, Direction } from '@shared/type';
 import {
-  useControlValue,
   isObject,
   isFunction,
-  throttle,
   isNumber,
   isUndefined,
   isBoolean,
-  valueToPx,
-} from '@shared/utils';
+} from '@shared/utils/is';
+import { throttle, valueToPx } from '@shared/utils/dom';
+import { useControlValue } from '@shared/utils/control';
 import { SubMenu, MenuItem } from '../index';
-import { nanoid } from 'nanoid';
-import { useResizeObserver } from '@vueuse/core';
 import useSiderContext from '@/components/Layout/hooks/useSiderContext';
 
 const MENU_CONTEXT_KEY = 'menu-context';

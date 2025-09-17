@@ -65,13 +65,15 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, defineComponent, h, computed, VNode } from 'vue';
+import { useClipboard } from '@vueuse/core';
 import {
   TypographyBaseProps,
   TypographyBaseEmits,
   TypographyBaseSlots,
 } from './type';
-import { useClipboard } from '@vueuse/core';
-import { useControlValue, sleep, getDomText, useI18n } from '@shared/utils';
+import { sleep, getDomText } from '@shared/utils/dom';
+import { useI18n } from '@shared/utils/locale';
+import { useControlValue } from '@shared/utils/control';
 import { IconEdit, IconCopy, IconInfo } from '@shared/icons';
 import { default as YcInput, InputInstance } from '@/components/Input';
 import { default as YcTooltip } from '@/components/Tooltip';

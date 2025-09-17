@@ -1,7 +1,7 @@
 import { ref, computed, Ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { Direction, RecordType } from '@shared/type';
-import { sleep } from '@shared/utils';
+import { sleep } from '@shared/utils/dom';
 export default (params: {
   direction: Ref<Direction>;
   panes: Ref<RecordType[]>;

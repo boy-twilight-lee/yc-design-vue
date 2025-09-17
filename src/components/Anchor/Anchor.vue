@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue';
 import { AnchorProps, AnchorSlots } from './type';
-import { valueToPx } from '@shared/utils';
+import { valueToPx } from '@shared/utils/dom';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'Anchor',

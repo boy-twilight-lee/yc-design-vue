@@ -20,7 +20,8 @@
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed } from 'vue';
 import { useDraggable, useElementBounding } from '@vueuse/core';
-import { sleep, parseColor, valueToPx } from '@shared/utils';
+import { sleep, valueToPx } from '@shared/utils/dom';
+import { parseColor } from '@shared/utils/color';
 const props = defineProps<{
   color: string;
   baseColor: string;

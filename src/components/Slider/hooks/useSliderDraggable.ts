@@ -1,7 +1,7 @@
 import { reactive, Ref, watch, nextTick, computed } from 'vue';
-import { Direction } from '@shared/type';
 import { useDraggable } from '@vueuse/core';
-import { valueToPx } from '@shared/utils';
+import { Direction } from '@shared/type';
+import { valueToPx } from '@shared/utils/dom';
 
 export interface RangeData {
   minLeft: number;

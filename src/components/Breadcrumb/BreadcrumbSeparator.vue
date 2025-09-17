@@ -9,7 +9,7 @@
 import { computed } from 'vue';
 import { BreadcrumbSeparator } from './type';
 import { IconSeparator } from '@shared/icons';
-import { isUndefined } from '@shared/utils';
+import { isUndefined } from '@shared/utils/is';
 const props = defineProps<{
   separatorSlots?: () => any;
   separator?: BreadcrumbSeparator;

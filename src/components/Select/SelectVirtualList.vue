@@ -19,7 +19,7 @@
 import { toRefs } from 'vue';
 import { useVirtualList } from '@vueuse/core';
 import { RecordType } from '@shared/type';
-import { getSlotFunction } from '@shared/utils';
+import { getSlotFunction } from '@shared/utils/vue-utils';
 import useContext from './hooks/useContext';
 import { Option as YcOption, VirtualListProps } from './index';
 const props = defineProps<{
@@ -27,7 +27,7 @@ const props = defineProps<{
 }>();
 const { virtualListProps } = toRefs(props);
 // 接收注入
-const { fieldKey, renderOptions, slots, emits } = useContext().inject();
+const { fieldKey, renderOptions, slots } = useContext().inject();
 // 初始化虚拟滚动
 const { list, wrapperProps, containerProps } = useVirtualList(renderOptions, {
   overscan: virtualListProps.value?.buffer ?? 10,

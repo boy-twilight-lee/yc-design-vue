@@ -77,7 +77,8 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { ProgressColor, ProgressStatus } from './type';
-import { isObject, valueToPx } from '@shared/utils';
+import { isObject } from '@shared/utils/is';
+import { valueToPx } from '@shared/utils/dom';
 import { Size } from '@shared/type';
 import { IconCheck, IconExclamation } from '@shared/icons';
 import { TYPE_ICON_COLOR_MAP } from '@shared/constants';

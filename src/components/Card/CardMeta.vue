@@ -22,9 +22,9 @@
       <div v-if="$slots.avatar" class="yc-card-meta-avatar">
         <slot name="avatar" />
       </div>
-      <div v-if="slots.actions" class="yc-card-actions">
+      <div v-if="injectSlots.actions" class="yc-card-actions">
         <div class="yc-card-actions-right text-ellipsis">
-          <component :is="getSlotFunction(slots.actions)" />
+          <component :is="getSlotFunction(injectSlots.actions)" />
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import { CardMetaProps, CardMetaSlots } from './type';
-import { getSlotFunction } from '@shared/utils';
+import { getSlotFunction } from '@shared/utils/vue-utils';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'CardMeta',
@@ -44,7 +44,7 @@ withDefaults(defineProps<CardMetaProps>(), {
   description: '',
 });
 // 接收注入
-const { slots } = useContext().inject();
+const { slots: injectSlots } = useContext().inject();
 </script>
 
 <style lang="less">

@@ -53,7 +53,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { CardProps, CardSlots } from './type';
-import { findComponentsFromVnodes, getGlobalConfig } from '@shared/utils';
+import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
+import { getGlobalConfig } from '@shared/utils/global-config';
 import useContext from './hooks/useContext';
 import YcSpin from '@/components/Spin';
 import CardGrid from './CardGrid.vue';
@@ -79,9 +80,9 @@ const props = withDefaults(defineProps<CardProps>(), {
 // size
 const { size } = getGlobalConfig(props);
 // 注入
-const { slots } = useContext().provide();
+useContext().provide();
 // 计算node
-const nodes = computed(() => slots.default?.() || []);
+const nodes = computed(() => $slots.default?.() || []);
 // 是否有meta
 const hasMeta = computed(() => {
   const meta = findComponentsFromVnodes(nodes.value, CardMeta.name as string);

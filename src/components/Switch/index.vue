@@ -46,12 +46,14 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { SwitchProps, SwitchEmits, SwitchSlots, SwitchValue } from './type';
-import { useControlValue, getGlobalConfig, isBoolean } from '@shared/utils';
+import { isBoolean } from '@shared/utils/is';
+import { useControlValue } from '@shared/utils/control';
+import { getGlobalConfig } from '@shared/utils/global-config';
 import YcSpin from '@/components/Spin';
 defineOptions({
   name: 'Switch',
 });
-const slots = defineSlots<SwitchSlots>();
+const $slots = defineSlots<SwitchSlots>();
 const props = withDefaults(defineProps<SwitchProps>(), {
   modelValue: undefined,
   defaultChecked: false,
@@ -101,9 +103,9 @@ const compuedChecked = computed(() => {
 // 是否展示text
 const showText = computed(() => {
   const showCheckedText =
-    compuedChecked.value && (checkedText.value || slots.checked);
+    compuedChecked.value && (checkedText.value || $slots.checked);
   const showUncheckedText =
-    !compuedChecked.value && (uncheckedText.value || slots.unchecked);
+    !compuedChecked.value && (uncheckedText.value || $slots.unchecked);
   return (
     type.value != 'line' &&
     size.value != 'small' &&

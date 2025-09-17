@@ -1,14 +1,14 @@
-import { App, ref, nextTick, h, render, reactive } from 'vue';
+import { App, nextTick, h, render, reactive } from 'vue';
 import _Notification from './Notification.vue';
 import _NotificationList from './NotificationList.vue';
-import {
-  NotificationMethods,
+import type {
+  NotificationMethod,
   NotificationConfig,
   NotificationProps,
   NotificationType,
   NotificationPosition,
 } from './type';
-import { isString } from '@shared/utils';
+import { isString } from '@shared/utils/is';
 
 export type NotificationInstance = InstanceType<typeof _Notification>;
 export * from './type';
@@ -122,7 +122,7 @@ const NotificationMethod = {
     notificationList[position].splice(0);
     removeContainer(position);
   },
-} as NotificationMethods;
+} as NotificationMethod;
 
 const Notification = Object.assign(_Notification, {
   install: (app: App) => {
@@ -131,9 +131,9 @@ const Notification = Object.assign(_Notification, {
   ...NotificationMethod,
 });
 
-declare module 'vue' {
-  export interface ComponentCustomProperties {
-    $notification: typeof Notification;
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $notification: NotificationMethod;
   }
 }
 

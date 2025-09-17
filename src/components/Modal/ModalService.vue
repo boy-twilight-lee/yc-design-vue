@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import { ModalServiceProps } from './type';
-import { getSlotFunction } from '@shared/utils';
+import { getSlotFunction } from '@shared/utils/vue-utils';
 import { TYPE_ICON_MAP } from '@shared/constants';
 import YcModal from './Modal.vue';
 const props = withDefaults(defineProps<ModalServiceProps>(), {

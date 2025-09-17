@@ -3,7 +3,8 @@ import { onClickOutside, useEventListener, unrefElement } from '@vueuse/core';
 import { TriggerEmits } from '../type';
 import { default as useContext, TriggerProps } from './useContext';
 import { RecordType } from '@shared/type';
-import { findFirstScrollableParent, useControlValue } from '@shared/utils';
+import { findFirstScrollableParent } from '@shared/utils/dom';
+import { useControlValue } from '@shared/utils/control';
 
 export default (params: {
   props: RecordType;

@@ -1,5 +1,4 @@
 import { useSlots, Slots, provide as _provide, inject as _inject } from 'vue';
-import { CardSlots } from '../type';
 
 const CARD_CONTEXT_KEY = 'card-context';
 type CardContext = {
@@ -8,13 +7,10 @@ type CardContext = {
 
 export default () => {
   const provide = () => {
-    const slots = useSlots() as Readonly<CardSlots>;
+    const slots = useSlots();
     _provide<CardContext>(CARD_CONTEXT_KEY, {
       slots,
     });
-    return {
-      slots,
-    };
   };
   const inject = () => {
     return _inject<CardContext>(CARD_CONTEXT_KEY, {

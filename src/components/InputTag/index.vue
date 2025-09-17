@@ -98,13 +98,10 @@ import {
 import { RecordType } from '@shared/type';
 import { nanoid } from 'nanoid';
 import { useElementSize } from '@vueuse/core';
-import {
-  useControlValue,
-  getGlobalConfig,
-  isBoolean,
-  isObject,
-  valueToPx,
-} from '@shared/utils';
+import { isBoolean, isObject } from '@shared/utils/is';
+import { valueToPx } from '@shared/utils/dom';
+import { useControlValue } from '@shared/utils/control';
+import { getGlobalConfig } from '@shared/utils/global-config';
 import YcTag from '@/components/Tag';
 import { PreventFocus, IconButton } from '@shared/components';
 defineOptions({

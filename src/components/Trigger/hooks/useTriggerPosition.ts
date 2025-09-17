@@ -2,7 +2,7 @@ import { watch, computed, CSSProperties, Ref, ref, toRefs } from 'vue';
 import { useElementBounding, useElementSize, unrefElement } from '@vueuse/core';
 import { TriggerProps } from './useContext';
 import { RecordType, PopupPosition } from '@shared/type';
-import { sleep, valueToPx } from '@shared/utils';
+import { sleep, valueToPx } from '@shared/utils/dom';
 
 export default (params: {
   props: RecordType;

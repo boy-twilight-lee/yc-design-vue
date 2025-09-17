@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
 import { BadgeProps, BadgeSlots } from './type';
-import { valueToPx } from '@shared/utils';
+import { valueToPx } from '@shared/utils/dom';
 import { TAG_PRESET_COLORS } from '@shared/constants';
 defineOptions({
   name: 'Badge',

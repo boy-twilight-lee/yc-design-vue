@@ -22,7 +22,7 @@ import { ref, computed, watch, toRefs } from 'vue';
 import useContext from './hooks/useContext';
 import useSliderDraggable, { PositionData } from './hooks/useSliderDraggable';
 import YcTooltip from '@/components/Tooltip';
-import { useControlValue } from '@shared/utils';
+import { useControlValue } from '@shared/utils/control';
 const props = defineProps<{
   type: 'start' | 'end';
   position: PositionData;

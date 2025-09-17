@@ -12,7 +12,8 @@ import {
   CheckboxGroupEmits,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { isObject, useControlValue } from '@shared/utils';
+import { isObject } from '@shared/utils/is';
+import { useControlValue } from '@shared/utils/control';
 
 const CHECKBOX_GROUP_CONTEXT_KEY = 'checkbox-group-context';
 type CheckboxContext = {

@@ -50,7 +50,8 @@
 import { toRefs, computed } from 'vue';
 import { TagProps, TagEmits, TagSlots } from './type';
 import { TAG_PRESET_COLORS } from '@shared/constants';
-import { useControlValue, getGlobalConfig } from '@shared/utils';
+import { getGlobalConfig } from '@shared/utils/global-config';
+import { useControlValue } from '@shared/utils/control';
 import YcSpin from '@/components/Spin';
 import { IconButton } from '@shared/components';
 defineOptions({

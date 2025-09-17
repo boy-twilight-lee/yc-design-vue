@@ -109,10 +109,11 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, computed, onMounted, useAttrs } from 'vue';
+import { createReusableTemplate } from '@vueuse/core';
 import { MenuItemProps, MenuItemSlots } from './type';
 import { PopupMaxHeight } from '@shared/type';
-import { createReusableTemplate } from '@vueuse/core';
-import { isUndefined, valueToPx } from '@shared/utils';
+import { isUndefined } from '@shared/utils/is';
+import { valueToPx } from '@shared/utils/dom';
 import {
   default as useContext,
   MenuTreeNode,

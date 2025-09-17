@@ -9,12 +9,9 @@ import {
 } from 'vue';
 import { AnchorProps as _AnchorProps } from '../type';
 import { RecordType, Required } from '@shared/type';
-import {
-  getElement,
-  findFirstScrollableParent,
-  isUndefined,
-  findComponentsFromVnodes,
-} from '@shared/utils';
+import { getElement, findFirstScrollableParent } from '@shared/utils/dom';
+import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
+import { isUndefined } from '@shared/utils/is';
 import AnchorLink from '../AnchorLink.vue';
 
 const ANCHOR_CONTEXT_KEY = 'anchor-context';

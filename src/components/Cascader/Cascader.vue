@@ -114,7 +114,7 @@
 <script lang="ts" setup>
 import { ref, computed, StyleValue } from 'vue';
 import { CascaderProps, CascaderEmits, CascaderOptionValue } from './type';
-import { sleep } from '@shared/utils';
+import { sleep } from '@shared/utils/dom';
 import useContext from './hooks/useContext';
 import { default as YcInput, InputInstance } from '@/components/Input';
 import {

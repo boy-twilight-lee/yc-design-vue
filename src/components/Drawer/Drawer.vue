@@ -88,7 +88,9 @@
 <script lang="ts" setup>
 import { toRefs, computed, CSSProperties } from 'vue';
 import { DrawerProps, DrawerEmits, DrawerSlots } from './type';
-import { getGlobalConfig, valueToPx, useI18n } from '@shared/utils';
+import { getGlobalConfig } from '@shared/utils/global-config';
+import { valueToPx } from '@shared/utils/dom';
+import { useI18n } from '@shared/utils/locale';
 import useDrawerClose from '@/components/Modal/hooks/useModalClose';
 import YcButton from '@/components/Button';
 import { IconButton } from '@shared/components';

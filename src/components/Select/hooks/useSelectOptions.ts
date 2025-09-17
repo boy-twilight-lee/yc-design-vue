@@ -9,7 +9,7 @@ import {
   SelectOptionData,
   SelectOptionValue,
 } from '../index';
-import { isNull, isObject, isString, isUndefined } from '@shared/utils';
+import { isNull, isObject, isString, isUndefined } from '@shared/utils/is';
 
 export default (params: {
   multiple: Ref<boolean>;

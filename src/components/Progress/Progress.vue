@@ -64,7 +64,7 @@
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
 import { ProgressProps } from './type';
-import { getGlobalConfig } from '@shared/utils';
+import { getGlobalConfig } from '@shared/utils/global-config';
 import ProgressLine from './ProgressLine.vue';
 import ProgressSteps from './ProgressSteps.vue';
 import ProgressCircle from './ProgressCircle.vue';

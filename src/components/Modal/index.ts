@@ -67,8 +67,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     YcModal: typeof Modal;
   }
-  export interface ComponentCustomProperties {
-    $modal: typeof Modal;
+}
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $modal: ModalMethod;
   }
 }
 

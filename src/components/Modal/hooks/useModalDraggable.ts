@@ -1,6 +1,6 @@
 import { ref, Ref, computed, CSSProperties, watch } from 'vue';
 import { useDraggable } from '@vueuse/core';
-import { sleep, valueToPx } from '@shared/utils';
+import { sleep, valueToPx } from '@shared/utils/dom';
 
 export default (params: {
   draggable: Ref<boolean>;

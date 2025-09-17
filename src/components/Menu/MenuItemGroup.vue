@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { MenuItemGroupProps, MenuItemGroupSlots } from './type';
-import { valueToPx } from '@shared/utils';
+import { valueToPx } from '@shared/utils/dom';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'MenuItemGroup',
