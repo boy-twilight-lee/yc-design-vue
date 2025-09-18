@@ -26,8 +26,8 @@ export interface UploadProps {
   showPreviewButton?: boolean;
   download?: boolean;
   showLink?: boolean;
-  imageLoading?: 'eager' | 'lazy';
-  listType?: 'text' | 'picture' | 'picture-card';
+  imageLoading?: ImageLoading;
+  listType?: FileListType;
   // responseUrlKey?: string | ((fileItem: FileItem) => string);
   customIcon?: CustomIcon;
   imagePreview?: boolean;
@@ -40,23 +40,23 @@ export interface UploadEmits {
   (e: 'update:fileList', value: FileItem[]): void;
   (e: 'exceed-limit', fileList: FileItem[], files: File[]): void;
   (e: 'change', fileList: FileItem[], files: File[]): void;
-  (e: 'progress', fileItem: FileItem, ev: ProgressEvent): void;
   (e: 'preview', fileItem: FileItem): void;
-  (e: 'success', fileItem: FileItem): void;
-  (e: 'error', fileItem: FileItem): void;
+  // (e: 'progress', fileItem: FileItem, ev: ProgressEvent): void;
+  // (e: 'success', fileItem: FileItem): void;
+  // (e: 'error', fileItem: FileItem): void;
 }
 
 export interface UploadSlots {
   ['extra-button']?: (scope: { fileItem: FileItem }) => VNode[];
   image?: (scope: { fileItem: FileItem }) => VNode[];
-  ['file-name']?: () => VNode[];
-  ['file-icon']?: () => VNode[];
-  ['preview-icon']?: () => VNode[];
-  ['cancel-icon']?: () => VNode[];
-  ['start-icon']?: () => VNode[];
-  ['error-name']?: () => VNode[];
-  ['success-icon']?: () => VNode[];
-  ['retry-icon']?: () => VNode[];
+  ['file-name']?: (scope: { fileItem: FileItem }) => VNode[];
+  ['file-icon']?: (scope: { fileItem: FileItem }) => VNode[];
+  // ['preview-icon']?: () => VNode[];
+  // ['cancel-icon']?: () => VNode[];
+  // ['start-icon']?: () => VNode[];
+  // ['error-name']?: () => VNode[];
+  // ['success-icon']?: () => VNode[];
+  // ['retry-icon']?: () => VNode[];
   ['upload-button']?: () => VNode[];
   ['upload-item']?: (scope: { fileItem: FileItem; index: number }) => VNode[];
 }
@@ -72,14 +72,18 @@ export type FileStatus = 'init' | 'uploading' | 'done' | 'error' | 'removed';
 
 export type FileName = string | ((fileItem: FileItem) => string);
 
+export type FileListType = 'text' | 'picture' | 'picture-card';
+
+export type ImageLoading = 'eager' | 'lazy';
+
 export type FileItem = {
   uid: string;
   name: string;
   status: FileStatus;
   file: File;
   percent: number;
-  response?: any;
-  url?: string;
+  url: string;
+  // response?: any;
 };
 
 export type CustomIcon = {

@@ -5,8 +5,10 @@
       :limit="4"
       multiple
       draggable
+      download
+      list-type="picture"
       tip="请上传png"
-      disabled
+      image-preview
     />
     <a-upload
       v-model:fileList="fileList"
@@ -15,9 +17,12 @@
       :auto-upload="false"
       tip="请上传png"
       draggable
-      disabled
       list-type="picture"
-      ><a-button>dsa</a-button>
+      image-preview
+    >
+      <template #extra-button>
+        <yc-button>ces </yc-button>
+      </template>
     </a-upload>
   </div>
 </template>

@@ -1,6 +1,20 @@
-import { provide as _provide, inject as _inject, toRefs, ref, Ref } from 'vue';
-import { nanoid } from 'nanoid';
-import { UploadProps as _UploadProps, UploadEmits, FileItem } from '../type';
+import {
+  provide as _provide,
+  inject as _inject,
+  toRefs,
+  ref,
+  Ref,
+  computed,
+  useSlots,
+} from 'vue';
+import {
+  UploadProps as _UploadProps,
+  UploadEmits,
+  FileItem,
+  FileListType,
+  ImageLoading,
+  UploadSlots,
+} from '../type';
 import { RecordType, Required } from '@shared/type';
 import { useControlValue } from '@shared/utils/control';
 import { isString } from '@shared/utils/is';
@@ -11,6 +25,11 @@ type UploadContext = {
   computedFileList: Ref<FileItem[]>;
   disabled: Ref<boolean>;
   tip: Ref<string>;
+  listType: Ref<FileListType>;
+  imageLoading: Ref<ImageLoading>;
+  showRemoveButton: Ref<boolean>;
+  showLink: Ref<boolean>;
+  download: Ref<boolean>;
   emits: UploadEmits;
 };
 // type
@@ -23,11 +42,16 @@ export default function useUploadContext() {
       defaultFileList,
       disabled,
       multiple,
-      accept,
       draggable,
       directory,
       limit,
       tip,
+      listType,
+      showRemoveButton,
+      imageLoading,
+      download,
+      showLink,
+      accept: _accept,
     } = toRefs(props as UploadProps);
     const { name } = props;
     //   受控的fileList
@@ -38,6 +62,10 @@ export default function useUploadContext() {
         emits('update:fileList', val);
       }
     );
+    // accept
+    const accept = computed(() => {
+      return listType.value != 'text' ? 'image/*' : _accept.value;
+    });
     // 获取fileName
     const getFileName = (fileItem: FileItem) => {
       if (name) {
@@ -45,24 +73,8 @@ export default function useUploadContext() {
       }
       return fileItem.name;
     };
-    // 处理转换
-    const transformFileItem = (files: File[]) => {
-      return files.map((v) => {
-        const fileItem: FileItem = {
-          name: v.name,
-          uid: nanoid(),
-          file: v,
-          status: 'init',
-          percent: 0,
-        };
-        return {
-          ...fileItem,
-          name: getFileName(fileItem),
-        };
-      });
-    };
     // 是否超出限制
-    const isOutOfLimit = (length: number) => {
+    const isOutOfLimit = (length: number = 0) => {
       return (
         limit.value > 0 && length + computedFileList.value.length > limit.value
       );
@@ -71,6 +83,11 @@ export default function useUploadContext() {
       computedFileList,
       disabled,
       tip,
+      listType,
+      imageLoading,
+      showRemoveButton,
+      showLink,
+      download,
       emits,
     });
 
@@ -82,8 +99,10 @@ export default function useUploadContext() {
       accept,
       draggable,
       disabled,
-      transformFileItem,
+      showLink,
+      download,
       isOutOfLimit,
+      getFileName,
     };
   };
 
@@ -92,6 +111,11 @@ export default function useUploadContext() {
       computedFileList: ref([]),
       disabled: ref(false),
       tip: ref(''),
+      listType: ref('text'),
+      showRemoveButton: ref(true),
+      showLink: ref(true),
+      download: ref(false),
+      imageLoading: ref('lazy'),
       emits: () => {},
     });
   };
