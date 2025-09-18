@@ -1,5 +1,4 @@
 import { App, Plugin } from 'vue';
-import './index.less';
 import Affix from './Affix';
 import Alert from './Alert';
 import { default as Anchor, AnchorLink } from './Anchor';
@@ -89,6 +88,7 @@ import {
 import { default as Tabs, TabPane } from './Tabs';
 import VerificationCode from './VerificationCode';
 import Watermark from './Watermark';
+import './index.less';
 export * from '@shared/type';
 export * from './Affix';
 export * from './Alert';
@@ -298,7 +298,7 @@ export const components: Record<string, Plugin> = {
   Watermark,
 };
 
-export default {
+const YcDesignVue = {
   ...components,
   AnchorLink,
   AvatarGroup,
@@ -347,3 +347,5 @@ export default {
     }
   },
 };
+
+export default YcDesignVue;
