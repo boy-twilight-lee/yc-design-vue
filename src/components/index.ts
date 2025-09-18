@@ -86,6 +86,7 @@ import {
   TypographyParagraph,
 } from './Typography';
 import { default as Tabs, TabPane } from './Tabs';
+import Upload from './Upload';
 import VerificationCode from './VerificationCode';
 import Watermark from './Watermark';
 import './index.less';
@@ -155,6 +156,7 @@ export * from './Transfer';
 export * from './Trigger';
 export * from './Typography';
 export * from './Tabs';
+export * from './Upload';
 export * from './VerificationCode';
 export * from './Watermark';
 
@@ -294,6 +296,7 @@ export const components: Record<string, Plugin> = {
   Trigger,
   Typography,
   Tabs,
+  Upload,
   VerificationCode,
   Watermark,
 };

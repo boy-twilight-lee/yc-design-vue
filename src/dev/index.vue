@@ -1,19 +1,30 @@
 <template>
   <div class="test">
-    <yc-resize-box
-      v-model:width="width"
-      v-model:height="height"
-      :directions="['left', 'right', 'top', 'bottom']"
-    >
-    </yc-resize-box>
-    <yc-button @click="width += 50">测试</yc-button>
+    <yc-upload
+      v-model:fileList="fileList"
+      :limit="4"
+      multiple
+      draggable
+      tip="请上传png"
+      disabled
+    />
+    <a-upload
+      v-model:fileList="fileList"
+      :limit="4"
+      multiple
+      :auto-upload="false"
+      tip="请上传png"
+      draggable
+      disabled
+      list-type="picture"
+      ><a-button>dsa</a-button>
+    </a-upload>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const width = ref(500);
-const height = ref(500);
+import { ref, watch } from 'vue';
+const fileList = ref([]);
 </script>
 
 <style lang="less" scoped></style>
@@ -30,6 +41,10 @@ const height = ref(500);
     justify-content: center;
     align-items: center;
     gap: 10px;
+    .yc-upload-wrapper,
+    .arco-upload-wrapper {
+      width: 400px;
+    }
   }
 }
 </style>

@@ -1,0 +1,67 @@
+.yc-upload-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .yc-upload {
+    cursor: pointer;
+    max-width: 100%;
+    .yc-upload-tip {
+      max-width: 100%;
+      color: var(--color-text-3);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .yc-upload-button {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      .yc-button {
+        width: fit-content;
+        max-width: 100%;
+      }
+    }
+    .yc-upload-drag {
+      width: 100%;
+      padding: 50px 0;
+      background-color: var(--color-fill-1);
+      border: 1px dashed var(--color-neutral-3);
+      border-radius: var(--border-radius-small);
+      color: var(--color-text-1);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &:not(.yc-upload-drag-disabled):hover {
+        background-color: var(--color-fill-3);
+        border-color: var(--color-neutral-4);
+      }
+      .yc-upload-drag-icon {
+        color: var(--color-text-2);
+        .yc-icon {
+          margin-bottom: 24px;
+          font-size: 14px;
+        }
+      }
+      .yc-upload-drag-text {
+        color: var(--color-text-1);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+// 禁用
+.yc-upload-disabled {
+  .yc-upload {
+    .yc-upload-drag {
+      cursor: not-allowed;
+      border-color: var(--color-text-4);
+      .yc-upload-drag-text,
+      .yc-upload-tip,
+      .yc-upload-drag-icon {
+        color: var(--color-text-4);
+      }
+    }
+  }
+}

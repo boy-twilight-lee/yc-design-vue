@@ -37,3 +37,5 @@ export { default as IconToTop } from './IconToTop.vue';
 export { default as IconWarning } from './IconWarning.vue';
 export { default as IconZoomIn } from './IconZoomIn.vue';
 export { default as IconZoomOut } from './IconZoomOut.vue';
+export { default as IconUpload } from './IconUpload.vue';
+export { default as IconFile } from './IconFile.vue';

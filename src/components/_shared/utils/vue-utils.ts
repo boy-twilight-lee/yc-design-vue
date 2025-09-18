@@ -109,4 +109,6 @@ export {
   onKeyStroke,
   useVirtualList,
   useScroll,
+  useDropZone,
+  useFileDialog,
 } from '@vueuse/core';
