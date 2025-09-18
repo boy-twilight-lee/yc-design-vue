@@ -14,10 +14,12 @@ import {
   FileListType,
   ImageLoading,
   UploadSlots,
+  CustomIcon,
+  FileName,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
 import { useControlValue } from '@shared/utils/control';
-import { isString } from '@shared/utils/is';
+
 // key
 const UPLOAD_CONTEXT_KEY = 'upload-context';
 // context
@@ -30,6 +32,14 @@ type UploadContext = {
   showRemoveButton: Ref<boolean>;
   showLink: Ref<boolean>;
   download: Ref<boolean>;
+  customIcon: Ref<CustomIcon>;
+  limit: Ref<number>;
+  accept: Ref<string>;
+  name: FileName;
+  multiple: Ref<boolean>;
+  draggable: Ref<boolean>;
+  directory: Ref<boolean>;
+  slots: UploadSlots;
   emits: UploadEmits;
 };
 // type
@@ -51,14 +61,20 @@ export default function useUploadContext() {
       imageLoading,
       download,
       showLink,
+      customIcon,
       accept: _accept,
     } = toRefs(props as UploadProps);
     const { name } = props;
+    // slots
+    const slots = useSlots() as UploadSlots;
     //   受控的fileList
     const computedFileList = useControlValue<FileItem[]>(
       fileList,
       defaultFileList.value,
       (val) => {
+        computedFileList.value.forEach((v) => {
+          URL.revokeObjectURL(v.url);
+        });
         emits('update:fileList', val);
       }
     );
@@ -66,19 +82,7 @@ export default function useUploadContext() {
     const accept = computed(() => {
       return listType.value != 'text' ? 'image/*' : _accept.value;
     });
-    // 获取fileName
-    const getFileName = (fileItem: FileItem) => {
-      if (name) {
-        return isString(name) ? name : name(fileItem);
-      }
-      return fileItem.name;
-    };
-    // 是否超出限制
-    const isOutOfLimit = (length: number = 0) => {
-      return (
-        limit.value > 0 && length + computedFileList.value.length > limit.value
-      );
-    };
+
     _provide<UploadContext>(UPLOAD_CONTEXT_KEY, {
       computedFileList,
       disabled,
@@ -88,6 +92,14 @@ export default function useUploadContext() {
       showRemoveButton,
       showLink,
       download,
+      customIcon,
+      name,
+      accept,
+      directory,
+      multiple,
+      draggable,
+      limit,
+      slots,
       emits,
     });
 
@@ -100,9 +112,11 @@ export default function useUploadContext() {
       draggable,
       disabled,
       showLink,
-      download,
-      isOutOfLimit,
-      getFileName,
+      name,
+      tip,
+      customIcon,
+      slots,
+      emits,
     };
   };
 
@@ -116,6 +130,14 @@ export default function useUploadContext() {
       showLink: ref(true),
       download: ref(false),
       imageLoading: ref('lazy'),
+      customIcon: ref({}),
+      name: '',
+      directory: ref(false),
+      multiple: ref(false),
+      accept: ref(''),
+      limit: ref(0),
+      draggable: ref(false),
+      slots: {},
       emits: () => {},
     });
   };

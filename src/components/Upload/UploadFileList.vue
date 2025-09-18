@@ -1,6 +1,5 @@
 <template>
   <div class="yc-upload-list">
-    <template> </template>
     <div
       v-for="(item, i) in computedFileList"
       :key="item.uid"
@@ -22,9 +21,7 @@
               v-if="listType == 'text'"
               class="yc-upload-list-item-file-icon"
             >
-              <slot name="file-icon" :fileItem="item">
-                <icon-file />
-              </slot>
+              <component :is="renderFileIcon(item)" />
             </span>
             <!-- 文件名 -->
             <span class="yc-upload-list-item-name-text text-ellipsis">
@@ -36,14 +33,10 @@
                 class="yc-upload-list-item-name-link"
                 target="_blank"
               >
-                <slot name="file-name" :fileItem="item">
-                  {{ item.name }}
-                </slot>
+                <component :is="renderName(item)" />
               </a>
-              <!-- 不展示 -->
-              <slot v-else name="file-name" :fileItem="item">
-                {{ item.name }}
-              </slot>
+              <!-- 非链接 -->
+              <component v-else :is="renderName(item)" />
             </span>
           </div>
         </div>
@@ -54,7 +47,7 @@
         class="yc-upload-list-item-operation"
       >
         <icon-button @click="handleDel(item.uid)">
-          <icon-delete />
+          <component :is="renderDelIcon()" />
         </icon-button>
         <slot name="extra-button" :fileItem="item" />
       </span>
@@ -63,6 +56,7 @@
 </template>
 
 <script lang="ts" setup>
+import { FileItem } from './type';
 import useContext from './hooks/useContext';
 import { IconDelete, IconFile } from '@shared/icons';
 import { IconButton } from '@shared/components';
@@ -74,12 +68,36 @@ const {
   imageLoading,
   showLink,
   download,
+  customIcon,
+  slots,
   emits,
 } = useContext().inject();
 // 处理删除
 const handleDel = (uid: string) => {
   computedFileList.value = computedFileList.value.filter((v) => v.uid != uid);
   emits('change', computedFileList.value, []);
+};
+// 渲染文件icon
+const renderFileIcon = (fileItem: FileItem) => {
+  if (slots['file-icon']) {
+    return slots['file-icon']({
+      fileItem,
+    });
+  }
+  return customIcon.value.fileIcon?.(fileItem) || IconFile;
+};
+// 渲染name
+const renderName = (fileItem: FileItem) => {
+  if (slots['file-name']) {
+    return slots['file-name']({
+      fileItem,
+    });
+  }
+  return () => customIcon.value.fileName?.(fileItem) || fileItem.name;
+};
+// 渲染删除icon
+const renderDelIcon = () => {
+  return slots['remove-icon'] ?? (customIcon.value.removeIcon || IconDelete);
 };
 </script>
 

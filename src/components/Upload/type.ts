@@ -4,33 +4,33 @@ export interface UploadProps {
   fileList?: FileItem[];
   defaultFileList?: FileItem[];
   accept?: string;
-  // action?: string;
   disabled?: boolean;
   multiple?: boolean;
   directory?: boolean;
   draggable?: boolean;
   tip?: string;
-  // headers?: Record<string, string>;
-  // data?:
-  //   | Record<string, string | Blob>
-  //   | ((fileItem: FileItem) => Record<string, string | Blob>);
   name?: FileName;
-  // withCredentials?: boolean;
-  // customRequest?: (option: RequestOption) => UploadRequest;
   limit?: number;
-  // autoUpload?: boolean;
   showFileList?: boolean;
   showRemoveButton?: boolean;
-  // showRetryButton?: boolean;
   showUploadButton?: boolean;
   showPreviewButton?: boolean;
   download?: boolean;
   showLink?: boolean;
   imageLoading?: ImageLoading;
   listType?: FileListType;
-  // responseUrlKey?: string | ((fileItem: FileItem) => string);
   customIcon?: CustomIcon;
   imagePreview?: boolean;
+  // action?: string;
+  // headers?: Record<string, string>;
+  // data?:
+  //   | Record<string, string | Blob>
+  //   | ((fileItem: FileItem) => Record<string, string | Blob>);
+  // responseUrlKey?: string | ((fileItem: FileItem) => string);
+  // autoUpload?: boolean;
+  // withCredentials?: boolean;
+  // customRequest?: (option: RequestOption) => UploadRequest;
+  // showRetryButton?: boolean;
   // onBeforeUpload?: (file: File) => boolean | Promise<boolean | File>;
   // onBeforeRemove?: (fileItem: FileItem) => Promise<boolean>;
   // onButtonClick?: (event: Event) => Promise<FileList> | void;
@@ -51,21 +51,22 @@ export interface UploadSlots {
   image?: (scope: { fileItem: FileItem }) => VNode[];
   ['file-name']?: (scope: { fileItem: FileItem }) => VNode[];
   ['file-icon']?: (scope: { fileItem: FileItem }) => VNode[];
-  // ['preview-icon']?: () => VNode[];
+  ['remove-icon']?: () => VNode;
+  ['preview-icon']?: () => VNode[];
+  ['upload-button']?: () => VNode[];
+  ['upload-item']?: (scope: { fileItem: FileItem; index: number }) => VNode[];
   // ['cancel-icon']?: () => VNode[];
   // ['start-icon']?: () => VNode[];
   // ['error-name']?: () => VNode[];
   // ['success-icon']?: () => VNode[];
   // ['retry-icon']?: () => VNode[];
-  ['upload-button']?: () => VNode[];
-  ['upload-item']?: (scope: { fileItem: FileItem; index: number }) => VNode[];
 }
 
 export interface UploadExpose {
-  submit: (fileItem: FileItem) => void;
-  abort: (fileItem: FileItem) => void;
   updateFile: (id: string, File: File) => void;
   upload: (files: File[]) => void;
+  // submit: (fileItem: FileItem) => void;
+  // abort: (fileItem: FileItem) => void;
 }
 
 export type FileStatus = 'init' | 'uploading' | 'done' | 'error' | 'removed';
@@ -87,31 +88,31 @@ export type FileItem = {
 };
 
 export type CustomIcon = {
-  startIcon?: RenderFunction;
-  cancelIcon?: RenderFunction;
-  retryIcon?: RenderFunction;
-  successIcon?: RenderFunction;
-  errorIcon?: RenderFunction;
-  removeIcon?: RenderFunction;
-  previewIcon?: RenderFunction;
   fileIcon?: (fileItem: FileItem) => VNode;
   fileName?: (fileItem: FileItem) => string | VNode;
+  removeIcon?: RenderFunction;
+  previewIcon?: RenderFunction;
+  // startIcon?: RenderFunction;
+  // cancelIcon?: RenderFunction;
+  // retryIcon?: RenderFunction;
+  // successIcon?: RenderFunction;
+  // errorIcon?: RenderFunction;
 };
 
-export type RequestOption = {
-  action: string;
-  headers: Record<string, string>;
-  name: string | ((fileItem: FileItem) => string);
-  fileItem: FileItem;
-  data?:
-    | Record<string, string | Blob>
-    | ((fileItem: FileItem) => Record<string, string | Blob>);
-  withCredentials?: boolean;
-  onProgress?: (percent: number, event?: ProgressEvent) => void;
-  onSuccess?: (response?: any) => void;
-  onError?: (response?: any) => void;
-};
+// export type RequestOption = {
+//   action: string;
+//   headers: Record<string, string>;
+//   name: string | ((fileItem: FileItem) => string);
+//   fileItem: FileItem;
+//   data?:
+//     | Record<string, string | Blob>
+//     | ((fileItem: FileItem) => Record<string, string | Blob>);
+//   withCredentials?: boolean;
+//   onProgress?: (percent: number, event?: ProgressEvent) => void;
+//   onSuccess?: (response?: any) => void;
+//   onError?: (response?: any) => void;
+// };
 
-export type UploadRequest = {
-  abort: () => void;
-};
+// export type UploadRequest = {
+//   abort: () => void;
+// };

@@ -13,16 +13,18 @@
     <a-upload
       v-model:fileList="fileList"
       :limit="4"
-      multiple
       :auto-upload="false"
+      multiple
       tip="请上传png"
       draggable
-      list-type="picture"
-      image-preview
+      list-type="picture-card"
+      :image-preview="false"
+      @button-click="
+        (v) => {
+          console.log(v);
+        }
+      "
     >
-      <template #extra-button>
-        <yc-button>ces </yc-button>
-      </template>
     </a-upload>
   </div>
 </template>
