@@ -23,6 +23,7 @@ export default function useUpload(
     accept,
     directory,
     multiple,
+    showRemoveButton,
     name,
     emits,
   } = context;
@@ -57,6 +58,7 @@ export default function useUpload(
   // 处理文件
   const handleFiles = (fileData: File[] | FileList | null) => {
     const files = [...(fileData || [])];
+    console.log(files, 'files');
     if (!files?.length || disabled.value || isOutOfLimit(files.length)) {
       if (!isOutOfLimit(files?.length)) return;
       emits('exceed-limit', computedFileList.value, files!);
@@ -79,6 +81,7 @@ export default function useUpload(
         };
       }),
     ];
+    console.dir(computedFileList.value, 'files');
     emits('change', computedFileList.value, [...files]);
   };
   return {

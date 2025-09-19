@@ -2,34 +2,39 @@
   <div
     :class="[
       'yc-upload-wrapper',
+      `yc-upload-wrapper-type-${listType}`,
       {
         'yc-upload-disabled': disabled,
       },
     ]"
   >
-    <div
-      v-if="showUploadButton"
-      class="yc-upload"
-      ref="uploadRef"
-      @click="!disabled && open()"
-    >
-      <slot
-        v-if="limit <= 0 || computedFileList.length < limit"
-        name="upload-button"
+    <template v-if="listType != 'picture-card'">
+      <div
+        v-if="showUploadButton"
+        class="yc-upload"
+        ref="uploadRef"
+        @click="!disabled && open()"
       >
-        <upload-drag v-if="draggable" />
-        <upload-button v-else />
-      </slot>
-    </div>
-    <!-- 渲染uploadlist -->
-    <upload-file-list v-if="showFileList && computedFileList.length">
-      <template v-if="$slots['extra-button']" #extra-button="scope">
-        <slot name="extra-button" v-bind="scope" />
-      </template>
-      <template v-if="$slots['upload-item']" #upload-item="scope">
-        <slot name="upload-item" v-bind="scope" />
-      </template>
-    </upload-file-list>
+        <slot
+          v-if="limit <= 0 || computedFileList.length < limit"
+          name="upload-button"
+        >
+          <upload-drag v-if="draggable" />
+          <upload-button v-else />
+        </slot>
+      </div>
+      <!-- 渲染uploadlist -->
+      <upload-file-list v-if="showFileList && computedFileList.length">
+        <template v-if="$slots['extra-button']" #extra-button="scope">
+          <slot name="extra-button" v-bind="scope" />
+        </template>
+        <template v-if="$slots['upload-item']" #upload-item="scope">
+          <slot name="upload-item" v-bind="scope" />
+        </template>
+      </upload-file-list>
+    </template>
+    <!-- picture-card -->
+    <upload-picture-card v-else />
   </div>
 </template>
 

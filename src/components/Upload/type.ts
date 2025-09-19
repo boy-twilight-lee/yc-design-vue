@@ -20,7 +20,7 @@ export interface UploadProps {
   imageLoading?: ImageLoading;
   listType?: FileListType;
   customIcon?: CustomIcon;
-  imagePreview?: boolean;
+  // imagePreview?: boolean;
   // action?: string;
   // headers?: Record<string, string>;
   // data?:

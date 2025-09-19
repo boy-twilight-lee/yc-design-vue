@@ -39,6 +39,7 @@ type UploadContext = {
   multiple: Ref<boolean>;
   draggable: Ref<boolean>;
   directory: Ref<boolean>;
+  showPreviewButton: Ref<boolean>;
   slots: UploadSlots;
   emits: UploadEmits;
 };
@@ -57,11 +58,12 @@ export default function useUploadContext() {
       limit,
       tip,
       listType,
-      showRemoveButton,
       imageLoading,
       download,
       showLink,
       customIcon,
+      showRemoveButton,
+      showPreviewButton,
       accept: _accept,
     } = toRefs(props as UploadProps);
     const { name } = props;
@@ -72,9 +74,9 @@ export default function useUploadContext() {
       fileList,
       defaultFileList.value,
       (val) => {
-        computedFileList.value.forEach((v) => {
-          URL.revokeObjectURL(v.url);
-        });
+        // computedFileList.value.forEach((v) => {
+        //   URL.revokeObjectURL(v.url);
+        // });
         emits('update:fileList', val);
       }
     );
@@ -86,19 +88,20 @@ export default function useUploadContext() {
     _provide<UploadContext>(UPLOAD_CONTEXT_KEY, {
       computedFileList,
       disabled,
-      tip,
-      listType,
-      imageLoading,
-      showRemoveButton,
-      showLink,
-      download,
-      customIcon,
-      name,
       accept,
       directory,
       multiple,
       draggable,
       limit,
+      tip,
+      listType,
+      imageLoading,
+      showLink,
+      download,
+      customIcon,
+      showRemoveButton,
+      showPreviewButton,
+      name,
       slots,
       emits,
     });
@@ -114,7 +117,10 @@ export default function useUploadContext() {
       showLink,
       name,
       tip,
+      listType,
       customIcon,
+      showPreviewButton,
+      showRemoveButton,
       slots,
       emits,
     };
@@ -126,7 +132,6 @@ export default function useUploadContext() {
       disabled: ref(false),
       tip: ref(''),
       listType: ref('text'),
-      showRemoveButton: ref(true),
       showLink: ref(true),
       download: ref(false),
       imageLoading: ref('lazy'),
@@ -137,6 +142,8 @@ export default function useUploadContext() {
       accept: ref(''),
       limit: ref(0),
       draggable: ref(false),
+      showPreviewButton: ref(false),
+      showRemoveButton: ref(true),
       slots: {},
       emits: () => {},
     });

@@ -56,7 +56,7 @@
           <div
             v-if="closable"
             class="yc-image-preview-close-btn"
-            @click="handleClose('closeBtn', $event)"
+            @click="handleClose('closeBtn', $event, false)"
           >
             <icon-close />
           </div>

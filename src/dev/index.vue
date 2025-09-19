@@ -2,13 +2,12 @@
   <div class="test">
     <yc-upload
       v-model:fileList="fileList"
-      :limit="4"
       multiple
       draggable
       download
-      list-type="picture"
       tip="请上传png"
       image-preview
+      list-type="picture-card"
     />
     <a-upload
       v-model:fileList="fileList"
@@ -17,13 +16,8 @@
       multiple
       tip="请上传png"
       draggable
+      directory
       list-type="picture-card"
-      :image-preview="false"
-      @button-click="
-        (v) => {
-          console.log(v);
-        }
-      "
     >
     </a-upload>
   </div>
