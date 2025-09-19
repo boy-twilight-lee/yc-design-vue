@@ -78,6 +78,7 @@ const props = withDefaults(defineProps<UploadProps>(), {
   customIcon: () => ({}),
   onBeforeRemove: () => Promise.resolve(true),
   onBeforeUpload: () => true,
+  onButtonClick: () => {},
 });
 const emits = defineEmits<UploadEmits>();
 // 上传ref

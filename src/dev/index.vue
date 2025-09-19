@@ -6,7 +6,7 @@
       draggable
       tip="请上传"
       image-preview
-      :on-before-upload="beforeUpload"
+      :on-button-click="onButtonClick"
     />
     <a-upload
       v-model:fileList="fileList"
@@ -16,6 +16,7 @@
       multiple
       tip="请上传"
       draggable
+      :on-button-click="onButtonClick"
     >
     </a-upload>
   </div>
@@ -33,6 +34,13 @@ const beforeUpload = (file) => {
       onOk: () => resolve(true),
       onCancel: () => reject('cancel'),
     });
+  });
+};
+const onButtonClick = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('1');
+    }, 100);
   });
 };
 </script>

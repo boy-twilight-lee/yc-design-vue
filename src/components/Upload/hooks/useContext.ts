@@ -17,6 +17,7 @@ import {
   CustomIcon,
   FileName,
   OnBeforeUpload,
+  OnButtonClick,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
 import { useControlValue } from '@shared/utils/control';
@@ -45,6 +46,7 @@ type UploadContext = {
   imagePreview: Ref<boolean>;
   slots: UploadSlots;
   onBeforeUpload: OnBeforeUpload;
+  onButtonClick: OnButtonClick;
   handleDelFile: (fileItem: FileItem) => Promise<void>;
   emits: UploadEmits;
 };
@@ -72,7 +74,8 @@ export default function useUploadContext() {
       showPreviewButton,
       accept: _accept,
     } = toRefs(props as UploadProps);
-    const { name, onBeforeUpload, onBeforeRemove } = props;
+    const { name, onBeforeUpload, onBeforeRemove, onButtonClick } =
+      props as UploadProps;
     // slots
     const slots = useSlots() as UploadSlots;
     //   受控的fileList
@@ -125,6 +128,7 @@ export default function useUploadContext() {
       name,
       slots,
       onBeforeUpload,
+      onButtonClick,
       handleDelFile,
       emits,
     };
@@ -154,6 +158,7 @@ export default function useUploadContext() {
       name: '',
       slots: {},
       handleDelFile: () => Promise.resolve(),
+      onButtonClick: () => {},
       onBeforeUpload: () => true,
       emits: () => {},
     });

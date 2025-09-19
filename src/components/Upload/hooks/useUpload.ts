@@ -26,6 +26,7 @@ export default function useUpload(
     multiple,
     name,
     onBeforeUpload,
+    onButtonClick,
     emits,
   } = context;
   // 处理点击上传
@@ -95,9 +96,16 @@ export default function useUpload(
     emits('change', computedFileList.value, [...files]);
   };
   // 处理上传
-  const handleUpload = () => {
+  const handleUpload = async (e: MouseEvent) => {
     if (disabled.value) return;
-    open();
+    let click;
+    try {
+      click = onButtonClick?.(e);
+      if (click instanceof Promise) return;
+      open();
+    } catch (err) {
+      throw err;
+    }
   };
   return {
     ...context,
