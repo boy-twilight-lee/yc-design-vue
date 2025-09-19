@@ -6,6 +6,7 @@ import {
   Ref,
   computed,
   useSlots,
+  onBeforeUnmount,
 } from 'vue';
 import {
   UploadProps as _UploadProps,
@@ -83,9 +84,13 @@ export default function useUploadContext() {
       fileList,
       defaultFileList.value,
       (val) => {
-        // computedFileList.value.forEach((v) => {
-        //   URL.revokeObjectURL(v.url);
-        // });
+        computedFileList.value.forEach((v) => {
+          if (!v.url) return;
+          URL.revokeObjectURL(v.url);
+        });
+        (val as FileItem[]).forEach((v) => {
+          v.url = v.file ? URL.createObjectURL(v.file) : '';
+        });
         emits('update:fileList', val);
       }
     );
@@ -107,6 +112,12 @@ export default function useUploadContext() {
       );
       emits('change', computedFileList.value, []);
     };
+    onBeforeUnmount(() => {
+      computedFileList.value.forEach((v) => {
+        if (!v.url) return;
+        URL.revokeObjectURL(v.url);
+      });
+    });
     // context
     const context = {
       computedFileList,
