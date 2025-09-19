@@ -35,9 +35,13 @@
   confirm: rgb(var(--warning-6));
 };
 each(@modal-type, .(@value, @key) {
-      .yc-service-modal-@{key}  {
-        .yc-modal-title-icon{
+  .yc-service-modal-@{key} {
+    .yc-modal-header {
+      .yc-modal-title {
+        .yc-modal-title-icon {
           color: @value;
         }
       }
-    });
+    }
+  }
+ });
