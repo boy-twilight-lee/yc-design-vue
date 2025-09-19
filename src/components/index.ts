@@ -226,6 +226,7 @@ export {
   Trigger,
   Typography,
   Tabs,
+  Upload,
   VerificationCode,
   Watermark,
 };

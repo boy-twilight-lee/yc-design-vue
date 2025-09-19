@@ -17,10 +17,10 @@ import {
   CustomIcon,
   FileName,
   OnBeforeUpload,
-  OnBeforeRemove,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
 import { useControlValue } from '@shared/utils/control';
+import { isFunction } from '@/components/_shared/utils/is';
 
 // key
 const UPLOAD_CONTEXT_KEY = 'upload-context';
@@ -98,7 +98,7 @@ export default function useUploadContext() {
       } catch {
         isDel = false;
       }
-      if (!isDel) return;
+      if (!isDel && isFunction(onBeforeRemove)) return;
       computedFileList.value = computedFileList.value.filter(
         (v) => v.uid != fileItem.uid
       );

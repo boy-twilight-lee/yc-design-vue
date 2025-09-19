@@ -64,8 +64,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { FileItem } from './type';
-import { IconPlus, IconEyeClose, IconDelete } from '@shared/icons';
 import useUpload from './hooks/useUpload';
+import { IconPlus, IconEyeClose, IconDelete } from '@shared/icons';
 import { ImagePreview as YcImagePreview } from '@/components/Image';
 // 上传ref
 const uploadRef = ref<HTMLDivElement>();

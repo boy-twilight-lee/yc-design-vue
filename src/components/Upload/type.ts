@@ -24,12 +24,12 @@ export interface UploadProps {
   onBeforeUpload?: OnBeforeUpload;
   onBeforeRemove?: OnBeforeRemove;
   // action?: string;
+  // autoUpload?: boolean;
   // headers?: Record<string, string>;
   // data?:
   //   | Record<string, string | Blob>
   //   | ((fileItem: FileItem) => Record<string, string | Blob>);
   // responseUrlKey?: string | ((fileItem: FileItem) => string);
-  // autoUpload?: boolean;
   // withCredentials?: boolean;
   // customRequest?: (option: RequestOption) => UploadRequest;
   // showRetryButton?: boolean;
@@ -77,7 +77,7 @@ export type FileListType = 'text' | 'picture' | 'picture-card';
 
 export type ImageLoading = 'eager' | 'lazy';
 
-export type OnBeforeUpload = (file: File) => boolean;
+export type OnBeforeUpload = (file: File) => boolean | Promise<boolean>;
 
 export type OnBeforeRemove = (fileItem: FileItem) => Promise<boolean>;
 

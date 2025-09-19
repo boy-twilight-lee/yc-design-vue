@@ -1,9 +1,10 @@
 import { nanoid } from 'nanoid';
 import { useDropZone, useFileDialog } from '@shared/utils/vue-utils';
-import { isString } from '@shared/utils/is';
+import { isFunction, isString } from '@shared/utils/is';
 import useContext from './useContext';
 import { FileItem, UploadEmits, UploadProps } from '../type';
 import { Ref } from 'vue';
+
 export default function useUpload(
   uploadRef: Ref<HTMLDivElement | undefined>,
   _props?: UploadProps,
@@ -56,9 +57,19 @@ export default function useUpload(
     return fileItem.name;
   };
   // 处理文件
-  const handleFiles = (fileData: File[] | FileList | null) => {
-    const files = [...(fileData || [])].filter((file) => onBeforeUpload(file));
-    console.log(files);
+  const handleFiles = async (fileData: File[] | FileList | null) => {
+    const allFiles = [...(fileData || [])];
+    const files: File[] = [];
+    for (const file of allFiles) {
+      let isUpload = true;
+      try {
+        isUpload = await onBeforeUpload?.(file);
+      } catch {
+        isUpload = false;
+      }
+      if (!isUpload && isFunction(onBeforeUpload)) continue;
+      files.push(file);
+    }
     if (!files.length || disabled.value || isOutOfLimit(files.length)) {
       if (!isOutOfLimit(files?.length)) return;
       emits('exceed-limit', computedFileList.value, files!);

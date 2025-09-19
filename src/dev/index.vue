@@ -6,7 +6,7 @@
       draggable
       tip="请上传"
       image-preview
-      :on-before-upload="(_item) => true"
+      :on-before-upload="beforeUpload"
     />
     <a-upload
       v-model:fileList="fileList"
@@ -23,7 +23,18 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import { Modal } from '@arco-design/web-vue';
 const fileList = ref([]);
+const beforeUpload = (file) => {
+  return new Promise((resolve, reject) => {
+    Modal.confirm({
+      title: 'beforeUpload',
+      content: `确认上传 ${file.name}`,
+      onOk: () => resolve(true),
+      onCancel: () => reject('cancel'),
+    });
+  });
+};
 </script>
 
 <style lang="less">
