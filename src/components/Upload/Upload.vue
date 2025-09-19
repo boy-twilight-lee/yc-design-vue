@@ -18,7 +18,7 @@
           },
         ]"
         ref="uploadRef"
-        @click="!disabled && open()"
+        @click="handleUpload"
       >
         <slot
           v-if="limit <= 0 || computedFileList.length < limit"
@@ -76,13 +76,21 @@ const props = withDefaults(defineProps<UploadProps>(), {
   listType: 'text',
   imagePrewiew: true,
   customIcon: () => ({}),
+  onBeforeRemove: () => Promise.resolve(true),
+  onBeforeUpload: () => true,
 });
 const emits = defineEmits<UploadEmits>();
 // 上传ref
 const uploadRef = ref<HTMLDivElement>();
 // 注入数据
-const { computedFileList, limit, draggable, disabled, handleFiles, open } =
-  useUpload(uploadRef, props, emits);
+const {
+  computedFileList,
+  limit,
+  draggable,
+  disabled,
+  handleFiles,
+  handleUpload,
+} = useUpload(uploadRef, props, emits);
 // 暴露的方法
 defineExpose<UploadExpose>({
   updateFile(id: string, file: File) {

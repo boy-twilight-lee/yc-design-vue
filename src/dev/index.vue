@@ -4,17 +4,17 @@
       v-model:fileList="fileList"
       multiple
       draggable
-      download
-      tip="请上传png"
+      tip="请上传"
       image-preview
-      list-type="picture-card"
+      :on-before-upload="(_item) => true"
     />
     <a-upload
       v-model:fileList="fileList"
       :limit="4"
       :auto-upload="false"
+      :on-before-upload="(_item) => false"
       multiple
-      tip="请上传png"
+      tip="请上传"
       draggable
     >
     </a-upload>

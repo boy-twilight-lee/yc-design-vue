@@ -24,6 +24,7 @@ export default function useUpload(
     directory,
     multiple,
     name,
+    onBeforeUpload,
     emits,
   } = context;
   // 处理点击上传
@@ -56,8 +57,9 @@ export default function useUpload(
   };
   // 处理文件
   const handleFiles = (fileData: File[] | FileList | null) => {
-    const files = [...(fileData || [])];
-    if (!files?.length || disabled.value || isOutOfLimit(files.length)) {
+    const files = [...(fileData || [])].filter((file) => onBeforeUpload(file));
+    console.log(files);
+    if (!files.length || disabled.value || isOutOfLimit(files.length)) {
       if (!isOutOfLimit(files?.length)) return;
       emits('exceed-limit', computedFileList.value, files!);
       return;
@@ -79,12 +81,16 @@ export default function useUpload(
         };
       }),
     ];
-    console.dir(computedFileList.value, 'files');
     emits('change', computedFileList.value, [...files]);
+  };
+  // 处理上传
+  const handleUpload = () => {
+    if (disabled.value) return;
+    open();
   };
   return {
     ...context,
-    open,
+    handleUpload,
     handleFiles,
   };
 }

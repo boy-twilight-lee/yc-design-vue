@@ -46,7 +46,7 @@
         v-if="$slots['extra-button'] || showRemoveButton"
         class="yc-upload-list-item-operation"
       >
-        <icon-button @click="handleDel(item.uid)">
+        <icon-button @click="handleDelFile(item)">
           <component :is="renderDelIcon()" />
         </icon-button>
         <slot name="extra-button" :fileItem="item" />
@@ -70,13 +70,8 @@ const {
   download,
   customIcon,
   slots,
-  emits,
+  handleDelFile,
 } = useContext().inject();
-// 处理删除
-const handleDel = (uid: string) => {
-  computedFileList.value = computedFileList.value.filter((v) => v.uid != uid);
-  emits('change', computedFileList.value, []);
-};
 // 渲染文件icon
 const renderFileIcon = (fileItem: FileItem) => {
   if (slots['file-icon']) {

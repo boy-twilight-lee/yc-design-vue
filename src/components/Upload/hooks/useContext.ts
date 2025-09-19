@@ -16,6 +16,8 @@ import {
   UploadSlots,
   CustomIcon,
   FileName,
+  OnBeforeUpload,
+  OnBeforeRemove,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
 import { useControlValue } from '@shared/utils/control';
@@ -42,6 +44,8 @@ type UploadContext = {
   showPreviewButton: Ref<boolean>;
   imagePreview: Ref<boolean>;
   slots: UploadSlots;
+  onBeforeUpload: OnBeforeUpload;
+  handleDelFile: (fileItem: FileItem) => Promise<void>;
   emits: UploadEmits;
 };
 // type
@@ -68,7 +72,7 @@ export default function useUploadContext() {
       showPreviewButton,
       accept: _accept,
     } = toRefs(props as UploadProps);
-    const { name } = props;
+    const { name, onBeforeUpload, onBeforeRemove } = props;
     // slots
     const slots = useSlots() as UploadSlots;
     //   受控的fileList
@@ -86,6 +90,20 @@ export default function useUploadContext() {
     const accept = computed(() => {
       return listType.value != 'text' ? 'image/*' : _accept.value;
     });
+    // 处理删除文件
+    const handleDelFile = async (fileItem: FileItem) => {
+      let isDel = true;
+      try {
+        isDel = await onBeforeRemove?.(fileItem);
+      } catch {
+        isDel = false;
+      }
+      if (!isDel) return;
+      computedFileList.value = computedFileList.value.filter(
+        (v) => v.uid != fileItem.uid
+      );
+      emits('change', computedFileList.value, []);
+    };
     // context
     const context = {
       computedFileList,
@@ -106,6 +124,8 @@ export default function useUploadContext() {
       showPreviewButton,
       name,
       slots,
+      onBeforeUpload,
+      handleDelFile,
       emits,
     };
     // 注入
@@ -133,6 +153,8 @@ export default function useUploadContext() {
       showPreviewButton: ref(true),
       name: '',
       slots: {},
+      handleDelFile: () => Promise.resolve(),
+      onBeforeUpload: () => true,
       emits: () => {},
     });
   };

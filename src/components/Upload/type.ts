@@ -21,6 +21,8 @@ export interface UploadProps {
   listType?: FileListType;
   customIcon?: CustomIcon;
   imagePreview?: boolean;
+  onBeforeUpload?: OnBeforeUpload;
+  onBeforeRemove?: OnBeforeRemove;
   // action?: string;
   // headers?: Record<string, string>;
   // data?:
@@ -31,8 +33,6 @@ export interface UploadProps {
   // withCredentials?: boolean;
   // customRequest?: (option: RequestOption) => UploadRequest;
   // showRetryButton?: boolean;
-  // onBeforeUpload?: (file: File) => boolean | Promise<boolean | File>;
-  // onBeforeRemove?: (fileItem: FileItem) => Promise<boolean>;
   // onButtonClick?: (event: Event) => Promise<FileList> | void;
 }
 
@@ -76,6 +76,10 @@ export type FileName = string | ((fileItem: FileItem) => string);
 export type FileListType = 'text' | 'picture' | 'picture-card';
 
 export type ImageLoading = 'eager' | 'lazy';
+
+export type OnBeforeUpload = (file: File) => boolean;
+
+export type OnBeforeRemove = (fileItem: FileItem) => Promise<boolean>;
 
 export type FileItem = {
   uid: string;

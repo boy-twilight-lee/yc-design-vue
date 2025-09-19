@@ -30,7 +30,7 @@
           <span
             v-if="showRemoveButton"
             :class="['yc-upload-icon', 'yc-upload-icon-remove']"
-            @click="handleDel(item.uid)"
+            @click="handleDelFile(item)"
           >
             <component :is="renderDelIcon()" />
           </span>
@@ -38,7 +38,12 @@
       </div>
     </div>
     <!-- upload -->
-    <span class="yc-upload" ref="uploadRef" @click="handleUpload">
+    <span
+      v-if="limit <= 0 || computedFileList.length < limit"
+      class="yc-upload"
+      ref="uploadRef"
+      @click="handleUpload"
+    >
       <div
         :class="[
           'yc-upload-picture-card',
@@ -71,6 +76,7 @@ const url = ref<string>('');
 // 获取上传数据
 const {
   computedFileList,
+  limit,
   tip,
   slots,
   customIcon,
@@ -79,7 +85,8 @@ const {
   showPreviewButton,
   showRemoveButton,
   listType,
-  open,
+  handleUpload,
+  handleDelFile,
   emits,
 } = useUpload(uploadRef);
 // 渲染删除icon
@@ -92,22 +99,12 @@ const renderPreviewIcon = () => {
     slots['preview-icon'] ?? (customIcon.value.previewIcon || IconEyeClose)
   );
 };
-// 处理上传
-const handleUpload = () => {
-  if (disabled.value) return;
-  open();
-};
 // 处理预览
 const handlePreview = (fileItem: FileItem) => {
   url.value = fileItem.url;
   emits('preview', fileItem);
   if (!imagePreview.value) return;
   visible.value = true;
-};
-// 处理删除
-const handleDel = (uid: string) => {
-  computedFileList.value = computedFileList.value.filter((v) => v.uid != uid);
-  emits('change', computedFileList.value, []);
 };
 </script>
 
