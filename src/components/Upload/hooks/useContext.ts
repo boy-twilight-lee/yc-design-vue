@@ -40,6 +40,7 @@ type UploadContext = {
   draggable: Ref<boolean>;
   directory: Ref<boolean>;
   showPreviewButton: Ref<boolean>;
+  imagePreview: Ref<boolean>;
   slots: UploadSlots;
   emits: UploadEmits;
 };
@@ -62,6 +63,7 @@ export default function useUploadContext() {
       download,
       showLink,
       customIcon,
+      imagePreview,
       showRemoveButton,
       showPreviewButton,
       accept: _accept,
@@ -84,11 +86,11 @@ export default function useUploadContext() {
     const accept = computed(() => {
       return listType.value != 'text' ? 'image/*' : _accept.value;
     });
-
-    _provide<UploadContext>(UPLOAD_CONTEXT_KEY, {
+    // context
+    const context = {
       computedFileList,
-      disabled,
       accept,
+      disabled,
       directory,
       multiple,
       draggable,
@@ -99,51 +101,37 @@ export default function useUploadContext() {
       showLink,
       download,
       customIcon,
+      imagePreview,
       showRemoveButton,
       showPreviewButton,
       name,
-      slots,
-      emits,
-    });
-
-    return {
-      computedFileList,
-      limit,
-      multiple,
-      directory,
-      accept,
-      draggable,
-      disabled,
-      showLink,
-      name,
-      tip,
-      listType,
-      customIcon,
-      showPreviewButton,
-      showRemoveButton,
       slots,
       emits,
     };
+    // 注入
+    _provide<UploadContext>(UPLOAD_CONTEXT_KEY, context);
+    return context;
   };
 
   const inject = () => {
     return _inject<UploadContext>(UPLOAD_CONTEXT_KEY, {
       computedFileList: ref([]),
+      accept: ref(''),
       disabled: ref(false),
-      tip: ref(''),
-      listType: ref('text'),
-      showLink: ref(true),
-      download: ref(false),
-      imageLoading: ref('lazy'),
-      customIcon: ref({}),
-      name: '',
       directory: ref(false),
       multiple: ref(false),
-      accept: ref(''),
-      limit: ref(0),
       draggable: ref(false),
-      showPreviewButton: ref(false),
+      limit: ref(0),
+      tip: ref(''),
+      listType: ref('text'),
+      imageLoading: ref('lazy'),
+      showLink: ref(true),
+      download: ref(false),
+      customIcon: ref({}),
+      imagePreview: ref(true),
       showRemoveButton: ref(true),
+      showPreviewButton: ref(true),
+      name: '',
       slots: {},
       emits: () => {},
     });

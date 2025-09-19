@@ -20,7 +20,7 @@ export interface UploadProps {
   imageLoading?: ImageLoading;
   listType?: FileListType;
   customIcon?: CustomIcon;
-  // imagePreview?: boolean;
+  imagePreview?: boolean;
   // action?: string;
   // headers?: Record<string, string>;
   // data?:
@@ -55,10 +55,10 @@ export interface UploadSlots {
   ['preview-icon']?: () => VNode[];
   ['upload-button']?: () => VNode[];
   ['upload-item']?: (scope: { fileItem: FileItem; index: number }) => VNode[];
-  // ['cancel-icon']?: () => VNode[];
   // ['start-icon']?: () => VNode[];
-  // ['error-name']?: () => VNode[];
+  // ['cancel-icon']?: () => VNode[];
   // ['success-icon']?: () => VNode[];
+  // ['error-icon']?: () => VNode[];
   // ['retry-icon']?: () => VNode[];
 }
 
@@ -94,9 +94,9 @@ export type CustomIcon = {
   previewIcon?: RenderFunction;
   // startIcon?: RenderFunction;
   // cancelIcon?: RenderFunction;
-  // retryIcon?: RenderFunction;
   // successIcon?: RenderFunction;
   // errorIcon?: RenderFunction;
+  // retryIcon?: RenderFunction;
 };
 
 // export type RequestOption = {

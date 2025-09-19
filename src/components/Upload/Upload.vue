@@ -11,7 +11,12 @@
     <template v-if="listType != 'picture-card'">
       <div
         v-if="showUploadButton"
-        class="yc-upload"
+        :class="[
+          'yc-upload',
+          {
+            'yc-upload-draggable': draggable,
+          },
+        ]"
         ref="uploadRef"
         @click="!disabled && open()"
       >
@@ -39,7 +44,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { UploadProps, UploadEmits, UploadSlots, UploadExpose } from './type';
 import useUpload from './hooks/useUpload';
 import UploadButton from './UploadButton.vue';

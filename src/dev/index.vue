@@ -16,8 +16,6 @@
       multiple
       tip="请上传png"
       draggable
-      directory
-      list-type="picture-card"
     >
     </a-upload>
   </div>
@@ -27,8 +25,6 @@
 import { ref, watch } from 'vue';
 const fileList = ref([]);
 </script>
-
-<style lang="less" scoped></style>
 
 <style lang="less">
 #app {

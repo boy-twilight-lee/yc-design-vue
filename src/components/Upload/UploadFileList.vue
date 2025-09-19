@@ -1,5 +1,5 @@
 <template>
-  <div class="yc-upload-list">
+  <div :class="['yc-upload-list', `yc-upload-list-type-${listType}`]">
     <div
       v-for="(item, i) in computedFileList"
       :key="item.uid"
@@ -102,7 +102,8 @@ const renderDelIcon = () => {
 </script>
 
 <style lang="less" scoped>
-.yc-upload-list {
+.yc-upload-list-type-text,
+.yc-upload-list-type-picture {
   width: 100%;
   margin-top: 24px;
   display: flex;

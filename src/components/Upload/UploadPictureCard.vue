@@ -1,5 +1,13 @@
 <template>
-  <div :class="['yc-upload-list', `yc-upload-list-type-${listType}`]">
+  <div
+    :class="[
+      'yc-upload-list',
+      `yc-upload-list-type-${listType}`,
+      {
+        'yc-upload-list-disabled': disabled,
+      },
+    ]"
+  >
     <!-- 图片预览 -->
     <yc-image-preview v-model:visible="visible" :src="url" />
     <!-- list -->
@@ -14,7 +22,7 @@
           <span
             v-if="showPreviewButton"
             :class="['yc-upload-icon', 'yc-upload-icon-preview']"
-            @click="handlePreview(item.url)"
+            @click="handlePreview(item)"
           >
             <component :is="renderPreviewIcon()" />
           </span>
@@ -31,7 +39,14 @@
     </div>
     <!-- upload -->
     <span class="yc-upload" ref="uploadRef" @click="handleUpload">
-      <div class="yc-upload-picture-card">
+      <div
+        :class="[
+          'yc-upload-picture-card',
+          {
+            'yc-upload-picture-card-disabled': disabled,
+          },
+        ]"
+      >
         <div class="yc-upload-picture-card-text">
           <icon-plus />
         </div>
@@ -43,6 +58,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { FileItem } from './type';
 import { IconPlus, IconEyeClose, IconDelete } from '@shared/icons';
 import useUpload from './hooks/useUpload';
 import { ImagePreview as YcImagePreview } from '@/components/Image';
@@ -50,6 +66,7 @@ import { ImagePreview as YcImagePreview } from '@/components/Image';
 const uploadRef = ref<HTMLDivElement>();
 // visible
 const visible = ref<boolean>(false);
+// url
 const url = ref<string>('');
 // 获取上传数据
 const {
@@ -58,6 +75,7 @@ const {
   slots,
   customIcon,
   disabled,
+  imagePreview,
   showPreviewButton,
   showRemoveButton,
   listType,
@@ -80,8 +98,10 @@ const handleUpload = () => {
   open();
 };
 // 处理预览
-const handlePreview = (v: string) => {
-  url.value = v;
+const handlePreview = (fileItem: FileItem) => {
+  url.value = fileItem.url;
+  emits('preview', fileItem);
+  if (!imagePreview.value) return;
   visible.value = true;
 };
 // 处理删除
@@ -149,10 +169,23 @@ const handleDel = (uid: string) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    &:hover {
+    &:not(.yc-upload-picture-card-disabled):hover {
       color: var(--color-text-2);
       background-color: var(--color-fill-3);
       border-color: var(--color-neutral-4);
+    }
+  }
+}
+
+.yc-upload-list-disabled {
+  .yc-upload {
+    cursor: not-allowed;
+    .yc-upload-picture-card {
+      border-color: var(--color-text-4);
+      .yc-upload-picture-card-text,
+      .yc-upload-tip {
+        color: var(--color-text-4);
+      }
     }
   }
 }
