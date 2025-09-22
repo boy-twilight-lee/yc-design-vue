@@ -13,7 +13,7 @@
 import { toRefs } from 'vue';
 import { VirtualListProps } from '@/components/Select';
 import { RecordType } from '@shared/type';
-import { useVirtualList } from '@shared/utils/vue-utils';
+import { useVirtualList } from '@shared/utils/vueuse';
 const props = defineProps<{
   data: RecordType[];
   virtualListProps: VirtualListProps;

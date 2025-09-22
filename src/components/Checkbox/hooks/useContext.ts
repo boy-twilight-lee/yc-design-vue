@@ -13,7 +13,7 @@ import {
 } from '../type';
 import { RecordType, Required } from '@shared/type';
 import { isObject } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 
 const CHECKBOX_GROUP_CONTEXT_KEY = 'checkbox-group-context';
 type CheckboxContext = {

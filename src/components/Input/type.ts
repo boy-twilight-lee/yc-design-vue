@@ -1,5 +1,5 @@
-import { Size, RecordType } from '@shared/type';
 import { VNode } from 'vue';
+import { Size, RecordType } from '@shared/type';
 
 export interface InputProps {
   modelValue?: string;

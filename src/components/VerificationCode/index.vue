@@ -34,7 +34,7 @@ import { nanoid } from 'nanoid';
 import { VerificationCodeProps, VerificationCodeEmits } from './type';
 import { sleep } from '@shared/utils/dom';
 import { isFunction, isNumber, isString } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { getSlotFunction } from '@shared/utils/vue-utils';
 import { getGlobalConfig } from '@shared/utils/global-config';
 import { default as YcInput, InputInstance } from '@/components/Input';

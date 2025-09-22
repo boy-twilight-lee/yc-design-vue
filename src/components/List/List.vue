@@ -79,8 +79,8 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { ListProps, ListEmits, ListSlots } from './type';
-import { unrefElement } from '@shared/utils/vue-utils';
-import { useControlValue } from '@shared/utils/control';
+import { unrefElement } from '@shared/utils/vueuse';
+import { useControlValue } from '@shared/utils/hooks';
 import { getGlobalConfig } from '@shared/utils/global-config';
 import { valueToPx } from '@shared/utils/dom';
 import useScrollReach from './hooks/useScrollReach';

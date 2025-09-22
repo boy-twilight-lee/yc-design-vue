@@ -17,7 +17,7 @@ import {
 } from '../type';
 import { InputInstance } from '@/components/Input';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { isBoolean, isFunction } from '@shared/utils/is';
 import useSelectOptions from './useSelectOptions';
 import useSelectHotkeys from './useSelectHotkeys';

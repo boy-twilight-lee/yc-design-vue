@@ -1,5 +1,5 @@
-import { Position } from '@shared/type';
 import { VNode } from 'vue';
+import { Position } from '@shared/type';
 
 export interface CollapseProps {
   activeKey?: CollapseValue[];

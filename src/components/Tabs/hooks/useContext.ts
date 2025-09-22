@@ -22,7 +22,7 @@ import {
   Required,
   Size,
 } from '@shared/type';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { getGlobalConfig } from '@shared/utils/global-config';
 
 const TABS_CONTEXT_KEY = 'tabs-context';

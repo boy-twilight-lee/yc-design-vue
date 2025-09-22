@@ -42,7 +42,7 @@
 import { toRefs, computed } from 'vue';
 import { CheckboxProps, CheckboxEmits, CheckboxSlots } from './type';
 import { isUndefined } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import useContext from './hooks/useContext';
 import { IconCheckboxChecked } from '@shared/icons';
 import { IconButton } from '@shared/components';

@@ -1,5 +1,5 @@
 import { reactive, Ref, watch, nextTick, computed } from 'vue';
-import { useDraggable } from '@shared/utils/vue-utils';
+import { useDraggable } from '@shared/utils/vueuse';
 import { Direction } from '@shared/type';
 import { valueToPx } from '@shared/utils/dom';
 

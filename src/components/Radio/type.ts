@@ -1,5 +1,5 @@
-import { Direction, Size, RecordType } from '@shared/type';
 import { VNode } from 'vue';
+import { Direction, Size, RecordType } from '@shared/type';
 
 export interface RadioProps {
   modelValue?: RadioValue;

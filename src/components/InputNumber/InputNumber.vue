@@ -116,7 +116,7 @@ import {
   InputNumberValue,
 } from './type';
 import { isNumber, isString, isFunction } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { sleep } from '@shared/utils/dom';
 import OperaBtn from './InputOperaBtn.vue';
 import { default as YcInput, InputInstance } from '@/components/Input';

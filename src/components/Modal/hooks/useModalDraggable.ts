@@ -1,5 +1,5 @@
 import { ref, Ref, computed, CSSProperties, watch } from 'vue';
-import { useDraggable } from '@shared/utils/vue-utils';
+import { useDraggable } from '@shared/utils/vueuse';
 import { sleep, valueToPx } from '@shared/utils/dom';
 
 export default (params: {

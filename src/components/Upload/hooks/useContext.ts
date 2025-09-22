@@ -21,7 +21,7 @@ import {
   OnButtonClick,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { isFunction } from '@/components/_shared/utils/is';
 
 // key

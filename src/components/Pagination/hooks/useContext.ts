@@ -9,7 +9,7 @@ import {
 } from 'vue';
 import { PaginationProps as _PaginationProps, PaginationEmits } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { getGlobalConfig } from '@shared/utils/global-config';
 import { useI18n } from '@shared/utils/locale';
 

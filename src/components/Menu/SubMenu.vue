@@ -41,7 +41,7 @@ import { SubMenuProps, SubMenuSlots } from './type';
 import useContext from './hooks/useContext';
 import { IconArrowDown } from '@shared/icons';
 import { ExpandTransition } from '@shared/components';
-import { MenuItem as YcMenuItem } from './index';
+import YcMenuItem from './MenuItem.vue';
 defineOptions({
   name: 'SubMenu',
 });

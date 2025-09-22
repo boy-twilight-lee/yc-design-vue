@@ -1,6 +1,6 @@
-import { PopupContainer, Size } from '@shared/type';
-import { TriggerProps } from '../Trigger';
 import { VNode } from 'vue';
+import { PopupContainer, Size } from '@shared/type';
+import { TriggerProps } from '@/components/Trigger';
 
 export interface TimePickerProps {
   type?: TimePickerType;

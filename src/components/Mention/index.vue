@@ -40,7 +40,7 @@ import {
 } from './type';
 import { RecordType } from '@shared/type';
 import { isNull, isArray } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import useCursor from '@/components/Input/hooks/useCursor';
 import { SelectOptionValue } from '@/components/Select';
 import {

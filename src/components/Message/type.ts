@@ -1,5 +1,5 @@
-import { Position, RenderContent, Type } from '@shared/type';
 import { RenderFunction } from 'vue';
+import { Position, RenderContent, Type } from '@shared/type';
 
 export interface MessageProps {
   type?: MessageType;

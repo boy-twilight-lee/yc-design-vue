@@ -8,7 +8,7 @@ import {
   SelectOption,
   SelectOptionData,
   SelectOptionValue,
-} from '../index';
+} from '../type';
 import { isNull, isObject, isString, isUndefined } from '@shared/utils/is';
 
 export default (params: {

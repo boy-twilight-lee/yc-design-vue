@@ -1,8 +1,9 @@
 import { watch, Ref } from 'vue';
-import { useMediaQuery, unrefElement } from '@vueuse/core';
 import { BreakpointName, ResponsiveValue } from '../type';
 import { MEDICA_QUERY_QUERUES } from '../constants';
+import { useMediaQuery, unrefElement } from './vueuse';
 import { isObject, isString, isUndefined, isNumber } from './is';
+
 // 是否是服务端渲染
 export const isServerRendering = (() => {
   try {

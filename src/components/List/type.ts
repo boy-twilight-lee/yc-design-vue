@@ -1,7 +1,7 @@
-import { Direction, RecordType, Size } from '@shared/type';
-import { PaginationProps } from '../Pagination';
-import { VirtualListProps } from '../Select';
 import { VNode } from 'vue';
+import { Direction, RecordType, Size } from '@shared/type';
+import { PaginationProps } from '@/components/Pagination';
+import { VirtualListProps } from '@/components/Select';
 
 export interface ListProps {
   data?: RecordType[];

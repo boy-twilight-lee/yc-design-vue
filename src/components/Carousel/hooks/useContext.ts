@@ -15,7 +15,7 @@ import {
 } from '../type';
 import { ClassName, Direction, RecordType, Required } from '@shared/type';
 import { sleep } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
 import CarouselItem from '../CarouselItem.vue';
 

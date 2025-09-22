@@ -1,6 +1,6 @@
 import { CSSProperties, VNode } from 'vue';
-import { Size } from '../_shared/type';
-import { SelectProps } from '../Select';
+import { Size } from '@shared/type';
+import { SelectProps } from '@/components/Select';
 
 export interface PaginationProps {
   total: number;

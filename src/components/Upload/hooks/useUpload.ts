@@ -1,9 +1,9 @@
+import { Ref } from 'vue';
 import { nanoid } from 'nanoid';
-import { useDropZone, useFileDialog } from '@shared/utils/vue-utils';
+import { useDropZone, useFileDialog } from '@shared/utils/vueuse';
+import { FileItem, UploadEmits, UploadProps } from '../type';
 import { isFunction, isString } from '@shared/utils/is';
 import useContext from './useContext';
-import { FileItem, UploadEmits, UploadProps } from '../type';
-import { Ref } from 'vue';
 
 export default function useUpload(
   uploadRef: Ref<HTMLDivElement | undefined>,

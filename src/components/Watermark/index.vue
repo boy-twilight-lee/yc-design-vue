@@ -8,7 +8,7 @@
 import { onMounted, ref, watch, computed, CSSProperties, toRefs } from 'vue';
 import { WatermarkProps, WatermarkSlots } from './type';
 import { isArray } from '@shared/utils/is';
-import { useMutationObserver } from '@shared/utils/vue-utils';
+import { useMutationObserver } from '@shared/utils/vueuse';
 defineOptions({
   name: 'Watermark',
 });

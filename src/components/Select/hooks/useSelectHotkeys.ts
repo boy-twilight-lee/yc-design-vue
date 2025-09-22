@@ -1,7 +1,7 @@
 import { ref, Ref } from 'vue';
-import { onKeyStroke } from '@shared/utils/vue-utils';
 import { SelectEmits, SelectOptionData, SelectValue } from '../type';
 import { RecordType } from '@shared/type';
+import { onKeyStroke } from '@shared/utils/vueuse';
 
 export default (params: {
   hotkeys: Ref<boolean>;

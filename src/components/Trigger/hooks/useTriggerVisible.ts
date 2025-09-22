@@ -1,14 +1,14 @@
 import { nextTick, Ref, ref, toRefs, computed, watch } from 'vue';
 import { TriggerEmits } from '../type';
-import { default as useContext, TriggerProps } from './useContext';
 import { RecordType } from '@shared/type';
+import { default as useContext, TriggerProps } from './useContext';
 import {
   unrefElement,
   useEventListener,
   onClickOutside,
-} from '@shared/utils/vue-utils';
+} from '@shared/utils/vueuse';
 import { findFirstScrollableParent } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 
 export default (params: {
   props: RecordType;

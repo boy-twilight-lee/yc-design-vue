@@ -48,7 +48,7 @@ import {
   ScrollbarSlots,
   ScrollbarExpose,
 } from './type';
-import { useElementSize, useResizeObserver } from '@shared/utils/vue-utils';
+import { useElementSize, useResizeObserver } from '@shared/utils/vueuse';
 import {
   isHorizontallyScrollable,
   isVerticallyScrollable,

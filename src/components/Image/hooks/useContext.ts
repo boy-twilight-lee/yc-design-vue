@@ -12,7 +12,7 @@ import {
   ImagePreviewGroupEmits,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
 import Image from '../Image.vue';
 

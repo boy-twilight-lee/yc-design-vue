@@ -48,18 +48,18 @@
 
 <script lang="ts" setup>
 import { ref, computed, toRefs, nextTick } from 'vue';
-import { isUndefined, isBoolean } from '@shared/utils/is';
-import { valueToPx } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/control';
-import { unrefElement } from '@shared/utils/vue-utils';
-import { IconArrowRight } from '@shared/icons';
 import {
   DsubmenuProps,
   DsubmenuSlots,
   DsubmenuEmits,
   DropdownExpose,
-  Doption as YcDoption,
-} from './index';
+} from './type';
+import { isUndefined, isBoolean } from '@shared/utils/is';
+import { valueToPx } from '@shared/utils/dom';
+import { useControlValue } from '@shared/utils/hooks';
+import { unrefElement } from '@shared/utils/vueuse';
+import { IconArrowRight } from '@shared/icons';
+import YcDoption from './Doption.vue';
 import { default as YcTrigger, TriggerInstance } from '@/components/Trigger';
 import YcScrollbar from '@/components/Scrollbar';
 defineOptions({

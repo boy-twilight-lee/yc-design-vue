@@ -44,7 +44,7 @@ import { AvatarGroupProps, AvatarGroupSlots } from './type';
 import { valueToPx } from '@shared/utils/dom';
 import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
 import useContext from './hooks/useContext';
-import YcAvatar from './index';
+import YcAvatar from './Avatar.vue';
 import YcPopover from '@/components/Popover';
 defineOptions({
   name: 'AvatarGroup',

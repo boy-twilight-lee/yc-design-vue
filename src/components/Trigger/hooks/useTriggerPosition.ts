@@ -6,7 +6,7 @@ import {
   unrefElement,
   useElementBounding,
   useElementSize,
-} from '@shared/utils/vue-utils';
+} from '@shared/utils/vueuse';
 
 export default (params: {
   props: RecordType;

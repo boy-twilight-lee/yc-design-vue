@@ -28,14 +28,15 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, CSSProperties, watch } from 'vue';
 import { AffixProps, AffixEmits, AffixSlots, AffixExpose } from './type';
-import { useResizeObserver, useEventListener } from '@shared/utils/vue-utils';
+import { isUndefined } from '@shared/utils/is';
+import { useResizeObserver, useEventListener } from '@shared/utils/vueuse';
 import {
   findFirstScrollableParent,
   getElement,
   throttleByRaf,
   valueToPx,
 } from '@shared/utils/dom';
-import { isUndefined } from '@shared/utils/is';
+
 defineOptions({
   name: 'Affix',
   inheritAttrs: false,

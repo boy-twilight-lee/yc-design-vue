@@ -1,5 +1,5 @@
-import { InputProps } from '@/components/Input';
 import { VNode } from 'vue';
+import { InputProps } from '@/components/Input';
 
 export interface TransferProps {
   data?: TransferItem[];

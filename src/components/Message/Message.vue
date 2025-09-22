@@ -24,7 +24,7 @@
 import { toRefs, onMounted, watch } from 'vue';
 import { MessageProps } from './type';
 import { isUndefined } from '@shared/utils/is';
-import { useTimeoutFn } from '@shared/utils/vue-utils';
+import { useTimeoutFn } from '@shared/utils/vueuse';
 import { TYPE_ICON_MAP } from '@shared/constants';
 import { IconButton } from '@shared/components';
 defineOptions({

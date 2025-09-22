@@ -1,5 +1,5 @@
-import { Direction, Size, EventTrigger, Position } from '@shared/type';
 import { VNode } from 'vue';
+import { Direction, Size, EventTrigger, Position } from '@shared/type';
 
 export interface TabsProps {
   activeKey?: TabKey;

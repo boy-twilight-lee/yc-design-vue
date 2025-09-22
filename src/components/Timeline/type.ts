@@ -1,5 +1,5 @@
-import { Direction, Position } from '@shared/type';
 import { VNode } from 'vue';
+import { Direction, Position } from '@shared/type';
 
 export interface TimelineProps {
   reverse?: boolean;

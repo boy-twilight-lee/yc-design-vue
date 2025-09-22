@@ -38,11 +38,11 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, watch } from 'vue';
 import { isNumber } from '@shared/utils/is';
-import { useDraggable } from '@shared/utils/vue-utils';
+import { useDraggable } from '@shared/utils/vueuse';
 import { SplitProps, SplitEmits, SplitSlots } from './type';
 import { IconDragDot } from '@shared/icons';
 import { sleep, valueToPx } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 
 defineOptions({
   name: 'Split',

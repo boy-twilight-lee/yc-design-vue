@@ -1,5 +1,5 @@
 import { ref, computed, Ref, watch } from 'vue';
-import { useResizeObserver } from '@shared/utils/vue-utils';
+import { useResizeObserver } from '@shared/utils/vueuse';
 import { Direction, RecordType } from '@shared/type';
 import { sleep } from '@shared/utils/dom';
 export default (params: {

@@ -1,5 +1,6 @@
-import { Size, PopupContainer, RecordType } from '@shared/type';
 import { VNode } from 'vue';
+import { Size, PopupContainer, RecordType } from '@shared/type';
+
 export interface ConfigProviderProps {
   locale?: RecordType;
   zIndex?: number;

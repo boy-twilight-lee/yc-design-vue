@@ -72,8 +72,8 @@ import {
 } from './type';
 import { sleep, getDomText } from '@shared/utils/dom';
 import { useI18n } from '@shared/utils/locale';
-import { useControlValue } from '@shared/utils/control';
-import { useClipboard } from '@shared/utils/vue-utils';
+import { useControlValue } from '@shared/utils/hooks';
+import { useClipboard } from '@shared/utils/vueuse';
 import { IconEdit, IconCopy, IconInfo } from '@shared/icons';
 import { default as YcInput, InputInstance } from '@/components/Input';
 import { default as YcTooltip } from '@/components/Tooltip';

@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { TriggerType, TriggerProps as _TriggerProps } from '../type';
 import { Required } from '@shared/type';
 import { sleep } from '@shared/utils/dom';
-import { unrefElement } from '@shared/utils/vue-utils';
+import { unrefElement } from '@shared/utils/vueuse';
 
 const TRIGGER_CONTEXT_KEY = 'trigger-context';
 type TriggerContext = {

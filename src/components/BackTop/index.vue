@@ -22,7 +22,7 @@ import { BackTopProps, BackTopSlots } from './type';
 import { IconToTop } from '@shared/icons';
 import { getElement, findFirstScrollableParent } from '@shared/utils/dom';
 import { isUndefined } from '@shared/utils/is';
-import { useEventListener } from '@shared/utils/vue-utils';
+import { useEventListener } from '@shared/utils/vueuse';
 import YcButton from '@/components/Button';
 defineOptions({
   name: 'BackTop',

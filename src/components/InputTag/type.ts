@@ -1,6 +1,6 @@
+import { VNode } from 'vue';
 import { Size, RecordType, Format } from '@shared/type';
 import { TagProps } from '@/components/Tag';
-import { VNode } from 'vue';
 
 export interface InputTagProps {
   modelValue?: InputTagValue;

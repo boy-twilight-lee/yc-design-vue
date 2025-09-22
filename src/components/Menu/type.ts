@@ -1,7 +1,7 @@
+import { VNode } from 'vue';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
 import { Theme, BreakpointName, PopupMaxHeight, Direction } from '@shared/type';
-import { VNode } from 'vue';
 
 export interface MenuProps {
   theme?: Theme;

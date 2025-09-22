@@ -1,5 +1,5 @@
-import { Direction } from '@shared/type';
 import { VNode } from 'vue';
+import { Direction } from '@shared/type';
 
 export interface StepsProps {
   type?: StepType;

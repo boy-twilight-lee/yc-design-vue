@@ -7,7 +7,6 @@ import {
   computed,
 } from 'vue';
 import { AvatarProps, AvatarGroupProps as _AvatarGroupProps } from '../type';
-
 import { RecordType, Required } from '@shared/type';
 
 const AVATAR_GROUP_CONTEXT_KEY = 'radio-group-context';

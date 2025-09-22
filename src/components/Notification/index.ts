@@ -5,9 +5,9 @@ import type {
   NotificationMethod,
   NotificationConfig,
   NotificationProps,
-  NotificationType,
   NotificationPosition,
 } from './type';
+import { Type } from '@shared/type';
 import { isString } from '@shared/utils/is';
 
 export type NotificationInstance = InstanceType<typeof _Notification>;
@@ -31,10 +31,7 @@ const removeContainer = (position: NotificationPosition) => {
   container.delete(position);
 };
 // 处理NotificationOpen
-const open = (
-  props: string | NotificationConfig,
-  type: NotificationType = 'info'
-) => {
+const open = (props: string | NotificationConfig, type: Type = 'info') => {
   // 消息渲染的位置
   const position = isString(props)
     ? 'topRight'
@@ -97,7 +94,7 @@ const NotificationMethod = {
       return [
         type,
         (props: string | NotificationConfig) => {
-          return open(props, type as NotificationType);
+          return open(props, type as Type);
         },
       ];
     })

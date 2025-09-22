@@ -17,11 +17,12 @@
 
 <script lang="ts" setup>
 import { toRefs } from 'vue';
-import { useVirtualList } from '@shared/utils/vue-utils';
+import { VirtualListProps } from './type';
+import { useVirtualList } from '@shared/utils/vueuse';
 import { RecordType } from '@shared/type';
 import { getSlotFunction } from '@shared/utils/vue-utils';
 import useContext from './hooks/useContext';
-import { Option as YcOption, VirtualListProps } from './index';
+import YcOption from './Option.vue';
 const props = defineProps<{
   virtualListProps: VirtualListProps;
 }>();

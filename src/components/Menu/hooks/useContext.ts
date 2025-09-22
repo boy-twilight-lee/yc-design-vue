@@ -22,10 +22,11 @@ import {
   isBoolean,
 } from '@shared/utils/is';
 import { throttle, valueToPx } from '@shared/utils/dom';
-import { useResizeObserver } from '@shared/utils/vue-utils';
-import { useControlValue } from '@shared/utils/control';
-import { SubMenu, MenuItem } from '../index';
+import { useResizeObserver } from '@shared/utils/vueuse';
+import { useControlValue } from '@shared/utils/hooks';
 import useSiderContext from '@/components/Layout/hooks/useSiderContext';
+import SubMenu from '../SubMenu.vue';
+import MenuItem from '../MenuItem.vue';
 
 const MENU_CONTEXT_KEY = 'menu-context';
 type MenuContext = {
@@ -246,10 +247,14 @@ export default function useMenuContext() {
     const slots = useSlots();
     // 扁平化的树节点
     const menuTreeNodes = computed(() => {
-      return FlattenMenuTree(slots.default?.() || [], [
+      console.log(slots.default?.(), 'slots.default?.()');
+
+      const result = FlattenMenuTree(slots.default?.() || [], [
         SubMenu.name ?? '',
         MenuItem.name ?? '',
       ]);
+      console.log(result, 'result');
+      return result;
     });
     // menuItemdoms
     const menuItemWidths = ref<number[]>([]);

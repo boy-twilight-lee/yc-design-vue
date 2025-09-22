@@ -1,3 +1,4 @@
+import { VNode } from 'vue';
 import {
   EventTrigger,
   RecordType,
@@ -8,7 +9,7 @@ import {
 import { TriggerProps, TriggerType } from '@/components/Trigger';
 import { ButtonProps, ButtonType } from '@/components/Button';
 import { Size } from '@shared/type';
-import { VNode } from 'vue';
+
 export interface DropdownProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;

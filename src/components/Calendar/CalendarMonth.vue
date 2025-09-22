@@ -51,7 +51,7 @@ import { computed, toRefs, watch } from 'vue';
 import dayjs from 'dayjs';
 import { useI18n } from '@shared/utils/locale';
 import { generateMonthCalendar, CalendarCellData } from '@shared/utils/time';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 const props = withDefaults(
   defineProps<{
     computedValue: Date;

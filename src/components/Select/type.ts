@@ -1,3 +1,4 @@
+import { VNode } from 'vue';
 import {
   RecordType,
   RenderContent,
@@ -7,9 +8,8 @@ import {
   Format,
   FallBack,
 } from '@shared/type';
-import { TriggerInstance, TriggerProps } from '../Trigger';
-import { TagProps } from '../Tag';
-import { VNode } from 'vue';
+import { TriggerInstance, TriggerProps } from '@/components/Trigger';
+import { TagProps } from '@/components/Tag';
 
 export interface SelectProps {
   multiple?: boolean;

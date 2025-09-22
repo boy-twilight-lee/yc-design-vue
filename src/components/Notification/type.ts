@@ -1,5 +1,5 @@
-import { ClassName, RenderContent, Type } from '@shared/type';
 import { CSSProperties, RenderFunction } from 'vue';
+import { ClassName, RenderContent, Type } from '@shared/type';
 
 export interface NotificationProps {
   type?: Type;

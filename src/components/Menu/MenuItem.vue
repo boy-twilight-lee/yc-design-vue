@@ -113,7 +113,7 @@ import { MenuItemProps, MenuItemSlots } from './type';
 import { PopupMaxHeight } from '@shared/type';
 import { isUndefined } from '@shared/utils/is';
 import { valueToPx } from '@shared/utils/dom';
-import { createReusableTemplate } from '@shared/utils/vue-utils';
+import { createReusableTemplate } from '@shared/utils/vueuse';
 import {
   default as useContext,
   MenuTreeNode,

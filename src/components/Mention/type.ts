@@ -1,6 +1,6 @@
+import { VNode } from 'vue';
 import { SelectOption, SelectOptionValue } from '@/components/Select';
 import { RecordType } from '@shared/type';
-import { VNode } from 'vue';
 
 export interface MentionProps {
   modelValue?: string;

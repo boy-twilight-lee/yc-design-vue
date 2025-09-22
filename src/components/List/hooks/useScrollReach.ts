@@ -1,5 +1,5 @@
 import { Ref } from 'vue';
-import { useScroll } from '@shared/utils/vue-utils';
+import { useScroll } from '@shared/utils/vueuse';
 import { debounce } from '@shared/utils/dom';
 interface OffsetDirection {
   left?: number;

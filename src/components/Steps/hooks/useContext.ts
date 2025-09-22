@@ -18,7 +18,7 @@ import {
 } from '../type';
 import { Direction, Required, RecordType } from '@shared/type';
 import { isUndefined } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 
 const STEPS_CONTEXT_KEY = 'card-context';
 type StepsContext = {

@@ -1,22 +1,8 @@
 <template>
-  <div class="test">
-    <yc-button
-      @click="
-        $modal.success({
-          title: '提示',
-          content: '测试',
-        })
-      "
-    >
-      测试
-    </yc-button>
-  </div>
+  <div class="test">aa</div>
 </template>
 
-<script setup lang="ts">
-import { ref, watch } from 'vue';
-import { Modal } from '@arco-design/web-vue';
-</script>
+<script setup lang="ts"></script>
 
 <style lang="less">
 #app {
@@ -30,10 +16,6 @@ import { Modal } from '@arco-design/web-vue';
     justify-content: center;
     align-items: center;
     gap: 10px;
-    .yc-upload-wrapper,
-    .arco-upload-wrapper {
-      width: 400px;
-    }
   }
 }
 </style>

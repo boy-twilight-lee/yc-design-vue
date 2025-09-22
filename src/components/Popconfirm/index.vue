@@ -58,7 +58,7 @@ import {
   PopconfirmExpose,
 } from './type';
 import { TYPE_ICON_MAP } from '@shared/constants';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { useI18n } from '@shared/utils/locale';
 import useOnBeforeClose from '@/components/Modal/hooks/useOnBeforeClose';
 import { default as YcTrigger, TriggerInstance } from '@/components/Trigger';

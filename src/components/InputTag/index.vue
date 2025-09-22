@@ -97,10 +97,10 @@ import {
 } from './type';
 import { RecordType } from '@shared/type';
 import { nanoid } from 'nanoid';
-import { useElementSize } from '@shared/utils/vue-utils';
+import { useElementSize } from '@shared/utils/vueuse';
 import { isBoolean, isObject } from '@shared/utils/is';
 import { valueToPx } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { getGlobalConfig } from '@shared/utils/global-config';
 import YcTag from '@/components/Tag';
 import { PreventFocus, IconButton } from '@shared/components';

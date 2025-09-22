@@ -34,16 +34,12 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, reactive, watch, nextTick } from 'vue';
-import { useResizeObserver, useEventListener } from '@shared/utils/vue-utils';
-import {
-  ResizeBoxProps,
-  ResizeBoxEmits,
-  ResizeBoxSlots,
-  ResizeBoxDirection,
-} from './type';
+import { useResizeObserver, useEventListener } from '@shared/utils/vueuse';
+import { ResizeBoxProps, ResizeBoxEmits, ResizeBoxSlots } from './type';
+import { Position } from '@shared/type';
 import { IconDragDot } from '@shared/icons';
 import { valueToPx } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 defineOptions({
   name: 'ResizeBox',
 });
@@ -76,14 +72,14 @@ const triggerSize = reactive({
 // boxRef
 const boxRef = ref<HTMLDivElement>();
 // 拖拽方向
-const dragDirection = ref<ResizeBoxDirection | null>(null);
+const dragDirection = ref<Position | null>(null);
 // 初始位置和尺寸
 let x = 0;
 let y = 0;
 // 记录拖拽之前body的光标
 let cursor: string;
 // 处理拖拽开始
-const handleMovingStart = async (dir: ResizeBoxDirection, e: MouseEvent) => {
+const handleMovingStart = async (dir: Position, e: MouseEvent) => {
   // 防止文本选中等副作用
   e.preventDefault();
   dragDirection.value = dir;
@@ -154,7 +150,7 @@ useResizeObserver(
   },
   (entries) => {
     entries.forEach((item) => {
-      const direction = item.target.getAttribute('dir') as ResizeBoxDirection;
+      const direction = item.target.getAttribute('dir') as Position;
       const {
         contentRect: { width, height },
       } = item;

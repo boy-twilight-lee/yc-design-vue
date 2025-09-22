@@ -39,7 +39,7 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { RadioProps, RadioEmits, RadioSlots, RadioValue } from './type';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import useContext from './hooks/useContext';
 import { IconButton } from '@shared/components';
 defineOptions({

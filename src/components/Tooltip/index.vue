@@ -38,7 +38,7 @@ import {
   TooltipSlots,
   TooltipExpose,
 } from './type';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import YcTrigger from '@/components/Trigger';
 defineOptions({
   name: 'Tooltip',

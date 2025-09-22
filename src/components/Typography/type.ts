@@ -1,5 +1,5 @@
-import { TooltipProps } from '@/components/Tooltip';
 import { VNode } from 'vue';
+import { TooltipProps } from '@/components/Tooltip';
 
 // base
 export interface TypographyBaseProps {

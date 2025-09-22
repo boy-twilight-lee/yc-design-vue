@@ -87,7 +87,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, watch } from 'vue';
 import { ImageProps, ImageEmits, ImageSlots } from './type';
-import { useControlValue } from '@shared/utils/control';
+import { useControlValue } from '@shared/utils/hooks';
 import { valueToPx } from '@shared/utils/dom';
 import { useI18n } from '@shared/utils/locale';
 import { IconImageClose } from '@shared/icons';

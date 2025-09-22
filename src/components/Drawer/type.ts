@@ -2,6 +2,7 @@ import { CSSProperties, VNode } from 'vue';
 import { ButtonProps } from '@/components/Button';
 import { OnBeforeCancel, OnBeforeOk } from '@/components/Modal';
 import { RenderContent, PopupContainer, Position } from '@shared/type';
+
 export interface DrawerProps {
   visible?: boolean;
   defaultVisible?: boolean;
