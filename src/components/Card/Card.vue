@@ -53,8 +53,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { CardProps, CardSlots } from './type';
-import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
-import { getGlobalConfig } from '@shared/utils/global-config';
+import { getGlobalConfig, findComponentsFromVnodes } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcSpin from '@/components/Spin';
 import CardGrid from './CardGrid.vue';

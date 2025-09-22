@@ -66,8 +66,7 @@ import {
   TriggerSlots,
   TriggerExpose,
 } from './type';
-import { findFirstLegitChild } from '@shared/utils/vue-utils';
-import { getGlobalConfig } from '@shared/utils/global-config';
+import { findFirstLegitChild, getGlobalConfig } from '@shared/utils';
 import useTriggerVisible from './hooks/useTriggerVisible';
 import useTriggerPosition from './hooks/useTriggerPosition';
 import { PreventFocus } from '@shared/components';

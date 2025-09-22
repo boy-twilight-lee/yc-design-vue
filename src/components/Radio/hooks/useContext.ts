@@ -14,9 +14,7 @@ import {
   RadioOption,
 } from '../type';
 import { Size, Required, RecordType } from '@shared/type';
-import { useControlValue } from '@shared/utils/hooks';
-import { getGlobalConfig } from '@shared/utils/global-config';
-import { isObject } from '@shared/utils/is';
+import { isObject, useControlValue, getGlobalConfig } from '@shared/utils';
 
 const RADIO_GROUP_CONTEXT_KEY = 'radio-group-context';
 interface RadioContext {

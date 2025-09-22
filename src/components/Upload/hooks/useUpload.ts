@@ -1,8 +1,12 @@
 import { Ref } from 'vue';
-import { nanoid } from 'nanoid';
 import { FileItem, UploadEmits, UploadProps } from '../type';
-import { useDropZone, useFileDialog } from '@shared/utils/vueuse';
-import { isFunction, isString } from '@shared/utils/is';
+import {
+  useDropZone,
+  useFileDialog,
+  nanoid,
+  isFunction,
+  isString,
+} from '@shared/utils';
 import useContext from './useContext';
 
 export default function useUpload(

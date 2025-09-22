@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import { CardMetaProps, CardMetaSlots } from './type';
-import { getSlotFunction } from '@shared/utils/vue-utils';
+import { getSlotFunction } from '@shared/utils';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'CardMeta',

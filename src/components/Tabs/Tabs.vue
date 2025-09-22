@@ -103,8 +103,7 @@
 <script lang="ts" setup>
 import { ref, computed, nextTick } from 'vue';
 import { TabsProps, TabsEmits, TabsSlots } from './type';
-import { valueToPx } from '@shared/utils/dom';
-import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
+import { findComponentsFromVnodes, valueToPx } from '@shared/utils';
 import useContext from './hooks/useContext';
 import useTabsScroll from './hooks/useTabsScroll';
 import { IconPlus, IconArrowRight } from '@shared/icons';

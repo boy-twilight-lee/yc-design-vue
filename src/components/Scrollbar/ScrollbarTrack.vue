@@ -27,9 +27,8 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, computed, watchEffect } from 'vue';
-import { useDraggable, useResizeObserver } from '@shared/utils/vueuse';
+import { useDraggable, useResizeObserver, valueToPx } from '@shared/utils';
 import { Direction } from '@shared/type';
-import { valueToPx } from '@shared/utils/dom';
 import useContext from './hooks/useContext';
 const props = withDefaults(
   defineProps<{

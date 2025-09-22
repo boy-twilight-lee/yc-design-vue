@@ -42,7 +42,7 @@
 <script lang="ts" setup>
 import { IndicatorType, IndicatorPosition } from './type';
 import { ClassName, EventTrigger } from '@shared/type';
-import { valueToPx } from '@shared/utils/dom';
+import { valueToPx } from '@shared/utils';
 import useContext from './hooks/useContext';
 defineProps<{
   trigger: EventTrigger;

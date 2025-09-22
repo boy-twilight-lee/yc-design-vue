@@ -51,10 +51,9 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import { IconImageClose } from '@shared/icons';
-import { valueToPx } from '@shared/utils/dom';
-import { useResizeObserver } from '@shared/utils/vueuse';
 import { AvatarProps, AvatarSlots, AvatarEmits } from './type';
+import { IconImageClose } from '@shared/icons';
+import { valueToPx, useResizeObserver } from '@shared/utils';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'Avatar',

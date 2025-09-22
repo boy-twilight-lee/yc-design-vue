@@ -20,7 +20,7 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { SkeletonLineProps } from './type';
-import { valueToPx } from '@shared/utils/dom';
+import { valueToPx } from '@shared/utils';
 defineOptions({
   name: 'SkeletonLine',
 });

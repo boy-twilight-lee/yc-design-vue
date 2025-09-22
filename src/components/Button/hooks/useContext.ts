@@ -12,7 +12,7 @@ import {
   ButtonGroupProps as _ButtonGroupProps,
 } from '../type';
 import { Size, Shape, Status, Required, RecordType } from '@shared/type';
-import { getGlobalConfig } from '@shared/utils/global-config';
+import { getGlobalConfig } from '@shared/utils';
 
 const BUTTON_GROUP_CONTEXT_KEY = 'button-group-context';
 type ButtonContext = {

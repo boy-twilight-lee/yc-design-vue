@@ -9,7 +9,6 @@ import {
   provide as _provide,
   inject as _inject,
 } from 'vue';
-import { nanoid } from 'nanoid';
 import {
   StepsProps as _StepsProps,
   StepsEmits,
@@ -17,8 +16,7 @@ import {
   StepType,
 } from '../type';
 import { Direction, Required, RecordType } from '@shared/type';
-import { isUndefined } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/hooks';
+import { isUndefined, useControlValue, nanoid } from '@shared/utils';
 
 const STEPS_CONTEXT_KEY = 'card-context';
 type StepsContext = {

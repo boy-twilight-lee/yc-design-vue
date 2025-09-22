@@ -66,7 +66,7 @@
 
 <script lang="ts" setup>
 import { CommentProps, CommentSlots } from './type';
-import { isObject } from '@shared/utils/is';
+import { isObject } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcAvatar from '@/components/Avatar';
 defineOptions({

@@ -18,9 +18,8 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue';
 import { VirtualListProps } from './type';
-import { useVirtualList } from '@shared/utils/vueuse';
 import { RecordType } from '@shared/type';
-import { getSlotFunction } from '@shared/utils/vue-utils';
+import { getSlotFunction, useVirtualList } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcOption from './Option.vue';
 const props = defineProps<{

@@ -31,9 +31,14 @@ import {
   OverflowListEmits,
   OverflowListSlots,
 } from './type';
-import { throttle, sleep, valueToPx } from '@shared/utils/dom';
-import { useResizeObserver, unrefElement } from '@shared/utils/vueuse';
-import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
+import {
+  throttle,
+  sleep,
+  valueToPx,
+  useResizeObserver,
+  unrefElement,
+  findComponentsFromVnodes,
+} from '@shared/utils';
 import { default as YcTag } from '@/components/Tag';
 defineOptions({
   name: 'OverflowList',

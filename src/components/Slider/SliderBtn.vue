@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, watch, toRefs } from 'vue';
-import { useControlValue } from '@shared/utils/hooks';
+import { useControlValue } from '@shared/utils';
 import useContext from './hooks/useContext';
 import useSliderDraggable, { PositionData } from './hooks/useSliderDraggable';
 import YcTooltip from '@/components/Tooltip';

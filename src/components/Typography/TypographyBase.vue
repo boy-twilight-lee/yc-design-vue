@@ -70,10 +70,13 @@ import {
   TypographyBaseEmits,
   TypographyBaseSlots,
 } from './type';
-import { sleep, getDomText } from '@shared/utils/dom';
-import { useI18n } from '@shared/utils/locale';
-import { useControlValue } from '@shared/utils/hooks';
-import { useClipboard } from '@shared/utils/vueuse';
+import {
+  sleep,
+  getDomText,
+  useClipboard,
+  useI18n,
+  useControlValue,
+} from '@shared/utils';
 import { IconEdit, IconCopy, IconInfo } from '@shared/icons';
 import { default as YcInput, InputInstance } from '@/components/Input';
 import YcTooltip from '@/components/Tooltip';

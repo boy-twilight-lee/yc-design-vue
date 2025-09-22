@@ -5,9 +5,7 @@ import {
   ColorFormat,
 } from '../type';
 import { Required, RecordType } from '@shared/type';
-import { parseColor } from '@shared/utils/color';
-import { getGlobalConfig } from '@shared/utils/global-config';
-import { useControlValue } from '@shared/utils/hooks';
+import { parseColor, getGlobalConfig, useControlValue } from '@shared/utils';
 
 const COLOR_PICKER_CONTEXT_KEY = 'color-picker-context';
 type ColorPickerContext = {

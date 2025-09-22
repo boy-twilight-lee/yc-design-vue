@@ -14,8 +14,7 @@
 <script lang="ts" setup>
 import { toRefs, computed, CSSProperties } from 'vue';
 import { GridColProps, GridColSlots } from './type';
-import { getBreakpointValue, valueToPx } from '@shared/utils/dom';
-import { isString } from '@shared/utils/is';
+import { getBreakpointValue, valueToPx, isString } from '@shared/utils';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'Col',

@@ -7,7 +7,7 @@ import {
   Reactive,
   reactive,
 } from 'vue';
-import { nanoid } from 'nanoid';
+import { nanoid } from '@shared/utils';
 
 const COMMENT_CONTEXT_KEY = 'comment-context';
 type CommentContext = {

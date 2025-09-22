@@ -39,10 +39,13 @@
 import { ref, toRefs, computed, watch } from 'vue';
 import { SplitProps, SplitEmits, SplitSlots } from './type';
 import { IconDragDot } from '@shared/icons';
-import { isNumber } from '@shared/utils/is';
-import { useDraggable } from '@shared/utils/vueuse';
-import { sleep, valueToPx } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/hooks';
+import {
+  isNumber,
+  useDraggable,
+  sleep,
+  valueToPx,
+  useControlValue,
+} from '@shared/utils';
 
 defineOptions({
   name: 'Split',

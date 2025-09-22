@@ -15,9 +15,12 @@ import {
   DescriptionsProps as _DescriptionsProps,
 } from '../type';
 import { RecordType, Required, Size, BreakpointName } from '@shared/type';
-import { mediaQueryHandler, getBreakpointValue } from '@shared/utils/dom';
-import { getGlobalConfig } from '@shared/utils/global-config';
-import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
+import {
+  mediaQueryHandler,
+  getBreakpointValue,
+  getGlobalConfig,
+  findComponentsFromVnodes,
+} from '@shared/utils';
 import YcDescriptionsItem from '../DescriptionsItem.vue';
 
 const DESCRIPTIONS_CONTEXT_KEY = 'radio-group-context';

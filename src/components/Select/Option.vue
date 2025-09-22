@@ -52,8 +52,7 @@
 import { toRefs, ref, computed, Ref } from 'vue';
 import { OptionProps, OptionSlots } from './type';
 import { RecordType } from '@shared/type';
-import { isUndefined } from '@shared/utils/is';
-import { getDomText } from '@shared/utils/dom';
+import { isUndefined, getDomText } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcCheckbox from '@/components/Checkbox';
 defineOptions({

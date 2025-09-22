@@ -46,9 +46,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { SwitchProps, SwitchEmits, SwitchSlots, SwitchValue } from './type';
-import { isBoolean } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/hooks';
-import { getGlobalConfig } from '@shared/utils/global-config';
+import { getGlobalConfig, isBoolean, useControlValue } from '@shared/utils';
 import YcSpin from '@/components/Spin';
 defineOptions({
   name: 'Switch',

@@ -65,7 +65,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, CSSProperties } from 'vue';
 import { LayoutSiderProps, LayoutSiderEmits, LayoutSiderSlots } from './type';
-import { mediaQueryHandler, valueToPx } from '@shared/utils/dom';
+import { mediaQueryHandler, valueToPx } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import useSiderContext from './hooks/useSiderContext';
 import YcResizeBox from '@/components/ResizeBox';

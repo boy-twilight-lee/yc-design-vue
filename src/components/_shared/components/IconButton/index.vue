@@ -21,7 +21,7 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { IconClose } from '@shared/icons';
-import { valueToPx } from '@shared/utils/dom';
+import { valueToPx } from '@shared/utils';
 const props = withDefaults(
   defineProps<{
     size?: number;

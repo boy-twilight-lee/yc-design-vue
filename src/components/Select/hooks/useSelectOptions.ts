@@ -1,5 +1,4 @@
 import { ref, computed, Ref, onMounted, reactive } from 'vue';
-import { nanoid } from 'nanoid';
 import {
   SelectProps,
   OptionProps,
@@ -9,7 +8,7 @@ import {
   SelectOptionValue,
 } from '../type';
 import { RecordType } from '@shared/type';
-import { isNull, isObject, isString, isUndefined } from '@shared/utils/is';
+import { isNull, isObject, isString, isUndefined, nanoid } from '@shared/utils';
 
 export default (params: {
   multiple: Ref<boolean>;

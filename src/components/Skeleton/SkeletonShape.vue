@@ -10,7 +10,7 @@
 
 <script lang="ts" setup>
 import { SkeletonShapeProps } from './type';
-import { getGlobalConfig } from '@shared/utils/global-config';
+import { getGlobalConfig } from '@shared/utils';
 defineOptions({
   name: 'SkeletonShape',
 });

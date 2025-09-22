@@ -97,9 +97,7 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 import { PaginationProps, PaginationEmits, PaginationSlots } from './type';
-import { isNumber } from '@shared/utils/is';
-import { sleep } from '@shared/utils/dom';
-import { useI18n } from '@shared/utils/locale';
+import { isNumber, sleep, useI18n } from '@shared/utils';
 import useContext from './hooks/useContext';
 import PaginationItem from './PaginationItem.vue';
 import YcSelect from '@/components/Select';

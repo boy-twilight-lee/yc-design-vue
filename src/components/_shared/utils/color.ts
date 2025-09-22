@@ -1,4 +1,4 @@
-import tinycolor, { ColorInput } from 'tinycolor2';
+import { ColorInput, tinycolor } from './dependencies';
 // 定义颜色停止点类型
 interface ColorStop {
   pos: number; // 位置 0-1
@@ -169,7 +169,6 @@ export class GradientColorCalculator {
     this.colorStops = stops.sort((a, b) => a.pos - b.pos);
   }
 }
-
 // 解析color
 export const parseColor = (color: ColorInput) => {
   return tinycolor(color);

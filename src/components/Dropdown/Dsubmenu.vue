@@ -54,10 +54,13 @@ import {
   DsubmenuEmits,
   DropdownExpose,
 } from './type';
-import { isUndefined, isBoolean } from '@shared/utils/is';
-import { valueToPx } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/hooks';
-import { unrefElement } from '@shared/utils/vueuse';
+import {
+  isUndefined,
+  isBoolean,
+  valueToPx,
+  useControlValue,
+  unrefElement,
+} from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import YcDoption from './Doption.vue';
 import { default as YcTrigger, TriggerInstance } from '@/components/Trigger';

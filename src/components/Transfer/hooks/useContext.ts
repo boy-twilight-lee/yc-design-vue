@@ -16,7 +16,7 @@ import {
 } from '../type';
 import { InputProps } from '@/components/Input';
 import { Required, RecordType } from '@shared/type';
-import { useControlValue } from '@shared/utils/hooks';
+import { useControlValue } from '@shared/utils';
 
 const TRANSFER_CONTEXT_KEY = 'transfer-context';
 type TransferContext = {

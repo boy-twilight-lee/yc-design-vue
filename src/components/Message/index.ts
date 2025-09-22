@@ -6,7 +6,7 @@ import {
   MessageType,
   MessagePostion,
 } from './type';
-import { isString } from '@shared/utils/is';
+import { isString } from '@shared/utils';
 import _Message from './Message.vue';
 import _MessageList from './MessageList.vue';
 

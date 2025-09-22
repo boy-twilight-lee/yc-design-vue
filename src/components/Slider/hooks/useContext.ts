@@ -13,8 +13,7 @@ import {
   SliderProps as _SliderProps,
 } from '../type';
 import { Direction, RecordType, Required } from '@shared/type';
-import { useControlValue } from '@shared/utils/hooks';
-import { isArray } from '@shared/utils/is';
+import { useControlValue, isArray } from '@shared/utils';
 
 const SLIDER_CONTEXT_KEY = 'slider-context';
 type SliderContext = {

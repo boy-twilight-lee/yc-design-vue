@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { isString } from '@shared/utils/is';
+import { isString } from '@shared/utils';
 import YcTimelineItem from './TimelineItem.vue';
 import YcSpin from '@/components/Spin';
 withDefaults(

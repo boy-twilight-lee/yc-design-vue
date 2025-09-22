@@ -17,9 +17,7 @@ import {
   DisabledSeconds,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue } from '@shared/utils/hooks';
-import { isArray } from '@shared/utils/is';
-import { useI18n } from '@shared/utils/locale';
+import { useControlValue, isArray, useI18n } from '@shared/utils';
 
 const TIME_PICKER_CONTEXT_KEY = 'time-picker-context';
 type TimePickerContext = {

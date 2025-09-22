@@ -74,9 +74,12 @@ import {
   ImagePreviewSlots,
 } from './type';
 import { IconClose } from '@shared/icons';
-import { useControlValue } from '@shared/utils/hooks';
-import { getGlobalConfig } from '@shared/utils/global-config';
-import { useEventListener, onKeyStroke } from '@shared/utils/vueuse';
+import {
+  useEventListener,
+  onKeyStroke,
+  useControlValue,
+  getGlobalConfig,
+} from '@shared/utils';
 import useModalClose from '@/components/Modal/hooks/useModalClose';
 import ImagePreviewToolbar from './ImagePreviewToolbar.vue';
 defineOptions({

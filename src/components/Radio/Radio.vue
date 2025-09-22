@@ -40,7 +40,7 @@
 import { toRefs, computed } from 'vue';
 import { RadioProps, RadioEmits, RadioSlots, RadioValue } from './type';
 import useContext from './hooks/useContext';
-import { useControlValue } from '@shared/utils/hooks';
+import { useControlValue } from '@shared/utils';
 import { IconButton } from '@shared/components';
 defineOptions({
   name: 'Radio',

@@ -44,8 +44,7 @@ import {
   DropdownSlots,
   DropdownExpose,
 } from './type';
-import { isUndefined, isBoolean } from '@shared/utils/is';
-import { valueToPx } from '@shared/utils/dom';
+import { isUndefined, isBoolean, valueToPx } from '@shared/utils';
 import useContext from './hooks/useContext';
 import { default as YcTrigger } from '@/components/Trigger';
 import YcScrollbar from '@/components/Scrollbar';

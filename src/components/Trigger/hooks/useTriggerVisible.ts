@@ -6,9 +6,9 @@ import {
   unrefElement,
   useEventListener,
   onClickOutside,
-} from '@shared/utils/vueuse';
-import { findFirstScrollableParent } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/hooks';
+  useControlValue,
+  findFirstScrollableParent,
+} from '@shared/utils';
 
 export default (params: {
   props: RecordType;

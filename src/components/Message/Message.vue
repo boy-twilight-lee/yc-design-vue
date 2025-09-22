@@ -23,9 +23,8 @@
 <script lang="ts" setup>
 import { toRefs, onMounted, watch } from 'vue';
 import { MessageProps } from './type';
-import { isUndefined } from '@shared/utils/is';
-import { useTimeoutFn } from '@shared/utils/vueuse';
 import { TYPE_ICON_MAP } from '@shared/constants';
+import { isUndefined, useTimeoutFn } from '@shared/utils';
 import { IconButton } from '@shared/components';
 defineOptions({
   name: 'Message',

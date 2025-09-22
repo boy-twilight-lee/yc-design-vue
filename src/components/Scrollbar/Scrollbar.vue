@@ -48,11 +48,12 @@ import {
   ScrollbarSlots,
   ScrollbarExpose,
 } from './type';
-import { useElementSize, useResizeObserver } from '@shared/utils/vueuse';
 import {
   isHorizontallyScrollable,
   isVerticallyScrollable,
-} from '@shared/utils/dom';
+  useElementSize,
+  useResizeObserver,
+} from '@shared/utils';
 import ScrollbarTrack from './ScrollbarTrack.vue';
 import useContext from './hooks/useContext';
 defineOptions({

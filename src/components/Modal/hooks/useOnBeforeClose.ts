@@ -1,6 +1,6 @@
 import { Ref } from 'vue';
 import { OnBeforeOk, OnBeforeCancel } from '../type';
-import { isBoolean } from '@shared/utils/is';
+import { isBoolean } from '@shared/utils';
 
 export default async (
   type: string,

@@ -1,6 +1,6 @@
 import { Ref } from 'vue';
-import { useScroll } from '@shared/utils/vueuse';
-import { debounce } from '@shared/utils/dom';
+import { useScroll, debounce } from '@shared/utils';
+
 interface OffsetDirection {
   left?: number;
   top?: number;

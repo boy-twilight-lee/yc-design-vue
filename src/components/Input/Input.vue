@@ -84,8 +84,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { InputProps, InputEmits, InputSlots, InputExpose } from './type';
-import { useControlValue } from '@shared/utils/hooks';
-import { getGlobalConfig } from '@shared/utils/global-config';
+import { useControlValue, getGlobalConfig } from '@shared/utils';
 import useLimitedInput from './hooks/useLimitedInput';
 import { PreventFocus, IconButton } from '@shared/components';
 import InputSuffix from './InputSuffix.vue';

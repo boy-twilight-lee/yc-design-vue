@@ -53,8 +53,7 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { BreadcrumbProps, BreadcrumbSlots } from './type';
-import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
-import { isString } from '@shared/utils/is';
+import { findComponentsFromVnodes, isString } from '@shared/utils';
 import YcBreadcrumbItem from './BreadcrumbItem.vue';
 import BreadcrumbSeparator from './BreadcrumbSeparator.vue';
 import BreadcrumbMore from './BreadcrumbMore.vue';

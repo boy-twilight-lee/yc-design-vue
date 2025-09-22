@@ -125,8 +125,7 @@ import {
   SelectExpose,
   SelectOptionValue,
 } from './type';
-import { isUndefined } from '@shared/utils/is';
-import { sleep } from '@shared/utils/dom';
+import { isUndefined, sleep } from '@shared/utils';
 import useContext from './hooks/useContext';
 import SelectIcon from './SelectIcon.vue';
 import SelectView from './SelectView.vue';

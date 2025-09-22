@@ -76,7 +76,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { useI18n } from '@shared/utils/locale';
+import { useI18n } from '@shared/utils';
 import useContext from './hooks/useContext';
 import ColorPalette from './ColorPalette.vue';
 import ColorInput from './ColorInput.vue';

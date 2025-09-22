@@ -78,10 +78,9 @@
 import { toRefs, computed } from 'vue';
 import { ProgressColor } from './type';
 import { Size, Status } from '@shared/type';
-import { isObject } from '@shared/utils/is';
-import { valueToPx } from '@shared/utils/dom';
 import { IconCheck, IconExclamation } from '@shared/icons';
 import { TYPE_ICON_COLOR_MAP } from '@shared/constants';
+import { isObject, valueToPx } from '@shared/utils';
 const props = defineProps<{
   type: string;
   percent: number;

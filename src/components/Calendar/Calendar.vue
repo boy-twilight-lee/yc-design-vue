@@ -68,7 +68,6 @@
 
 <script lang="ts" setup>
 import { computed, toRefs, ref, watch } from 'vue';
-import dayjs from 'dayjs';
 import {
   CalendarProps,
   CalendarEmits,
@@ -76,9 +75,12 @@ import {
   CalendarMode,
 } from './type';
 import { RecordType } from '@shared/type';
-import { useI18n } from '@shared/utils/locale';
-import { useControlValue } from '@shared/utils/hooks';
-import { CalendarCellData } from '@shared/utils/time';
+import {
+  useI18n,
+  useControlValue,
+  dayjs,
+  CalendarCellData,
+} from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import { IconButton } from '@shared/components';
 import YcButton from '@/components/Button';

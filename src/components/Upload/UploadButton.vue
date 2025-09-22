@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import useContext from './hooks/useContext';
 import { IconUpload } from '@shared/icons';
-import { useI18n } from '@shared/utils/locale';
+import { useI18n } from '@shared/utils';
 import YcButton from '@/components/Button';
 // 注入
 const { tip, disabled } = useContext().inject();

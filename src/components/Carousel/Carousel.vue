@@ -37,7 +37,7 @@
 
 <script lang="ts" setup>
 import { watch, onBeforeUnmount, ref } from 'vue';
-import { isObject } from '@shared/utils/is';
+import { isObject } from '@shared/utils';
 import { CarouselProps, CarouselEmits, CarouselSlots } from './type';
 import useContext from './hooks/useContext';
 import CarouselArrow from './CarouselArrow.vue';

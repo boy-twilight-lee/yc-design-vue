@@ -1,8 +1,7 @@
 import { Ref, computed } from 'vue';
 import { AutoSize } from '../type';
 import { RecordType } from '@shared/type';
-import { valueToPx } from '@shared/utils/dom';
-import { useElementSize } from '@shared/utils/vueuse';
+import { valueToPx, useElementSize } from '@shared/utils';
 
 export default (
   mirrorRef: Ref<HTMLDivElement | undefined>,

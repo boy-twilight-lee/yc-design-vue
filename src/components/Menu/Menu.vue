@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { ref, CSSProperties } from 'vue';
 import { MenuProps, MenuEmits, MenuSlots } from './type';
-import { mediaQueryHandler } from '@shared/utils/dom';
+import { mediaQueryHandler } from '@shared/utils';
 import { IconMenuFold, IconMenuUnfold } from '@shared/icons';
 import useContext from './hooks/useContext';
 import MenuEllipsis from './MenuEllipsis.vue';

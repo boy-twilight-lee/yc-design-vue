@@ -80,7 +80,7 @@
 import { ref, toRefs, watch } from 'vue';
 import { ColorFormat } from '@/components/ColorPicker/type';
 import { RecordType } from '@shared/type';
-import { parseColor } from '@shared/utils/color';
+import { parseColor } from '@shared/utils';
 import { COLOR_PICKER_FORMAT_OPTIONS } from '@shared/constants';
 import YcSelect from '@/components/Select';
 import YcInput from '@/components/Input';

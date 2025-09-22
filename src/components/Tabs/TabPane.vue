@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { TabPaneProps, TabPaneSlots } from './type';
-import { isUndefined } from '@shared/utils/is';
+import { isUndefined } from '@shared/utils';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'TabPane',

@@ -30,13 +30,17 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
-import { nanoid } from 'nanoid';
 import { VerificationCodeProps, VerificationCodeEmits } from './type';
-import { sleep } from '@shared/utils/dom';
-import { isFunction, isNumber, isString } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/hooks';
-import { getSlotFunction } from '@shared/utils/vue-utils';
-import { getGlobalConfig } from '@shared/utils/global-config';
+import {
+  isFunction,
+  isNumber,
+  isString,
+  useControlValue,
+  getSlotFunction,
+  getGlobalConfig,
+  nanoid,
+  sleep,
+} from '@shared/utils';
 import { default as YcInput, InputInstance } from '@/components/Input';
 defineOptions({
   name: 'VerificationCode',

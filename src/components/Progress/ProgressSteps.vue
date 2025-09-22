@@ -39,7 +39,7 @@ import { computed, toRefs } from 'vue';
 import { ProgressColor } from './type';
 import { Size } from '@shared/type';
 import { TYPE_ICON_MAP, TYPE_ICON_COLOR_MAP } from '@shared/constants';
-import { valueToPx } from '@shared/utils/dom';
+import { valueToPx } from '@shared/utils';
 const props = defineProps<{
   steps: number;
   percent: number;

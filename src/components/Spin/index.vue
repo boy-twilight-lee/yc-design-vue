@@ -43,8 +43,7 @@
 
 <script lang="ts" setup>
 import { SpinProps, SpinSlots } from './type';
-import { valueToPx } from '@shared/utils/dom';
-import { createReusableTemplate } from '@shared/utils/vueuse';
+import { createReusableTemplate, valueToPx } from '@shared/utils';
 import { IconLoading } from '@shared/icons';
 defineOptions({
   name: 'Spin',

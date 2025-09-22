@@ -37,8 +37,7 @@
 
 <script lang="ts" setup>
 import { DescData } from './type';
-import { isObject } from '@shared/utils/is';
-import { getSlotFunction } from '@shared/utils/vue-utils';
+import { isObject, getSlotFunction } from '@shared/utils';
 import useContext from './hooks/useContext';
 defineProps<{
   data: DescData;

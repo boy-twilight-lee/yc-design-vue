@@ -20,7 +20,7 @@
 
 <script lang="ts" setup>
 import { toRefs, computed, CSSProperties, useAttrs } from 'vue';
-import { valueToPx } from '@shared/utils/dom';
+import { valueToPx } from '@shared/utils';
 type IconProps = {
   strokeWidth?: number;
   strokeLinecap?: 'butt' | 'round' | 'square';

@@ -39,7 +39,7 @@
 <script lang="ts" setup>
 import { toRefs, onMounted } from 'vue';
 import { default as useContext, PaneNode } from './hooks/useContext';
-import { isUndefined } from '@shared/utils/is';
+import { isUndefined } from '@shared/utils';
 import TabButton from './TabButton.vue';
 const props = defineProps<{
   node: PaneNode;

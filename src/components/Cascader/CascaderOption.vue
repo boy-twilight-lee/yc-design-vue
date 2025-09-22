@@ -33,8 +33,7 @@
 import { computed, toRefs, ref } from 'vue';
 import { CascaderOptionProps, CascaderOptionValue } from './type';
 import { IconArrowRight, IconLoading } from '@shared/icons';
-import { sleep } from '@shared/utils/dom';
-import { isFunction } from '@shared/utils/is';
+import { sleep, isFunction } from '@shared/utils';
 import YcCheckbox from '@/components/Checkbox';
 import {
   default as useContext,

@@ -19,9 +19,13 @@
 
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed } from 'vue';
-import { sleep, valueToPx } from '@shared/utils/dom';
-import { useDraggable, useElementBounding } from '@shared/utils/vueuse';
-import { parseColor } from '@shared/utils/color';
+import {
+  sleep,
+  valueToPx,
+  parseColor,
+  useDraggable,
+  useElementBounding,
+} from '@shared/utils';
 const props = defineProps<{
   color: string;
   baseColor: string;

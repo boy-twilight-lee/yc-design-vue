@@ -21,8 +21,7 @@ import {
   OnButtonClick,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue } from '@shared/utils/hooks';
-import { isFunction } from '@shared/utils/is';
+import { useControlValue, isFunction } from '@shared/utils';
 
 // key
 const UPLOAD_CONTEXT_KEY = 'upload-context';

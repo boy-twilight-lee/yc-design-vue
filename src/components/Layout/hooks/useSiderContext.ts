@@ -8,7 +8,7 @@ import {
 } from 'vue';
 import { LayoutSiderEmits, LayoutSiderProps } from '../type';
 import { Theme, Required, RecordType } from '@shared/type';
-import { useControlValue } from '@shared/utils/hooks';
+import { useControlValue } from '@shared/utils';
 
 export const LAYOUT_CONTEXT_KEY = 'LAYOUT-CONTEXT';
 export type LayoutContext = {

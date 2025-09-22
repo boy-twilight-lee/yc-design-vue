@@ -32,9 +32,14 @@
 import { ref, toRefs, computed, watch } from 'vue';
 import { StatisticProps, StatisticEmits, StatisticSlots } from './type';
 import { RecordType } from '@shared/type';
-import { isNumber, isUndefined } from '@shared/utils/is';
-import { formatSeconds, formatDate } from '@shared/utils/time';
-import Btween from 'b-tween';
+import {
+  isNumber,
+  isUndefined,
+  formatSeconds,
+  formatDate,
+  BTween,
+} from '@shared/utils';
+
 defineOptions({
   name: 'Statistic',
 });
@@ -92,7 +97,7 @@ watch(
     ) {
       return;
     }
-    const between = new Btween({
+    const between = new BTween({
       from: {
         textContent: valueFrom.value,
       },

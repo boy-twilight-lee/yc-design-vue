@@ -16,7 +16,7 @@ import {
   ExpandIconPosition,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue } from '@shared/utils/hooks';
+import { useControlValue } from '@shared/utils';
 
 const COLLAPSE_CONTEXT_KEY = 'collapse-context';
 type CollapseContext = {

@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import { GridProps, GridSlots } from './type';
-import { mediaQueryHandler, valueToPx } from '@shared/utils/dom';
+import { mediaQueryHandler, valueToPx } from '@shared/utils';
 import useContext from './hooks/useContext';
 defineOptions({
   name: 'Grid',

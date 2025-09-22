@@ -8,7 +8,7 @@ import { ConfigProviderProps, ConfigconfigSlots } from './type';
 import {
   CONFIG_PROVIDER_PROVIDE_KEY,
   ConfigProviderProvide,
-} from '@shared/utils/global-config';
+} from '@shared/utils';
 defineOptions({
   name: 'ConfigProvider',
 });

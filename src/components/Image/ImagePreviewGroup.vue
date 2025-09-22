@@ -29,7 +29,7 @@ import {
   ImagePreviewGroupEmits,
   ImagePreviewGroupSlots,
 } from './type';
-import { onKeyStroke } from '@shared/utils/vueuse';
+import { onKeyStroke } from '@shared/utils';
 import useContext from './hooks/useContext';
 import ImagePreview from './ImagePreview.vue';
 import ImagePreviewArrow from './ImagePreviewArrow.vue';

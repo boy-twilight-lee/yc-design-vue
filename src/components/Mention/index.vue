@@ -39,8 +39,7 @@ import {
   MentionExpose,
 } from './type';
 import { RecordType } from '@shared/type';
-import { isNull, isArray } from '@shared/utils/is';
-import { useControlValue } from '@shared/utils/hooks';
+import { isNull, isArray, useControlValue } from '@shared/utils';
 import useCursor from '@/components/Input/hooks/useCursor';
 import { SelectOptionValue } from '@/components/Select';
 import {

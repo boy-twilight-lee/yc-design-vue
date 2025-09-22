@@ -10,11 +10,9 @@ import {
   provide as _provide,
   inject as _inject,
 } from 'vue';
-import { nanoid } from 'nanoid';
 import { GridRowGutter } from '../type';
 import { RecordType, BreakpointName, ResponsiveValue } from '@shared/type';
-import { isArray } from '@shared/utils/is';
-import { getBreakpointValue } from '@shared/utils/dom';
+import { isArray, nanoid, getBreakpointValue } from '@shared/utils';
 
 const GRID_CONTEXT_KEY = 'grid-context';
 type GridContext = {

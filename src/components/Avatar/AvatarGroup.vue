@@ -41,8 +41,7 @@
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue';
 import { AvatarGroupProps, AvatarGroupSlots } from './type';
-import { valueToPx } from '@shared/utils/dom';
-import { findComponentsFromVnodes } from '@shared/utils/vue-utils';
+import { valueToPx, findComponentsFromVnodes } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcAvatar from './Avatar.vue';
 import YcPopover from '@/components/Popover';

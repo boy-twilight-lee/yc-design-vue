@@ -65,8 +65,7 @@ import {
   AutoCompleteSlots,
   AutoCompleteExpose,
 } from './type';
-import { useControlValue } from '@shared/utils/hooks';
-import { isObject } from '@shared/utils/is';
+import { useControlValue, isObject } from '@shared/utils';
 import {
   default as YcSelect,
   SelectOptionData,

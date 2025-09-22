@@ -9,7 +9,6 @@ import {
   useSlots,
   isVNode,
 } from 'vue';
-import { nanoid } from 'nanoid';
 import { MenuProps as _MenuProps, MenuEmits } from '../type';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
@@ -20,10 +19,12 @@ import {
   isNumber,
   isUndefined,
   isBoolean,
-} from '@shared/utils/is';
-import { throttle, valueToPx } from '@shared/utils/dom';
-import { useResizeObserver } from '@shared/utils/vueuse';
-import { useControlValue } from '@shared/utils/hooks';
+  throttle,
+  valueToPx,
+  useResizeObserver,
+  nanoid,
+  useControlValue,
+} from '@shared/utils';
 import useSiderContext from '@/components/Layout/hooks/useSiderContext';
 import SubMenu from '../SubMenu.vue';
 import MenuItem from '../MenuItem.vue';

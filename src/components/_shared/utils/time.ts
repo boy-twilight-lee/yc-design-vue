@@ -1,9 +1,11 @@
-import dayjs from 'dayjs';
+import {
+  dayjs,
+  isSameOrAfter,
+  isSameOrBefore,
+  toObject,
+  duration,
+} from './dependencies';
 import 'dayjs/locale/en'; // 引入本地化配置
-import duration from 'dayjs/plugin/duration';
-import toObject from 'dayjs/plugin/toObject';
-import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 dayjs.extend(toObject);

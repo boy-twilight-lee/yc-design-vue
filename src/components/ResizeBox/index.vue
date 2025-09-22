@@ -34,12 +34,15 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, reactive, watch, nextTick } from 'vue';
-import { useResizeObserver, useEventListener } from '@shared/utils/vueuse';
 import { ResizeBoxProps, ResizeBoxEmits, ResizeBoxSlots } from './type';
 import { Position } from '@shared/type';
 import { IconDragDot } from '@shared/icons';
-import { valueToPx } from '@shared/utils/dom';
-import { useControlValue } from '@shared/utils/hooks';
+import {
+  useControlValue,
+  valueToPx,
+  useResizeObserver,
+  useEventListener,
+} from '@shared/utils';
 defineOptions({
   name: 'ResizeBox',
 });

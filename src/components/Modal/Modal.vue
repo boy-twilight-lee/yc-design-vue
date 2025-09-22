@@ -110,9 +110,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, CSSProperties } from 'vue';
 import { ModalProps, ModalEmits, ModalSlots } from './type';
-import { getGlobalConfig } from '@shared/utils/global-config';
-import { valueToPx } from '@shared/utils/dom';
-import { useI18n } from '@shared/utils/locale';
+import { getGlobalConfig, valueToPx, useI18n } from '@shared/utils';
 import useModalClose from './hooks/useModalClose';
 import useModalDraggable from './hooks/useModalDraggable';
 import YcButton from '@/components/Button';

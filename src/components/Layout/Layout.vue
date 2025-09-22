@@ -15,7 +15,7 @@
 import { toRefs, computed } from 'vue';
 import { LayoutProps, LayoutSlots } from './type';
 import { RecordType } from '@shared/type';
-import { isUndefined } from '@shared/utils/is';
+import { isUndefined } from '@shared/utils';
 import LayoutSider from './LayoutSider.vue';
 defineOptions({
   name: 'Layout',

@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue';
 import { EmptyProps, EmptySlots } from './type';
-import { useI18n } from '@shared/utils/locale';
+import { useI18n } from '@shared/utils';
 import { IconEmpty } from '@shared/icons';
 defineOptions({
   name: 'Empty',

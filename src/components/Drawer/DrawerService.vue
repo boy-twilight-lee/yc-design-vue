@@ -25,7 +25,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import { DrawerServiceProps } from './type';
-import { getSlotFunction } from '@shared/utils/vue-utils';
+import { getSlotFunction } from '@shared/utils';
 import YcDrawer from './Drawer.vue';
 const props = withDefaults(defineProps<DrawerServiceProps>(), {
   placement: 'right',

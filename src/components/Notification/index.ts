@@ -8,7 +8,7 @@ import type {
   NotificationPosition,
 } from './type';
 import { Type } from '@shared/type';
-import { isString } from '@shared/utils/is';
+import { isString } from '@shared/utils';
 
 export type NotificationInstance = InstanceType<typeof _Notification>;
 export * from './type';

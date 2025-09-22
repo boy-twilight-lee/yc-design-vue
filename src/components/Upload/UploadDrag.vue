@@ -22,7 +22,7 @@
 <script lang="ts" setup>
 import useContext from './hooks/useContext';
 import { IconPlus } from '@shared/icons';
-import { useI18n } from '@shared/utils/locale';
+import { useI18n } from '@shared/utils';
 defineProps<{
   isOverDropZone: boolean;
 }>();
