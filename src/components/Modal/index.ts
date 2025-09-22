@@ -1,8 +1,8 @@
 import { App, h, render } from 'vue';
+import { Type } from '@shared/type';
 import { ModalConfig, ModalMethod } from './type';
 import _Modal from './Modal.vue';
 import _ModalService from './ModalService.vue';
-import { Type } from '@shared/type';
 
 export type ModalInstance = InstanceType<typeof _Modal>;
 export * from './type';

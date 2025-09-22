@@ -5,6 +5,7 @@ import {
   PopupContainer,
   PopupPosition,
 } from '@shared/type';
+
 export interface TriggerProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;

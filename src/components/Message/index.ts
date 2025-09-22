@@ -1,6 +1,4 @@
 import { App, nextTick, reactive, h, render } from 'vue';
-import _Message from './Message.vue';
-import _MessageList from './MessageList.vue';
 import {
   MessageMethod,
   MessageConfig,
@@ -9,6 +7,8 @@ import {
   MessagePostion,
 } from './type';
 import { isString } from '@shared/utils/is';
+import _Message from './Message.vue';
+import _MessageList from './MessageList.vue';
 
 export type MessageInstance = InstanceType<typeof _Message>;
 export * from './type';

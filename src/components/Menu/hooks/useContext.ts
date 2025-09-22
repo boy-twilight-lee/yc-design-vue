@@ -10,9 +10,9 @@ import {
   isVNode,
 } from 'vue';
 import { nanoid } from 'nanoid';
+import { MenuProps as _MenuProps, MenuEmits } from '../type';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
-import { MenuProps as _MenuProps, MenuEmits } from '../type';
 import { RecordType, Required, PopupMaxHeight, Direction } from '@shared/type';
 import {
   isObject,

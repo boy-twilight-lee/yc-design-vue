@@ -16,7 +16,7 @@
 import useContext from './hooks/useContext';
 import { IconUpload } from '@shared/icons';
 import { useI18n } from '@shared/utils/locale';
-import { default as YcButton } from '@/components/Button';
+import YcButton from '@/components/Button';
 // 注入
 const { tip, disabled } = useContext().inject();
 // 国际化

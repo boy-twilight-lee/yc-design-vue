@@ -112,8 +112,9 @@ import { isValidTimeRange } from '@shared/utils/time';
 import useContext from './hooks/useContext';
 import { IconButton } from '@shared/components';
 import { IconTime } from '@shared/icons';
-import { default as YcTrigger } from '@/components/Trigger';
 import TimePickerPanel from './TimePickerPanel.vue';
+import YcTrigger from '@/components/Trigger';
+
 defineOptions({
   name: 'TimePicker',
   inheritAttrs: false,
@@ -199,6 +200,5 @@ const handleClickOutSide = () => {
 </script>
 
 <style lang="less">
-// container
 @import './style/time-picker.less';
 </style>

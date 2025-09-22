@@ -1,5 +1,4 @@
-import { Size } from '@shared/type';
-import { Status } from '@shared/type';
+import { Size, Status } from '@shared/type';
 
 export interface ProgressProps {
   type?: ProgressType;

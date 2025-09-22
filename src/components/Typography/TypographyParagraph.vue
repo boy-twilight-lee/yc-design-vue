@@ -15,8 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-import TypographyBase from './TypographyBase.vue';
 import { TypographyParagraphProps, TypographyBaseSlots } from './type';
+import TypographyBase from './TypographyBase.vue';
+
 defineOptions({
   name: 'TypographyParagraph',
 });

@@ -1,6 +1,6 @@
 import { nextTick, ref, Ref, watch } from 'vue';
-import { ModalEmits } from '@/components/Modal/type';
 import { OnBeforeOk, OnBeforeCancel } from '../type';
+import { ModalEmits } from '@/components/Modal/type';
 import { onKeyStroke } from '@shared/utils/vueuse';
 import { useControlValue } from '@shared/utils/hooks';
 import useOnBeforeClose from './useOnBeforeClose';

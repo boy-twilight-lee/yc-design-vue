@@ -1,6 +1,6 @@
 import { reactive, Ref, watch, nextTick, computed } from 'vue';
-import { useDraggable } from '@shared/utils/vueuse';
 import { Direction } from '@shared/type';
+import { useDraggable } from '@shared/utils/vueuse';
 import { valueToPx } from '@shared/utils/dom';
 
 export interface RangeData {

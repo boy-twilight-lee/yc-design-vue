@@ -1,6 +1,6 @@
 import { Ref, computed } from 'vue';
-import { RecordType } from '@shared/type';
 import { AutoSize } from '../type';
+import { RecordType } from '@shared/type';
 import { valueToPx } from '@shared/utils/dom';
 import { useElementSize } from '@shared/utils/vueuse';
 

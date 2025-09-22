@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts" setup>
-import YcTimelineItem from './TimelineItem.vue';
 import { isString } from '@shared/utils/is';
+import YcTimelineItem from './TimelineItem.vue';
 import YcSpin from '@/components/Spin';
 withDefaults(
   defineProps<{

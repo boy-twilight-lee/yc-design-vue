@@ -20,10 +20,10 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, watch } from 'vue';
+import { CountdownProps, CountDownEmits, CountdownSlots } from './type';
 import { isUndefined } from '@shared/utils/is';
 import { sleep } from '@shared/utils/dom';
 import { formatSeconds } from '@shared/utils/time';
-import { CountdownProps, CountDownEmits, CountdownSlots } from './type';
 import YcStatistic from './Statistic.vue';
 defineOptions({
   name: 'Countdown',

@@ -21,7 +21,6 @@
 
 <script lang="ts" setup>
 import { TimelineProps, TimelineSlots } from './type';
-
 import useContext from './hooks/useContext';
 
 defineOptions({

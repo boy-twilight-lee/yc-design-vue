@@ -22,7 +22,7 @@ import {
 } from '../type';
 import { RecordType, Required } from '@shared/type';
 import { useControlValue } from '@shared/utils/hooks';
-import { isFunction } from '@/components/_shared/utils/is';
+import { isFunction } from '@shared/utils/is';
 
 // key
 const UPLOAD_CONTEXT_KEY = 'upload-context';

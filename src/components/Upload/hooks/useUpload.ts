@@ -1,7 +1,7 @@
 import { Ref } from 'vue';
 import { nanoid } from 'nanoid';
-import { useDropZone, useFileDialog } from '@shared/utils/vueuse';
 import { FileItem, UploadEmits, UploadProps } from '../type';
+import { useDropZone, useFileDialog } from '@shared/utils/vueuse';
 import { isFunction, isString } from '@shared/utils/is';
 import useContext from './useContext';
 

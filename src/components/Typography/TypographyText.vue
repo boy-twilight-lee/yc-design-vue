@@ -11,8 +11,9 @@
 </template>
 
 <script lang="ts" setup>
-import TypographyBase from './TypographyBase.vue';
 import { TypographyBaseSlots } from './type';
+import TypographyBase from './TypographyBase.vue';
+
 defineOptions({
   name: 'TypographyText',
 });

@@ -1,6 +1,5 @@
 import { ref, computed, Ref, onMounted, reactive } from 'vue';
 import { nanoid } from 'nanoid';
-import { RecordType } from '@shared/type';
 import {
   SelectProps,
   OptionProps,
@@ -9,6 +8,7 @@ import {
   SelectOptionData,
   SelectOptionValue,
 } from '../type';
+import { RecordType } from '@shared/type';
 import { isNull, isObject, isString, isUndefined } from '@shared/utils/is';
 
 export default (params: {

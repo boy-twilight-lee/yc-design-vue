@@ -76,7 +76,7 @@ import { useControlValue } from '@shared/utils/hooks';
 import { useClipboard } from '@shared/utils/vueuse';
 import { IconEdit, IconCopy, IconInfo } from '@shared/icons';
 import { default as YcInput, InputInstance } from '@/components/Input';
-import { default as YcTooltip } from '@/components/Tooltip';
+import YcTooltip from '@/components/Tooltip';
 defineOptions({
   name: 'TypographyBase',
 });

@@ -11,9 +11,9 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
+import { TabPaneProps, TabPaneSlots } from './type';
 import { isUndefined } from '@shared/utils/is';
 import useContext from './hooks/useContext';
-import { TabPaneProps, TabPaneSlots } from './type';
 defineOptions({
   name: 'TabPane',
 });
