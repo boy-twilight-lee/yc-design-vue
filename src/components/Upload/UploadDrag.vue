@@ -10,7 +10,9 @@
     <div class="yc-upload-drag-icon">
       <icon-plus />
     </div>
-    <div class="yc-upload-drag-text">点击或拖拽文件到此处上传</div>
+    <div class="yc-upload-drag-text">
+      {{ t(`upload.${isOverDropZone ? 'dragHover' : 'drag'}`) }}
+    </div>
     <div v-if="tip" class="yc-upload-tip text-ellipsis">
       {{ tip }}
     </div>
@@ -20,7 +22,13 @@
 <script lang="ts" setup>
 import useContext from './hooks/useContext';
 import { IconPlus } from '@shared/icons';
+import { useI18n } from '@shared/utils/locale';
+defineProps<{
+  isOverDropZone: boolean;
+}>();
 const { tip, disabled } = useContext().inject();
+// 国际化
+const { t } = useI18n();
 </script>
 
 <style lang="less">

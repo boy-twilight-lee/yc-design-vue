@@ -38,7 +38,7 @@ export default function useUpload(
   });
   onChange((files) => handleFiles(files));
   // 处理拖拽上传
-  useDropZone(uploadRef, {
+  const { isOverDropZone } = useDropZone(uploadRef, {
     dataTypes: accept.value ? accept.value.split(',') : undefined,
     multiple: multiple.value,
     preventDefaultForUnhandled: true,
@@ -109,6 +109,7 @@ export default function useUpload(
   };
   return {
     ...context,
+    isOverDropZone,
     handleUpload,
     handleFiles,
   };

@@ -24,7 +24,7 @@
           v-if="limit <= 0 || computedFileList.length < limit"
           name="upload-button"
         >
-          <upload-drag v-if="draggable" />
+          <upload-drag v-if="draggable" :is-over-drop-zone="isOverDropZone" />
           <upload-button v-else />
         </slot>
       </div>
@@ -89,6 +89,7 @@ const {
   limit,
   draggable,
   disabled,
+  isOverDropZone,
   handleFiles,
   handleUpload,
 } = useUpload(uploadRef, props, emits);
