@@ -52,7 +52,7 @@
 import { toRefs, ref, computed, Ref } from 'vue';
 import { OptionProps, OptionSlots } from './type';
 import { RecordType } from '@shared/type';
-import { isUndefined, getDomText } from '@shared/utils';
+import { isUndefined, innerText } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcCheckbox from '@/components/Checkbox';
 defineOptions({
@@ -85,11 +85,11 @@ const contentRef = ref<HTMLDivElement>();
 const optionValue = computed(() => {
   return `${props.value}`
     ? props.value
-    : getDomText(contentRef as Ref<HTMLElement>);
+    : innerText(contentRef as Ref<HTMLElement>);
 });
 // optionLabel
 const optionLabel = computed(() => {
-  return props.label ? props.label : getDomText(contentRef as Ref<HTMLElement>);
+  return props.label ? props.label : innerText(contentRef as Ref<HTMLElement>);
 });
 // value
 const checked = computed(() => {

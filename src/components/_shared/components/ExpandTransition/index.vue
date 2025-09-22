@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { TransitionProps } from 'vue';
-import { valueToPx } from '@shared/utils/dom';
+import { valueToPx } from '@shared/utils';
 // 过渡时间
 const transitions: TransitionProps = {
   onBeforeEnter(el: Element) {

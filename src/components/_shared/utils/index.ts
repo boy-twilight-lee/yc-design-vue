@@ -2,7 +2,7 @@ export {
   isServerRendering,
   querySelector,
   getElement,
-  getDomText,
+  innerText,
   getBreakpointValue,
   mediaQueryHandler,
   findFirstScrollableParent,

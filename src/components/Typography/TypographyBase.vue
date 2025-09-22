@@ -72,7 +72,7 @@ import {
 } from './type';
 import {
   sleep,
-  getDomText,
+  innerText,
   useClipboard,
   useI18n,
   useControlValue,
@@ -179,7 +179,7 @@ const handleEdit = async () => {
   computedEditing.value = true;
   computedText.value = computedText.value
     ? computedText.value
-    : getDomText(contentRef);
+    : innerText(contentRef);
   emits('edit-start');
   await sleep(0);
   inputRef.value?.focus();
@@ -192,7 +192,7 @@ const handleEditEnd = () => {
 // 处理复制
 const handleCopy = async () => {
   if (!copyable.value || !isSupported.value || isCopied.value) return;
-  const value = copyText.value || getDomText(contentRef);
+  const value = copyText.value || innerText(contentRef);
   copy(value);
   emits('copy', value);
   isCopied.value = true;
