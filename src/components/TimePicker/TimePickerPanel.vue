@@ -88,6 +88,7 @@ import {
   BTween,
   dayjs,
   UnitType,
+  isValidTimeRange,
 } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcButton from '@/components/Button';
@@ -185,6 +186,14 @@ const handleConfirm = () => {
       return;
     }
     if (curIndex.value || computedValue.value[curIndex.value + 1]) {
+      const isValid = !isValidTimeRange(
+        computedValue.value[0] as string,
+        computedValue.value[1] as string,
+        format.value
+      );
+      if (isValid) {
+        computedValue.value = computedValue.value.reverse();
+      }
       return (computedVisible.value = false);
     }
     curIndex.value++;

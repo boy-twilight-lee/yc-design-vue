@@ -55,7 +55,7 @@ export const generateMonthCalendar = (year: number, month: number) => {
       day: date.date(),
       month: date.month(),
       year: date.year(),
-      fullDate: date.format('{ 0 }/MM/DD'),
+      fullDate: date.format('YYYY/MM/DD'),
       isCurrentMonth,
     });
     // 每7天换一行

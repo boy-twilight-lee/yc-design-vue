@@ -1,13 +1,5 @@
 <template>
-  <component
-    :is="component"
-    :style="{
-      minWidth: valueToPx(triggerSize.left + triggerSize.right),
-      minHeight: valueToPx(triggerSize.top + triggerSize.bottom),
-    }"
-    class="yc-resizebox"
-    ref="boxRef"
-  >
+  <component :is="component" class="yc-resizebox" ref="boxRef">
     <slot />
     <div
       v-for="(dir, i) in directions"
@@ -99,7 +91,7 @@ const handleMovingStart = async (dir: Position, e: MouseEvent) => {
   emits('moving-start', e);
 };
 // 处理拖拽中
-const handleMoving = async (e: MouseEvent) => {
+const handleMoving = (e: MouseEvent) => {
   if (!dragDirection.value || !boxRef.value) {
     return;
   }
@@ -107,15 +99,21 @@ const handleMoving = async (e: MouseEvent) => {
   // 计算鼠标偏移量
   const movementX = dragDirection.value == 'left' ? x - clientX : clientX - x;
   const movementY = dragDirection.value == 'top' ? y - clientY : clientY - y;
+  const minWidth = triggerSize.left + triggerSize.right;
+  const minHeight = triggerSize.bottom + triggerSize.top;
   // 赋值
   x = clientX;
   y = clientY;
   // 计算宽高
   if (['left', 'right'].includes(dragDirection.value)) {
     computedWidth.value += movementX;
+    computedWidth.value =
+      computedWidth.value <= minWidth ? minWidth : computedWidth.value;
     boxRef.value.style.width = `${valueToPx(computedWidth.value)}`;
   } else {
     computedHeight.value += movementY;
+    computedHeight.value =
+      computedHeight.value <= minHeight ? minHeight : computedHeight.value;
     boxRef.value.style.height = `${valueToPx(computedHeight.value)}`;
   }
   const { width, height } = boxRef.value!.getBoundingClientRect();
@@ -139,7 +137,6 @@ const handleMovingEnd = (e: MouseEvent) => {
   if (!dragDirection.value) return;
   dragDirection.value = null;
   document.body.style.cursor = cursor;
-
   emits('moving-end', e);
 };
 // 处理鼠标移动

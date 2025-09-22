@@ -7,6 +7,8 @@
     :disabled="disabled"
     :mouse-enter-delay="150"
     :mouse-leave-delay="150"
+    :class="['yc-dropdown-popup', $attrs.class]"
+    :style="$attrs.style"
     :on-trigger-mouseenter="handleCalcStyle"
     :on-trigger-mouseclick="handleCalcStyle"
     need-transform-origin
