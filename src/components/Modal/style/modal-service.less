@@ -35,11 +35,15 @@
   confirm: rgb(var(--warning-6));
 };
 each(@modal-type, .(@value, @key) {
-  .yc-service-modal-@{key} {
-    .yc-modal-header {
-      .yc-modal-title {
-        .yc-modal-title-icon {
-          color: @value;
+  .yc-modal-container{
+    .yc-modal-wrapper{
+      .yc-service-modal-@{key} {
+        .yc-modal-header {
+          .yc-modal-title {
+            .yc-modal-title-icon {
+              color: @value;
+            }
+          }
         }
       }
     }
