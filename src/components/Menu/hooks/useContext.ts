@@ -25,6 +25,7 @@ import {
   nanoid,
   useControlValue,
 } from '@shared/utils';
+import useCalcMaxMenuItem from './useCalcMaxMenuItems';
 import useSiderContext from '@/components/Layout/hooks/useSiderContext';
 import SubMenu from '../SubMenu.vue';
 import MenuItem from '../MenuItem.vue';
@@ -261,33 +262,17 @@ export default function useMenuContext() {
     const menuItemWidths = ref<number[]>([]);
     // 树节点
     const menuTree = computed(() => buildMenuTree(menuTreeNodes.value));
-    // 最大能展示元素的个数
-    const max = ref<number>(1000000);
     // theme
     const theme = computed(() => {
       return _theme.value || siderTheme.value || 'light';
     });
     // 横向宽度检测
-    if (mode.value == 'horizontal') {
-      useResizeObserver(
-        menuRef,
-        throttle(() => {
-          const menuWidth = menuRef.value!.offsetWidth - 52;
-          let maxCount = 0;
-          let totalWidth = 0;
-          for (let i = 0; i < menuTree.value.length; i++) {
-            const gap = i > 0 ? 4 : 0;
-            const curWidth = totalWidth + gap + menuItemWidths.value[i];
-            if (curWidth > menuWidth) {
-              break;
-            }
-            totalWidth = curWidth;
-            maxCount++;
-          }
-          max.value = maxCount;
-        }, 200)
-      );
-    }
+    const { max } = useCalcMaxMenuItem({
+      menuRef,
+      menuItemWidths,
+      menuTree,
+      mode,
+    });
     // 注入
     _provide<MenuContext>(MENU_CONTEXT_KEY, {
       computedSelectedKeys,

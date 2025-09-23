@@ -34,7 +34,6 @@ type TransferContext = {
   showSearch: Ref<boolean>;
   oneWay: Ref<boolean>;
   simple: Ref<boolean>;
-  slots: Slots;
   emits: TransferEmits;
 };
 type TransferProps = Required<_TransferProps>;
@@ -56,7 +55,6 @@ export default function useTransferContext() {
       disabled,
       title,
     } = toRefs(props as TransferProps);
-    const slots = useSlots();
     // dataMap
     const dataMap = computed(() => {
       return Object.fromEntries(data.value.map((item) => [item.value, item]));
@@ -126,7 +124,6 @@ export default function useTransferContext() {
       showSelectAll,
       disabled,
       title,
-      slots,
       emits,
     });
     return {
@@ -153,7 +150,6 @@ export default function useTransferContext() {
       showSelectAll: ref(false),
       sourceInputSearchProps: ref({}),
       targetInputSearchProps: ref({}),
-      slots: {},
       emits: () => {},
     });
   };

@@ -125,7 +125,6 @@ const {
   simple,
   sourceInputSearchProps,
   targetInputSearchProps,
-  slots,
   title: _title,
   emits,
 } = useContext().inject();
