@@ -107,21 +107,18 @@ const handleMoving = (e: MouseEvent) => {
   // 计算宽高
   if (['left', 'right'].includes(dragDirection.value)) {
     computedWidth.value += movementX;
-    computedWidth.value =
-      computedWidth.value <= minWidth ? minWidth : computedWidth.value;
-    boxRef.value.style.width = `${valueToPx(computedWidth.value)}`;
+    boxRef.value.style.width = `${valueToPx(computedWidth.value <= minWidth ? minWidth : computedWidth.value)}`;
   } else {
     computedHeight.value += movementY;
-    computedHeight.value =
-      computedHeight.value <= minHeight ? minHeight : computedHeight.value;
-    boxRef.value.style.height = `${valueToPx(computedHeight.value)}`;
+    boxRef.value.style.height = `${valueToPx(computedHeight.value <= minHeight ? minHeight : computedHeight.value)}`;
   }
+  // 重新验证宽度
   const { width, height } = boxRef.value!.getBoundingClientRect();
   if (width != computedWidth.value) {
     computedWidth.value = width;
   }
   if (height != computedHeight.value) {
-    computedHeight.value = width;
+    computedHeight.value = height;
   }
   emits(
     'moving',
@@ -167,6 +164,7 @@ watch(
   [computedWidth, computedHeight],
   async () => {
     if (dragDirection.value) return;
+    console.log('函数触发了');
     await nextTick();
     boxRef.value!.style.width = computedWidth.value
       ? `${valueToPx(computedWidth.value)}`
