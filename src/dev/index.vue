@@ -1,8 +1,6 @@
 <template>
   <div class="test">
     <yc-resize-box
-      v-model:width="width"
-      v-model:height="height"
       :directions="['right', 'bottom']"
       :style="{
         minWidth: '100px',

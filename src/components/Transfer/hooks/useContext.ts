@@ -95,21 +95,20 @@ export default function useTransferContext() {
     // 目标options
     const targetOptions = computed(() => {
       return (computedValue.value as string[]).map((item) => {
-        const target = dataMap.value[item];
-        return target;
+        return dataMap.value[item];
       });
     });
     // 数据checked
     const sourceChecked = computed(() => {
-      return computedSelected.value.filter(
-        (item) => !computedValueMap.value.has(item)
-      );
+      return computedSelected.value.filter((item) => {
+        return !computedValueMap.value.has(item);
+      });
     });
     // 目标checked
     const targetChecked = computed(() => {
-      return computedSelected.value.filter((item) =>
-        computedValueMap.value.has(item)
-      );
+      return computedSelected.value.filter((item) => {
+        return computedValueMap.value.has(item);
+      });
     });
     // 提供给子组件
     _provide<TransferContext>(TRANSFER_CONTEXT_KEY, {
@@ -132,8 +131,8 @@ export default function useTransferContext() {
     });
     return {
       computedValue,
-      targetChecked,
       computedSelected,
+      targetChecked,
       sourceChecked,
     };
   };

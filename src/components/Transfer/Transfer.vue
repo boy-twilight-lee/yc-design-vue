@@ -9,7 +9,17 @@
     ]"
   >
     <!-- target -->
-    <transfer-panel type="source" />
+    <transfer-panel type="source">
+      <template v-if="$slots['source-title']" #source-title="scope">
+        <slot name="source-title" v-bind="scope" />
+      </template>
+      <template v-if="$slots['source']" #source="scope">
+        <slot name="source" v-bind="scope" />
+      </template>
+      <template v-if="$slots['item']" #item="scope">
+        <slot name="item" v-bind="scope" />
+      </template>
+    </transfer-panel>
     <!-- operations -->
     <div v-if="!simple" class="yc-transfer-operations">
       <!-- to-target -->
@@ -39,7 +49,17 @@
       </yc-button>
     </div>
     <!-- target -->
-    <transfer-panel type="target" />
+    <transfer-panel type="target">
+      <template v-if="$slots['target-title']" #target-title="scope">
+        <slot name="source-title" v-bind="scope" />
+      </template>
+      <template v-if="$slots['target']" #target="scope">
+        <slot name="source" v-bind="scope" />
+      </template>
+      <template v-if="$slots['item']" #item="scope">
+        <slot name="item" v-bind="scope" />
+      </template>
+    </transfer-panel>
   </div>
 </template>
 
@@ -52,7 +72,7 @@ import YcButton from '@/components/Button';
 defineOptions({
   name: 'Transfer',
 });
-defineSlots<TransferSlots>();
+const $slots = defineSlots<TransferSlots>();
 const props = withDefaults(defineProps<TransferProps>(), {
   data: () => [],
   modelValue: undefined,
