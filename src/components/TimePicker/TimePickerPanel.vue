@@ -194,7 +194,8 @@ const handleConfirm = () => {
       if (isValid) {
         computedValue.value = computedValue.value.reverse();
       }
-      return (computedVisible.value = false);
+      computedVisible.value = false;
+      return;
     }
     curIndex.value++;
     inputRefs.value[curIndex.value]?.focus();

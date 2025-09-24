@@ -10,7 +10,8 @@
         size="mini"
       />
     </div>
-    <div class="yc-color-picker-color">
+    <!-- <div class="yc-color-picker-color"></div> -->
+    <yc-input-group class="yc-color-picker-color">
       <yc-input
         v-if="format == 'hex'"
         v-model="hex"
@@ -72,7 +73,7 @@
       >
         <template #suffix> % </template>
       </yc-input-number>
-    </div>
+    </yc-input-group>
   </div>
 </template>
 
@@ -83,7 +84,10 @@ import { RecordType } from '@shared/type';
 import { parseColor } from '@shared/utils';
 import { COLOR_PICKER_FORMAT_OPTIONS } from '@shared/constants';
 import YcSelect from '@/components/Select';
-import YcInput from '@/components/Input';
+import {
+  default as YcInput,
+  InputGroup as YcInputGroup,
+} from '@/components/Input';
 import YcInputNumber from '@/components/InputNumber';
 const props = defineProps<{
   color: string;

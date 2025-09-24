@@ -129,43 +129,14 @@
       .yc-color-picker-color {
         flex: 1;
         overflow: hidden;
-        display: flex;
-        align-items: center;
-        .yc-input-outer {
-          &:first-child {
-            .yc-input-wrapper {
-              border-top-left-radius: 2px;
-              border-bottom-left-radius: 2px;
-            }
-          }
-          &:last-child {
-            .yc-input-wrapper {
-              border-right-color: var(--color-border-2);
-              border-top-right-radius: 2px;
-              border-bottom-right-radius: 2px;
-            }
-          }
-          .yc-input-wrapper {
-            border-radius: var(--border-radius-none);
-            border-color: var(--color-border-2);
-            border-right-color: transparent;
-            &:not(.yc-input-disabled):focus-within {
-              border-radius: var(--border-radius-small);
-              border-color: rgb(var(--primary-6));
-            }
-            .yc-input-prefix {
-              padding-right: 6px;
-            }
-          }
-        }
-        .yc-input-number {
-          .yc-input {
-            text-align: center;
-          }
-        }
         .rgb-input,
         .hex-input {
           flex: 1;
+          &.rgb-input {
+            .yc-input {
+              text-align: center;
+            }
+          }
         }
         .alpha-input {
           width: 52px;

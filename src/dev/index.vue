@@ -1,10 +1,16 @@
 <template>
   <div class="test">
-    <yc-pagination :total="50" show-jumper />
-    <yc-time-picker />
-    <div style="height: 300px">
-      <yc-slider direction="vertical"> </yc-slider>
-    </div>
+    <yc-input-group style="width: 500px">
+      <yc-input></yc-input>
+      <yc-input></yc-input>
+      <yc-input></yc-input>
+    </yc-input-group>
+    <yc-color-picker hide-trigger />
+    <a-input-group style="width: 500px">
+      <a-input error></a-input>
+      <a-input error></a-input>
+      <a-input error></a-input>
+    </a-input-group>
   </div>
 </template>
 

@@ -18,17 +18,10 @@ export default function FixInvalidDeclarationsPlugin(): Plugin {
       if (invalidSet.size === 0) {
         return null;
       }
-      console.log(
-        `\n[fix-invalid-declarations] Found and fixing ${invalidSet.size} types of invalid declarations in UMD chunk: ${chunk.fileName}.`
-      );
       let modifiedCode = code;
       const invalidNames = Array.from(invalidSet);
       for (const invalidName of invalidNames) {
-        // Replace dot with underscore: "index$1.COLOR_PICKER" -> "index$1_COLOR_PICKER"
         const validName = invalidName.replace(/\./g, '_');
-        console.log(
-          `   - Replacing all occurrences of "${invalidName}" with "${validName}"`
-        );
         const searchRegex = new RegExp(
           invalidName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
           'g'
