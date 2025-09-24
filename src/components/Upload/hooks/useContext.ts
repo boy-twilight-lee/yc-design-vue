@@ -88,7 +88,7 @@ export default function useUploadContext() {
           URL.revokeObjectURL(v.url);
         });
         (val as FileItem[]).forEach((v) => {
-          v.url = v.file ? URL.createObjectURL(v.file) : '';
+          v.url = v.file ? URL.createObjectURL(v.file) : v.url;
         });
         emits('update:fileList', val);
       }

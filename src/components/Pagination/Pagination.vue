@@ -42,6 +42,8 @@
           hide-button
           :size="size"
           :disabled="disabled"
+          :min="1"
+          :max="pages"
         />
         <span class="yc-pagination-jumper-separator">/</span>
         <span class="yc-pagination-jumper-total-page">{{ pages }}</span>
@@ -82,11 +84,11 @@
       </span>
       <yc-input-number
         v-model="tempCurrent"
-        hide-button
         :size="size"
         :disabled="disabled"
         :min="1"
         :max="pages"
+        hide-button
         @focus="tempCurrent = computedCurrent"
         @blur="handleBlur"
       />
@@ -156,6 +158,7 @@ watch(
 );
 // 处理失焦
 const handleBlur = async (e: Event) => {
+  await sleep(0);
   if (`${tempCurrent.value}`.length) {
     computedCurrent.value = tempCurrent.value;
   }

@@ -63,7 +63,7 @@ export type MenuTreeNode = {
 };
 type MenuProps = Required<_MenuProps>;
 // 扁平化nodetree
-export function FlattenMenuTree(vnodes: VNode[], componentName: string[]) {
+export function flattenMenuTree(vnodes: VNode[], componentName: string[]) {
   const result: MenuTreeNode[] = [];
   const traverse = (
     nodes: RecordType | RecordType[],
@@ -249,14 +249,10 @@ export default function useMenuContext() {
     const slots = useSlots();
     // 扁平化的树节点
     const menuTreeNodes = computed(() => {
-      console.log(slots.default?.(), 'slots.default?.()');
-
-      const result = FlattenMenuTree(slots.default?.() || [], [
+      return flattenMenuTree(slots.default?.() || [], [
         SubMenu.name ?? '',
         MenuItem.name ?? '',
       ]);
-      console.log(result, 'result');
-      return result;
     });
     // menuItemdoms
     const menuItemWidths = ref<number[]>([]);

@@ -21,7 +21,8 @@
   }
 }
 // loading
-.yc-button-loading {
+.yc-button-loading,
+.yc-button-disabled {
   cursor: default;
   position: relative;
   &::before {
@@ -36,11 +37,12 @@
     opacity: 0.4;
     display: block;
   }
-}
-// disabled
-.yc-button-disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
+  &.yc-button-disabled {
+    cursor: not-allowed;
+    &::before {
+      cursor: not-allowed;
+    }
+  }
 }
 // loading
 .yc-button-long {

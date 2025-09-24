@@ -164,7 +164,6 @@ watch(
   [computedWidth, computedHeight],
   async () => {
     if (dragDirection.value) return;
-    console.log('函数触发了');
     await nextTick();
     boxRef.value!.style.width = computedWidth.value
       ? `${valueToPx(computedWidth.value)}`

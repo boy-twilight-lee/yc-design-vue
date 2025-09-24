@@ -29,10 +29,10 @@
 
 // hoverable
 .yc-link-hoverable {
-  &:hover {
+  &:not(.yc-link-disabled):not(.yc-link-loading):hover {
     background-color: var(--color-fill-2);
   }
-  &:active {
+  &:not(.yc-link-disabled):not(.yc-link-loading):active {
     background-color: var(--color-fill-3);
   }
 }

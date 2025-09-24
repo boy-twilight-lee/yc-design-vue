@@ -58,7 +58,7 @@ const strokeWidth = computed(() => {
 });
 // style
 const style = computed(() => ({
-  width: valueToPx(width.value),
+  width: valueToPx(width.value || '100%'),
   height: valueToPx(strokeWidth.value),
   backgroundColor: trackColor.value,
 }));

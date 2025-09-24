@@ -7,18 +7,7 @@
     :class="`yc-progress-circle-wrapper`"
     :style="{ width: valueToPx(width), height: valueToPx(width) }"
   >
-    <icon-check
-      v-if="type === 'circle' && size === 'mini' && status === 'success'"
-      :style="{
-        fontSize: width - 2,
-        color: color ?? TYPE_ICON_COLOR_MAP.success,
-      }"
-    />
-    <svg
-      v-else
-      :viewBox="`0 0 ${width} ${width}`"
-      :class="`yc-progress-circle-svg`"
-    >
+    <svg :viewBox="`0 0 ${width} ${width}`" :class="`yc-progress-circle-svg`">
       <defs v-if="isObject(color)">
         <linearGradient :id="linearGradientId" x1="0" y1="1" x2="0" y2="0">
           <stop

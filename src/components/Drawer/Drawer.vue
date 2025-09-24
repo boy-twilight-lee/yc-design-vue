@@ -39,8 +39,8 @@
           :style="drawerStyle"
         >
           <!-- header -->
-          <slot name="header">
-            <div v-if="header" class="yc-drawer-header">
+          <slot v-if="header" name="header">
+            <div class="yc-drawer-header">
               <!-- title -->
               <div class="yc-drawer-title text-ellipsis">
                 <slot name="title">
@@ -60,8 +60,8 @@
             <slot />
           </div>
           <!-- footer -->
-          <slot name="footer">
-            <div v-if="footer" class="yc-drawer-footer">
+          <slot v-if="footer" name="footer">
+            <div class="yc-drawer-footer">
               <yc-button
                 v-if="!hideCancel"
                 v-bind="cancelButtonProps"

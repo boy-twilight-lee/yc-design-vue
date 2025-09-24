@@ -37,7 +37,7 @@
         </div>
         <!-- content -->
         <div
-          v-show="!computedCollapsed"
+          v-show="!computedCollapsed || !$slots.icon"
           :class="[
             'yc-menu-item-title',
             {

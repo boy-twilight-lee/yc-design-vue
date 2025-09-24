@@ -134,7 +134,9 @@ each(@size, .(@size,@name){
     }
     // 处理step size为small的情况
     & when(@key = small){
-      width: auto;
+      &:not(.yc-progress-type-line){
+        width: auto;
+      }
       .yc-progress-steps-wrapper {
         .yc-progress-steps {
           .yc-progress-steps-item {
@@ -154,7 +156,7 @@ each(@size, .(@size,@name){
   };
   @success: {
     color: rgb(var(--success-6));
-    mini-bg-color: null;
+    mini-bg-color: var(--color-success-light-3);
   };
   @warning: {
     color: rgb(var(--warning-6));
@@ -176,11 +178,9 @@ each(@status, .(@value,@name){
     .yc-progress-circle-bar {
       stroke: @value[color];
     }
-    & when not (@key = success) and not (@value[mini-bg-color] = null) {
-      &.yc-progress-size-mini {
-        .yc-progress-circle-bg {
-          stroke: @value[mini-bg-color];
-        }
+    &.yc-progress-size-mini {
+      .yc-progress-circle-bg {
+        stroke: @value[mini-bg-color];
       }
     }
   }
