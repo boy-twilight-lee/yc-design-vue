@@ -34,13 +34,25 @@
     }
   }
 }
+// prepend
 .yc-input-has-prepend {
+  &:focus-within {
+    .yc-input-append {
+      border: none;
+    }
+  }
   .yc-input-wrapper {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 }
+// append
 .yc-input-has-append {
+  &:focus-within {
+    .yc-input-append {
+      border: none;
+    }
+  }
   .yc-input-wrapper {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;

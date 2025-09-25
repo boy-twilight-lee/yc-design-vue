@@ -1,21 +1,36 @@
 <template>
   <div class="test">
-    <yc-input-group style="width: 500px">
-      <yc-input></yc-input>
-      <yc-input></yc-input>
-      <yc-input></yc-input>
-    </yc-input-group>
-    <yc-color-picker hide-trigger />
-    <a-input-group style="width: 500px">
-      <a-input error></a-input>
-      <a-input error></a-input>
-      <a-input error></a-input>
-    </a-input-group>
+    <yc-input-password v-model="value" style="width: 300px">
+      <template #suffix> dsadsa </template>
+    </yc-input-password>
+    <yc-input-search
+      style="width: 300px"
+      search-button
+      error
+      loading
+      @search="
+        (v) => {
+          console.log('search', v);
+        }
+      "
+    />
+    <a-input-search
+      style="width: 300px"
+      search-button
+      error
+      loading
+      @search="
+        (v) => {
+          console.log('search', v);
+        }
+      "
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+const value = ref('dsads');
 </script>
 
 <style lang="less">

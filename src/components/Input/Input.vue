@@ -27,10 +27,10 @@
       <input
         v-show="!$slots.label || showInput"
         :value="computedValue"
-        :type="type"
         :disabled="disabled"
         :readonly="readonly"
         :placeholder="placeholder"
+        type="text"
         v-bind="inputAttrs"
         class="yc-input"
         ref="inputRef"
@@ -58,21 +58,16 @@
         @click="handleEvent('clear', $event)"
       />
       <!-- suffix -->
-      <input-suffix
-        v-if="$slots.suffix || showWordLimit || (isPassword && invisibleButton)"
-        :cur-length="curLength"
-        :max-length="maxLength"
-        :computed-value="computedValue"
-        :show-word-limit="showWordLimit"
-        :computed-visibility="computedVisibility"
-        :invisible-button="invisibleButton"
-        :is-password="isPassword"
-        @visibility-change="(v) => (computedVisibility = v)"
-      >
-        <template v-if="$slots.suffix" #suffix>
-          <slot name="suffix" />
-        </template>
-      </input-suffix>
+      <prevent-focus class="yc-input-suffix">
+        <!-- word-limit -->
+        <div v-if="showWordLimit" class="yc-input-word-limit">
+          {{ curLength }}/{{ maxLength }}
+        </div>
+        <!-- extra -->
+        <slot name="extra" />
+        <!-- suffix -->
+        <slot name="suffix" />
+      </prevent-focus>
     </div>
     <!-- append -->
     <prevent-focus v-if="$slots.append" class="yc-input-append">
@@ -82,12 +77,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed } from 'vue';
+import { ref } from 'vue';
 import { InputProps, InputEmits, InputSlots, InputExpose } from './type';
-import { useControlValue, getGlobalConfig } from '@shared/utils';
+import { getGlobalConfig } from '@shared/utils';
 import useLimitedInput from './hooks/useLimitedInput';
 import { PreventFocus, IconButton } from '@shared/components';
-import InputSuffix from './InputSuffix.vue';
 defineOptions({
   name: 'Input',
 });
@@ -112,33 +106,14 @@ const props = withDefaults(defineProps<InputProps>(), {
   wordSlice: (value: string, maxLength: number) => {
     return value.slice(0, maxLength);
   },
-  // password
-  isPassword: false,
-  visibility: undefined,
-  defaultVisibility: false,
-  invisibleButton: true,
   // select
   showInput: false,
 });
 const emits = defineEmits<InputEmits>();
-const { visibility, defaultVisibility } = toRefs(props);
 // 获取全局属性
 const { size } = getGlobalConfig(props);
 // 输入实例
 const inputRef = ref<HTMLInputElement>();
-// 非受控的vis
-const computedVisibility = useControlValue<boolean>(
-  visibility,
-  defaultVisibility.value,
-  (val) => {
-    emits('update:visibility', val);
-    emits('visibility-change', val);
-  }
-);
-// 输入框类型
-const type = computed(() => {
-  return computedVisibility.value ? 'password' : 'text';
-});
 // 限制输入hooks
 const {
   computedValue,
@@ -147,6 +122,8 @@ const {
   curLength,
   maxLength,
   error,
+  recordCursor,
+  setCursor,
   handleInput,
   handleComposition,
 } = useLimitedInput({
@@ -190,6 +167,8 @@ const handleEvent = async (type: string, e: Event) => {
 };
 // 暴露方法
 defineExpose<InputExpose>({
+  setCursor,
+  recordCursor,
   focus() {
     inputRef.value?.focus();
   },

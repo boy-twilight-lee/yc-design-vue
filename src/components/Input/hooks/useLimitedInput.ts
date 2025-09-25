@@ -163,6 +163,8 @@ export default (params: {
     error,
     disabled,
     maxLength,
+    setCursor,
+    recordCursor,
     handleInput,
     handleComposition,
   };

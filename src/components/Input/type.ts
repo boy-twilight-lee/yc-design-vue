@@ -1,5 +1,6 @@
 import { VNode } from 'vue';
 import { Size, RecordType } from '@shared/type';
+import { ButtonGroupProps } from '../Button';
 
 export interface InputProps {
   modelValue?: string;
@@ -15,21 +16,14 @@ export interface InputProps {
   wordSlice?: WordSlice;
   showWordLimit?: boolean;
   inputAttrs?: RecordType;
-  // password使用
-  isPassword?: boolean;
-  visibility?: boolean;
-  defaultVisibility?: boolean;
-  invisibleButton?: boolean;
   // 是否展示input
   showInput?: boolean;
 }
 
 export interface InputEmits {
   (e: 'update:modelValue', value: string): void;
-  (e: 'update:visibility', value: boolean): void;
   (e: 'input', value: string, ev: Event): void;
   (e: 'change', value: string, ev: Event): void;
-  (e: 'visibility-change', value: boolean): void;
   (e: 'pressEnter', ev: KeyboardEvent): void;
   (e: 'keydown', ev: KeyboardEvent): void;
   (e: 'clear', ev: MouseEvent): void;
@@ -43,12 +37,39 @@ export interface InputSlots {
   prepend?: () => VNode[];
   append?: () => VNode[];
   label?: () => VNode[];
+  extra?: () => VNode[];
 }
 
 export interface InputExpose {
   focus(): void;
   blur(): void;
   getInputRef(): HTMLInputElement;
+  setCursor?: () => void;
+  recordCursor?: () => void;
+}
+
+export interface InputPasswordProps {
+  visibility?: boolean;
+  defaultVisibility?: boolean;
+  invisibleButton?: boolean;
+}
+
+export interface InputPasswordEmits {
+  (e: 'update:visibility', value: boolean): void;
+  (e: 'visibility-change', value: boolean): void;
+}
+
+export interface InputSearchProps {
+  searchButton?: boolean;
+  loading?: boolean;
+  disabled?: boolean;
+  size?: Size;
+  buttonText?: string;
+  buttonProps?: ButtonGroupProps;
+}
+
+export interface InputSearchEmits {
+  (e: 'search', value: string, ev: MouseEvent): void;
 }
 
 export type WordSlice = (value: string, maxLength: number) => string;
