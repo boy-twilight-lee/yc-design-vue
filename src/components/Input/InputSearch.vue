@@ -1,5 +1,11 @@
 <template>
-  <yc-input :size="size" :disabled="disabled" v-bind="$attrs" ref="inputRef">
+  <yc-input
+    :size="size"
+    :disabled="disabled"
+    v-bind="$attrs"
+    class="yc-input-search"
+    ref="inputRef"
+  >
     <template v-if="$slots.prepend" #prepend>
       <slot name="prepend" />
     </template>
@@ -7,7 +13,6 @@
       <slot name="append">
         <yc-button
           type="primary"
-          style="margin: 0 -12px; border-radius: 0"
           :size="size"
           :disabled="disabled"
           :loading="loading"

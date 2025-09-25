@@ -6,8 +6,6 @@
     <yc-input-search
       style="width: 300px"
       search-button
-      error
-      loading
       @search="
         (v) => {
           console.log('search', v);
@@ -17,8 +15,6 @@
     <a-input-search
       style="width: 300px"
       search-button
-      error
-      loading
       @search="
         (v) => {
           console.log('search', v);
