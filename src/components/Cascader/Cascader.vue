@@ -1,5 +1,6 @@
 <template>
   <yc-trigger
+    v-if="!hideTrigger"
     v-model:popup-visible="computedVisible"
     :popup-offset="4"
     :popup-container="popupContainer"
@@ -109,6 +110,7 @@
       <cascader-panel v-else />
     </template>
   </yc-trigger>
+  <cascader-panel v-else />
 </template>
 
 <script lang="ts" setup>
@@ -169,6 +171,7 @@ const props = withDefaults(defineProps<CascaderProps>(), {
   fallback: true,
   expandChild: false,
   tagNowrap: false,
+  hideTrigger: false,
 });
 const emits = defineEmits<CascaderEmits>();
 // 输入实例

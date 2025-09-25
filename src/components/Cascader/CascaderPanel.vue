@@ -3,7 +3,9 @@
     <!-- loading -->
     <yc-spin v-if="loading" :loading="loading" />
     <!-- empty -->
-    <component v-else-if="!options.length" :is="slots.empty || YcEmpty" />
+    <div v-else-if="!options.length" class="yc-cascader-empty">
+      <component :is="slots.empty || YcEmpty" />
+    </div>
     <!-- 渲染panel -->
     <template v-else>
       <div

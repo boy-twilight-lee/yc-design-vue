@@ -1,32 +1,73 @@
 <template>
   <div class="test">
-    <yc-input-password v-model="value" style="width: 300px">
-      <template #suffix> dsadsa </template>
-    </yc-input-password>
-    <yc-input-search
-      style="width: 300px"
-      search-button
-      @search="
-        (v) => {
-          console.log('search', v);
-        }
-      "
-    />
-    <a-input-search
-      style="width: 300px"
-      search-button
-      @search="
-        (v) => {
-          console.log('search', v);
-        }
-      "
-    />
+    <yc-cascader-panel :options="[]" v-model="value" expand-child>
+    </yc-cascader-panel>
+    <a-cascader-panel :options="[]" v-model="value" expand-child>
+    </a-cascader-panel>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-const value = ref('dsads');
+import { computed, ref, watch } from 'vue';
+const value = ref('');
+
+const options = [
+  {
+    value: 'beijing',
+    label: 'Beijing',
+    children: [
+      {
+        value: 'chaoyang',
+        label: 'ChaoYang',
+        children: [
+          {
+            value: 'datunli',
+            label: 'Datunli',
+          },
+        ],
+      },
+      {
+        value: 'haidian',
+        label: 'Haidian',
+      },
+      {
+        value: 'dongcheng',
+        label: 'Dongcheng',
+      },
+      {
+        value: 'xicheng',
+        label: 'Xicheng',
+        children: [
+          {
+            value: 'jinrongjie',
+            label: 'Jinrongjie',
+          },
+          {
+            value: 'tianqiao',
+            label: 'Tianqiao',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'shanghai',
+    label: 'Shanghai',
+    children: [
+      {
+        value: 'huangpu',
+        label: 'Huangpu',
+      },
+    ],
+  },
+];
+
+watch(
+  () => value.value,
+  () => {
+    console.log('change', value.value);
+  }
+);
 </script>
 
 <style lang="less">

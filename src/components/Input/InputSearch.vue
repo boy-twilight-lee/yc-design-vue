@@ -19,7 +19,10 @@
           v-bind="buttonProps"
           @click="handleSearch"
         >
-          <template #icon>
+          <template v-if="buttonText" #default>
+            {{ buttonText }}
+          </template>
+          <template v-else #icon>
             <icon-search />
           </template>
         </yc-button>
@@ -57,7 +60,7 @@ withDefaults(defineProps<InputSearchProps>(), {
   loading: false,
   disabled: false,
   size: undefined,
-  buttonText: '',
+  buttonText: undefined,
   buttonProps: () => ({}),
 });
 const emits = defineEmits<InputSearchEmits>();

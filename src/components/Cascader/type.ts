@@ -45,6 +45,8 @@ export interface CascaderProps {
   expandChild?: boolean;
   // virtual-list-props
   tagNowrap?: boolean;
+  // hideTrigger
+  hideTrigger?: boolean;
 }
 
 export interface CascaderEmits {
@@ -69,6 +71,29 @@ export interface CascaderSlots {
   empty?: () => VNode[];
   option?: (scope: { data: CascaderOption }) => VNode[];
 }
+
+export type CascaderPanelProps = Pick<
+  CascaderProps,
+  | 'pathMode'
+  | 'multiple'
+  | 'modelValue'
+  | 'defaultValue'
+  | 'options'
+  | 'expandTrigger'
+  | 'loadMore'
+  | 'fieldNames'
+  | 'valueKey'
+  | 'expandChild'
+>;
+
+export type CascaderPanelEmits = {
+  (e: 'update:modelValue', value: CascaderValue): void;
+  (e: 'change', value: CascaderValue): void;
+};
+
+export type CascaderPanelSlots = {
+  empty?: () => VNode[];
+};
 
 export type CascaderValue =
   | CascaderOptionValue
