@@ -6,8 +6,10 @@
         'yc-picker-cell-in-view': cellInView,
         'yc-picker-cell-today': isToday,
         'yc-picker-cell-selected': isSelected,
+        'yc-picker-cell-disabled': disabled,
       },
     ]"
+    @click="!disabled && $emit('click', $event)"
   >
     <slot name="cell">
       <div class="yc-picker-date">
@@ -25,15 +27,20 @@ withDefaults(
     cellInView?: boolean;
     isToday?: boolean;
     isSelected?: boolean;
+    disabled?: boolean;
     value?: number | string;
   }>(),
   {
     cellInView: false,
     isToday: false,
     isSelected: false,
+    disabled: false,
     value: '',
   }
 );
+defineEmits<{
+  (e: 'click', ev: MouseEvent): void;
+}>();
 </script>
 
 <style lang="less" scoped>
@@ -93,6 +100,21 @@ withDefaults(
         &:hover {
           color: var(--color-white);
           background-color: rgb(var(--primary-6));
+        }
+      }
+    }
+  }
+  &.yc-picker-cell-disabled {
+    .yc-picker-date {
+      background-color: var(--color-fill-1);
+      cursor: not-allowed;
+      .yc-picker-date-value {
+        color: var(--color-text-4);
+        background-color: transparent;
+        cursor: not-allowed;
+        &:hover {
+          color: var(--color-text-4);
+          background-color: transparent;
         }
       }
     }

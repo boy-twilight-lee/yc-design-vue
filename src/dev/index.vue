@@ -2,6 +2,7 @@
   <div class="test">
     <yc-year-picker
       v-model="value"
+      :disabled-date="(date) => [2022].includes(date.getFullYear())"
       value-format="YYYY年"
       format="YYYY---年"
       style="width: 300px"
@@ -12,15 +13,13 @@
     </yc-year-picker>
     <a-year-picker
       v-model="value"
+      :disabled-date="(date) => [2022].includes(date.getFullYear())"
       value-format="YYYY年"
       format="YYYY---年"
       show-confirm-btn
     >
       <template #extra>
         <yc-button type="primary">测试</yc-button>
-      </template>
-      <template #cell="{ date }">
-        <span>{{ date.getFullYear() }}</span>
       </template>
     </a-year-picker>
   </div>

@@ -4,7 +4,7 @@
     :popup-offset="4"
     :popup-container="popupContainer"
     :unmount-on-close="unmountOnClose"
-    :disabled="disabled"
+    :disabled="disabled || readonly"
     :position="position"
     trigger="click"
     animation-name="slide-dynamic-origin"
@@ -16,6 +16,7 @@
       :placeholder="placeholder"
       :disabled="disabled"
       :error="error"
+      :size="size"
       :readonly="readonly || disabledInput"
       :style="$attrs.style"
       :class="['yc-year-picker', $attrs.class]"
@@ -61,6 +62,7 @@
                     :cell-in-view="!!(i || k)"
                     :is-today="year == dayjs().year()"
                     :is-selected="dayjs(computedValue).year() == year"
+                    :disabled="disabledDate?.(new Date(year, 1, 1, 0, 0, 0))"
                     :value="year"
                     @click="handleSelect(year)"
                   >
@@ -76,7 +78,7 @@
             <div v-if="$slots.extra" class="yc-picker-footer-extra-wrapper">
               <slot name="extra" />
             </div>
-            <div class="yc-picker-footer-btn-wrapper">
+            <div v-if="showConfirmBtn" class="yc-picker-footer-btn-wrapper">
               <div></div>
               <yc-button type="primary" size="mini">确定</yc-button>
             </div>
@@ -105,9 +107,9 @@ defineOptions({
 });
 const $slots = defineSlots<BasePickerSlots>();
 const props = withDefaults(defineProps<YearPickerProps>(), {
-  locale: undefined,
-  hideTrigger: false,
-  allowClear: false,
+  // locale: undefined,
+  // hideTrigger: false,
+  // allowClear: false,
   readonly: false,
   error: false,
   size: undefined,
@@ -120,8 +122,7 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   unmountOnClose: false,
   placeholder: '请选择年份',
   disabled: false,
-  // disabledDate: undefined,
-  // disabledTime: undefined,
+  disabledDate: undefined,
   pickerValue: undefined,
   defaultPickerValue: '',
   popupContainer: undefined,

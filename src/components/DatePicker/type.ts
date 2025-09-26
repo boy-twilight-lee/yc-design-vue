@@ -18,7 +18,7 @@ export interface BasePickerProps {
   unmountOnClose?: boolean;
   placeholder?: string;
   disabled?: boolean;
-  disabledDate?: (current?: Date) => boolean;
+  disabledDate?: (current: Date) => boolean;
   disabledTime?: (current: Date) => {
     disabledHours?: () => number[];
     disabledMinutes?: () => number[];
@@ -37,23 +37,18 @@ export interface BasePickerProps {
 export interface BasePickerEmits {
   (e: 'update:popupVisible', value: boolean): void;
   (e: 'update:pickerValue', value: DatePickerValue): void;
-  (
-    e: 'change',
-    value: DatePickerValue | undefined,
-    date: Date | undefined,
-    dateString: string | undefined
-  ): void;
+  (e: 'change', value: DatePickerValue, date: Date, dateString: string): void;
   (e: 'select', value: DatePickerValue, date: Date, dateString: string): void;
-  (e: 'popup-visible-change', visible: boolean): void;
   (e: 'ok', value: DatePickerValue, date: Date, dateString: string): void;
-  (e: 'clear'): void;
-  (e: 'select-shortcut', shortcut: ShortcutType): void;
   (
     e: 'picker-value-change',
     value: DatePickerValue,
     date: Date,
     dateString: string
   ): void;
+  (e: 'popup-visible-change', visible: boolean): void;
+  (e: 'clear'): void;
+  (e: 'select-shortcut', shortcut: ShortcutType): void;
 }
 
 export interface BasePickerSlots {
@@ -67,11 +62,11 @@ export interface BasePickerSlots {
   extra?: () => VNode[];
 }
 
-export interface YearPickerProps extends BasePickerProps {
+export type YearPickerProps = Omit<BasePickerProps, 'disabledTime'> & {
   modelValue?: DatePickerValue;
   defaultValue?: DatePickerValue;
   format?: string;
-}
+};
 
 export interface YearPickerEmits extends BasePickerEmits {
   (e: 'update:modelValue', value: DatePickerValue): void;
