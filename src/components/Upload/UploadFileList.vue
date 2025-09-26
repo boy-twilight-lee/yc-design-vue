@@ -96,6 +96,6 @@ const renderDelIcon = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/upload.less';
 </style>

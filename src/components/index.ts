@@ -18,6 +18,7 @@ import Cascader from './Cascader';
 import Comment from './Comment';
 import ConfigProvider from './ConfigProvider';
 import { default as Descriptions, DescriptionsItem } from './Descriptions';
+import DatePicker, { YearPicker, MonthPicker } from './DatePicker';
 import Divider from './Divider';
 import Drawer from './Drawer';
 import {
@@ -180,6 +181,7 @@ export {
   Comment,
   ConfigProvider,
   Descriptions,
+  DatePicker,
   Divider,
   Drawer,
   Dropdown,
@@ -251,6 +253,7 @@ export const components: Record<string, Plugin> = {
   Comment,
   ConfigProvider,
   Descriptions,
+  DatePicker,
   Divider,
   Drawer,
   Dropdown,
@@ -315,6 +318,8 @@ const YcDesignVue = {
   CollapseItem,
   Countdown,
   DescriptionsItem,
+  YearPicker,
+  MonthPicker,
   DropdownButton,
   Doption,
   Dgroup,

@@ -1,71 +1,38 @@
 <template>
   <div class="test">
-    <yc-cascader-panel :options="[]" v-model="value" expand-child>
-    </yc-cascader-panel>
-    <a-cascader-panel :options="[]" v-model="value" expand-child>
-    </a-cascader-panel>
+    <yc-year-picker
+      v-model="value"
+      value-format="YYYY年"
+      format="YYYY---年"
+      style="width: 300px"
+    >
+      <template #extra>
+        <yc-button type="primary">测试</yc-button>
+      </template>
+    </yc-year-picker>
+    <a-year-picker
+      v-model="value"
+      value-format="YYYY年"
+      format="YYYY---年"
+      show-confirm-btn
+    >
+      <template #extra>
+        <yc-button type="primary">测试</yc-button>
+      </template>
+      <template #cell="{ date }">
+        <span>{{ date.getFullYear() }}</span>
+      </template>
+    </a-year-picker>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 const value = ref('');
-
-const options = [
-  {
-    value: 'beijing',
-    label: 'Beijing',
-    children: [
-      {
-        value: 'chaoyang',
-        label: 'ChaoYang',
-        children: [
-          {
-            value: 'datunli',
-            label: 'Datunli',
-          },
-        ],
-      },
-      {
-        value: 'haidian',
-        label: 'Haidian',
-      },
-      {
-        value: 'dongcheng',
-        label: 'Dongcheng',
-      },
-      {
-        value: 'xicheng',
-        label: 'Xicheng',
-        children: [
-          {
-            value: 'jinrongjie',
-            label: 'Jinrongjie',
-          },
-          {
-            value: 'tianqiao',
-            label: 'Tianqiao',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: 'shanghai',
-    label: 'Shanghai',
-    children: [
-      {
-        value: 'huangpu',
-        label: 'Huangpu',
-      },
-    ],
-  },
-];
-
 watch(
   () => value.value,
   () => {
-    console.log('change', value.value);
+    console.log(value.value);
   }
 );
 </script>

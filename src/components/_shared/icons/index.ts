@@ -39,3 +39,6 @@ export { default as IconZoomIn } from './IconZoomIn.vue';
 export { default as IconZoomOut } from './IconZoomOut.vue';
 export { default as IconUpload } from './IconUpload.vue';
 export { default as IconFile } from './IconFile.vue';
+export { default as IconDoubleLeft } from './IconDoubleLeft.vue';
+export { default as IconDoubleRight } from './IconDoubleRight.vue';
+export { default as IconCalendar } from './IconCalendar.vue';

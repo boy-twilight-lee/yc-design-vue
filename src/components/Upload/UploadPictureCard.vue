@@ -108,6 +108,6 @@ const handlePreview = (fileItem: FileItem) => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/upload.less';
 </style>
