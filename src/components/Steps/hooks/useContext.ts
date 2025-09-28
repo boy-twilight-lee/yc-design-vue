@@ -77,7 +77,8 @@ export default function useStepsContext() {
     const stepMap = reactive<Map<string, string>>(new Map());
     // statusArr
     const statusArr = ref<Ref<StepStatus>[]>([]);
-    _provide<StepsContext>(STEPS_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       stepMap,
       computedCurrent,
       lineLess,
@@ -89,12 +90,9 @@ export default function useStepsContext() {
       changeable,
       labelPlacement,
       emits,
-    });
-    return {
-      direction,
-      labelPlacement,
-      type,
     };
+    _provide<StepsContext>(STEPS_CONTEXT_KEY, context);
+    return context;
   };
   const inject = (props: RecordType) => {
     const { status: _status } = toRefs(props);

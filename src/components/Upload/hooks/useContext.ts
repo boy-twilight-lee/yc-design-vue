@@ -117,7 +117,7 @@ export default function useUploadContext() {
         URL.revokeObjectURL(v.url);
       });
     });
-    // context
+    // 上下文
     const context = {
       computedFileList,
       accept,

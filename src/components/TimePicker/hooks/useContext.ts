@@ -127,7 +127,8 @@ export default function useTimePickerContext() {
     });
     // inputRefs
     const inputRefs = ref<HTMLInputElement[]>([]);
-    _provide<TimePickerContext>(TIME_PICKER_CONTEXT_KEY, {
+    // 上下文
+    const context: TimePickerContext = {
       computedValue,
       computedVisible,
       timeColumn,
@@ -142,18 +143,13 @@ export default function useTimePickerContext() {
       disabledHours,
       disabledMinutes,
       disabledSeconds,
-    });
+    };
+    _provide<TimePickerContext>(TIME_PICKER_CONTEXT_KEY, context);
     return {
-      computedValue,
-      computedVisible,
+      ...context,
       showClearBtn,
-      curValue,
       readonly,
       disabled,
-      type,
-      curIndex,
-      inputRefs,
-      format,
       placeholder,
     };
   };

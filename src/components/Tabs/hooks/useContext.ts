@@ -86,7 +86,8 @@ export default function useTabsContext() {
       }
       return _direction.value;
     });
-    _provide<TabsContext>(TABS_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       computedActiveKey,
       editable,
       direction,
@@ -100,15 +101,11 @@ export default function useTabsContext() {
       titleRefs,
       tabRefs,
       emits,
-    });
+    };
+    _provide<TabsContext>(TABS_CONTEXT_KEY, context);
     return {
-      computedActiveKey,
-      size,
-      direction,
-      position,
+      ...context,
       autoSwitch,
-      titleRefs,
-      tabRefs,
     };
   };
   const inject = () => {

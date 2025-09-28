@@ -50,7 +50,7 @@
           :value="isArray(computedValue) ? computedValue[0] : computedValue"
           :placeholder="isArray(placeholder) ? placeholder[0] : placeholder"
           :disabled="disabled"
-          :readonly="readonly"
+          :readonly="readonly || true"
           :ref="(el) => (inputRefs[0] = el as HTMLInputElement)"
           class="yc-picker-start-time"
         />

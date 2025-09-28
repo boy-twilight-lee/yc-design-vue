@@ -108,8 +108,8 @@ export default function useTransferContext() {
         return computedValueMap.value.has(item);
       });
     });
-    // 提供给子组件
-    _provide<TransferContext>(TRANSFER_CONTEXT_KEY, {
+    // 上下文
+    const context: TransferContext = {
       computedValue,
       computedSelected,
       targetChecked,
@@ -125,13 +125,10 @@ export default function useTransferContext() {
       disabled,
       title,
       emits,
-    });
-    return {
-      computedValue,
-      computedSelected,
-      targetChecked,
-      sourceChecked,
     };
+    // 提供给子组件
+    _provide<TransferContext>(TRANSFER_CONTEXT_KEY, context);
+    return context;
   };
   const inject = () => {
     // 接收的值

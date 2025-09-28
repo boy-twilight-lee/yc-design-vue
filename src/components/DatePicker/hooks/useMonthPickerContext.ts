@@ -7,10 +7,10 @@ import {
   inject as _inject,
 } from 'vue';
 import {
-  YearPickerEmits,
+  MonthPickerEmits,
   DatePickerValue,
   ValueFormat,
-  YearPickerProps as _YearPickerProps,
+  MonthPickerProps as _MonthPickerProps,
   ShortcutType,
   ShortcutsPosition,
   DisabledDate,
@@ -18,8 +18,8 @@ import {
 import { RecordType, Required } from '@shared/type';
 import { useControlValue, dayjs, isString } from '@shared/utils';
 
-const YEAR_PICKER_CONTENXT_KEY = 'year-picker-context';
-interface YearPickerContenxt {
+const MONTH_PICKER_CONTENXT_KEY = 'month-picker-context';
+interface MonthPickerContenxt {
   computedValue: Ref<DatePickerValue>;
   computedPickerValue: Ref<DatePickerValue>;
   formatValue: Ref<string>;
@@ -28,19 +28,19 @@ interface YearPickerContenxt {
   shortcuts: Ref<ShortcutType[]>;
   shortcutsPosition: Ref<ShortcutsPosition>;
   previewShortcut: Ref<boolean>;
-  emits: YearPickerEmits;
+  emits: MonthPickerEmits;
   disabledDate: DisabledDate;
   getValueFromFormat: (val: DatePickerValue, format?: ValueFormat) => number;
   getFormatFromValue: (
     val: DatePickerValue,
     format?: ValueFormat
   ) => DatePickerValue;
-  getDateFromYear: (year: number) => Date;
+  getDateFromMonth: (year: number) => Date;
 }
-type YearPickerProps = Required<_YearPickerProps>;
+type MonthPickerProps = Required<_MonthPickerProps>;
 
-export default function useYearPickerContext() {
-  const provide = (props: RecordType, emits: YearPickerEmits) => {
+export default function useMonthPickerContext() {
+  const provide = (props: RecordType, emits: MonthPickerEmits) => {
     const {
       modelValue,
       defaultValue,
@@ -50,14 +50,12 @@ export default function useYearPickerContext() {
       defaultPopupVisible,
       format,
       valueFormat,
-      allowClear,
-      disabled,
       showConfirmBtn,
       shortcuts,
       shortcutsPosition,
       previewShortcut,
-    } = toRefs(props as YearPickerProps);
-    const { disabledDate } = props as YearPickerProps;
+    } = toRefs(props as MonthPickerProps);
+    const { disabledDate } = props as MonthPickerProps;
     // 受控的值
     const computedValue = useControlValue<DatePickerValue>(
       modelValue,
@@ -98,9 +96,9 @@ export default function useYearPickerContext() {
     ) => {
       if (!val) return val as number;
       if (format == 'timestamp') {
-        return new Date(val).getFullYear();
+        return new Date(val).getMonth();
       } else if (format == 'Date') {
-        return (val as Date).getFullYear();
+        return (val as Date).getMonth();
       } else {
         return dayjs(isString(val) ? val : String(val), format).year();
       }
@@ -111,7 +109,7 @@ export default function useYearPickerContext() {
       format: ValueFormat = valueFormat.value
     ) => {
       if (!val) return '';
-      const date: DatePickerValue = getDateFromYear(val as number);
+      const date: DatePickerValue = getDateFromMonth(val as number);
       if (format == 'timestamp') {
         return date.getTime();
       }
@@ -121,10 +119,10 @@ export default function useYearPickerContext() {
       return date;
     };
     // year转date
-    const getDateFromYear = (year: number) => {
+    const getDateFromMonth = (year: number) => {
       return new Date(year, 1, 1, 0, 0, 0);
     };
-    const context: YearPickerContenxt = {
+    const context: MonthPickerContenxt = {
       computedValue,
       computedVisible,
       computedPickerValue,
@@ -135,19 +133,15 @@ export default function useYearPickerContext() {
       previewShortcut,
       emits,
       disabledDate,
-      getDateFromYear,
+      getDateFromMonth,
       getValueFromFormat,
       getFormatFromValue,
     };
-    _provide<YearPickerContenxt>(YEAR_PICKER_CONTENXT_KEY, context);
-    return {
-      ...context,
-      disabled,
-      allowClear,
-    };
+    _provide<MonthPickerContenxt>(MONTH_PICKER_CONTENXT_KEY, context);
+    return context;
   };
   const inject = () => {
-    return _inject<YearPickerContenxt>(YEAR_PICKER_CONTENXT_KEY, {
+    return _inject<MonthPickerContenxt>(MONTH_PICKER_CONTENXT_KEY, {
       computedValue: ref(''),
       computedVisible: ref(false),
       computedPickerValue: ref(''),
@@ -158,7 +152,7 @@ export default function useYearPickerContext() {
       previewShortcut: ref(true),
       emits: () => {},
       disabledDate: () => false,
-      getDateFromYear: () => new Date(),
+      getDateFromMonth: () => new Date(),
       getFormatFromValue: () => '',
       getValueFromFormat: () => 0,
     });

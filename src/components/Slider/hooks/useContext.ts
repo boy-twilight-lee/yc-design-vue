@@ -148,7 +148,8 @@ export default function useSliderContext() {
       const clampedValue = Math.max(min.value, Math.min(finalValue, max.value));
       return +clampedValue.toFixed(digit);
     }
-    _provide<SliderContext>(SLIDER_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       startValue,
       endValue,
       tempStartValue,
@@ -164,20 +165,13 @@ export default function useSliderContext() {
       formatTooltip,
       normalizeValue,
       denormalizeValue,
-    });
+    };
+    _provide<SliderContext>(SLIDER_CONTEXT_KEY, context);
     return {
-      range,
-      direction,
-      startValue,
-      endValue,
-      tempStartValue,
-      tempEndValue,
+      ...context,
       computedValue,
       ticks,
       marks,
-      min,
-      max,
-      normalizeValue,
     };
   };
   const inject = () => {

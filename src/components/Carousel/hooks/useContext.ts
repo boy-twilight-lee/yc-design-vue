@@ -99,8 +99,8 @@ export default function useCarouselContext() {
       await sleep(moveSpeed.value);
       flag = false;
     };
-    // 提供给子组件
-    _provide<CarouselContext>(CAROUSEL_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       length,
       computedCurrent,
       transitionTimingFunction,
@@ -112,11 +112,12 @@ export default function useCarouselContext() {
       moveType,
       preIndex,
       getValidIndex,
-    });
+    };
+    // 提供给子组件
+    _provide<CarouselContext>(CAROUSEL_CONTEXT_KEY, context);
     return {
+      ...context,
       carouselItems,
-      computedCurrent,
-      length,
       autoPlay,
       slideTo,
     };

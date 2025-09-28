@@ -269,8 +269,8 @@ export default function useMenuContext() {
       menuTree,
       mode,
     });
-    // 注入
-    _provide<MenuContext>(MENU_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       computedSelectedKeys,
       computedOpenKeys,
       computedCollapsed,
@@ -290,14 +290,13 @@ export default function useMenuContext() {
       max,
       menuItemWidths,
       emits,
-    });
+    };
+    // 注入
+    _provide<MenuContext>(MENU_CONTEXT_KEY, context);
     return {
-      theme,
-      computedCollapsed,
+      ...context,
       breakpoint,
       collapsedWidth: computed(() => valueToPx(collapsedWidth.value)),
-      menuTree,
-      max,
     };
   };
   const inject = () => {

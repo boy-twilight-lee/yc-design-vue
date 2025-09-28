@@ -71,8 +71,8 @@ export default function useGridContext() {
         : [getBreakpointValue(breakpoint.value, _gutter.value, 0), 0];
       return result as number[];
     });
-    // 提供给子组件
-    _provide<GridContext>(GRID_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       breakpoint,
       gutter,
       div,
@@ -81,13 +81,12 @@ export default function useGridContext() {
       colGap,
       collapsed,
       collapsedRows,
-    });
+    };
+    // 提供给子组件
+    _provide<GridContext>(GRID_CONTEXT_KEY, context);
     return {
-      breakpoint,
-      cols,
-      colGap,
+      ...context,
       rowGap,
-      gutter,
     };
   };
   const inject = () => {

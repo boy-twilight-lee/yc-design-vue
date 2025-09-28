@@ -9,7 +9,9 @@
       v-if="['left', 'right'].includes(shortcutsPosition)"
       :shortcuts-position="shortcutsPosition"
       :shortcuts="shortcuts"
-      @click="handleShortcutClick"
+      :preview-shortcut="previewShortcut"
+      @click="handleShortcut"
+      @hover="(v) => handleShortcut(v, true)"
     />
     <div class="yc-picker-panel-wrapper">
       <div class="yc-panel-year">
@@ -64,7 +66,9 @@
             v-if="shortcutsPosition == 'bottom'"
             :shortcuts="shortcuts"
             :shortcuts-position="shortcutsPosition"
-            @click="handleShortcutClick"
+            :preview-shortcut="previewShortcut"
+            @click="handleShortcut"
+            @hover="(v) => handleShortcut(v, true)"
           />
           <yc-button
             :disabled="!computedValue"
@@ -81,7 +85,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, watch, computed } from 'vue';
+import { ref, watch } from 'vue';
 import { DatePickerValue, ShortcutType } from '@/components/DatePicker/type';
 import useYearPickerContext from '@/components/DatePicker/hooks/useYearPickerContext';
 import { getDecadeRange, dayjs, sleep } from '@shared/utils';
@@ -90,11 +94,11 @@ import PickerCell from './PickerCell.vue';
 import PickerShortcuts from './PickerShortcuts.vue';
 const {
   computedValue,
-  computedPickerValue,
   computedVisible,
   showConfirmBtn,
   shortcuts,
   shortcutsPosition,
+  previewShortcut,
   emits,
   getDateFromYear,
   getFormatFromValue,
@@ -114,14 +118,18 @@ const handleYearChange = (type: string) => {
   startYear.value = type == 'pre' ? startYear.value - 10 : startYear.value + 10;
   yearRange.value = getDecadeRange(startYear.value);
 };
-// 处理shortcutclick
-const handleShortcutClick = (shortcut: ShortcutType) => {
-  emits('select-shortcut', shortcut);
-  if (!shortcut.value) return;
+// 处理shortcut
+const handleShortcut = (shortcut: ShortcutType, hover: boolean = false) => {
+  if (!hover) {
+    emits('select-shortcut', shortcut);
+  }
+  if (shortcut.value) {
+    computedValue.value = getFormatFromValue(
+      (shortcut.value as Date).getFullYear()
+    );
+  }
+  if (hover) return;
   isConfirm = true;
-  computedValue.value = getFormatFromValue(
-    (shortcut.value as Date).getFullYear()
-  );
   computedVisible.value = false;
 };
 // 处理选中
@@ -140,7 +148,6 @@ const handleConfirm = async () => {
   const date = getDateFromYear(getValueFromFormat(computedValue.value));
   const year = date.getFullYear();
   const value = getFormatFromValue(year);
-  computedValue.value = computedPickerValue.value;
   emits('change', value, date, `${year}`);
   emits('ok', value, date, `${year}`);
   await sleep(0);
@@ -177,3 +184,7 @@ watch(
   }
 );
 </script>
+
+<style lang="less">
+@import './style/year-picker.less';
+</style>

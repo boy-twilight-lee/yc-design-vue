@@ -63,7 +63,10 @@ export interface BasePickerSlots {
   extra?: () => VNode[];
 }
 
-export type YearPickerProps = Omit<BasePickerProps, 'disabledTime'> & {
+export type YearPickerProps = Omit<
+  BasePickerProps,
+  'disabledTime' | 'abbreviation'
+> & {
   modelValue?: DatePickerValue;
   defaultValue?: DatePickerValue;
 };

@@ -62,17 +62,15 @@ export default function useTimelineContext() {
       );
       return pending.value ? [...nodes, pendingNodes.value] : nodes;
     });
-    _provide<TimelineContext>(TIMELINE_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       direction,
       mode,
       labelPosition,
       reverse,
-    });
-    return {
-      direction,
-      mode,
-      timelineItems,
     };
+    _provide<TimelineContext>(TIMELINE_CONTEXT_KEY, context);
+    return { ...context, timelineItems };
   };
   const inject = () => {
     return _inject<TimelineContext>(TIMELINE_CONTEXT_KEY, {

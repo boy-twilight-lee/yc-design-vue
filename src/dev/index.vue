@@ -1,22 +1,26 @@
 <template>
   <div class="test">
+    <yc-time-picker />
     <yc-year-picker
       style="width: 300px"
       show-confirm-btn
       :shortcuts="shortcuts"
       :preview-shortcut="false"
+      allow-clear
       shortcuts-position="bottom"
       @change="(v) => console.log(v)"
     >
     </yc-year-picker>
-    <a-year-picker
+    <a-month-picker
       v-model="value"
       shortcuts-position="bottom"
       :shortcuts="shortcuts"
       :previewShortcut="false"
+      :abbreviation="false"
+      allow-clear
       show-confirm-btn
     >
-    </a-year-picker>
+    </a-month-picker>
   </div>
 </template>
 

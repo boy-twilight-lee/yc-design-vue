@@ -68,8 +68,8 @@ export default function useColorPickerContext() {
     const baseColor = ref<string>(computedColor.value);
     // visible
     const popupVisible = ref<boolean>(false);
-    // 提供属性
-    _provide<ColorPickerContext>(COLOR_PICKER_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       emits,
       popupVisible,
       computedColor,
@@ -83,11 +83,12 @@ export default function useColorPickerContext() {
       hideTrigger,
       presetColors,
       historyColors,
-    });
+    };
+    // 提供属性
+    _provide<ColorPickerContext>(COLOR_PICKER_CONTEXT_KEY, context);
     return {
-      popupVisible,
+      ...context,
       size,
-      computedColor,
     };
   };
   const inject = () => {

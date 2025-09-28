@@ -58,22 +58,19 @@ export default function useAnchorContext() {
         ? findFirstScrollableParent(listRef.value)
         : getElement(_scrollContainer.value);
     });
-    _provide<AnchorContext>(ANCHOR_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       changeHash,
       smooth,
       boundary,
       lineLess,
       curHref,
       scrollContainer,
-    });
+    };
+    _provide<AnchorContext>(ANCHOR_CONTEXT_KEY, context);
     return {
+      ...context,
       hrefs,
-      curHref,
-      changeHash,
-      smooth,
-      boundary,
-      lineLess,
-      scrollContainer,
     };
   };
   const inject = () => {

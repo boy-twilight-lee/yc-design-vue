@@ -379,8 +379,8 @@ export default function useCascaderContext() {
         deep: true,
       }
     );
-    // 提供给子组件
-    _provide<CascaderContext>(CASCADER_CONTEXT_KEY, {
+    // 上下文
+    const context = {
       computedValue,
       computedInputValue,
       options,
@@ -399,26 +399,19 @@ export default function useCascaderContext() {
       getValueKey,
       getOption,
       loadMore,
-    });
+    };
+    // 提供给子组件
+    _provide<CascaderContext>(CASCADER_CONTEXT_KEY, context);
     return {
-      computedValue,
-      computedInputValue,
+      ...context,
       computedVisible,
-      options,
       optionMap,
       selectOptions,
-      curLevel,
-      curPath,
-      multiple,
-      pathMode,
       disabled,
       allowClear,
       allowSearch,
       searchDelay,
-      loading,
       getValue,
-      getValueKey,
-      getOption,
     };
   };
   const inject = () => {
