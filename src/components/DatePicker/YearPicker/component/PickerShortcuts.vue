@@ -27,25 +27,5 @@ defineEmits<{
 </script>
 
 <style lang="less" scoped>
-.yc-picker-shortcuts {
-  overflow-y: auto;
-  padding: 10px 8px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.yc-picker-shortcuts-left {
-  border-right: 1px solid var(--color-neutral-3);
-}
-.yc-picker-shortcuts-right {
-  border-left: 1px solid var(--color-neutral-3);
-}
-.yc-picker-shortcuts-bottom {
-  padding: 0;
-  overflow: hidden;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5px 10px;
-}
+@import '@/components/DatePicker/style/picker-shortcuts.less';
 </style>

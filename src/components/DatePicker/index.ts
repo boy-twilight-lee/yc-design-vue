@@ -1,10 +1,10 @@
 import { App } from 'vue';
-import _DatePicker from './DatePicker.vue';
-import _RangePicker from './RangePicker.vue';
+import _DatePicker from './DatePicker/DatePicker.vue';
+import _RangePicker from './RangePicker/RangePicker.vue';
 import _YearPicker from './YearPicker/index.vue';
-import _QuarterPicker from './QuarterPicker.vue';
-import _MonthPicker from './MonthPicker.vue';
-import _WeekPicker from './WeekPicker.vue';
+import _QuarterPicker from './QuaterPicker/QuarterPicker.vue';
+import _MonthPicker from './MonthPicker/MonthPicker.vue';
+import _WeekPicker from './WeekPicker/WeekPicker.vue';
 
 export type DatePickerInstance = InstanceType<typeof _DatePicker>;
 export type RangePickerInstance = InstanceType<typeof _RangePicker>;

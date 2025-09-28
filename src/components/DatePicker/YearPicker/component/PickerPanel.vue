@@ -90,6 +90,7 @@ import PickerCell from './PickerCell.vue';
 import PickerShortcuts from './PickerShortcuts.vue';
 const {
   computedValue,
+  computedPickerValue,
   computedVisible,
   showConfirmBtn,
   shortcuts,
@@ -108,8 +109,6 @@ const yearRange = ref<number[][]>([]);
 let oldValue: DatePickerValue;
 // 是否确认过
 let isConfirm = false;
-// 是否点击快捷
-let isShortcut = false;
 // 处理改变
 const handleYearChange = (type: string) => {
   startYear.value = type == 'pre' ? startYear.value - 10 : startYear.value + 10;
@@ -118,9 +117,8 @@ const handleYearChange = (type: string) => {
 // 处理shortcutclick
 const handleShortcutClick = (shortcut: ShortcutType) => {
   emits('select-shortcut', shortcut);
-  isShortcut = true;
   if (!shortcut.value) return;
-  console.log(getFormatFromValue(shortcut.value as Date), 'valeu');
+  isConfirm = true;
   computedValue.value = getFormatFromValue(
     (shortcut.value as Date).getFullYear()
   );
@@ -142,6 +140,7 @@ const handleConfirm = async () => {
   const date = getDateFromYear(getValueFromFormat(computedValue.value));
   const year = date.getFullYear();
   const value = getFormatFromValue(year);
+  computedValue.value = computedPickerValue.value;
   emits('change', value, date, `${year}`);
   emits('ok', value, date, `${year}`);
   await sleep(0);
@@ -151,7 +150,6 @@ const handleConfirm = async () => {
 watch(
   () => computedValue.value,
   (val) => {
-    console.log(getValueFromFormat(val), 'format');
     const rangeData = getDecadeRange(
       val ? getValueFromFormat(val) : new Date().getFullYear()
     );
@@ -171,7 +169,7 @@ watch(
       oldValue = getValueFromFormat(computedValue.value);
       return;
     }
-    if (!showConfirmBtn.value || isConfirm || isShortcut) return;
+    if (!showConfirmBtn.value || isConfirm) return;
     computedValue.value = oldValue ?? computedValue.value;
   },
   {
@@ -179,5 +177,3 @@ watch(
   }
 );
 </script>
-
-<style lang="less" scoped></style>

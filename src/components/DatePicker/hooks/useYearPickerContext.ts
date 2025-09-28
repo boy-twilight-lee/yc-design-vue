@@ -16,11 +16,12 @@ import {
   DisabledDate,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue, dayjs } from '@shared/utils';
+import { useControlValue, dayjs, isString } from '@shared/utils';
 
 const YEAR_PICKER_CONTENXT_KEY = 'year-picker-context';
 interface YearPickerContenxt {
   computedValue: Ref<DatePickerValue>;
+  computedPickerValue: Ref<DatePickerValue>;
   formatValue: Ref<string>;
   computedVisible: Ref<boolean>;
   showConfirmBtn: Ref<boolean>;
@@ -99,7 +100,7 @@ export default function useYearPickerContext() {
       } else if (format == 'Date') {
         return (val as Date).getFullYear();
       } else {
-        return dayjs(val, format).year();
+        return dayjs(isString(val) ? val : String(val), format).year();
       }
     };
     // format
@@ -124,6 +125,7 @@ export default function useYearPickerContext() {
     const context: YearPickerContenxt = {
       computedValue,
       computedVisible,
+      computedPickerValue,
       formatValue,
       showConfirmBtn,
       shortcuts,
@@ -145,6 +147,7 @@ export default function useYearPickerContext() {
     return _inject<YearPickerContenxt>(YEAR_PICKER_CONTENXT_KEY, {
       computedValue: ref(''),
       computedVisible: ref(false),
+      computedPickerValue: ref(''),
       formatValue: ref(''),
       showConfirmBtn: ref(false),
       shortcuts: ref([]),
