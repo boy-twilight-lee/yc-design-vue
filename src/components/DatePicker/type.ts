@@ -10,15 +10,15 @@ export interface BasePickerProps {
   error?: boolean;
   size?: Size;
   shortcuts?: ShortcutType[];
-  shortcutsPosition?: Exclude<Position, 'top'>;
-  position?: 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
+  shortcutsPosition?: ShortcutsPosition;
+  position?: DatePickerPosition;
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   triggerProps?: TriggerProps;
   unmountOnClose?: boolean;
   placeholder?: string;
   disabled?: boolean;
-  disabledDate?: (current: Date) => boolean;
+  disabledDate?: DisabledDate;
   disabledTime?: (current: Date) => {
     disabledHours?: () => number[];
     disabledMinutes?: () => number[];
@@ -77,21 +77,32 @@ export interface MonthPickerProps extends BasePickerProps {
   defaultValue?: DatePickerValue;
 }
 
+export interface MonthPickerEmits extends BasePickerEmits {
+  (e: 'update:modelValue', value: DatePickerValue): void;
+}
+
 export interface WeekPickerProps extends BasePickerProps {
   modelValue?: DatePickerValue;
   defaultValue?: DatePickerValue;
   dayStartOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
 
+export interface WeekPickerEmits extends BasePickerEmits {
+  (e: 'update:modelValue', value: DatePickerValue): void;
+}
+
 export type DatePickerValue = Date | string | number;
 
 export type ValueFormat = 'timestamp' | 'Date' | string;
 
+export type DatePickerPosition = 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
+
+export type ShortcutsPosition = Exclude<Position, 'top'>;
+
+export type DisabledDate = (current: Date) => boolean;
+
 export type ShortcutType = {
   label: string | number | (() => VNode);
-  value:
-    | DatePickerValue
-    | DatePickerValue[]
-    | (() => DatePickerValue | DatePickerValue[]);
+  value: Date | Date[] | (() => Date | Date[]);
   format: string;
 };

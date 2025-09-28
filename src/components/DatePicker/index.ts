@@ -1,7 +1,7 @@
 import { App } from 'vue';
 import _DatePicker from './DatePicker.vue';
 import _RangePicker from './RangePicker.vue';
-import _YearPicker from './YearPicker.vue';
+import _YearPicker from './YearPicker/index.vue';
 import _QuarterPicker from './QuarterPicker.vue';
 import _MonthPicker from './MonthPicker.vue';
 import _WeekPicker from './WeekPicker.vue';

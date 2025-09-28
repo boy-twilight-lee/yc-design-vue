@@ -5,6 +5,7 @@
   border: 1px solid var(--color-neutral-3);
   border-radius: var(--border-radius-medium);
   box-shadow: 0 2px 5px #0000001a;
+  display: flex;
   .yc-picker-panel-wrapper {
     .yc-panel-year {
       width: 265px;
@@ -65,11 +66,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 10px;
       }
     }
   }
 }
-
+// shortcuts
+.yc-picker-container-shortcuts-right {
+  flex-direction: row-reverse;
+}
 .yc-year-picker-allow-clear {
   &:not(.yc-input-disabled):hover {
     .yc-icon-button {

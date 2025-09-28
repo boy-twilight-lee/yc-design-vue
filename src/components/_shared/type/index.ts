@@ -54,7 +54,7 @@ export type ClassName =
   | Record<string, boolean>
   | (string | Record<string, boolean>)[];
 
-export type RenderContent = string | RecordType[] | RenderFunction;
+export type RenderContent = string | number | RecordType[] | RenderFunction;
 
 export type RecordType<T = any> = Record<string, T>;
 
