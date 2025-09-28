@@ -14,6 +14,25 @@
           border-bottom: 1px solid var(--color-neutral-3);
           display: flex;
 
+          .yc-picker-header-icon {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            margin-right: 2px;
+            margin-left: 2px;
+            color: var(--color-text-2);
+            font-size: 12px;
+            line-height: 24px;
+            text-align: center;
+            background-color: var(--color-bg-popup);
+            border-radius: 50%;
+            transition: all 0.1s cubic-bezier(0, 0, 1, 1);
+            user-select: none;
+            &:hover {
+              background-color: var(--color-fill-3);
+            }
+          }
+
           .yc-picker-header-title {
             flex: 1;
             color: var(--color-text-1);
@@ -48,5 +67,27 @@
         justify-content: space-between;
       }
     }
+  }
+}
+
+.yc-year-picker-allow-clear {
+  &:not(.yc-input-disabled):hover {
+    .yc-icon-button {
+      display: flex;
+    }
+    .yc-picker-suffix-icon {
+      display: none;
+    }
+  }
+  .yc-icon-button {
+    font-size: 16px;
+    display: none;
+  }
+  .yc-picker-suffix-icon {
+    font-size: 16px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

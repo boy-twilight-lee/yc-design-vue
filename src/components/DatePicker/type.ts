@@ -10,7 +10,7 @@ export interface BasePickerProps {
   error?: boolean;
   size?: Size;
   shortcuts?: ShortcutType[];
-  shortcutsPosition?: Position;
+  shortcutsPosition?: Exclude<Position, 'top'>;
   position?: 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
@@ -27,7 +27,8 @@ export interface BasePickerProps {
   pickerValue?: DatePickerValue;
   defaultPickerValue?: DatePickerValue;
   popupContainer?: PopupContainer;
-  valueFormat?: 'timestamp' | 'Date' | string;
+  valueFormat?: ValueFormat;
+  format?: string;
   previewShortcut?: boolean;
   showConfirmBtn?: boolean;
   disabledInput?: boolean;
@@ -65,7 +66,6 @@ export interface BasePickerSlots {
 export type YearPickerProps = Omit<BasePickerProps, 'disabledTime'> & {
   modelValue?: DatePickerValue;
   defaultValue?: DatePickerValue;
-  format?: string;
 };
 
 export interface YearPickerEmits extends BasePickerEmits {
@@ -75,18 +75,17 @@ export interface YearPickerEmits extends BasePickerEmits {
 export interface MonthPickerProps extends BasePickerProps {
   modelValue?: DatePickerValue;
   defaultValue?: DatePickerValue;
-  format?: string;
 }
 
 export interface WeekPickerProps extends BasePickerProps {
   modelValue?: DatePickerValue;
   defaultValue?: DatePickerValue;
-  format?: string;
-  valueFormat?: string;
   dayStartOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 export type DatePickerValue = Date | string | number;
+
+export type ValueFormat = 'timestamp' | 'Date' | string;
 
 export type ShortcutType = {
   label: string | number | (() => VNode);

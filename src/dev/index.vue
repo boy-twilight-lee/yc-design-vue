@@ -3,24 +3,40 @@
     <yc-year-picker
       v-model="value"
       :disabled-date="(date) => [2022].includes(date.getFullYear())"
-      value-format="YYYY年"
       format="YYYY---年"
       style="width: 300px"
+      show-confirm-btn
+      allow-clear
+      value-format="Date"
+      @change="(v) => console.log(v)"
     >
-      <template #extra>
-        <yc-button type="primary">测试</yc-button>
-      </template>
     </yc-year-picker>
     <a-year-picker
       v-model="value"
       :disabled-date="(date) => [2022].includes(date.getFullYear())"
+      shortcuts-position="bottom"
+      preview-shortcut
+      :shortcuts="[
+        {
+          label: '测试',
+        },
+        {
+          label: '测试',
+        },
+        {
+          label: '测试',
+        },
+        {
+          label: '测试',
+        },
+        {
+          label: '测试',
+        },
+      ]"
       value-format="YYYY年"
       format="YYYY---年"
       show-confirm-btn
     >
-      <template #extra>
-        <yc-button type="primary">测试</yc-button>
-      </template>
     </a-year-picker>
   </div>
 </template>
@@ -28,12 +44,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 const value = ref('');
-watch(
-  () => value.value,
-  () => {
-    console.log(value.value);
-  }
-);
 </script>
 
 <style lang="less">
