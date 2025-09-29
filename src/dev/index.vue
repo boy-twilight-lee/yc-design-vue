@@ -1,6 +1,5 @@
 <template>
   <div class="test">
-    <yc-time-picker />
     <yc-year-picker
       style="width: 300px"
       show-confirm-btn

@@ -50,7 +50,7 @@
 import { watch, nextTick, ref, toRefs } from 'vue';
 import { IconCalendar } from '@shared/icons';
 import { IconButton } from '@shared/components';
-import userPickerInputContext from './hooks/userPickerInputContext';
+import userPickerInputContext from '../hooks/userPickerInputContext';
 import YcInput, { InputInstance } from '@/components/Input';
 import YcTrigger from '@/components/Trigger';
 defineOptions({
@@ -83,5 +83,5 @@ watch(
 </script>
 
 <style lang="less" scoped>
-@import './style/picker-trigger.less';
+@import '../style/picker-input.less';
 </style>

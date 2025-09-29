@@ -44,5 +44,5 @@ defineEmits<{
 </script>
 
 <style lang="less" scoped>
-@import '@/components/DatePicker/style/picker-cell.less';
+@import '../style/picker-panel.less';
 </style>
