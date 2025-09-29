@@ -37,7 +37,7 @@
         >
           <reuse-shortcuts v-if="shortcutsPosition == 'bottom'" />
           <yc-button
-            :disabled="!confirmBtnDisabled"
+            :disabled="confirmBtnDisabled"
             type="primary"
             size="mini"
             @click="$emit('confirm', $event)"

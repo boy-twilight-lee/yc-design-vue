@@ -1,10 +1,4 @@
 <template>
-  <picker-input v-if="!hideTrigger" :class="$attrs.class" :style="$attrs.style">
-    <template #content>
-      <reuse-panel />
-    </template>
-  </picker-input>
-  <reuse-panel v-else />
   <define-panel>
     <picker-panel
       :preview-shortcut="previewShortcut"
@@ -16,42 +10,37 @@
       @shortcut-select="handleShortcut"
     >
       <div class="yc-panel-year">
-        <div class="yc-panel-year-inner">
-          <div class="yc-picker-header">
-            <div class="yc-picker-header-icon" @click="handleYearChange('pre')">
-              <slot name="icon-prev-double">
-                <icon-double-left />
-              </slot>
-            </div>
-            <div class="yc-picker-header-title">
-              {{ startYear }}-{{ startYear + 10 }}
-            </div>
-            <div
-              class="yc-picker-header-icon"
-              @click="handleYearChange('NEXT')"
-            >
-              <slot name="icon-next-double">
-                <icon-double-right />
-              </slot>
-            </div>
+        <div class="yc-picker-header">
+          <div class="yc-picker-header-icon" @click="handleYearChange('pre')">
+            <slot name="icon-prev-double">
+              <icon-double-left />
+            </slot>
           </div>
-          <div class="yc-picker-body">
-            <div v-for="(row, i) in yearRange" :key="i" class="yc-picker-row">
-              <picker-cell
-                v-for="(year, k) in row"
-                :key="year"
-                :cell-in-view="!!(i || k)"
-                :is-today="year == dayjs().year()"
-                :is-selected="getValueFromFormat(computedValue) == year"
-                :disabled="disabledDate?.(getDateFromYear(year))"
-                :value="year"
-                @click="handleSelect(year)"
-              >
-                <template v-if="$slots.cell" #cell>
-                  <slot name="cell" :date="getDateFromYear(year)" />
-                </template>
-              </picker-cell>
-            </div>
+          <div class="yc-picker-header-title">
+            {{ startYear }}-{{ startYear + 10 }}
+          </div>
+          <div class="yc-picker-header-icon" @click="handleYearChange('next')">
+            <slot name="icon-next-double">
+              <icon-double-right />
+            </slot>
+          </div>
+        </div>
+        <div class="yc-picker-body">
+          <div v-for="(row, i) in yearRange" :key="i" class="yc-picker-row">
+            <picker-cell
+              v-for="({ value: date, label }, k) in row"
+              :key="date.getFullYear()"
+              :cell-in-view="!!(i || k)"
+              :is-today="date.getFullYear() == dayjs().year()"
+              :is-selected="isSelected(date)"
+              :disabled="disabledDate?.(date)"
+              :value="label"
+              @click="handleSelect(date)"
+            >
+              <template v-if="$slots.cell" #cell>
+                <slot name="cell" :date="date" />
+              </template>
+            </picker-cell>
           </div>
         </div>
       </div>
@@ -60,6 +49,12 @@
       </template>
     </picker-panel>
   </define-panel>
+  <picker-input v-if="!hideTrigger" :class="$attrs.class" :style="$attrs.style">
+    <template #content>
+      <reuse-panel />
+    </template>
+  </picker-input>
+  <reuse-panel v-else />
 </template>
 
 <script lang="ts" setup>
@@ -68,21 +63,21 @@ import {
   YearPickerProps,
   YearPickerEmits,
   BasePickerSlots,
-  DatePickerValue,
   ShortcutType,
 } from './type';
-import useYearPickerContext from './hooks/useYearPicker';
+import useYearPicker, { YearData } from './hooks/useYearPicker';
 import userPickerInputContext from './hooks/userPickerInputContext';
 import {
-  getDecadeRange,
   dayjs,
   sleep,
   createReusableTemplate,
+  isUndefined,
 } from '@shared/utils';
 import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
+import YcYearPicker from './PickerYear.vue';
 defineOptions({
   name: 'YearPicker',
   inheritAttrs: false,
@@ -109,12 +104,12 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   // defaultPickerValue: '',
   popupContainer: undefined,
   valueFormat: 'YYYY',
+  format: 'YYYY',
   previewShortcut: true,
   showConfirmBtn: false,
   // disabledInput: false,
   modelValue: undefined,
   defaultValue: '',
-  format: 'YYYY',
 });
 const emits = defineEmits<YearPickerEmits>();
 // 定义重用模板
@@ -123,16 +118,11 @@ const { define: DefinePanel, reuse: ReusePanel } = createReusableTemplate();
 const {
   computedValue,
   computedVisible,
-  showConfirmBtn,
-  shortcuts,
-  shortcutsPosition,
-  previewShortcut,
-  getDateFromYear,
-  getFormatFromValue,
-  getValueFromFormat,
-  disabledDate,
   formatValue,
-} = useYearPickerContext(props, emits);
+  showConfirmBtn,
+  getYearRange,
+  getDateFromFormat,
+} = useYearPicker(props, emits);
 // 展示clearbtn
 userPickerInputContext().provide(
   {
@@ -146,15 +136,24 @@ userPickerInputContext().provide(
 // 开始的year
 const startYear = ref<number>(0);
 // 区间范围
-const yearRange = ref<number[][]>([]);
+const yearRange = ref<YearData[][]>([]);
 // 旧值
-let oldValue: DatePickerValue;
+let oldDate: Date | string;
+// 选中的date
+let selectDate: Date;
 // 是否确认过
 let isConfirm = false;
+// 是否选中
+const isSelected = (val: Date) => {
+  const date = getDateFromFormat(computedValue.value) as Date;
+  if (!date) return false;
+  return date.getFullYear() == val.getFullYear();
+};
 // 处理改变
 const handleYearChange = (type: string) => {
   startYear.value = type == 'pre' ? startYear.value - 10 : startYear.value + 10;
-  yearRange.value = getDecadeRange(startYear.value);
+  const { range } = getYearRange(startYear.value);
+  yearRange.value = range;
 };
 // 处理shortcut
 const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {
@@ -162,32 +161,27 @@ const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {
     emits('select-shortcut', shortcut);
   }
   if (shortcut.value) {
-    computedValue.value = getFormatFromValue(
-      (shortcut.value as Date).getFullYear()
-    );
+    computedValue.value = shortcut.value as Date;
   }
   if (hover) return;
   isConfirm = true;
   computedVisible.value = false;
 };
 // 处理选中
-const handleSelect = (year: number) => {
-  const value = getFormatFromValue(year);
-  const date = getDateFromYear(year);
-  const dateString = `${year}`;
-  computedValue.value = dateString;
-  emits('select', value, date, dateString);
+const handleSelect = (date: Date) => {
+  computedValue.value = date;
+  selectDate = date;
+  const dateString = dayjs(date).format('YYYY');
+  emits('select', computedValue.value, date, dateString);
   if (showConfirmBtn.value) return;
-  emits('change', value, date, dateString);
+  emits('change', computedValue.value, date, dateString);
 };
 // 处理确认
 const handleConfirm = async () => {
   isConfirm = true;
-  const date = getDateFromYear(getValueFromFormat(computedValue.value));
-  const year = date.getFullYear();
-  const value = getFormatFromValue(year);
-  emits('change', value, date, `${year}`);
-  emits('ok', value, date, `${year}`);
+  const dateString = dayjs(selectDate).format('YYYY');
+  emits('change', computedValue.value, selectDate, dateString);
+  emits('ok', computedValue.value, selectDate, dateString);
   await sleep(0);
   computedVisible.value = false;
 };
@@ -195,11 +189,12 @@ const handleConfirm = async () => {
 watch(
   () => computedValue.value,
   (val) => {
-    const rangeData = getDecadeRange(
-      val ? getValueFromFormat(val) : new Date().getFullYear()
+    const date = val ? getDateFromFormat(val) : new Date();
+    const { range, startYear: start } = getYearRange(
+      (date as Date).getFullYear()
     );
-    startYear.value = rangeData[0][1];
-    yearRange.value = rangeData;
+    startYear.value = start;
+    yearRange.value = range;
   },
   {
     immediate: true,
@@ -211,11 +206,13 @@ watch(
   (val) => {
     if (val) {
       isConfirm = false;
-      oldValue = getValueFromFormat(computedValue.value);
-      return;
+      oldDate = computedValue.value
+        ? getDateFromFormat(computedValue.value)
+        : (computedValue.value as string);
+    } else {
+      if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
+      computedValue.value = oldDate;
     }
-    if (!showConfirmBtn.value || isConfirm) return;
-    computedValue.value = oldValue ?? computedValue.value;
   },
   {
     immediate: true,

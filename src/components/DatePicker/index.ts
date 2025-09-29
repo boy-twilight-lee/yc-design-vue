@@ -2,7 +2,7 @@ import { App } from 'vue';
 import _DatePicker from './PickerDate.vue';
 import _RangePicker from './PickerRange.vue';
 import _YearPicker from './PickerYear.vue';
-import _QuarterPicker from './PickeQuarterr.vue';
+import _QuarterPicker from './PickeQuarter.vue';
 import _MonthPicker from './PickerMonth.vue';
 import _WeekPicker from './PickerWeek.vue';
 

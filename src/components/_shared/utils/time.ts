@@ -78,17 +78,3 @@ export const formatSeconds = (
 export const formatDate = (value: string | number | Date, format: string) => {
   return dayjs(value).format(format);
 };
-
-// 获取给定年的所在十年的区间
-export const getDecadeRange = (currentYear: number): number[][] => {
-  const decadeStartYear = Math.floor(currentYear / 10) * 10;
-  const startYear = decadeStartYear - 1;
-  const flatYearArray = Array.from({ length: 12 }, (_, i) => startYear + i);
-  const grid: number[][] = [];
-  const columns = 3;
-  for (let i = 0; i < flatYearArray.length; i += columns) {
-    const chunk = flatYearArray.slice(i, i + columns);
-    grid.push(chunk);
-  }
-  return grid;
-};

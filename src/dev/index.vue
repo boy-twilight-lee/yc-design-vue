@@ -10,6 +10,13 @@
       @change="(v) => console.log(v)"
     >
     </yc-year-picker>
+    <yc-month-picker
+      style="width: 300px"
+      allow-clear
+      shortcuts-position="bottom"
+      @change="(v) => console.log(v)"
+    >
+    </yc-month-picker>
     <a-month-picker
       v-model="value"
       shortcuts-position="bottom"

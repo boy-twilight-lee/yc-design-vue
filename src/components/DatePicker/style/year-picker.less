@@ -1,44 +1,54 @@
-.yc-panel-year {
+.yc-panel-year,
+.yc-panel-month {
   width: 265px;
-  .yc-panel-year-inner {
-    .yc-picker-header {
-      padding: 8px 16px;
-      border-bottom: 1px solid var(--color-neutral-3);
+  display: flex;
+  flex-direction: column;
+  .yc-picker-header {
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--color-neutral-3);
+    display: flex;
+    .yc-picker-header-icon {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      margin-right: 2px;
+      margin-left: 2px;
+      color: var(--color-text-2);
+      font-size: 12px;
+      line-height: 24px;
+      text-align: center;
+      background-color: var(--color-bg-popup);
+      border-radius: 50%;
+      transition: all 0.1s cubic-bezier(0, 0, 1, 1);
+      user-select: none;
+      &:hover {
+        background-color: var(--color-fill-3);
+      }
+    }
+    .yc-picker-header-title {
+      flex: 1;
+      color: var(--color-text-1);
+      font-size: 14px;
+      line-height: 24px;
       display: flex;
-
-      .yc-picker-header-icon {
+      justify-content: center;
+      align-items: center;
+      .yc-picker-header-label {
         cursor: pointer;
-        width: 24px;
-        height: 24px;
-        margin-right: 2px;
-        margin-left: 2px;
-        color: var(--color-text-2);
-        font-size: 12px;
-        line-height: 24px;
-        text-align: center;
-        background-color: var(--color-bg-popup);
-        border-radius: 50%;
-        transition: all 0.1s cubic-bezier(0, 0, 1, 1);
-        user-select: none;
+        padding: 2px;
+        border-radius: 2px;
+        transition: all 0.1s;
         &:hover {
           background-color: var(--color-fill-3);
         }
       }
-
-      .yc-picker-header-title {
-        flex: 1;
-        color: var(--color-text-1);
-        font-size: 14px;
-        line-height: 24px;
-        text-align: center;
-      }
     }
-    .yc-picker-body {
-      padding: 14px 16px;
-      .yc-picker-row {
-        padding: 2px 0;
-        display: flex;
-      }
+  }
+  .yc-picker-body {
+    padding: 14px 16px;
+    .yc-picker-row {
+      padding: 2px 0;
+      display: flex;
     }
   }
 }
