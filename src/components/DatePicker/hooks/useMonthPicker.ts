@@ -62,8 +62,6 @@ export default function useMonthPicker(
       emits('update:pickerValue', val);
     }
   );
-  // 开始的year
-  const curYear = ref<number>(0);
   // 从格式化的值中提取
   const getDateFromFormat = (
     val: DatePickerValue,
@@ -101,7 +99,6 @@ export default function useMonthPicker(
     computedVisible,
     computedPickerValue,
     formatValue,
-    curYear,
     showConfirmBtn,
     getDateFromFormat,
   };

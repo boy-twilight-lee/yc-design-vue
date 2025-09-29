@@ -24,7 +24,10 @@
         </yc-button>
       </div>
     </define-shortcuts>
-    <reuse-shortcuts v-if="['left', 'right'].includes(shortcutsPosition)" />
+    <!-- left.right -->
+    <reuse-shortcuts
+      v-if="['left', 'right'].includes(shortcutsPosition) && shortcuts?.length"
+    />
     <div class="yc-picker-panel-wrapper">
       <slot />
       <div class="yc-picker-footer">
@@ -32,17 +35,22 @@
           <slot name="extra" />
         </div>
         <div
-          v-if="showConfirmBtn || shortcutsPosition == 'bottom'"
+          v-if="
+            showConfirmBtn ||
+            (shortcutsPosition == 'bottom' && shortcuts?.length)
+          "
           class="yc-picker-footer-btn-wrapper"
         >
+          <!--bottom -->
           <reuse-shortcuts v-if="shortcutsPosition == 'bottom'" />
           <yc-button
+            v-if="showConfirmBtn"
             :disabled="confirmBtnDisabled"
             type="primary"
             size="mini"
             @click="$emit('confirm', $event)"
           >
-            确定
+            {{ t('datePicker.ok') }}
           </yc-button>
         </div>
       </div>
@@ -52,7 +60,11 @@
 
 <script lang="ts" setup>
 import { ShortcutsPosition, ShortcutType } from '../type';
-import { getSlotFunction, createReusableTemplate } from '@shared/utils';
+import {
+  getSlotFunction,
+  createReusableTemplate,
+  useI18n,
+} from '@shared/utils';
 import YcButton from '@/components/Button';
 defineProps<{
   shortcutsPosition: ShortcutsPosition;
@@ -65,9 +77,11 @@ defineEmits<{
   (e: 'confirm', ev: MouseEvent): void;
   (e: 'shortcut-select', shortcut: ShortcutType, hover: boolean): void;
 }>();
-
+// 定制重用模板
 const { define: DefineShortcuts, reuse: ReuseShortcuts } =
   createReusableTemplate();
+//  国际化
+const { t } = useI18n();
 </script>
 
 <style lang="less">

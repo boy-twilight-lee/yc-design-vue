@@ -32,6 +32,7 @@ export interface BasePickerProps {
   previewShortcut?: boolean;
   showConfirmBtn?: boolean;
   disabledInput?: boolean;
+  // 周和月的缩写
   abbreviation?: boolean;
 }
 

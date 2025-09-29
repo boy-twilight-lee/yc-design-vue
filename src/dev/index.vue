@@ -1,28 +1,24 @@
 <template>
   <div class="test">
-    <yc-year-picker
-      style="width: 300px"
-      show-confirm-btn
-      :shortcuts="shortcuts"
-      :preview-shortcut="false"
-      allow-clear
-      shortcuts-position="bottom"
-      @change="(v) => console.log(v)"
-    >
-    </yc-year-picker>
-    <yc-month-picker
-      style="width: 300px"
-      allow-clear
-      shortcuts-position="bottom"
-      @change="(v) => console.log(v)"
-    >
-    </yc-month-picker>
+    <yc-config-provider :locale="enUs">
+      <yc-year-picker
+        style="width: 300px"
+        show-confirm-btn
+        allow-clear
+        shortcuts-position="bottom"
+        @change="(v) => console.log(v)"
+      >
+      </yc-year-picker>
+      <yc-month-picker
+        style="width: 300px"
+        allow-clear
+        @change="(v) => console.log(v)"
+      >
+      </yc-month-picker>
+    </yc-config-provider>
     <a-month-picker
       v-model="value"
-      shortcuts-position="bottom"
-      :shortcuts="shortcuts"
-      :previewShortcut="false"
-      :abbreviation="false"
+      :abbreviation="true"
       allow-clear
       show-confirm-btn
     >
@@ -32,29 +28,8 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import enUs from '@/lang/lang-es/en-us';
 const value = ref('');
-const shortcuts = [
-  {
-    label: '2020',
-    value: new Date(2020, 1, 0, 0, 0, 0),
-  },
-  {
-    label: '2021',
-    value: new Date(2021, 1, 0, 0, 0, 0),
-  },
-  {
-    label: '2022',
-    value: new Date(2022, 1, 0, 0, 0, 0),
-  },
-  {
-    label: '2023',
-    value: new Date(2023, 1, 0, 0, 0, 0),
-  },
-  {
-    label: '2024',
-    value: new Date(2024, 1, 0, 0, 0, 0),
-  },
-];
 </script>
 
 <style lang="less">

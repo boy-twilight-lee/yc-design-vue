@@ -1,6 +1,19 @@
 <template>
   <define-panel>
+    <yc-year-picker
+      v-if="showYearPicker"
+      :model-value="`${curYear}`"
+      hide-trigger
+      value-format="YYYY"
+      @change="
+        (_, date) => {
+          curYear = date.getFullYear();
+          showYearPicker = false;
+        }
+      "
+    />
     <picker-panel
+      v-else
       :preview-shortcut="previewShortcut"
       :shortcuts="shortcuts"
       :shortcuts-position="shortcutsPosition"
@@ -17,7 +30,7 @@
             </slot>
           </div>
           <div class="yc-picker-header-title">
-            <div class="yc-picker-header-label">
+            <div class="yc-picker-header-label" @click="showYearPicker = true">
               {{ curYear }}
             </div>
           </div>
@@ -29,8 +42,6 @@
         </div>
         <div class="yc-picker-body">
           <div v-for="(row, i) in monthRange" :key="i" class="yc-picker-row">
-            <!--  -->
-            <!-- -->
             <picker-cell
               v-for="({ value: date, label }, k) in row"
               :key="k"
@@ -56,7 +67,12 @@
       </template>
     </picker-panel>
   </define-panel>
-  <picker-input v-if="!hideTrigger" :class="$attrs.class" :style="$attrs.style">
+  <picker-input
+    v-if="!hideTrigger"
+    :class="$attrs.class"
+    :style="$attrs.style"
+    type="month"
+  >
     <template #content>
       <reuse-panel />
     </template>
@@ -65,7 +81,7 @@
 </template>
 
 <script lang="ts" setup>
-import { watch, computed } from 'vue';
+import { ref, watch, computed } from 'vue';
 import {
   MonthPickerProps,
   MonthPickerEmits,
@@ -79,11 +95,13 @@ import {
   sleep,
   createReusableTemplate,
   isUndefined,
+  useI18n,
 } from '@shared/utils';
 import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
+import YcYearPicker from './YcYearPicker.vue';
 defineOptions({
   name: 'MonthPicker',
   inheritAttrs: false,
@@ -103,7 +121,7 @@ const props = withDefaults(defineProps<MonthPickerProps>(), {
   defaultPopupVisible: false,
   triggerProps: () => ({}),
   unmountOnClose: false,
-  placeholder: '请选择月份',
+  placeholder: '',
   disabled: false,
   disabledDate: undefined,
   // pickerValue: undefined,
@@ -116,17 +134,19 @@ const props = withDefaults(defineProps<MonthPickerProps>(), {
   modelValue: undefined,
   defaultValue: '',
   format: 'YYYY-MM',
+  abbreviation: true,
 });
 const emits = defineEmits<MonthPickerEmits>();
 // 定义重用模板
 const { define: DefinePanel, reuse: ReusePanel } = createReusableTemplate();
+// 国际化
+const { t } = useI18n();
 // 格式化时间
 const {
   computedValue,
   computedVisible,
   formatValue,
   showConfirmBtn,
-  curYear,
   getDateFromFormat,
 } = useMonthPicker(props, emits);
 // 展示clearbtn
@@ -142,16 +162,18 @@ userPickerInputContext().provide(
 // 区间范围
 const monthRange = computed(() => {
   const months = [
-    ['一月', '二月', '三月'],
-    ['四月', '五月', '六月'],
-    ['七月', '八月', '九月'],
-    ['十月', '十一月', '十二月'],
+    ['January', 'February', 'March'],
+    ['April', 'May', 'June'],
+    ['July', 'August', 'September'],
+    ['October', 'November', 'December'],
   ];
   let month = 0;
   return months.map((row) => {
     return row.map((name) => {
       return {
-        label: name,
+        label: t(
+          `datePicker.month.${props.abbreviation ? 'short' : 'long'}.${name}`
+        ),
         value: new Date(curYear.value, month++, 1),
       };
     });
@@ -163,6 +185,10 @@ let oldDate: Date | string;
 let selectDate: Date;
 // 是否确认过
 let isConfirm = false;
+// 是否展示picker
+const showYearPicker = ref<boolean>(false);
+// 开始的year
+const curYear = ref<number>(0);
 // 是否选中
 const isSelected = (val: Date) => {
   const date = getDateFromFormat(computedValue.value) as Date;
@@ -222,7 +248,11 @@ watch(
         ? getDateFromFormat(computedValue.value)
         : '';
     } else {
+      console.log(isUndefined(oldDate));
+      console.log(isConfirm);
+      console.log(showConfirmBtn.value);
       if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
+      console.log(typeof oldDate, 'old');
       computedValue.value = oldDate;
     }
   },

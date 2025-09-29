@@ -22,7 +22,7 @@
         border-top: 1px solid var(--color-neutral-3);
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
         gap: 10px;
       }
     }
@@ -52,6 +52,16 @@
 // shortcuts
 .yc-picker-container-shortcuts-right {
   flex-direction: row-reverse;
+}
+.yc-picker-container-shortcuts-bottom {
+  flex-direction: row-reverse;
+  .yc-picker-panel-wrapper {
+    .yc-picker-footer {
+      .yc-picker-footer-btn-wrapper {
+        justify-content: space-between;
+      }
+    }
+  }
 }
 // cell
 .yc-picker-cell {

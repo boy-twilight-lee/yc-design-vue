@@ -49,7 +49,12 @@
       </template>
     </picker-panel>
   </define-panel>
-  <picker-input v-if="!hideTrigger" :class="$attrs.class" :style="$attrs.style">
+  <picker-input
+    v-if="!hideTrigger"
+    :class="$attrs.class"
+    :style="$attrs.style"
+    type="year"
+  >
     <template #content>
       <reuse-panel />
     </template>
@@ -77,7 +82,6 @@ import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
-import YcYearPicker from './PickerYear.vue';
 defineOptions({
   name: 'YearPicker',
   inheritAttrs: false,
@@ -97,7 +101,7 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   defaultPopupVisible: false,
   triggerProps: () => ({}),
   unmountOnClose: false,
-  placeholder: '请选择年份',
+  placeholder: '',
   disabled: false,
   disabledDate: undefined,
   // pickerValue: undefined,

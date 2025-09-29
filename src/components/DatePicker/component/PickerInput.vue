@@ -7,7 +7,7 @@
     :disabled="disabled || readonly"
     :position="position"
     prevent-focus
-    trigger="focus"
+    trigger="click"
     animation-name="slide-dynamic-origin"
     need-transform-origin
     v-bind="triggerProps"
@@ -47,8 +47,9 @@
 </template>
 
 <script lang="ts" setup>
-import { watch, nextTick, ref, toRefs } from 'vue';
+import { watch, nextTick, ref, toRefs, computed } from 'vue';
 import { IconCalendar } from '@shared/icons';
+import { useI18n } from '@shared/utils';
 import { IconButton } from '@shared/components';
 import userPickerInputContext from '../hooks/userPickerInputContext';
 import YcInput, { InputInstance } from '@/components/Input';
@@ -56,6 +57,14 @@ import YcTrigger from '@/components/Trigger';
 defineOptions({
   inheritAttrs: false,
 });
+const $props = withDefaults(
+  defineProps<{
+    type?: 'year' | 'month' | 'week' | 'quarter' | 'time' | 'date';
+  }>(),
+  {
+    type: 'date',
+  }
+);
 const { props, computedVisible, formatValue, showClearBtn, onClear } =
   userPickerInputContext().inject();
 const {
@@ -65,11 +74,16 @@ const {
   disabled,
   position,
   triggerProps,
-  placeholder,
+  placeholder: _placeholder,
   size,
   error,
   disabledInput,
 } = toRefs(props);
+const { t } = useI18n();
+// placeholder
+const placeholder = computed(
+  () => _placeholder.value || t(`datePicker.placeholder.${$props.type}`)
+);
 // inputRef
 const inputRef = ref<InputInstance>();
 watch(
