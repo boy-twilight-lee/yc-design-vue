@@ -8,7 +8,6 @@ import {
 import {
   MonthPickerEmits,
   DatePickerValue,
-  ValueFormat,
   MonthPickerProps as _MonthPickerProps,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
@@ -36,13 +35,15 @@ export default function useMonthPicker(
     modelValue,
     defaultValue.value,
     (val) => {
-      emits('update:modelValue', getFormatFromDate(val));
+      emits('update:modelValue', getFormatFromDate(val as Date));
     }
   );
   // 展示的value
   const formatValue = computed(() => {
+    const date = getDateFromFormat(computedValue.value);
+    if (!date) return '';
     return format.value && computedValue.value
-      ? dayjs(getDateFromFormat(computedValue.value)).format(format.value)
+      ? dayjs(date).format(format.value)
       : (computedValue.value as string);
   });
   // 受控的visible
@@ -63,34 +64,26 @@ export default function useMonthPicker(
     }
   );
   // 从格式化的值中提取
-  const getDateFromFormat = (
-    val: DatePickerValue,
-    format: ValueFormat = valueFormat.value
-  ) => {
-    if (!val) return val as string;
-    if (format == 'timestamp') {
-      return new Date(val);
-    } else if (format == 'Date') {
-      return val as Date;
+  const getDateFromFormat = (val: DatePickerValue) => {
+    if (!val) return '';
+    let date: dayjs.Dayjs;
+    if (['timestamp', 'Date'].includes(valueFormat.value)) {
+      date = dayjs(val);
     } else {
-      const date = dayjs(isString(val) ? val : String(val), format);
-      const year = date.year();
-      const month = date.month();
-      return new Date(year, month, 1);
+      date = dayjs(isString(val) ? val : String(val), valueFormat.value);
     }
+    if (!date.isValid()) return '';
+    return date.startOf('month').toDate();
   };
   // format
-  const getFormatFromDate = (
-    val: Date,
-    format: ValueFormat = valueFormat.value
-  ) => {
-    if (!val) return '';
+  const getFormatFromDate = (val: Date) => {
+    if (!val || !dayjs(val).isValid()) return '';
     const date: DatePickerValue = val;
-    if (format == 'timestamp') {
-      return date.getTime();
+    if (valueFormat.value == 'timestamp') {
+      return dayjs(date).valueOf();
     }
-    if (format != 'Date') {
-      return dayjs(date).format(format);
+    if (valueFormat.value != 'Date') {
+      return dayjs(date).format(valueFormat.value);
     }
     return date;
   };
@@ -101,5 +94,6 @@ export default function useMonthPicker(
     formatValue,
     showConfirmBtn,
     getDateFromFormat,
+    getFormatFromDate,
   };
 }

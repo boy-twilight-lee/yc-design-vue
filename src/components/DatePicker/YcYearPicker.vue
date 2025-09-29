@@ -1,6 +1,7 @@
 <template>
   <define-panel>
     <picker-panel
+      :locale="locale"
       :preview-shortcut="previewShortcut"
       :shortcuts="shortcuts"
       :shortcuts-position="shortcutsPosition"
@@ -88,7 +89,7 @@ defineOptions({
 });
 const $slots = defineSlots<BasePickerSlots>();
 const props = withDefaults(defineProps<YearPickerProps>(), {
-  // locale: undefined,
+  locale: () => ({}),
   hideTrigger: false,
   allowClear: false,
   readonly: false,
@@ -111,7 +112,7 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   format: 'YYYY',
   previewShortcut: true,
   showConfirmBtn: false,
-  // disabledInput: false,
+  disabledInput: false,
   modelValue: undefined,
   defaultValue: '',
 });

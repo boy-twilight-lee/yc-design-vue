@@ -88,7 +88,7 @@ export interface MonthPickerEmits extends BasePickerEmits {
 export interface WeekPickerProps extends BasePickerProps {
   modelValue?: DatePickerValue;
   defaultValue?: DatePickerValue;
-  dayStartOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  dayStartOfWeek?: DayStartOfWeek;
 }
 
 export interface WeekPickerEmits extends BasePickerEmits {
@@ -96,6 +96,8 @@ export interface WeekPickerEmits extends BasePickerEmits {
 }
 
 export type DatePickerValue = Date | string | number;
+
+export type DayStartOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export type ValueFormat = 'timestamp' | 'Date' | string;
 

@@ -78,12 +78,14 @@ const {
   size,
   error,
   disabledInput,
+  locale,
 } = toRefs(props);
 const { t } = useI18n();
 // placeholder
-const placeholder = computed(
-  () => _placeholder.value || t(`datePicker.placeholder.${$props.type}`)
-);
+const placeholder = computed(() => {
+  const key = `datePicker.placeholder.${$props.type}`;
+  return _placeholder.value || locale.value?.[key] || t(key);
+});
 // inputRef
 const inputRef = ref<InputInstance>();
 watch(

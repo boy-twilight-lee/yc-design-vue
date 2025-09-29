@@ -50,7 +50,7 @@
             size="mini"
             @click="$emit('confirm', $event)"
           >
-            {{ t('datePicker.ok') }}
+            {{ getOkText() }}
           </yc-button>
         </div>
       </div>
@@ -66,7 +66,8 @@ import {
   useI18n,
 } from '@shared/utils';
 import YcButton from '@/components/Button';
-defineProps<{
+const props = defineProps<{
+  locale: Record<string, any>;
   shortcutsPosition: ShortcutsPosition;
   shortcuts: ShortcutType[];
   previewShortcut: boolean;
@@ -82,6 +83,11 @@ const { define: DefineShortcuts, reuse: ReuseShortcuts } =
   createReusableTemplate();
 //  国际化
 const { t } = useI18n();
+// 获取oktext
+const getOkText = () => {
+  const key = 'datePicker.ok';
+  return props.locale?.[key] || t(key);
+};
 </script>
 
 <style lang="less">

@@ -1,8 +1,7 @@
-import { computed, toRefs, provide as _provide, inject as _inject } from 'vue';
+import { computed, toRefs } from 'vue';
 import {
   YearPickerEmits,
   DatePickerValue,
-  ValueFormat,
   YearPickerProps as _YearPickerProps,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
@@ -34,7 +33,7 @@ export default function useYearPickerContext(
     modelValue,
     defaultValue.value,
     (val) => {
-      emits('update:modelValue', getFormatFromDate(val));
+      emits('update:modelValue', getFormatFromDate(val as Date));
     }
   );
   // 受控的visible
@@ -56,31 +55,30 @@ export default function useYearPickerContext(
   );
   // 展示的value
   const formatValue = computed(() => {
+    const date = getDateFromFormat(computedValue.value);
+    if (!date) return '';
     return format.value && computedValue.value
-      ? dayjs(getDateFromFormat(computedValue.value)).format(format.value)
+      ? dayjs(date).format(format.value)
       : (computedValue.value as string);
   });
   // 从格式化的值中提取
   const getDateFromFormat = (val: DatePickerValue) => {
-    if (!val) return val as string;
-    if (valueFormat.value == 'timestamp') {
-      return new Date(val);
-    } else if (valueFormat.value == 'Date') {
-      return val as Date;
+    if (!val) return '';
+    let date: dayjs.Dayjs;
+    if (['timestamp', 'Date'].includes(valueFormat.value)) {
+      date = dayjs(val);
     } else {
-      const year = dayjs(
-        isString(val) ? val : String(val),
-        valueFormat.value
-      ).year();
-      return new Date(year, 0, 1);
+      date = dayjs(isString(val) ? val : String(val), valueFormat.value);
     }
+    if (!date.isValid()) return '';
+    return date.startOf('year').toDate();
   };
   // format
   const getFormatFromDate = (val: Date) => {
-    if (!val) return '';
+    if (!val || !dayjs(val).isValid()) return '';
     const date: DatePickerValue = val;
     if (valueFormat.value == 'timestamp') {
-      return date.getTime();
+      return dayjs(date).valueOf();
     }
     if (valueFormat.value != 'Date') {
       return dayjs(date).format(valueFormat.value);
@@ -95,7 +93,7 @@ export default function useYearPickerContext(
       const year = startYear + i;
       return {
         label: year.toString(),
-        value: new Date(year, 0, 1),
+        value: dayjs().year(year).startOf('year').toDate(),
       };
     });
     const grid: YearData[][] = [];

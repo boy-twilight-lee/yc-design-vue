@@ -14,6 +14,7 @@
     />
     <picker-panel
       v-else
+      :locale="locale"
       :preview-shortcut="previewShortcut"
       :shortcuts="shortcuts"
       :shortcuts-position="shortcutsPosition"
@@ -108,7 +109,7 @@ defineOptions({
 });
 const $slots = defineSlots<BasePickerSlots>();
 const props = withDefaults(defineProps<MonthPickerProps>(), {
-  // locale: undefined,
+  locale: () => ({}),
   hideTrigger: false,
   allowClear: false,
   readonly: false,
@@ -128,12 +129,12 @@ const props = withDefaults(defineProps<MonthPickerProps>(), {
   // defaultPickerValue: '',
   popupContainer: undefined,
   valueFormat: 'YYYY-MM',
+  format: 'YYYY-MM',
   previewShortcut: true,
   showConfirmBtn: false,
-  // disabledInput: false,
+  disabledInput: false,
   modelValue: undefined,
   defaultValue: '',
-  format: 'YYYY-MM',
   abbreviation: true,
 });
 const emits = defineEmits<MonthPickerEmits>();
@@ -170,10 +171,9 @@ const monthRange = computed(() => {
   let month = 0;
   return months.map((row) => {
     return row.map((name) => {
+      const key = `datePicker.month.${props.abbreviation ? 'short' : 'long'}.${name}`;
       return {
-        label: t(
-          `datePicker.month.${props.abbreviation ? 'short' : 'long'}.${name}`
-        ),
+        label: props.locale.value?.[key] || t(key),
         value: new Date(curYear.value, month++, 1),
       };
     });
