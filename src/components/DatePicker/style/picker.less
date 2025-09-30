@@ -99,20 +99,13 @@
       padding: 0;
       color: #7d7d7f;
       font-weight: 400;
-      display: fle;
+      display: flex;
       justify-content: center;
       align-items: center;
     }
   }
   .yc-picker-body {
     .yc-picker-week-row {
-      &:hover .yc-picker-cell:not(:first-child) {
-        .yc-picker-date {
-          .yc-picker-date-value {
-            background-color: var(--color-fill-3);
-          }
-        }
-      }
       .yc-picker-cell {
         .yc-picker-date {
           padding-left: 0;
@@ -135,6 +128,30 @@
           .yc-picker-date-value {
             border-top-right-radius: 24px;
             border-bottom-right-radius: 24px;
+          }
+        }
+      }
+    }
+    .yc-picker-week-row-hoverable {
+      &:hover .yc-picker-cell {
+        &:not(:first-child) {
+          .yc-picker-date {
+            .yc-picker-date-value {
+              background-color: var(--color-fill-3);
+            }
+          }
+        }
+      }
+    }
+    .yc-picker-week-row-selected {
+      .yc-picker-cell {
+        &:not(:first-child) {
+          .yc-picker-date {
+            .yc-picker-date-value {
+              color: var(--color-white);
+              background-color: rgb(var(--primary-6));
+              transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
+            }
           }
         }
       }

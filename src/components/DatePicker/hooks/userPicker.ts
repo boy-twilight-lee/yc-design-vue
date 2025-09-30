@@ -1,4 +1,4 @@
-import { Ref, computed, toRefs } from 'vue';
+import { computed, toRefs } from 'vue';
 import { BasePickerEmits, DatePickerValue, DayStartOfWeek } from '../type';
 import {
   dayjs,
@@ -8,7 +8,7 @@ import {
   useI18n,
 } from '@shared/utils';
 import { RecordType } from '@/components/_shared/type';
-import userPickerInputContext from './userPickerInputContext';
+import userContext from './userContext';
 import isoWeek from 'dayjs/plugin/isoWeek';
 dayjs.extend(isoWeek);
 
@@ -96,7 +96,7 @@ export default function usePicker(params: {
       date = dayjs(val, valueFormat.value);
     }
     if (!date.isValid()) return '';
-    return date.startOf('year').toDate();
+    return date.toDate();
   };
   // 把date格式化
   const getFormatFromDate = (val: Date) => {
@@ -140,7 +140,7 @@ export default function usePicker(params: {
   ) => {
     const firstDayOfMonth = dayjs(new Date(year, month, 1));
     const weekData: WeekData[] = [];
-    const dayOfWeekOfFirst = firstDayOfMonth.day();
+    const dayOfWeekOfFirst = firstDayOfMonth.toDate().getDay();
     const offset = (dayOfWeekOfFirst - startOfWeek + 7) % 7;
     let currentDay = firstDayOfMonth.subtract(offset, 'day');
     for (let i = 0; i < 6; i++) {
@@ -159,10 +159,11 @@ export default function usePicker(params: {
         time: daysOfWeek,
       });
     }
+    console.log(weekData, 'weekData');
     return weekData;
   };
   // input-context
-  userPickerInputContext().provide(
+  userContext().provide(
     {
       computedValue,
       computedVisible,

@@ -47,10 +47,7 @@
               v-for="({ value: date, label }, k) in row"
               :key="k"
               :is-selected="isSelected(date)"
-              :is-today="
-                date.getMonth() == dayjs().month() &&
-                date.getFullYear() == dayjs().year()
-              "
+              :is-today="isToday(date)"
               :disabled="disabledDate?.(date)"
               :value="label"
               cell-in-view
@@ -88,10 +85,9 @@ import {
   MonthPickerEmits,
   BasePickerSlots,
   ShortcutType,
-  DatePickerValue,
 } from './type';
 import userPicker from './hooks/userPicker';
-import { dayjs, sleep, isUndefined, useControlValue } from '@shared/utils';
+import { dayjs, sleep, isUndefined } from '@shared/utils';
 import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
@@ -185,6 +181,12 @@ const isSelected = (val: Date) => {
     date.getFullYear() == val.getFullYear() && date.getMonth() == val.getMonth()
   );
 };
+// isToday
+const isToday = (date: Date) => {
+  return (
+    date.getMonth() == dayjs().month() && date.getFullYear() == dayjs().year()
+  );
+};
 // 处理shortcut
 const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {
   if (!hover) {
@@ -237,7 +239,6 @@ watch(
         : '';
     } else {
       if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
-      console.log(typeof oldDate, 'old');
       computedValue.value = oldDate;
     }
   },

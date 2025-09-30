@@ -42,9 +42,16 @@
         </div>
         <div class="yc-picker-body">
           <div
-            :class="['yc-picker-row', 'yc-picker-week-row']"
             v-for="({ label, time, value }, i) in weekRange"
             :key="i"
+            :class="[
+              'yc-picker-row',
+              'yc-picker-week-row',
+              {
+                'yc-picker-week-row-selected': isSelected(value),
+                'yc-picker-week-row-hoverable': !isSelected(value),
+              },
+            ]"
             @click="handleSelect(value)"
           >
             <picker-cell :cell-in-view="false" :value="label" />
@@ -82,16 +89,16 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, ref, watch, computed } from 'vue';
+import { ref, watch, computed } from 'vue';
 import {
   WeekPickerProps,
   WeekPickerEmits,
   BasePickerSlots,
-  DatePickerValue,
   ShortcutType,
 } from './type';
-import { useControlValue, dayjs, sleep, isUndefined } from '@shared/utils';
 import userPicker, { WeekData, DayData } from './hooks/userPicker';
+import { dayjs, sleep, isUndefined } from '@shared/utils';
+import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
@@ -194,6 +201,16 @@ const isCellInView = (day: DayData) => {
 // isToday
 const isToday = (day: DayData) => {
   return isCellInView(day) && day.value.getDate() == dayjs().day();
+};
+// 是否选中
+const isSelected = (v: Date) => {
+  const date = getDateFromFormat(computedValue.value) as Date;
+  if (!date) return false;
+  return (
+    date.getFullYear() == v.getFullYear() &&
+    date.getMonth() == v.getMonth() &&
+    date.getDate() == v.getDate()
+  );
 };
 // 处理shortcut
 const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {

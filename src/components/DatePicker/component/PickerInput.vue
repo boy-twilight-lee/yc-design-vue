@@ -51,7 +51,7 @@ import { watch, nextTick, ref, toRefs, computed } from 'vue';
 import { IconCalendar } from '@shared/icons';
 import { useI18n } from '@shared/utils';
 import { IconButton } from '@shared/components';
-import userPickerInputContext from '../hooks/userPickerInputContext';
+import userPickerInputContext from '../hooks/userContext';
 import YcInput, { InputInstance } from '@/components/Input';
 import YcTrigger from '@/components/Trigger';
 defineOptions({

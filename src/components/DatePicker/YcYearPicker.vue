@@ -64,16 +64,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toRefs } from 'vue';
+import { ref, watch } from 'vue';
 import {
   YearPickerProps,
   YearPickerEmits,
   BasePickerSlots,
   ShortcutType,
-  DatePickerValue,
 } from './type';
 import usePicker, { YearData } from './hooks/userPicker';
-import { dayjs, sleep, isUndefined, useControlValue } from '@shared/utils';
+import { dayjs, sleep, isUndefined } from '@shared/utils';
 import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
