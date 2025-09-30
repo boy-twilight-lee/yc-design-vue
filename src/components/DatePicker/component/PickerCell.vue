@@ -7,6 +7,7 @@
         'yc-picker-cell-today': isToday,
         'yc-picker-cell-selected': isSelected,
         'yc-picker-cell-disabled': disabled,
+        'yc-picker-cell-hoverable': hoverable,
       },
     ]"
     @click="!disabled && $emit('click', $event)"
@@ -29,6 +30,7 @@ withDefaults(
     isSelected?: boolean;
     disabled?: boolean;
     value?: number | string;
+    hoverable?: boolean;
   }>(),
   {
     cellInView: false,
@@ -36,6 +38,7 @@ withDefaults(
     isSelected: false,
     disabled: false,
     value: '',
+    hoverable: true,
   }
 );
 defineEmits<{

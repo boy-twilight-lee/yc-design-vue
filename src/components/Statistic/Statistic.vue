@@ -36,10 +36,9 @@ import {
   isNumber,
   isUndefined,
   formatSeconds,
-  formatDate,
   BTween,
+  dayjs,
 } from '@shared/utils';
-
 defineOptions({
   name: 'Statistic',
 });
@@ -134,7 +133,7 @@ function getFormatValue(value: number | Date) {
   if (isCountdown.value) {
     return formatSeconds(value as number, format.value);
   }
-  return formatDate(value, format.value);
+  return dayjs(value).format(format.value);
 }
 </script>
 

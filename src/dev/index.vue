@@ -4,7 +4,6 @@
       style="width: 300px"
       show-confirm-btn
       allow-clear
-      shortcuts-position="bottom"
       @change="(v) => console.log(v)"
     >
     </yc-year-picker>
@@ -14,13 +13,14 @@
       @change="(v) => console.log(v)"
     >
     </yc-month-picker>
-    <a-month-picker
+    <yc-week-picker style="width: 300px" />
+    <a-week-picker
       v-model="value"
       :abbreviation="true"
       allow-clear
       show-confirm-btn
     >
-    </a-month-picker>
+    </a-week-picker>
   </div>
 </template>
 

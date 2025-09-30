@@ -1,41 +1,51 @@
-import { computed, toRefs } from 'vue';
+import { Ref, computed, toRefs } from 'vue';
+import { BasePickerEmits, DatePickerValue, DayStartOfWeek } from '../type';
 import {
-  YearPickerEmits,
-  DatePickerValue,
-  YearPickerProps as _YearPickerProps,
-} from '../type';
-import { RecordType, Required } from '@shared/type';
-import { useControlValue, dayjs, isString } from '@shared/utils';
+  dayjs,
+  isString,
+  useControlValue,
+  createReusableTemplate,
+  useI18n,
+} from '@shared/utils';
+import { RecordType } from '@/components/_shared/type';
+import userPickerInputContext from './userPickerInputContext';
+import isoWeek from 'dayjs/plugin/isoWeek';
+dayjs.extend(isoWeek);
 
-type YearPickerProps = Required<_YearPickerProps>;
 export type YearData = {
   label: string;
   value: Date;
 };
 
-export default function useYearPickerContext(
-  props: RecordType,
-  emits: YearPickerEmits
-) {
+export interface DayData {
+  label: string;
+  value: Date;
+}
+
+export interface WeekData {
+  label: number;
+  value: Date;
+  time: DayData[];
+}
+
+export default function usePicker(params: {
+  computedValue: Ref<DatePickerValue>;
+  props: RecordType;
+  emits: BasePickerEmits;
+}) {
+  const { computedValue, props, emits } = params;
   const {
-    modelValue,
-    defaultValue,
-    pickerValue,
-    defaultPickerValue,
     popupVisible,
     defaultPopupVisible,
+    pickerValue,
+    defaultPickerValue,
     format,
     valueFormat,
+    dayStartOfWeek,
     showConfirmBtn,
-  } = toRefs(props as YearPickerProps);
-  // 受控的值
-  const computedValue = useControlValue<DatePickerValue>(
-    modelValue,
-    defaultValue.value,
-    (val) => {
-      emits('update:modelValue', getFormatFromDate(val as Date));
-    }
-  );
+    locale,
+    abbreviation,
+  } = toRefs(props);
   // 受控的visible
   const computedVisible = useControlValue<boolean>(
     popupVisible,
@@ -61,6 +71,10 @@ export default function useYearPickerContext(
       ? dayjs(date).format(format.value)
       : (computedValue.value as string);
   });
+  // 定义重用模板
+  const { define: DefinePanel, reuse: ReusePanel } = createReusableTemplate();
+  // 国际化
+  const { t } = useI18n();
   // 从格式化的值中提取
   const getDateFromFormat = (val: DatePickerValue) => {
     if (!val) return '';
@@ -73,7 +87,7 @@ export default function useYearPickerContext(
     if (!date.isValid()) return '';
     return date.startOf('year').toDate();
   };
-  // format
+  // 把date格式化
   const getFormatFromDate = (val: Date) => {
     if (!val || !dayjs(val).isValid()) return '';
     const date: DatePickerValue = val;
@@ -86,7 +100,7 @@ export default function useYearPickerContext(
     return date;
   };
   // 得到范围区间
-  const getYearRange = (curYear: number) => {
+  const getRangeOfYear = (curYear: number) => {
     const decadeStartYear = Math.floor(curYear / 10) * 10;
     const startYear = decadeStartYear - 1;
     const flatYearArray = Array.from({ length: 12 }, (_, i): YearData => {
@@ -107,14 +121,60 @@ export default function useYearPickerContext(
       startYear: decadeStartYear,
     };
   };
+  //  获取一个月中的周
+  const getWeeksOfMonth = (
+    year: number,
+    month: number,
+    startOfWeek: DayStartOfWeek = dayStartOfWeek.value
+  ) => {
+    const firstDayOfMonth = dayjs(new Date(year, month, 1));
+    const weekData: WeekData[] = [];
+    const dayOfWeekOfFirst = firstDayOfMonth.day();
+    const offset = (dayOfWeekOfFirst - startOfWeek + 7) % 7;
+    let currentDay = firstDayOfMonth.subtract(offset, 'day');
+    for (let i = 0; i < 6; i++) {
+      const daysOfWeek: DayData[] = [];
+      const weekDatatartDate = currentDay.toDate();
+      for (let j = 0; j < 7; j++) {
+        daysOfWeek.push({
+          label: String(currentDay.date()),
+          value: currentDay.toDate(),
+        });
+        currentDay = currentDay.add(1, 'day');
+      }
+      weekData.push({
+        label: dayjs(weekDatatartDate).isoWeek(),
+        value: weekDatatartDate,
+        time: daysOfWeek,
+      });
+    }
+    return weekData;
+  };
+  // input-context
+  userPickerInputContext().provide(
+    {
+      computedValue,
+      computedVisible,
+      formatValue,
+      emits,
+    },
+    props
+  );
   return {
+    formatValue,
     computedValue,
     computedVisible,
     computedPickerValue,
-    formatValue,
+    dayStartOfWeek,
     showConfirmBtn,
-    getYearRange,
+    locale,
+    abbreviation,
+    DefinePanel,
+    ReusePanel,
+    t,
     getDateFromFormat,
     getFormatFromDate,
+    getRangeOfYear,
+    getWeeksOfMonth,
   };
 }

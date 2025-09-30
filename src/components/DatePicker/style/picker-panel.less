@@ -91,10 +91,6 @@
     .yc-picker-date-value {
       color: var(--color-text-1);
       font-weight: 500;
-      &:hover {
-        color: var(--color-text-1);
-        background-color: var(--color-fill-3);
-      }
     }
   }
 }
@@ -140,6 +136,19 @@
       &:hover {
         color: var(--color-text-4);
         background-color: transparent;
+      }
+    }
+  }
+}
+// hoverable
+.yc-picker-cell-hoverable {
+  &.yc-picker-cell-in-view {
+    .yc-picker-date {
+      .yc-picker-date-value {
+        &:hover {
+          color: var(--color-text-1);
+          background-color: var(--color-fill-3);
+        }
       }
     }
   }

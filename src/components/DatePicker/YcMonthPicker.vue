@@ -82,22 +82,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed } from 'vue';
+import { ref, watch, computed, toRefs } from 'vue';
 import {
   MonthPickerProps,
   MonthPickerEmits,
   BasePickerSlots,
   ShortcutType,
+  DatePickerValue,
 } from './type';
-import useMonthPicker from './hooks/useMonthPicker';
-import userPickerInputContext from './hooks/userPickerInputContext';
-import {
-  dayjs,
-  sleep,
-  createReusableTemplate,
-  isUndefined,
-  useI18n,
-} from '@shared/utils';
+import userPicker from './hooks/userPicker';
+import { dayjs, sleep, isUndefined, useControlValue } from '@shared/utils';
 import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
@@ -138,28 +132,31 @@ const props = withDefaults(defineProps<MonthPickerProps>(), {
   abbreviation: true,
 });
 const emits = defineEmits<MonthPickerEmits>();
-// 定义重用模板
-const { define: DefinePanel, reuse: ReusePanel } = createReusableTemplate();
-// 国际化
-const { t } = useI18n();
-// 格式化时间
-const {
-  computedValue,
-  computedVisible,
-  formatValue,
-  showConfirmBtn,
-  getDateFromFormat,
-} = useMonthPicker(props, emits);
-// 展示clearbtn
-userPickerInputContext().provide(
-  {
-    computedValue,
-    computedVisible,
-    formatValue,
-    emits,
-  },
-  props
+const { modelValue, defaultValue, showConfirmBtn } = toRefs(props);
+// 受控的值
+const computedValue = useControlValue<DatePickerValue>(
+  modelValue,
+  defaultValue.value,
+  (val) => {
+    emits('update:modelValue', getFormatFromDate(val as Date));
+  }
 );
+// 获取格式化
+const {
+  computedVisible,
+  computedPickerValue,
+  locale,
+  abbreviation,
+  DefinePanel,
+  ReusePanel,
+  t,
+  getDateFromFormat,
+  getFormatFromDate,
+} = userPicker({
+  computedValue,
+  props,
+  emits,
+});
 // 区间范围
 const monthRange = computed(() => {
   const months = [
@@ -171,9 +168,9 @@ const monthRange = computed(() => {
   let month = 0;
   return months.map((row) => {
     return row.map((name) => {
-      const key = `datePicker.month.${props.abbreviation ? 'short' : 'long'}.${name}`;
+      const key = `datePicker.month.${abbreviation.value ? 'short' : 'long'}.${name}`;
       return {
-        label: props.locale.value?.[key] || t(key),
+        label: locale.value?.[key] || t(key),
         value: new Date(curYear.value, month++, 1),
       };
     });

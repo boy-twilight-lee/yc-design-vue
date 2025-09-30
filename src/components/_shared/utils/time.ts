@@ -30,6 +30,7 @@ export interface CalendarCellData {
   isCurrentMonth: boolean;
   fullDate: string;
 }
+
 export const generateMonthCalendar = (year: number, month: number) => {
   // 创建当前月份的第一天
   const firstDayOfMonth = dayjs(`${year}-${month}-01`);
@@ -73,8 +74,4 @@ export const formatSeconds = (
   type: dayjs.UnitType = 'milliseconds'
 ) => {
   return dayjs.duration(time, type as any).format(format);
-};
-
-export const formatDate = (value: string | number | Date, format: string) => {
-  return dayjs(value).format(format);
 };

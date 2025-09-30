@@ -19,11 +19,7 @@ export interface BasePickerProps {
   placeholder?: string;
   disabled?: boolean;
   disabledDate?: DisabledDate;
-  disabledTime?: (current: Date) => {
-    disabledHours?: () => number[];
-    disabledMinutes?: () => number[];
-    disabledSeconds?: () => number[];
-  };
+  disabledTime?: DisabledTime;
   pickerValue?: DatePickerValue;
   defaultPickerValue?: DatePickerValue;
   popupContainer?: PopupContainer;
@@ -32,7 +28,6 @@ export interface BasePickerProps {
   previewShortcut?: boolean;
   showConfirmBtn?: boolean;
   disabledInput?: boolean;
-  // 周和月的缩写
   abbreviation?: boolean;
 }
 
@@ -106,6 +101,12 @@ export type DatePickerPosition = 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
 export type ShortcutsPosition = Exclude<Position, 'top'>;
 
 export type DisabledDate = (current: Date) => boolean;
+
+export type DisabledTime = (current: Date) => {
+  disabledHours?: () => number[];
+  disabledMinutes?: () => number[];
+  disabledSeconds?: () => number[];
+};
 
 export type ShortcutType = {
   label: string | number | (() => VNode);

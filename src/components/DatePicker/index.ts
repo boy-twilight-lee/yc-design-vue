@@ -35,7 +35,7 @@ declare module 'vue' {
     YcRangePicker: typeof _RangePicker;
     YcYearPicker: typeof _YearPicker;
     YcMonthPicker: typeof _MonthPicker;
-    YcWeekPickerr: typeof _WeekPicker;
+    YcWeekPicker: typeof _WeekPicker;
   }
 }
 

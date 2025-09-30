@@ -64,21 +64,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
+import { ref, watch, toRefs } from 'vue';
 import {
   YearPickerProps,
   YearPickerEmits,
   BasePickerSlots,
   ShortcutType,
+  DatePickerValue,
 } from './type';
-import useYearPicker, { YearData } from './hooks/useYearPicker';
-import userPickerInputContext from './hooks/userPickerInputContext';
-import {
-  dayjs,
-  sleep,
-  createReusableTemplate,
-  isUndefined,
-} from '@shared/utils';
+import usePicker, { YearData } from './hooks/userPicker';
+import { dayjs, sleep, isUndefined, useControlValue } from '@shared/utils';
 import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
@@ -117,27 +112,30 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   defaultValue: '',
 });
 const emits = defineEmits<YearPickerEmits>();
-// 定义重用模板
-const { define: DefinePanel, reuse: ReusePanel } = createReusableTemplate();
+const { modelValue, defaultValue } = toRefs(props);
 // 格式化时间
-const {
-  computedValue,
-  computedVisible,
-  formatValue,
-  showConfirmBtn,
-  getYearRange,
-  getDateFromFormat,
-} = useYearPicker(props, emits);
-// 展示clearbtn
-userPickerInputContext().provide(
-  {
-    computedValue,
-    computedVisible,
-    formatValue,
-    emits,
-  },
-  props
+const computedValue = useControlValue<DatePickerValue>(
+  modelValue,
+  defaultValue.value,
+  (val) => {
+    emits('update:modelValue', getFormatFromDate(val as Date));
+  }
 );
+// 获取格式化
+const {
+  computedPickerValue,
+  computedVisible,
+  showConfirmBtn,
+  DefinePanel,
+  ReusePanel,
+  getDateFromFormat,
+  getFormatFromDate,
+  getRangeOfYear,
+} = usePicker({
+  computedValue,
+  props,
+  emits,
+});
 // 开始的year
 const startYear = ref<number>(0);
 // 区间范围
@@ -157,7 +155,7 @@ const isSelected = (val: Date) => {
 // 处理改变
 const handleYearChange = (type: string) => {
   startYear.value = type == 'pre' ? startYear.value - 10 : startYear.value + 10;
-  const { range } = getYearRange(startYear.value);
+  const { range } = getRangeOfYear(startYear.value);
   yearRange.value = range;
 };
 // 处理shortcut
@@ -195,7 +193,7 @@ watch(
   () => computedValue.value,
   (val) => {
     const date = val ? getDateFromFormat(val) : new Date();
-    const { range, startYear: start } = getYearRange(
+    const { range, startYear: start } = getRangeOfYear(
       (date as Date).getFullYear()
     );
     startYear.value = start;
