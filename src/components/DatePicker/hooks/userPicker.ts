@@ -1,4 +1,4 @@
-import { computed, toRefs, watch } from 'vue';
+import { computed, ref, toRefs, watch } from 'vue';
 import {
   BasePickerEmits,
   DatePickerValue,
@@ -99,6 +99,14 @@ export default function usePicker(params: {
   let selectDate: Date;
   // 是否确认过
   let isConfirm = false;
+  //  当前的年
+  const curYear = ref<number>(0);
+  // 当前的月
+  const curMonth = ref<number>(0);
+  // 展示年选择器
+  const showYearPicker = ref<boolean>(false);
+  // 展示月份选择器
+  const showMonthPicker = ref<boolean>(false);
   // 处理visible发生改变
   watch(
     () => computedVisible.value,
@@ -109,6 +117,8 @@ export default function usePicker(params: {
           ? getDateFromFormat(computedValue.value)
           : (computedValue.value as string);
       } else {
+        showYearPicker.value = false;
+        showMonthPicker.value = false;
         if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
         computedValue.value = oldDate;
       }
@@ -206,7 +216,7 @@ export default function usePicker(params: {
     let currentDay = firstDayOfMonth.subtract(offset, 'day');
     for (let i = 0; i < 6; i++) {
       const daysOfWeek: DayData[] = [];
-      const weekDatatartDate = currentDay.toDate();
+      const weekRowStartDate = currentDay;
       for (let j = 0; j < 7; j++) {
         daysOfWeek.push({
           label: String(currentDay.date()),
@@ -214,13 +224,17 @@ export default function usePicker(params: {
         });
         currentDay = currentDay.add(1, 'day');
       }
+      const representativeDayOfWeek = weekRowStartDate.add(3, 'day');
+      const correctIsoWeek = representativeDayOfWeek.isoWeek();
+      const mondayOfCorrectIsoWeek = representativeDayOfWeek
+        .startOf('isoWeek')
+        .toDate();
       weekData.push({
-        label: dayjs(weekDatatartDate).isoWeek(),
-        value: weekDatatartDate,
+        label: correctIsoWeek,
+        value: mondayOfCorrectIsoWeek,
         time: daysOfWeek,
       });
     }
-    console.log(weekData, 'weekData');
     return weekData;
   };
   // input-context
@@ -239,9 +253,12 @@ export default function usePicker(params: {
     computedVisible,
     computedPickerValue,
     dayStartOfWeek,
-    showConfirmBtn,
     locale,
     abbreviation,
+    showYearPicker,
+    showMonthPicker,
+    curMonth,
+    curYear,
     DefinePanel,
     ReusePanel,
     t,

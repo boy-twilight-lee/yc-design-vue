@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="yc-picker-body">
-          <div v-for="(row, i) in monthRange" :key="i" class="yc-picker-row">
+          <div v-for="(row, i) in monthData" :key="i" class="yc-picker-row">
             <picker-cell
               v-for="({ value: date, label }, k) in row"
               :key="k"
@@ -127,6 +127,8 @@ const emits = defineEmits<MonthPickerEmits>();
 const {
   computedValue,
   computedPickerValue,
+  showYearPicker,
+  curYear,
   locale,
   abbreviation,
   DefinePanel,
@@ -141,7 +143,7 @@ const {
   emits,
 });
 // 区间范围
-const monthRange = computed(() => {
+const monthData = computed(() => {
   const months = [
     ['January', 'February', 'March'],
     ['April', 'May', 'June'],
@@ -159,10 +161,6 @@ const monthRange = computed(() => {
     });
   });
 });
-// 是否展示picker
-const showYearPicker = ref<boolean>(false);
-// 开始的year
-const curYear = ref<number>(0);
 // 是否选中
 const isSelected = (val: Date) => {
   const date = getDateFromFormat(computedValue.value) as Date;

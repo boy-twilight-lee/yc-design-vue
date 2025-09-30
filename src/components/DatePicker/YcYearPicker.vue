@@ -18,7 +18,7 @@
             </slot>
           </div>
           <div class="yc-picker-header-title">
-            {{ startYear }}-{{ startYear + 10 }}
+            {{ curYear }}-{{ curYear + 10 }}
           </div>
           <div class="yc-picker-header-icon" @click="handleYearChange('next')">
             <slot name="icon-next-double">
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="yc-picker-body">
-          <div v-for="(row, i) in yearRange" :key="i" class="yc-picker-row">
+          <div v-for="(row, i) in yearData" :key="i" class="yc-picker-row">
             <picker-cell
               v-for="({ value: date, label }, k) in row"
               :key="date.getFullYear()"
@@ -112,6 +112,7 @@ const {
   computedPickerValue,
   DefinePanel,
   ReusePanel,
+  curYear,
   getDateFromFormat,
   getRangeOfYear,
   handleConfirm,
@@ -121,10 +122,8 @@ const {
   props,
   emits,
 });
-// 开始的year
-const startYear = ref<number>(0);
 // 区间范围
-const yearRange = ref<YearData[][]>([]);
+const yearData = ref<YearData[][]>([]);
 // 是否选中
 const isSelected = (val: Date) => {
   const date = getDateFromFormat(computedValue.value) as Date;
@@ -133,20 +132,18 @@ const isSelected = (val: Date) => {
 };
 // 处理改变
 const handleYearChange = (type: string) => {
-  startYear.value = type == 'pre' ? startYear.value - 10 : startYear.value + 10;
-  const { range } = getRangeOfYear(startYear.value);
-  yearRange.value = range;
+  curYear.value = type == 'pre' ? curYear.value - 10 : curYear.value + 10;
+  const { range } = getRangeOfYear(curYear.value);
+  yearData.value = range;
 };
 // 处理初始化值
 watch(
   () => computedValue.value,
   (val) => {
     const date = val ? getDateFromFormat(val) : new Date();
-    const { range, startYear: start } = getRangeOfYear(
-      (date as Date).getFullYear()
-    );
-    startYear.value = start;
-    yearRange.value = range;
+    const { range, startYear } = getRangeOfYear((date as Date).getFullYear());
+    curYear.value = startYear;
+    yearData.value = range;
   },
   {
     immediate: true,

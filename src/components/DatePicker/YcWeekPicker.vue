@@ -8,7 +8,7 @@
       @change="
         (_, date) => {
           curYear = date.getFullYear();
-          weekRange = getWeeksOfMonth(curYear, curMonth);
+          weekDate = getWeeksOfMonth(curYear, curMonth);
           showYearPicker = false;
         }
       "
@@ -21,7 +21,7 @@
       @change="
         (_, date) => {
           curMonth = date.getMonth();
-          weekRange = getWeeksOfMonth(curYear, curMonth);
+          weekDate = getWeeksOfMonth(curYear, curMonth);
           showMonthPicker = false;
         }
       "
@@ -98,7 +98,7 @@
         </div>
         <div class="yc-picker-body">
           <div
-            v-for="({ label, time, value }, i) in weekRange"
+            v-for="({ label, time, value }, i) in weekDate"
             :key="i"
             :class="[
               'yc-picker-row',
@@ -198,6 +198,10 @@ const {
   locale,
   abbreviation,
   dayStartOfWeek,
+  curMonth,
+  curYear,
+  showMonthPicker,
+  showYearPicker,
   DefinePanel,
   ReusePanel,
   t,
@@ -210,16 +214,8 @@ const {
   props,
   emits,
 });
-//  当前的年
-const curYear = ref<number>(0);
-// 当前的月
-const curMonth = ref<number>(0);
-// 展示年选择器
-const showYearPicker = ref<boolean>(false);
-// 展示月份选择器
-const showMonthPicker = ref<boolean>(false);
-// weekrange
-const weekRange = ref<WeekData[]>([]);
+// weekDate
+const weekDate = ref<WeekData[]>([]);
 // headers
 const weekHeaders = computed(() => {
   const baseDays = [0, 1, 2, 3, 4, 5, 6];
@@ -274,7 +270,7 @@ const isSelected = (v: Date) => {
 const handleDateChange = (dateType: string, type: string) => {
   if (dateType == 'year') {
     curYear.value = type == 'pre' ? curYear.value - 1 : curYear.value + 1;
-    weekRange.value = getWeeksOfMonth(curYear.value, curMonth.value);
+    weekDate.value = getWeeksOfMonth(curYear.value, curMonth.value);
   } else {
     const base = dayjs()
       .set('year', curYear.value)
@@ -283,7 +279,7 @@ const handleDateChange = (dateType: string, type: string) => {
       type == 'pre' ? base.subtract(1, 'month') : base.add(1, 'month');
     curYear.value = date.year();
     curMonth.value = date.month();
-    weekRange.value = getWeeksOfMonth(curYear.value, curMonth.value);
+    weekDate.value = getWeeksOfMonth(curYear.value, curMonth.value);
   }
 };
 // 处理初始化值
@@ -293,7 +289,7 @@ watch(
     const date = val ? (getDateFromFormat(val) as Date) : new Date();
     curYear.value = date.getFullYear();
     curMonth.value = date.getMonth();
-    weekRange.value = getWeeksOfMonth(curYear.value, curMonth.value);
+    weekDate.value = getWeeksOfMonth(curYear.value, curMonth.value);
   },
   {
     immediate: true,
