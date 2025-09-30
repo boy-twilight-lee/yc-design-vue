@@ -1,5 +1,7 @@
 <template>
   <div class="test">
+    <yc-calendar />
+    <a-calendar />
     <yc-year-picker
       style="width: 300px"
       show-confirm-btn
@@ -13,12 +15,15 @@
       @change="(v) => console.log(v)"
     >
     </yc-month-picker>
-    <yc-week-picker style="width: 300px" />
+    <yc-week-picker
+      v-model="value"
+      style="width: 300px"
+      value-format="YYYY-MM-DD"
+      :disabledDate="(date) => date.getFullYear() == 2025"
+    />
     <a-week-picker
       v-model="value"
-      :abbreviation="true"
-      allow-clear
-      show-confirm-btn
+      :disabledDate="(date) => date.getFullYear() == 2025"
     >
     </a-week-picker>
   </div>
@@ -26,7 +31,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-const value = ref('');
+const value = ref('2025-02-01');
 </script>
 
 <style lang="less">

@@ -1,14 +1,14 @@
 <template>
   <div class="yc-calendar-year">
-    <div v-for="(row, i) in calendar" :key="i" class="yc-calendar-year-row">
-      <div v-for="(col, i1) in row" :key="i1" class="yc-calendar-year-cell">
+    <div v-for="(row, i) in months" :key="i" class="yc-calendar-year-row">
+      <div v-for="(month, i1) in row" :key="i1" class="yc-calendar-year-cell">
         <div class="yc-calendar-year-cell-title">
-          {{ monthList[i * 4 + i1] }}
+          {{ monthHeaders[i * 4 + i1] }}
         </div>
         <month-calendar
+          :cur-year="curYear"
+          :cur-month="month - 1"
           :computed-value="computedValue"
-          :calendar="col"
-          :record-date="recordDate"
           small
           class="yc-calendar-year-cell-body"
           @cell-click="(v) => $emit('cell-click', v)"
@@ -24,27 +24,26 @@
 
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed } from 'vue';
-import {
-  useI18n,
-  generateMonthCalendar,
-  CalendarCellData,
-} from '@shared/utils';
+import { useI18n } from '@shared/utils';
 import MonthCalendar from './CalendarMonth.vue';
-const props = defineProps<{
+defineProps<{
+  curYear: number;
   computedValue: Date;
-  recordDate: Record<string, number>;
 }>();
 defineEmits<{
-  (e: 'cell-click', col: CalendarCellData): void;
+  (e: 'cell-click', col: Date): void;
 }>();
-// 结构属性
-const { computedValue, recordDate } = toRefs(props);
 // 国际化
 const { t } = useI18n();
-// 日历数组
-const calendar = ref<CalendarCellData[][][][]>([]);
+// month数组
+const months = ref([
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [10, 11, 12],
+]);
 // 中文月
-const monthList = computed(() => {
+const monthHeaders = computed(() => {
   return [
     'January',
     'February',
@@ -60,25 +59,6 @@ const monthList = computed(() => {
     'December',
   ].map((v) => t(`calendar.month.short.${v}`));
 });
-// 处理日期
-watch(
-  () => recordDate.value.year,
-  () => {
-    const { year } = recordDate.value;
-    calendar.value = [];
-    const row: CalendarCellData[][][] = [];
-    for (let i = 1; i <= 12; i++) {
-      row.push(generateMonthCalendar(year, i));
-      if (row.length == 4) {
-        calendar.value.push([...row]);
-        row.splice(0);
-      }
-    }
-  },
-  {
-    immediate: true,
-  }
-);
 </script>
 
 <style lang="less">

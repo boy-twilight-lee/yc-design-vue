@@ -14,8 +14,8 @@
         </icon-button>
 
         <div class="yc-calendar-header-value">
-          <slot name="header" :year="recordDate.year" :month="recordDate.month">
-            {{ recordDateFormat }}
+          <slot name="header" :year="curYear" :month="curMonth">
+            {{ formatValue }}
           </slot>
         </div>
         <icon-button
@@ -45,8 +45,9 @@
       <month-calendar
         v-if="computedMode == 'month'"
         :computed-value="computedValue"
-        :recordDate="recordDate"
-        @cell-click="handleClick"
+        :cur-year="curYear"
+        :cur-month="curMonth"
+        @cell-click="(v) => (computedValue = v)"
       >
         <template v-if="$slots.default" #default="scope">
           <slot v-bind="scope" />
@@ -55,8 +56,8 @@
       <year-calendar
         v-else
         :computed-value="computedValue"
-        :record-date="recordDate"
-        @cell-click="handleClick"
+        :cur-year="curYear"
+        @cell-click="(v) => (computedValue = v)"
       >
         <template v-if="$slots.default" #default="scope">
           <slot v-bind="scope" />
@@ -75,12 +76,7 @@ import {
   CalendarMode,
 } from './type';
 import { RecordType } from '@shared/type';
-import {
-  useI18n,
-  useControlValue,
-  dayjs,
-  CalendarCellData,
-} from '@shared/utils';
+import { useI18n, useControlValue, dayjs } from '@shared/utils';
 import { IconArrowRight } from '@shared/icons';
 import { IconButton } from '@shared/components';
 import YcButton from '@/components/Button';
@@ -106,6 +102,8 @@ const {
   defaultMode,
   modes: _modes,
 } = toRefs(props);
+// 国际化
+const { t } = useI18n();
 // 受控的值
 const computedValue = useControlValue<Date>(
   modelValue,
@@ -115,32 +113,17 @@ const computedValue = useControlValue<Date>(
     emits('change', val);
   }
 );
-// 国际化
-const { t } = useI18n();
-// 记录的date
-const recordDate = ref<Record<string, number>>({});
+// 当前的year
+const curYear = ref<number>(0);
+// 当前的month
+const curMonth = ref<number>(0);
 // 格式化的
-const recordDateFormat = computed(() => {
-  const { year, month } = recordDate.value;
+const formatValue = computed(() => {
   return dayjs()
-    .set('year', year)
-    .set('month', month)
+    .set('year', curYear.value)
+    .set('month', curMonth.value)
     .format(t('calendar.formatMonth'));
 });
-watch(
-  () => computedValue.value,
-  (val) => {
-    const date = val ? dayjs(val) : dayjs();
-    recordDate.value = {
-      year: date.year(),
-      month: date.month() + 1,
-      day: date.date(),
-    };
-  },
-  {
-    immediate: true,
-  }
-);
 // mode
 const computedMode = useControlValue<CalendarMode>(
   mode,
@@ -159,31 +142,29 @@ const modes = computed(() => {
     };
   }) as RecordType[] as RadioOption[];
 });
-// 处理点击
-const handleClick = (col: CalendarCellData) => {
-  computedValue.value = new Date(col.fullDate);
-};
 // 处理日期改变
 const handleDateChange = (type: string) => {
   if (type == 'today') {
     computedValue.value = new Date();
     return;
   }
-  const { year, month } = recordDate.value;
-  if (type == 'next') {
-    const tempMonth = month + 1 > 12 ? 1 : month + 1;
-    const tempYear = month + 1 > 12 || computedMode.value == 'year' ? 1 : 0;
-    recordDate.value.year = year + tempYear;
-    if (computedMode.value == 'year') return;
-    recordDate.value.month = tempMonth;
-  } else {
-    const tempMonth = month - 1 < 1 ? 12 : month - 1;
-    const tempYear = month - 1 < 1 || computedMode.value == 'year' ? -1 : 0;
-    recordDate.value.year = year + tempYear;
-    if (computedMode.value == 'year') return;
-    recordDate.value.month = tempMonth;
-  }
+  let date = dayjs().set('year', curYear.value).set('month', curMonth.value);
+  date = type == 'next' ? date.add(1, 'month') : date.subtract(1, 'month');
+  curYear.value = date.year();
+  curMonth.value = date.month();
 };
+// 检测value的改变
+watch(
+  () => computedValue.value,
+  () => {
+    const date = dayjs(computedValue.value ? computedValue.value : new Date());
+    curYear.value = date.year();
+    curMonth.value = date.month();
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
 
 <style lang="less">

@@ -15,7 +15,7 @@ import {
   isUndefined,
 } from '@shared/utils';
 import { RecordType } from '@/components/_shared/type';
-import userContext from './userContext';
+import useContext from './useContext';
 import isoWeek from 'dayjs/plugin/isoWeek';
 dayjs.extend(isoWeek);
 
@@ -238,7 +238,7 @@ export default function usePicker(params: {
     return weekData;
   };
   // input-context
-  userContext().provide(
+  useContext().provide(
     {
       computedValue,
       computedVisible,

@@ -10,7 +10,7 @@
     <div class="yc-calendar-week-list">
       <div
         class="yc-calendar-week-list-item"
-        v-for="item in weekList"
+        v-for="item in weekHeaders"
         :key="item"
       >
         {{ item }}
@@ -19,23 +19,27 @@
     <div class="yc-calendar-month-cell-body">
       <div v-for="(row, i) in calendar" :key="i" class="yc-calendar-month-row">
         <div
-          v-for="(col, i1) in row"
+          v-for="(v, i1) in row"
           :key="i1"
           :class="[
             'yc-calendar-cell',
             {
-              'yc-calendar-cell-today': isToday(col),
-              'yc-calendar-cell-selected': isSelected(col),
-              'yc-calendar-cell-in-view': col.isCurrentMonth,
+              'yc-calendar-cell-today': isToday(v.value),
+              'yc-calendar-cell-selected': isSelected(v.value),
+              'yc-calendar-cell-in-view': isCellInView(v.value),
             },
           ]"
-          @click="$emit('cell-click', col)"
+          @click="$emit('cell-click', v.value)"
         >
-          <slot :year="col.year" :month="col.month" :day="col.day">
+          <slot
+            :year="v.value.getFullYear()"
+            :month="v.value.getMonth()"
+            :day="v.value.getDate()"
+          >
             <div class="yc-calendar-date">
               <div class="yc-calendar-date-value">
                 <div class="yc-calendar-date-circle">
-                  {{ col.day }}
+                  {{ v.label }}
                 </div>
               </div>
             </div>
@@ -47,19 +51,14 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, toRefs, watch } from 'vue';
-import {
-  dayjs,
-  generateMonthCalendar,
-  CalendarCellData,
-  useI18n,
-  useControlValue,
-} from '@shared/utils';
+import { ref, computed, toRefs, watch } from 'vue';
+import { dayjs, useI18n } from '@shared/utils';
+import useCalendar, { CalendarCellData } from './hooks/useCalendar';
 const props = withDefaults(
   defineProps<{
     computedValue: Date;
-    recordDate: Record<string, number>;
-    calendar?: CalendarCellData[][];
+    curYear: number;
+    curMonth: number;
     small?: boolean;
   }>(),
   {
@@ -68,14 +67,16 @@ const props = withDefaults(
   }
 );
 defineEmits<{
-  (e: 'cell-click', col: CalendarCellData): void;
+  (e: 'cell-click', col: Date): void;
 }>();
 // 结构属性
-const { computedValue, calendar: _calendar, small, recordDate } = toRefs(props);
+const { small, curYear, curMonth, computedValue } = toRefs(props);
+// dayofMonth
+const { getDayOfMonth } = useCalendar();
 // 国际化
 const { t } = useI18n();
 // 周日列表
-const weekList = computed(() => {
+const weekHeaders = computed(() => {
   return [
     'sunday',
     'monday',
@@ -87,37 +88,41 @@ const weekList = computed(() => {
   ].map((v) => t(`calendar.week.${small.value ? 'short' : 'long'}.${v}`));
 });
 // 日历数组
-const calendar = useControlValue<CalendarCellData[][]>(_calendar, []);
-// 处理日期
+const calendar = ref<CalendarCellData[][]>([]);
+// 是否今天
+const isToday = (date: Date) => {
+  const curDate = dayjs();
+  return (
+    date.getFullYear() == curDate.year() &&
+    date.getMonth() == curDate.month() &&
+    date.getDate() == curDate.date()
+  );
+};
+// 是否再view
+const isCellInView = (date: Date) => {
+  return (
+    date.getFullYear() == curYear.value && date.getMonth() == curMonth.value
+  );
+};
+// 是否选中
+const isSelected = (date: Date) => {
+  if (!computedValue.value) return false;
+  return (
+    computedValue.value.getFullYear() == date.getFullYear() &&
+    computedValue.value.getMonth() == date.getMonth() &&
+    computedValue.value.getDate() == date.getDate()
+  );
+};
+// watch
 watch(
-  () => recordDate.value.month,
+  () => [curYear.value, curMonth.value],
   () => {
-    if (_calendar.value) return;
-    const { year, month } = recordDate.value;
-    calendar.value = generateMonthCalendar(year, month);
+    calendar.value = getDayOfMonth(curYear.value, curMonth.value);
   },
   {
     immediate: true,
   }
 );
-// 是否今天
-const isToday = (col: CalendarCellData) => {
-  const { day, year, month } = col;
-  const cur = dayjs();
-  const _day = cur.date();
-  const _month = cur.month();
-  const _year = cur.year();
-  return day == _day && month == _month && year == _year;
-};
-// 是否选中
-const isSelected = (col: CalendarCellData) => {
-  const year = computedValue.value.getFullYear();
-  const month = computedValue.value.getMonth();
-  const day = computedValue.value.getDate();
-  const { day: _day, year: _year, month: _month, isCurrentMonth } = col;
-  const isSameDate = day == _day && month == _month && year == _year;
-  return small.value ? isSameDate && isCurrentMonth : isSameDate;
-};
 </script>
 
 <style lang="less">

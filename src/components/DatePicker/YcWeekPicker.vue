@@ -104,11 +104,11 @@
               'yc-picker-row',
               'yc-picker-week-row',
               {
+                'yc-picker-week-row-disabled': disabledDate?.(value),
                 'yc-picker-week-row-selected': isSelected(value),
-                'yc-picker-week-row-hoverable': !isSelected(value),
               },
             ]"
-            @click="handleSelect(value)"
+            @click="!disabledDate?.(value) && handleSelect(value)"
           >
             <picker-cell :cell-in-view="false" :value="label" />
             <picker-cell
@@ -253,7 +253,7 @@ const isToday = (day: DayData) => {
   return (
     value.getFullYear() == date.year() &&
     value.getMonth() == date.month() &&
-    value.getDate() == date.day()
+    value.getDate() == date.date()
   );
 };
 // 是否选中

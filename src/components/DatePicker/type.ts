@@ -1,6 +1,7 @@
 import { VNode } from 'vue';
 import { PopupContainer, Position, Size } from '@shared/type';
 import { TriggerProps } from '@/components/Trigger';
+import { TimePickerProps } from '../TimePicker';
 
 export interface BasePickerProps {
   locale?: Record<string, any>;
@@ -59,13 +60,10 @@ export interface BasePickerSlots {
   extra?: () => VNode[];
 }
 
-export type YearPickerProps = Omit<
-  BasePickerProps,
-  'disabledTime' | 'abbreviation'
-> & {
+export interface YearPickerProps extends BasePickerProps {
   modelValue?: DatePickerValue;
   defaultValue?: DatePickerValue;
-};
+}
 
 export interface YearPickerEmits extends BasePickerEmits {
   (e: 'update:modelValue', value: DatePickerValue): void;
@@ -90,13 +88,26 @@ export interface WeekPickerEmits extends BasePickerEmits {
   (e: 'update:modelValue', value: DatePickerValue): void;
 }
 
+export interface DatePickerProps extends BasePickerProps {
+  modelValue?: DatePickerValue;
+  defaultValue?: DatePickerValue;
+  dayStartOfWeek?: DayStartOfWeek;
+  showTime?: boolean;
+  timePickerProps?: TimePickerProps;
+  showNowBtn?: boolean;
+}
+
+export interface DatePickerEmits extends BasePickerEmits {
+  (e: 'update:modelValue', value: DatePickerValue): void;
+}
+
 export type DatePickerValue = Date | string | number;
+
+export type DatePickerPosition = 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
 
 export type DayStartOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export type ValueFormat = 'timestamp' | 'Date' | string;
-
-export type DatePickerPosition = 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
 
 export type ShortcutsPosition = Exclude<Position, 'top'>;
 

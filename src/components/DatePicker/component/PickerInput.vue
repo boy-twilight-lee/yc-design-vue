@@ -51,7 +51,7 @@ import { watch, nextTick, ref, toRefs, computed } from 'vue';
 import { IconCalendar } from '@shared/icons';
 import { useI18n } from '@shared/utils';
 import { IconButton } from '@shared/components';
-import userPickerInputContext from '../hooks/userContext';
+import userPickerInputContext from '../hooks/useContext';
 import YcInput, { InputInstance } from '@/components/Input';
 import YcTrigger from '@/components/Trigger';
 defineOptions({
@@ -59,7 +59,7 @@ defineOptions({
 });
 const $props = withDefaults(
   defineProps<{
-    type?: 'year' | 'month' | 'week' | 'quarter' | 'time' | 'date';
+    type?: 'year' | 'month' | 'week' | 'time' | 'date';
   }>(),
   {
     type: 'date',
