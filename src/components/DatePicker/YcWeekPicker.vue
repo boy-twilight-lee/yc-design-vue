@@ -1,6 +1,33 @@
 <template>
   <define-panel>
+    <yc-year-picker
+      v-if="showYearPicker"
+      :model-value="`${curYear}`"
+      hide-trigger
+      value-format="YYYY"
+      @change="
+        (_, date) => {
+          curYear = date.getFullYear();
+          weekRange = getWeeksOfMonth(curYear, curMonth);
+          showYearPicker = false;
+        }
+      "
+    />
+    <yc-month-picker
+      v-else-if="showMonthPicker"
+      :model-value="`${curYear}-${curMonth + 1 < 10 ? `0${curMonth + 1}` : curMonth + 1}`"
+      hide-trigger
+      value-format="YYYY-MM"
+      @change="
+        (_, date) => {
+          curMonth = date.getMonth();
+          weekRange = getWeeksOfMonth(curYear, curMonth);
+          showMonthPicker = false;
+        }
+      "
+    />
     <picker-panel
+      v-else
       :locale="locale"
       :preview-shortcut="previewShortcut"
       :shortcuts="shortcuts"
@@ -12,19 +39,48 @@
     >
       <div class="yc-panel-week">
         <div class="yc-picker-header">
-          <div class="yc-picker-header-icon" @click="">
+          <div
+            class="yc-picker-header-icon"
+            @click="handleDateChange('year', 'pre')"
+          >
             <slot name="icon-prev-double">
               <icon-double-left />
             </slot>
           </div>
+          <div
+            class="yc-picker-header-icon"
+            @click="handleDateChange('month', 'pre')"
+          >
+            <slot name="icon-prev">
+              <icon-arrow-right :rotate="180" />
+            </slot>
+          </div>
           <div class="yc-picker-header-title">
-            <span class="yc-picker-header-label">{{ curYear }}</span>
+            <span
+              class="yc-picker-header-label"
+              @click="showYearPicker = true"
+              >{{ curYear }}</span
+            >
             <span>-</span>
-            <span class="yc-picker-header-label"
-              >{{ curMonth < 9 ? `0${curMonth + 1}` : curMonth + 1 }}
+            <span
+              class="yc-picker-header-label"
+              @click="showMonthPicker = true"
+            >
+              {{ curMonth < 9 ? `0${curMonth + 1}` : curMonth + 1 }}
             </span>
           </div>
-          <div class="yc-picker-header-icon" @click="">
+          <div
+            class="yc-picker-header-icon"
+            @click="handleDateChange('month', 'next')"
+          >
+            <slot name="icon-next">
+              <icon-arrow-right />
+            </slot>
+          </div>
+          <div
+            class="yc-picker-header-icon"
+            @click="handleDateChange('year', 'next')"
+          >
             <slot name="icon-next-double">
               <icon-double-right />
             </slot>
@@ -90,18 +146,15 @@
 
 <script lang="ts" setup>
 import { ref, watch, computed } from 'vue';
-import {
-  WeekPickerProps,
-  WeekPickerEmits,
-  BasePickerSlots,
-  ShortcutType,
-} from './type';
+import { WeekPickerProps, WeekPickerEmits, BasePickerSlots } from './type';
 import userPicker, { WeekData, DayData } from './hooks/userPicker';
-import { dayjs, sleep, isUndefined } from '@shared/utils';
-import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
+import { dayjs } from '@shared/utils';
+import { IconDoubleLeft, IconDoubleRight, IconArrowRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
+import YcYearPicker from './YcYearPicker.vue';
+import YcMonthPicker from './YcMonthPicker.vue';
 defineOptions({
   name: 'WeekPicker',
   inheritAttrs: false,
@@ -141,17 +194,18 @@ const emits = defineEmits<WeekPickerEmits>();
 // 获取格式化
 const {
   computedValue,
-  computedVisible,
   computedPickerValue,
   locale,
   abbreviation,
   dayStartOfWeek,
-  showConfirmBtn,
   DefinePanel,
   ReusePanel,
   t,
   getDateFromFormat,
   getWeeksOfMonth,
+  handleConfirm,
+  handleSelect,
+  handleShortcut,
 } = userPicker({
   props,
   emits,
@@ -160,6 +214,10 @@ const {
 const curYear = ref<number>(0);
 // 当前的月
 const curMonth = ref<number>(0);
+// 展示年选择器
+const showYearPicker = ref<boolean>(false);
+// 展示月份选择器
+const showMonthPicker = ref<boolean>(false);
 // weekrange
 const weekRange = ref<WeekData[]>([]);
 // headers
@@ -185,12 +243,6 @@ const weekHeaders = computed(() => {
     return locale.value?.[key] || t(key);
   });
 });
-// 旧值
-let oldDate: Date | string;
-// 选择的date
-let selectDate: Date;
-// 是否确认过
-let isConfirm = false;
 // isCellInView
 const isCellInView = (day: DayData) => {
   const { value } = day;
@@ -200,7 +252,13 @@ const isCellInView = (day: DayData) => {
 };
 // isToday
 const isToday = (day: DayData) => {
-  return isCellInView(day) && day.value.getDate() == dayjs().day();
+  const { value } = day;
+  const date = dayjs();
+  return (
+    value.getFullYear() == date.year() &&
+    value.getMonth() == date.month() &&
+    value.getDate() == date.day()
+  );
 };
 // 是否选中
 const isSelected = (v: Date) => {
@@ -212,35 +270,21 @@ const isSelected = (v: Date) => {
     date.getDate() == v.getDate()
   );
 };
-// 处理shortcut
-const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {
-  if (!hover) {
-    emits('select-shortcut', shortcut);
+// 处理时间变化
+const handleDateChange = (dateType: string, type: string) => {
+  if (dateType == 'year') {
+    curYear.value = type == 'pre' ? curYear.value - 1 : curYear.value + 1;
+    weekRange.value = getWeeksOfMonth(curYear.value, curMonth.value);
+  } else {
+    const base = dayjs()
+      .set('year', curYear.value)
+      .set('month', curMonth.value);
+    const date =
+      type == 'pre' ? base.subtract(1, 'month') : base.add(1, 'month');
+    curYear.value = date.year();
+    curMonth.value = date.month();
+    weekRange.value = getWeeksOfMonth(curYear.value, curMonth.value);
   }
-  if (shortcut.value) {
-    computedValue.value = shortcut.value as Date;
-  }
-  if (hover) return;
-  isConfirm = true;
-  computedVisible.value = false;
-};
-// 处理选中
-const handleSelect = (date: Date) => {
-  computedValue.value = date;
-  selectDate = date;
-  const dateString = dayjs(date).format('YYYY-MM-DD');
-  emits('select', computedValue.value, date, dateString);
-  if (showConfirmBtn.value) return;
-  emits('change', computedValue.value, date, dateString);
-};
-// 处理确认
-const handleConfirm = async () => {
-  isConfirm = true;
-  const dateString = dayjs(selectDate).format('YYYY-MM-DD');
-  emits('change', computedValue.value, selectDate, dateString);
-  emits('ok', computedValue.value, selectDate, dateString);
-  await sleep(0);
-  computedVisible.value = false;
 };
 // 处理初始化值
 watch(
@@ -250,24 +294,6 @@ watch(
     curYear.value = date.getFullYear();
     curMonth.value = date.getMonth();
     weekRange.value = getWeeksOfMonth(curYear.value, curMonth.value);
-  },
-  {
-    immediate: true,
-  }
-);
-// 处理visible发生改变
-watch(
-  () => computedVisible.value,
-  (val) => {
-    if (val) {
-      isConfirm = false;
-      oldDate = computedValue.value
-        ? getDateFromFormat(computedValue.value)
-        : (computedValue.value as string);
-    } else {
-      if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
-      computedValue.value = oldDate;
-    }
   },
   {
     immediate: true,

@@ -80,14 +80,9 @@
 
 <script lang="ts" setup>
 import { ref, watch, computed, toRefs } from 'vue';
-import {
-  MonthPickerProps,
-  MonthPickerEmits,
-  BasePickerSlots,
-  ShortcutType,
-} from './type';
+import { MonthPickerProps, MonthPickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
-import { dayjs, sleep, isUndefined } from '@shared/utils';
+import { dayjs } from '@shared/utils';
 import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
@@ -131,15 +126,16 @@ const emits = defineEmits<MonthPickerEmits>();
 // 获取格式化
 const {
   computedValue,
-  computedVisible,
   computedPickerValue,
   locale,
-  showConfirmBtn,
   abbreviation,
   DefinePanel,
   ReusePanel,
   t,
   getDateFromFormat,
+  handleConfirm,
+  handleSelect,
+  handleShortcut,
 } = userPicker({
   props,
   emits,
@@ -163,12 +159,6 @@ const monthRange = computed(() => {
     });
   });
 });
-// 旧值
-let oldDate: Date | string;
-// 选择的date
-let selectDate: Date;
-// 是否确认过
-let isConfirm = false;
 // 是否展示picker
 const showYearPicker = ref<boolean>(false);
 // 开始的year
@@ -187,60 +177,12 @@ const isToday = (date: Date) => {
     date.getMonth() == dayjs().month() && date.getFullYear() == dayjs().year()
   );
 };
-// 处理shortcut
-const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {
-  if (!hover) {
-    emits('select-shortcut', shortcut);
-  }
-  if (shortcut.value) {
-    computedValue.value = shortcut.value as Date;
-  }
-  if (hover) return;
-  isConfirm = true;
-  computedVisible.value = false;
-};
-// 处理选中
-const handleSelect = (date: Date) => {
-  computedValue.value = date;
-  const dateString = dayjs(date).format('YYYY-MM');
-  computedValue.value = dateString;
-  emits('select', computedValue.value, date, dateString);
-  if (showConfirmBtn.value) return;
-  emits('change', computedValue.value, date, dateString);
-};
-// 处理确认
-const handleConfirm = async () => {
-  isConfirm = true;
-  const dateString = dayjs(selectDate).format('YYYY-MM');
-  emits('change', computedValue.value, selectDate, dateString);
-  emits('ok', computedValue.value, selectDate, dateString);
-  await sleep(0);
-  computedVisible.value = false;
-};
 // 处理初始化值
 watch(
   () => computedValue.value,
   (val) => {
     const date = val ? (getDateFromFormat(val) as Date) : new Date();
     curYear.value = date.getFullYear();
-  },
-  {
-    immediate: true,
-  }
-);
-// 处理visible发生改变
-watch(
-  () => computedVisible.value,
-  (val) => {
-    if (val) {
-      isConfirm = false;
-      oldDate = computedValue.value
-        ? getDateFromFormat(computedValue.value)
-        : '';
-    } else {
-      if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
-      computedValue.value = oldDate;
-    }
   },
   {
     immediate: true,

@@ -1,11 +1,18 @@
-import { computed, toRefs } from 'vue';
-import { BasePickerEmits, DatePickerValue, DayStartOfWeek } from '../type';
+import { computed, toRefs, watch } from 'vue';
+import {
+  BasePickerEmits,
+  DatePickerValue,
+  DayStartOfWeek,
+  ShortcutType,
+} from '../type';
 import {
   dayjs,
   isString,
   useControlValue,
   createReusableTemplate,
   useI18n,
+  sleep,
+  isUndefined,
 } from '@shared/utils';
 import { RecordType } from '@/components/_shared/type';
 import userContext from './userContext';
@@ -86,6 +93,60 @@ export default function usePicker(params: {
   const { define: DefinePanel, reuse: ReusePanel } = createReusableTemplate();
   // 国际化
   const { t } = useI18n();
+  // 旧值
+  let oldDate: Date | string;
+  // 选择的date
+  let selectDate: Date;
+  // 是否确认过
+  let isConfirm = false;
+  // 处理visible发生改变
+  watch(
+    () => computedVisible.value,
+    (val) => {
+      if (val) {
+        isConfirm = false;
+        oldDate = computedValue.value
+          ? getDateFromFormat(computedValue.value)
+          : (computedValue.value as string);
+      } else {
+        if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
+        computedValue.value = oldDate;
+      }
+    },
+    {
+      immediate: true,
+    }
+  );
+  // 处理shortcut
+  const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {
+    if (!hover) {
+      emits('select-shortcut', shortcut);
+    }
+    if (shortcut.value) {
+      computedValue.value = shortcut.value as Date;
+    }
+    if (hover) return;
+    isConfirm = true;
+    computedVisible.value = false;
+  };
+  // 处理选中
+  const handleSelect = (date: Date) => {
+    computedValue.value = date;
+    selectDate = date;
+    const dateString = dayjs(date).format('YYYY-MM-DD');
+    emits('select', computedValue.value, date, dateString);
+    if (showConfirmBtn.value) return;
+    emits('change', computedValue.value, date, dateString);
+  };
+  // 处理确认
+  const handleConfirm = async () => {
+    isConfirm = true;
+    const dateString = dayjs(selectDate).format('YYYY-MM-DD');
+    emits('change', computedValue.value, selectDate, dateString);
+    emits('ok', computedValue.value, selectDate, dateString);
+    await sleep(0);
+    computedVisible.value = false;
+  };
   // 从格式化的值中提取
   const getDateFromFormat = (val: DatePickerValue) => {
     if (!val) return '';
@@ -188,5 +249,8 @@ export default function usePicker(params: {
     getFormatFromDate,
     getRangeOfYear,
     getWeeksOfMonth,
+    handleSelect,
+    handleConfirm,
+    handleShortcut,
   };
 }
