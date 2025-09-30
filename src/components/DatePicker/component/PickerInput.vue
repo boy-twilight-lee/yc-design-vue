@@ -74,11 +74,11 @@ const {
   disabled,
   position,
   triggerProps,
-  placeholder: _placeholder,
   size,
   error,
   disabledInput,
   locale,
+  placeholder: _placeholder,
 } = toRefs(props);
 const { t } = useI18n();
 // placeholder

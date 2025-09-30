@@ -29,12 +29,13 @@ export interface WeekData {
 }
 
 export default function usePicker(params: {
-  computedValue: Ref<DatePickerValue>;
   props: RecordType;
   emits: BasePickerEmits;
 }) {
-  const { computedValue, props, emits } = params;
+  const { props, emits } = params;
   const {
+    modelValue,
+    defaultValue,
     popupVisible,
     defaultPopupVisible,
     pickerValue,
@@ -46,6 +47,16 @@ export default function usePicker(params: {
     locale,
     abbreviation,
   } = toRefs(props);
+  // 格式化时间
+  const computedValue = useControlValue<DatePickerValue>(
+    modelValue,
+    defaultValue.value,
+    (val, controlValue) => {
+      const date = getFormatFromDate(val as Date);
+      controlValue.value = date;
+      emits('update:modelValue' as any, date);
+    }
+  );
   // 受控的visible
   const computedVisible = useControlValue<boolean>(
     popupVisible,
@@ -79,10 +90,10 @@ export default function usePicker(params: {
   const getDateFromFormat = (val: DatePickerValue) => {
     if (!val) return '';
     let date: dayjs.Dayjs;
-    if (['timestamp', 'Date'].includes(valueFormat.value)) {
+    if (['timestamp', 'Date'].includes(valueFormat.value) || !isString(val)) {
       date = dayjs(val);
     } else {
-      date = dayjs(isString(val) ? val : String(val), valueFormat.value);
+      date = dayjs(val, valueFormat.value);
     }
     if (!date.isValid()) return '';
     return date.startOf('year').toDate();

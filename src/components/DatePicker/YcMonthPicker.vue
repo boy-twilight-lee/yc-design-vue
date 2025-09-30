@@ -132,28 +132,19 @@ const props = withDefaults(defineProps<MonthPickerProps>(), {
   abbreviation: true,
 });
 const emits = defineEmits<MonthPickerEmits>();
-const { modelValue, defaultValue, showConfirmBtn } = toRefs(props);
-// 受控的值
-const computedValue = useControlValue<DatePickerValue>(
-  modelValue,
-  defaultValue.value,
-  (val) => {
-    emits('update:modelValue', getFormatFromDate(val as Date));
-  }
-);
 // 获取格式化
 const {
+  computedValue,
   computedVisible,
   computedPickerValue,
   locale,
+  showConfirmBtn,
   abbreviation,
   DefinePanel,
   ReusePanel,
   t,
   getDateFromFormat,
-  getFormatFromDate,
 } = userPicker({
-  computedValue,
   props,
   emits,
 });
@@ -245,9 +236,6 @@ watch(
         ? getDateFromFormat(computedValue.value)
         : '';
     } else {
-      console.log(isUndefined(oldDate));
-      console.log(isConfirm);
-      console.log(showConfirmBtn.value);
       if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
       console.log(typeof oldDate, 'old');
       computedValue.value = oldDate;
@@ -260,5 +248,5 @@ watch(
 </script>
 
 <style lang="less">
-@import './style/year-picker.less';
+@import './style/picker.less';
 </style>

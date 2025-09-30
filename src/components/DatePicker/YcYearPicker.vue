@@ -112,27 +112,17 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   defaultValue: '',
 });
 const emits = defineEmits<YearPickerEmits>();
-const { modelValue, defaultValue } = toRefs(props);
-// 格式化时间
-const computedValue = useControlValue<DatePickerValue>(
-  modelValue,
-  defaultValue.value,
-  (val) => {
-    emits('update:modelValue', getFormatFromDate(val as Date));
-  }
-);
 // 获取格式化
 const {
-  computedPickerValue,
+  computedValue,
   computedVisible,
+  computedPickerValue,
   showConfirmBtn,
   DefinePanel,
   ReusePanel,
   getDateFromFormat,
-  getFormatFromDate,
   getRangeOfYear,
 } = usePicker({
-  computedValue,
   props,
   emits,
 });
@@ -224,5 +214,5 @@ watch(
 </script>
 
 <style lang="less">
-@import './style/year-picker.less';
+@import './style/picker.less';
 </style>

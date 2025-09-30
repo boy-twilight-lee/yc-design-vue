@@ -131,30 +131,21 @@ const props = withDefaults(defineProps<WeekPickerProps>(), {
   dayStartOfWeek: 0,
 });
 const emits = defineEmits<WeekPickerEmits>();
-const { modelValue, defaultValue, showConfirmBtn } = toRefs(props);
-// 受控的值
-const computedValue = useControlValue<DatePickerValue>(
-  modelValue,
-  defaultValue.value,
-  (val) => {
-    emits('update:modelValue', getFormatFromDate(val as Date));
-  }
-);
 // 获取格式化
 const {
-  computedPickerValue,
+  computedValue,
   computedVisible,
+  computedPickerValue,
   locale,
   abbreviation,
   dayStartOfWeek,
+  showConfirmBtn,
   DefinePanel,
   ReusePanel,
   t,
   getDateFromFormat,
-  getFormatFromDate,
   getWeeksOfMonth,
 } = userPicker({
-  computedValue,
   props,
   emits,
 });
@@ -268,5 +259,5 @@ watch(
 </script>
 
 <style lang="less" scoped>
-@import './style/year-picker.less';
+@import './style/picker.less';
 </style>

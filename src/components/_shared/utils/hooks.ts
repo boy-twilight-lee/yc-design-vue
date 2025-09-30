@@ -20,7 +20,7 @@ export const useControlValue = <T>(
     },
     set(value: T) {
       controlValue.value = value;
-      onSet(value);
+      onSet(value, controlValue);
     },
   });
 };
