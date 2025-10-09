@@ -24,33 +24,30 @@
       @shortcut-select="handleShortcut"
     >
       <div class="yc-panel-month">
-        <div class="yc-picker-header">
-          <div class="yc-picker-header-icon" @click="curYear--">
-            <slot name="icon-prev-double">
-              <icon-double-left />
-            </slot>
-          </div>
-          <div class="yc-picker-header-title">
-            <div class="yc-picker-header-label" @click="showYearPicker = true">
-              {{ curYear }}
-            </div>
-          </div>
-          <div class="yc-picker-header-icon" @click="curYear++">
-            <slot name="icon-next-double">
-              <icon-double-right />
-            </slot>
-          </div>
-        </div>
+        <picker-header
+          :year="curYear"
+          type="month"
+          @year-click="showYearPicker = true"
+          @prev-double-click="curYear--"
+          @next-double-click="curYear++"
+        >
+          <template v-if="$slots['icon-prev-double']" #icon-prev-double>
+            <slot name="icon-next-double" />
+          </template>
+          <template v-if="$slots['icon-next-double']" #icon-next-double>
+            <slot name="icon-next-double" />
+          </template>
+        </picker-header>
         <div class="yc-picker-body">
           <div v-for="(row, i) in monthData" :key="i" class="yc-picker-row">
             <picker-cell
               v-for="({ value: date, label }, k) in row"
               :key="k"
-              :is-selected="isSelected(date)"
-              :is-today="isToday(date)"
-              :disabled="disabledDate?.(date)"
               :value="label"
-              cell-in-view
+              :is-selected="isSelected(date, 'month')"
+              :is-today="isToday(date, 'month')"
+              :cell-in-view="isCellInView(date, 'month')"
+              :disabled="disabledDate?.(date)"
               @click="handleSelect(date)"
             >
               <template v-if="$slots.cell" #cell>
@@ -79,11 +76,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed, toRefs } from 'vue';
+import { watch, computed } from 'vue';
 import { MonthPickerProps, MonthPickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
 import { dayjs } from '@shared/utils';
-import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
+import PickerHeader from './component/PickerHeader.vue';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
@@ -126,7 +123,6 @@ const emits = defineEmits<MonthPickerEmits>();
 // 获取格式化
 const {
   computedValue,
-  computedPickerValue,
   showYearPicker,
   curYear,
   locale,
@@ -135,6 +131,9 @@ const {
   ReusePanel,
   t,
   getDateFromFormat,
+  isCellInView,
+  isToday,
+  isSelected,
   handleConfirm,
   handleSelect,
   handleShortcut,
@@ -161,20 +160,6 @@ const monthData = computed(() => {
     });
   });
 });
-// 是否选中
-const isSelected = (val: Date) => {
-  const date = getDateFromFormat(computedValue.value) as Date;
-  if (!date) return false;
-  return (
-    date.getFullYear() == val.getFullYear() && date.getMonth() == val.getMonth()
-  );
-};
-// isToday
-const isToday = (date: Date) => {
-  return (
-    date.getMonth() == dayjs().month() && date.getFullYear() == dayjs().year()
-  );
-};
 // 处理初始化值
 watch(
   () => computedValue.value,

@@ -1,6 +1,7 @@
 .yc-panel-year,
 .yc-panel-month,
-.yc-panel-week {
+.yc-panel-week,
+.yc-panel-date {
   width: 265px;
   display: flex;
   flex-direction: column;
@@ -45,16 +46,6 @@
       }
     }
   }
-  .yc-picker-body {
-    padding: 14px 16px;
-    .yc-picker-row {
-      padding: 2px 0;
-      display: flex;
-    }
-  }
-}
-.yc-panel-week {
-  width: 298px;
   .yc-picker-week-list {
     width: 100%;
     padding: 14px 16px 0 16px;
@@ -70,6 +61,17 @@
       align-items: center;
     }
   }
+  .yc-picker-body {
+    padding: 14px 16px;
+    .yc-picker-row {
+      padding: 2px 0;
+      display: flex;
+    }
+  }
+}
+.yc-panel-week {
+  width: 298px;
+
   .yc-picker-body {
     .yc-picker-week-row {
       &:not(.yc-picker-week-row-selected):not(

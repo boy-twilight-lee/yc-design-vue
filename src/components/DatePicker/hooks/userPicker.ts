@@ -13,27 +13,12 @@ import {
   useI18n,
   sleep,
   isUndefined,
+  getDaysOfMonth,
+  getWeeksOfMonth,
+  getRangeOfYear,
 } from '@shared/utils';
 import { RecordType } from '@/components/_shared/type';
 import useContext from './useContext';
-import isoWeek from 'dayjs/plugin/isoWeek';
-dayjs.extend(isoWeek);
-
-export type YearData = {
-  label: string;
-  value: Date;
-};
-
-export interface DayData {
-  label: string;
-  value: Date;
-}
-
-export interface WeekData {
-  label: number;
-  value: Date;
-  time: DayData[];
-}
 
 export default function usePicker(params: {
   props: RecordType;
@@ -157,6 +142,12 @@ export default function usePicker(params: {
     await sleep(0);
     computedVisible.value = false;
   };
+  // 处理今天的点击
+  const handleNowClick = () => {
+    isConfirm = true;
+    computedValue.value = new Date();
+    computedVisible.value = false;
+  };
   // 从格式化的值中提取
   const getDateFromFormat = (val: DatePickerValue) => {
     if (!val) return '';
@@ -181,61 +172,52 @@ export default function usePicker(params: {
     }
     return date;
   };
-  // 得到范围区间
-  const getRangeOfYear = (curYear: number) => {
-    const decadeStartYear = Math.floor(curYear / 10) * 10;
-    const startYear = decadeStartYear - 1;
-    const flatYearArray = Array.from({ length: 12 }, (_, i): YearData => {
-      const year = startYear + i;
-      return {
-        label: year.toString(),
-        value: dayjs().year(year).startOf('year').toDate(),
-      };
-    });
-    const grid: YearData[][] = [];
-    const columns = 3;
-    for (let i = 0; i < flatYearArray.length; i += columns) {
-      const chunk = flatYearArray.slice(i, i + columns);
-      grid.push(chunk);
+  // 是否inView
+  const isCellInView = (v: Date, type: string) => {
+    const curDate = dayjs();
+    if (type == 'year') {
+      const startYear = Math.floor(curDate.year() / 10) * 10;
+      return v.getFullYear() >= startYear && v.getFullYear() <= startYear + 10;
     }
-    return {
-      range: grid,
-      startYear: decadeStartYear,
-    };
+    if (type == 'month') {
+      return true;
+    }
+    return v.getFullYear() == curYear.value && v.getMonth() == curMonth.value;
   };
-  //  获取一个月中的周
-  const getWeeksOfMonth = (
-    year: number,
-    month: number,
-    startOfWeek: DayStartOfWeek = dayStartOfWeek.value
-  ) => {
-    const firstDayOfMonth = dayjs(new Date(year, month, 1));
-    const weekData: WeekData[] = [];
-    const dayOfWeekOfFirst = firstDayOfMonth.toDate().getDay();
-    const offset = (dayOfWeekOfFirst - startOfWeek + 7) % 7;
-    let currentDay = firstDayOfMonth.subtract(offset, 'day');
-    for (let i = 0; i < 6; i++) {
-      const daysOfWeek: DayData[] = [];
-      const weekRowStartDate = currentDay;
-      for (let j = 0; j < 7; j++) {
-        daysOfWeek.push({
-          label: String(currentDay.date()),
-          value: currentDay.toDate(),
-        });
-        currentDay = currentDay.add(1, 'day');
-      }
-      const representativeDayOfWeek = weekRowStartDate.add(3, 'day');
-      const correctIsoWeek = representativeDayOfWeek.isoWeek();
-      const mondayOfCorrectIsoWeek = representativeDayOfWeek
-        .startOf('isoWeek')
-        .toDate();
-      weekData.push({
-        label: correctIsoWeek,
-        value: mondayOfCorrectIsoWeek,
-        time: daysOfWeek,
-      });
+  // 是否是今天
+  const isToday = (v: Date, type: string) => {
+    const curDate = dayjs();
+    if (type == 'year') {
+      return v.getFullYear() == curDate.year();
     }
-    return weekData;
+    if (type == 'month') {
+      return (
+        v.getMonth() == curDate.month() && v.getFullYear() == curDate.year()
+      );
+    }
+    return (
+      v.getFullYear() == curDate.year() &&
+      v.getMonth() == curDate.month() &&
+      v.getDate() == curDate.date()
+    );
+  };
+  // 是否选中
+  const isSelected = (v: Date, type: string) => {
+    const date = getDateFromFormat(computedValue.value) as Date;
+    if (!date) return false;
+    if (type == 'year') {
+      return date.getFullYear() == v.getFullYear();
+    }
+    if (type == 'month') {
+      return (
+        date.getFullYear() == v.getFullYear() && date.getMonth() == v.getMonth()
+      );
+    }
+    return (
+      date.getFullYear() == v.getFullYear() &&
+      date.getMonth() == v.getMonth() &&
+      date.getDate() == v.getDate()
+    );
   };
   // input-context
   useContext().provide(
@@ -264,8 +246,13 @@ export default function usePicker(params: {
     t,
     getDateFromFormat,
     getFormatFromDate,
+    isCellInView,
+    isToday,
+    isSelected,
     getRangeOfYear,
     getWeeksOfMonth,
+    getDaysOfMonth,
+    handleNowClick,
     handleSelect,
     handleConfirm,
     handleShortcut,

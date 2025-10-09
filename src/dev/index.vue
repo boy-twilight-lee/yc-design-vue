@@ -1,35 +1,18 @@
 <template>
   <div class="test">
-    <yc-year-picker
-      style="width: 300px"
-      show-confirm-btn
-      allow-clear
-      @change="(v) => console.log(v)"
-    >
-    </yc-year-picker>
-    <yc-month-picker
-      style="width: 300px"
-      allow-clear
-      @change="(v) => console.log(v)"
-    >
-    </yc-month-picker>
-    <yc-week-picker
-      v-model="value"
-      style="width: 300px"
-      value-format="YYYY-MM-DD"
-      :disabledDate="(date) => date.getFullYear() == 2025"
-    />
-    <a-week-picker
-      v-model="value"
-      :disabledDate="(date) => date.getFullYear() == 2025"
-    >
-    </a-week-picker>
+    <yc-year-picker style="width: 300px" show-confirm-btn />
+    <yc-month-picker style="width: 300px" show-confirm-btn />
+    <yc-week-picker style="width: 300px" show-confirm-btn />
+    <yc-date-picker v-model="value" style="width: 300px" show-confirm-btn />
+    <!-- show-confirm-btn -->
+    <!-- :shortcuts="[{ label: 1 }, { label: 1 }, { label: 1 }]" -->
+    <a-date-picker v-model="value" showTime />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-const value = ref('2025-02-01');
+import { ref } from 'vue';
+const value = ref('');
 </script>
 
 <style lang="less">

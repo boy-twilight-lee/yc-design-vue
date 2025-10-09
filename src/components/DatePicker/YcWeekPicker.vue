@@ -8,7 +8,7 @@
       @change="
         (_, date) => {
           curYear = date.getFullYear();
-          weekDate = getWeeksOfMonth(curYear, curMonth);
+          weekData = getWeeksOfMonth(curYear, curMonth);
           showYearPicker = false;
         }
       "
@@ -21,7 +21,7 @@
       @change="
         (_, date) => {
           curMonth = date.getMonth();
-          weekDate = getWeeksOfMonth(curYear, curMonth);
+          weekData = getWeeksOfMonth(curYear, curMonth);
           showMonthPicker = false;
         }
       "
@@ -38,85 +38,59 @@
       @shortcut-select="handleShortcut"
     >
       <div class="yc-panel-week">
-        <div class="yc-picker-header">
-          <div
-            class="yc-picker-header-icon"
-            @click="handleDateChange('year', 'pre')"
-          >
-            <slot name="icon-prev-double">
-              <icon-double-left />
-            </slot>
-          </div>
-          <div
-            class="yc-picker-header-icon"
-            @click="handleDateChange('month', 'pre')"
-          >
-            <slot name="icon-prev">
-              <icon-arrow-right :rotate="180" />
-            </slot>
-          </div>
-          <div class="yc-picker-header-title">
-            <span
-              class="yc-picker-header-label"
-              @click="showYearPicker = true"
-              >{{ curYear }}</span
-            >
-            <span>-</span>
-            <span
-              class="yc-picker-header-label"
-              @click="showMonthPicker = true"
-            >
-              {{ curMonth < 9 ? `0${curMonth + 1}` : curMonth + 1 }}
-            </span>
-          </div>
-          <div
-            class="yc-picker-header-icon"
-            @click="handleDateChange('month', 'next')"
-          >
-            <slot name="icon-next">
-              <icon-arrow-right />
-            </slot>
-          </div>
-          <div
-            class="yc-picker-header-icon"
-            @click="handleDateChange('year', 'next')"
-          >
-            <slot name="icon-next-double">
-              <icon-double-right />
-            </slot>
-          </div>
-        </div>
-        <div class="yc-picker-week-list">
-          <div class="yc-picker-week-list-item"></div>
-          <div
-            v-for="v in weekHeaders"
-            :key="v"
-            class="yc-picker-week-list-item"
-          >
-            {{ v }}
-          </div>
-        </div>
+        <!-- header -->
+        <picker-header
+          :year="curYear"
+          :month="curMonth"
+          type="week"
+          @prev-click="handleDateChange('month', 'pre')"
+          @next-click="handleDateChange('month', 'next')"
+          @prev-double-click="handleDateChange('year', 'pre')"
+          @next-double-click="handleDateChange('year', 'next')"
+          @year-click="showYearPicker = true"
+          @month-click="showMonthPicker = true"
+        >
+          <template v-if="$slots['icon-prev']" #icon-prev-double>
+            <slot name="icon-next" />
+          </template>
+          <template v-if="$slots['icon-next']" #icon-next-double>
+            <slot name="icon-next" />
+          </template>
+          <template v-if="$slots['icon-prev-double']" #icon-prev-double>
+            <slot name="icon-next-double" />
+          </template>
+          <template v-if="$slots['icon-next-double']" #icon-next-double>
+            <slot name="icon-next-double" />
+          </template>
+        </picker-header>
+        <!-- week-header -->
+        <picker-week-header
+          :locale="locale"
+          :abbreviation="abbreviation"
+          :day-start-of-week="dayStartOfWeek"
+        />
+        <!-- body -->
         <div class="yc-picker-body">
           <div
-            v-for="({ label, time, value }, i) in weekDate"
+            v-for="({ label, time, value }, i) in weekData"
             :key="i"
             :class="[
               'yc-picker-row',
               'yc-picker-week-row',
               {
                 'yc-picker-week-row-disabled': disabledDate?.(value),
-                'yc-picker-week-row-selected': isSelected(value),
+                'yc-picker-week-row-selected': isSelected(value, 'week'),
               },
             ]"
             @click="!disabledDate?.(value) && handleSelect(value)"
           >
             <picker-cell :cell-in-view="false" :value="label" />
             <picker-cell
-              v-for="(day, i) in time"
-              :key="i"
-              :value="day.label"
-              :cell-in-view="isCellInView(day)"
-              :is-today="isToday(day)"
+              v-for="({ value: date, label }, k) in time"
+              :key="k"
+              :value="label"
+              :cell-in-view="isCellInView(date, 'week')"
+              :is-today="isToday(date, 'week')"
               :hoverable="false"
               :class="{
                 'yc-week-picker-cell-first': !i,
@@ -145,11 +119,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed } from 'vue';
+import { ref, watch } from 'vue';
 import { WeekPickerProps, WeekPickerEmits, BasePickerSlots } from './type';
-import userPicker, { WeekData, DayData } from './hooks/userPicker';
-import { dayjs } from '@shared/utils';
-import { IconDoubleLeft, IconDoubleRight, IconArrowRight } from '@shared/icons';
+import userPicker from './hooks/userPicker';
+import { dayjs, WeekData, DayData } from '@shared/utils';
+import PickerHeader from './component/PickerHeader.vue';
+import PickerWeekHeader from './component/PickerWeekHeader.vue';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
@@ -177,8 +152,8 @@ const props = withDefaults(defineProps<WeekPickerProps>(), {
   placeholder: '',
   disabled: false,
   disabledDate: undefined,
-  pickerValue: undefined,
-  defaultPickerValue: '',
+  // pickerValue: undefined,
+  // defaultPickerValue: '',
   popupContainer: undefined,
   valueFormat: 'YYYY-MM-DD',
   format: 'gggg-wo',
@@ -204,8 +179,10 @@ const {
   showYearPicker,
   DefinePanel,
   ReusePanel,
-  t,
   getDateFromFormat,
+  isCellInView,
+  isToday,
+  isSelected,
   getWeeksOfMonth,
   handleConfirm,
   handleSelect,
@@ -214,63 +191,13 @@ const {
   props,
   emits,
 });
-// weekDate
-const weekDate = ref<WeekData[]>([]);
-// headers
-const weekHeaders = computed(() => {
-  const baseDays = [0, 1, 2, 3, 4, 5, 6];
-  const days = [
-    ...baseDays.slice(dayStartOfWeek.value || 0),
-    ...baseDays.slice(0, dayStartOfWeek.value || 0),
-  ];
-  const map = Object.fromEntries(
-    [
-      'sunday',
-      'monday',
-      'tuesday',
-      'wednesday',
-      'thursday',
-      'friday',
-      'saturday',
-    ].map((v, i) => [i, v])
-  );
-  return days.map((v) => {
-    const key = `datePicker.week.${abbreviation.value ? 'short' : 'long'}.${map[v]}`;
-    return locale.value?.[key] || t(key);
-  });
-});
-// isCellInView
-const isCellInView = (day: DayData) => {
-  const { value } = day;
-  return (
-    value.getFullYear() == curYear.value && value.getMonth() == curMonth.value
-  );
-};
-// isToday
-const isToday = (day: DayData) => {
-  const { value } = day;
-  const date = dayjs();
-  return (
-    value.getFullYear() == date.year() &&
-    value.getMonth() == date.month() &&
-    value.getDate() == date.date()
-  );
-};
-// 是否选中
-const isSelected = (v: Date) => {
-  const date = getDateFromFormat(computedValue.value) as Date;
-  if (!date) return false;
-  return (
-    date.getFullYear() == v.getFullYear() &&
-    date.getMonth() == v.getMonth() &&
-    date.getDate() == v.getDate()
-  );
-};
+// weekData
+const weekData = ref<WeekData[]>([]);
 // 处理时间变化
 const handleDateChange = (dateType: string, type: string) => {
   if (dateType == 'year') {
     curYear.value = type == 'pre' ? curYear.value - 1 : curYear.value + 1;
-    weekDate.value = getWeeksOfMonth(curYear.value, curMonth.value);
+    weekData.value = getWeeksOfMonth(curYear.value, curMonth.value);
   } else {
     const base = dayjs()
       .set('year', curYear.value)
@@ -279,7 +206,7 @@ const handleDateChange = (dateType: string, type: string) => {
       type == 'pre' ? base.subtract(1, 'month') : base.add(1, 'month');
     curYear.value = date.year();
     curMonth.value = date.month();
-    weekDate.value = getWeeksOfMonth(curYear.value, curMonth.value);
+    weekData.value = getWeeksOfMonth(curYear.value, curMonth.value);
   }
 };
 // 处理初始化值
@@ -289,7 +216,7 @@ watch(
     const date = val ? (getDateFromFormat(val) as Date) : new Date();
     curYear.value = date.getFullYear();
     curMonth.value = date.getMonth();
-    weekDate.value = getWeeksOfMonth(curYear.value, curMonth.value);
+    weekData.value = getWeeksOfMonth(curYear.value, curMonth.value);
   },
   {
     immediate: true,
@@ -297,6 +224,6 @@ watch(
 );
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import './style/picker.less';
 </style>

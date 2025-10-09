@@ -11,31 +11,29 @@
       @shortcut-select="handleShortcut"
     >
       <div class="yc-panel-year">
-        <div class="yc-picker-header">
-          <div class="yc-picker-header-icon" @click="handleYearChange('pre')">
-            <slot name="icon-prev-double">
-              <icon-double-left />
-            </slot>
-          </div>
-          <div class="yc-picker-header-title">
-            {{ curYear }}-{{ curYear + 10 }}
-          </div>
-          <div class="yc-picker-header-icon" @click="handleYearChange('next')">
-            <slot name="icon-next-double">
-              <icon-double-right />
-            </slot>
-          </div>
-        </div>
+        <picker-header
+          type="year"
+          @prev-double-click="handleYearChange('pre')"
+          @next-double-click="handleYearChange('next')"
+        >
+          {{ curYear }}-{{ curYear + 10 }}
+          <template v-if="$slots['icon-prev-double']" #icon-prev-double>
+            <slot name="icon-next-double" />
+          </template>
+          <template v-if="$slots['icon-next-double']" #icon-next-double>
+            <slot name="icon-next-double" />
+          </template>
+        </picker-header>
         <div class="yc-picker-body">
           <div v-for="(row, i) in yearData" :key="i" class="yc-picker-row">
             <picker-cell
               v-for="({ value: date, label }, k) in row"
-              :key="date.getFullYear()"
-              :cell-in-view="!!(i || k)"
-              :is-today="date.getFullYear() == dayjs().year()"
-              :is-selected="isSelected(date)"
-              :disabled="disabledDate?.(date)"
+              :key="k"
               :value="label"
+              :cell-in-view="isCellInView(date, 'year')"
+              :is-today="isToday(date, 'year')"
+              :is-selected="isSelected(date, 'year')"
+              :disabled="disabledDate?.(date)"
               @click="handleSelect(date)"
             >
               <template v-if="$slots.cell" #cell>
@@ -66,9 +64,9 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 import { YearPickerProps, YearPickerEmits, BasePickerSlots } from './type';
-import usePicker, { YearData } from './hooks/userPicker';
-import { dayjs } from '@shared/utils';
-import { IconDoubleLeft, IconDoubleRight } from '@shared/icons';
+import usePicker from './hooks/userPicker';
+import { dayjs, YearData } from '@shared/utils';
+import PickerHeader from './component/PickerHeader.vue';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
@@ -113,6 +111,9 @@ const {
   DefinePanel,
   ReusePanel,
   curYear,
+  isToday,
+  isCellInView,
+  isSelected,
   getDateFromFormat,
   getRangeOfYear,
   handleConfirm,
@@ -124,12 +125,6 @@ const {
 });
 // 区间范围
 const yearData = ref<YearData[][]>([]);
-// 是否选中
-const isSelected = (val: Date) => {
-  const date = getDateFromFormat(computedValue.value) as Date;
-  if (!date) return false;
-  return date.getFullYear() == val.getFullYear();
-};
 // 处理改变
 const handleYearChange = (type: string) => {
   curYear.value = type == 'pre' ? curYear.value - 10 : curYear.value + 10;

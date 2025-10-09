@@ -52,8 +52,8 @@
 
 <script lang="ts" setup>
 import { ref, computed, toRefs, watch } from 'vue';
-import { dayjs, useI18n } from '@shared/utils';
-import useCalendar, { CalendarCellData } from './hooks/useCalendar';
+import { dayjs, useI18n, getDaysOfMonth, DayData } from '@shared/utils';
+
 const props = withDefaults(
   defineProps<{
     computedValue: Date;
@@ -71,8 +71,6 @@ defineEmits<{
 }>();
 // 结构属性
 const { small, curYear, curMonth, computedValue } = toRefs(props);
-// dayofMonth
-const { getDayOfMonth } = useCalendar();
 // 国际化
 const { t } = useI18n();
 // 周日列表
@@ -88,7 +86,7 @@ const weekHeaders = computed(() => {
   ].map((v) => t(`calendar.week.${small.value ? 'short' : 'long'}.${v}`));
 });
 // 日历数组
-const calendar = ref<CalendarCellData[][]>([]);
+const calendar = ref<DayData[][]>([]);
 // 是否今天
 const isToday = (date: Date) => {
   const curDate = dayjs();
@@ -119,7 +117,7 @@ const isSelected = (date: Date) => {
 watch(
   () => [curYear.value, curMonth.value],
   () => {
-    calendar.value = getDayOfMonth(curYear.value, curMonth.value);
+    calendar.value = getDaysOfMonth(curYear.value, curMonth.value);
   },
   {
     immediate: true,

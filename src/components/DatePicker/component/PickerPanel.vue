@@ -42,7 +42,20 @@
           class="yc-picker-footer-btn-wrapper"
         >
           <!--bottom -->
-          <reuse-shortcuts v-if="shortcutsPosition == 'bottom'" />
+          <reuse-shortcuts
+            v-show="
+              !showNow || (shortcutsPosition == 'bottom' && shortcuts?.length)
+            "
+          />
+          <!-- now -->
+          <yc-button
+            v-if="!shortcuts?.length && showNow"
+            size="mini"
+            @click="$emit('now-click')"
+          >
+            {{ getNowText() }}
+          </yc-button>
+          <!-- 确定 -->
           <yc-button
             v-if="showConfirmBtn"
             :disabled="confirmBtnDisabled"
@@ -52,6 +65,12 @@
           >
             {{ getOkText() }}
           </yc-button>
+        </div>
+        <div
+          v-if="showNow && !showConfirmBtn"
+          class="yc-picker-footer-now-wrapper"
+        >
+          <yc-link @click="$emit('now-click')">{{ getTodayText() }}</yc-link>
         </div>
       </div>
     </div>
@@ -66,16 +85,24 @@ import {
   useI18n,
 } from '@shared/utils';
 import YcButton from '@/components/Button';
-const props = defineProps<{
-  locale: Record<string, any>;
-  shortcutsPosition: ShortcutsPosition;
-  shortcuts: ShortcutType[];
-  previewShortcut: boolean;
-  confirmBtnDisabled: boolean;
-  showConfirmBtn: boolean;
-}>();
+import YcLink from '@/components/Link';
+const props = withDefaults(
+  defineProps<{
+    locale: Record<string, any>;
+    shortcutsPosition: ShortcutsPosition;
+    shortcuts: ShortcutType[];
+    previewShortcut: boolean;
+    confirmBtnDisabled: boolean;
+    showConfirmBtn: boolean;
+    showNow?: boolean;
+  }>(),
+  {
+    showNow: false,
+  }
+);
 defineEmits<{
   (e: 'confirm', ev: MouseEvent): void;
+  (e: 'now-click'): void;
   (e: 'shortcut-select', shortcut: ShortcutType, hover: boolean): void;
 }>();
 // 定制重用模板
@@ -86,6 +113,16 @@ const { t } = useI18n();
 // 获取oktext
 const getOkText = () => {
   const key = 'datePicker.ok';
+  return props.locale?.[key] || t(key);
+};
+// today
+const getTodayText = () => {
+  const key = 'datePicker.today';
+  return props.locale?.[key] || t(key);
+};
+// now
+const getNowText = () => {
+  const key = 'datePicker.now';
   return props.locale?.[key] || t(key);
 };
 </script>
