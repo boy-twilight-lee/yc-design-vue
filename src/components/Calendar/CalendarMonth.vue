@@ -107,11 +107,13 @@ const isCellInView = (date: Date) => {
 // 是否选中
 const isSelected = (date: Date) => {
   if (!computedValue.value) return false;
-  return (
+  const isSameDay =
     computedValue.value.getFullYear() == date.getFullYear() &&
     computedValue.value.getMonth() == date.getMonth() &&
-    computedValue.value.getDate() == date.getDate()
-  );
+    computedValue.value.getDate() == date.getDate();
+  return small.value
+    ? isSameDay && curMonth.value == computedValue.value.getMonth()
+    : isSameDay;
 };
 // watch
 watch(

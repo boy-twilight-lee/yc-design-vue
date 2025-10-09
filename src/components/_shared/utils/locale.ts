@@ -3,41 +3,14 @@ import { isString } from './is';
 import { getGlobalConfig } from './global-config';
 import zhCN from '@/lang/lang-es/zh-cn';
 
+// 当前的语言类型
 const LOCALE = ref('zh-CN');
+// 国际化信息存储
 const I18N_MESSAGES = reactive<Record<string, any>>({
   'zh-CN': zhCN,
 });
 
-// 添加地区语言包。添加过后的语言包可以通过 `useLocale` 使用
-export const addI18nMessages = (
-  messages: Record<string, any>,
-  options?: {
-    overwrite?: boolean;
-  }
-) => {
-  for (const key of Object.keys(messages)) {
-    if (!I18N_MESSAGES[key] || options?.overwrite) {
-      I18N_MESSAGES[key] = messages[key];
-    }
-  }
-};
-
-//  获取当前的地区语言
-export const getLocale = () => {
-  return LOCALE.value;
-};
-
-//切换地区语言。仅在未提供ConfigProvider时生效。
-export const useLocale = (locale: string) => {
-  if (!I18N_MESSAGES[locale]) {
-    // eslint-disable-next-line no-console
-    console.warn(`use ${locale} failed! Please add ${locale} first`);
-    return;
-  }
-  LOCALE.value = locale;
-};
-
-// 仅内部使用
+// useI18n
 export const useI18n = () => {
   const { locale } = getGlobalConfig();
   //  i18nMessage
@@ -48,7 +21,6 @@ export const useI18n = () => {
   const transform = (key: string, ...args: any[]): string => {
     const keyArray = key.split('.');
     let temp: any = i18nMessage.value;
-
     for (const keyItem of keyArray) {
       if (!temp[keyItem]) {
         return key;

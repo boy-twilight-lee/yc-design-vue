@@ -1,11 +1,9 @@
-import {
-  dayjs,
-  isSameOrAfter,
-  isSameOrBefore,
-  toObject,
-  duration,
-} from './dependencies';
-import 'dayjs/locale/en'; // 引入本地化配置
+import { dayjs } from './dependencies';
+import duration from 'dayjs/plugin/duration';
+import toObject from 'dayjs/plugin/toObject';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import 'dayjs/locale/en';
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 dayjs.extend(toObject);
@@ -22,6 +20,7 @@ export const isValidTimeRange = (
   return begin.isBefore(end);
 };
 
+// 格式化分
 export const formatSeconds = (
   time: number,
   format: string,

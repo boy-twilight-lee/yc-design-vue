@@ -27,8 +27,8 @@ import { ref, watch, toRefs, computed } from 'vue';
 import { useI18n } from '@shared/utils';
 import MonthCalendar from './CalendarMonth.vue';
 defineProps<{
-  curYear: number;
   computedValue: Date;
+  curYear: number;
 }>();
 defineEmits<{
   (e: 'cell-click', col: Date): void;
