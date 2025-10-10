@@ -7,6 +7,7 @@ import {
   DisabledSeconds,
   TimePickerProps,
 } from '@/components/TimePicker';
+import { Dayjs } from '@shared/utils';
 
 export interface BasePickerProps {
   locale?: Record<string, any>;
@@ -125,8 +126,10 @@ export type DisabledTime = (current: Date | string) => {
   disabledSeconds?: DisabledSeconds;
 };
 
+export type ShortcutValue = Date | Date[] | Dayjs | Dayjs[];
+
 export type ShortcutType = {
   label: string | number | (() => VNode);
-  value: Date | Date[] | (() => Date | Date[]);
+  value: () => Date | Date[];
   format: string;
 };

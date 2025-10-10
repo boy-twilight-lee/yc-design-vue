@@ -8,6 +8,7 @@
       style="width: 300px"
       show-time
       format="YYYY-MM-DD HH:mm"
+      :shortcuts="shortcuts"
       value-format="YYYY-MM-DD HH:mm"
     />
     <a-date-picker v-model="value" showTime />
@@ -16,7 +17,30 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { dayjs } from '@shared/utils';
 const value = ref('2025-09-12 12:55');
+const shortcuts = [
+  {
+    label: 'yesterday',
+    value: () => dayjs().subtract(1, 'day'),
+  },
+  {
+    label: 'today',
+    value: () => dayjs(),
+  },
+  {
+    label: 'a week later',
+    value: () => dayjs().add(1, 'week'),
+  },
+  {
+    label: 'a month later',
+    value: () => dayjs().add(1, 'month'),
+  },
+  {
+    label: '2 months later',
+    value: () => dayjs().add(2, 'month'),
+  },
+];
 </script>
 
 <style lang="less">

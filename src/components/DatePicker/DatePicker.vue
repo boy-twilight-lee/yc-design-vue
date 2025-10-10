@@ -196,7 +196,7 @@ const props = withDefaults(defineProps<DatePickerProps>(), {
   format: (props) => {
     return props.showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD';
   },
-  previewShortcut: true,
+  previewShortcut: false,
   showConfirmBtn: false,
   disabledInput: false,
   modelValue: undefined,

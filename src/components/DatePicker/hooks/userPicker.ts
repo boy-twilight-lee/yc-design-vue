@@ -1,12 +1,8 @@
-import { computed, ref, toRefs, watch } from 'vue';
-import {
-  BasePickerEmits,
-  DatePickerValue,
-  DayStartOfWeek,
-  ShortcutType,
-} from '../type';
+import { computed, ref, toRefs } from 'vue';
+import { BasePickerEmits, DatePickerValue, ShortcutType } from '../type';
 import {
   dayjs,
+  Dayjs,
   isString,
   useControlValue,
   createReusableTemplate,
@@ -16,6 +12,9 @@ import {
   getDaysOfMonth,
   getWeeksOfMonth,
   getRangeOfYear,
+  isFunction,
+  isArray,
+  isDayjs,
 } from '@shared/utils';
 import { RecordType } from '@/components/_shared/type';
 import useContext from './useContext';
@@ -135,15 +134,22 @@ export default function usePicker(params: {
   };
   // 处理shortcut
   const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {
-    if (!hover) {
-      emits('select-shortcut', shortcut);
-    }
     if (shortcut.value) {
-      computedValue.value = shortcut.value as Date;
+      const value = isFunction(shortcut.value)
+        ? shortcut.value()
+        : shortcut.value;
+      if (isArray(value)) {
+        computedValue.value = value.map((v) => {
+          return isDayjs(v) ? v.toDate() : v;
+        }) as any;
+      } else {
+        computedValue.value = isDayjs(value) ? value.toDate() : value;
+      }
     }
     if (hover) return;
     isConfirm = true;
     computedVisible.value = false;
+    emits('select-shortcut', shortcut);
   };
   // 处理选中
   const handleSelect = (date: Date) => {
@@ -176,7 +182,7 @@ export default function usePicker(params: {
   // 从格式化的值中提取
   const getDateFromFormat = (val: DatePickerValue) => {
     if (!val) return '';
-    let date: dayjs.Dayjs;
+    let date: Dayjs;
     if (['timestamp', 'Date'].includes(valueFormat.value) || !isString(val)) {
       date = dayjs(val);
     } else {

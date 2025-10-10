@@ -111,7 +111,7 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   popupContainer: undefined,
   valueFormat: 'YYYY',
   format: 'YYYY',
-  previewShortcut: true,
+  previewShortcut: false,
   showConfirmBtn: false,
   disabledInput: false,
   modelValue: undefined,

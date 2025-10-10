@@ -79,7 +79,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue';
-import { TimeUnit, TimePickerValue } from './type';
+import { TimeUnit } from './type';
 import {
   isUndefined,
   isArray,
@@ -87,6 +87,7 @@ import {
   useI18n,
   BTween,
   dayjs,
+  Dayjs,
   UnitType,
   isValidTimeRange,
 } from '@shared/utils';
@@ -161,7 +162,7 @@ const handleClick = (val: number, i: number, cell: HTMLLIElement) => {
   }
 };
 // 处理跳转
-const hanldeJump = async (newDate: dayjs.Dayjs, oldDate?: dayjs.Dayjs) => {
+const hanldeJump = async (newDate: Dayjs, oldDate?: Dayjs) => {
   await sleep(0);
   const newTimeMap = {
     hour: newDate.hour(),

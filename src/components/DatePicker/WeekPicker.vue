@@ -173,7 +173,7 @@ const props = withDefaults(defineProps<WeekPickerProps>(), {
   popupContainer: undefined,
   valueFormat: 'YYYY-MM-DD',
   format: 'gggg-wo',
-  previewShortcut: true,
+  previewShortcut: false,
   showConfirmBtn: false,
   disabledInput: false,
   modelValue: undefined,

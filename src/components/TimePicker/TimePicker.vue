@@ -116,7 +116,7 @@ import {
   getGlobalConfig,
   isArray,
   isValidTimeRange,
-  dayjs,
+  Dayjs,
 } from '@shared/utils';
 import useContext from './hooks/useContext';
 import { IconButton } from '@shared/components';
@@ -206,7 +206,7 @@ const handleClickOutSide = () => {
   computedValue.value = [];
 };
 defineExpose({
-  jump(date: dayjs.Dayjs, oldDate?: dayjs.Dayjs) {
+  jump(date: Dayjs, oldDate?: Dayjs) {
     panelRef.value?.jump(date, oldDate);
   },
 });

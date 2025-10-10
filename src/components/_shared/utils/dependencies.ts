@@ -22,9 +22,9 @@ export { nanoid } from 'nanoid';
 
 export { default as BTween } from 'b-tween';
 
-export { default as dayjs } from 'dayjs';
+export { default as dayjs, isDayjs } from 'dayjs';
 
-export type { UnitType } from 'dayjs';
+export type { UnitType, Dayjs } from 'dayjs';
 
 export { default as tinycolor } from 'tinycolor2';
 

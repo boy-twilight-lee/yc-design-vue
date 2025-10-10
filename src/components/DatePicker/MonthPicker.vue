@@ -125,7 +125,7 @@ const props = withDefaults(defineProps<MonthPickerProps>(), {
   popupContainer: undefined,
   valueFormat: 'YYYY-MM',
   format: 'YYYY-MM',
-  previewShortcut: true,
+  previewShortcut: false,
   showConfirmBtn: false,
   disabledInput: false,
   modelValue: undefined,
