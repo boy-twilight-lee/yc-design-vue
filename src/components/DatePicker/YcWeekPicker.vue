@@ -37,72 +37,78 @@
       @confirm="handleConfirm"
       @shortcut-select="handleShortcut"
     >
-      <div class="yc-panel-week">
-        <!-- header -->
-        <picker-header
-          :year="curYear"
-          :month="curMonth"
-          type="week"
-          @prev-click="handleDateChange('month', 'pre')"
-          @next-click="handleDateChange('month', 'next')"
-          @prev-double-click="handleDateChange('year', 'pre')"
-          @next-double-click="handleDateChange('year', 'next')"
-          @year-click="showYearPicker = true"
-          @month-click="showMonthPicker = true"
-        >
-          <template v-if="$slots['icon-prev']" #icon-prev-double>
-            <slot name="icon-next" />
-          </template>
-          <template v-if="$slots['icon-next']" #icon-next-double>
-            <slot name="icon-next" />
-          </template>
-          <template v-if="$slots['icon-prev-double']" #icon-prev-double>
-            <slot name="icon-next-double" />
-          </template>
-          <template v-if="$slots['icon-next-double']" #icon-next-double>
-            <slot name="icon-next-double" />
-          </template>
-        </picker-header>
-        <!-- week-header -->
-        <picker-week-header
-          :locale="locale"
-          :abbreviation="abbreviation"
-          :day-start-of-week="dayStartOfWeek"
-        />
-        <!-- body -->
-        <div class="yc-picker-body">
-          <div
-            v-for="({ label, time, value }, i) in weekData"
-            :key="i"
-            :class="[
-              'yc-picker-row',
-              'yc-picker-week-row',
-              {
-                'yc-picker-week-row-disabled': disabledDate?.(value),
-                'yc-picker-week-row-selected': isSelected(value, 'week'),
-              },
-            ]"
-            @click="!disabledDate?.(value) && handleSelect(value)"
-          >
-            <picker-cell :cell-in-view="false" :value="label" />
-            <picker-cell
-              v-for="({ value: date, label }, k) in time"
-              :key="k"
-              :value="label"
-              :cell-in-view="isCellInView(date, 'week')"
-              :is-today="isToday(date, 'week')"
-              :hoverable="false"
-              :class="{
-                'yc-week-picker-cell-first': !i,
-                'yc-week-picker-cell-last': i == time.length - 1,
-              }"
-            />
-          </div>
-        </div>
-      </div>
       <template v-if="$slots.extra" #extra>
         <slot name="extra" />
       </template>
+      <div class="yc-panel-week">
+        <div class="yc-panel-week-inner">
+          <!-- header -->
+          <picker-header
+            :year="curYear"
+            :month="curMonth"
+            type="week"
+            @prev-click="handleDateChange('month', 'pre')"
+            @next-click="handleDateChange('month', 'next')"
+            @prev-double-click="handleDateChange('year', 'pre')"
+            @next-double-click="handleDateChange('year', 'next')"
+            @year-click="showYearPicker = true"
+            @month-click="showMonthPicker = true"
+          >
+            <template v-if="$slots['icon-prev']" #icon-prev-double>
+              <slot name="icon-next" />
+            </template>
+            <template v-if="$slots['icon-next']" #icon-next-double>
+              <slot name="icon-next" />
+            </template>
+            <template v-if="$slots['icon-prev-double']" #icon-prev-double>
+              <slot name="icon-next-double" />
+            </template>
+            <template v-if="$slots['icon-next-double']" #icon-next-double>
+              <slot name="icon-next-double" />
+            </template>
+          </picker-header>
+          <!-- week-header -->
+          <picker-week-header
+            :locale="locale"
+            :abbreviation="abbreviation"
+            :day-start-of-week="dayStartOfWeek"
+          />
+          <!-- body -->
+          <div class="yc-picker-body">
+            <div
+              v-for="({ label, time, value }, i) in weekData"
+              :key="i"
+              :class="[
+                'yc-picker-row',
+                'yc-picker-week-row',
+                {
+                  'yc-picker-week-row-disabled': disabledDate?.(value),
+                  'yc-picker-week-row-selected': isSelected(value, 'week'),
+                },
+              ]"
+              @click="handleSelect(value)"
+            >
+              <picker-cell :cell-in-view="false" :value="label" />
+              <picker-cell
+                v-for="({ value: date, label }, k) in time"
+                :key="k"
+                :value="label"
+                :cell-in-view="isCellInView(date, 'week')"
+                :is-today="isToday(date, 'week')"
+                :hoverable="false"
+                :class="{
+                  'yc-week-picker-cell-first': !i,
+                  'yc-week-picker-cell-last': i == time.length - 1,
+                }"
+              >
+                <template v-if="$slots.cell" #cell>
+                  <slot name="cell" :date="date" />
+                </template>
+              </picker-cell>
+            </div>
+          </div>
+        </div>
+      </div>
     </picker-panel>
   </define-panel>
   <picker-input
@@ -111,6 +117,15 @@
     :style="$attrs.style"
     type="week"
   >
+    <template v-if="$slots.default" #trigger>
+      <slot />
+    </template>
+    <template v-if="$slots['suffix-icon']" #suffix-icon>
+      <slot name="suffix-icon" />
+    </template>
+    <template v-if="$slots.prefix" #prefix>
+      <slot name="prefix" />
+    </template>
     <template #content>
       <reuse-panel />
     </template>
@@ -122,7 +137,7 @@
 import { ref, watch } from 'vue';
 import { WeekPickerProps, WeekPickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
-import { dayjs, WeekData, DayData } from '@shared/utils';
+import { dayjs, WeekData } from '@shared/utils';
 import PickerHeader from './component/PickerHeader.vue';
 import PickerWeekHeader from './component/PickerWeekHeader.vue';
 import PickerCell from './component/PickerCell.vue';
@@ -152,8 +167,8 @@ const props = withDefaults(defineProps<WeekPickerProps>(), {
   placeholder: '',
   disabled: false,
   disabledDate: undefined,
-  // pickerValue: undefined,
-  // defaultPickerValue: '',
+  pickerValue: undefined,
+  defaultPickerValue: '',
   popupContainer: undefined,
   valueFormat: 'YYYY-MM-DD',
   format: 'gggg-wo',
@@ -169,7 +184,6 @@ const emits = defineEmits<WeekPickerEmits>();
 // 获取格式化
 const {
   computedValue,
-  computedPickerValue,
   locale,
   abbreviation,
   dayStartOfWeek,

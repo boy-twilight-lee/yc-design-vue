@@ -14,6 +14,7 @@
             height: '100%',
             overflow: 'auto',
           }"
+          :scrollbar="scrollbar"
           :ref="(el) => (scrollRefs[i] = el as ScrollbarInstance)"
         >
           <ul>
@@ -78,7 +79,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { TimeUnit } from './type';
 import {
   isUndefined,
@@ -108,6 +109,9 @@ const {
   hideDisabledOptions,
   curIndex,
   inputRefs,
+  hideTrigger,
+  scrollbar,
+  scrollOffset,
   disabledHours,
   disabledMinutes,
   disabledSeconds,
@@ -120,6 +124,8 @@ const scrollRefs = ref<ScrollbarInstance[]>([]);
 const disabled = computed(() => {
   return !curValue.value.length || curValue.value.some((val) => !`${val}`);
 });
+// 是否通过click设置值
+let isClick = false;
 // 处理时间禁用
 const disabledTime = (value: number, unit: TimeUnit) => {
   if (unit == 'hour') {
@@ -145,10 +151,7 @@ const handleClick = (val: number, i: number, target: HTMLLIElement) => {
     duration: 300,
     easing: 'quadOut',
     onUpdate: (current: { scroll: number }) => {
-      scrollContainer.scrollTo({
-        top: current.scroll,
-        behavior: 'instant',
-      });
+      scrollContainer.scrollTop = current.scroll - scrollOffset.value;
     },
   }).start();
   if (!disableConfirm.value) {
@@ -157,21 +160,28 @@ const handleClick = (val: number, i: number, target: HTMLLIElement) => {
   handleConfirm();
 };
 // 处理跳转
-const hanldeJump = (timeMap: Record<TimeUnit, number>) => {
+const hanldeJump = async (
+  timeMap: Record<TimeUnit, number>,
+  oldTimeMap?: Record<TimeUnit, number>
+) => {
   // 获取所有的cells
   const cells = scrollRefs.value.map((el) => {
     return el
       .getScrollRef()
       .querySelectorAll('.yc-timepicker-cell') as NodeListOf<HTMLLIElement>;
   });
-  // 以此点击
-  timeColumn.value.map((v, i) => {
-    const time = timeMap[v];
+  for (let i = 0; i < timeColumn.value.length; i++) {
+    const time = timeMap[timeColumn.value[i]];
+    if (oldTimeMap) {
+      const oldTime = oldTimeMap[timeColumn.value[i]];
+      if (oldTime == time) continue;
+    }
     handleClick(time, i, Array.from(cells[i])[time]);
-  });
+  }
 };
 // 处理确定
 const handleConfirm = () => {
+  isClick = true;
   let date = dayjs();
   timeColumn.value.forEach((v, i) => {
     date = date.set(v as UnitType, curValue.value[i]);
@@ -202,24 +212,56 @@ const handleConfirm = () => {
     curValue.value = [];
   }
 };
-// 暴露滚动方法
-defineExpose({
-  async scroll(value: string) {
-    if (!computedVisible.value || !value) return;
+// 检测computedValue的改变自动滚动
+watch(
+  () => computedValue.value,
+  async (newVal, oldVal) => {
+    if (isClick || !hideTrigger.value || newVal) return;
+    const newDate = dayjs(newVal as string, format.value);
+    const oldDate = dayjs(oldVal as string, format.value);
+    hanldeJump(
+      {
+        hour: newDate.hour(),
+        minute: newDate.minute(),
+        second: newDate.second(),
+      },
+      {
+        hour: oldDate.hour(),
+        minute: oldDate.minute(),
+        second: oldDate.second(),
+      }
+    );
+    await sleep(300);
+    isClick = false;
+  },
+  {
+    immediate: true,
+  }
+);
+// 检测visible的改变
+watch(
+  () => computedVisible.value,
+  async (visible) => {
     await sleep(0);
+    const value = (
+      isArray(computedValue.value)
+        ? computedValue.value[curIndex.value]
+        : computedValue.value
+    ) as string;
+    if (!visible || !value) return;
     // 格式化时间
-    const date = dayjs(value as string, format.value);
-    // 创建时间映射
-    const timeMap = {
+    const date = dayjs(value, format.value);
+    // 处理跳转逻辑
+    hanldeJump({
       hour: date.hour(),
       minute: date.minute(),
       second: date.second(),
-    };
-    curValue.value = timeColumn.value.map((v) => timeMap[v] as number);
-    // 处理跳转逻辑
-    hanldeJump(timeMap);
+    });
   },
-});
+  {
+    immediate: true,
+  }
+);
 </script>
 
 <style lang="less">

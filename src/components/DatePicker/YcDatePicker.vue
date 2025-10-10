@@ -39,54 +39,84 @@
       @shortcut-select="handleShortcut"
       @now-click="handleNowClick"
     >
-      <div class="yc-panel-date">
-        <picker-header
-          type="date"
-          :year="curYear"
-          :month="curMonth"
-          @prev-click="handleDateChange('month', 'pre')"
-          @next-click="handleDateChange('month', 'next')"
-          @prev-double-click="handleDateChange('year', 'pre')"
-          @next-double-click="handleDateChange('year', 'next')"
-          @year-click="showYearPicker = true"
-          @month-click="showMonthPicker = true"
-        >
-          <template v-if="$slots['icon-prev']" #icon-prev-double>
-            <slot name="icon-next" />
-          </template>
-          <template v-if="$slots['icon-next']" #icon-next-double>
-            <slot name="icon-next" />
-          </template>
-          <template v-if="$slots['icon-prev-double']" #icon-prev-double>
-            <slot name="icon-next-double" />
-          </template>
-          <template v-if="$slots['icon-next-double']" #icon-next-double>
-            <slot name="icon-next-double" />
-          </template>
-        </picker-header>
-        <picker-week-header
-          :locale="locale"
-          :abbreviation="abbreviation"
-          :day-start-of-week="dayStartOfWeek"
-        />
-        <div class="yc-picker-body">
-          <div v-for="(row, i) in dayData" :key="i" class="yc-picker-row">
-            <picker-cell
-              v-for="({ label, value: date }, k) in row"
-              :key="k"
-              :value="label"
-              :cell-in-view="isCellInView(date, 'date')"
-              :is-today="isToday(date, 'date')"
-              :is-selected="isSelected(date, 'date')"
-              :disabled="disabledDate?.(date)"
-              @click="handleSelect(date)"
-            />
-          </div>
-        </div>
-      </div>
       <template v-if="$slots.extra" #extra>
         <slot name="extra" />
       </template>
+      <div class="yc-panel-date">
+        <div class="yc-panel-date-inner">
+          <!-- header -->
+          <picker-header
+            type="date"
+            :year="curYear"
+            :month="curMonth"
+            @prev-click="handleDateChange('month', 'pre')"
+            @next-click="handleDateChange('month', 'next')"
+            @prev-double-click="handleDateChange('year', 'pre')"
+            @next-double-click="handleDateChange('year', 'next')"
+            @year-click="showYearPicker = true"
+            @month-click="showMonthPicker = true"
+          >
+            <template v-if="$slots['icon-prev']" #icon-prev-double>
+              <slot name="icon-next" />
+            </template>
+            <template v-if="$slots['icon-next']" #icon-next-double>
+              <slot name="icon-next" />
+            </template>
+            <template v-if="$slots['icon-prev-double']" #icon-prev-double>
+              <slot name="icon-next-double" />
+            </template>
+            <template v-if="$slots['icon-next-double']" #icon-next-double>
+              <slot name="icon-next-double" />
+            </template>
+          </picker-header>
+          <!-- week-header -->
+          <picker-week-header
+            :locale="locale"
+            :abbreviation="abbreviation"
+            :day-start-of-week="dayStartOfWeek"
+          />
+          <!-- body -->
+          <div class="yc-picker-body">
+            <div v-for="(row, i) in dayData" :key="i" class="yc-picker-row">
+              <picker-cell
+                v-for="({ label, value: date }, k) in row"
+                :key="k"
+                :value="label"
+                :cell-in-view="isCellInView(date, 'date')"
+                :is-today="isToday(date, 'date')"
+                :is-selected="isSelected(date, 'date')"
+                :disabled="disabledDate?.(date)"
+                @click="handleSelect(date)"
+              >
+                <template v-if="$slots.cell" #cell>
+                  <slot name="cell" :date="date" />
+                </template>
+              </picker-cell>
+            </div>
+          </div>
+        </div>
+        <div v-if="showTime" class="yc-panel-date-timepicker">
+          <div class="yc-panel-date-timepicker-title">选择时间</div>
+          <yc-time-picker
+            :scroll-offset="4"
+            v-bind="timePickerProps"
+            v-model="timePickerValue"
+            :format="valueFormat"
+            :scrollbar="false"
+            :disabled-hours="
+              disabledTime?.(getDateFromFormat(computedValue))?.disabledHours
+            "
+            :disabled-minutes="
+              disabledTime?.(getDateFromFormat(computedValue))?.disabledMinutes
+            "
+            :disabled-seconds="
+              disabledTime?.(getDateFromFormat(computedValue))?.disabledSeconds
+            "
+            hide-trigger
+            disable-confirm
+          />
+        </div>
+      </div>
     </picker-panel>
   </define-panel>
   <picker-input
@@ -95,6 +125,15 @@
     :style="$attrs.style"
     :type="showTime ? 'time' : 'date'"
   >
+    <template v-if="$slots.default" #trigger>
+      <slot />
+    </template>
+    <template v-if="$slots['suffix-icon']" #suffix-icon>
+      <slot name="suffix-icon" />
+    </template>
+    <template v-if="$slots.prefix" #prefix>
+      <slot name="prefix" />
+    </template>
     <template #content>
       <reuse-panel />
     </template>
@@ -103,7 +142,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import { DatePickerProps, DatePickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
 import { dayjs, DayData } from '@shared/utils';
@@ -114,6 +153,7 @@ import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
 import YcYearPicker from './YcYearPicker.vue';
 import YcMonthPicker from './YcMonthPicker.vue';
+import YcTimePicker from '@/components/TimePicker';
 defineOptions({
   name: 'DatePicker',
   inheritAttrs: false,
@@ -139,8 +179,12 @@ const props = withDefaults(defineProps<DatePickerProps>(), {
   pickerValue: undefined,
   defaultPickerValue: '',
   popupContainer: undefined,
-  valueFormat: 'YYYY-MM-DD',
-  format: 'YYYY-MM-DD',
+  valueFormat: (props) => {
+    return props.showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD';
+  },
+  format: (props) => {
+    return props.showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD';
+  },
   previewShortcut: true,
   showConfirmBtn: false,
   disabledInput: false,
@@ -156,7 +200,6 @@ const emits = defineEmits<DatePickerEmits>();
 // 获取格式化
 const {
   computedValue,
-  computedVisible,
   locale,
   abbreviation,
   dayStartOfWeek,
@@ -164,6 +207,7 @@ const {
   curYear,
   showMonthPicker,
   showYearPicker,
+  valueFormat,
   DefinePanel,
   ReusePanel,
   getDateFromFormat,
@@ -178,6 +222,21 @@ const {
 } = userPicker({
   props,
   emits,
+});
+// timePickerValue
+const timePickerValue = computed({
+  get() {
+    return computedValue.value;
+  },
+  set(val) {
+    const date = dayjs(val, valueFormat.value);
+    const curDate = getDateFromFormat(computedValue.value);
+    if (curDate) {
+      date.set('year', curDate.getFullYear());
+      date.set('month', curDate.getMonth());
+      date.set('date', curDate.getDate());
+    }
+  },
 });
 // weekDate
 const dayData = ref<DayData[][]>([]);

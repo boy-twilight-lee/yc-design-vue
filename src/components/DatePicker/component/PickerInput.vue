@@ -12,34 +12,36 @@
     need-transform-origin
     v-bind="triggerProps"
   >
-    <yc-input
-      :model-value="formatValue"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :error="error"
-      :size="size"
-      :readonly="readonly || disabledInput || true"
-      :style="$attrs.style"
-      :class="[
-        $attrs.class,
-        {
-          'yc-picker-allow-clear': showClearBtn,
-        },
-      ]"
-      ref="inputRef"
-    >
-      <template v-if="$slots.prefix" #prefix>
-        <slot name="prefix" />
-      </template>
-      <template #suffix>
-        <div class="yc-picker-suffix-icon">
-          <slot name="suffix-icon">
-            <icon-calendar />
-          </slot>
-        </div>
-        <icon-button v-if="showClearBtn" @click.stop="onClear" />
-      </template>
-    </yc-input>
+    <slot name="trigger">
+      <yc-input
+        :model-value="formatValue"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :error="error"
+        :size="size"
+        :readonly="readonly || disabledInput || true"
+        :style="$attrs.style"
+        :class="[
+          $attrs.class,
+          {
+            'yc-picker-allow-clear': showClearBtn,
+          },
+        ]"
+        ref="inputRef"
+      >
+        <template v-if="$slots.prefix" #prefix>
+          <slot name="prefix" />
+        </template>
+        <template #suffix>
+          <div class="yc-picker-suffix-icon">
+            <slot name="suffix-icon">
+              <icon-calendar />
+            </slot>
+          </div>
+          <icon-button v-if="showClearBtn" @click.stop="onClear" />
+        </template>
+      </yc-input>
+    </slot>
     <template #content>
       <slot name="content" />
     </template>

@@ -26,6 +26,10 @@ export interface TimePickerProps {
   defaultPopupVisible?: boolean;
   triggerProps?: TriggerProps;
   unmountOnClose?: boolean;
+  // 是否隐藏trigger
+  hideTrigger?: boolean;
+  scrollbar?: boolean;
+  scrollOffset?: number;
 }
 
 export interface TimePickerEmits {

@@ -31,7 +31,10 @@ type TimePickerContext = {
   timeColumnCells: Ref<{ unit: TimeUnit; cells: TimePickerCell[] }[]>;
   inputRefs: Ref<HTMLInputElement[]>;
   disableConfirm: Ref<boolean>;
+  scrollbar: Ref<boolean>;
+  scrollOffset: Ref<number>;
   hideDisabledOptions: Ref<boolean>;
+  hideTrigger: Ref<boolean>;
   disabledHours: DisabledHours;
   disabledMinutes: DisabledMinutes;
   disabledSeconds: DisabledSeconds;
@@ -54,6 +57,9 @@ export default function useTimePickerContext() {
       disableConfirm,
       hideDisabledOptions,
       step,
+      scrollbar,
+      scrollOffset,
+      hideTrigger,
       placeholder: _placeholder,
     } = toRefs(props as TimePickerProps);
     const { disabledHours, disabledMinutes, disabledSeconds } =
@@ -138,6 +144,9 @@ export default function useTimePickerContext() {
       type,
       curIndex,
       inputRefs,
+      scrollbar,
+      hideTrigger,
+      scrollOffset,
       disableConfirm,
       hideDisabledOptions,
       disabledHours,
@@ -165,6 +174,9 @@ export default function useTimePickerContext() {
       timeColumnCells: ref([]),
       inputRefs: ref([]),
       disableConfirm: ref(false),
+      scrollbar: ref(true),
+      hideTrigger: ref(false),
+      scrollOffset: ref(4),
       hideDisabledOptions: ref(false),
       disabledHours: () => [],
       disabledMinutes: () => [],

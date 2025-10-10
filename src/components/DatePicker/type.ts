@@ -1,7 +1,12 @@
 import { VNode } from 'vue';
 import { PopupContainer, Position, Size } from '@shared/type';
 import { TriggerProps } from '@/components/Trigger';
-import { TimePickerProps } from '../TimePicker';
+import {
+  DisabledHours,
+  DisabledMinutes,
+  DisabledSeconds,
+  TimePickerProps,
+} from '@/components/TimePicker';
 
 export interface BasePickerProps {
   locale?: Record<string, any>;
@@ -58,6 +63,7 @@ export interface BasePickerSlots {
   'icon-prev'?: () => VNode[];
   cell?: (scope: { date: Date }) => VNode[];
   extra?: () => VNode[];
+  default?: () => VNode[];
 }
 
 export interface YearPickerProps extends BasePickerProps {
@@ -113,10 +119,10 @@ export type ShortcutsPosition = Exclude<Position, 'top'>;
 
 export type DisabledDate = (current: Date) => boolean;
 
-export type DisabledTime = (current: Date) => {
-  disabledHours?: () => number[];
-  disabledMinutes?: () => number[];
-  disabledSeconds?: () => number[];
+export type DisabledTime = (current: Date | string) => {
+  disabledHours?: DisabledHours;
+  disabledMinutes?: DisabledMinutes;
+  disabledSeconds?: DisabledSeconds;
 };
 
 export type ShortcutType = {

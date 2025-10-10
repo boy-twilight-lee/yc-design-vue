@@ -23,43 +23,47 @@
       @confirm="handleConfirm"
       @shortcut-select="handleShortcut"
     >
-      <div class="yc-panel-month">
-        <picker-header
-          :year="curYear"
-          type="month"
-          @year-click="showYearPicker = true"
-          @prev-double-click="curYear--"
-          @next-double-click="curYear++"
-        >
-          <template v-if="$slots['icon-prev-double']" #icon-prev-double>
-            <slot name="icon-next-double" />
-          </template>
-          <template v-if="$slots['icon-next-double']" #icon-next-double>
-            <slot name="icon-next-double" />
-          </template>
-        </picker-header>
-        <div class="yc-picker-body">
-          <div v-for="(row, i) in monthData" :key="i" class="yc-picker-row">
-            <picker-cell
-              v-for="({ value: date, label }, k) in row"
-              :key="k"
-              :value="label"
-              :is-selected="isSelected(date, 'month')"
-              :is-today="isToday(date, 'month')"
-              :cell-in-view="isCellInView(date, 'month')"
-              :disabled="disabledDate?.(date)"
-              @click="handleSelect(date)"
-            >
-              <template v-if="$slots.cell" #cell>
-                <slot name="cell" :date="date" />
-              </template>
-            </picker-cell>
-          </div>
-        </div>
-      </div>
       <template v-if="$slots.extra" #extra>
         <slot name="extra" />
       </template>
+      <div class="yc-panel-month">
+        <div class="yc-panel-month-inner">
+          <!--header -->
+          <picker-header
+            :year="curYear"
+            type="month"
+            @year-click="showYearPicker = true"
+            @prev-double-click="curYear--"
+            @next-double-click="curYear++"
+          >
+            <template v-if="$slots['icon-prev-double']" #icon-prev-double>
+              <slot name="icon-next-double" />
+            </template>
+            <template v-if="$slots['icon-next-double']" #icon-next-double>
+              <slot name="icon-next-double" />
+            </template>
+          </picker-header>
+          <!-- body -->
+          <div class="yc-picker-body">
+            <div v-for="(row, i) in monthData" :key="i" class="yc-picker-row">
+              <picker-cell
+                v-for="({ value: date, label }, k) in row"
+                :key="k"
+                :value="label"
+                :cell-in-view="isCellInView(date, 'month')"
+                :is-today="isToday(date, 'month')"
+                :is-selected="isSelected(date, 'month')"
+                :disabled="disabledDate?.(date)"
+                @click="handleSelect(date)"
+              >
+                <template v-if="$slots.cell" #cell>
+                  <slot name="cell" :date="date" />
+                </template>
+              </picker-cell>
+            </div>
+          </div>
+        </div>
+      </div>
     </picker-panel>
   </define-panel>
   <picker-input
@@ -68,6 +72,15 @@
     :style="$attrs.style"
     type="month"
   >
+    <template v-if="$slots.default" #trigger>
+      <slot />
+    </template>
+    <template v-if="$slots['suffix-icon']" #suffix-icon>
+      <slot name="suffix-icon" />
+    </template>
+    <template v-if="$slots.prefix" #prefix>
+      <slot name="prefix" />
+    </template>
     <template #content>
       <reuse-panel />
     </template>
@@ -79,7 +92,6 @@
 import { watch, computed } from 'vue';
 import { MonthPickerProps, MonthPickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
-import { dayjs } from '@shared/utils';
 import PickerHeader from './component/PickerHeader.vue';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';

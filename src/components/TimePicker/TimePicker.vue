@@ -1,5 +1,6 @@
 <template>
   <yc-trigger
+    v-if="!hideTrigger"
     :popup-visible="computedVisible"
     :position="position"
     :popup-container="popupContainer"
@@ -94,17 +95,22 @@
       </div>
     </div>
     <template #content>
-      <time-picker-panel ref="panelRef">
+      <time-picker-panel>
         <template v-if="$slots.extra" #extra>
           <slot name="extra" />
         </template>
       </time-picker-panel>
     </template>
   </yc-trigger>
+  <time-picker-panel v-else>
+    <template v-if="$slots.extra" #extra>
+      <slot name="extra" />
+    </template>
+  </time-picker-panel>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { nextTick } from 'vue';
 import { TimePickerProps, TimePickerEmits, TimePickerSlots } from './type';
 import { getGlobalConfig, isArray, isValidTimeRange } from '@shared/utils';
 import useContext from './hooks/useContext';
@@ -112,7 +118,6 @@ import { IconButton } from '@shared/components';
 import { IconTime } from '@shared/icons';
 import TimePickerPanel from './TimePickerPanel.vue';
 import YcTrigger from '@/components/Trigger';
-
 defineOptions({
   name: 'TimePicker',
   inheritAttrs: false,
@@ -145,6 +150,9 @@ const props = withDefaults(defineProps<TimePickerProps>(), {
     return {};
   },
   unmountOnClose: false,
+  hideTrigger: false,
+  scrollbar: true,
+  scrollOffset: 0,
 });
 const emits = defineEmits<TimePickerEmits>();
 // 获取全局注入配置
@@ -162,22 +170,16 @@ const {
   format,
   placeholder,
 } = useContext().provide(props, emits);
-// panelRef
-const panelRef = ref<InstanceType<typeof TimePickerPanel>>();
 // 处理清除
 const handleClear = () => {
   computedValue.value = type.value == 'time-range' ? [] : '';
   emits('clear');
 };
 // 处理打开
-const handleOpenPicker = (i: number) => {
+const handleOpenPicker = async (i: number) => {
   curIndex.value = i;
+  await nextTick();
   computedVisible.value = true;
-  panelRef.value?.scroll(
-    (isArray(computedValue.value)
-      ? computedValue.value[i]
-      : computedValue.value) as string
-  );
 };
 // 处理点击到外面
 const handleClickOutSide = () => {

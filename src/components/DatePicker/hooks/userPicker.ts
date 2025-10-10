@@ -35,10 +35,12 @@ export default function usePicker(params: {
     format,
     valueFormat,
     dayStartOfWeek,
-    showConfirmBtn,
+    showConfirmBtn: _showConfirmBtn,
+    showTime,
     locale,
     abbreviation,
   } = toRefs(props);
+  const { disabledDate } = props;
   // 格式化时间
   const computedValue = useControlValue<DatePickerValue>(
     modelValue,
@@ -73,6 +75,10 @@ export default function usePicker(params: {
     return format.value && computedValue.value
       ? dayjs(date).format(format.value)
       : (computedValue.value as string);
+  });
+  // showConfirmBtn
+  const showConfirmBtn = computed(() => {
+    return showTime?.value ? showTime?.value : _showConfirmBtn.value;
   });
   // 定义重用模板
   const { define: DefinePanel, reuse: ReusePanel } = createReusableTemplate();
@@ -126,6 +132,9 @@ export default function usePicker(params: {
   };
   // 处理选中
   const handleSelect = (date: Date) => {
+    if (disabledDate?.(date)) {
+      return;
+    }
     computedValue.value = date;
     selectDate = date;
     const dateString = dayjs(date).format('YYYY-MM-DD');
@@ -144,8 +153,9 @@ export default function usePicker(params: {
   };
   // 处理今天的点击
   const handleNowClick = () => {
-    isConfirm = true;
     computedValue.value = new Date();
+    if (showTime?.value) return;
+    isConfirm = true;
     computedVisible.value = false;
   };
   // 从格式化的值中提取
@@ -241,6 +251,7 @@ export default function usePicker(params: {
     showMonthPicker,
     curMonth,
     curYear,
+    valueFormat,
     DefinePanel,
     ReusePanel,
     t,

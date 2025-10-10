@@ -9,7 +9,7 @@ import {
 import { RecordType } from '@shared/type';
 import { DatePickerValue } from '../type';
 
-const PICKER_TRIGGER_CONTEXT = 'picker--context';
+const PICKER_TRIGGER_CONTEXT = 'picker-context';
 export interface PickerInputContext {
   props: RecordType;
   computedVisible: Ref<boolean>;
