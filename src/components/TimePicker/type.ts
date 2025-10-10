@@ -30,6 +30,7 @@ export interface TimePickerProps {
   hideTrigger?: boolean;
   scrollbar?: boolean;
   scrollOffset?: number;
+  watchValueChange?: boolean;
 }
 
 export interface TimePickerEmits {

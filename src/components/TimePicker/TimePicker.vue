@@ -95,14 +95,14 @@
       </div>
     </div>
     <template #content>
-      <time-picker-panel>
+      <time-picker-panel ref="panelRef">
         <template v-if="$slots.extra" #extra>
           <slot name="extra" />
         </template>
       </time-picker-panel>
     </template>
   </yc-trigger>
-  <time-picker-panel v-else>
+  <time-picker-panel v-else ref="panelRef">
     <template v-if="$slots.extra" #extra>
       <slot name="extra" />
     </template>
@@ -110,9 +110,14 @@
 </template>
 
 <script lang="ts" setup>
-import { nextTick } from 'vue';
+import { ref, nextTick } from 'vue';
 import { TimePickerProps, TimePickerEmits, TimePickerSlots } from './type';
-import { getGlobalConfig, isArray, isValidTimeRange } from '@shared/utils';
+import {
+  getGlobalConfig,
+  isArray,
+  isValidTimeRange,
+  dayjs,
+} from '@shared/utils';
 import useContext from './hooks/useContext';
 import { IconButton } from '@shared/components';
 import { IconTime } from '@shared/icons';
@@ -153,6 +158,7 @@ const props = withDefaults(defineProps<TimePickerProps>(), {
   hideTrigger: false,
   scrollbar: true,
   scrollOffset: 0,
+  watchValueChange: true,
 });
 const emits = defineEmits<TimePickerEmits>();
 // 获取全局注入配置
@@ -170,6 +176,8 @@ const {
   format,
   placeholder,
 } = useContext().provide(props, emits);
+// panelRef
+const panelRef = ref<InstanceType<typeof TimePickerPanel>>();
 // 处理清除
 const handleClear = () => {
   computedValue.value = type.value == 'time-range' ? [] : '';
@@ -197,6 +205,11 @@ const handleClickOutSide = () => {
   }
   computedValue.value = [];
 };
+defineExpose({
+  jump(date: dayjs.Dayjs, oldDate?: dayjs.Dayjs) {
+    panelRef.value?.jump(date, oldDate);
+  },
+});
 </script>
 
 <style lang="less">

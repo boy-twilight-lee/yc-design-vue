@@ -38,6 +38,7 @@ export default function usePicker(params: {
     showTime,
     locale,
     abbreviation,
+    hideTrigger,
     showConfirmBtn: _showConfirmBtn,
   } = toRefs(props);
   const { disabledDate } = props;
@@ -274,6 +275,7 @@ export default function usePicker(params: {
     curYear,
     valueFormat,
     showConfirmBtn,
+    hideTrigger,
     DefinePanel,
     ReusePanel,
     t,

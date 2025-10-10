@@ -79,7 +79,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue';
-import { TimeUnit } from './type';
+import { TimeUnit, TimePickerValue } from './type';
 import {
   isUndefined,
   isArray,
@@ -111,6 +111,7 @@ const {
   hideTrigger,
   scrollbar,
   scrollOffset,
+  watchValueChange,
   disabledHours,
   disabledMinutes,
   disabledSeconds,
@@ -137,35 +138,31 @@ const disabledTime = (value: number, unit: TimeUnit) => {
 };
 // 处理点击
 const handleClick = (val: number, i: number, cell: HTMLLIElement) => {
-  return new Promise((resolve) => {
-    curValue.value[i] = val;
-    timeColumn.value.forEach((_, i1) => {
-      curValue.value[i1] = isUndefined(curValue.value[i1])
-        ? 0
-        : curValue.value[i1];
-    });
-    const container = scrollContainer.value[i];
-    if (container && cell) {
-      new BTween({
-        from: { scroll: container.scrollTop },
-        to: { scroll: cell.offsetTop },
-        duration: 300,
-        easing: 'quadOut',
-        onUpdate: (current: { scroll: number }) => {
-          container.scrollTop = current.scroll - scrollOffset.value;
-        },
-        onFinish: () => {
-          resolve('');
-        },
-      }).start();
-    }
-    if (disableConfirm.value) {
-      handleConfirm();
-    }
+  curValue.value[i] = val;
+  timeColumn.value.forEach((_, i1) => {
+    curValue.value[i1] = isUndefined(curValue.value[i1])
+      ? 0
+      : curValue.value[i1];
   });
+  const container = scrollContainer.value[i];
+  if (container && cell) {
+    new BTween({
+      from: { scroll: container.scrollTop },
+      to: { scroll: cell.offsetTop },
+      duration: 300,
+      easing: 'quadOut',
+      onUpdate: (current: { scroll: number }) => {
+        container.scrollTop = current.scroll - scrollOffset.value;
+      },
+    }).start();
+  }
+  if (disableConfirm.value) {
+    handleConfirm();
+  }
 };
 // 处理跳转
 const hanldeJump = async (newDate: dayjs.Dayjs, oldDate?: dayjs.Dayjs) => {
+  await sleep(0);
   const newTimeMap = {
     hour: newDate.hour(),
     minute: newDate.minute(),
@@ -176,15 +173,12 @@ const hanldeJump = async (newDate: dayjs.Dayjs, oldDate?: dayjs.Dayjs) => {
     minute: oldDate?.minute(),
     second: oldDate?.second(),
   };
-  console.log(newTimeMap, oldTimeMap);
-  for (let i = 0; i < timeColumn.value.length; i++) {
-    const time = newTimeMap[timeColumn.value[i]];
-    if (oldTimeMap) {
-      const oldTime = oldTimeMap[timeColumn.value[i]];
-      if (oldTime == time) continue;
-    }
-    await handleClick(time, i, cells.value[i][time]);
-  }
+  timeColumn.value.forEach((v, i) => {
+    const time = newTimeMap[v];
+    const oldTime = oldTimeMap ? oldTimeMap[timeColumn.value[i]] : -1;
+    if (oldTime == time) return;
+    handleClick(time, i, cells.value[i][time]);
+  });
 };
 // 处理确定
 const handleConfirm = () => {
@@ -221,14 +215,13 @@ const handleConfirm = () => {
 // 检测computedValue的改变自动滚动
 watch(
   () => computedValue.value,
-  async (newVal, oldVal) => {
-    await sleep(0);
+  (newVal, oldVal) => {
     if (!newVal) return (curValue.value = []);
-    if (!hideTrigger.value) return;
-    console.log(newVal, oldVal);
-    const oldDate = dayjs(oldVal as string, format.value);
-    const newDate = dayjs(newVal as string, format.value);
-    hanldeJump(newDate, oldDate);
+    if (!hideTrigger.value || !watchValueChange.value) return;
+    hanldeJump(
+      dayjs(newVal as string, format.value),
+      dayjs(oldVal as string, format.value)
+    );
   },
   {
     immediate: true,
@@ -237,7 +230,7 @@ watch(
 // 检测visible的改变
 watch(
   () => computedVisible.value,
-  async (visible) => {
+  (visible) => {
     const value = (
       isArray(computedValue.value)
         ? computedValue.value[curIndex.value]
@@ -245,7 +238,6 @@ watch(
     ) as string;
     if (!value) return (curValue.value = []);
     if (!visible) return;
-    await sleep(0);
     // 处理跳转逻辑
     hanldeJump(dayjs(value, format.value));
   },
@@ -253,6 +245,9 @@ watch(
     immediate: true,
   }
 );
+defineExpose({
+  jump: hanldeJump,
+});
 </script>
 
 <style lang="less">

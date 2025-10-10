@@ -35,6 +35,7 @@ type TimePickerContext = {
   scrollOffset: Ref<number>;
   hideDisabledOptions: Ref<boolean>;
   hideTrigger: Ref<boolean>;
+  watchValueChange: Ref<boolean>;
   disabledHours: DisabledHours;
   disabledMinutes: DisabledMinutes;
   disabledSeconds: DisabledSeconds;
@@ -60,6 +61,7 @@ export default function useTimePickerContext() {
       scrollbar,
       scrollOffset,
       hideTrigger,
+      watchValueChange,
       placeholder: _placeholder,
     } = toRefs(props as TimePickerProps);
     const { disabledHours, disabledMinutes, disabledSeconds } =
@@ -148,6 +150,7 @@ export default function useTimePickerContext() {
       hideTrigger,
       scrollOffset,
       disableConfirm,
+      watchValueChange,
       hideDisabledOptions,
       disabledHours,
       disabledMinutes,
@@ -177,6 +180,7 @@ export default function useTimePickerContext() {
       scrollbar: ref(true),
       hideTrigger: ref(false),
       scrollOffset: ref(4),
+      watchValueChange: ref(true),
       hideDisabledOptions: ref(false),
       disabledHours: () => [],
       disabledMinutes: () => [],

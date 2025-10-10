@@ -118,8 +118,10 @@
             :disabled-seconds="
               disabledTime?.(getDateFromFormat(computedValue))?.disabledSeconds
             "
+            :watch-value-change="false"
             hide-trigger
             disable-confirm
+            ref="timePickerRef"
           />
         </div>
       </div>
@@ -151,7 +153,7 @@
 import { ref, watch } from 'vue';
 import { DatePickerProps, DatePickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
-import { dayjs, DayData } from '@shared/utils';
+import { dayjs, DayData, sleep } from '@shared/utils';
 import PickerCell from './component/PickerCell.vue';
 import PickerHeader from './component/PickerHeader.vue';
 import PickerWeekHeader from './component/PickerWeekHeader.vue';
@@ -159,7 +161,10 @@ import PickerPanel from './component/PickerPanel.vue';
 import YcPicker from './component/Picker.vue';
 import YcYearPicker from './YearPicker.vue';
 import YcMonthPicker from './MonthPicker.vue';
-import YcTimePicker from '@/components/TimePicker';
+import {
+  default as YcTimePicker,
+  TimePickerInstance,
+} from '@/components/TimePicker';
 defineOptions({
   name: 'DatePicker',
   inheritAttrs: false,
@@ -215,6 +220,8 @@ const {
   showMonthPicker,
   showYearPicker,
   valueFormat,
+  hideTrigger,
+  computedVisible,
   DefinePanel,
   ReusePanel,
   showConfirmBtn,
@@ -234,6 +241,8 @@ const {
 });
 // dayData
 const dayData = ref<DayData[][]>([]);
+// instance
+const timePickerRef = ref<TimePickerInstance>();
 // 处理时间变化
 const handleDateChange = (dateType: string, type: string) => {
   if (dateType == 'year') {
@@ -258,10 +267,20 @@ const handleDateChange = (dateType: string, type: string) => {
     );
   }
 };
+watch(
+  () => computedVisible.value,
+  (visible) => {
+    if (!computedValue.value || !visible) return;
+    timePickerRef.value?.jump(dayjs(getDateFromFormat(computedValue.value)));
+  },
+  {
+    immediate: true,
+  }
+);
 // 处理初始化值
 watch(
   () => computedValue.value,
-  (val) => {
+  (val, oldVal) => {
     const date = val ? (getDateFromFormat(val) as Date) : new Date();
     curYear.value = date.getFullYear();
     curMonth.value = date.getMonth();
@@ -270,6 +289,10 @@ watch(
       curMonth.value,
       dayStartOfWeek.value
     );
+    if (!hideTrigger.value || !val) return;
+    const newDate = dayjs(getDateFromFormat(val));
+    const oldDate = oldVal ? dayjs(getDateFromFormat(oldVal)) : undefined;
+    timePickerRef.value?.jump(newDate, oldDate);
   },
   {
     immediate: true,
