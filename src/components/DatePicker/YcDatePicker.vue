@@ -96,9 +96,12 @@
           </div>
         </div>
         <div v-if="showTime" class="yc-panel-date-timepicker">
-          <div class="yc-panel-date-timepicker-title">选择时间</div>
+          <div class="yc-panel-date-timepicker-title">
+            {{
+              locale?.['datePicker.selectTime'] || t('datePicker.selectTime')
+            }}
+          </div>
           <yc-time-picker
-            :scroll-offset="4"
             v-bind="timePickerProps"
             v-model="timePickerValue"
             :format="valueFormat"
@@ -210,6 +213,7 @@ const {
   valueFormat,
   DefinePanel,
   ReusePanel,
+  t,
   getDateFromFormat,
   isCellInView,
   isToday,
@@ -231,14 +235,19 @@ const timePickerValue = computed({
   set(val) {
     const date = dayjs(val, valueFormat.value);
     const curDate = getDateFromFormat(computedValue.value);
-    if (curDate) {
-      date.set('year', curDate.getFullYear());
-      date.set('month', curDate.getMonth());
-      date.set('date', curDate.getDate());
-    }
+    computedValue.value = curDate
+      ? new Date(
+          curDate.getFullYear(),
+          curDate.getMonth(),
+          curDate.getDate(),
+          date.hour(),
+          date.minute(),
+          date.second()
+        )
+      : date.toDate();
   },
 });
-// weekDate
+// dayData
 const dayData = ref<DayData[][]>([]);
 // 处理时间变化
 const handleDateChange = (dateType: string, type: string) => {

@@ -53,7 +53,7 @@
             size="mini"
             @click="$emit('now-click')"
           >
-            {{ getNowText() }}
+            {{ locale?.['datePicker.now'] || t('datePicker.now') }}
           </yc-button>
           <!-- 确定 -->
           <yc-button
@@ -63,14 +63,16 @@
             size="mini"
             @click="$emit('confirm', $event)"
           >
-            {{ getOkText() }}
+            {{ locale?.['datePicker.ok'] || t('datePicker.ok') }}
           </yc-button>
         </div>
         <div
           v-if="showNow && !showConfirmBtn"
           class="yc-picker-footer-now-wrapper"
         >
-          <yc-link @click="$emit('now-click')">{{ getTodayText() }}</yc-link>
+          <yc-link @click="$emit('now-click')">
+            {{ locale?.['datePicker.today'] || t('datePicker.today') }}
+          </yc-link>
         </div>
       </div>
     </div>
@@ -110,16 +112,6 @@ const { define: DefineShortcuts, reuse: ReuseShortcuts } =
   createReusableTemplate();
 //  国际化
 const { t } = useI18n();
-// 获取oktext
-const getOkText = () => {
-  const key = 'datePicker.ok';
-  return props.locale?.[key] || t(key);
-};
-// today
-const getTodayText = () => {
-  const key = 'datePicker.today';
-  return props.locale?.[key] || t(key);
-};
 // now
 const getNowText = () => {
   const key = 'datePicker.now';

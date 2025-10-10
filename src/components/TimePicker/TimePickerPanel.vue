@@ -15,15 +15,18 @@
             overflow: 'auto',
           }"
           :scrollbar="scrollbar"
-          :ref="(el) => (scrollRefs[i] = el as ScrollbarInstance)"
+          :ref="
+            (el) =>
+              (scrollContainer[i] = (el as ScrollbarInstance)?.getScrollRef())
+          "
         >
           <ul>
             <li
-              v-for="cell in column.cells"
-              :key="cell.value"
               v-show="
                 !hideDisabledOptions || !disabledTime(cell.value, column.unit)
               "
+              v-for="(cell, k) in column.cells"
+              :key="cell.value"
               :class="[
                 'yc-timepicker-cell',
                 {
@@ -34,9 +37,17 @@
                   ),
                 },
               ]"
+              :ref="(el) => (cells[i][k] = el as HTMLLIElement)"
               @click="
-                !disabledTime(cell.value, column.unit) &&
-                  handleClick(cell.value, i, $event.target as HTMLLIElement)
+                (e) => {
+                  if (
+                    disabledTime(cell.value, column.unit) ||
+                    cell.value == curValue[i]
+                  ) {
+                    return;
+                  }
+                  handleClick(cell.value, i, e.target as HTMLLIElement);
+                }
               "
             >
               <div class="yc-timepicker-cell-inner">
@@ -51,19 +62,7 @@
       <slot name="extra" />
     </div>
     <div v-if="!disableConfirm" class="yc-timepicker-footer-btn-wrapper">
-      <yc-button
-        size="mini"
-        @click="
-          () => {
-            const date = new Date();
-            hanldeJump({
-              hour: date.getHours(),
-              minute: date.getMinutes(),
-              second: date.getSeconds(),
-            });
-          }
-        "
-      >
+      <yc-button size="mini" @click="hanldeJump(dayjs())">
         {{ t('datePicker.now') }}
       </yc-button>
       <yc-button
@@ -119,13 +118,13 @@ const {
 // 国际化
 const { t } = useI18n();
 // 滚动的refs
-const scrollRefs = ref<ScrollbarInstance[]>([]);
+const scrollContainer = ref<HTMLDivElement[]>([]);
+// cells
+const cells = ref<HTMLLIElement[][]>([[], [], []]);
 // 禁止confirm
 const disabled = computed(() => {
   return !curValue.value.length || curValue.value.some((val) => !`${val}`);
 });
-// 是否通过click设置值
-let isClick = false;
 // 处理时间禁用
 const disabledTime = (value: number, unit: TimeUnit) => {
   if (unit == 'hour') {
@@ -137,51 +136,58 @@ const disabledTime = (value: number, unit: TimeUnit) => {
   }
 };
 // 处理点击
-const handleClick = (val: number, i: number, target: HTMLLIElement) => {
-  curValue.value[i] = val;
-  timeColumn.value.forEach((_, i1) => {
-    curValue.value[i1] = isUndefined(curValue.value[i1])
-      ? 0
-      : curValue.value[i1];
+const handleClick = (val: number, i: number, cell: HTMLLIElement) => {
+  return new Promise((resolve) => {
+    curValue.value[i] = val;
+    timeColumn.value.forEach((_, i1) => {
+      curValue.value[i1] = isUndefined(curValue.value[i1])
+        ? 0
+        : curValue.value[i1];
+    });
+    const container = scrollContainer.value[i];
+    if (container && cell) {
+      new BTween({
+        from: { scroll: container.scrollTop },
+        to: { scroll: cell.offsetTop },
+        duration: 300,
+        easing: 'quadOut',
+        onUpdate: (current: { scroll: number }) => {
+          container.scrollTop = current.scroll - scrollOffset.value;
+        },
+        onFinish: () => {
+          resolve('');
+        },
+      }).start();
+    }
+    if (disableConfirm.value) {
+      handleConfirm();
+    }
   });
-  const scrollContainer = scrollRefs.value[i]!.getScrollRef();
-  new BTween({
-    from: { scroll: scrollContainer.scrollTop },
-    to: { scroll: target.offsetTop },
-    duration: 300,
-    easing: 'quadOut',
-    onUpdate: (current: { scroll: number }) => {
-      scrollContainer.scrollTop = current.scroll - scrollOffset.value;
-    },
-  }).start();
-  if (!disableConfirm.value) {
-    return;
-  }
-  handleConfirm();
 };
 // 处理跳转
-const hanldeJump = async (
-  timeMap: Record<TimeUnit, number>,
-  oldTimeMap?: Record<TimeUnit, number>
-) => {
-  // 获取所有的cells
-  const cells = scrollRefs.value.map((el) => {
-    return el
-      .getScrollRef()
-      .querySelectorAll('.yc-timepicker-cell') as NodeListOf<HTMLLIElement>;
-  });
+const hanldeJump = async (newDate: dayjs.Dayjs, oldDate?: dayjs.Dayjs) => {
+  const newTimeMap = {
+    hour: newDate.hour(),
+    minute: newDate.minute(),
+    second: newDate.second(),
+  };
+  const oldTimeMap = {
+    hour: oldDate?.hour(),
+    minute: oldDate?.minute(),
+    second: oldDate?.second(),
+  };
+  console.log(newTimeMap, oldTimeMap);
   for (let i = 0; i < timeColumn.value.length; i++) {
-    const time = timeMap[timeColumn.value[i]];
+    const time = newTimeMap[timeColumn.value[i]];
     if (oldTimeMap) {
       const oldTime = oldTimeMap[timeColumn.value[i]];
       if (oldTime == time) continue;
     }
-    handleClick(time, i, Array.from(cells[i])[time]);
+    await handleClick(time, i, cells.value[i][time]);
   }
 };
 // 处理确定
 const handleConfirm = () => {
-  isClick = true;
   let date = dayjs();
   timeColumn.value.forEach((v, i) => {
     date = date.set(v as UnitType, curValue.value[i]);
@@ -216,23 +222,12 @@ const handleConfirm = () => {
 watch(
   () => computedValue.value,
   async (newVal, oldVal) => {
-    if (isClick || !hideTrigger.value || newVal) return;
-    const newDate = dayjs(newVal as string, format.value);
+    await sleep(0);
+    if (!newVal) return (curValue.value = []);
+    if (!hideTrigger.value) return;
     const oldDate = dayjs(oldVal as string, format.value);
-    hanldeJump(
-      {
-        hour: newDate.hour(),
-        minute: newDate.minute(),
-        second: newDate.second(),
-      },
-      {
-        hour: oldDate.hour(),
-        minute: oldDate.minute(),
-        second: oldDate.second(),
-      }
-    );
-    await sleep(300);
-    isClick = false;
+    const newDate = dayjs(newVal as string, format.value);
+    hanldeJump(newDate, oldDate);
   },
   {
     immediate: true,
@@ -242,21 +237,16 @@ watch(
 watch(
   () => computedVisible.value,
   async (visible) => {
-    await sleep(0);
     const value = (
       isArray(computedValue.value)
         ? computedValue.value[curIndex.value]
         : computedValue.value
     ) as string;
-    if (!visible || !value) return;
-    // 格式化时间
-    const date = dayjs(value, format.value);
+    if (!value) return (curValue.value = []);
+    if (!visible) return;
+    await sleep(0);
     // 处理跳转逻辑
-    hanldeJump({
-      hour: date.hour(),
-      minute: date.minute(),
-      second: date.second(),
-    });
+    hanldeJump(dayjs(value, format.value));
   },
   {
     immediate: true,
