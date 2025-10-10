@@ -125,7 +125,7 @@
       </div>
     </picker-panel>
   </define-panel>
-  <picker-input
+  <yc-picker
     v-if="!hideTrigger"
     :class="$attrs.class"
     :style="$attrs.style"
@@ -143,7 +143,7 @@
     <template #content>
       <reuse-panel />
     </template>
-  </picker-input>
+  </yc-picker>
   <reuse-panel v-else />
 </template>
 
@@ -156,7 +156,7 @@ import PickerCell from './component/PickerCell.vue';
 import PickerHeader from './component/PickerHeader.vue';
 import PickerWeekHeader from './component/PickerWeekHeader.vue';
 import PickerPanel from './component/PickerPanel.vue';
-import PickerInput from './component/PickerInput.vue';
+import YcPicker from './component/Picker.vue';
 import YcYearPicker from './YearPicker.vue';
 import YcMonthPicker from './MonthPicker.vue';
 import YcTimePicker from '@/components/TimePicker';
@@ -217,6 +217,7 @@ const {
   valueFormat,
   DefinePanel,
   ReusePanel,
+  showConfirmBtn,
   t,
   getDateFromFormat,
   isCellInView,

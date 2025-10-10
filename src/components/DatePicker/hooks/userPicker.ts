@@ -35,10 +35,10 @@ export default function usePicker(params: {
     format,
     valueFormat,
     dayStartOfWeek,
-    showConfirmBtn: _showConfirmBtn,
     showTime,
     locale,
     abbreviation,
+    showConfirmBtn: _showConfirmBtn,
   } = toRefs(props);
   const { disabledDate } = props;
   // 格式化时间
@@ -273,6 +273,7 @@ export default function usePicker(params: {
     curMonth,
     curYear,
     valueFormat,
+    showConfirmBtn,
     DefinePanel,
     ReusePanel,
     t,

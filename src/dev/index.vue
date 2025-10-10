@@ -4,26 +4,19 @@
     <yc-month-picker style="width: 300px" show-confirm-btn />
     <yc-week-picker style="width: 300px" show-confirm-btn />
     <yc-date-picker
-      v-model="value"
+      default-value="2025-09-12 12:55"
       style="width: 300px"
-      show-confirm-btn
       show-time
+      format="YYYY-MM-DD HH:mm"
+      value-format="YYYY-MM-DD HH:mm"
     />
     <a-date-picker v-model="value" showTime />
-    <yc-time-picker default-value="19:33:22" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-const value = ref('');
-const highlightDates = [6, 14, 22];
-const highlightStyle = {
-  border: '1px solid rgb(var(--arcoblue-6))',
-};
-function getCellStyle(date) {
-  return highlightDates.includes(date.getDate()) ? highlightStyle : {};
-}
+const value = ref('2025-09-12 12:55');
 </script>
 
 <style lang="less">

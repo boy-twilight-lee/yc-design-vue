@@ -19,3 +19,19 @@
     align-items: center;
   }
 }
+.yc-input-outer {
+  &.yc-picker-active {
+    .yc-input-wrapper {
+      background-color: var(--color-bg-2);
+      border-color: rgb(var(--primary-6));
+      box-shadow: 0 0 0 0 var(--color-primary-light-2);
+    }
+    &.yc-input-error {
+      .yc-input-wrapper {
+        background: var(--color-bg-2);
+        border-color: rgb(var(--danger-6));
+        box-shadow: 0 0 0 0 var(--color-danger-light-2);
+      }
+    }
+  }
+}

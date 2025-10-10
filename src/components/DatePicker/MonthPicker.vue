@@ -66,7 +66,7 @@
       </div>
     </picker-panel>
   </define-panel>
-  <picker-input
+  <yc-picker
     v-if="!hideTrigger"
     :class="$attrs.class"
     :style="$attrs.style"
@@ -84,7 +84,7 @@
     <template #content>
       <reuse-panel />
     </template>
-  </picker-input>
+  </yc-picker>
   <reuse-panel v-else />
 </template>
 
@@ -93,9 +93,9 @@ import { watch, computed } from 'vue';
 import { MonthPickerProps, MonthPickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
 import PickerHeader from './component/PickerHeader.vue';
+import YcPicker from './component/Picker.vue';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
-import PickerInput from './component/PickerInput.vue';
 import YcYearPicker from './YearPicker.vue';
 defineOptions({
   name: 'MonthPicker',

@@ -225,6 +225,7 @@ watch(
     await sleep(0);
     if (!newVal) return (curValue.value = []);
     if (!hideTrigger.value) return;
+    console.log(newVal, oldVal);
     const oldDate = dayjs(oldVal as string, format.value);
     const newDate = dayjs(newVal as string, format.value);
     hanldeJump(newDate, oldDate);

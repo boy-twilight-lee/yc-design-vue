@@ -52,7 +52,7 @@
       </div>
     </picker-panel>
   </define-panel>
-  <picker-input
+  <yc-picker
     v-if="!hideTrigger"
     :class="$attrs.class"
     :style="$attrs.style"
@@ -70,7 +70,7 @@
     <template #content>
       <reuse-panel />
     </template>
-  </picker-input>
+  </yc-picker>
   <reuse-panel v-else />
 </template>
 
@@ -82,7 +82,7 @@ import { YearData } from '@shared/utils';
 import PickerHeader from './component/PickerHeader.vue';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
-import PickerInput from './component/PickerInput.vue';
+import YcPicker from './component/Picker.vue';
 defineOptions({
   name: 'YearPicker',
   inheritAttrs: false,

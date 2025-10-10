@@ -25,6 +25,7 @@
           $attrs.class,
           {
             'yc-picker-allow-clear': showClearBtn,
+            'yc-picker-active': computedVisible,
           },
         ]"
         ref="inputRef"
