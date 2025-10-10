@@ -8,7 +8,6 @@
       style="width: 300px"
       show-time
       format="YYYY-MM-DD HH:mm"
-      :shortcuts="shortcuts"
       value-format="YYYY-MM-DD HH:mm"
     />
     <a-date-picker v-model="value" showTime />

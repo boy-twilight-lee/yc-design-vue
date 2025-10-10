@@ -97,8 +97,8 @@
                 :is-today="isToday(date, 'week')"
                 :hoverable="false"
                 :class="{
-                  'yc-week-picker-cell-first': !i,
-                  'yc-week-picker-cell-last': i == time.length - 1,
+                  'yc-week-picker-cell-first': !k,
+                  'yc-week-picker-cell-last': k == time.length - 1,
                 }"
               >
                 <template v-if="$slots.cell" #cell>

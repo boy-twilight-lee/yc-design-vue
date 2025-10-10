@@ -11,7 +11,11 @@
       show-now
       @confirm="handleConfirm"
       @shortcut-select="handleShortcut"
-      @now-click="handleNowClick"
+      @now-click="
+        handleNowClick((val, oldVal) => {
+          timePickerRef?.jump(dayjs(val), oldVal ? dayjs(oldVal) : undefined);
+        })
+      "
     >
       <template v-if="$slots.extra" #extra>
         <slot name="extra" />
@@ -298,6 +302,7 @@ watch(
   },
   {
     immediate: true,
+    deep: true,
   }
 );
 </script>

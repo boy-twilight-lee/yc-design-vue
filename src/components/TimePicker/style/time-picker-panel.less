@@ -33,16 +33,21 @@
                   background-color: var(--color-fill-2);
                 }
               }
-            }
-            .yc-timepicker-cell-selected {
-              .yc-timepicker-cell-inner {
-                font-weight: 500;
-                background-color: var(--color-fill-2);
+              &.yc-timepicker-cell-selected {
+                .yc-timepicker-cell-inner {
+                  font-weight: 500;
+                  background-color: var(--color-fill-2);
+                }
               }
-            }
-            .yc-timepicker-cell-disabled {
-              color: var(--color-text-4);
-              cursor: not-allowed;
+              &.yc-timepicker-cell-disabled {
+                color: var(--color-text-4);
+                cursor: not-allowed;
+                .yc-timepicker-cell-inner {
+                  &:hover {
+                    background-color: transparent;
+                  }
+                }
+              }
             }
             &::after {
               display: block;

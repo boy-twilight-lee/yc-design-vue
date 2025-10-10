@@ -126,10 +126,10 @@ export type DisabledTime = (current: Date | string) => {
   disabledSeconds?: DisabledSeconds;
 };
 
-export type ShortcutValue = Date | Date[] | Dayjs | Dayjs[];
+export type ShortcutValue = Date | Dayjs | (Date | Dayjs)[];
 
 export type ShortcutType = {
   label: string | number | (() => VNode);
-  value: () => Date | Date[];
+  value: ShortcutValue | (() => ShortcutValue);
   format: string;
 };

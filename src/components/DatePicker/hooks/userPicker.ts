@@ -173,8 +173,13 @@ export default function usePicker(params: {
     computedVisible.value = false;
   };
   // 处理今天的点击
-  const handleNowClick = () => {
-    computedValue.value = new Date();
+  const handleNowClick = (
+    onSet: (value: Date, oldValue: Date | '') => void
+  ) => {
+    const value = new Date();
+    const oldValue = getDateFromFormat(computedValue.value);
+    computedValue.value = value;
+    onSet(value, oldValue);
     if (showTime?.value) return;
     isConfirm = true;
     computedVisible.value = false;
