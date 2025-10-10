@@ -11,6 +11,7 @@
     animation-name="slide-dynamic-origin"
     need-transform-origin
     v-bind="triggerProps"
+    @popup-visible-change="(v) => $emit('popup-visible-change', v)"
   >
     <slot name="trigger">
       <yc-input
@@ -68,6 +69,9 @@ const $props = withDefaults(
     type: 'date',
   }
 );
+defineEmits<{
+  (e: 'popup-visible-change', val: boolean): void;
+}>();
 const { props, computedVisible, formatValue, showClearBtn, onClear } =
   userPickerInputContext().inject();
 const {

@@ -71,6 +71,7 @@
     :class="$attrs.class"
     :style="$attrs.style"
     type="month"
+    @popup-visible-change="handleVisibleChange"
   >
     <template v-if="$slots.default" #trigger>
       <slot />
@@ -149,6 +150,7 @@ const {
   handleConfirm,
   handleSelect,
   handleShortcut,
+  handleVisibleChange,
 } = userPicker({
   props,
   emits,

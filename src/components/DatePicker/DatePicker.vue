@@ -225,6 +225,7 @@ const {
   DefinePanel,
   ReusePanel,
   showConfirmBtn,
+  handleVisibleChange,
   t,
   getDateFromFormat,
   isCellInView,
@@ -270,6 +271,7 @@ const handleDateChange = (dateType: string, type: string) => {
 watch(
   () => computedVisible.value,
   (visible) => {
+    handleVisibleChange(visible);
     if (!computedValue.value || !visible) return;
     timePickerRef.value?.jump(dayjs(getDateFromFormat(computedValue.value)));
   },

@@ -119,26 +119,20 @@ export default function usePicker(params: {
   const showYearPicker = ref<boolean>(false);
   // 展示月份选择器
   const showMonthPicker = ref<boolean>(false);
-  // 处理visible发生改变
-  watch(
-    () => computedVisible.value,
-    (val) => {
-      if (val) {
-        isConfirm = false;
-        oldDate = computedValue.value
-          ? getDateFromFormat(computedValue.value)
-          : (computedValue.value as string);
-      } else {
-        showYearPicker.value = false;
-        showMonthPicker.value = false;
-        if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
-        computedValue.value = oldDate;
-      }
-    },
-    {
-      immediate: true,
+  // 处理pickerVisible发生改变
+  const handleVisibleChange = (visible: boolean) => {
+    if (visible) {
+      isConfirm = false;
+      oldDate = computedValue.value
+        ? getDateFromFormat(computedValue.value)
+        : (computedValue.value as string);
+    } else {
+      showYearPicker.value = false;
+      showMonthPicker.value = false;
+      if (!showConfirmBtn.value || isConfirm || isUndefined(oldDate)) return;
+      computedValue.value = oldDate;
     }
-  );
+  };
   // 处理shortcut
   const handleShortcut = (shortcut: ShortcutType, hover: boolean) => {
     if (!hover) {
@@ -205,9 +199,8 @@ export default function usePicker(params: {
   };
   // 是否inView
   const isCellInView = (v: Date, type: string) => {
-    const curDate = dayjs();
     if (type == 'year') {
-      const startYear = Math.floor(curDate.year() / 10) * 10;
+      const startYear = Math.floor(curYear.value / 10) * 10;
       return v.getFullYear() >= startYear && v.getFullYear() <= startYear + 10;
     }
     if (type == 'month') {
@@ -284,6 +277,7 @@ export default function usePicker(params: {
     isCellInView,
     isToday,
     isSelected,
+    handleVisibleChange,
     getRangeOfYear,
     getWeeksOfMonth,
     getDaysOfMonth,
