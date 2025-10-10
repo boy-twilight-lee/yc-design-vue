@@ -7,21 +7,35 @@
       :shortcuts-position="shortcutsPosition"
       :confirm-btn-disabled="!computedValue"
       :show-confirm-btn="showConfirmBtn"
+      :show-footer="!showYearPicker"
       @confirm="handleConfirm"
       @shortcut-select="handleShortcut"
     >
       <template v-if="$slots.extra" #extra>
         <slot name="extra" />
       </template>
-      <div class="yc-panel-year">
-        <div class="yc-panel-year-inner">
-          <!-- header -->
+      <yc-year-picker
+        v-if="showYearPicker"
+        :model-value="`${curYear}`"
+        hide-trigger
+        value-format="YYYY"
+        @change="
+          (_, date) => {
+            curYear = date.getFullYear();
+            showYearPicker = false;
+          }
+        "
+      />
+      <div v-else class="yc-panel-month">
+        <div class="yc-panel-month-inner">
+          <!--header -->
           <picker-header
-            type="year"
-            @prev-double-click="handleYearChange('pre')"
-            @next-double-click="handleYearChange('next')"
+            :year="curYear"
+            type="month"
+            @year-click="showYearPicker = true"
+            @prev-double-click="curYear--"
+            @next-double-click="curYear++"
           >
-            {{ curYear }}-{{ curYear + 10 }}
             <template v-if="$slots['icon-prev-double']" #icon-prev-double>
               <slot name="icon-next-double" />
             </template>
@@ -31,14 +45,14 @@
           </picker-header>
           <!-- body -->
           <div class="yc-picker-body">
-            <div v-for="(row, i) in yearData" :key="i" class="yc-picker-row">
+            <div v-for="(row, i) in monthData" :key="i" class="yc-picker-row">
               <picker-cell
                 v-for="({ value: date, label }, k) in row"
                 :key="k"
                 :value="label"
-                :cell-in-view="isCellInView(date, 'year')"
-                :is-today="isToday(date, 'year')"
-                :is-selected="isSelected(date, 'year')"
+                :cell-in-view="isCellInView(date, 'month')"
+                :is-today="isToday(date, 'month')"
+                :is-selected="isSelected(date, 'month')"
                 :disabled="disabledDate?.(date)"
                 @click="handleSelect(date)"
               >
@@ -56,7 +70,7 @@
     v-if="!hideTrigger"
     :class="$attrs.class"
     :style="$attrs.style"
-    type="year"
+    type="month"
   >
     <template v-if="$slots.default" #trigger>
       <slot />
@@ -75,20 +89,20 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
-import { YearPickerProps, YearPickerEmits, BasePickerSlots } from './type';
-import usePicker from './hooks/userPicker';
-import { YearData } from '@shared/utils';
+import { watch, computed } from 'vue';
+import { MonthPickerProps, MonthPickerEmits, BasePickerSlots } from './type';
+import userPicker from './hooks/userPicker';
 import PickerHeader from './component/PickerHeader.vue';
 import PickerCell from './component/PickerCell.vue';
 import PickerPanel from './component/PickerPanel.vue';
 import PickerInput from './component/PickerInput.vue';
+import YcYearPicker from './YearPicker.vue';
 defineOptions({
-  name: 'YearPicker',
+  name: 'MonthPicker',
   inheritAttrs: false,
 });
 const $slots = defineSlots<BasePickerSlots>();
-const props = withDefaults(defineProps<YearPickerProps>(), {
+const props = withDefaults(defineProps<MonthPickerProps>(), {
   locale: () => ({}),
   hideTrigger: false,
   allowClear: false,
@@ -108,49 +122,62 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   pickerValue: undefined,
   defaultPickerValue: '',
   popupContainer: undefined,
-  valueFormat: 'YYYY',
-  format: 'YYYY',
+  valueFormat: 'YYYY-MM',
+  format: 'YYYY-MM',
   previewShortcut: true,
   showConfirmBtn: false,
   disabledInput: false,
   modelValue: undefined,
   defaultValue: '',
+  abbreviation: true,
 });
-const emits = defineEmits<YearPickerEmits>();
+const emits = defineEmits<MonthPickerEmits>();
 // 获取格式化
 const {
   computedValue,
+  showYearPicker,
+  curYear,
+  locale,
+  abbreviation,
   DefinePanel,
   ReusePanel,
-  curYear,
-  isToday,
-  isCellInView,
-  isSelected,
+  t,
   getDateFromFormat,
-  getRangeOfYear,
+  isCellInView,
+  isToday,
+  isSelected,
   handleConfirm,
   handleSelect,
   handleShortcut,
-} = usePicker({
+} = userPicker({
   props,
   emits,
 });
 // 区间范围
-const yearData = ref<YearData[][]>([]);
-// 处理改变
-const handleYearChange = (type: string) => {
-  curYear.value = type == 'pre' ? curYear.value - 10 : curYear.value + 10;
-  const { range } = getRangeOfYear(curYear.value);
-  yearData.value = range;
-};
+const monthData = computed(() => {
+  const months = [
+    ['January', 'February', 'March'],
+    ['April', 'May', 'June'],
+    ['July', 'August', 'September'],
+    ['October', 'November', 'December'],
+  ];
+  let month = 0;
+  return months.map((row) => {
+    return row.map((name) => {
+      const key = `datePicker.month.${abbreviation.value ? 'short' : 'long'}.${name}`;
+      return {
+        label: locale.value?.[key] || t(key),
+        value: new Date(curYear.value, month++, 1),
+      };
+    });
+  });
+});
 // 处理初始化值
 watch(
   () => computedValue.value,
   (val) => {
-    const date = val ? getDateFromFormat(val) : new Date();
-    const { range, startYear } = getRangeOfYear((date as Date).getFullYear());
-    curYear.value = startYear;
-    yearData.value = range;
+    const date = val ? (getDateFromFormat(val) as Date) : new Date();
+    curYear.value = date.getFullYear();
   },
   {
     immediate: true,
@@ -159,5 +186,5 @@ watch(
 </script>
 
 <style lang="less">
-@import './style/picker.less';
+@import './style/picker-panel.less';
 </style>

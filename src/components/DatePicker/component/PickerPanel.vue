@@ -30,7 +30,7 @@
     />
     <div class="yc-picker-panel-wrapper">
       <slot />
-      <div class="yc-picker-footer">
+      <div v-if="showFooter" class="yc-picker-footer">
         <div v-if="$slots.extra" class="yc-picker-footer-extra-wrapper">
           <slot name="extra" />
         </div>
@@ -97,9 +97,11 @@ const props = withDefaults(
     confirmBtnDisabled: boolean;
     showConfirmBtn: boolean;
     showNow?: boolean;
+    showFooter?: boolean;
   }>(),
   {
     showNow: false,
+    showFooter: true,
   }
 );
 defineEmits<{

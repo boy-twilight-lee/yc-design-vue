@@ -76,6 +76,26 @@ export default function usePicker(params: {
       ? dayjs(date).format(format.value)
       : (computedValue.value as string);
   });
+  // timePickerValue
+  const timePickerValue = computed({
+    get() {
+      return computedValue.value;
+    },
+    set(val) {
+      const date = dayjs(val, valueFormat.value);
+      const curDate = getDateFromFormat(computedValue.value);
+      computedValue.value = curDate
+        ? new Date(
+            curDate.getFullYear(),
+            curDate.getMonth(),
+            curDate.getDate(),
+            date.hour(),
+            date.minute(),
+            date.second()
+          )
+        : date.toDate();
+    },
+  });
   // showConfirmBtn
   const showConfirmBtn = computed(() => {
     return showTime?.value ? showTime?.value : _showConfirmBtn.value;
@@ -241,6 +261,7 @@ export default function usePicker(params: {
   );
   return {
     formatValue,
+    timePickerValue,
     computedValue,
     computedVisible,
     computedPickerValue,

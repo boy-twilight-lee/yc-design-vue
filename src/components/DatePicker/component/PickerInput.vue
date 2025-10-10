@@ -101,5 +101,5 @@ watch(
 </script>
 
 <style lang="less">
-@import '../style/picker-input.less';
+@import '../style/picker.less';
 </style>

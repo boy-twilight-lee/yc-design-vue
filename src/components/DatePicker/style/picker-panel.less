@@ -8,6 +8,11 @@
   box-shadow: 0 2px 5px #0000001a;
   display: flex;
   .yc-picker-panel-wrapper {
+    .yc-picker-container {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
     .yc-picker-footer {
       width: min-content;
       min-width: 100%;
@@ -69,6 +74,237 @@
       .yc-picker-footer-btn-wrapper {
         justify-content: space-between;
       }
+    }
+  }
+}
+// panel
+.yc-panel-year,
+.yc-panel-month,
+.yc-panel-week,
+.yc-panel-date {
+  display: flex;
+  .yc-panel-year-inner,
+  .yc-panel-month-inner,
+  .yc-panel-week-inner,
+  .yc-panel-date-inner {
+    display: flex;
+    flex-direction: column;
+    width: 265px;
+    .yc-picker-header {
+      height: 40px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--color-neutral-3);
+      display: flex;
+      align-items: center;
+      .yc-picker-header-icon {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        margin-right: 2px;
+        margin-left: 2px;
+        color: var(--color-text-2);
+        font-size: 12px;
+        line-height: 24px;
+        text-align: center;
+        background-color: var(--color-bg-popup);
+        border-radius: 50%;
+        transition: all 0.1s cubic-bezier(0, 0, 1, 1);
+        user-select: none;
+        &:hover {
+          background-color: var(--color-fill-3);
+        }
+      }
+      .yc-picker-header-title {
+        flex: 1;
+        color: var(--color-text-1);
+        font-size: 14px;
+        line-height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .yc-picker-header-label {
+          cursor: pointer;
+          padding: 2px;
+          border-radius: 2px;
+          transition: all 0.1s;
+          &:hover {
+            background-color: var(--color-fill-3);
+          }
+        }
+      }
+    }
+    .yc-picker-week-list {
+      width: 100%;
+      padding: 14px 16px 0 16px;
+      display: flex;
+      .yc-picker-week-list-item {
+        flex: 1;
+        height: 32px;
+        padding: 0;
+        color: #7d7d7f;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .yc-picker-body {
+      padding: 14px 16px;
+      .yc-picker-row {
+        padding: 2px 0;
+        display: flex;
+      }
+    }
+  }
+  .yc-panel-date-timepicker {
+    border-left: 1px solid var(--color-neutral-3);
+    display: flex;
+    flex-direction: column;
+    .yc-panel-date-timepicker-title {
+      width: 100%;
+      height: 40px;
+      border-bottom: 1px solid var(--color-neutral-3);
+      color: var(--color-text-1);
+      font-weight: 400;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .yc-timepicker-container {
+      height: 276px;
+      padding: 0 6px;
+      border: none;
+      box-shadow: none;
+      .yc-timepicker {
+        height: 100%;
+        .yc-timepicker-column {
+          height: 100%;
+          width: fit-content;
+          padding: 0 4px;
+          border: none;
+          .yc-scrollbar {
+            .yc-scrollbar-container {
+              &::-webkit-scrollbar {
+                display: none;
+              }
+              ul {
+                &::after {
+                  height: 244px;
+                }
+                .yc-timepicker-cell {
+                  width: 36px;
+                  height: 32px;
+                  .yc-timepicker-cell-inner {
+                    padding-left: 10px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// week
+.yc-panel-week {
+  .yc-panel-week-inner {
+    width: 298px;
+    .yc-picker-body {
+      .yc-picker-week-row {
+        &:not(.yc-picker-week-row-selected):not(
+            .yc-picker-week-row-disabled
+          ):hover
+          .yc-picker-cell {
+          &:not(:first-child) {
+            .yc-picker-date {
+              .yc-picker-date-value {
+                background-color: var(--color-fill-3);
+              }
+            }
+          }
+        }
+        .yc-picker-cell {
+          .yc-picker-date {
+            padding-left: 0;
+            padding-right: 0;
+            .yc-picker-date-value {
+              border-radius: 0;
+            }
+          }
+        }
+        .yc-week-picker-cell-first {
+          .yc-picker-date {
+            border-top-left-radius: 24px;
+            border-bottom-left-radius: 24px;
+            .yc-picker-date-value {
+              border-top-left-radius: 24px;
+              border-bottom-left-radius: 24px;
+            }
+          }
+        }
+        .yc-week-picker-cell-last {
+          .yc-picker-date {
+            border-top-right-radius: 24px;
+            border-bottom-right-radius: 24px;
+            .yc-picker-date-value {
+              border-top-right-radius: 24px;
+              border-bottom-right-radius: 24px;
+            }
+          }
+        }
+      }
+      .yc-picker-week-row-selected {
+        .yc-picker-cell {
+          &:not(:first-child) {
+            .yc-picker-date {
+              .yc-picker-date-value {
+                background-color: rgb(var(--primary-6));
+                color: var(--color-white);
+                transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
+              }
+            }
+          }
+        }
+        &.yc-picker-week-row-disabled {
+          .yc-picker-cell {
+            &:not(:first-child) {
+              .yc-picker-date {
+                .yc-picker-date-value {
+                  background-color: var(--color-link-light-3);
+                  color: var(--color-white);
+                }
+              }
+            }
+          }
+        }
+      }
+      .yc-picker-week-row-disabled {
+        .yc-picker-cell {
+          &:not(:first-child) {
+            .yc-picker-date {
+              cursor: not-allowed;
+              background-color: var(--color-fill-1);
+              .yc-picker-date-value {
+                cursor: not-allowed;
+                background-color: transparent;
+                color: var(--color-text-4);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// week-header设置
+.yc-panel-week,
+.yc-panel-date {
+  .yc-panel-week-inner,
+  .yc-panel-date-inner {
+    .yc-picker-body {
+      padding-top: 0;
     }
   }
 }

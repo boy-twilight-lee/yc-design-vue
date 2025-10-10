@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import _DatePicker from './YcDatePicker.vue';
+import _DatePicker from './DatePicker.vue';
 import _RangePicker from './PickerRange.vue';
-import _YearPicker from './YcYearPicker.vue';
-import _MonthPicker from './YcMonthPicker.vue';
-import _WeekPicker from './YcWeekPicker.vue';
+import _YearPicker from './YearPicker.vue';
+import _MonthPicker from './MonthPicker.vue';
+import _WeekPicker from './WeekPicker.vue';
 
 export type DatePickerInstance = InstanceType<typeof _DatePicker>;
 export type RangePickerInstance = InstanceType<typeof _RangePicker>;
