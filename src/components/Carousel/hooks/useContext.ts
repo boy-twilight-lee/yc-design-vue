@@ -46,10 +46,10 @@ export default function useCarouselContext() {
       transitionTimingFunction,
       animationName,
       moveSpeed,
-      direction,
       showArrow,
       arrowClass,
       autoPlay,
+      direction: _direction,
     } = toRefs(props as CarouselProps);
     // 插槽对象
     const slots = useSlots();
@@ -59,6 +59,9 @@ export default function useCarouselContext() {
         slots.default?.() || [],
         CarouselItem.name as string
       );
+    });
+    const direction = computed(() => {
+      return animationName.value == 'card' ? 'vertical' : _direction.value;
     });
     // 总共的轮播图数量
     const length = computed(() => {
@@ -80,7 +83,7 @@ export default function useCarouselContext() {
     let flag: boolean = false;
     // 获取合法的index
     const getValidIndex = (val: number) => {
-      if (val < 0) {
+      if (!val) {
         return length.value - 1;
       }
       return val > length.value ? val % length.value : val;
@@ -119,6 +122,7 @@ export default function useCarouselContext() {
       ...context,
       carouselItems,
       autoPlay,
+      direction,
       slideTo,
     };
   };

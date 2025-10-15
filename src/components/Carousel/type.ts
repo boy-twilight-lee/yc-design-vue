@@ -30,7 +30,7 @@ export interface CarouselItemSlots {
   default?: () => VNode[];
 }
 
-export type AnimationName = 'slide' | 'fade';
+export type AnimationName = 'slide' | 'fade' | 'card';
 
 export type ShowArrow = 'always' | 'hover' | 'never';
 

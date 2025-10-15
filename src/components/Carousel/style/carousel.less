@@ -1,4 +1,3 @@
-@import './animation.less';
 .yc-carousel {
   position: relative;
   &:hover .yc-carousel-arrow-show-hover {
@@ -23,18 +22,42 @@
 .yc-carousel-animation-slide {
   .yc-carousel-item {
     visibility: hidden;
-
-    &.yc-carousel-item-current {
-      visibility: visible;
-    }
+  }
+  .yc-carousel-item-current {
+    visibility: visible;
   }
 }
 .yc-carousel-animation-fade {
   .yc-carousel-item {
     opacity: 0;
-
-    &.yc-carousel-item-current {
+  }
+  .yc-carousel-item-current {
+    opacity: 1;
+  }
+}
+.yc-carousel-animation-card {
+  perspective: 800px;
+  .yc-carousel-slide {
+    justify-content: center;
+    .yc-carousel-item {
+      left: 50%;
+      transform: translateX(-50%) translateZ(-400px);
+      height: 80%;
+      opacity: 0;
+    }
+    .yc-carousel-item-current {
+      z-index: 1;
+      transform: translateX(-50%) translateZ(0);
+      height: 100%;
       opacity: 1;
+    }
+    .yc-carousel-item-prev {
+      transform: translateX(-100%) translateZ(-200px);
+      opacity: 0.4;
+    }
+    .yc-carousel-item-next {
+      transform: translateX(0%) translateZ(-200px);
+      opacity: 0.4;
     }
   }
 }
@@ -224,5 +247,167 @@
     border-radius: var(--border-radius-medium);
     transition: transform 0.3s;
     background-color: var(--color-white);
+  }
+}
+
+// animation
+@keyframes carousel-slide-x-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes carousel-slide-x-in-reverse {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes carousel-slide-x-out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes carousel-slide-x-out-reverse {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes carousel-slide-y-in {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes carousel-slide-y-out {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes carousel-slide-y-in-reverse {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes carousel-slide-y-out-reverse {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes carousel-card-bottom-to-middle {
+  from {
+    transform: translateX(0%) translateZ(-400px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%) translateZ(-200px);
+    opacity: 0.4;
+  }
+}
+@keyframes carousel-card-middle-to-bottom {
+  from {
+    transform: translateX(-100%) translateZ(-200px);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: translateX(-100%) translateZ(-400px);
+    opacity: 0;
+  }
+}
+@keyframes carousel-card-top-to-middle {
+  from {
+    transform: translateX(-50%) translateZ(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%) translateZ(-200px);
+    opacity: 0.4;
+  }
+}
+@keyframes carousel-card-middle-to-top {
+  from {
+    transform: translateX(0) translateZ(-200px);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: translateX(-50%) translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes carousel-card-bottom-to-middle-reverse {
+  from {
+    transform: translateX(-100%) translateZ(-400px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(-100%) translateZ(-200px);
+    opacity: 0.4;
+  }
+}
+@keyframes carousel-card-middle-to-bottom-reverse {
+  from {
+    transform: translateX(0%) translateZ(-200px);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: translateX(0%) translateZ(-400px);
+    opacity: 0;
+  }
+}
+@keyframes carousel-card-top-to-middle-reverse {
+  from {
+    transform: translateX(-50%) translateZ(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(0%) translateZ(-200px);
+    opacity: 0.4;
+  }
+}
+@keyframes carousel-card-middle-to-top-reverse {
+  from {
+    transform: translateX(-100%) translateZ(-200px);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: translateX(-50%) translateZ(0);
+    opacity: 1;
   }
 }

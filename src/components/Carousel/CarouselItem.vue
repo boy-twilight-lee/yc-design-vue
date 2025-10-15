@@ -2,7 +2,6 @@
   <div
     :class="[
       'yc-carousel-item',
-      slideClass,
       {
         'yc-carousel-item-current': index == getValidIndex(computedCurrent),
         'yc-carousel-item-prev': index == getValidIndex(computedCurrent - 1),
@@ -14,6 +13,7 @@
       animationTimingFunction: transitionTimingFunction,
       transitionDuration: moveSpeed + 'ms',
       animationDuration: moveSpeed + 'ms',
+      animationName: animation,
     }"
   >
     <slot />
@@ -40,20 +40,33 @@ const {
   getValidIndex,
 } = useContext().inject();
 const attrs = useAttrs();
-const index = computed(() => attrs.index);
+const index = computed(() => attrs.index as number);
 // 动态计算className
-const slideClass = computed(() => {
+const animation = computed(() => {
+  const isReverse = moveType.value == 'negative';
+  const moveDirection = isReverse ? '-reverse' : '';
   if (
-    animationName.value != 'slide' ||
-    computedCurrent.value == preIndex.value ||
-    (preIndex.value != index.value && computedCurrent.value != index.value)
+    animationName.value == 'slide' &&
+    computedCurrent.value != preIndex.value &&
+    (preIndex.value == index.value || computedCurrent.value == index.value)
   ) {
-    return;
+    const slideDirection = direction.value == 'horizontal' ? '-x' : '-y';
+    const slideType = preIndex.value == index.value ? '-out' : '-in';
+    return `carousel-slide${slideDirection}${slideType}${moveDirection}`;
   }
-  const slideDirection = direction.value == 'horizontal' ? '-x' : '-y';
-  const slideType = preIndex.value == index.value ? '-out' : '-in';
-  const siideMoveType = moveType.value == 'positive' ? '' : '-reverse';
-  return `yc-carousel-slide${slideDirection}${slideType}${siideMoveType}`;
+  if (animationName.value == 'card') {
+    const map = {
+      [`${computedCurrent.value}`]: 'carousel-card-middle-to-top',
+      [`${getValidIndex(computedCurrent.value - 1)}`]: isReverse
+        ? 'carousel-card-bottom-to-middle'
+        : 'carousel-card-top-to-middle',
+      [`${getValidIndex(computedCurrent.value + 1)}`]: isReverse
+        ? 'carousel-card-top-to-middle'
+        : 'carousel-card-bottom-to-middle',
+    };
+    return `${map[index.value] ?? 'carousel-card-middle-to-bottom'}${moveDirection}`;
+  }
+  return '';
 });
 </script>
 

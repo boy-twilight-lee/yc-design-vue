@@ -63,7 +63,7 @@ const props = withDefaults(defineProps<CarouselProps>(), {
 });
 const emits = defineEmits<CarouselEmits>();
 // 注入
-const { slideTo, computedCurrent, autoPlay, carouselItems } =
+const { slideTo, computedCurrent, autoPlay, carouselItems, direction } =
   useContext().provide(props, emits);
 // 自动播放的timer
 const autoPlayTimer = ref<number>(0);
@@ -83,7 +83,6 @@ const setAutoPlay = () => {
     (autoPlay.value as Record<string, any>)?.interval ?? 3000
   );
 };
-
 // [修改] handleChange 的逻辑现在是正确的
 const handleChange = async (index: number) => {
   stopAutoPlay();
