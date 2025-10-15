@@ -1,7 +1,7 @@
 import { ref, watch, Ref, provide, inject } from 'vue';
 import { TriggerType, TriggerProps as _TriggerProps } from '../type';
 import { Required } from '@shared/type';
-import { unrefElement, nanoid, sleep } from '@shared/utils';
+import { unrefElement, nanoid, sleep, isString } from '@shared/utils';
 
 const TRIGGER_CONTEXT_KEY = 'trigger-context';
 type TriggerContext = {
@@ -21,7 +21,7 @@ export type TriggerProps = Required<_TriggerProps>;
  *  groupId  组件标识，用于标识元素是否处于一个嵌套中
  */
 export default function useTriggerContext(params: {
-  trigger: TriggerType;
+  trigger: TriggerType | TriggerType[];
   mouseEnterDelay: Ref<number>;
   computedVisible: Ref<boolean>;
   popupRef: Ref<HTMLDivElement | undefined>;
@@ -55,6 +55,11 @@ export default function useTriggerContext(params: {
     hoverTimeout,
     timeout,
   });
+  // 是否是合法的trigger
+  const isValidTrigger = (value: TriggerType) => {
+    const triggerArray = isString(trigger) ? [trigger] : trigger;
+    return triggerArray.includes(value);
+  };
   // 判断是否在一个嵌套组内
   const isSameGroup = (el: HTMLElement) => {
     const dataId = el.getAttribute('data-group-id') as string;
@@ -108,7 +113,7 @@ export default function useTriggerContext(params: {
   watch(
     () => curDepth.value,
     (v) => {
-      if (depth <= v || trigger != 'hover') {
+      if (depth <= v || !isValidTrigger('hover')) {
         return;
       }
       computedVisible.value = false;

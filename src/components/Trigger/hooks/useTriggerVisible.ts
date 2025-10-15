@@ -1,5 +1,5 @@
 import { nextTick, Ref, ref, toRefs, computed, watch } from 'vue';
-import { TriggerEmits } from '../type';
+import { TriggerEmits, TriggerType } from '../type';
 import { RecordType } from '@shared/type';
 import { default as useContext, TriggerProps } from './useContext';
 import {
@@ -8,6 +8,7 @@ import {
   onClickOutside,
   useControlValue,
   findFirstScrollableParent,
+  isString,
 } from '@shared/utils';
 
 export default (params: {
@@ -72,9 +73,16 @@ export default (params: {
       ? findFirstScrollableParent(unrefElement(triggerRef.value))
       : null;
   });
+  // 是否是合法的trigger
+  const isValidTrigger = (value: TriggerType) => {
+    const triggerArray = isString(trigger.value)
+      ? [trigger.value]
+      : trigger.value;
+    return triggerArray.includes(value);
+  };
   // 点击
-  const handleClickEvent = (e: MouseEvent, type: 'click' | 'contextMenu') => {
-    if (trigger.value != type || disabled.value) {
+  const handleClickEvent = (e: MouseEvent, type: TriggerType) => {
+    if (!isValidTrigger(type) || disabled.value) {
       return;
     }
     if (timeout.value) {
@@ -91,7 +99,7 @@ export default (params: {
   };
   // 鼠标进入
   const handleMouseenter = () => {
-    if (trigger.value != 'hover' || disabled.value) {
+    if (!isValidTrigger('hover') || disabled.value) {
       return;
     }
     mouseEnterHandler();
@@ -109,7 +117,7 @@ export default (params: {
   };
   // 鼠标离开
   const handleMouseleave = (e: MouseEvent) => {
-    if (trigger.value != 'hover' || disabled.value) {
+    if (!isValidTrigger('hover') || disabled.value) {
       return;
     }
     if (timeout.value) {
@@ -133,7 +141,7 @@ export default (params: {
   };
   // 聚焦
   const handleFocus = () => {
-    if (trigger.value != 'focus' || disabled.value) {
+    if (!isValidTrigger('focus') || disabled.value) {
       return;
     }
     if (timeout.value) {
@@ -150,7 +158,7 @@ export default (params: {
   };
   // 失焦
   const handleBlur = () => {
-    if (trigger.value != 'focus' || !blurToClose.value || disabled.value) {
+    if (!isValidTrigger('focus') || !blurToClose.value || disabled.value) {
       return;
     }
     if (timeout.value) {
@@ -166,7 +174,7 @@ export default (params: {
   const handleClickOutsideClose = () => {
     if (
       !clickOutsideToClose.value ||
-      !['click', 'contextMenu'].includes(trigger.value)
+      (!isValidTrigger('click') && !isValidTrigger('contextMenu'))
     ) {
       return;
     }

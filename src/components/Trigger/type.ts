@@ -9,11 +9,11 @@ import {
 export interface TriggerProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
-  trigger?: TriggerType;
+  trigger?: TriggerType | TriggerType[];
   position?: PopupPosition;
   disabled?: boolean;
   popupOffset?: number;
-  popupTranslate?: number[];
+  popupTranslate?: popupTranslate;
   showArrow?: boolean;
   popuphoverStay?: boolean;
   blurToClose?: boolean;
@@ -71,3 +71,5 @@ export interface TriggerExpose {
 }
 
 export type TriggerType = EventTrigger | 'focus' | 'contextMenu';
+
+export type popupTranslate = number[] | Record<PopupPosition, number[]>;

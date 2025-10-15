@@ -7,7 +7,10 @@ import {
   useElementSize,
   sleep,
   valueToPx,
+  isArray,
+  isString,
 } from '@shared/utils';
+import { TriggerType } from '../type';
 
 export default (params: {
   props: RecordType;
@@ -72,13 +75,22 @@ export default (params: {
     windowScroll: updateAtScroll.value as boolean,
     updateTiming: 'next-frame',
   });
-  // 计算trigger的位置
+  // 是否是合法的trigger
+  const isValidTrigger = (value: TriggerType) => {
+    const triggerArray = isString(trigger.value)
+      ? [trigger.value]
+      : trigger.value;
+    return triggerArray.includes(value);
+  };
+  // 计算trigge的位置
   const popupStyle = computed(() => {
     // 计算偏移量
     const [offsetX, offsetY] = calcPopupOffset();
     // 是否是自由设置位置，或者跟随鼠标位置
     const isMousePosition =
-      alignPoint.value && ['click', 'contextMenu'].includes(trigger.value);
+      alignPoint.value &&
+      !isValidTrigger('click') &&
+      !isValidTrigger('contextMenu');
     // 如果跟随鼠标点击位置
     if (autoSetPosition.value || isMousePosition) {
       return {
@@ -167,18 +179,23 @@ export default (params: {
   });
   // 计算offset
   const calcPopupOffset = () => {
-    const [translateX, translateY] = popupTranslate.value;
-    // 计算偏移量
-    let offsetX = translateX;
-    let offsetY = translateY;
+    let offsetX: number = 0;
+    let offsetY: number = 0;
+    if (isArray(popupTranslate.value)) {
+      offsetX = popupTranslate.value?.[0] || 0;
+      offsetY = popupTranslate.value?.[1] || 0;
+    } else {
+      offsetX = popupTranslate.value[position.value]?.[0] || 0;
+      offsetY = popupTranslate.value[position.value]?.[1] || 0;
+    }
     if (position.value.startsWith('t')) {
-      offsetY = -popupOffset.value;
+      offsetY += -popupOffset.value;
     } else if (position.value.startsWith('b')) {
-      offsetY = popupOffset.value;
+      offsetY += popupOffset.value;
     } else if (position.value.startsWith('l')) {
-      offsetX = -popupOffset.value;
+      offsetX += -popupOffset.value;
     } else if (position.value.startsWith('r')) {
-      offsetX = popupOffset.value;
+      offsetX += popupOffset.value;
     }
     return [offsetX, offsetY];
   };
