@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite';
 
-export default function FixInvalidDeclarationsPlugin(): Plugin {
+export default function fixInvalidDeclarationsPlugin(): Plugin {
   return {
     name: 'fix-invalid-declarations-in-umd',
     apply: 'build',

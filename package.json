@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "2.3.3",
+  "version": "2.3.8",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -36,6 +36,10 @@
       "types": "./es/index.d.ts",
       "import": "./es/index.js",
       "require": "./lib/index.js"
+    },
+    "./resolver": {
+      "types": "./es/resolver/index.d.ts",
+      "import": "./es/resolver/index.js"
     },
     "./lang/*": {
       "types": "./es/lang-es/*.d.ts",

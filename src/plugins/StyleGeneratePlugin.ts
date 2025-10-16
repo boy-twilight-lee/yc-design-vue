@@ -4,7 +4,7 @@ import { globSync } from 'glob';
 import less from 'less';
 import type { Plugin, ResolvedConfig } from 'vite';
 
-export default (): Plugin => {
+export default function styleGeneratePlugin(): Plugin {
   let config: ResolvedConfig;
 
   return {
@@ -149,4 +149,4 @@ export default (): Plugin => {
       }
     },
   };
-};
+}

@@ -3,8 +3,9 @@ import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 import autoprefixer from 'autoprefixer';
 import dts from 'vite-plugin-dts';
-import StyleGeneratePlugin from './src/plugins/StyleGeneratePlugin';
-import FixDeclarationsPlugin from './src/plugins/FixDeclarationsPlugin';
+import styleGeneratePlugin from './src/plugins/StyleGeneratePlugin';
+import fixDeclarationsPlugin from './src/plugins/FixDeclarationsPlugin';
+import buildResolverPlugin from './src/plugins/BuildResolverPlugin';
 
 export default defineConfig(({ mode }) => {
   // 是否是开发环境
@@ -19,8 +20,9 @@ export default defineConfig(({ mode }) => {
         outDir: ['es', 'lib'],
         exclude: ['node_modules/**'],
       }),
-      StyleGeneratePlugin(),
-      FixDeclarationsPlugin(),
+      styleGeneratePlugin(),
+      fixDeclarationsPlugin(),
+      buildResolverPlugin(),
     ],
     resolve: {
       alias: {
