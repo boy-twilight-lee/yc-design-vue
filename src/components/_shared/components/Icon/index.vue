@@ -12,7 +12,7 @@
         'yc-icon-spin': spin,
       },
     ]"
-    v-bind="$attrs"
+    v-bind="attrs"
   >
     <slot></slot>
   </svg>

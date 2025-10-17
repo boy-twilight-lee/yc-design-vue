@@ -157,7 +157,6 @@ const props = withDefaults(defineProps<TimePickerProps>(), {
   unmountOnClose: false,
   hideTrigger: false,
   scrollbar: true,
-  scrollOffset: 0,
   watchValueChange: true,
 });
 const emits = defineEmits<TimePickerEmits>();

@@ -39,14 +39,14 @@
               ]"
               :ref="(el) => (cells[i][k] = el as HTMLLIElement)"
               @click="
-                (e) => {
+                () => {
                   if (
                     disabledTime(cell.value, column.unit) ||
                     cell.value == curValue[i]
                   ) {
                     return;
                   }
-                  handleClick(cell.value, i, e.target as HTMLLIElement);
+                  handleClick(cell.value, i);
                 }
               "
             >
@@ -111,7 +111,6 @@ const {
   inputRefs,
   hideTrigger,
   scrollbar,
-  scrollOffset,
   watchValueChange,
   disabledHours,
   disabledMinutes,
@@ -138,7 +137,7 @@ const disabledTime = (value: number, unit: TimeUnit) => {
   }
 };
 // 处理点击
-const handleClick = (val: number, i: number, cell: HTMLLIElement) => {
+const handleClick = (val: number, i: number) => {
   curValue.value[i] = val;
   timeColumn.value.forEach((_, i1) => {
     curValue.value[i1] = isUndefined(curValue.value[i1])
@@ -146,6 +145,7 @@ const handleClick = (val: number, i: number, cell: HTMLLIElement) => {
       : curValue.value[i1];
   });
   const container = scrollContainer.value[i];
+  const cell = cells.value[i][val];
   if (container && cell) {
     new BTween({
       from: { scroll: container.scrollTop },
@@ -153,7 +153,7 @@ const handleClick = (val: number, i: number, cell: HTMLLIElement) => {
       duration: 300,
       easing: 'quadOut',
       onUpdate: (current: { scroll: number }) => {
-        container.scrollTop = current.scroll - scrollOffset.value;
+        container.scrollTop = current.scroll;
       },
     }).start();
   }
@@ -178,7 +178,7 @@ const hanldeJump = async (newDate: Dayjs, oldDate?: Dayjs) => {
     const time = newTimeMap[v];
     const oldTime = oldTimeMap ? oldTimeMap[timeColumn.value[i]] : -1;
     if (oldTime == time) return;
-    handleClick(time, i, cells.value[i][time]);
+    handleClick(time, i);
   });
 };
 // 处理确定

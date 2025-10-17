@@ -28,7 +28,6 @@ export interface TimePickerProps {
   // 是否隐藏trigger
   hideTrigger?: boolean;
   scrollbar?: boolean;
-  scrollOffset?: number;
   watchValueChange?: boolean;
 }
 
