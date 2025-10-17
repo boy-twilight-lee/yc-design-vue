@@ -11,45 +11,48 @@
       value-format="YYYY-MM-DD HH:mm"
     />
     <a-date-picker v-model="value" showTime />
-    <a-carousel
-      animation-name="card"
-      show-arrow="never"
-      indicator-position="outer"
-      :style="{
-        width: '100%',
-        height: '240px',
-      }"
-      direction="vertical"
-    >
-      <a-carousel-item v-for="image in images" :style="{ width: '60%' }">
-        <img
-          :src="image"
-          :style="{
-            width: '100%',
-            objectFit: 'contain',
-          }"
-        />
-      </a-carousel-item>
-    </a-carousel>
-    <yc-carousel
-      show-arrow="never"
-      indicator-position="outer"
-      :style="{
-        width: 'calc(100% - 40px)',
-        height: '240px',
-      }"
-    >
-      <yc-carousel-item v-for="image in images" :style="{ width: '60%' }">
-        <img
-          :src="image"
-          :style="{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }"
-        />
-      </yc-carousel-item>
-    </yc-carousel>
+    <div style="width: 1000px">
+      <a-carousel
+        animation-name="card"
+        show-arrow="never"
+        indicator-position="outer"
+        :style="{
+          width: '100%',
+          height: '240px',
+        }"
+      >
+        <a-carousel-item v-for="image in images" :style="{ width: '60%' }">
+          <img
+            :src="image"
+            :style="{
+              width: '100%',
+              height: '100%',
+            }"
+          />
+        </a-carousel-item>
+      </a-carousel>
+    </div>
+    <div style="width: 1000px">
+      <yc-carousel
+        animation-name="card"
+        show-arrow="never"
+        indicator-position="outer"
+        :style="{
+          width: '100%',
+          height: '240px',
+        }"
+      >
+        <yc-carousel-item v-for="image in images" :style="{ width: '60%' }">
+          <img
+            :src="image"
+            :style="{
+              width: '100%',
+              height: '100%',
+            }"
+          />
+        </yc-carousel-item>
+      </yc-carousel>
+    </div>
   </div>
 </template>
 

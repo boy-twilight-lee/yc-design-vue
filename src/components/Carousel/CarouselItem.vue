@@ -56,12 +56,12 @@ const animation = computed(() => {
   }
   if (animationName.value == 'card') {
     const map = {
-      [`${computedCurrent.value}`]: 'carousel-card-middle-to-top',
+      [`${computedCurrent.value}`]: `carousel-card-middle-to-top${moveDirection}`,
       [`${getValidIndex(computedCurrent.value - 1)}`]: isReverse
-        ? 'carousel-card-bottom-to-middle'
+        ? `carousel-card-bottom-to-middle${moveDirection}`
         : 'carousel-card-top-to-middle',
       [`${getValidIndex(computedCurrent.value + 1)}`]: isReverse
-        ? 'carousel-card-top-to-middle'
+        ? `carousel-card-top-to-middle${moveDirection}`
         : 'carousel-card-bottom-to-middle',
     };
     return `${map[index.value] ?? 'carousel-card-middle-to-bottom'}${moveDirection}`;

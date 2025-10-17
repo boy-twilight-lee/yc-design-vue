@@ -36,19 +36,16 @@
   }
 }
 .yc-carousel-animation-card {
-  perspective: 800px;
   .yc-carousel-slide {
-    justify-content: center;
+    perspective: 800px;
     .yc-carousel-item {
       left: 50%;
       transform: translateX(-50%) translateZ(-400px);
-      height: 80%;
       opacity: 0;
     }
     .yc-carousel-item-current {
       z-index: 1;
       transform: translateX(-50%) translateZ(0);
-      height: 100%;
       opacity: 1;
     }
     .yc-carousel-item-prev {
