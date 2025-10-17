@@ -38,8 +38,9 @@ const weekHeaders = computed(() => {
     ].map((v, i) => [i, v])
   );
   return days.map((v) => {
-    const key = `datePicker.week.${abbreviation.value ? 'short' : 'long'}.${map[v]}`;
-    return locale.value?.[key] || t(key);
+    const localeKey = `week.${abbreviation.value ? 'short' : 'long'}.${map[v]}`;
+    const tKey = `datePicker.week.${abbreviation.value ? 'short' : 'long'}.${map[v]}`;
+    return locale.value?.[localeKey] || t(tKey);
   });
 });
 </script>

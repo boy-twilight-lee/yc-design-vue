@@ -29,7 +29,6 @@ export default function buildResolverPlugin(): Plugin {
         // 2. 确保输出目录存在，如果不存在则创建
         await fs.mkdir(outputDir, { recursive: true });
         // 3. 使用 esbuild 编译 TypeScript 源文件为 JavaScript
-        console.log('Build resolver: Compiling JavaScript with esbuild...');
         await build({
           entryPoints: [sourceFile],
           outfile: jsOutputFile,

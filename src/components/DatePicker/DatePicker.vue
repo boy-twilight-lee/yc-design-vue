@@ -104,9 +104,7 @@
         </div>
         <div v-if="showTime" class="yc-panel-date-timepicker">
           <div class="yc-panel-date-timepicker-title">
-            {{
-              locale?.['datePicker.selectTime'] || t('datePicker.selectTime')
-            }}
+            {{ locale?.['selectTime'] || t('datePicker.selectTime') }}
           </div>
           <yc-time-picker
             v-bind="timePickerProps"

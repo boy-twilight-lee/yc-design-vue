@@ -166,9 +166,10 @@ const monthData = computed(() => {
   let month = 0;
   return months.map((row) => {
     return row.map((name) => {
-      const key = `datePicker.month.${abbreviation.value ? 'short' : 'long'}.${name}`;
+      const localeKey = `month.${abbreviation.value ? 'short' : 'long'}.${name}`;
+      const tKey = `datePicker.month.${abbreviation.value ? 'short' : 'long'}.${name}`;
       return {
-        label: locale.value?.[key] || t(key),
+        label: locale.value?.[localeKey] || t(tKey),
         value: new Date(curYear.value, month++, 1),
       };
     });

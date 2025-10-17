@@ -90,8 +90,9 @@ const {
 const { t } = useI18n();
 // placeholder
 const placeholder = computed(() => {
-  const key = `datePicker.placeholder.${$props.type}`;
-  return _placeholder.value || locale.value?.[key] || t(key);
+  const localeKey = `placeholder.${$props.type}`;
+  const tkey = `datePicker.placeholder.${$props.type}`;
+  return _placeholder.value || locale.value?.[localeKey] || t(tkey);
 });
 // inputRef
 const inputRef = ref<InputInstance>();
