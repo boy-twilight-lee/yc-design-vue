@@ -79,7 +79,6 @@
 
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue';
-import { TimeUnit } from './type';
 import {
   isUndefined,
   isArray,
@@ -112,9 +111,7 @@ const {
   hideTrigger,
   scrollbar,
   watchValueChange,
-  disabledHours,
-  disabledMinutes,
-  disabledSeconds,
+  disabledTime,
 } = useContext().inject();
 // 国际化
 const { t } = useI18n();
@@ -126,16 +123,6 @@ const cells = ref<HTMLLIElement[][]>([[], [], []]);
 const disabled = computed(() => {
   return !curValue.value.length || curValue.value.some((val) => !`${val}`);
 });
-// 处理时间禁用
-const disabledTime = (value: number, unit: TimeUnit) => {
-  if (unit == 'hour') {
-    return disabledHours?.()?.includes(value);
-  } else if (unit == 'minute') {
-    return disabledMinutes?.(...curValue.value)?.includes(value);
-  } else {
-    return disabledSeconds?.(...curValue.value)?.includes(value);
-  }
-};
 // 处理点击
 const handleClick = (val: number, i: number) => {
   curValue.value[i] = val;
@@ -144,8 +131,11 @@ const handleClick = (val: number, i: number) => {
       ? 0
       : curValue.value[i1];
   });
+  // 滚动的container
   const container = scrollContainer.value[i];
+  // 点击的cell
   const cell = cells.value[i][val];
+  // 如果触发滚动
   if (container && cell) {
     new BTween({
       from: { scroll: container.scrollTop },
@@ -157,6 +147,7 @@ const handleClick = (val: number, i: number) => {
       },
     }).start();
   }
+  // 如果禁用确定
   if (disableConfirm.value) {
     handleConfirm();
   }
@@ -189,30 +180,48 @@ const handleConfirm = () => {
   });
   const formatValue = date.format(format.value);
   if (!isArray(computedValue.value)) {
-    computedVisible.value = false;
     computedValue.value = formatValue;
-  } else {
-    computedValue.value[curIndex.value] = formatValue;
-    if (disableConfirm.value) {
-      return;
-    }
-    if (curIndex.value || computedValue.value[curIndex.value + 1]) {
-      const isValid = !isValidTimeRange(
-        computedValue.value[0] as string,
-        computedValue.value[1] as string,
-        format.value
-      );
-      if (isValid) {
-        computedValue.value = computedValue.value.reverse();
-      }
-      computedVisible.value = false;
-      return;
-    }
-    curIndex.value++;
-    inputRefs.value[curIndex.value]?.focus();
-    curValue.value = [];
+    computedVisible.value = false;
+    return;
   }
+  computedValue.value[curIndex.value] = formatValue;
+  if (disableConfirm.value) {
+    return;
+  }
+  if (curIndex.value || computedValue.value[curIndex.value + 1]) {
+    const startTime = computedValue.value[0] as string;
+    const endTime = computedValue.value[1] as string;
+    const isInvalid = !isValidTimeRange(startTime, endTime, format.value);
+    isInvalid && (computedValue.value = [endTime, startTime]);
+    computedVisible.value = false;
+    return;
+  }
+  curIndex.value++;
 };
+// 检测curIndex的改变处理值的切换逻辑
+watch(
+  () => [computedVisible.value, curIndex.value],
+  async () => {
+    const value = (
+      isArray(computedValue.value)
+        ? computedValue.value[curIndex.value]
+        : computedValue.value
+    ) as string;
+    // 聚焦当前的input
+    const curInput = inputRefs.value[curIndex.value];
+    if (curInput != document.activeElement) {
+      await sleep(0);
+      curInput?.focus();
+    }
+    // 处理滚动逻辑
+    if (!value) return (curValue.value = []);
+    if (!computedVisible.value || hideTrigger.value) return;
+    hanldeJump(dayjs(value, format.value));
+  },
+  {
+    immediate: true,
+  }
+);
 // 检测computedValue的改变自动滚动
 watch(
   () => computedValue.value,
@@ -228,24 +237,7 @@ watch(
     immediate: true,
   }
 );
-// 检测visible的改变
-watch(
-  () => computedVisible.value,
-  (visible) => {
-    const value = (
-      isArray(computedValue.value)
-        ? computedValue.value[curIndex.value]
-        : computedValue.value
-    ) as string;
-    if (!value) return (curValue.value = []);
-    if (!visible) return;
-    // 处理跳转逻辑
-    hanldeJump(dayjs(value, format.value));
-  },
-  {
-    immediate: true,
-  }
-);
+// 暴露的方法
 defineExpose({
   jump: hanldeJump,
 });

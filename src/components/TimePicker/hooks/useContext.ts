@@ -5,6 +5,7 @@ import {
   computed,
   provide as _provide,
   inject as _inject,
+  nextTick,
 } from 'vue';
 import {
   TimePickerEmits,
@@ -12,12 +13,14 @@ import {
   TimePickerType,
   TimePickerValue,
   TimeUnit,
-  DisabledHours,
-  DisabledMinutes,
-  DisabledSeconds,
 } from '../type';
 import { RecordType, Required } from '@shared/type';
-import { useControlValue, isArray, useI18n } from '@shared/utils';
+import {
+  useControlValue,
+  isArray,
+  useI18n,
+  isValidTimeRange,
+} from '@shared/utils';
 
 const TIME_PICKER_CONTEXT_KEY = 'time-picker-context';
 type TimePickerContext = {
@@ -35,9 +38,7 @@ type TimePickerContext = {
   hideDisabledOptions: Ref<boolean>;
   hideTrigger: Ref<boolean>;
   watchValueChange: Ref<boolean>;
-  disabledHours: DisabledHours;
-  disabledMinutes: DisabledMinutes;
-  disabledSeconds: DisabledSeconds;
+  disabledTime: (value: number, unit: TimeUnit) => boolean;
 };
 type TimePickerProps = Required<_TimePickerProps>;
 type TimePickerCell = { label: string; value: number };
@@ -133,6 +134,43 @@ export default function useTimePickerContext() {
     });
     // inputRefs
     const inputRefs = ref<HTMLInputElement[]>([]);
+    // 处理时间禁用
+    const disabledTime = (value: number, unit: TimeUnit) => {
+      if (unit == 'hour') {
+        return disabledHours?.()?.includes(value);
+      } else if (unit == 'minute') {
+        return disabledMinutes?.(...curValue.value)?.includes(value);
+      } else {
+        return disabledSeconds?.(...curValue.value)?.includes(value);
+      }
+    };
+    // 处理清除
+    const handleClear = () => {
+      computedValue.value = type.value == 'time-range' ? [] : '';
+      emits('clear');
+    };
+    // 处理打开picker
+    const handleOpen = async (i: number) => {
+      curIndex.value = i;
+      await nextTick();
+      computedVisible.value = true;
+    };
+    // 处理点击到外面
+    const handleClickOutSide = () => {
+      computedVisible.value = false;
+      if (!isArray(computedValue.value)) {
+        return;
+      }
+      const startTime = computedValue.value[0] as string;
+      const endTime = computedValue.value[1] as string;
+      if (!startTime || !endTime) {
+        return (computedValue.value = []);
+      }
+      if (isValidTimeRange(startTime, endTime, format.value)) {
+        return;
+      }
+      computedValue.value = [endTime, startTime];
+    };
     // 上下文
     const context: TimePickerContext = {
       computedValue,
@@ -149,9 +187,7 @@ export default function useTimePickerContext() {
       disableConfirm,
       watchValueChange,
       hideDisabledOptions,
-      disabledHours,
-      disabledMinutes,
-      disabledSeconds,
+      disabledTime,
     };
     _provide<TimePickerContext>(TIME_PICKER_CONTEXT_KEY, context);
     return {
@@ -160,6 +196,9 @@ export default function useTimePickerContext() {
       readonly,
       disabled,
       placeholder,
+      handleClear,
+      handleOpen,
+      handleClickOutSide,
     };
   };
   const inject = () => {
@@ -178,9 +217,7 @@ export default function useTimePickerContext() {
       hideTrigger: ref(false),
       watchValueChange: ref(true),
       hideDisabledOptions: ref(false),
-      disabledHours: () => [],
-      disabledMinutes: () => [],
-      disabledSeconds: () => [],
+      disabledTime: () => false,
     });
   };
   return {

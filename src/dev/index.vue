@@ -3,7 +3,6 @@
     <yc-year-picker show-confirm-btn />
     <yc-month-picker show-confirm-btn />
     <yc-week-picker show-confirm-btn />
-    <yc-time-picker />
     <yc-date-picker
       default-value="2025-09-12 12:55"
       show-time
@@ -11,6 +10,8 @@
       value-format="YYYY-MM-DD HH:mm"
     />
     <a-date-picker v-model="value" showTime />
+    <yc-time-picker type="time-range" disable-confirm />
+    <a-time-picker type="time-range" disable-confirm />
   </div>
 </template>
 

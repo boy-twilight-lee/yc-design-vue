@@ -45,7 +45,7 @@
             'yc-picker-input-active': !curIndex && computedVisible,
           },
         ]"
-        @click.stop="handleOpenPicker(0)"
+        @click.stop="handleOpen(0)"
       >
         <input
           :value="isArray(computedValue) ? computedValue[0] : computedValue"
@@ -67,13 +67,13 @@
               'yc-picker-input-active': curIndex && computedVisible,
             },
           ]"
-          @click.stop="handleOpenPicker(1)"
+          @click.stop="handleOpen(1)"
         >
           <input
             :value="isArray(computedValue) ? computedValue[1] : computedValue"
             :placeholder="isArray(placeholder) ? placeholder[1] : placeholder"
             :disabled="disabled"
-            :readonly="readonly"
+            :readonly="readonly || true"
             :ref="(el) => (inputRefs[1] = el as HTMLInputElement)"
             class="yc-picker-start-time"
           />
@@ -110,14 +110,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, nextTick } from 'vue';
+import { ref } from 'vue';
 import { TimePickerProps, TimePickerEmits, TimePickerSlots } from './type';
-import {
-  getGlobalConfig,
-  isArray,
-  isValidTimeRange,
-  Dayjs,
-} from '@shared/utils';
+import { getGlobalConfig, isArray, Dayjs } from '@shared/utils';
 import useContext from './hooks/useContext';
 import { IconButton } from '@shared/components';
 import { IconTime } from '@shared/icons';
@@ -172,38 +167,14 @@ const {
   disabled,
   curIndex,
   inputRefs,
-  format,
   placeholder,
+  handleClear,
+  handleOpen,
+  handleClickOutSide,
 } = useContext().provide(props, emits);
 // panelRef
 const panelRef = ref<InstanceType<typeof TimePickerPanel>>();
-// 处理清除
-const handleClear = () => {
-  computedValue.value = type.value == 'time-range' ? [] : '';
-  emits('clear');
-};
-// 处理打开
-const handleOpenPicker = async (i: number) => {
-  curIndex.value = i;
-  await nextTick();
-  computedVisible.value = true;
-};
-// 处理点击到外面
-const handleClickOutSide = () => {
-  computedVisible.value = false;
-  if (!isArray(computedValue.value)) {
-    return;
-  }
-  const startTime = computedValue.value[0] as string;
-  const endTime = computedValue.value[1] as string;
-  if (startTime && endTime) {
-    if (!isValidTimeRange(startTime, endTime, format.value)) {
-      computedValue.value = computedValue.value.reverse() as string[];
-    }
-    return;
-  }
-  computedValue.value = [];
-};
+// 暴露的方法
 defineExpose({
   jump(date: Dayjs, oldDate?: Dayjs) {
     panelRef.value?.jump(date, oldDate);
