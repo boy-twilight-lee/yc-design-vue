@@ -9,14 +9,14 @@ import {
 import { RecordType } from '@shared/type';
 import { DatePickerValue } from '../type';
 
-const PICKER_TRIGGER_CONTEXT = 'picker-context';
-export interface PickerInputContext {
+const PICKER_INPUT_CONTEXT = 'date-picker-context';
+type PickerInputContext = {
   props: RecordType;
   computedVisible: Ref<boolean>;
   formatValue: Ref<string>;
   showClearBtn: Ref<boolean>;
   onClear: () => void;
-}
+};
 
 export default function usePickerInputContext() {
   const provide = (
@@ -30,7 +30,7 @@ export default function usePickerInputContext() {
   ) => {
     const { computedVisible, computedValue, formatValue, emits } = context;
     const { allowClear, disabled } = toRefs(props);
-    _provide<PickerInputContext>(PICKER_TRIGGER_CONTEXT, {
+    _provide<PickerInputContext>(PICKER_INPUT_CONTEXT, {
       computedVisible,
       formatValue,
       props,
@@ -44,7 +44,7 @@ export default function usePickerInputContext() {
     });
   };
   const inject = () => {
-    return _inject<PickerInputContext>(PICKER_TRIGGER_CONTEXT, {
+    return _inject<PickerInputContext>(PICKER_INPUT_CONTEXT, {
       computedVisible: ref(false),
       formatValue: ref(''),
       showClearBtn: ref(false),

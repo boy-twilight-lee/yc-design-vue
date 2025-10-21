@@ -23,9 +23,7 @@ import {
 import { RecordType, Required } from '@shared/type';
 import { useControlValue, isFunction } from '@shared/utils';
 
-// key
 const UPLOAD_CONTEXT_KEY = 'upload-context';
-// context
 type UploadContext = {
   computedFileList: Ref<FileItem[]>;
   disabled: Ref<boolean>;
@@ -50,7 +48,6 @@ type UploadContext = {
   handleDelFile: (fileItem: FileItem) => Promise<void>;
   emits: UploadEmits;
 };
-// type
 type UploadProps = Required<_UploadProps>;
 
 export default function useUploadContext() {

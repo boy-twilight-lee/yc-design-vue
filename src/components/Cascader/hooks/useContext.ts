@@ -46,10 +46,10 @@ type CascaderContext = {
   slots: Slots;
   blur: () => void;
   getValueKey: (value: any) => string;
-  loadMore?: LoadMore;
   getOption: (
     value: CascaderOptionValue | CascaderOptionValue[]
   ) => CascaderOptionProps;
+  loadMore?: LoadMore;
 };
 type CascaderProps = Required<_CascaderProps>;
 // 增强option添加indexPath,valuePath,level,labelPath

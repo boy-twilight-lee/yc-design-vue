@@ -35,8 +35,8 @@ type CarouselContext = {
   arrowClass: Ref<ClassName>;
   getValidIndex: (val: number) => number;
 };
-type MoveType = 'positive' | 'negative';
 type CarouselProps = Required<_CarouselProps>;
+type MoveType = 'positive' | 'negative';
 
 export default function useCarouselContext() {
   const provide = (props: RecordType, emits: CarouselEmits) => {

@@ -18,7 +18,7 @@ import {
 import { Direction, Required, RecordType } from '@shared/type';
 import { isUndefined, useControlValue, nanoid } from '@shared/utils';
 
-const STEPS_CONTEXT_KEY = 'card-context';
+const STEPS_CONTEXT_KEY = 'steps-context';
 type StepsContext = {
   stepMap: Reactive<Map<string, string>>;
   computedCurrent: Ref<number>;

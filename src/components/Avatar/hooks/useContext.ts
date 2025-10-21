@@ -9,7 +9,7 @@ import {
 import { AvatarProps, AvatarGroupProps as _AvatarGroupProps } from '../type';
 import { RecordType, Required } from '@shared/type';
 
-const AVATAR_GROUP_CONTEXT_KEY = 'radio-group-context';
+const AVATAR_CONTEXT_KEY = 'avatar-context';
 type AvatarContext = {
   shape: Ref<AvatarProps['shape']>;
   size: Ref<number>;
@@ -20,7 +20,7 @@ type AvatarGroupProps = Required<_AvatarGroupProps>;
 export default function useAvatarContext() {
   const provide = (props: RecordType) => {
     const { shape, size, autoFixFontSize } = toRefs(props as AvatarGroupProps);
-    _provide<AvatarContext>(AVATAR_GROUP_CONTEXT_KEY, {
+    _provide<AvatarContext>(AVATAR_CONTEXT_KEY, {
       shape,
       size,
       autoFixFontSize,
@@ -32,7 +32,7 @@ export default function useAvatarContext() {
       shape: _shape,
       size: _size,
       autoFixFontSize: _autoFixFontSize,
-    } = _inject<AvatarContext>(AVATAR_GROUP_CONTEXT_KEY, {
+    } = _inject<AvatarContext>(AVATAR_CONTEXT_KEY, {
       shape: ref('round'),
       size: ref(40),
       autoFixFontSize: ref(true),

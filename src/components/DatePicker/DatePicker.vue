@@ -155,7 +155,7 @@
 import { ref, watch } from 'vue';
 import { DatePickerProps, DatePickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
-import { dayjs, DayData, sleep } from '@shared/utils';
+import { dayjs, DayData } from '@shared/utils';
 import PickerCell from './component/PickerCell.vue';
 import PickerHeader from './component/PickerHeader.vue';
 import PickerWeekHeader from './component/PickerWeekHeader.vue';

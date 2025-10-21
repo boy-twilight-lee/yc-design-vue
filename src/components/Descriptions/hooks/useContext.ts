@@ -23,7 +23,7 @@ import {
 } from '@shared/utils';
 import YcDescriptionsItem from '../DescriptionsItem.vue';
 
-const DESCRIPTIONS_CONTEXT_KEY = 'radio-group-context';
+const DESCRIPTIONS_CONTEXT_KEY = 'description-context-key';
 type DescriptionsContext = {
   labelStyle: Ref<CSSProperties>;
   valueStyle: Ref<CSSProperties>;

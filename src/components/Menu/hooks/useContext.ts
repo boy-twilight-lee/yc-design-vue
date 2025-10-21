@@ -12,16 +12,20 @@ import {
 import { MenuProps as _MenuProps, MenuEmits } from '../type';
 import { TooltipProps } from '@/components/Tooltip';
 import { TriggerProps } from '@/components/Trigger';
-import { RecordType, Required, PopupMaxHeight, Direction } from '@shared/type';
+import {
+  RecordType,
+  Required,
+  PopupMaxHeight,
+  Direction,
+  Theme,
+} from '@shared/type';
 import {
   isObject,
   isFunction,
   isNumber,
   isUndefined,
   isBoolean,
-  throttle,
   valueToPx,
-  useResizeObserver,
   nanoid,
   useControlValue,
 } from '@shared/utils';
@@ -40,7 +44,7 @@ type MenuContext = {
   autoOpen: Ref<boolean>;
   autoOpenSelected: Ref<boolean>;
   mode: Ref<Direction>;
-  theme: Ref<'light' | 'dark'>;
+  theme: Ref<Theme>;
   autoScrollIntoView: Ref<boolean>;
   scrollConfig: Ref<ScrollIntoViewOptions>;
   popupMaxHeight: Ref<number | undefined>;

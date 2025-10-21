@@ -12,7 +12,7 @@ import { RecordType, Required } from '@shared/type';
 import { useI18n, getGlobalConfig, useControlValue } from '@shared/utils';
 
 const PAGINATION_CONTEXT_KEY = 'pagination-context';
-interface PaginationContext {
+type PaginationContext = {
   computedCurrent: Ref<number>;
   computedPageSize: Ref<number>;
   disabled: Ref<boolean>;
@@ -21,7 +21,7 @@ interface PaginationContext {
   pages: Ref<number>;
   baseSize: Ref<number>;
   bufferSize: Ref<number>;
-}
+};
 type PaginationProps = Required<_PaginationProps>;
 
 export default function usePaginationContext() {

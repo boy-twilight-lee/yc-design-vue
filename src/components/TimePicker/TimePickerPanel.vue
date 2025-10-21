@@ -209,7 +209,7 @@ watch(
     ) as string;
     // 聚焦当前的input
     const curInput = inputRefs.value[curIndex.value];
-    if (curInput != document.activeElement) {
+    if (curInput && curInput != document.activeElement) {
       await sleep(0);
       curInput?.focus();
     }

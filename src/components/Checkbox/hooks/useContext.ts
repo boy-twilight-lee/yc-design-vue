@@ -14,7 +14,7 @@ import {
 import { RecordType, Required } from '@shared/type';
 import { useControlValue, isObject } from '@shared/utils';
 
-const CHECKBOX_GROUP_CONTEXT_KEY = 'checkbox-group-context';
+const CHECKBOX_CONTEXT_KEY = 'checkbox-context';
 type CheckboxContext = {
   computedValue: Ref<CheckboxValue[]>;
   max: Ref<number>;
@@ -47,7 +47,7 @@ export default function useCheckboxContext() {
         return isObject(item) ? item : { label: item, value: item };
       }) as RecordType[];
     });
-    _provide<CheckboxContext>(CHECKBOX_GROUP_CONTEXT_KEY, {
+    _provide<CheckboxContext>(CHECKBOX_CONTEXT_KEY, {
       computedValue,
       max,
       disabled,
@@ -58,7 +58,7 @@ export default function useCheckboxContext() {
     };
   };
   const inject = () => {
-    return _inject<CheckboxContext>(CHECKBOX_GROUP_CONTEXT_KEY, {
+    return _inject<CheckboxContext>(CHECKBOX_CONTEXT_KEY, {
       computedValue: ref([]),
       max: ref(100000),
       disabled: ref(false),

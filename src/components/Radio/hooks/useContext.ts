@@ -16,15 +16,15 @@ import {
 import { Size, Required, RecordType } from '@shared/type';
 import { isObject, useControlValue, getGlobalConfig } from '@shared/utils';
 
-const RADIO_GROUP_CONTEXT_KEY = 'radio-group-context';
-interface RadioContext {
+const RADIO_CONTEXT_KEY = 'radio-context';
+type RadioContext = {
   computedValue: Ref<RadioValue | undefined>;
   type: Ref<RadioType>;
   disabled: Ref<boolean>;
   size: Ref<Size>;
   hasGroup: Ref<boolean>;
   emits: RadioGroupEmits;
-}
+};
 type RadioGroupProps = Required<_RadioGroupProps>;
 
 export default function useRadioContext() {
@@ -59,7 +59,7 @@ export default function useRadioContext() {
       }) as RecordType[];
     });
     // 提供给子组件
-    _provide<RadioContext>(RADIO_GROUP_CONTEXT_KEY, {
+    _provide<RadioContext>(RADIO_CONTEXT_KEY, {
       computedValue,
       type,
       disabled,
@@ -73,7 +73,7 @@ export default function useRadioContext() {
   };
   const inject = () => {
     // 接收的值
-    return _inject<RadioContext>(RADIO_GROUP_CONTEXT_KEY, {
+    return _inject<RadioContext>(RADIO_CONTEXT_KEY, {
       computedValue: ref(undefined),
       disabled: ref(false),
       type: ref('radio'),
