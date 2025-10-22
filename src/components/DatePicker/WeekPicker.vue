@@ -136,7 +136,7 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
-import { WeekPickerProps, WeekPickerEmits, BasePickerSlots } from './type';
+import { BasePickerProps, BasePickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
 import { dayjs, WeekData } from '@shared/utils';
 import PickerHeader from './component/PickerHeader.vue';
@@ -151,7 +151,7 @@ defineOptions({
   inheritAttrs: false,
 });
 const $slots = defineSlots<BasePickerSlots>();
-const props = withDefaults(defineProps<WeekPickerProps>(), {
+const props = withDefaults(defineProps<BasePickerProps>(), {
   locale: () => ({}),
   hideTrigger: false,
   allowClear: false,
@@ -171,8 +171,8 @@ const props = withDefaults(defineProps<WeekPickerProps>(), {
   pickerValue: undefined,
   defaultPickerValue: '',
   popupContainer: undefined,
-  valueFormat: 'YYYY-MM-DD',
   format: 'gggg-wo',
+  valueFormat: 'YYYY-MM-DD',
   previewShortcut: false,
   showConfirmBtn: false,
   disabledInput: false,
@@ -181,7 +181,7 @@ const props = withDefaults(defineProps<WeekPickerProps>(), {
   abbreviation: true,
   dayStartOfWeek: 0,
 });
-const emits = defineEmits<WeekPickerEmits>();
+const emits = defineEmits<BasePickerEmits>();
 // 获取格式化
 const {
   computedValue,
@@ -229,7 +229,8 @@ const handleDateChange = (dateType: string, type: string) => {
 watch(
   () => computedValue.value,
   (val) => {
-    const date = val ? (getDateFromFormat(val) as Date) : new Date();
+    const value = getDateFromFormat(val);
+    const date = value ? value : new Date();
     curYear.value = date.getFullYear();
     curMonth.value = date.getMonth();
     weekData.value = getWeeksOfMonth(curYear.value, curMonth.value);

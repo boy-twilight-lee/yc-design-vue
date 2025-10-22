@@ -278,6 +278,7 @@ export default function usePicker(params: {
     curMonth,
     curYear,
     valueFormat,
+    format,
     showConfirmBtn,
     hideTrigger,
     DefinePanel,

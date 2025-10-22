@@ -10,6 +10,8 @@ import {
 import { Dayjs } from '@shared/utils';
 
 export interface BasePickerProps {
+  modelValue?: DatePickerValue | DatePickerValue[];
+  defaultValue?: DatePickerValue | DatePickerValue[];
   locale?: Record<string, any>;
   hideTrigger?: boolean;
   allowClear?: boolean;
@@ -30,8 +32,9 @@ export interface BasePickerProps {
   pickerValue?: DatePickerValue;
   defaultPickerValue?: DatePickerValue;
   popupContainer?: PopupContainer;
-  valueFormat?: ValueFormat;
   format?: string;
+  valueFormat?: ValueFormat;
+  dayStartOfWeek?: DayStartOfWeek;
   previewShortcut?: boolean;
   showConfirmBtn?: boolean;
   disabledInput?: boolean;
@@ -39,6 +42,7 @@ export interface BasePickerProps {
 }
 
 export interface BasePickerEmits {
+  (e: 'update:modelValue', value: DatePickerValue | DatePickerValue[]): void;
   (e: 'update:popupVisible', value: boolean): void;
   (e: 'update:pickerValue', value: DatePickerValue): void;
   (e: 'change', value: DatePickerValue, date: Date, dateString: string): void;
@@ -67,45 +71,10 @@ export interface BasePickerSlots {
   default?: () => VNode[];
 }
 
-export interface YearPickerProps extends BasePickerProps {
-  modelValue?: DatePickerValue;
-  defaultValue?: DatePickerValue;
-}
-
-export interface YearPickerEmits extends BasePickerEmits {
-  (e: 'update:modelValue', value: DatePickerValue): void;
-}
-
-export interface MonthPickerProps extends BasePickerProps {
-  modelValue?: DatePickerValue;
-  defaultValue?: DatePickerValue;
-}
-
-export interface MonthPickerEmits extends BasePickerEmits {
-  (e: 'update:modelValue', value: DatePickerValue): void;
-}
-
-export interface WeekPickerProps extends BasePickerProps {
-  modelValue?: DatePickerValue;
-  defaultValue?: DatePickerValue;
-  dayStartOfWeek?: DayStartOfWeek;
-}
-
-export interface WeekPickerEmits extends BasePickerEmits {
-  (e: 'update:modelValue', value: DatePickerValue): void;
-}
-
 export interface DatePickerProps extends BasePickerProps {
-  modelValue?: DatePickerValue;
-  defaultValue?: DatePickerValue;
-  dayStartOfWeek?: DayStartOfWeek;
   showTime?: boolean;
   timePickerProps?: TimePickerProps;
   showNowBtn?: boolean;
-}
-
-export interface DatePickerEmits extends BasePickerEmits {
-  (e: 'update:modelValue', value: DatePickerValue): void;
 }
 
 export type DatePickerValue = Date | string | number;

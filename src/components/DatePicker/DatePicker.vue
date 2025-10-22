@@ -109,7 +109,7 @@
           <yc-time-picker
             v-bind="timePickerProps"
             v-model="timePickerValue"
-            :format="valueFormat"
+            :format="format"
             :scrollbar="false"
             :disabled-hours="
               disabledTime?.(getDateFromFormat(computedValue))?.disabledHours
@@ -153,7 +153,7 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
-import { DatePickerProps, DatePickerEmits, BasePickerSlots } from './type';
+import { DatePickerProps, BasePickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
 import { dayjs, DayData } from '@shared/utils';
 import PickerCell from './component/PickerCell.vue';
@@ -192,10 +192,10 @@ const props = withDefaults(defineProps<DatePickerProps>(), {
   pickerValue: undefined,
   defaultPickerValue: '',
   popupContainer: undefined,
-  valueFormat: (props) => {
+  format: (props) => {
     return props.showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD';
   },
-  format: (props) => {
+  valueFormat: (props) => {
     return props.showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD';
   },
   previewShortcut: false,
@@ -209,7 +209,7 @@ const props = withDefaults(defineProps<DatePickerProps>(), {
   showTime: false,
   timePickerProps: () => ({}),
 });
-const emits = defineEmits<DatePickerEmits>();
+const emits = defineEmits<BasePickerEmits>();
 // 获取格式化
 const {
   computedValue,
@@ -221,7 +221,7 @@ const {
   curYear,
   showMonthPicker,
   showYearPicker,
-  valueFormat,
+  format,
   hideTrigger,
   computedVisible,
   DefinePanel,
@@ -270,11 +270,12 @@ const handleDateChange = (dateType: string, type: string) => {
     );
   }
 };
+// 检测visible的改变
 watch(
   () => computedVisible.value,
   (visible) => {
     handleVisibleChange(visible);
-    if (!computedValue.value || !visible) return;
+    if (!computedValue.value || hideTrigger.value || !visible) return;
     timePickerRef.value?.jump(dayjs(getDateFromFormat(computedValue.value)));
   },
   {
@@ -285,7 +286,8 @@ watch(
 watch(
   () => computedValue.value,
   (val, oldVal) => {
-    const date = val ? (getDateFromFormat(val) as Date) : new Date();
+    const value = getDateFromFormat(val);
+    const date = value ? value : new Date();
     curYear.value = date.getFullYear();
     curMonth.value = date.getMonth();
     dayData.value = getDaysOfMonth(

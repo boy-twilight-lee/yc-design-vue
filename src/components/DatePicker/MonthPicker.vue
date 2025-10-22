@@ -91,7 +91,7 @@
 
 <script lang="ts" setup>
 import { watch, computed } from 'vue';
-import { MonthPickerProps, MonthPickerEmits, BasePickerSlots } from './type';
+import { BasePickerProps, BasePickerEmits, BasePickerSlots } from './type';
 import userPicker from './hooks/userPicker';
 import PickerHeader from './component/PickerHeader.vue';
 import YcPicker from './component/Picker.vue';
@@ -103,7 +103,7 @@ defineOptions({
   inheritAttrs: false,
 });
 const $slots = defineSlots<BasePickerSlots>();
-const props = withDefaults(defineProps<MonthPickerProps>(), {
+const props = withDefaults(defineProps<BasePickerProps>(), {
   locale: () => ({}),
   hideTrigger: false,
   allowClear: false,
@@ -123,8 +123,8 @@ const props = withDefaults(defineProps<MonthPickerProps>(), {
   pickerValue: undefined,
   defaultPickerValue: '',
   popupContainer: undefined,
-  valueFormat: 'YYYY-MM',
   format: 'YYYY-MM',
+  valueFormat: 'YYYY-MM',
   previewShortcut: false,
   showConfirmBtn: false,
   disabledInput: false,
@@ -132,7 +132,7 @@ const props = withDefaults(defineProps<MonthPickerProps>(), {
   defaultValue: '',
   abbreviation: true,
 });
-const emits = defineEmits<MonthPickerEmits>();
+const emits = defineEmits<BasePickerEmits>();
 // 获取格式化
 const {
   computedValue,
@@ -179,7 +179,8 @@ const monthData = computed(() => {
 watch(
   () => computedValue.value,
   (val) => {
-    const date = val ? (getDateFromFormat(val) as Date) : new Date();
+    const value = getDateFromFormat(val);
+    const date = value ? value : new Date();
     curYear.value = date.getFullYear();
   },
   {

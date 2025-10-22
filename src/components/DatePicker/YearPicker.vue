@@ -77,7 +77,7 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
-import { YearPickerProps, YearPickerEmits, BasePickerSlots } from './type';
+import { BasePickerProps, BasePickerEmits, BasePickerSlots } from './type';
 import usePicker from './hooks/userPicker';
 import { YearData } from '@shared/utils';
 import PickerHeader from './component/PickerHeader.vue';
@@ -89,7 +89,7 @@ defineOptions({
   inheritAttrs: false,
 });
 const $slots = defineSlots<BasePickerSlots>();
-const props = withDefaults(defineProps<YearPickerProps>(), {
+const props = withDefaults(defineProps<BasePickerProps>(), {
   locale: () => ({}),
   hideTrigger: false,
   allowClear: false,
@@ -109,15 +109,15 @@ const props = withDefaults(defineProps<YearPickerProps>(), {
   pickerValue: undefined,
   defaultPickerValue: '',
   popupContainer: undefined,
-  valueFormat: 'YYYY',
   format: 'YYYY',
+  valueFormat: 'YYYY',
   previewShortcut: false,
   showConfirmBtn: false,
   disabledInput: false,
   modelValue: undefined,
   defaultValue: '',
 });
-const emits = defineEmits<YearPickerEmits>();
+const emits = defineEmits<BasePickerEmits>();
 // 获取格式化
 const {
   computedValue,
@@ -149,8 +149,9 @@ const handleYearChange = (type: string) => {
 watch(
   () => computedValue.value,
   (val) => {
-    const date = val ? getDateFromFormat(val) : new Date();
-    const { range, startYear } = getRangeOfYear((date as Date).getFullYear());
+    const value = getDateFromFormat(val);
+    const date = value ? value : new Date();
+    const { range, startYear } = getRangeOfYear(date.getFullYear());
     curYear.value = startYear;
     yearData.value = range;
   },

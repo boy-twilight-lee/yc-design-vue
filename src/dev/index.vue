@@ -1,23 +1,29 @@
 <template>
   <div class="test">
-    <yc-year-picker show-confirm-btn />
-    <yc-month-picker show-confirm-btn />
-    <yc-week-picker show-confirm-btn />
+    <yc-year-picker />
+    <yc-month-picker />
+    <yc-week-picker />
     <yc-date-picker
       default-value="2025-09-12 12:55"
-      show-time
       format="YYYY-MM-DD HH:mm"
-      value-format="YYYY-MM-DD HH:mm"
+      show-time
     />
-    <a-date-picker v-model="value" showTime />
-    <yc-time-picker type="time-range" disable-confirm />
-    <a-time-picker type="time-range" disable-confirm />
+    <a-year-picker />
+    <a-month-picker />
+    <a-week-picker />
+    <a-date-picker v-model="value" showTime value-format="timestamp" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 const value = ref('');
+watch(
+  () => value.value,
+  () => {
+    console.log(value.value, 'value');
+  }
+);
 </script>
 
 <style lang="less">
