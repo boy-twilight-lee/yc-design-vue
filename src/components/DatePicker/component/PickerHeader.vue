@@ -2,7 +2,7 @@
   <div class="yc-picker-header">
     <div class="yc-picker-header-icon" @click="$emit('prev-double-click')">
       <slot name="icon-prev-double">
-        <icon-double-left />
+        <icon-double-right :rotate="180" />
       </slot>
     </div>
     <div
@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IconDoubleLeft, IconDoubleRight, IconArrowRight } from '@shared/icons';
+import { IconDoubleRight, IconArrowRight } from '@shared/icons';
 import { isUndefined } from '@shared/utils';
 defineProps<{
   type: 'year' | 'month' | 'week' | 'date';

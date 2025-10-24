@@ -11,7 +11,7 @@
     animation-name="slide-dynamic-origin"
     need-transform-origin
     v-bind="triggerProps"
-    @popup-visible-change="(v) => $emit('popup-visible-change', v)"
+    @popup-visible-change="(v: boolean) => $emit('popup-visible-change', v)"
   >
     <slot name="trigger">
       <yc-input
@@ -37,7 +37,7 @@
         <template #suffix>
           <div class="yc-picker-suffix-icon">
             <slot name="suffix-icon">
-              <icon-calendar />
+              <icon-date />
             </slot>
           </div>
           <icon-button v-if="showClearBtn" @click.stop="onClear" />
@@ -52,7 +52,7 @@
 
 <script lang="ts" setup>
 import { watch, nextTick, ref, toRefs, computed } from 'vue';
-import { IconCalendar } from '@shared/icons';
+import { IconDate } from '@shared/icons';
 import { useI18n } from '@shared/utils';
 import { IconButton } from '@shared/components';
 import userPickerInputContext from '../hooks/useContext';

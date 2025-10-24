@@ -68,7 +68,7 @@
       <yc-button
         type="primary"
         size="mini"
-        :disabled="disabled"
+        :disabled="!curValue.length"
         @click="handleConfirm"
       >
         {{ t('datePicker.ok') }}
@@ -119,10 +119,6 @@ const { t } = useI18n();
 const scrollContainer = ref<HTMLDivElement[]>([]);
 // cells
 const cells = ref<HTMLLIElement[][]>([[], [], []]);
-// 禁止confirm
-const disabled = computed(() => {
-  return !curValue.value.length || curValue.value.some((val) => !`${val}`);
-});
 // 处理点击
 const handleClick = (val: number, i: number) => {
   curValue.value[i] = val;

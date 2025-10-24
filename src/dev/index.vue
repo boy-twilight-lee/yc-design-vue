@@ -11,19 +11,12 @@
     <a-year-picker />
     <a-month-picker />
     <a-week-picker />
-    <a-date-picker v-model="value" showTime value-format="timestamp" />
+    <a-date-picker showTime value-format="timestamp" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-const value = ref('');
-watch(
-  () => value.value,
-  () => {
-    console.log(value.value, 'value');
-  }
-);
 </script>
 
 <style lang="less">
