@@ -12,6 +12,7 @@
     <a-month-picker />
     <a-week-picker />
     <a-date-picker showTime value-format="timestamp" />
+    <yc-result title="测试" subtitle="哈哈" status="404"> dsadsa </yc-result>
   </div>
 </template>
 

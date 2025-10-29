@@ -1,4 +1,7 @@
 import { App, Plugin } from 'vue';
+import '@shared/styles/reset.less';
+import '@shared/styles/translation.less';
+import '@shared/styles/variable.less';
 import Affix from './Affix';
 import Alert from './Alert';
 import { default as Anchor, AnchorLink } from './Anchor';
@@ -90,7 +93,6 @@ import { default as Tabs, TabPane } from './Tabs';
 import Upload from './Upload';
 import VerificationCode from './VerificationCode';
 import Watermark from './Watermark';
-import './index.less';
 export * from '@shared/type';
 export * from './Affix';
 export * from './Alert';

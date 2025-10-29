@@ -41,13 +41,6 @@ export const TYPE_ICON_COLOR_MAP: RecordType<string> = {
   normal: 'rgb(201, 205, 212)',
 };
 
-export const SIZE_MAP: RecordType<number> = {
-  mini: 24,
-  small: 28,
-  medium: 32,
-  large: 36,
-};
-
 export const TAG_PRESET_COLORS = [
   'default',
   'red',
