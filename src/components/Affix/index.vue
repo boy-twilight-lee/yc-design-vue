@@ -1,7 +1,7 @@
 <template>
   <div ref="wrapperRef">
     <div
-      v-if="isFixed"
+      v-show="isFixed"
       :style="{
         width: valueToPx(width),
         height: valueToPx(height),

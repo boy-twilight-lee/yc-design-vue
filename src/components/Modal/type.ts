@@ -79,10 +79,6 @@ export type ModalConfig = Omit<
   onBeforeClose?: () => void;
 };
 
-export type ModalServiceProps = ModalConfig & {
-  serviceClose?: () => void;
-};
-
 export type ModalMethod = {
   open: (props: ModalConfig) => ModalReturn;
   success: (props: ModalConfig) => ModalReturn;

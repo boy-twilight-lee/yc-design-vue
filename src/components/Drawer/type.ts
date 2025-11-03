@@ -61,10 +61,6 @@ export type DrawerConfig = Omit<
   onBeforeClose?: () => void;
 };
 
-export type DrawerServiceProps = DrawerConfig & {
-  serviceClose?: () => void;
-};
-
 export type DrawerMethod = {
   open: (props: DrawerConfig) => DrawerReturn;
 };

@@ -24,7 +24,10 @@ const open = (props: ModalConfig) => {
   // 挂在vnode
   const vnode = h(_ModalService, {
     ...props,
-    serviceClose: close,
+    onClose: () => {
+      close();
+      props.onClose?.();
+    },
   });
   // 渲染 VNode 到容器
   render(vnode, container);

@@ -17,7 +17,7 @@
     @before-open="onBeforeOpen?.()"
     @before-close="onBeforeClose?.()"
     @open="onOpen?.()"
-    @close="handleClose"
+    @close="onClose?.()"
   >
     <template #title>
       <span v-if="type" class="yc-modal-title-icon">
@@ -35,11 +35,11 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import { ModalServiceProps } from './type';
+import { ModalConfig } from './type';
 import { getSlotFunction } from '@shared/utils';
 import { TYPE_ICON_MAP } from '@shared/constants';
 import YcModal from './Modal.vue';
-const props = withDefaults(defineProps<ModalServiceProps>(), {
+const props = withDefaults(defineProps<ModalConfig>(), {
   width: 520,
   top: 100,
   mask: true,
@@ -87,14 +87,9 @@ const props = withDefaults(defineProps<ModalServiceProps>(), {
   },
   content: '',
 });
-const { onClose, serviceClose } = props;
 // visible
 const visible = ref<boolean>(false);
-// 处理close
-const handleClose = () => {
-  serviceClose?.();
-  onClose?.();
-};
+// 进入
 onMounted(() => {
   visible.value = true;
 });

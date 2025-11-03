@@ -11,7 +11,7 @@
     @before-open="onBeforeOpen?.()"
     @before-close="onBeforeClose?.()"
     @open="onOpen?.()"
-    @close="handleClose"
+    @close="onClose?.()"
   >
     <template #title>
       <component :is="getSlotFunction(title)" />
@@ -24,10 +24,10 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import { DrawerServiceProps } from './type';
+import { DrawerConfig } from './type';
 import { getSlotFunction } from '@shared/utils';
 import YcDrawer from './Drawer.vue';
-const props = withDefaults(defineProps<DrawerServiceProps>(), {
+const props = withDefaults(defineProps<DrawerConfig>(), {
   placement: 'right',
   title: '',
   mask: true,
@@ -60,14 +60,9 @@ const props = withDefaults(defineProps<DrawerServiceProps>(), {
     return true;
   },
 });
-const { onClose, serviceClose } = props;
+const { onClose } = props;
 // visible
 const visible = ref<boolean>(false);
-// 处理close
-const handleClose = () => {
-  serviceClose?.();
-  onClose?.();
-};
 onMounted(() => {
   visible.value = true;
 });
