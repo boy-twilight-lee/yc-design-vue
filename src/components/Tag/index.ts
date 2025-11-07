@@ -11,7 +11,7 @@ const Tag = Object.assign(_Tag, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcTag: typeof Tag;
   }
 }

@@ -11,7 +11,7 @@ const Pagination = Object.assign(_Pagination, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcPagination: typeof Pagination;
   }
 }

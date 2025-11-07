@@ -34,7 +34,7 @@ export {
 };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcDropdown: typeof Dropdown;
     YcDropdownButton: typeof _DropdownButton;
     YcDoption: typeof _Doption;

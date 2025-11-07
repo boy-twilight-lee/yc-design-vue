@@ -11,7 +11,7 @@ const OverflowList = Object.assign(_OverflowList, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcOverflowList: typeof OverflowList;
   }
 }

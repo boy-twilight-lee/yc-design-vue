@@ -11,7 +11,7 @@ const Badge = Object.assign(_Badge, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcBadge: typeof Badge;
   }
 }

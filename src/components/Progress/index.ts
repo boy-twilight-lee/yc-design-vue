@@ -11,7 +11,7 @@ const Progress = Object.assign(_Progress, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcProgress: typeof Progress;
   }
 }

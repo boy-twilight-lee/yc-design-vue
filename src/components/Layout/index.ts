@@ -34,7 +34,7 @@ export {
 };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcLayout: typeof Layout;
     YcLayoutHeader: typeof _LayoutHeader;
     YcLayoutFooter: typeof _LayoutFooter;

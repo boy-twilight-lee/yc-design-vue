@@ -30,7 +30,7 @@ export {
 };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcDatePicker: typeof DatePicker;
     YcRangePicker: typeof _RangePicker;
     YcYearPicker: typeof _YearPicker;

@@ -11,7 +11,7 @@ const Upload = Object.assign(_Upload, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcUpload: typeof Upload;
   }
 }

@@ -11,7 +11,7 @@ const Slider = Object.assign(_Slider, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcSlider: typeof Slider;
   }
 }

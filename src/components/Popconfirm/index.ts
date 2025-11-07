@@ -11,7 +11,7 @@ const Popconfirm = Object.assign(_Popconfirm, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcPopconfirm: typeof Popconfirm;
   }
 }

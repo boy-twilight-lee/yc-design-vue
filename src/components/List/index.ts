@@ -21,7 +21,7 @@ const List = Object.assign(_List, {
 export { _ListItem as ListItem, _ListItemMeta as ListItemMeta };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcList: typeof List;
     YcListItem: typeof _ListItem;
     YcListItemMeta: typeof _ListItemMeta;

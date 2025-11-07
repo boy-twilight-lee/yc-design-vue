@@ -11,7 +11,7 @@ const Mention = Object.assign(_Mention, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcMention: typeof Mention;
   }
 }

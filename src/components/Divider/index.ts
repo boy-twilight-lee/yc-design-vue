@@ -11,7 +11,7 @@ const Divider = Object.assign(_Divider, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcDivider: typeof Divider;
   }
 }

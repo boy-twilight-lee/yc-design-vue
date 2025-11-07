@@ -29,7 +29,7 @@ export {
 };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcTypography: typeof Typography;
     YcTypographyParagraph: typeof _TypographyParagraph;
     YcTypographyTitle: typeof _TypographyTitle;

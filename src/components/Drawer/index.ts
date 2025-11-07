@@ -45,7 +45,7 @@ const Drawer = Object.assign(_Drawer, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcDrawer: typeof Drawer;
   }
 }

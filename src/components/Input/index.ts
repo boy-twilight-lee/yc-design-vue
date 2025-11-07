@@ -29,7 +29,7 @@ export {
 };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcInput: typeof Input;
     YcInputGroup: typeof _InputGroup;
     YcInputPassword: typeof _InputPassword;

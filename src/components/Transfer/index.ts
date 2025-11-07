@@ -11,7 +11,7 @@ const Transfer = Object.assign(_Transfer, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcTransfer: typeof Transfer;
   }
 }

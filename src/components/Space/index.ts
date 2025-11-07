@@ -11,7 +11,7 @@ const Space = Object.assign(_Space, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcSpace: typeof Space;
   }
 }

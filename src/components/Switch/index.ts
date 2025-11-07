@@ -11,7 +11,7 @@ const Switch = Object.assign(_Switch, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcSwitch: typeof Switch;
   }
 }

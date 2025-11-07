@@ -11,7 +11,7 @@ const Popover = Object.assign(_Popover, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcPopover: typeof Popover;
   }
 }

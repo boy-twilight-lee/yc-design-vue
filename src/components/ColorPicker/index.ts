@@ -11,7 +11,7 @@ const ColorPicker = Object.assign(_ColorPicker, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcColorPicker: typeof ColorPicker;
   }
 }

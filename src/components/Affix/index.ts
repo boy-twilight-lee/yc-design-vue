@@ -11,7 +11,7 @@ const Affix = Object.assign(_Affix, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcAffix: typeof Affix;
   }
 }

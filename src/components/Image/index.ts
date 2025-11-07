@@ -31,7 +31,7 @@ export {
 };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcImage: typeof Image;
     YcImagePreview: typeof _ImagePreview;
     YcImagePreviewGroup: typeof _ImagePreviewGroup;

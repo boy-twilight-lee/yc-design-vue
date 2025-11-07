@@ -11,7 +11,7 @@ const Result = Object.assign(_Result, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcResult: typeof Result;
   }
 }

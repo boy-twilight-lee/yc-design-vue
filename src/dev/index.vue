@@ -10,7 +10,7 @@
     />
     <a-year-picker />
     <a-month-picker />
-    <a-week-picker />
+    <a-week-picker @click="" />
     <a-date-picker showTime value-format="timestamp" />
   </div>
 </template>

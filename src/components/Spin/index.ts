@@ -11,7 +11,7 @@ const Spin = Object.assign(_Spin, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcSpin: typeof Spin;
   }
 }

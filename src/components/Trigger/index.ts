@@ -11,7 +11,7 @@ const Trigger = Object.assign(_Trigger, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcTrigger: typeof Trigger;
   }
 }

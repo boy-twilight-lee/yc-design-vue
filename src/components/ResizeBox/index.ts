@@ -11,7 +11,7 @@ const ResizeBox = Object.assign(_ResizeBox, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcResizeBox: typeof ResizeBox;
   }
 }

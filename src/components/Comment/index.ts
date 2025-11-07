@@ -11,7 +11,7 @@ const Comment = Object.assign(_Comment, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcComment: typeof Comment;
   }
 }

@@ -16,7 +16,7 @@ const Tabs = Object.assign(_Tabs, {
 export { _TabPane as TabPane };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcTabs: typeof Tabs;
     YcTabPane: typeof _TabPane;
   }

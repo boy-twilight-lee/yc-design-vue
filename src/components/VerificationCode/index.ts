@@ -11,7 +11,7 @@ const VerificationCode = Object.assign(_VerificationCode, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcVerificationCode: typeof VerificationCode;
   }
 }

@@ -11,7 +11,7 @@ const BackTop = Object.assign(_BackTop, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcBackTop: typeof BackTop;
   }
 }

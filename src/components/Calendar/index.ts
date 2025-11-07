@@ -11,7 +11,7 @@ const Calendar = Object.assign(_Calendar, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcCalendar: typeof Calendar;
   }
 }

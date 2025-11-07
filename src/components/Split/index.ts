@@ -11,7 +11,7 @@ const Split = Object.assign(_Split, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcSplit: typeof Split;
   }
 }

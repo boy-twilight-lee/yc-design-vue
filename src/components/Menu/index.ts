@@ -29,7 +29,7 @@ export {
 };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcMenu: typeof Menu;
     YcSubMenu: typeof _SubMenu;
     YcMenuItem: typeof _MenuItem;

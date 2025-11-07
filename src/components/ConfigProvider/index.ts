@@ -11,7 +11,7 @@ const ConfigProvider = Object.assign(_ConfigProvider, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcConfigProvider: typeof ConfigProvider;
   }
 }

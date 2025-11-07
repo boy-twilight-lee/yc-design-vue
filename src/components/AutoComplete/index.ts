@@ -11,7 +11,7 @@ const AutoComplete = Object.assign(_AutoComplete, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcAutoComplete: typeof AutoComplete;
   }
 }

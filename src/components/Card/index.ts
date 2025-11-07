@@ -21,7 +21,7 @@ const Card = Object.assign(_Card, {
 export { _CardMeta as CardMeta, _CardGrid as CardGrid };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcCard: typeof Card;
     YcCardMeta: typeof _CardMeta;
     YcCardGrid: typeof _CardGrid;

@@ -11,7 +11,7 @@ const Watermark = Object.assign(_Watermark, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcWatermark: typeof Watermark;
   }
 }

@@ -11,7 +11,7 @@ const Tooltip = Object.assign(_Tooltip, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcTooltip: typeof Tooltip;
   }
 }

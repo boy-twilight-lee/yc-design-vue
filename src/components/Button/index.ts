@@ -17,7 +17,7 @@ const Button = Object.assign(_Button, {
 export { _ButtonGroup as ButtonGroup };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcButton: typeof Button;
     YcButtonGroup: typeof _ButtonGroup;
   }

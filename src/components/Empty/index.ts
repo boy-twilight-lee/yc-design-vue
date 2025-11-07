@@ -11,7 +11,7 @@ const Empty = Object.assign(_Empty, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcEmpty: typeof Empty;
   }
 }

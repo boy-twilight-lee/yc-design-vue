@@ -11,7 +11,7 @@ const Link = Object.assign(_Link, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcLink: typeof Link;
   }
 }

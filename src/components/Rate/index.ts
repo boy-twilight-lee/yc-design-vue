@@ -11,7 +11,7 @@ const Rate = Object.assign(_Rate, {
 });
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcRate: typeof Rate;
   }
 }

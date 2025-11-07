@@ -17,7 +17,7 @@ const Breadcrumb = Object.assign(_Breadcrumb, {
 export { _BreadcrumbItem as BreadcrumbItem };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcBreadcrumb: typeof Breadcrumb;
     YcBreadcrumbItem: typeof _BreadcrumbItem;
   }

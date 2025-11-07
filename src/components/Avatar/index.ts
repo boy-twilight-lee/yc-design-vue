@@ -17,7 +17,7 @@ const Avatar = Object.assign(_Avatar, {
 export { _AvatarGroup as AvatarGroup };
 
 declare module 'vue' {
-  export interface GlobalComponents {
+  interface GlobalComponents {
     YcAvatar: typeof Avatar;
     YcAvatarGroup: typeof _AvatarGroup;
   }
