@@ -10,10 +10,4 @@ const Watermark = Object.assign(_Watermark, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcWatermark: typeof Watermark;
-  }
-}
-
 export default Watermark;

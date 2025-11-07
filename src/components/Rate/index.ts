@@ -10,10 +10,4 @@ const Rate = Object.assign(_Rate, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcRate: typeof Rate;
-  }
-}
-
 export default Rate;

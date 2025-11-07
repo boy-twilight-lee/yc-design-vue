@@ -128,10 +128,4 @@ const Notification = Object.assign(_Notification, {
   ...NotificationMethod,
 });
 
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    $notification: NotificationMethod;
-  }
-}
-
 export default Notification;

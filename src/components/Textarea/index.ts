@@ -10,10 +10,4 @@ const Textarea = Object.assign(_Textarea, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcTextarea: typeof Textarea;
-  }
-}
-
 export default Textarea;

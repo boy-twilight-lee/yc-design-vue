@@ -16,11 +16,4 @@ const Collapse = Object.assign(_Collapse, {
 
 export { _CollapseItem as CollapseItem };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcCollapse: typeof Collapse;
-    YcCollapseItem: typeof _CollapseItem;
-  }
-}
-
 export default Collapse;

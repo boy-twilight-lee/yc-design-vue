@@ -10,10 +10,4 @@ const Spin = Object.assign(_Spin, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcSpin: typeof Spin;
-  }
-}
-
 export default Spin;

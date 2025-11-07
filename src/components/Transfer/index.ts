@@ -10,10 +10,4 @@ const Transfer = Object.assign(_Transfer, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcTransfer: typeof Transfer;
-  }
-}
-
 export default Transfer;

@@ -10,10 +10,4 @@ const Tag = Object.assign(_Tag, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcTag: typeof Tag;
-  }
-}
-
 export default Tag;

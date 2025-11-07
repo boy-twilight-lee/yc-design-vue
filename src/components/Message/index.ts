@@ -106,10 +106,4 @@ const Message = Object.assign(_Message, {
   ...messageMethod,
 });
 
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    $message: MessageMethod;
-  }
-}
-
 export default Message;

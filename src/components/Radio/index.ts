@@ -16,11 +16,4 @@ const Radio = Object.assign(_Radio, {
 
 export { _RadioGroup as RadioGroup };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcRadio: typeof Radio;
-    YcRadioGroup: typeof _RadioGroup;
-  }
-}
-
 export default Radio;

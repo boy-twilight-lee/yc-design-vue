@@ -10,10 +10,4 @@ const InputTag = Object.assign(_InputTag, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcInputTag: typeof InputTag;
-  }
-}
-
 export default InputTag;

@@ -10,10 +10,4 @@ const Pagination = Object.assign(_Pagination, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcPagination: typeof Pagination;
-  }
-}
-
 export default Pagination;

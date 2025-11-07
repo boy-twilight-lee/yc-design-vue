@@ -16,11 +16,4 @@ const Timeline = Object.assign(_Timeline, {
 
 export { _TimelineItem as TimelineItem };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcTimeline: typeof Timeline;
-    YcTimelineItem: typeof _TimelineItem;
-  }
-}
-
 export default Timeline;

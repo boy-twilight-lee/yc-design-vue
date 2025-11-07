@@ -28,13 +28,4 @@ export {
   _TypographyText as TypographyText,
 };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcTypography: typeof Typography;
-    YcTypographyParagraph: typeof _TypographyParagraph;
-    YcTypographyTitle: typeof _TypographyTitle;
-    YcTypographyText: typeof _TypographyText;
-  }
-}
-
 export default Typography;

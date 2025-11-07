@@ -16,11 +16,4 @@ const Anchor = Object.assign(_Anchor, {
 
 export { _AnchorLink as AnchorLink };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcAnchor: typeof Anchor;
-    YcAnchorLink: typeof _AnchorLink;
-  }
-}
-
 export default Anchor;

@@ -28,13 +28,4 @@ export {
   _SubMenu as SubMenu,
 };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcMenu: typeof Menu;
-    YcSubMenu: typeof _SubMenu;
-    YcMenuItem: typeof _MenuItem;
-    YcMenuItemGroup: typeof _MenuItemGroup;
-  }
-}
-
 export default Menu;

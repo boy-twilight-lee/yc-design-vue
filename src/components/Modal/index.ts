@@ -64,16 +64,4 @@ const Modal = Object.assign(_Modal, {
   ...modalMethod,
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcModal: typeof Modal;
-  }
-}
-
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    $modal: ModalMethod;
-  }
-}
-
 export default Modal;

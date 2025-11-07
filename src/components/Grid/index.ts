@@ -22,13 +22,4 @@ const Grid = Object.assign(_Grid, {
 
 export { _Col as GridCol, _Row as GridRow, _GridItem as GridItem };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcGrid: typeof Grid;
-    YcCol: typeof _Col;
-    YcRow: typeof _Row;
-    YcGridItem: typeof _GridItem;
-  }
-}
-
 export default Grid;

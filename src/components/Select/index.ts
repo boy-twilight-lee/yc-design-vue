@@ -20,12 +20,4 @@ const Select = Object.assign(_Select, {
 
 export { _Option as Option, _Optgroup as Optgroup };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcSelect: typeof Select;
-    YcOption: typeof _Option;
-    YcOptgroup: typeof _Optgroup;
-  }
-}
-
 export default Select;

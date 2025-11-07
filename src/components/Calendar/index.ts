@@ -10,10 +10,4 @@ const Calendar = Object.assign(_Calendar, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcCalendar: typeof Calendar;
-  }
-}
-
 export default Calendar;

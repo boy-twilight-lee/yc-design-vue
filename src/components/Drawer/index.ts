@@ -44,16 +44,4 @@ const Drawer = Object.assign(_Drawer, {
   open,
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcDrawer: typeof Drawer;
-  }
-}
-
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    $drawer: DrawerMethod;
-  }
-}
-
 export default Drawer;

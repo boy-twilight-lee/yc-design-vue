@@ -10,10 +10,4 @@ const VerificationCode = Object.assign(_VerificationCode, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcVerificationCode: typeof VerificationCode;
-  }
-}
-
 export default VerificationCode;

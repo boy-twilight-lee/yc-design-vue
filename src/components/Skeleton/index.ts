@@ -20,12 +20,4 @@ const Skeleton = Object.assign(_Skeleton, {
 
 export { _SkeletonShape as SkeletonShape, _SkeletonLine as SkeletonLine };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcSkeleton: typeof Skeleton;
-    YcSkeletonShape: typeof _SkeletonShape;
-    YcSkeletonLine: typeof _SkeletonLine;
-  }
-}
-
 export default Skeleton;

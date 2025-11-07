@@ -10,9 +10,4 @@ const Split = Object.assign(_Split, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcSplit: typeof Split;
-  }
-}
 export default Split;

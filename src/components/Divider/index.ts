@@ -10,10 +10,4 @@ const Divider = Object.assign(_Divider, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcDivider: typeof Divider;
-  }
-}
-
 export default Divider;

@@ -10,10 +10,4 @@ const Slider = Object.assign(_Slider, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcSlider: typeof Slider;
-  }
-}
-
 export default Slider;

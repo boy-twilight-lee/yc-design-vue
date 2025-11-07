@@ -10,10 +10,4 @@ const BackTop = Object.assign(_BackTop, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcBackTop: typeof BackTop;
-  }
-}
-
 export default BackTop;

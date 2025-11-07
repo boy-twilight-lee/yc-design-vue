@@ -16,11 +16,4 @@ const Checkbox = Object.assign(_Checkbox, {
 
 export { _CheckboxGroup as CheckboxGroup };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcCheckbox: typeof Checkbox;
-    YcCheckboxGroup: typeof _CheckboxGroup;
-  }
-}
-
 export default Checkbox;

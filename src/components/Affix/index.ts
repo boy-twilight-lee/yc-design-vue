@@ -10,10 +10,4 @@ const Affix = Object.assign(_Affix, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcAffix: typeof Affix;
-  }
-}
-
 export default Affix;

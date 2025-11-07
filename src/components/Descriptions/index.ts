@@ -15,11 +15,4 @@ const Descriptions = Object.assign(_Descriptions, {
 });
 export { _DescriptionsItem as DescriptionsItem };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcDescriptions: typeof Descriptions;
-    YcDescriptionsItem: typeof _DescriptionsItem;
-  }
-}
-
 export default Descriptions;

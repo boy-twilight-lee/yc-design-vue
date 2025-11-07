@@ -10,10 +10,4 @@ const Mention = Object.assign(_Mention, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcMention: typeof Mention;
-  }
-}
-
 export default Mention;

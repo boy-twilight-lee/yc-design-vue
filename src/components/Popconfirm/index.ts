@@ -10,10 +10,4 @@ const Popconfirm = Object.assign(_Popconfirm, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcPopconfirm: typeof Popconfirm;
-  }
-}
-
 export default Popconfirm;

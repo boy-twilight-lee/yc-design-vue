@@ -10,10 +10,4 @@ const Alert = Object.assign(_Alert, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcAlert: typeof Alert;
-  }
-}
-
 export default Alert;

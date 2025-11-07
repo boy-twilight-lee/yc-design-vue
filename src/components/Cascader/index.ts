@@ -14,11 +14,4 @@ const Cascader = Object.assign(_Cascader, {
 
 export { _CascaderPanel as CascaderPanel };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcCascader: typeof Cascader;
-    YcCascaderPanel: typeof _CascaderPanel;
-  }
-}
-
 export default Cascader;

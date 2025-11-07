@@ -28,13 +28,4 @@ export {
   _InputSearch as InputSearch,
 };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcInput: typeof Input;
-    YcInputGroup: typeof _InputGroup;
-    YcInputPassword: typeof _InputPassword;
-    YcInputSearch: typeof _InputSearch;
-  }
-}
-
 export default Input;

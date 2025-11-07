@@ -29,14 +29,4 @@ export {
   _WeekPicker as WeekPicker,
 };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcDatePicker: typeof DatePicker;
-    YcRangePicker: typeof _RangePicker;
-    YcYearPicker: typeof _YearPicker;
-    YcMonthPicker: typeof _MonthPicker;
-    YcWeekPicker: typeof _WeekPicker;
-  }
-}
-
 export default DatePicker;

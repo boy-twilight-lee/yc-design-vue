@@ -33,14 +33,4 @@ export {
   _LayoutContent as LayoutContent,
 };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcLayout: typeof Layout;
-    YcLayoutHeader: typeof _LayoutHeader;
-    YcLayoutFooter: typeof _LayoutFooter;
-    YcLayoutContent: typeof _LayoutContent;
-    YcLayoutSider: typeof _LayoutSider;
-  }
-}
-
 export default Layout;

@@ -16,11 +16,4 @@ const Steps = Object.assign(_Steps, {
 
 export { _Step as Step };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcSteps: typeof Steps;
-    YcStep: typeof _Step;
-  }
-}
-
 export default Steps;

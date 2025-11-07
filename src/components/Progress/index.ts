@@ -10,10 +10,4 @@ const Progress = Object.assign(_Progress, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcProgress: typeof Progress;
-  }
-}
-
 export default Progress;

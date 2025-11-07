@@ -30,13 +30,4 @@ export {
   _ImagePreviewAction as ImagePreviewAction,
 };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcImage: typeof Image;
-    YcImagePreview: typeof _ImagePreview;
-    YcImagePreviewGroup: typeof _ImagePreviewGroup;
-    YcImagePreviewAction: typeof _ImagePreviewAction;
-  }
-}
-
 export default Image;

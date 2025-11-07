@@ -10,10 +10,4 @@ const PageHeader = Object.assign(_PageHeader, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcPageHeader: typeof PageHeader;
-  }
-}
-
 export default PageHeader;

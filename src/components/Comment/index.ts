@@ -10,10 +10,4 @@ const Comment = Object.assign(_Comment, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcComment: typeof Comment;
-  }
-}
-
 export default Comment;

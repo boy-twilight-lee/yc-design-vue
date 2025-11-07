@@ -10,10 +10,4 @@ const Result = Object.assign(_Result, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcResult: typeof Result;
-  }
-}
-
 export default Result;

@@ -10,10 +10,4 @@ const OverflowList = Object.assign(_OverflowList, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcOverflowList: typeof OverflowList;
-  }
-}
-
 export default OverflowList;

@@ -10,10 +10,4 @@ const Upload = Object.assign(_Upload, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcUpload: typeof Upload;
-  }
-}
-
 export default Upload;

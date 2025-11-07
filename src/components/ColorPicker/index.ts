@@ -10,10 +10,4 @@ const ColorPicker = Object.assign(_ColorPicker, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcColorPicker: typeof ColorPicker;
-  }
-}
-
 export default ColorPicker;

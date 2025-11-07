@@ -10,10 +10,4 @@ const ConfigProvider = Object.assign(_ConfigProvider, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcConfigProvider: typeof ConfigProvider;
-  }
-}
-
 export default ConfigProvider;

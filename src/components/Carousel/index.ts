@@ -16,11 +16,4 @@ const Carousel = Object.assign(_Carousel, {
 
 export { _CarouselItem as CarouselItem };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcCarousel: typeof Carousel;
-    YcCarouselItem: typeof _CarouselItem;
-  }
-}
-
 export default Carousel;

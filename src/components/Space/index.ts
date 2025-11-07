@@ -10,10 +10,4 @@ const Space = Object.assign(_Space, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcSpace: typeof Space;
-  }
-}
-
 export default Space;

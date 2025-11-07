@@ -10,10 +10,4 @@ const Badge = Object.assign(_Badge, {
   },
 });
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcBadge: typeof Badge;
-  }
-}
-
 export default Badge;

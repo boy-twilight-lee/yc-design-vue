@@ -16,11 +16,4 @@ const Statistic = Object.assign(_Statistic, {
 
 export { _Countdown as Countdown };
 
-declare module 'vue' {
-  interface GlobalComponents {
-    YcStatistic: typeof Statistic;
-    YcCountdown: typeof _Countdown;
-  }
-}
-
 export default Statistic;
