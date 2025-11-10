@@ -27,15 +27,14 @@
           <!-- 渲染虚拟列表 -->
           <virtual-list
             v-if="isVirtualList"
-            :data="data"
-            :virtual-list-props="virtualListProps"
+            v-bind="virtualListProps"
             :style="{
               maxHeight: valueToPx(maxHeight),
             }"
             ref="virtualListRef"
           >
-            <template v-if="$slots.item" #item="scope">
-              <slot name="item" v-bind="scope" />
+            <template #default="{ data: v }">
+              <slot name="item" :index="v.index" :item="data[v.index]" />
             </template>
           </virtual-list>
           <!-- 渲染普通列表 -->
@@ -80,19 +79,19 @@
 import { ref, toRefs, computed } from 'vue';
 import { ListProps, ListEmits, ListSlots } from './type';
 import {
-  unrefElement,
   valueToPx,
   useControlValue,
   getGlobalConfig,
+  isNumber,
 } from '@shared/utils';
 import useScrollReach from './hooks/useScrollReach';
+import { VirtualList } from '@shared/components';
 import YcSpin from '@/components/Spin';
 import {
   default as YcScrollbar,
   ScrollbarInstance,
 } from '@/components/Scrollbar';
 import YcPagination from '@/components/Pagination';
-import VirtualList from './ListVirtual.vue';
 import YcListItem from './ListItem.vue';
 import YcEmpty from '@/components/Empty';
 defineOptions({
@@ -121,22 +120,18 @@ const isBottomReached = ref<boolean>(false);
 // scrollbar
 const realListRef = ref<ScrollbarInstance>();
 // virtualListRef
-const virtualListRef = ref<HTMLDivElement>();
+const virtualListRef = ref<InstanceType<typeof VirtualList>>();
 // 是否是虚拟列表
 const isVirtualList = computed(() => {
-  if (!virtualListProps.value || paginationProps.value) {
-    return false;
-  }
-  return (
-    virtualListProps.value.itemHeight &&
-    (!virtualListProps.value.threshold ||
-      (virtualListProps.value.threshold as number) > data.value.length)
-  );
+  return !virtualListProps.value || paginationProps.value
+    ? false
+    : virtualListProps.value.estimateSize &&
+        isNumber(virtualListProps.value.count);
 });
 // scrollRef
 const scrollRef = computed(() =>
   isVirtualList.value
-    ? unrefElement(virtualListRef)
+    ? virtualListRef.value?.getScrollRef()
     : realListRef.value?.getScrollRef()
 );
 // 处理滚动

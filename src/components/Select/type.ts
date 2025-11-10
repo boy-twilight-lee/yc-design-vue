@@ -8,6 +8,7 @@ import {
   Format,
   FallBack,
 } from '@shared/type';
+import { VirtualListProps } from '@shared/components/VirtualList/type';
 import { TriggerInstance, TriggerProps } from '@/components/Trigger';
 import { TagProps } from '@/components/Tag';
 
@@ -134,9 +135,3 @@ export type SelectOption =
   | SelectOptionData
   | SelectOptionGroup
   | RecordType;
-
-export type VirtualListProps = {
-  itemHeight?: number;
-  threshold?: number;
-  buffer?: number;
-};

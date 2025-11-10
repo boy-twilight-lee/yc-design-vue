@@ -41,8 +41,8 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
-import { VirtualListProps } from './type';
-import { unrefElement } from '@shared/utils';
+import { VirtualListProps } from '@shared/components/VirtualList/type';
+import { unrefElement, isNumber } from '@shared/utils';
 import useContext from './hooks/useContext';
 import useScrollReach from '@/components/List/hooks/useScrollReach';
 import SelectVirtualList from './SelectVirtualList.vue';
@@ -58,20 +58,16 @@ const props = defineProps<{
 }>();
 const { virtualListProps } = toRefs(props);
 // 接收注入
-const { slots, options, isEmpty, emits } = useContext().inject();
+const { slots, isEmpty, emits } = useContext().inject();
 // realList
 const realListRef = ref<InstanceType<typeof SelectRealList>>();
 // virtualList
 const virtualListRef = ref<HTMLDivElement>();
 // 是否是虚拟列表
 const isVirtualList = computed(() => {
-  if (!virtualListProps.value) {
-    return false;
-  }
   return (
-    virtualListProps.value.itemHeight &&
-    (!virtualListProps.value.threshold ||
-      (virtualListProps.value.threshold as number) > options.value.length)
+    virtualListProps.value?.estimateSize &&
+    isNumber(virtualListProps.value.count)
   );
 });
 // 滚动ref

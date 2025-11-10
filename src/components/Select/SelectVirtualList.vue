@@ -1,38 +1,34 @@
 <template>
-  <div class="yc-select-dropdown-virtual-list" v-bind="containerProps">
-    <!-- 渲染虚拟列表 -->
-    <div class="yc-select-dropdown-list" v-bind="wrapperProps">
+  <virtual-list
+    v-bind="virtualListProps"
+    :style="{
+      maxHeight: '200px',
+    }"
+  >
+    <template #default="{ data: { index } }">
       <yc-option
-        v-for="{ data: v } in list"
-        :key="v[fieldKey.value]"
-        :value="v[fieldKey.value]"
-        :disabled="v[fieldKey.disabled]"
-        :is-fallback-option="v[fieldKey.isFallbackOption]"
+        :value="renderOptions[index][fieldKey.value]"
+        :disabled="renderOptions[index][fieldKey.disabled]"
+        :is-fallback-option="renderOptions[index][fieldKey.isFallbackOption]"
       >
-        <component :is="renderLabel(v)" />
+        <component :is="renderLabel(renderOptions[index])" />
       </yc-option>
-    </div>
-  </div>
+    </template>
+  </virtual-list>
 </template>
 
 <script lang="ts" setup>
-import { toRefs } from 'vue';
-import { VirtualListProps } from './type';
+import { VirtualListProps } from '@shared/components/VirtualList/type';
 import { RecordType } from '@shared/type';
-import { getSlotFunction, useVirtualList } from '@shared/utils';
+import { getSlotFunction } from '@shared/utils';
+import { VirtualList } from '@shared/components';
 import useContext from './hooks/useContext';
 import YcOption from './Option.vue';
-const props = defineProps<{
+defineProps<{
   virtualListProps: VirtualListProps;
 }>();
-const { virtualListProps } = toRefs(props);
 // 接收注入
 const { fieldKey, renderOptions, slots } = useContext().inject();
-// 初始化虚拟滚动
-const { list, wrapperProps, containerProps } = useVirtualList(renderOptions, {
-  overscan: virtualListProps.value?.buffer ?? 10,
-  itemHeight: virtualListProps.value?.itemHeight || 36,
-});
 // 渲染label
 const renderLabel = (option: RecordType) => {
   if (slots.option) {

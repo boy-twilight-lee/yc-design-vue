@@ -1,10 +1,7 @@
 import { VNode } from 'vue';
 import { PopupContainer, RecordType, FilterOption } from '@shared/type';
-import {
-  SelectOption,
-  SelectOptionData,
-  VirtualListProps,
-} from '@/components/Select';
+import { VirtualListProps } from '@shared/components/VirtualList/type';
+import { SelectOption, SelectOptionData } from '@/components/Select';
 import { TriggerProps } from '@/components/Trigger';
 
 export interface AutoCompleteProps {

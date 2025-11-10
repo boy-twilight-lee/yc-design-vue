@@ -1,8 +1,9 @@
 .yc-select {
-  width: 100%;
+  width: auto;
   display: inline-flex;
   align-items: center;
   .yc-input-outer {
+    width: 100%;
     .yc-input-wrapper {
       .yc-input {
         &::placeholder {
@@ -101,18 +102,6 @@
       .yc-scrollbar-content {
         max-width: 100%;
       }
-    }
-  }
-
-  .yc-select-dropdown-virtual-list {
-    max-height: 200px;
-  }
-
-  .yc-select-dropdown-list {
-    display: flex;
-    flex-direction: column;
-    .yc-select-option {
-      flex-shrink: 0;
     }
   }
 }

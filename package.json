@@ -1,7 +1,7 @@
 {
   "name": "yc-design-vue",
   "private": false,
-  "version": "2.4.3",
+  "version": "2.4.5",
   "type": "module",
   "description": "A Vue 3 component library.",
   "keywords": [
@@ -55,6 +55,7 @@
     "./es/*/index.css": "./es/*/index.css"
   },
   "dependencies": {
+    "@tanstack/vue-virtual": "^3.13.12",
     "@vueuse/core": "^12.0.0",
     "b-tween": "^0.3.3",
     "dayjs": "^1.11.11",
