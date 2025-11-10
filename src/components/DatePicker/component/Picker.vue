@@ -24,6 +24,7 @@
         :style="$attrs.style"
         :class="[
           $attrs.class,
+          'yc-picker-input',
           {
             'yc-picker-allow-clear': showClearBtn,
             'yc-picker-active': computedVisible,

@@ -29,11 +29,12 @@
         estimateSize: () => 36,
       }"
       :options="options"
-      style="width: 200px"
       placeholder="请输入"
     />
     <yc-cascader placeholder="请输入" />
     <yc-auto-complete placeholder="请输入" />
+    <a-input />
+    <yc-input />
   </div>
 </template>
 
