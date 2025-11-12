@@ -123,8 +123,9 @@ import {
   SelectSlots,
   SelectExpose,
   SelectOptionValue,
+  SelectOptionData,
 } from './type';
-import { isUndefined, sleep } from '@shared/utils';
+import { sleep } from '@shared/utils';
 import useContext from './hooks/useContext';
 import SelectIcon from './SelectIcon.vue';
 import SelectView from './SelectView.vue';
@@ -163,7 +164,11 @@ const props = withDefaults(defineProps<SelectProps>(), {
   popupVisible: undefined,
   defaultPopupVisible: false,
   unmountOnClose: false,
-  filterOption: undefined,
+  filterOption: (inputValue: string, option: SelectOptionData) => {
+    return option.label
+      ?.toLowerCase()
+      ?.includes(inputValue.toLowerCase()) as boolean;
+  },
   options: () => [],
   showExtraOptions: true,
   valueKey: '',
@@ -218,11 +223,7 @@ const showClearBtn = computed(() => {
 });
 // 是否只读
 const isReadonly = computed(() => {
-  return (
-    (!allowSearch.value || loading.value) &&
-    !allowCreate.value &&
-    isUndefined(props.filterOption)
-  );
+  return !allowSearch.value || loading.value || !allowCreate.value;
 });
 // 处理事件
 const handleEvent = async (

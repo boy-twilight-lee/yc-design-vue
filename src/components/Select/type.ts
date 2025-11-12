@@ -32,7 +32,7 @@ export interface SelectProps {
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
   unmountonClose?: boolean;
-  filterOption?: boolean | FilterOption<SelectOptionData>;
+  filterOption?: FilterOption<SelectOptionData>;
   options?: SelectOption[];
   virtualListProps?: VirtualListProps;
   triggerProps?: TriggerProps;

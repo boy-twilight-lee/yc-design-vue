@@ -16,8 +16,8 @@ import {
   SelectOptionValue,
 } from '../type';
 import { InputInstance } from '@/components/Input';
-import { RecordType, Required } from '@shared/type';
-import { isBoolean, isFunction, useControlValue } from '@shared/utils';
+import { FilterOption, RecordType, Required } from '@shared/type';
+import { isFunction, useControlValue } from '@shared/utils';
 import useSelectOptions from './useSelectOptions';
 import useSelectHotkeys from './useSelectHotkeys';
 
@@ -34,7 +34,7 @@ type SelectContext = {
   isEmpty: Ref<boolean>;
   slots: Slots;
   blur: () => void;
-  filterOption: (option: SelectOptionData) => boolean;
+  filterOption: FilterOption<SelectOptionData>;
   getValue: (value: SelectOptionValue | RecordType) => SelectOptionValue;
   collectOption: (props: RecordType, optionLabel: Ref<string>) => void;
   emits: SelectEmits;
@@ -64,11 +64,7 @@ export default function useSelectContext() {
       options: provideOptions,
       showEmpty,
     } = toRefs(props as SelectProps);
-    const {
-      formatLabel,
-      fallbackOption,
-      filterOption: _filterOption,
-    } = props as SelectProps;
+    const { formatLabel, fallbackOption, filterOption } = props as SelectProps;
     // popupVisible
     const computedVisible = useControlValue<boolean>(
       popupVisible,
@@ -118,26 +114,6 @@ export default function useSelectContext() {
         })
       );
     });
-    // 过滤函数
-    const filterFn = (option: SelectOptionData) => {
-      const label = option?.label;
-      const keyword = computedInputValue.value.toLowerCase()?.toLowerCase();
-      return !!label?.includes(keyword);
-    };
-    // 过滤函数
-    const filterOption = (option: SelectOptionData) => {
-      if (allowSearch.value) {
-        return isFunction(_filterOption)
-          ? _filterOption(computedInputValue.value, option)
-          : filterFn(option);
-      }
-      if (isBoolean(_filterOption) && !_filterOption) {
-        return true;
-      }
-      return isFunction(_filterOption)
-        ? _filterOption(computedInputValue.value, option)
-        : filterFn(option);
-    };
     // 获取选项的值
     const {
       options,
@@ -159,11 +135,14 @@ export default function useSelectContext() {
       if (!showEmpty.value) {
         return showEmpty.value;
       }
-      if (!allowSearch.value || (isBoolean(_filterOption) && !filterOption)) {
+      if (!allowSearch.value) {
         return !options.value.length;
       }
       return options.value.every((item) => {
-        return !filterOption(item);
+        return (
+          !isFunction(filterOption) ||
+          filterOption(computedInputValue.value, item)
+        );
       });
     });
     // 初始化快捷键

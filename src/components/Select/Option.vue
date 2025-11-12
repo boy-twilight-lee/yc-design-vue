@@ -1,7 +1,8 @@
 <template>
   <div
     v-show="
-      filterOption({
+      !isFunction(filterOption) ||
+      filterOption(computedInputValue, {
         ...$props,
         label: optionLabel,
       })
@@ -52,7 +53,7 @@
 import { toRefs, ref, computed, Ref } from 'vue';
 import { OptionProps, OptionSlots } from './type';
 import { RecordType } from '@shared/type';
-import { isUndefined, innerText } from '@shared/utils';
+import { isUndefined, innerText, isFunction } from '@shared/utils';
 import useContext from './hooks/useContext';
 import YcCheckbox from '@/components/Checkbox';
 defineOptions({
@@ -69,6 +70,7 @@ const { label, disabled } = toRefs(props);
 // 解构父级provide的属性
 const {
   computedValue,
+  computedInputValue,
   multiple,
   limit,
   curIndex,

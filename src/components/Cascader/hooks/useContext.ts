@@ -301,7 +301,11 @@ export default function useCascaderContext() {
     // 搜索options
     const searchOptions = computed(() => {
       return leafOptions.value
-        .filter((item) => filterOption(computedInputValue.value, item))
+        .filter(
+          (item) =>
+            !isFunction(filterOption) ||
+            filterOption(computedInputValue.value, item)
+        )
         .map((item) => {
           return {
             ...item,
