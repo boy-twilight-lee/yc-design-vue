@@ -25,7 +25,7 @@
         ref="virtualListRef"
       />
       <!-- list -->
-      <select-real-list v-else :scrollbar="scrollbar" ref="realListRef" />
+      <select-real-list v-else ref="realListRef" />
       <!-- empty -->
       <component v-if="isEmpty" :is="slots.empty || YcEmpty" />
       <!-- footer -->
@@ -51,7 +51,6 @@ import YcSpin from '@/components/Spin';
 import YcEmpty from '@/components/Empty';
 const props = defineProps<{
   loading: boolean;
-  scrollbar: boolean;
   showFooterOnEmpty: boolean;
   showHeaderOnEmpty: boolean;
   virtualListProps?: VirtualListProps;

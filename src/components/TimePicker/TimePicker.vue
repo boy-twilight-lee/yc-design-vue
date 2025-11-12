@@ -151,8 +151,14 @@ const props = withDefaults(defineProps<TimePickerProps>(), {
   },
   unmountOnClose: false,
   hideTrigger: false,
-  scrollbar: true,
   watchValueChange: true,
+  scrollbarProps: () => {
+    return {
+      thumbStyle: {
+        display: 'none',
+      },
+    };
+  },
 });
 const emits = defineEmits<TimePickerEmits>();
 // 获取全局注入配置

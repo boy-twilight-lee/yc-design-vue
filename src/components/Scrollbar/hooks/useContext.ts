@@ -1,4 +1,10 @@
-import { Ref, provide as _provide, inject as _inject, ref } from 'vue';
+import {
+  Ref,
+  provide as _provide,
+  inject as _inject,
+  ref,
+  CSSProperties,
+} from 'vue';
 
 const SCROLLBAR_CONTEXT_KEY = 'scrollbar-context';
 type ScrollbarContext = {
@@ -9,6 +15,7 @@ type ScrollbarContext = {
   thumbHeight: Ref<number>;
   thumbWidth: Ref<number>;
   isDragging: Ref<boolean>;
+  thumbStyle: Ref<CSSProperties>;
   scrollRef: Ref<HTMLDivElement | undefined>;
 };
 
@@ -25,6 +32,7 @@ export default function useScrollbarContext() {
       thumbHeight: ref(0),
       thumbWidth: ref(0),
       scrollRef: ref(),
+      thumbStyle: ref({}),
       isDragging: ref(false),
     });
   };

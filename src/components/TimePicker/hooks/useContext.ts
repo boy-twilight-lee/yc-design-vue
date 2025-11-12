@@ -21,6 +21,7 @@ import {
   useI18n,
   isValidTimeRange,
 } from '@shared/utils';
+import { ScrollbarProps } from '@/components/Scrollbar';
 
 const TIME_PICKER_CONTEXT_KEY = 'time-picker-context';
 type TimePickerContext = {
@@ -34,10 +35,10 @@ type TimePickerContext = {
   timeColumnCells: Ref<{ unit: TimeUnit; cells: TimePickerCell[] }[]>;
   inputRefs: Ref<HTMLInputElement[]>;
   disableConfirm: Ref<boolean>;
-  scrollbar: Ref<boolean>;
   hideDisabledOptions: Ref<boolean>;
   hideTrigger: Ref<boolean>;
   watchValueChange: Ref<boolean>;
+  scrollbarProps: Ref<ScrollbarProps>;
   disabledTime: (value: number, unit: TimeUnit) => boolean;
 };
 type TimePickerProps = Required<_TimePickerProps>;
@@ -58,9 +59,9 @@ export default function useTimePickerContext() {
       disableConfirm,
       hideDisabledOptions,
       step,
-      scrollbar,
       hideTrigger,
       watchValueChange,
+      scrollbarProps,
       placeholder: _placeholder,
     } = toRefs(props as TimePickerProps);
     const { disabledHours, disabledMinutes, disabledSeconds } =
@@ -182,11 +183,11 @@ export default function useTimePickerContext() {
       type,
       curIndex,
       inputRefs,
-      scrollbar,
       hideTrigger,
       disableConfirm,
       watchValueChange,
       hideDisabledOptions,
+      scrollbarProps,
       disabledTime,
     };
     _provide<TimePickerContext>(TIME_PICKER_CONTEXT_KEY, context);
@@ -213,10 +214,10 @@ export default function useTimePickerContext() {
       timeColumnCells: ref([]),
       inputRefs: ref([]),
       disableConfirm: ref(false),
-      scrollbar: ref(true),
       hideTrigger: ref(false),
       watchValueChange: ref(true),
       hideDisabledOptions: ref(false),
+      scrollbarProps: ref({}),
       disabledTime: () => false,
     });
   };

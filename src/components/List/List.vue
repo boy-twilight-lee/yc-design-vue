@@ -13,7 +13,6 @@
     <yc-spin :loading="loading" class="yc-list-spin">
       <!-- 渲染真实列表 -->
       <yc-scrollbar
-        :scrollbar="scrollbar"
         :style="{
           maxHeight: isVirtualList ? '' : valueToPx(maxHeight),
         }"
@@ -109,7 +108,6 @@ const props = withDefaults(defineProps<ListProps>(), {
   maxHeight: undefined,
   virtualListProps: undefined,
   bottomOffset: 0,
-  scrollbar: true,
 });
 const emits = defineEmits<ListEmits>();
 const { data, paginationProps, virtualListProps, bottomOffset } = toRefs(props);

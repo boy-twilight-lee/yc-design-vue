@@ -9,7 +9,7 @@
         'yc-scrollbar-thumb',
         `yc-scrollbar-thumb-direction-${direction}`,
       ]"
-      :style="thmubStyle"
+      :style="style"
       ref="dragRef"
     >
       <div
@@ -52,20 +52,23 @@ const {
   movableTop,
   curTop,
   curLeft,
+  thumbStyle,
   isDragging: _isDragging,
 } = useContext().inject();
 // 是否是垂直
 const isVertical = computed(() => direction.value == 'vertical');
 // thumbStyle
-const thmubStyle = computed(() => {
+const style = computed(() => {
   return isVertical.value
     ? {
         height: valueToPx(thumbHeight.value),
         transform: `translateY(${valueToPx(curTop.value)})`,
+        ...thumbStyle.value,
       }
     : {
         width: valueToPx(thumbWidth.value),
         transform: `translateX(${valueToPx(curLeft.value)})`,
+        ...thumbStyle.value,
       };
 });
 // 获取轨道的宽度

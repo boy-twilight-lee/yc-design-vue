@@ -14,7 +14,6 @@ export interface ListProps {
   maxHeight?: number | string;
   bottomOffset?: number;
   virtualListProps?: VirtualListProps;
-  scrollbar?: boolean;
 }
 
 export interface ListEmits {

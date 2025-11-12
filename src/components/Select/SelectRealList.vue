@@ -1,5 +1,5 @@
 <template>
-  <yc-scrollbar :scrollbar="scrollbar" class="yc-select-dropdown-list-wrapper">
+  <yc-scrollbar class="yc-select-dropdown-list-wrapper">
     <div class="yc-select-dropdown-list">
       <!-- default -->
       <component :is="slots.default" />
@@ -45,9 +45,6 @@ import {
   default as YcScrollbar,
   ScrollbarInstance,
 } from '@/components/Scrollbar';
-defineProps<{
-  scrollbar: boolean;
-}>();
 // 接收注入
 const { fieldKey, renderOptions, slots } = useContext().inject();
 // scrollbar

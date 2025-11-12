@@ -43,7 +43,6 @@ export interface SelectProps {
   searchDelay?: number;
   limit?: number;
   fieldNames?: Record<string, string>;
-  scrollbar?: boolean;
   showHeaderOnEmpty?: boolean;
   showFooterOnEmpty?: boolean;
   tagNowrap?: boolean;

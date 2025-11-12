@@ -33,6 +33,8 @@
     />
     <yc-cascader placeholder="请输入" />
     <yc-auto-complete placeholder="请输入" />
+    <yc-time-picker />
+    <yc-date-picker show-time />
     <a-input />
     <yc-input />
   </div>

@@ -12,7 +12,6 @@ export {
   onClickOutside,
   useTimeoutFn,
   onKeyStroke,
-  useVirtualList,
   useScroll,
   useDropZone,
   useFileDialog,

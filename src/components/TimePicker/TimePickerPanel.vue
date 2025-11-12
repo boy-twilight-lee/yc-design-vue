@@ -7,6 +7,7 @@
         class="yc-timepicker-column"
       >
         <yc-scrollbar
+          v-bind="scrollbarProps"
           :outer-style="{
             height: '100%',
           }"
@@ -14,7 +15,6 @@
             height: '100%',
             overflow: 'auto',
           }"
-          :scrollbar="scrollbar"
           :ref="
             (el) =>
               (scrollContainer[i] = (el as ScrollbarInstance)?.getScrollRef())
@@ -109,9 +109,9 @@ const {
   curIndex,
   inputRefs,
   hideTrigger,
-  scrollbar,
   watchValueChange,
   disabledTime,
+  scrollbarProps,
 } = useContext().inject();
 // 国际化
 const { t } = useI18n();

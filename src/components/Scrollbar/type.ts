@@ -5,8 +5,7 @@ export interface ScrollbarProps {
   type?: TackType;
   outerClass?: ClassName;
   outerStyle?: CSSProperties;
-  // 是否真实srollbar
-  scrollbar?: boolean;
+  thumbStyle?: CSSProperties;
 }
 
 export interface ScrollbarEmits {

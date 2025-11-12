@@ -1,6 +1,7 @@
 import { VNode } from 'vue';
 import { PopupContainer, Size } from '@shared/type';
 import { TriggerProps } from '@/components/Trigger';
+import { ScrollbarProps } from '@/components/Scrollbar';
 
 export interface TimePickerProps {
   type?: TimePickerType;
@@ -27,8 +28,8 @@ export interface TimePickerProps {
   unmountOnClose?: boolean;
   // 是否隐藏trigger
   hideTrigger?: boolean;
-  scrollbar?: boolean;
   watchValueChange?: boolean;
+  scrollbarProps?: ScrollbarProps;
 }
 
 export interface TimePickerEmits {

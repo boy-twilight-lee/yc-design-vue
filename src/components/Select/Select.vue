@@ -107,7 +107,6 @@
     <template #content>
       <select-view
         :loading="loading"
-        :scrollbar="scrollbar"
         :virtual-list-props="virtualListProps"
         :show-footer-on-empty="showFooterOnEmpty"
         :show-header-on-empty="showHeaderOnEmpty"
@@ -177,7 +176,6 @@ const props = withDefaults(defineProps<SelectProps>(), {
   fieldNames: () => {
     return {};
   },
-  scrollbar: true,
   searchDelay: 500,
   showHeaderOnEmpty: false,
   showFooterOnEmpty: false,
