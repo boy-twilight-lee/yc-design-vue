@@ -3,15 +3,15 @@ import { VirtualizerOptions, VirtualItem } from '@tanstack/vue-virtual';
 /**
  
  interface VirtualizerOptions<TScrollElement extends Element | Window, TItemElement extends Element> {
-  count: number;
-  getScrollElement: () => TScrollElement | null;
-  estimateSize: (index: number) => number;
-  scrollToFn: (offset: number, options: {
+  count?: number;
+  getScrollElement?: () => TScrollElement | null;
+  estimateSize?: (index: number) => number;
+  scrollToFn?: (offset: number, options: {
       adjustments?: number;
       behavior?: ScrollBehavior;
   }, instance: Virtualizer<TScrollElement, TItemElement>) => void;
-  observeElementRect: (instance: Virtualizer<TScrollElement, TItemElement>, cb: (rect: Rect) => void) => void | (() => void);
-  observeElementOffset: (instance: Virtualizer<TScrollElement, TItemElement>, cb: ObserveOffsetCallBack) => void | (() => void);
+  observeElementRect?: (instance: Virtualizer<TScrollElement, TItemElement>, cb: (rect: Rect) => void) => void | (() => void);
+  observeElementOffset?: (instance: Virtualizer<TScrollElement, TItemElement>, cb: ObserveOffsetCallBack) => void | (() => void);
   debug?: boolean;
   initialRect?: Rect;
   onChange?: (instance: Virtualizer<TScrollElement, TItemElement>, sync: boolean) => void;

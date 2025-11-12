@@ -9,7 +9,7 @@
     >
       <div
         v-for="v in virtualList.getVirtualItems()"
-        :key="v.index"
+        :key="<number>v.key"
         :style="{
           height: horizontal ? '100%' : valueToPx(v.size),
           width: horizontal ? valueToPx(v.size) : '100%',
@@ -27,10 +27,11 @@
 import { ref, toRefs, computed } from 'vue';
 import { VirtualListProps, VirtualListSlots } from './type';
 import { useVirtualizer } from '@tanstack/vue-virtual';
-import { valueToPx } from '@shared/utils';
+import { valueToPx, isFunction } from '@shared/utils';
 const slots = defineSlots<VirtualListSlots>();
 const props = withDefaults(defineProps<VirtualListProps>(), {
   overscan: 15,
+  enabled: true,
 });
 const {
   count,
@@ -49,7 +50,7 @@ const {
   lanes,
   isScrollingResetDelay,
   useScrollendEvent,
-  // enabled,
+  enabled,
   isRtl,
   useAnimationFrameWithResizeObserver,
   initialOffset,
@@ -58,17 +59,18 @@ const {
   estimateSize,
   getItemKey,
   getScrollElement,
-  // scrollToFn,
-  // observeElementOffset,
-  // observeElementRect,
+  scrollToFn,
+  observeElementOffset,
+  observeElementRect,
   onChange,
   measureElement,
   rangeExtractor,
 } = props;
 // 滚动容器引用
 const scrollContainerRef = ref<HTMLDivElement>();
+// 虚拟滚动条的options
 const virtualOptions = computed(() => {
-  return {
+  const options: VirtualListProps = {
     count: count.value,
     debug: debug.value,
     initialRect: initialRect.value,
@@ -85,22 +87,29 @@ const virtualOptions = computed(() => {
     lanes: lanes.value,
     isScrollingResetDelay: isScrollingResetDelay.value,
     useScrollendEvent: useScrollendEvent.value,
-    // enabled: enabled.value,
+    enabled: enabled.value,
     isRtl: isRtl.value,
     useAnimationFrameWithResizeObserver:
       useAnimationFrameWithResizeObserver.value,
     initialOffset: initialOffset.value,
-    getScrollElement:
-      getScrollElement ?? (() => scrollContainerRef.value as HTMLDivElement),
+    getScrollElement: () =>
+      getScrollElement?.() || (scrollContainerRef.value as HTMLDivElement),
     estimateSize,
     getItemKey,
-    // scrollToFn,
-    // observeElementOffset,
-    // observeElementRect,
     onChange,
     measureElement,
     rangeExtractor,
   };
+  if (isFunction(scrollToFn)) {
+    options.scrollToFn = scrollToFn;
+  }
+  if (isFunction(observeElementOffset)) {
+    options.observeElementOffset = observeElementOffset;
+  }
+  if (isFunction(observeElementRect)) {
+    options.observeElementRect = observeElementRect;
+  }
+  return options;
 });
 // 虚拟列表
 const virtualList = useVirtualizer(virtualOptions as any);
