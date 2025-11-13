@@ -49,7 +49,6 @@ const props = withDefaults(defineProps<DrawerConfig>(), {
     return {};
   },
   escToClose: true,
-  renderToBody: false,
   header: true,
   footer: true,
   hideCancel: false,

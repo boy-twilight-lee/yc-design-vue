@@ -2,15 +2,9 @@
   <teleport :to="popupContainer">
     <div
       v-if="outerVisible"
-      :class="[
-        'yc-image-preview',
-        $attrs.class,
-        {
-          'yc-image-preview-absolute': isAbsolute,
-        },
-      ]"
+      :class="['yc-image-preview', $attrs.class]"
       :style="{
-        zIndex,
+        ...teleportStyle,
         ...($attrs.style ?? {}),
       }"
     >
@@ -120,7 +114,7 @@ const {
   keyboard,
 } = toRefs(props);
 // 接收全局属性
-const { zIndex, popupContainer, isAbsolute } = getGlobalConfig(props);
+const { teleportStyle, popupContainer } = getGlobalConfig(props);
 // imageRef
 const imageRef = ref<HTMLImageElement>();
 // scale

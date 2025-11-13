@@ -1,4 +1,13 @@
-import { toRefs, inject, ref, isReactive, reactive, Ref, computed } from 'vue';
+import {
+  toRefs,
+  inject,
+  ref,
+  isReactive,
+  reactive,
+  Ref,
+  computed,
+  CSSProperties,
+} from 'vue';
 import { RecordType, PopupContainer, Size } from '@shared/type';
 import { isBoolean, isString, isUndefined } from './is';
 
@@ -36,21 +45,24 @@ export const getGlobalConfig = (props: RecordType = {}) => {
     popupContainer: ref('body'),
   });
   // 接收属性
-  const { size, popupContainer, renderToBody } = toRefs(
+  const { size, popupContainer } = toRefs(
     isReactive(props) ? props : reactive(props)
   );
-  // 是否绝对定位
-  const isAbsolute = computed(() => {
-    return (
-      popupContainer.value ||
-      (isBoolean(renderToBody?.value) && !renderToBody.value)
-    );
+  //传送样式
+  const teleportStyle = computed(() => {
+    return {
+      zIndex: zIndex.value,
+      position:
+        popupContainer.value && popupContainer.value != 'body'
+          ? 'absolute'
+          : 'fixed',
+    } as CSSProperties;
   });
   return {
     zIndex,
     locale,
-    isAbsolute,
     size: getVar(size, _size),
     popupContainer: getVar(popupContainer, _popupContainer),
+    teleportStyle,
   };
 };

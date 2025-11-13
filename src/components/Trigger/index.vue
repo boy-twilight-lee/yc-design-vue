@@ -9,7 +9,7 @@
     @focus="handleFocus"
     @blur="handleBlur"
   />
-  <teleport :to="popupContainer" :disabled="!renderToBody">
+  <teleport :to="popupContainer">
     <transition
       :name="animationName"
       :duration="duration"
@@ -26,12 +26,11 @@
           `yc-trigger-position-${position}`,
           {
             'yc-trigger-transform-origin': needTransformOrigin,
-            'yc-trigger-absolute': isAbsolute,
           },
           $attrs.class,
         ]"
         :style="{
-          zIndex,
+          ...teleportStyle,
           ...popupStyle,
           ...($attrs.style || {}),
         }"
@@ -104,7 +103,6 @@ const props = withDefaults(defineProps<TriggerProps>(), {
   autoFitPopupWidth: false,
   autoFitPopupMinWidth: false,
   popupContainer: undefined,
-  renderToBody: true,
   autoFitPosition: true,
   updateAtScroll: true,
   scrollToClose: false,
@@ -116,7 +114,7 @@ const props = withDefaults(defineProps<TriggerProps>(), {
 });
 const emits = defineEmits<TriggerEmits>();
 // 接收属性
-const { popupContainer, isAbsolute, zIndex } = getGlobalConfig(props);
+const { teleportStyle, popupContainer } = getGlobalConfig(props);
 // 弹出层的ref
 const popupRef = ref<HTMLDivElement>();
 // trigger的ref

@@ -1,5 +1,5 @@
 <template>
-  <teleport :to="popupContainer" :disabled="!renderToBody">
+  <teleport :to="popupContainer">
     <div
       v-if="!unmountOnClose || outerVisible"
       v-show="outerVisible"
@@ -8,11 +8,10 @@
         $attrs.class,
         {
           'yc-modal-simple': simple,
-          'yc-modal-position-absolute': isAbsolute,
         },
       ]"
       :style="{
-        zIndex,
+        ...teleportStyle,
         ...($attrs.style ?? {}),
       }"
     >
@@ -143,7 +142,6 @@ const props = withDefaults(defineProps<ModalProps>(), {
     return {};
   },
   footer: true,
-  renderToBody: true,
   popupContainer: undefined,
   maskStyle: () => {
     return {};
@@ -182,11 +180,10 @@ const {
   modalStyle: _modalStyle,
   fullscreen,
   draggable,
-  renderToBody,
 } = toRefs(props);
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收属性
-const { popupContainer, zIndex, isAbsolute } = getGlobalConfig(props);
+const { teleportStyle, popupContainer } = getGlobalConfig(props);
 // 国际化
 const { t } = useI18n();
 // 处理组件关闭开启

@@ -22,7 +22,6 @@ export interface DrawerProps {
   popupContainer?: PopupContainer;
   drawerStyle?: CSSProperties;
   escToClose?: boolean;
-  renderToBody?: boolean;
   header?: boolean;
   footer?: boolean;
   hideCancel?: boolean;

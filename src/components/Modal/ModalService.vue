@@ -60,7 +60,6 @@ const props = withDefaults(defineProps<ModalConfig>(), {
     return {};
   },
   footer: true,
-  renderToBody: true,
   maskStyle: () => {
     return {};
   },

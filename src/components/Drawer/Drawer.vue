@@ -1,5 +1,5 @@
 <template>
-  <teleport :to="popupContainer" :disabled="!renderToBody">
+  <teleport :to="popupContainer">
     <div
       v-if="!unmountOnClose || outerVisible"
       v-show="outerVisible"
@@ -7,12 +7,9 @@
         'yc-drawer-wrapper',
         `yc-drawer-placement-${placement}`,
         $attrs.class,
-        {
-          'yc-drawer-position-absolute': isAbsolute,
-        },
       ]"
       :style="{
-        zIndex,
+        ...teleportStyle,
         ...($attrs.style ?? {}),
       }"
     >
@@ -122,7 +119,6 @@ const props = withDefaults(defineProps<DrawerProps>(), {
     return {};
   },
   escToClose: true,
-  renderToBody: true,
   header: true,
   footer: true,
   hideCancel: false,
@@ -144,11 +140,10 @@ const {
   maskClosable,
   escToClose,
   drawerStyle: _drawerStyle,
-  renderToBody,
 } = toRefs(props);
 const { onBeforeOk, onBeforeCancel } = props;
 // 接收configProvider
-const { zIndex, popupContainer, isAbsolute } = getGlobalConfig(props);
+const { teleportStyle, popupContainer } = getGlobalConfig(props);
 // 国际化
 const { t } = useI18n();
 // drawer绝对定位的left,top

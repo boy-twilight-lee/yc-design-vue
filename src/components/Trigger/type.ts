@@ -32,7 +32,6 @@ export interface TriggerProps {
   autoFitPopupWidth?: boolean;
   autoFitPopupMinWidth?: boolean;
   popupContainer?: PopupContainer;
-  renderToBody?: boolean;
   autoFitPosition?: boolean;
   updateAtScroll?: boolean;
   preventFocus?: boolean;

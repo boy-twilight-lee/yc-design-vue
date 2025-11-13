@@ -21,7 +21,6 @@ export interface ModalProps {
   okButtonProps?: ButtonProps;
   cancelButtonProps?: ButtonProps;
   footer?: boolean;
-  renderToBody?: boolean;
   popupContainer?: PopupContainer;
   maskStyle?: CSSProperties;
   modalClass?: ClassName;
