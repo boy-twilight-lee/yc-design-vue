@@ -121,17 +121,6 @@ defineExpose({
 });
 </script>
 
-<style lang="less" scoped>
-.yc-virtual-list-wrapper {
-  overflow: auto;
-  .yc-virtual-list {
-    position: relative;
-    .yc-virtual-list-item {
-      overflow: hidden;
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-  }
-}
+<style lang="less">
+@import './style/virtual-list.less';
 </style>

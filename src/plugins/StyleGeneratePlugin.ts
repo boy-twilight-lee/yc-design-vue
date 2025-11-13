@@ -8,29 +8,26 @@ export default function styleGeneratePlugin(): Plugin {
   let config: ResolvedConfig;
 
   return {
-    name: 'yc-design-vue-styles',
+    name: 'yc-design-styles-builder',
     apply: 'build',
-
     configResolved(resolvedConfig) {
       config = resolvedConfig;
     },
     async writeBundle(options) {
       if (options.format === 'umd') {
-        this.info('Skipping on-demand style generation for UMD bundle.');
         return;
       }
       if (!options.dir) {
         this.error("Output directory 'dir' is not defined in Rollup options.");
-        return;
       }
       const projectRoot = config.root;
       const componentsPath = path.resolve(projectRoot, 'src/components');
       const sharedBasePath = path.resolve(componentsPath, '_shared');
       const sharedStylesPath = path.resolve(sharedBasePath, 'styles');
-      const lessOptions: Less.Options = {
+      const lessOptions = {
         compress: true,
       };
-      // --- 生成 shared.css ---
+      // 生成 shared.css
       const sharedStyleSourcePaths = [
         path.join(sharedStylesPath, '**/*.{less,css}'),
         path.join(sharedBasePath, 'components/*/style/**/*.{less,css}'),
@@ -68,10 +65,9 @@ export default function styleGeneratePlugin(): Plugin {
           }
         }
       }
-      // --- 为其余每个组件编译独立的 index.css (或生成空的 index.css) ---
+      // 为其余每个组件编译独立的 index.css (或生成空的 index.css) ---
       if (!fs.existsSync(componentsPath)) {
         this.error('Components directory not found at: ' + componentsPath);
-        return;
       }
       // 定义需要从独立打包中排除的组件列表
       const excludedComponents = new Set([
@@ -115,7 +111,7 @@ export default function styleGeneratePlugin(): Plugin {
             try {
               const output = await less.render(finalStylesToCompile, {
                 ...lessOptions,
-                paths: [stylesPath, sharedStylesPath], // 为@import提供查找路径
+                paths: [stylesPath, sharedStylesPath],
                 filename: virtualEntryFilePath,
               });
               const outputCssPath = path.join(

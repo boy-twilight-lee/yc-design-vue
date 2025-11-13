@@ -1,4 +1,4 @@
-import { App, Plugin } from 'vue';
+import { App, Component, Plugin } from 'vue';
 import '@shared/styles/reset.less';
 import '@shared/styles/translation.less';
 import '@shared/styles/variable.less';
@@ -321,7 +321,7 @@ const components: Record<string, Plugin> = {
   Watermark,
 };
 
-const childComponents: Record<string, Plugin> = {
+const childComponents: Record<string, Component> = {
   AnchorLink,
   AvatarGroup,
   ButtonGroup,

@@ -4,7 +4,7 @@ export default function fixInvalidDeclarationsPlugin(): Plugin {
   return {
     name: 'fix-invalid-declarations-in-umd',
     apply: 'build',
-    renderChunk(code, chunk, options) {
+    renderChunk(code, _, options) {
       if (options.format !== 'umd') {
         return null;
       }
