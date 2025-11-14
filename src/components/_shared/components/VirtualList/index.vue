@@ -126,7 +126,7 @@ const virtualList = useVirtualizer(virtualOptions as any);
 
 defineExpose({
   getScrollRef() {
-    return scrollContainerRef.value;
+    return scrollContainerRef.value?.getScrollRef();
   },
 });
 </script>
