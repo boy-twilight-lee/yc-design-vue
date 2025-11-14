@@ -1,5 +1,10 @@
 <template>
-  <yc-scrollbar class="yc-virtual-list-wrapper" ref="scrollContainerRef">
+  <yc-scrollbar
+    :style="{
+      overflow: `${horizontal ? 'auto' : 'hidden'} ${horizontal ? 'hidden' : 'auto'}`,
+    }"
+    ref="scrollContainerRef"
+  >
     <div
       :style="{
         height: horizontal ? '100%' : valueToPx(virtualList.getTotalSize()),

@@ -1,3 +1,4 @@
+import { ScrollbarProps } from '@/components/Scrollbar';
 import { VirtualizerOptions, VirtualItem } from '@tanstack/vue-virtual';
 
 /**
