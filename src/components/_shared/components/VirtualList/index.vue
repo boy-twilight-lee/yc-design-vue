@@ -1,10 +1,5 @@
 <template>
-  <yc-scrollbar
-    :style="{
-      overflow: `${horizontal ? 'auto' : 'hidden'} ${horizontal ? 'hidden' : 'auto'}`,
-    }"
-    ref="scrollContainerRef"
-  >
+  <define-list>
     <div
       :style="{
         height: horizontal ? '100%' : valueToPx(virtualList.getTotalSize()),
@@ -25,18 +20,33 @@
         <slot :data="v" />
       </div>
     </div>
+  </define-list>
+  <yc-scrollbar
+    v-if="!isFunction(getScrollElement)"
+    :style="{
+      ...($attrs.style || {}),
+      overflow: `${horizontal ? 'auto' : 'hidden'} ${horizontal ? 'hidden' : 'auto'}`,
+    }"
+    :class="$attrs.class"
+    ref="scrollContainerRef"
+  >
+    <reuse-list />
   </yc-scrollbar>
+  <reuse-list v-else />
 </template>
 
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
 import { VirtualListProps, VirtualListSlots } from './type';
 import { useVirtualizer } from '@tanstack/vue-virtual';
-import { valueToPx, isFunction } from '@shared/utils';
+import { valueToPx, isFunction, createReusableTemplate } from '@shared/utils';
 import {
   default as YcScrollbar,
   ScrollbarInstance,
 } from '@/components/Scrollbar';
+defineOptions({
+  inheritAttrs: false,
+});
 const slots = defineSlots<VirtualListSlots>();
 const props = withDefaults(defineProps<VirtualListProps>(), {
   overscan: 15,
@@ -75,6 +85,9 @@ const {
   measureElement,
   rangeExtractor,
 } = props;
+console.log(typeof getScrollElement);
+// 定义重用列表
+const { define: DefineList, reuse: ReuseList } = createReusableTemplate();
 // 滚动容器引用
 const scrollContainerRef = ref<ScrollbarInstance>();
 // 虚拟滚动条的options

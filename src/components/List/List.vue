@@ -13,11 +13,11 @@
     <yc-spin :loading="loading" class="yc-list-spin">
       <!-- 渲染真实列表 -->
       <yc-scrollbar
-        :style="{
-          maxHeight: isVirtualList ? '' : valueToPx(maxHeight),
-        }"
         class="yc-list"
-        ref="realListRef"
+        :style="{
+          maxHeight: valueToPx(maxHeight),
+        }"
+        :ref="(el) => (scrollRef = (el as ScrollbarInstance).getScrollRef())"
       >
         <div class="yc-list-content-wrapper">
           <div v-if="$slots.header" class="yc-list-header">
@@ -27,10 +27,7 @@
           <virtual-list
             v-if="isVirtualList"
             v-bind="virtualListProps"
-            :style="{
-              maxHeight: valueToPx(maxHeight),
-            }"
-            ref="virtualListRef"
+            :get-scroll-element="() => scrollRef!"
           >
             <template #default="{ data: v }">
               <slot name="item" :index="v.index" :item="data[v.index]" />
@@ -116,9 +113,7 @@ const { size } = getGlobalConfig(props);
 // 是否触底
 const isBottomReached = ref<boolean>(false);
 // scrollbar
-const realListRef = ref<ScrollbarInstance>();
-// virtualListRef
-const virtualListRef = ref<InstanceType<typeof VirtualList>>();
+const scrollRef = ref<HTMLDivElement>();
 // 是否是虚拟列表
 const isVirtualList = computed(() => {
   return !virtualListProps.value || paginationProps.value
@@ -126,12 +121,6 @@ const isVirtualList = computed(() => {
     : virtualListProps.value.estimateSize &&
         isNumber(virtualListProps.value.count);
 });
-// scrollRef
-const scrollRef = computed(() =>
-  isVirtualList.value
-    ? virtualListRef.value?.getScrollRef()
-    : realListRef.value?.getScrollRef()
-);
 // 处理滚动
 useScrollReach({
   scrollRef,

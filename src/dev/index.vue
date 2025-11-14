@@ -30,12 +30,13 @@
       :virtual-list-props="{ estimateSize: () => 36, count: options.length }"
       placeholder="Please select ..."
     />
+    <yc-cascader loading :style="{ width: '320px' }" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-const count = ref(1000);
+const count = ref(10000);
 const list = computed(() => {
   return Array(count.value)
     .fill(null)
