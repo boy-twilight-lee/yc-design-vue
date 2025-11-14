@@ -1,5 +1,5 @@
 <template>
-  <div class="yc-virtual-list-wrapper" ref="scrollContainerRef">
+  <yc-scrollbar class="yc-virtual-list-wrapper" ref="scrollContainerRef">
     <div
       :style="{
         height: horizontal ? '100%' : valueToPx(virtualList.getTotalSize()),
@@ -20,7 +20,7 @@
         <slot :data="v" />
       </div>
     </div>
-  </div>
+  </yc-scrollbar>
 </template>
 
 <script lang="ts" setup>
@@ -28,6 +28,10 @@ import { ref, toRefs, computed } from 'vue';
 import { VirtualListProps, VirtualListSlots } from './type';
 import { useVirtualizer } from '@tanstack/vue-virtual';
 import { valueToPx, isFunction } from '@shared/utils';
+import {
+  default as YcScrollbar,
+  ScrollbarInstance,
+} from '@/components/Scrollbar';
 const slots = defineSlots<VirtualListSlots>();
 const props = withDefaults(defineProps<VirtualListProps>(), {
   overscan: 15,
@@ -67,7 +71,7 @@ const {
   rangeExtractor,
 } = props;
 // 滚动容器引用
-const scrollContainerRef = ref<HTMLDivElement>();
+const scrollContainerRef = ref<ScrollbarInstance>();
 // 虚拟滚动条的options
 const virtualOptions = computed(() => {
   const options: VirtualListProps = {
@@ -93,7 +97,8 @@ const virtualOptions = computed(() => {
       useAnimationFrameWithResizeObserver.value,
     initialOffset: initialOffset.value,
     getScrollElement: () =>
-      getScrollElement?.() || (scrollContainerRef.value as HTMLDivElement),
+      getScrollElement?.() ||
+      (scrollContainerRef.value?.getScrollRef() as HTMLDivElement),
     estimateSize,
     getItemKey,
     onChange,

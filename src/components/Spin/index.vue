@@ -1,5 +1,10 @@
 <template>
-  <div class="yc-spin">
+  <div
+    :class="{
+      'yc-spin': true,
+      'yc-spin-no-content': !$slots.default,
+    }"
+  >
     <!-- 定义通用模板 -->
     <define-template>
       <div

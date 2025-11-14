@@ -5,7 +5,7 @@
       :style="{ width: `600px` }"
       :virtualListProps="{
         count: list.length,
-        estimateSize: () => 103,
+        estimateSize: () => 100,
       }"
       max-height="500"
       :data="list"
@@ -23,39 +23,17 @@
         </yc-list-item>
       </template>
     </yc-list>
-    <yc-select
-      :virtual-list-props="{
-        count: options.length,
-        estimateSize: () => 36,
-      }"
-      :options="options"
-      placeholder="请输入"
-    />
-    <yc-cascader placeholder="请输入" />
-    <yc-auto-complete placeholder="请输入" />
-    <yc-time-picker />
-    <yc-date-picker show-time />
-    <a-input />
-    <yc-input />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 const count = ref(1000);
-const options = computed(() => {
-  return new Array(count.value).fill(null).map((_, i) => {
-    return {
-      label: '选项' + i,
-      value: i,
-    };
-  });
-});
 const list = computed(() => {
   return Array(count.value)
     .fill(null)
-    .map((_, index) => {
-      const prefix = `0000${index}`.slice(-5);
+    .map((_, i) => {
+      const prefix = `0000${i + 1}`.slice(-5);
       return {
         title: 'Beijing Bytedance Technology Co., Ltd.',
         description: `(${prefix}) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.`,
