@@ -21,6 +21,7 @@
           'yc-select-allow-search': allowSearch,
           'yc-select-allow-clear': showClearBtn,
           'yc-select-no-border': !bordered,
+          'yc-select-loading': loading,
         },
         $attrs.class,
       ]"

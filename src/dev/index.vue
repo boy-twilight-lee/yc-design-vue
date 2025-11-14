@@ -23,6 +23,13 @@
         </yc-list-item>
       </template>
     </yc-list>
+    <yc-select
+      :style="{ width: '320px' }"
+      :options="options"
+      loading
+      :virtual-list-props="{ estimateSize: () => 36, count: options.length }"
+      placeholder="Please select ..."
+    />
   </div>
 </template>
 
@@ -39,6 +46,11 @@ const list = computed(() => {
         description: `(${prefix}) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.`,
       };
     });
+});
+const options = computed(() => {
+  return Array(count.value)
+    .fill(null)
+    .map((_, index) => `Option ${index}`);
 });
 </script>
 

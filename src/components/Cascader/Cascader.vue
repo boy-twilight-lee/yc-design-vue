@@ -20,6 +20,7 @@
         {
           'yc-cascader-allow-clear': showClearBtn,
           'yc-cascader-allow-search': allowSearch,
+          'yc-cascader-loading': loading,
         },
         $attrs.class,
       ]"

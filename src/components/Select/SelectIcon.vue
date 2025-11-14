@@ -4,21 +4,19 @@
       <component :is="renderIcon('loading-icon')" />
     </template>
   </yc-spin>
-  <template v-else>
-    <div class="yc-select-suffix-icon">
-      <component v-if="slots['arrow-icon']" :is="renderIcon('arrow-icon')" />
-      <icon-arrow-down v-else :rotate="popupVisible ? 180 : 0" />
-    </div>
-    <div v-if="allowSearch" class="yc-select-search-icon">
-      <component v-if="slots['search-icon']" :is="renderIcon('search-icon')" />
-      <icon-search v-else />
-    </div>
-    <icon-button
-      v-if="showClearBtn"
-      class="yc-select-clear-icon"
-      @click.stop="$emit('clear')"
-    />
-  </template>
+  <div class="yc-select-suffix-icon">
+    <component v-if="slots['arrow-icon']" :is="renderIcon('arrow-icon')" />
+    <icon-arrow-down v-else :rotate="popupVisible ? 180 : 0" />
+  </div>
+  <div v-if="allowSearch" class="yc-select-search-icon">
+    <component v-if="slots['search-icon']" :is="renderIcon('search-icon')" />
+    <icon-search v-else />
+  </div>
+  <icon-button
+    v-if="showClearBtn"
+    class="yc-select-clear-icon"
+    @click.stop="$emit('clear')"
+  />
 </template>
 
 <script lang="ts" setup>
