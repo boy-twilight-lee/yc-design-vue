@@ -63,14 +63,14 @@
             @year-click="showYearPicker = true"
             @month-click="showMonthPicker = true"
           >
-            <template v-if="$slots['icon-prev']" #icon-prev-double>
+            <template v-if="$slots['icon-prev']" #icon-prev>
               <slot name="icon-next" />
             </template>
-            <template v-if="$slots['icon-next']" #icon-next-double>
+            <template v-if="$slots['icon-next']" #icon-next>
               <slot name="icon-next" />
             </template>
             <template v-if="$slots['icon-prev-double']" #icon-prev-double>
-              <slot name="icon-next-double" />
+              <slot name="icon-prev-double" />
             </template>
             <template v-if="$slots['icon-next-double']" #icon-next-double>
               <slot name="icon-next-double" />

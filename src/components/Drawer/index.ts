@@ -1,5 +1,5 @@
 import { App, render, h } from 'vue';
-import { DrawerConfig, DrawerMethod } from './type';
+import { DrawerConfig } from './type';
 import _Drawer from './Drawer.vue';
 import _DrawerService from './DrawerService.vue';
 

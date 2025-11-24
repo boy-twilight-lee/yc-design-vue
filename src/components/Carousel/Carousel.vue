@@ -17,7 +17,12 @@
         isObject(autoPlay) && autoPlay?.hoverToPause && setAutoPlay()
       "
     >
-      <component v-for="(node, i) in carouselItems" :is="node" :index="i + 1" />
+      <component
+        v-for="(node, i) in carouselItems"
+        :key="i"
+        :is="node"
+        :index="i + 1"
+      />
     </div>
     <div v-if="indicatorType != 'never'" class="yc-carousel-indicator-wrapper">
       <carousel-indicator

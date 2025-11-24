@@ -47,7 +47,7 @@ import {
 defineOptions({
   inheritAttrs: false,
 });
-const slots = defineSlots<VirtualListSlots>();
+defineSlots<VirtualListSlots>();
 const props = withDefaults(defineProps<VirtualListProps>(), {
   overscan: 15,
   enabled: true,

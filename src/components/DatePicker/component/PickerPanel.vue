@@ -88,7 +88,7 @@ import {
 } from '@shared/utils';
 import YcButton from '@/components/Button';
 import YcLink from '@/components/Link';
-const props = withDefaults(
+withDefaults(
   defineProps<{
     locale: Record<string, any>;
     shortcutsPosition: ShortcutsPosition;

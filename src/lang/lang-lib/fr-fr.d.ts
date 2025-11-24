@@ -1,206 +1,206 @@
 declare const lang: {
-    locale: string;
-    empty: {
-        description: string;
+  locale: string;
+  empty: {
+    description: string;
+  };
+  drawer: {
+    okText: string;
+    cancelText: string;
+  };
+  popconfirm: {
+    okText: string;
+    cancelText: string;
+  };
+  modal: {
+    okText: string;
+    cancelText: string;
+  };
+  pagination: {
+    goto: string;
+    page: string;
+    countPerPage: string;
+    total: string;
+  };
+  table: {
+    okText: string;
+    resetText: string;
+  };
+  upload: {
+    start: string;
+    cancel: string;
+    delete: string;
+    retry: string;
+    buttonText: string;
+    preview: string;
+    drag: string;
+    dragHover: string;
+    error: string;
+  };
+  calendar: {
+    formatYear: string;
+    formatMonth: string;
+    today: string;
+    view: {
+      month: string;
+      year: string;
+      week: string;
+      day: string;
     };
-    drawer: {
-        okText: string;
-        cancelText: string;
+    month: {
+      long: {
+        January: string;
+        February: string;
+        March: string;
+        April: string;
+        May: string;
+        June: string;
+        July: string;
+        August: string;
+        September: string;
+        October: string;
+        November: string;
+        December: string;
+      };
+      short: {
+        January: string;
+        February: string;
+        March: string;
+        April: string;
+        May: string;
+        June: string;
+        July: string;
+        August: string;
+        September: string;
+        October: string;
+        November: string;
+        December: string;
+      };
     };
-    popconfirm: {
-        okText: string;
-        cancelText: string;
+    week: {
+      long: {
+        self: string;
+        monday: string;
+        tuesday: string;
+        wednesday: string;
+        thursday: string;
+        friday: string;
+        saturday: string;
+        sunday: string;
+      };
+      short: {
+        self: string;
+        monday: string;
+        tuesday: string;
+        wednesday: string;
+        thursday: string;
+        friday: string;
+        saturday: string;
+        sunday: string;
+      };
     };
-    modal: {
-        okText: string;
-        cancelText: string;
+  };
+  datePicker: {
+    view: {
+      month: string;
+      year: string;
+      week: string;
+      day: string;
     };
-    pagination: {
-        goto: string;
-        page: string;
-        countPerPage: string;
-        total: string;
+    month: {
+      long: {
+        January: string;
+        February: string;
+        March: string;
+        April: string;
+        May: string;
+        June: string;
+        July: string;
+        August: string;
+        September: string;
+        October: string;
+        November: string;
+        December: string;
+      };
+      short: {
+        January: string;
+        February: string;
+        March: string;
+        April: string;
+        May: string;
+        June: string;
+        July: string;
+        August: string;
+        September: string;
+        October: string;
+        November: string;
+        December: string;
+      };
     };
-    table: {
-        okText: string;
-        resetText: string;
+    week: {
+      long: {
+        self: string;
+        monday: string;
+        tuesday: string;
+        wednesday: string;
+        thursday: string;
+        friday: string;
+        saturday: string;
+        sunday: string;
+      };
+      short: {
+        self: string;
+        monday: string;
+        tuesday: string;
+        wednesday: string;
+        thursday: string;
+        friday: string;
+        saturday: string;
+        sunday: string;
+      };
     };
-    upload: {
-        start: string;
-        cancel: string;
-        delete: string;
-        retry: string;
-        buttonText: string;
-        preview: string;
-        drag: string;
-        dragHover: string;
-        error: string;
+    placeholder: {
+      date: string;
+      week: string;
+      month: string;
+      year: string;
+      quarter: string;
+      time: string;
     };
-    calendar: {
-        formatYear: string;
-        formatMonth: string;
-        today: string;
-        view: {
-            month: string;
-            year: string;
-            week: string;
-            day: string;
-        };
-        month: {
-            long: {
-                January: string;
-                February: string;
-                March: string;
-                April: string;
-                May: string;
-                June: string;
-                July: string;
-                August: string;
-                September: string;
-                October: string;
-                November: string;
-                December: string;
-            };
-            short: {
-                January: string;
-                February: string;
-                March: string;
-                April: string;
-                May: string;
-                June: string;
-                July: string;
-                August: string;
-                September: string;
-                October: string;
-                November: string;
-                December: string;
-            };
-        };
-        week: {
-            long: {
-                self: string;
-                monday: string;
-                tuesday: string;
-                wednesday: string;
-                thursday: string;
-                friday: string;
-                saturday: string;
-                sunday: string;
-            };
-            short: {
-                self: string;
-                monday: string;
-                tuesday: string;
-                wednesday: string;
-                thursday: string;
-                friday: string;
-                saturday: string;
-                sunday: string;
-            };
-        };
+    rangePlaceholder: {
+      date: string[];
+      week: string[];
+      month: string[];
+      year: string[];
+      quarter: string[];
+      time: string[];
     };
-    datePicker: {
-        view: {
-            month: string;
-            year: string;
-            week: string;
-            day: string;
-        };
-        month: {
-            long: {
-                January: string;
-                February: string;
-                March: string;
-                April: string;
-                May: string;
-                June: string;
-                July: string;
-                August: string;
-                September: string;
-                October: string;
-                November: string;
-                December: string;
-            };
-            short: {
-                January: string;
-                February: string;
-                March: string;
-                April: string;
-                May: string;
-                June: string;
-                July: string;
-                August: string;
-                September: string;
-                October: string;
-                November: string;
-                December: string;
-            };
-        };
-        week: {
-            long: {
-                self: string;
-                monday: string;
-                tuesday: string;
-                wednesday: string;
-                thursday: string;
-                friday: string;
-                saturday: string;
-                sunday: string;
-            };
-            short: {
-                self: string;
-                monday: string;
-                tuesday: string;
-                wednesday: string;
-                thursday: string;
-                friday: string;
-                saturday: string;
-                sunday: string;
-            };
-        };
-        placeholder: {
-            date: string;
-            week: string;
-            month: string;
-            year: string;
-            quarter: string;
-            time: string;
-        };
-        rangePlaceholder: {
-            date: string[];
-            week: string[];
-            month: string[];
-            year: string[];
-            quarter: string[];
-            time: string[];
-        };
-        selectTime: string;
-        today: string;
-        now: string;
-        ok: string;
-    };
-    image: {
-        loading: string;
-    };
-    imagePreview: {
-        fullScreen: string;
-        rotateRight: string;
-        rotateLeft: string;
-        zoomIn: string;
-        zoomOut: string;
-        originalSize: string;
-    };
-    typography: {
-        copy: string;
-        copied: string;
-        edit: string;
-        collapse: string;
-        expand: string;
-    };
-    colorPicker: {
-        history: string;
-        preset: string;
-        empty: string;
-    };
+    selectTime: string;
+    today: string;
+    now: string;
+    ok: string;
+  };
+  image: {
+    loading: string;
+  };
+  imagePreview: {
+    fullScreen: string;
+    rotateRight: string;
+    rotateLeft: string;
+    zoomIn: string;
+    zoomOut: string;
+    originalSize: string;
+  };
+  typography: {
+    copy: string;
+    copied: string;
+    edit: string;
+    collapse: string;
+    expand: string;
+  };
+  colorPicker: {
+    history: string;
+    preset: string;
+    empty: string;
+  };
 };
 export default lang;

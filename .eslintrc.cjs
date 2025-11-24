@@ -18,7 +18,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['vue', '@typescript-eslint', 'unused-imports'],
   // 添加规则
   rules: {
     '@typescript-eslint/no-explicit-any': ['off'],
@@ -42,6 +42,17 @@ module.exports = {
       {
         registeredComponentsOnly: false, // 根据需要
         ignores: [], // 可以列出要忽略的组件
+      },
+    ],
+    'no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
       },
     ],
   },

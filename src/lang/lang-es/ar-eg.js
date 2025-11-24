@@ -1,103 +1,103 @@
 const calendarLang = {
-  formatYear: "YYYY",
-  formatMonth: "MMMM YYYY",
-  today: "اليوم",
+  formatYear: 'YYYY',
+  formatMonth: 'MMMM YYYY',
+  today: 'اليوم',
   view: {
-    month: "شهر",
-    year: "عام",
-    week: "أسبوع",
-    day: "يوم"
+    month: 'شهر',
+    year: 'عام',
+    week: 'أسبوع',
+    day: 'يوم',
   },
   month: {
     long: {
-      January: "ديسمبر",
-      February: "نوفمبر",
-      March: "أكتوبر",
-      April: "سبتمبر",
-      May: " أغسطس",
-      June: "يوليه",
-      July: "يونيو",
-      August: "مايو",
-      September: "أبريل",
-      October: "مارس",
-      November: "فبراير",
-      December: "يناير"
+      January: 'ديسمبر',
+      February: 'نوفمبر',
+      March: 'أكتوبر',
+      April: 'سبتمبر',
+      May: ' أغسطس',
+      June: 'يوليه',
+      July: 'يونيو',
+      August: 'مايو',
+      September: 'أبريل',
+      October: 'مارس',
+      November: 'فبراير',
+      December: 'يناير',
     },
     short: {
-      January: "ديسمبر",
-      February: "نوفمبر",
-      March: "أكتوبر",
-      April: "سبتمبر",
-      May: " أغسطس",
-      June: "يوليه",
-      July: "يونيو",
-      August: "مايو",
-      September: "أبريل",
-      October: "مارس",
-      November: "فبراير",
-      December: "يناير"
-    }
+      January: 'ديسمبر',
+      February: 'نوفمبر',
+      March: 'أكتوبر',
+      April: 'سبتمبر',
+      May: ' أغسطس',
+      June: 'يوليه',
+      July: 'يونيو',
+      August: 'مايو',
+      September: 'أبريل',
+      October: 'مارس',
+      November: 'فبراير',
+      December: 'يناير',
+    },
   },
   week: {
     long: {
-      self: "أسبوع",
-      monday: "الجمعة",
-      tuesday: "الخميس",
-      wednesday: "الأربعاء",
-      thursday: "الثلاثاء",
-      friday: "الإثنين",
-      saturday: "السبت",
-      sunday: "الأحد"
+      self: 'أسبوع',
+      monday: 'الجمعة',
+      tuesday: 'الخميس',
+      wednesday: 'الأربعاء',
+      thursday: 'الثلاثاء',
+      friday: 'الإثنين',
+      saturday: 'السبت',
+      sunday: 'الأحد',
     },
     short: {
-      self: "أسبوع",
-      monday: "الجمعة",
-      tuesday: "الخميس",
-      wednesday: "الأربعاء",
-      thursday: "الثلاثاء",
-      friday: "الإثنين",
-      saturday: "السبت",
-      sunday: "الأحد"
-    }
-  }
+      self: 'أسبوع',
+      monday: 'الجمعة',
+      tuesday: 'الخميس',
+      wednesday: 'الأربعاء',
+      thursday: 'الثلاثاء',
+      friday: 'الإثنين',
+      saturday: 'السبت',
+      sunday: 'الأحد',
+    },
+  },
 };
 const lang = {
-  locale: "ar-EG",
+  locale: 'ar-EG',
   empty: {
-    description: "لايوجد بيانات"
+    description: 'لايوجد بيانات',
   },
   drawer: {
-    okText: "موافق",
-    cancelText: "إلغاء"
+    okText: 'موافق',
+    cancelText: 'إلغاء',
   },
   popconfirm: {
-    okText: "موافق",
-    cancelText: "إلغاء"
+    okText: 'موافق',
+    cancelText: 'إلغاء',
   },
   modal: {
-    okText: "موافق",
-    cancelText: "إلغاء"
+    okText: 'موافق',
+    cancelText: 'إلغاء',
   },
   pagination: {
-    goto: "اذهب إلى",
-    page: "الصفحة",
-    countPerPage: "عنصر / صفحة",
-    total: "{0} الإجمالي"
+    goto: 'اذهب إلى',
+    page: 'الصفحة',
+    countPerPage: 'عنصر / صفحة',
+    total: '{0} الإجمالي',
   },
   table: {
-    okText: "موافق",
-    resetText: "إعادة تعيين"
+    okText: 'موافق',
+    resetText: 'إعادة تعيين',
   },
   upload: {
-    start: "بداية",
-    cancel: "يلغي",
-    delete: "حذف",
-    retry: "انقر للمحاول مجددا",
-    buttonText: "انقر للتحميل",
-    preview: "معاينة",
-    drag: "انقر أو اسحب الملف إلى هذه المنطقة للتحميل",
-    dragHover: "حرر الملف وابدأ في التحميل",
-    error: "التحميل فشل"
+    start: 'بداية',
+    cancel: 'يلغي',
+    delete: 'حذف',
+    retry: 'انقر للمحاول مجددا',
+    buttonText: 'انقر للتحميل',
+    preview: 'معاينة',
+    drag: 'انقر أو اسحب الملف إلى هذه المنطقة للتحميل',
+    dragHover: 'حرر الملف وابدأ في التحميل',
+    error: 'التحميل فشل',
   },
   calendar: calendarLang,
   datePicker: {
@@ -105,50 +105,48 @@ const lang = {
     month: calendarLang.month,
     week: calendarLang.week,
     placeholder: {
-      date: "الرجاء تحديد تاريخ",
-      week: "الرجاء تحديد أسبوع",
-      month: "الرجاء تحديد شهر",
-      year: "الرجاء تحديد عام",
-      quarter: "الرجاء تحديد ربع",
-      time: "فترة الاختيار"
+      date: 'الرجاء تحديد تاريخ',
+      week: 'الرجاء تحديد أسبوع',
+      month: 'الرجاء تحديد شهر',
+      year: 'الرجاء تحديد عام',
+      quarter: 'الرجاء تحديد ربع',
+      time: 'فترة الاختيار',
     },
     rangePlaceholder: {
-      date: ["تاريخ البدء", "تاريخ الانتهاء"],
-      week: ["أسبوع البدء", "نهاية الأسبوع"],
-      month: ["شهر البدء", "نهاية الشهر"],
-      year: ["سنة البدء", "نهاية عام"],
-      quarter: ["بداية ربع السنة", "نهاية الربع"],
-      time: ["وقت البدء", "وقت النهاية"]
+      date: ['تاريخ البدء', 'تاريخ الانتهاء'],
+      week: ['أسبوع البدء', 'نهاية الأسبوع'],
+      month: ['شهر البدء', 'نهاية الشهر'],
+      year: ['سنة البدء', 'نهاية عام'],
+      quarter: ['بداية ربع السنة', 'نهاية الربع'],
+      time: ['وقت البدء', 'وقت النهاية'],
     },
-    selectTime: "فترة الاختيار",
-    today: "اليوم",
-    now: "الآن",
-    ok: "موافق"
+    selectTime: 'فترة الاختيار',
+    today: 'اليوم',
+    now: 'الآن',
+    ok: 'موافق',
   },
   image: {
-    loading: "loading"
+    loading: 'loading',
   },
   imagePreview: {
-    fullScreen: "كامل الشاشة",
-    rotateRight: "استدارة لليمين",
-    rotateLeft: "استدر يسارا",
-    zoomIn: "تكبير",
-    zoomOut: "تصغير",
-    originalSize: "الحجم الأصلي"
+    fullScreen: 'كامل الشاشة',
+    rotateRight: 'استدارة لليمين',
+    rotateLeft: 'استدر يسارا',
+    zoomIn: 'تكبير',
+    zoomOut: 'تصغير',
+    originalSize: 'الحجم الأصلي',
   },
   typography: {
-    copy: "ينسخ",
-    copied: "نسخ",
-    edit: "تعديل",
-    collapse: "يطوى",
-    expand: "وسعت"
+    copy: 'ينسخ',
+    copied: 'نسخ',
+    edit: 'تعديل',
+    collapse: 'يطوى',
+    expand: 'وسعت',
   },
   colorPicker: {
-    history: "ألوان تاريخية",
-    preset: "ألوان النظام المضبوطة مسبقاً",
-    empty: "غير متوفرة"
-  }
+    history: 'ألوان تاريخية',
+    preset: 'ألوان النظام المضبوطة مسبقاً',
+    empty: 'غير متوفرة',
+  },
 };
-export {
-  lang as default
-};
+export { lang as default };

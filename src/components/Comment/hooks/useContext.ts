@@ -1,6 +1,5 @@
 import {
   provide as _provide,
-  inject as _inject,
   inject,
   onBeforeUnmount,
   computed,

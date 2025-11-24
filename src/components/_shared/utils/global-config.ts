@@ -9,7 +9,7 @@ import {
   CSSProperties,
 } from 'vue';
 import { RecordType, PopupContainer, Size } from '@shared/type';
-import { isBoolean, isString, isUndefined } from './is';
+import { isString, isUndefined } from './is';
 
 export const CONFIG_PROVIDER_PROVIDE_KEY = 'config-props';
 

@@ -3,8 +3,6 @@ import {
   toRefs,
   Ref,
   computed,
-  useSlots,
-  Slots,
   provide as _provide,
   inject as _inject,
 } from 'vue';

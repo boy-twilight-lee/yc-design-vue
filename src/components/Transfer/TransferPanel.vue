@@ -97,7 +97,7 @@
 
 <script lang="ts" setup>
 import { ref, toRefs, computed } from 'vue';
-import { TransferItem, TransferPanelSlots, TransferItemValue } from './type';
+import { TransferItem, TransferItemValue } from './type';
 import { IconDelete, IconClose, IconSearch } from '@shared/icons';
 import useContext from './hooks/useContext';
 import YcCheckbox from '@/components/Checkbox';

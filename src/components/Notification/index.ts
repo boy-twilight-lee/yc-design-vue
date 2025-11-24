@@ -102,7 +102,7 @@ const NotificationMethod = {
   remove(id) {
     let posi: NotificationPosition = 'topRight';
     let i: number = -1;
-    for (let [position, list] of Object.entries(notificationList)) {
+    for (const [position, list] of Object.entries(notificationList)) {
       const index = list.findIndex((item) => item.id == id);
       if (index != -1) {
         posi = position as NotificationPosition;

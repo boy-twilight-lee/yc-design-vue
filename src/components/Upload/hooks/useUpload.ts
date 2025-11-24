@@ -102,14 +102,9 @@ export default function useUpload(
   // 处理上传
   const handleUpload = async (e: MouseEvent) => {
     if (disabled.value) return;
-    let click;
-    try {
-      click = onButtonClick?.(e);
-      if (click instanceof Promise) return;
-      open();
-    } catch (err) {
-      throw err;
-    }
+    const click = onButtonClick?.(e);
+    if (click instanceof Promise) return;
+    open();
   };
   return {
     ...context,

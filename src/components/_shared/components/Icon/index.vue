@@ -61,7 +61,7 @@ const style = computed(() => {
     width,
     height,
     color: color.value ? color.value : 'inherit',
-    transform: rotate ? `rotate(${rotate.value}deg)` : 'unset',
+    transform: rotate.value ? `rotate(${rotate.value}deg)` : 'unset',
   } as CSSProperties;
 });
 // 计算attrs

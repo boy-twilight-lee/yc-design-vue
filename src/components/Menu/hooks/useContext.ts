@@ -228,7 +228,7 @@ export default function useMenuContext() {
       collapsed,
       defaultCollapsed.value,
       (val) => {
-        if (true) {
+        if (val) {
           computedOpenKeys.value = [];
         }
         emits('update:collapsed', val);

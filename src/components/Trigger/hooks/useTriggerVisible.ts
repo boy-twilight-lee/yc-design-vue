@@ -211,7 +211,7 @@ export default (params: {
       ) {
         computedVisible.value = false;
         oldScrollTop = scrollTop;
-        oldScrollLeft = oldScrollLeft;
+        oldScrollLeft = scrollLeft;
       }
     });
   };
