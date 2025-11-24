@@ -23,7 +23,7 @@
           >
             {{ curYear }}-{{ curYear + 10 }}
             <template v-if="$slots['icon-prev-double']" #icon-prev-double>
-              <slot name="icon-next-double" />
+              <slot name="icon-prev-double" />
             </template>
             <template v-if="$slots['icon-next-double']" #icon-next-double>
               <slot name="icon-next-double" />
