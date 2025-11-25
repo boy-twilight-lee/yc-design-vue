@@ -6,65 +6,7 @@ settings:
 
 importers:
 
-  .: {}
-
-  packages/web-docs:
-    dependencies:
-      '@arco-design/web-vue':
-        specifier: ^2.57.0
-        version: 2.57.0(vue@3.5.25(typescript@5.9.3))
-      dayjs:
-        specifier: ^1.11.13
-        version: 1.11.19
-      yc-design-vue:
-        specifier: ^2.5.3
-        version: 2.5.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.8
-        version: 20.19.25
-      nprogress:
-        specifier: ^0.2.0
-        version: 0.2.0
-      postcss:
-        specifier: ^8.5.6
-        version: 8.5.6
-      unplugin-auto-import:
-        specifier: ^20.1.0
-        version: 20.2.0(@vueuse/core@12.8.2(typescript@5.9.3))
-      unplugin-vue-components:
-        specifier: ^29.0.0
-        version: 29.2.0(@babel/parser@7.28.5)(vue@3.5.25(typescript@5.9.3))
-      vitepress:
-        specifier: ^1.6.4
-        version: 1.6.4(@algolia/client-search@5.45.0)(@types/node@20.19.25)(less@4.4.2)(nprogress@0.2.0)(postcss@8.5.6)(search-insights@2.17.3)(terser@5.44.1)(typescript@5.9.3)
-      vitepress-plugin-nprogress:
-        specifier: ^0.1.0
-        version: 0.1.1
-      vue:
-        specifier: ^3.3.4
-        version: 3.5.25(typescript@5.9.3)
-
-  packages/web-vue:
-    dependencies:
-      '@tanstack/vue-virtual':
-        specifier: ^3.13.12
-        version: 3.13.12(vue@3.5.25(typescript@5.9.3))
-      '@vueuse/core':
-        specifier: ^12.0.0
-        version: 12.8.2(typescript@5.9.3)
-      b-tween:
-        specifier: ^0.3.3
-        version: 0.3.3
-      dayjs:
-        specifier: ^1.11.11
-        version: 1.11.19
-      nanoid:
-        specifier: ^5.1.2
-        version: 5.1.6
-      tinycolor2:
-        specifier: ^1.6.0
-        version: 1.6.0
+  .:
     devDependencies:
       '@arco-design/web-vue':
         specifier: ^2.57.0
@@ -114,6 +56,12 @@ importers:
       lint-staged:
         specifier: ^15.5.2
         version: 15.5.2
+      nprogress:
+        specifier: ^0.2.0
+        version: 0.2.0
+      postcss:
+        specifier: ^8.5.6
+        version: 8.5.6
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -135,12 +83,54 @@ importers:
       vite-plugin-dts:
         specifier: ^4.5.4
         version: 4.5.4(@types/node@20.19.25)(rollup@4.53.3)(typescript@5.9.3)(vite@5.4.21(@types/node@20.19.25)(less@4.4.2)(terser@5.44.1))
+      vitepress:
+        specifier: ^1.6.4
+        version: 1.6.4(@algolia/client-search@5.45.0)(@types/node@20.19.25)(less@4.4.2)(nprogress@0.2.0)(postcss@8.5.6)(search-insights@2.17.3)(terser@5.44.1)(typescript@5.9.3)
+      vitepress-plugin-nprogress:
+        specifier: ^0.1.0
+        version: 0.1.1
       vue:
         specifier: ^3.3.4
         version: 3.5.25(typescript@5.9.3)
       vue-tsc:
         specifier: ^2.0.29
         version: 2.2.12(typescript@5.9.3)
+
+  packages/web-docs:
+    dependencies:
+      '@arco-design/web-vue':
+        specifier: ^2.57.0
+        version: 2.57.0(vue@3.5.25(typescript@5.9.3))
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.19
+      yc-design-vue:
+        specifier: ^2.5.3
+        version: 2.5.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+
+  packages/web-vue:
+    dependencies:
+      '@tanstack/vue-virtual':
+        specifier: ^3.13.12
+        version: 3.13.12(vue@3.5.25(typescript@5.9.3))
+      '@vueuse/core':
+        specifier: ^12.0.0
+        version: 12.8.2(typescript@5.9.3)
+      b-tween:
+        specifier: ^0.3.3
+        version: 0.3.3
+      dayjs:
+        specifier: ^1.11.11
+        version: 1.11.19
+      nanoid:
+        specifier: ^5.1.2
+        version: 5.1.6
+      tinycolor2:
+        specifier: ^1.6.0
+        version: 1.6.0
+      vue:
+        specifier: ^3.3.4
+        version: 3.5.25(typescript@5.9.3)
 
 packages:
 
@@ -460,9 +450,6 @@ packages:
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
-
-  '@jridgewell/remapping@2.3.5':
-    resolution: {integrity: sha512-LI9u/+laYG4Ds1TDKSJW2YPrIlcVYOwi2fUC6xB43lueCjgxV4lffOCZCtYFiH6TNOX+tQKXx97T4IKHbhyHEQ==}
 
   '@jridgewell/resolve-uri@3.1.2':
     resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
@@ -1337,15 +1324,6 @@ packages:
   fastq@1.19.1:
     resolution: {integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==}
 
-  fdir@6.5.0:
-    resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      picomatch: ^3 || ^4
-    peerDependenciesMeta:
-      picomatch:
-        optional: true
-
   file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -2075,9 +2053,6 @@ packages:
   strip-literal@2.1.1:
     resolution: {integrity: sha512-631UJ6O00eNGfMiWG78ck80dfBab8X6IVFB51jZK5Icd7XAs60Z5y7QdSd/wGIklnWvRbUNloVzhOKKmutxQ6Q==}
 
-  strip-literal@3.1.0:
-    resolution: {integrity: sha512-8r3mkIM/2+PpjHoOtiAW8Rg3jJLHaV7xPwG+YRGrv6FP0wwk/toTpATxWYOW0BKdWwl82VT2tFYi5DlROa0Mxg==}
-
   superjson@2.2.5:
     resolution: {integrity: sha512-zWPTX96LVsA/eVYnqOM2+ofcdPqdS1dAF1LN4TS2/MWuUpfitd9ctTa87wt4xrYnZnkLtS69xpBdSxVBP5Rm6w==}
     engines: {node: '>=16'}
@@ -2111,10 +2086,6 @@ packages:
 
   tinycolor2@1.6.0:
     resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
-
-  tinyglobby@0.2.15:
-    resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
-    engines: {node: '>=12.0.0'}
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -2159,10 +2130,6 @@ packages:
   unimport@3.14.6:
     resolution: {integrity: sha512-CYvbDaTT04Rh8bmD8jz3WPmHYZRG/NnvYVzwD6V1YAlvvKROlAeNDUBhkBGzNav2RKaeuXvlWYaa1V4Lfi/O0g==}
 
-  unimport@5.5.0:
-    resolution: {integrity: sha512-/JpWMG9s1nBSlXJAQ8EREFTFy3oy6USFd8T6AoBaw1q2GGcF4R9yp3ofg32UODZlYEO5VD0EWE1RpI9XDWyPYg==}
-    engines: {node: '>=18.12.0'}
-
   unist-util-is@6.0.1:
     resolution: {integrity: sha512-LsiILbtBETkDz8I9p1dQ0uyRUWuaQzd/cuEeS1hoRSyW5E5XGmTzlwY1OrNzzakGowI9Dr/I8HVaw4hTtnxy8g==}
 
@@ -2194,22 +2161,6 @@ packages:
       '@vueuse/core':
         optional: true
 
-  unplugin-auto-import@20.2.0:
-    resolution: {integrity: sha512-vfBI/SvD9hJqYNinipVOAj5n8dS8DJXFlCKFR5iLDp2SaQwsfdnfLXgZ+34Kd3YY3YEY9omk8XQg0bwos3Q8ug==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@nuxt/kit': ^4.0.0
-      '@vueuse/core': '*'
-    peerDependenciesMeta:
-      '@nuxt/kit':
-        optional: true
-      '@vueuse/core':
-        optional: true
-
-  unplugin-utils@0.3.1:
-    resolution: {integrity: sha512-5lWVjgi6vuHhJ526bI4nlCOmkCIF3nnfXkCMDeMJrtdvxTs6ZFCM8oNufGTsDbKv/tJ/xj8RpvXjRuPBZJuJog==}
-    engines: {node: '>=20.19.0'}
-
   unplugin-vue-components@0.27.5:
     resolution: {integrity: sha512-m9j4goBeNwXyNN8oZHHxvIIYiG8FQ9UfmKWeNllpDvhU7btKNNELGPt+o3mckQKuPwrE7e0PvCsx+IWuDSD9Vg==}
     engines: {node: '>=14'}
@@ -2223,26 +2174,9 @@ packages:
       '@nuxt/kit':
         optional: true
 
-  unplugin-vue-components@29.2.0:
-    resolution: {integrity: sha512-QxBeBdmEflgtJRgMQMc/z/JVV5lcwXN5nOy5ehX6CKDGylIu6Qn4Goy8X95S0qOxF7EdI+uNhdBd4v5i0bvzCw==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@babel/parser': ^7.15.8
-      '@nuxt/kit': ^3.2.2 || ^4.0.0
-      vue: 2 || 3
-    peerDependenciesMeta:
-      '@babel/parser':
-        optional: true
-      '@nuxt/kit':
-        optional: true
-
   unplugin@1.16.1:
     resolution: {integrity: sha512-4/u/j4FrCKdi17jaxuJA0jClGxB1AvU2hw/IuayPc4ay1XGaJs/rbb4v5WKwAjNifjmXK9PIFyuPiaK8azyR9w==}
     engines: {node: '>=14.0.0'}
-
-  unplugin@2.3.11:
-    resolution: {integrity: sha512-5uKD0nqiYVzlmCRs01Fhs2BdkEgBS3SAVP6ndrBsuK42iC2+JHyxM05Rm9G8+5mkmRtzMZGY8Ct5+mliZxU/Ww==}
-    engines: {node: '>=18.12.0'}
 
   update-browserslist-db@1.1.4:
     resolution: {integrity: sha512-q0SPT4xyU84saUX+tomz1WLkxUbuaJnR1xWt17M7fJtEJigJeWUNGUqrauFXsHnqev9y9JTRGwk13tFBuKby4A==}
@@ -2688,11 +2622,6 @@ snapshots:
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
-      '@jridgewell/trace-mapping': 0.3.31
-
-  '@jridgewell/remapping@2.3.5':
-    dependencies:
-      '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/resolve-uri@3.1.2': {}
@@ -3646,10 +3575,6 @@ snapshots:
     dependencies:
       reusify: 1.1.0
 
-  fdir@6.5.0(picomatch@4.0.3):
-    optionalDependencies:
-      picomatch: 4.0.3
-
   file-entry-cache@6.0.1:
     dependencies:
       flat-cache: 3.2.0
@@ -4376,10 +4301,6 @@ snapshots:
     dependencies:
       js-tokens: 9.0.1
 
-  strip-literal@3.1.0:
-    dependencies:
-      js-tokens: 9.0.1
-
   superjson@2.2.5:
     dependencies:
       copy-anything: 4.0.5
@@ -4410,11 +4331,6 @@ snapshots:
   text-table@0.2.0: {}
 
   tinycolor2@1.6.0: {}
-
-  tinyglobby@0.2.15:
-    dependencies:
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
 
   to-regex-range@5.0.1:
     dependencies:
@@ -4461,23 +4377,6 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  unimport@5.5.0:
-    dependencies:
-      acorn: 8.15.0
-      escape-string-regexp: 5.0.0
-      estree-walker: 3.0.3
-      local-pkg: 1.1.2
-      magic-string: 0.30.21
-      mlly: 1.8.0
-      pathe: 2.0.3
-      picomatch: 4.0.3
-      pkg-types: 2.3.0
-      scule: 1.3.0
-      strip-literal: 3.1.0
-      tinyglobby: 0.2.15
-      unplugin: 2.3.11
-      unplugin-utils: 0.3.1
-
   unist-util-is@6.0.1:
     dependencies:
       '@types/unist': 3.0.3
@@ -4518,22 +4417,6 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  unplugin-auto-import@20.2.0(@vueuse/core@12.8.2(typescript@5.9.3)):
-    dependencies:
-      local-pkg: 1.1.2
-      magic-string: 0.30.21
-      picomatch: 4.0.3
-      unimport: 5.5.0
-      unplugin: 2.3.11
-      unplugin-utils: 0.3.1
-    optionalDependencies:
-      '@vueuse/core': 12.8.2(typescript@5.9.3)
-
-  unplugin-utils@0.3.1:
-    dependencies:
-      pathe: 2.0.3
-      picomatch: 4.0.3
-
   unplugin-vue-components@0.27.5(@babel/parser@7.28.5)(rollup@4.53.3)(vue@3.5.25(typescript@5.9.3)):
     dependencies:
       '@antfu/utils': 0.7.10
@@ -4553,32 +4436,9 @@ snapshots:
       - rollup
       - supports-color
 
-  unplugin-vue-components@29.2.0(@babel/parser@7.28.5)(vue@3.5.25(typescript@5.9.3)):
-    dependencies:
-      chokidar: 3.6.0
-      debug: 4.4.3
-      local-pkg: 1.1.2
-      magic-string: 0.30.21
-      mlly: 1.8.0
-      tinyglobby: 0.2.15
-      unplugin: 2.3.11
-      unplugin-utils: 0.3.1
-      vue: 3.5.25(typescript@5.9.3)
-    optionalDependencies:
-      '@babel/parser': 7.28.5
-    transitivePeerDependencies:
-      - supports-color
-
   unplugin@1.16.1:
     dependencies:
       acorn: 8.15.0
-      webpack-virtual-modules: 0.6.2
-
-  unplugin@2.3.11:
-    dependencies:
-      '@jridgewell/remapping': 2.3.5
-      acorn: 8.15.0
-      picomatch: 4.0.3
       webpack-virtual-modules: 0.6.2
 
   update-browserslist-db@1.1.4(browserslist@4.28.0):
