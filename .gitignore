@@ -11,9 +11,11 @@ node_modules
 dist
 lib
 es
+cache
 src/dev
 dist-ssr
 *.local
+
 
 # Editor directories and files
 .vscode/*

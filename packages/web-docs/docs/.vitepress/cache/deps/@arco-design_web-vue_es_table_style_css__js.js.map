@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../../node_modules/.pnpm/@arco-design+web-vue@2.57.0_vue@3.5.25_typescript@5.9.3_/node_modules/@arco-design/web-vue/es/table/style/css.js"],
-  "sourcesContent": ["import \"../../style/index.css\";\nimport \"../../checkbox/style/index.css\";\nimport \"../../button/style/index.css\";\nimport \"../../empty/style/index.css\";\nimport \"../../input/style/index.css\";\nimport \"../../_components/input-label/style/index.css\";\nimport \"../../tag/style/index.css\";\nimport \"../../input-tag/style/index.css\";\nimport \"../../_components/select-view/style/index.css\";\nimport \"../../trigger/style/index.css\";\nimport \"../../scrollbar/style/index.css\";\nimport \"../../select/style/index.css\";\nimport \"../../pagination/style/index.css\";\nimport \"../../radio/style/index.css\";\nimport \"../../spin/style/index.css\";\nimport \"../../tooltip/style/index.css\";\nimport \"../../_components/auto-tooltip/style/index.css\";\nimport \"./index.css\";\n"],
-  "mappings": ";AAAA,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;AACP,OAAO;",
-  "names": []
-}
