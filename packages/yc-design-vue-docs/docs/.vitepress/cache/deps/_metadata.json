@@ -1,0 +1,88 @@
+{
+  "hash": "0914ac12",
+  "configHash": "3227d508",
+  "lockfileHash": "e1412c08",
+  "browserHash": "0551a920",
+  "optimized": {
+    "vue": {
+      "src": "../../../../../../node_modules/.pnpm/vue@3.5.25_typescript@5.9.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "8e711bb1",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../../../node_modules/.pnpm/@vue+devtools-api@7.7.9/node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "343c62cd",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../../../node_modules/.pnpm/@vueuse+core@12.8.2_typescript@5.9.3/node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "e87d6ace",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/integrations/useFocusTrap": {
+      "src": "../../../../../../node_modules/.pnpm/@vueuse+integrations@12.8.2_9e54096412b94431a14a01c9b33ec4ac/node_modules/@vueuse/integrations/useFocusTrap.mjs",
+      "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
+      "fileHash": "bffdcba1",
+      "needsInterop": false
+    },
+    "vitepress > mark.js/src/vanilla.js": {
+      "src": "../../../../../../node_modules/.pnpm/mark.js@8.11.1/node_modules/mark.js/src/vanilla.js",
+      "file": "vitepress___mark__js_src_vanilla__js.js",
+      "fileHash": "e68273ef",
+      "needsInterop": false
+    },
+    "vitepress > minisearch": {
+      "src": "../../../../../../node_modules/.pnpm/minisearch@7.2.0/node_modules/minisearch/dist/es/index.js",
+      "file": "vitepress___minisearch.js",
+      "fileHash": "46aa924d",
+      "needsInterop": false
+    },
+    "vitepress-plugin-nprogress": {
+      "src": "../../../../../../node_modules/.pnpm/vitepress-plugin-nprogress@0.1.1/node_modules/vitepress-plugin-nprogress/lib/vitepress-plugin-nprogress.js",
+      "file": "vitepress-plugin-nprogress.js",
+      "fileHash": "f93e7f6e",
+      "needsInterop": false
+    },
+    "yc-design-vue": {
+      "src": "../../../../../../node_modules/.pnpm/yc-design-vue@2.5.2_typescr_d26c46528d144b22c752d9499db250fd/node_modules/yc-design-vue/es/index.js",
+      "file": "yc-design-vue.js",
+      "fileHash": "9f98f4d7",
+      "needsInterop": false
+    },
+    "@arco-design/web-vue/es/icon": {
+      "src": "../../../../../../node_modules/.pnpm/@arco-design+web-vue@2.57.0_vue@3.5.25_typescript@5.9.3_/node_modules/@arco-design/web-vue/es/icon/index.js",
+      "file": "@arco-design_web-vue_es_icon.js",
+      "fileHash": "47f69272",
+      "needsInterop": false
+    },
+    "@arco-design/web-vue": {
+      "src": "../../../../../../node_modules/.pnpm/@arco-design+web-vue@2.57.0_vue@3.5.25_typescript@5.9.3_/node_modules/@arco-design/web-vue/es/index.js",
+      "file": "@arco-design_web-vue.js",
+      "fileHash": "a42c373a",
+      "needsInterop": false
+    },
+    "@arco-design/web-vue/es/table/style/css.js": {
+      "src": "../../../../../../node_modules/.pnpm/@arco-design+web-vue@2.57.0_vue@3.5.25_typescript@5.9.3_/node_modules/@arco-design/web-vue/es/table/style/css.js",
+      "file": "@arco-design_web-vue_es_table_style_css__js.js",
+      "fileHash": "1b90e1bc",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-FNAI2PB4": {
+      "file": "chunk-FNAI2PB4.js"
+    },
+    "chunk-TL4YNMQI": {
+      "file": "chunk-TL4YNMQI.js"
+    },
+    "chunk-4GT4EDJH": {
+      "file": "chunk-4GT4EDJH.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
+}

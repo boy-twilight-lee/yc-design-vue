@@ -1,0 +1,25 @@
+{
+  "name": "yc-design-vue-docs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "documentation for yc-design-vue.",
+  "scripts": {
+    "dev": "vitepress dev docs --host",
+    "build": "vitepress build docs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.8",
+    "nprogress": "^0.2.0",
+    "postcss": "^8.5.6",
+    "unplugin-auto-import": "^20.1.0",
+    "unplugin-vue-components": "^29.0.0",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-nprogress": "^0.1.0",
+    "vue": "^3.3.4"
+  },
+  "dependencies": {
+    "@arco-design/web-vue": "^2.57.0",
+    "dayjs": "^1.11.13",
+    "yc-design-vue": "^2.5.2"
+  }
+}

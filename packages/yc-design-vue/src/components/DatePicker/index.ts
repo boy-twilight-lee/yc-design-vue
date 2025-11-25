@@ -1,0 +1,28 @@
+import { App } from 'vue';
+import _DatePicker from './DatePicker.vue';
+import _YearPicker from './YearPicker.vue';
+import _MonthPicker from './MonthPicker.vue';
+import _WeekPicker from './WeekPicker.vue';
+
+export type DatePickerInstance = InstanceType<typeof _DatePicker>;
+export type YearPickerInstance = InstanceType<typeof _YearPicker>;
+export type MonthPickerInstance = InstanceType<typeof _MonthPicker>;
+export type WeekPickerInstance = InstanceType<typeof _WeekPicker>;
+export * from './type';
+
+const DatePicker = Object.assign(_DatePicker, {
+  install: (app: App) => {
+    app.component('Yc' + _DatePicker.name, _DatePicker);
+    app.component('Yc' + _YearPicker.name, _YearPicker);
+    app.component('Yc' + _MonthPicker.name, _MonthPicker);
+    app.component('Yc' + _WeekPicker.name, _WeekPicker);
+  },
+});
+
+export {
+  _YearPicker as YearPicker,
+  _MonthPicker as MonthPicker,
+  _WeekPicker as WeekPicker,
+};
+
+export default DatePicker;

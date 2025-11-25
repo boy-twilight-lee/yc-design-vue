@@ -1,0 +1,96 @@
+.cell-demo {
+  overflow-x: auto;
+  max-width: var(--content-max-width);
+  margin-top: 24px;
+  padding: 48px;
+  border: 1px solid var(--vp-color-border);
+  border-radius: 2px 2px 0 0;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.arco-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+  font-style: normal;
+  vertical-align: -2px;
+  outline: none;
+  stroke: currentColor;
+}
+
+code {
+  padding: 2px 8px;
+  color: rgb(78, 89, 105) !important;
+  background-color: rgb(242, 243, 245) !important;
+}
+
+details {
+  summary {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &[open] {
+    .code-btn {
+      background-color: rgb(29, 33, 41);
+      color: rgb(247, 248, 250);
+      border-color: rgb(247, 248, 250);
+    }
+  }
+  &:not([open]) {
+    .code-btn {
+      &:hover {
+        border-color: rgb(22, 93, 255);
+        color: rgb(22, 93, 255);
+        background-color: rgb(229, 230, 235);
+      }
+    }
+  }
+  .code-btn {
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid rgb(229, 230, 235);
+    color: rgb(78, 89, 105);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.dark {
+  code {
+    color: rgba(255, 255, 255, 0.7) !important;
+    background-color: rgb(46, 46, 48) !important;
+  }
+  details {
+    &[open] {
+      .code-btn {
+        background-color: #fff;
+        border-color: rgb(229, 230, 235);
+        color: rgb(78, 89, 105);
+      }
+    }
+    &:not([open]) {
+      .code-btn {
+        &:hover {
+          border-color: rgb(22, 93, 255);
+          color: rgb(22, 93, 255);
+          background-color: #313132;
+        }
+      }
+    }
+    .code-btn {
+      background-color: #313132;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}

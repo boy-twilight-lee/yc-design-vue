@@ -1,5 +1,5 @@
 {
-  "name": "yc-design-vue",
+  "name": "yc-design",
   "private": false,
   "version": "2.5.2",
   "type": "module",
@@ -17,90 +17,15 @@
     "url": "https://github.com/boy-twilight-lee/yc-design-vue"
   },
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "release": "vite build && npm publish",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
-    "format": "npx prettier --write --loglevel warn 'src/**/*.{js,ts,json,tsx,css,less,vue,html,md}'"
+    "dev": "pnpm --filter yc-design-vue dev",
+    "dev:docs": "pnpm --filter yc-design-vue-docs dev",
+    "build": "pnpm --filter yc-design-vue build",
+    "build:docs": "pnpm --filter yc-design-vue-docs build",
+    "release": "pnpm --filter yc-design-vue release",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format"
   },
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "es/index.d.ts",
-  "files": [
-    "es",
-    "lib",
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "types": "./es/index.d.ts",
-      "import": "./es/index.js",
-      "require": "./lib/index.js"
-    },
-    "./resolver": {
-      "types": "./es/resolver/index.d.ts",
-      "import": "./es/resolver/index.js"
-    },
-    "./lang/*": {
-      "types": "./es/lang-es/*.d.ts",
-      "import": "./es/lang-es/*.js",
-      "require": "./lib/lang-lib/*.js"
-    },
-    "./es/style.css": "./es/style.css",
-    "./es/shared.css": "./es/shared.css",
-    "./es/*": {
-      "types": "./es/*/index.d.ts",
-      "import": "./es/*/index.js"
-    },
-    "./es/*/index.css": "./es/*/index.css"
-  },
-  "dependencies": {
-    "@tanstack/vue-virtual": "^3.13.12",
-    "@vueuse/core": "^12.0.0",
-    "b-tween": "^0.3.3",
-    "dayjs": "^1.11.11",
-    "nanoid": "^5.1.2",
-    "tinycolor2": "^1.6.0"
-  },
-  "devDependencies": {
-    "@arco-design/web-vue": "^2.57.0",
-    "@types/node": "^20.12.8",
-    "@types/tinycolor2": "^1.4.6",
-    "@typescript-eslint/eslint-plugin": "^7.11.0",
-    "@typescript-eslint/parser": "^7.11.0",
-    "@vitejs/plugin-vue": "^4.6.2",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-unused-imports": "^4.3.0",
-    "eslint-plugin-vue": "^9.26.0",
-    "glob": "^11.0.3",
-    "husky": "^9.1.7",
-    "less": "^4.4.1",
-    "lint-staged": "^15.5.2",
-    "prettier": "^3.6.2",
-    "terser": "^5.43.1",
-    "typescript": "^5.5.3",
-    "unplugin-auto-import": "^0.17.8",
-    "unplugin-vue-components": "^0.27.5",
-    "vite": "^5.4.1",
-    "vite-plugin-dts": "^4.5.4",
-    "vue": "^3.3.4",
-    "vue-tsc": "^2.0.29"
-  },
-  "peerDependencies": {
-    "vue": "^3.3.4"
-  },
-  "lint-staged": {
-    "*.{vue,ts,tsx}": [
-      "npm run format",
-      "npm run lint"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }

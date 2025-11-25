@@ -1,0 +1,22 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="yc-gradient" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#A8C5FF"/>
+      <stop offset="100%" stop-color="#165DFF"/>
+    </linearGradient>
+    <filter id="yc-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#165DFF" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <g style="filter: url(#yc-shadow);">
+    <path d="M48 48 L96 96 L144 48 M96 96 L96 144" 
+          stroke="url(#yc-gradient)" 
+          stroke-width="18" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+    <path d="M150 78 A 36 36 0 1 1 126 132" 
+          stroke="#165DFF" 
+          stroke-width="18" 
+          stroke-linecap="round"/>
+  </g>
+</svg>
