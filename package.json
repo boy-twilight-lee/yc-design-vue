@@ -3,13 +3,13 @@
   "private": false,
   "scripts": {
     "dev": "pnpm --filter yc-design-vue dev",
-    "dev:docs": "pnpm --filter yc-design-vue-docs dev",
     "build": "pnpm --filter yc-design-vue build",
-    "build:docs": "pnpm --filter yc-design-vue-docs build",
-    "preview:docs": "pnpm --filter yc-design-vue-docs preview",
     "release": "pnpm --filter yc-design-vue release",
     "lint": "pnpm --filter yc-design-vue lint",
-    "format": "pnpm--filter yc-design-vue format"
+    "format": "pnpm--filter yc-design-vue format",
+    "dev:docs": "pnpm --filter yc-design-docs dev",
+    "build:docs": "pnpm --filter yc-design-docs build",
+    "preview:docs": "pnpm --filter yc-design-docs preview"
   },
   "workspaces": [
     "packages/*"
