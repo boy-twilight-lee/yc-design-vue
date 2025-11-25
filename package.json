@@ -22,8 +22,8 @@
     "build": "pnpm --filter yc-design-vue build",
     "build:docs": "pnpm --filter yc-design-vue-docs build",
     "release": "pnpm --filter yc-design-vue release",
-    "lint": "pnpm -r lint",
-    "format": "pnpm -r format"
+    "lint": "pnpm --filter yc-design-vue lint",
+    "format": "pnpm--filter yc-design-vue format"
   },
   "workspaces": [
     "packages/*"
