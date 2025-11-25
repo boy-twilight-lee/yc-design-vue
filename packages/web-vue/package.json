@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/boy-twilight-lee/yc-design-vue"
+    "url": "https://github.com/boy-twilight-lee/yc-design"
   },
   "scripts": {
     "dev": "vite --host",

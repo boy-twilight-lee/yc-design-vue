@@ -1,21 +1,6 @@
 {
   "name": "yc-design",
   "private": false,
-  "version": "1.0.0",
-  "type": "module",
-  "description": "A Vue 3 component library.",
-  "keywords": [
-    "vue",
-    "vue3",
-    "ui",
-    "components"
-  ],
-  "author": "2429162154@qq.com",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/boy-twilight-lee/yc-design-vue"
-  },
   "scripts": {
     "dev": "pnpm --filter yc-design-vue dev",
     "dev:docs": "pnpm --filter yc-design-vue-docs dev",
