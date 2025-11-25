@@ -21,6 +21,7 @@
     "dev:docs": "pnpm --filter yc-design-vue-docs dev",
     "build": "pnpm --filter yc-design-vue build",
     "build:docs": "pnpm --filter yc-design-vue-docs build",
+    "preview:docs": "pnpm --filter yc-design-vue-docs preview",
     "release": "pnpm --filter yc-design-vue release",
     "lint": "pnpm --filter yc-design-vue lint",
     "format": "pnpm--filter yc-design-vue format"

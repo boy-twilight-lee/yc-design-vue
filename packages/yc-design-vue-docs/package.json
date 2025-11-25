@@ -5,7 +5,8 @@
   "description": "documentation for yc-design-vue.",
   "scripts": {
     "dev": "vitepress dev docs --host",
-    "build": "vitepress build docs"
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@types/node": "^20.12.8",
