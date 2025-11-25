@@ -12,9 +12,12 @@ dist
 lib
 es
 cache
-src/dev
 dist-ssr
 *.local
+
+# VitePress (Documentation)
+.vitepress/cache
+.vitepress/dist
 
 
 # Editor directories and files
