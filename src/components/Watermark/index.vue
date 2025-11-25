@@ -214,8 +214,10 @@ const renderWatermark = () => {
   }
 };
 // 是否是水印
-const isWatermarkEle = (ele: any) => {
-  return Array.from(watermarkMap.value.values()).includes(ele);
+const isWatermarkEle = (ele: Node) => {
+  return Array.from(watermarkMap.value.values()).includes(
+    ele as HTMLDivElement
+  );
 };
 // 处理元素改变
 const handleMutations = (mutations: MutationRecord[]) => {

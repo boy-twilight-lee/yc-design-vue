@@ -18,7 +18,7 @@
     <!--有split分开渲染 -->
     <template v-for="(node, i) in nodes" :key="i">
       <div class="yc-space-item">
-        <component :is="getSlotFunction(node as any as string)" />
+        <component :is="getSlotFunction(node)" />
       </div>
       <div v-if="i < nodes.length - 1" class="yc-space-split">
         <slot name="split" />

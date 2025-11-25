@@ -60,8 +60,8 @@ export default function styleGeneratePlugin(): Plugin {
                 output.css
               );
             }
-          } catch (error: any) {
-            this.error(`Error compiling shared styles: ${error.message}`);
+          } catch (err) {
+            this.error(`Error compiling shared styles: ${err.message}`);
           }
         }
       }
@@ -121,11 +121,11 @@ export default function styleGeneratePlugin(): Plugin {
               );
               fs.mkdirSync(path.dirname(outputCssPath), { recursive: true });
               fs.writeFileSync(outputCssPath, output.css);
-            } catch (error: any) {
-              const errorMessage = `Error compiling LESS for component '${componentName}': ${error.message}.`;
-              if (error.filename && error.line) {
+            } catch (err) {
+              const errorMessage = `Error compiling LESS for component '${componentName}': ${err.message}.`;
+              if (err.filename && err.line) {
                 this.error(
-                  `${errorMessage}\nFile: ${error.filename}\nLine: ${error.line}`
+                  `${errorMessage}\nFile: ${err.filename}\nLine: ${err.line}`
                 );
               } else {
                 this.error(errorMessage);

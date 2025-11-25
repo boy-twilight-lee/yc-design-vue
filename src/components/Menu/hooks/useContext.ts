@@ -62,7 +62,7 @@ export type MenuTreeNode = {
   path: string;
   parentId: string | null;
   level: number;
-  label: () => any;
+  label: () => string | VNode | VNode[];
   children?: MenuTreeNode[];
 };
 type MenuProps = Required<_MenuProps>;

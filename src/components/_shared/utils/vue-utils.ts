@@ -3,7 +3,7 @@ import { RecordType, RenderContent } from '../type';
 import { isFunction, isObject } from './is';
 
 // 获取renderFunction
-export const getSlotFunction = (param: RenderContent | undefined) => {
+export const getSlotFunction = (param: RenderContent | VNode | undefined) => {
   if (param) {
     return isFunction(param) ? param : () => param;
   }
