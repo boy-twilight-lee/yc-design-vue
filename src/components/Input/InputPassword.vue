@@ -70,7 +70,7 @@ defineExpose<InputExpose>({
     inputRef.value?.blur();
   },
   getInputRef() {
-    return inputRef.value?.getInputRef()!;
+    return inputRef.value!.getInputRef();
   },
 });
 </script>

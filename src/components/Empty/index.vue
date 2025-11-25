@@ -15,7 +15,6 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs } from 'vue';
 import { EmptyProps, EmptySlots } from './type';
 import { useI18n } from '@shared/utils';
 import { IconEmpty } from '@shared/icons';
@@ -23,11 +22,10 @@ defineOptions({
   name: 'Empty',
 });
 defineSlots<EmptySlots>();
-const props = withDefaults(defineProps<EmptyProps>(), {
+withDefaults(defineProps<EmptyProps>(), {
   description: '',
   imgSrc: '',
 });
-const { description: _description } = toRefs(props);
 // 国际化
 const { t } = useI18n();
 </script>

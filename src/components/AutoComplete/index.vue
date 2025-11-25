@@ -65,6 +65,7 @@ import {
   AutoCompleteSlots,
   AutoCompleteExpose,
 } from './type';
+import { FilterOption } from '@shared/type';
 import { useControlValue, isObject } from '@shared/utils';
 import {
   default as YcSelect,
@@ -141,8 +142,10 @@ const handleEvent = async (
           curOptions.value = data.value.filter((v) => {
             const option = isObject(v) ? v : { label: v, value: v };
             return (
-              (filterOption as Function)?.(value, option) ??
-              defaultFilter(value, option)
+              (filterOption as FilterOption<SelectOptionData>)?.(
+                value,
+                option
+              ) ?? defaultFilter(value, option)
             );
           });
         } else {

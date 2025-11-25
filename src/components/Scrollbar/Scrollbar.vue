@@ -163,12 +163,7 @@ useContext().provide({
 });
 // 处理容器滚动
 const handleScroll = (e: Event) => {
-  const {
-    scrollTop,
-    scrollLeft,
-    scrollWidth: _scrollWidth,
-    scrollHeight: _scrollHeight,
-  } = e.target as HTMLDivElement;
+  const { scrollTop, scrollLeft } = e.target as HTMLDivElement;
   // 触发滚动
   emits('scroll', scrollLeft, scrollTop, e);
   //计算top

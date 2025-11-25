@@ -10,12 +10,7 @@ type DropdownContext = {
 
 export default function useDropdownContext() {
   const provide = (props: RecordType, emits: DropdownEmits) => {
-    const {
-      popupVisible,
-      defaultPopupVisible,
-      hideOnSelect,
-      position: _position,
-    } = toRefs(props);
+    const { popupVisible, defaultPopupVisible, hideOnSelect } = toRefs(props);
     // 受控的visible
     const computedVisible = useControlValue<boolean>(
       popupVisible,

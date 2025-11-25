@@ -60,14 +60,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   href: '',
 });
 const emits = defineEmits<ButtonEmits>();
-const {
-  loading,
-  disabled: _disabled,
-  type: _type,
-  status: _status,
-  shape: _shape,
-  long,
-} = toRefs(props);
+const { loading, long } = toRefs(props);
 // 呼求注入
 const { size, disabled, type, status, shape } = useContext().inject(props);
 // class-name

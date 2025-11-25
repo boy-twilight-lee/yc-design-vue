@@ -68,7 +68,7 @@ const emits = defineEmits<InputSearchEmits>();
 const inputRef = ref<InstanceType<typeof YcInput>>();
 // 处理搜索
 const handleSearch = async (e: MouseEvent) => {
-  emits('search', inputRef.value?.getInputRef().value!, e);
+  emits('search', inputRef.value!.getInputRef().value, e);
   await sleep(0);
   inputRef.value?.focus();
 };
@@ -80,7 +80,7 @@ defineExpose<InputExpose>({
     inputRef.value?.blur();
   },
   getInputRef() {
-    return inputRef.value?.getInputRef()!;
+    return inputRef.value!.getInputRef();
   },
 });
 </script>

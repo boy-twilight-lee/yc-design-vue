@@ -68,7 +68,6 @@ const {
   type: injectType,
   size,
   hasGroup,
-  emits: _emits,
 } = useContext().inject();
 // checkbox受控的值
 const computedValue = useControlValue<RadioValue>(

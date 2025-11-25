@@ -33,7 +33,7 @@ module.exports = {
         },
       },
     ],
-    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
     'no-debugger': 'off',
     'vue/no-reserved-component-names': 'off',
     'vue/component-name-in-template-casing': [
@@ -44,8 +44,8 @@ module.exports = {
         ignores: [], // 可以列出要忽略的组件
       },
     ],
-    'no-unused-vars': 'off',
-    'unused-imports/no-unused-imports': 'error',
+    'no-unused-vars': 'warn',
+    'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [
       'warn',
       {

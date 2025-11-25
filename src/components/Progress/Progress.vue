@@ -86,7 +86,6 @@ const {
   width: _width,
   type: _type,
   status: _status,
-  strokeWidth: _strokeWidth,
 } = toRefs(props);
 // 获取size
 const { size } = getGlobalConfig(props);
