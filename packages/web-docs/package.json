@@ -7,10 +7,5 @@
     "dev": "vitepress dev docs --host",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs"
-  },
-  "dependencies": {
-    "@arco-design/web-vue": "^2.57.0",
-    "dayjs": "^1.11.13",
-    "yc-design-vue": "^2.5.3"
   }
 }

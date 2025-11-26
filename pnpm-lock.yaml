@@ -7,6 +7,28 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@tanstack/vue-virtual':
+        specifier: ^3.13.12
+        version: 3.13.12(vue@3.5.25(typescript@5.9.3))
+      '@vueuse/core':
+        specifier: ^12.0.0
+        version: 12.8.2(typescript@5.9.3)
+      b-tween:
+        specifier: ^0.3.3
+        version: 0.3.3
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.19
+      nanoid:
+        specifier: ^5.1.2
+        version: 5.1.6
+      tinycolor2:
+        specifier: ^1.6.0
+        version: 1.6.0
+      yc-design-vue:
+        specifier: ^2.5.3
+        version: 2.5.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
     devDependencies:
       '@arco-design/web-vue':
         specifier: ^2.57.0
@@ -96,38 +118,10 @@ importers:
         specifier: ^2.0.29
         version: 2.2.12(typescript@5.9.3)
 
-  packages/web-docs:
-    dependencies:
-      '@arco-design/web-vue':
-        specifier: ^2.57.0
-        version: 2.57.0(vue@3.5.25(typescript@5.9.3))
-      dayjs:
-        specifier: ^1.11.13
-        version: 1.11.19
-      yc-design-vue:
-        specifier: ^2.5.3
-        version: 2.5.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+  packages/web-docs: {}
 
   packages/web-vue:
     dependencies:
-      '@tanstack/vue-virtual':
-        specifier: ^3.13.12
-        version: 3.13.12(vue@3.5.25(typescript@5.9.3))
-      '@vueuse/core':
-        specifier: ^12.0.0
-        version: 12.8.2(typescript@5.9.3)
-      b-tween:
-        specifier: ^0.3.3
-        version: 0.3.3
-      dayjs:
-        specifier: ^1.11.11
-        version: 1.11.19
-      nanoid:
-        specifier: ^5.1.2
-        version: 5.1.6
-      tinycolor2:
-        specifier: ^1.6.0
-        version: 1.6.0
       vue:
         specifier: ^3.3.4
         version: 3.5.25(typescript@5.9.3)

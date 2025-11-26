@@ -2,14 +2,23 @@
   "name": "yc-design",
   "private": false,
   "scripts": {
-    "dev": "pnpm --filter yc-design-vue dev",
-    "build": "pnpm --filter yc-design-vue build",
-    "release": "pnpm --filter yc-design-vue release",
-    "lint": "pnpm --filter yc-design-vue lint",
-    "format": "pnpm --filter yc-design-vue format",
+    "dev:lib": "pnpm --filter yc-design-vue dev",
+    "build:lib": "pnpm --filter yc-design-vue build",
+    "release:lib": "pnpm --filter yc-design-vue release",
+    "lint:lib": "pnpm --filter yc-design-vue lint",
+    "format:lib": "pnpm --filter yc-design-vue format",
     "dev:docs": "pnpm --filter yc-design-docs dev",
     "build:docs": "pnpm --filter yc-design-docs build",
     "preview:docs": "pnpm --filter yc-design-docs preview"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "@tanstack/vue-virtual": "^3.13.12",
+    "@vueuse/core": "^12.0.0",
+    "b-tween": "^0.3.3",
+    "nanoid": "^5.1.2",
+    "tinycolor2": "^1.6.0",
+    "yc-design-vue": "^2.5.3"
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.57.0",
